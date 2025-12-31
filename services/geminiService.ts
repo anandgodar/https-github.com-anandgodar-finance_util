@@ -1,16 +1,12 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 
-/**
- * Parses AI output for JSON data, handling potential markdown markers or leading/trailing text.
- */
 const parseJSONSafely = (text: string | undefined) => {
   if (!text) return {};
   const cleaned = text.trim();
   try {
     return JSON.parse(cleaned);
   } catch (e) {
-    // Attempt extraction from possible markdown code blocks
     const jsonMatch = cleaned.match(/```json\s*([\s\S]*?)\s*```/) || cleaned.match(/{[\s\S]*}/);
     if (jsonMatch) {
       try {
@@ -19,28 +15,39 @@ const parseJSONSafely = (text: string | undefined) => {
         console.error("Inner JSON parsing failure:", innerE);
       }
     }
-    console.warn("Could not parse JSON from AI response:", cleaned);
     return {};
   }
 };
 
 const getAIClient = () => {
   const apiKey = process.env.API_KEY;
-  if (!apiKey) {
-    console.warn("Missing API_KEY in environment variables.");
-    return null;
-  }
+  if (!apiKey) return null;
   return new GoogleGenAI({ apiKey });
 };
 
-export const getMarketAnalysis = async () => {
+async function withRetry<T>(fn: () => Promise<T>, retries = 3, delay = 2000): Promise<T | null> {
   try {
+    return await fn();
+  } catch (error: any) {
+    if (error?.status === 429 || error?.message?.includes('429') || error?.message?.includes('quota')) {
+      if (retries > 0) {
+        await new Promise(resolve => setTimeout(resolve, delay));
+        return withRetry(fn, retries - 1, delay * 2);
+      }
+      return null;
+    }
+    throw error;
+  }
+}
+
+export const getMarketAnalysis = async () => {
+  return withRetry(async () => {
     const ai = getAIClient();
-    if (!ai) return { marketSummary: "AI intelligence is unavailable due to missing credentials.", keyInsights: [], ecosystemApps: [] };
+    if (!ai) return { marketSummary: "AI intelligence unavailable.", keyInsights: [], ecosystemApps: [] };
     
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: 'Analyze the current 2024-2025 financial market landscape. Focus on interest rate trends, inflation impacts, and a specific list of digital apps used by institutional professionals (Bloomberg, Terminal, Refinitiv, etc.) versus everyday people for day-to-day finance (Venmo, PayPal, Robinhood, CashApp, Revolut, etc.). Provide a concise summary, 3 key insights, and a list of 8-10 market-leading apps with descriptions of their daily utility.',
+      contents: 'Perform a comprehensive analysis of the 2024-2025 financial market. Specifically, categorize the digital ecosystem into: 1. Institutional Pro Apps (Bloomberg, Refinitiv, Aladdin, etc.) and 2. Retail/Day-to-day Apps (Robinhood, Wise, Venmo, Rocket Money, etc.). Explain how professionals use data vs how everyday people use convenience. Provide a market summary, 3 key insights, and 10 apps with descriptions.',
       config: {
         responseMimeType: "application/json",
         responseSchema: {
@@ -66,7 +73,7 @@ export const getMarketAnalysis = async () => {
                 properties: {
                   name: { type: Type.STRING },
                   category: { type: Type.STRING },
-                  userType: { type: Type.STRING, description: 'Institutional or Everyday User' },
+                  userType: { type: Type.STRING },
                   description: { type: Type.STRING }
                 },
                 required: ['name', 'category', 'userType', 'description']
@@ -79,24 +86,20 @@ export const getMarketAnalysis = async () => {
     });
 
     return parseJSONSafely(response.text);
-  } catch (e) {
-    console.error("Market Analysis Failure:", e);
-    return { marketSummary: "A temporary error occurred while fetching market insights.", keyInsights: [], ecosystemApps: [] };
-  }
+  }) || { marketSummary: "AI engine is busy.", keyInsights: [], ecosystemApps: [] };
 };
 
 export const getFinancialAdvice = async (data: any, context: string) => {
-  try {
+  const result = await withRetry(async () => {
     const ai = getAIClient();
-    if (!ai) return "AI advisor is currently unavailable.";
+    if (!ai) return null;
     
     const response = await ai.models.generateContent({
       model: 'gemini-3-pro-preview',
-      contents: `Acting as a world-class financial advisor, analyze this ${context} data: ${JSON.stringify(data)}. Provide 3 distinct, actionable bullets (max 15 words each) on how to optimize this specific scenario. Be professional, concise, and direct.`,
+      contents: `Acting as a world-class financial advisor, analyze this ${context} data: ${JSON.stringify(data)}. Provide 3 distinct, actionable bullets (max 15 words each).`,
     });
-    return response.text || "Advice currently unavailable.";
-  } catch (e) {
-    console.error("Financial Advice Failure:", e);
-    return "Unable to generate AI recommendations at this moment.";
-  }
+    return response.text;
+  });
+
+  return result || "AI processing high volume. Please refresh.";
 };

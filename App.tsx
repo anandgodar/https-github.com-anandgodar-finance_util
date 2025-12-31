@@ -15,28 +15,30 @@ import GSTCalculator from './components/GSTCalculator';
 import CreditCardPayoff from './components/CreditCardPayoff';
 import FIREPlanner from './components/FIREPlanner';
 import FreelanceHub from './components/FreelanceHub';
+import InvestmentAcademy from './components/InvestmentAcademy';
 import FAQ from './components/FAQ';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Sitemap from './components/Sitemap';
 import { ToolType } from './types';
 
 const METADATA: Record<ToolType, { title: string; desc: string }> = {
-  [ToolType.DASHBOARD]: { title: "FinVault Pro | AI Financial Intelligence Dashboard", desc: "Manage your wealth with AI-driven calculators for EMI, Mortgages, and Investments." },
-  [ToolType.EMI_CALC]: { title: "EMI Calculator & Debt Accelerator | FinVault Pro", desc: "Calculate your monthly loan payments and see how much interest you can save with prepayments." },
-  [ToolType.MORTGAGE_CALC]: { title: "Mortgage Pro | Detailed Amortization & Tax Analysis", desc: "Advanced home financing tool with property tax, insurance, and PMI calculations." },
-  [ToolType.SALARY_CALC]: { title: "Salary Estimator | After-Tax Take Home Pay", desc: "Calculate your net income across all 50 states including credits and 401k optimization." },
-  [ToolType.INVESTMENT_CALC]: { title: "Wealth Projector | SIP & Compound Growth Visualization", desc: "Plan your retirement or long-term goals with our advanced wealth projection engine." },
-  [ToolType.MARKET_INSIGHTS]: { title: "AI Market Pulse | Real-time Financial Analysis", desc: "Live market trends and strategic insights powered by Gemini 3.0 Pro AI." },
-  [ToolType.LOAN_COMPARE]: { title: "Loan Intelligence | Compare Mortgage & Personal Loans", desc: "Refinance analysis and side-by-side loan comparisons to find the best deal." },
-  [ToolType.LIVING_COST]: { title: "Living Cost Vitals | Regional Budgeting & Wellness", desc: "Audit your spending against local indices to improve your financial health score." },
-  [ToolType.CURRENCY_CONV]: { title: "Currency Intel | Global Exchange & Forex Logic", desc: "Convert global currencies with real-time AI-powered market context." },
-  [ToolType.GST_CALC]: { title: "GST Calculator | Direct & Indirect Tax Intel", desc: "Quickly calculate inclusive and exclusive tax amounts for business or shopping." },
-  [ToolType.CREDIT_CARD_PAYOFF]: { title: "Card Payoff Intel | Debt Snowball Strategy", desc: "Exit the credit card debt loop with optimized monthly payment strategies." },
-  [ToolType.FIRE_PLANNER]: { title: "FIRE Planner | Early Retirement Freedom Logic", desc: "Calculate your freedom number and retirement crossover point with the 4% rule." },
-  [ToolType.FREELANCE_PROFIT]: { title: "Freelance Hub | Gig Economy Profit Optimizer", desc: "Analyze your true hourly rate and take-home profit as a contractor or freelancer." },
-  [ToolType.FAQ]: { title: "Financial FAQ | Expert Guidance & Help", desc: "Frequently asked questions about loans, taxes, and financial planning." },
-  [ToolType.PRIVACY]: { title: "Privacy Policy | Your Data Security", desc: "Learn how we protect your financial data and maintain your privacy." },
-  [ToolType.SITEMAP]: { title: "Sitemap | Explore FinVault Utilities", desc: "Complete directory of all financial tools and resources on FinVault Pro." }
+  [ToolType.DASHBOARD]: { title: "QuantCurb | AI Financial Intelligence Dashboard", desc: "Professional-grade wealth management with AI-driven calculators for EMI, Mortgages, and Investments." },
+  [ToolType.EMI_CALC]: { title: "Loan EMI Pro | QuantCurb Debt Optimization", desc: "Calculate monthly loan payments and interest savings using the institutional reducing balance method." },
+  [ToolType.MORTGAGE_CALC]: { title: "Mortgage Intelligence | QuantCurb Real Estate Analysis", desc: "Plan your home purchase with detailed PITI calculations, property tax, and PMI estimation." },
+  [ToolType.SALARY_CALC]: { title: "Salary Estimator | QuantCurb After-Tax Analysis", desc: "Calculate precise net take-home pay across 50 states including 401k and tax deductions." },
+  [ToolType.INVESTMENT_CALC]: { title: "Wealth Projector | QuantCurb SIP & Compound Growth", desc: "Visualize long-term wealth growth with monthly contributions and inflation-adjusted modeling." },
+  [ToolType.MARKET_INSIGHTS]: { title: "Market Pulse | QuantCurb App Ecosystem Intelligence", desc: "AI-driven analysis of the financial app ecosystem for professionals and retail users." },
+  [ToolType.LOAN_COMPARE]: { title: "Loan Intel | QuantCurb Comparison Hub", desc: "Compare multiple loan offers side-by-side to minimize total interest and refinance costs." },
+  [ToolType.LIVING_COST]: { title: "Budget Vitals | QuantCurb Regional Cost Audit", desc: "Compare your living expenses against regional indices to improve your financial efficiency." },
+  [ToolType.CURRENCY_CONV]: { title: "Currency Intel | QuantCurb Global Exchange Rates", desc: "Convert global currencies with real-time rates and AI-driven market sentiment." },
+  [ToolType.GST_CALC]: { title: "Tax Intelligence | QuantCurb GST & VAT Tool", desc: "Quickly calculate inclusive and exclusive tax amounts for professional business invoicing." },
+  [ToolType.CREDIT_CARD_PAYOFF]: { title: "Debt Strategist | QuantCurb Card Payoff Triage", desc: "Exit the high-interest debt loop with optimized card payoff simulation using Avalanche logic." },
+  [ToolType.FIRE_PLANNER]: { title: "FIRE Freedom Logic | QuantCurb Early Retirement", desc: "Calculate your retirement crossover point with the 4% safe withdrawal rule." },
+  [ToolType.FREELANCE_PROFIT]: { title: "Freelance Hub | QuantCurb Profit Engine", desc: "Analyze true hourly rates and tax burdens for 1099 freelancers and independent contractors." },
+  [ToolType.INVESTMENT_ACADEMY]: { title: "Fund Academy | QuantCurb Institutional Knowledge", desc: "Deep dive into the global fund ecosystem, risk-reward patterns, and institutional benchmarks." },
+  [ToolType.FAQ]: { title: "Knowledge Base | QuantCurb Financial FAQ", desc: "Deep-dive into the mathematical and strategic logic powering QuantCurb utilities." },
+  [ToolType.PRIVACY]: { title: "Privacy Standards | QuantCurb Data Sovereignty", desc: "Our commitment to protecting your financial data and maintaining algorithmic transparency." },
+  [ToolType.SITEMAP]: { title: "QuantCurb Sitemap | Explore Our Utility Suite", desc: "Complete directory of all financial intelligence tools and knowledge resources." }
 };
 
 const App: React.FC = () => {
@@ -75,7 +77,7 @@ const App: React.FC = () => {
         }
       }
     } catch (e) {
-      console.warn("FinVault Navigation: pushState restricted.");
+      console.warn("QuantCurb Navigation: pushState restricted.");
     }
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -108,7 +110,8 @@ const App: React.FC = () => {
       case ToolType.CREDIT_CARD_PAYOFF: return <CreditCardPayoff />;
       case ToolType.FIRE_PLANNER: return <FIREPlanner />;
       case ToolType.FREELANCE_PROFIT: return <FreelanceHub />;
-      case ToolType.FAQ: return <FAQ />;
+      case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
+      case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;
       case ToolType.SITEMAP: return <Sitemap onSelectTool={setActiveTool} />;
       default: return <Dashboard onSelectTool={setActiveTool} />;
@@ -122,7 +125,7 @@ const App: React.FC = () => {
       <main className="flex-1 flex flex-col min-h-screen overflow-x-hidden">
         <header className="flex justify-between items-center p-6 md:hidden bg-white border-b sticky top-0 z-40">
           <h1 className="text-xl font-black text-indigo-600 flex items-center gap-2">
-            <span>🏦</span> FinVault
+            <span>📈</span> QuantCurb
           </h1>
           <button 
             onClick={() => setActiveTool(ToolType.DASHBOARD)}

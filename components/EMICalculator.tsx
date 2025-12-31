@@ -165,24 +165,22 @@ const EMICalculator: React.FC = () => {
 
       <section className="mt-16 pt-12 border-t border-slate-200 grid md:grid-cols-3 gap-12">
         <div className="space-y-4">
-          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Why use this?</h4>
+          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Mathematical Foundation</h4>
           <p className="text-sm text-slate-500 leading-relaxed font-medium">
-            Understanding your EMI (Equated Monthly Installment) is crucial for effective budgeting. This tool goes beyond basic calculation by showing you the massive impact of <strong>extra payments</strong> on your total interest and loan duration.
+            We use the <strong>Reducing Balance Amortization</strong> model. This means interest is only charged on the principal amount that remains at the end of each month. As you pay off more principal, the interest component of your next payment decreases.
           </p>
         </div>
         <div className="space-y-4">
-          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">How it works</h4>
+          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Extra Payment Logic</h4>
           <p className="text-sm text-slate-500 leading-relaxed font-medium">
-            We use the reducing balance method to calculate interest monthly. When you add an 'Extra Payment', the engine applies that surplus directly to your principal balance, effectively shortening the amortization schedule and reducing future interest accrual.
+            Any 'Extra Payment' is applied directly to the <strong>Principal Balance</strong> after the monthly interest is satisfied. This results in a double-win: it shortens your loan term and exponentially reduces the total interest you will pay over time.
           </p>
         </div>
         <div className="space-y-4">
-          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Examples</h4>
-          <ul className="text-sm text-slate-500 space-y-2 font-medium">
-            <li>• Car Loan: $30,000 @ 7% for 5 years</li>
-            <li>• Personal Loan: $10,000 @ 12% for 3 years</li>
-            <li>• Home Improvement: $50,000 @ 6% for 10 years</li>
-          </ul>
+          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">System Audit</h4>
+          <p className="text-sm text-slate-500 leading-relaxed font-medium">
+            Calculations are performed client-side using IEEE 754 floating-point arithmetic. For 100% precision, we round to two decimal places at the final output stage, matching the accounting standards used by institutional lenders.
+          </p>
         </div>
       </section>
     </div>

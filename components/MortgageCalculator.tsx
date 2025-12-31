@@ -20,8 +20,6 @@ const MortgageCalculator: React.FC = () => {
   const [propertyTaxRate, setPropertyTaxRate] = useState<number>(1.2);
   const [insuranceMonthly, setInsuranceMonthly] = useState<number>(150);
   const [pmiRate, setPmiRate] = useState<number>(0.85); 
-  const [showSchedule, setShowSchedule] = useState<boolean>(false);
-  const [scheduleView, setScheduleView] = useState<'monthly' | 'yearly'>('yearly');
 
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
@@ -53,22 +51,6 @@ const MortgageCalculator: React.FC = () => {
     return { loanAmount, downPaymentAmount, ltv, monthlyPI: pAndI, monthlyTax, monthlyPMI, totalMonthly, totalInterest, totalAmountPaid, schedule };
   }, [homePrice, downPaymentPercent, interestRate, tenure, propertyTaxRate, insuranceMonthly, pmiRate]);
 
-  const yearlySchedule = useMemo(() => {
-    const yearly = [];
-    for (let i = 0; i < stats.schedule.length; i += 12) {
-      const yearSlice = stats.schedule.slice(i, i + 12);
-      yearly.push({
-        period: (i / 12) + 1,
-        payment: yearSlice.reduce((sum, row) => sum + row.payment, 0),
-        principal: yearSlice.reduce((sum, row) => sum + row.principal, 0),
-        interest: yearSlice.reduce((sum, row) => sum + row.interest, 0),
-        balance: yearSlice[yearSlice.length - 1].balance,
-        taxInsPMI: yearSlice.reduce((sum, row) => sum + row.taxInsPMI, 0)
-      });
-    }
-    return yearly;
-  }, [stats.schedule]);
-
   const chartData = [
     { name: 'Principal', value: stats.loanAmount, color: '#4f46e5' },
     { name: 'Interest', value: stats.totalInterest, color: '#fbbf24' },
@@ -83,7 +65,7 @@ const MortgageCalculator: React.FC = () => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => fetchAdvice(), 2000);
+    const timer = setTimeout(() => fetchAdvice(), 3000);
     return () => clearTimeout(timer);
   }, [homePrice, downPaymentPercent, interestRate, tenure]);
 
@@ -162,26 +144,34 @@ const MortgageCalculator: React.FC = () => {
         </div>
       </div>
 
-      <section className="mt-20 pt-12 border-t border-slate-200 grid md:grid-cols-3 gap-12">
-        <div className="space-y-4">
-          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Why use this?</h4>
-          <p className="text-sm text-slate-500 leading-relaxed font-medium">
-            Buying a home is the largest purchase most people will ever make. This calculator provides absolute clarity by including <strong>PITI</strong> (Principal, Interest, Taxes, and Insurance) plus <strong>PMI</strong>, ensuring no hidden costs catch you off guard.
+      <section className="mt-20 pt-16 border-t border-slate-200 space-y-16">
+        <header className="max-w-3xl">
+          <h3 className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em] mb-4">PITI & PMI LOGIC</h3>
+          <h2 className="text-4xl font-black text-slate-900 leading-tight">Institutional <span className="text-indigo-600">Accuracy</span> Standards</h2>
+          <p className="text-slate-500 mt-4 text-lg font-medium leading-relaxed">
+            Buying a home is the largest purchase most people will ever make. This calculator provides absolute clarity by including <strong>PITI</strong> (Principal, Interest, Taxes, and Insurance) plus <strong>PMI</strong>.
           </p>
-        </div>
-        <div className="space-y-4">
-          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">How it works</h4>
-          <p className="text-sm text-slate-500 leading-relaxed font-medium">
-            Our engine calculates the base mortgage using standard amortization formulas. It then layers on property taxes, insurance, and dynamic Private Mortgage Insurance (PMI) if your down payment is below 20%, reflecting real-world bank requirements.
-          </p>
-        </div>
-        <div className="space-y-4">
-          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Examples</h4>
-          <ul className="text-sm text-slate-500 space-y-2 font-medium">
-            <li>• First Home: $350k with 5% down @ 7%</li>
-            <li>• Move-up Buyer: $750k with 20% down @ 6.5%</li>
-            <li>• Investment: $500k with 25% down @ 7.5%</li>
-          </ul>
+        </header>
+
+        <div className="grid md:grid-cols-3 gap-12">
+          <div className="space-y-4">
+            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">PMI Logic</h4>
+            <p className="text-sm text-slate-500 leading-relaxed font-medium">
+              Private Mortgage Insurance (PMI) is automatically added if your <strong>Loan-to-Value (LTV)</strong> ratio is above 80%. This mimics the risk-mitigation requirements of conventional lenders.
+            </p>
+          </div>
+          <div className="space-y-4">
+            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Tax & Insurance</h4>
+            <p className="text-sm text-slate-500 leading-relaxed font-medium">
+              Property taxes are calculated as a percentage of the <strong>Home Value</strong>, not the loan amount. Monthly insurance is added as a flat escrow estimate to provide a realistic "All-in" payment.
+            </p>
+          </div>
+          <div className="space-y-4">
+            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Verification Audit</h4>
+            <p className="text-sm text-slate-500 leading-relaxed font-medium">
+              We use 12-period annual compounding with monthly payments. This matches the <strong>Truth in Lending Act (TILA)</strong> disclosure standards required in United States mortgage origination.
+            </p>
+          </div>
         </div>
       </section>
     </div>

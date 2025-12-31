@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinVault Pro - Financial Intelligence Suite</title>
-    <meta name="description" content="Advanced financial planning suite with AI-powered calculators for EMI, Mortgages, and Salaries.">
+    <title>QuantCurb - High-Fidelity Financial Intelligence</title>
+    <meta name="description" content="QuantCurb provides professional-grade financial modeling, AI market insights, and daily utilities for debt, wealth, and tax optimization.">
     <meta name="theme-color" content="#4f46e5">
     <script>
         /**
@@ -36,16 +36,15 @@
 
             // Error suppression and logging
             window.addEventListener('error', function(event) {
-                // Check if it's the history API error and ignore it as we handle it in-app
                 if (event.message && event.message.indexOf('pushState') !== -1) {
                     event.preventDefault();
                     return;
                 }
-                console.error("FinVault Runtime Error: ", event.error || event.message);
+                console.error("QuantCurb Runtime Error: ", event.error || event.message);
             });
             
             window.addEventListener('unhandledrejection', function(event) {
-                console.error("FinVault Promise Rejection: ", event.reason);
+                console.error("QuantCurb Promise Rejection: ", event.reason);
             });
         })();
     </script>

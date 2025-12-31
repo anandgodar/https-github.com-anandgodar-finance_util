@@ -9,7 +9,7 @@ const PrivacyPolicy: React.FC = () => {
       <div className="prose prose-slate prose-lg font-medium text-slate-600 space-y-8">
         <section>
           <h2 className="text-xl font-black text-slate-900 mb-4 uppercase tracking-widest text-sm">1. Data Sovereignty</h2>
-          <p>At FinVault Pro, we believe your financial data is private. All calculations performed on our platform are processed securely. We do not sell your personal financial profile to third parties.</p>
+          <p>At QuantCurb, we believe your financial data is private. All calculations performed on our platform are processed securely. We do not sell your personal financial profile to third parties.</p>
         </section>
 
         <section>
@@ -23,7 +23,7 @@ const PrivacyPolicy: React.FC = () => {
         </section>
 
         <div className="p-8 bg-indigo-50 rounded-3xl border border-indigo-100 mt-12">
-          <p className="text-indigo-700 text-sm font-bold">Last Updated: May 2024. For further inquiries, please contact our data protection office.</p>
+          <p className="text-indigo-700 text-sm font-bold">Last Updated: May 2024. For further inquiries, please contact our data protection office at QuantCurb.com.</p>
         </div>
       </div>
     </div>
