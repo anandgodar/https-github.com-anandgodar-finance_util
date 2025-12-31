@@ -49,7 +49,7 @@ const PRESET_LOANS: Record<string, LoanData> = {
   fha: { amount: 350000, rate: 6.5, tenure: 30, name: 'FHA Starter' },
 };
 
-const STORAGE_KEY = 'finvault_loan_scenarios';
+const STORAGE_KEY = 'finvault_loan_scenarios_v2';
 
 const LoanComparison: React.FC = () => {
   const [mode, setMode] = useState<'compare' | 'refinance' | 'prequal'>('compare');
@@ -58,23 +58,23 @@ const LoanComparison: React.FC = () => {
   const [monthlyIncome, setMonthlyIncome] = useState<number>(6500);
   const [otherMonthlyDebts, setOtherMonthlyDebts] = useState<number>(450);
   
-  // Prequalification State
-  const [creditScore, setCreditScore] = useState<number>(720);
-  const [preferredTenure, setPreferredTenure] = useState<number>(30);
-  
   // Standard Compare State
   const [loan1, setLoan1] = useState<LoanData>(PRESET_LOANS.standard);
   const [loan2, setLoan2] = useState<LoanData>(PRESET_LOANS.aggressive);
   
-  // Saved Scenarios
+  // Saved Scenarios State
   const [savedScenarios, setSavedScenarios] = useState<SavedComparison[]>(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
   });
   const [newScenarioName, setNewScenarioName] = useState('');
   const [saveStatus, setSaveStatus] = useState<'idle' | 'success'>('idle');
 
-  // Refinance State (Comparison of 2 Options)
+  // Refinance State
   const [refinance, setRefinance] = useState<RefinanceData>({
     homeValue: 500000,
     currentBalance: 285000,
@@ -87,8 +87,8 @@ const LoanComparison: React.FC = () => {
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
   const [activeSchedule, setActiveSchedule] = useState<'none' | 'A' | 'B'>('none');
-  const [scheduleView, setScheduleView] = useState<'monthly' | 'yearly'>('monthly');
 
+  // Sync with LocalStorage
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(savedScenarios));
   }, [savedScenarios]);
@@ -210,13 +210,33 @@ const LoanComparison: React.FC = () => {
     return () => clearTimeout(timer);
   }, [loan1, loan2, monthlyIncome, otherMonthlyDebts, refinance, mode]);
 
+  // Scenario Handlers
   const handleSaveScenario = () => {
-    const name = newScenarioName.trim() || `Comparison ${savedScenarios.length + 1}`;
-    const scenario: SavedComparison = { id: Date.now().toString(), name, loan1, loan2, timestamp: Date.now() };
+    if (!newScenarioName.trim()) return;
+    const scenario: SavedComparison = {
+      id: Date.now().toString(),
+      name: newScenarioName.trim(),
+      loan1,
+      loan2,
+      timestamp: Date.now()
+    };
     setSavedScenarios([scenario, ...savedScenarios]);
     setNewScenarioName('');
     setSaveStatus('success');
     setTimeout(() => setSaveStatus('idle'), 2000);
+  };
+
+  const handleLoadScenario = (scenario: SavedComparison) => {
+    setLoan1(scenario.loan1);
+    setLoan2(scenario.loan2);
+    setActiveSchedule('none');
+  };
+
+  const handleDeleteScenario = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (window.confirm("Are you sure you want to delete this comparison scenario?")) {
+      setSavedScenarios(savedScenarios.filter(s => s.id !== id));
+    }
   };
 
   return (
@@ -335,79 +355,177 @@ const LoanComparison: React.FC = () => {
                   <p className="text-xl text-slate-200 italic font-medium leading-relaxed">{advice}</p>
                 )}
               </div>
-              <div className="absolute -right-10 -top-10 text-[200px] font-black text-white/5 select-none pointer-events-none">DATA</div>
             </div>
           </div>
         </div>
       ) : mode === 'compare' ? (
-        <div className="space-y-8 animate-in slide-in-from-bottom-4 duration-700">
-          <div className="grid lg:grid-cols-4 gap-6">
-            <div className="lg:col-span-1 space-y-6">
-              <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm space-y-6 flex flex-col h-full min-h-[500px]">
-                <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-b pb-4 flex items-center justify-between">
-                  Scenario Vault
-                  <span className="text-[8px] bg-slate-100 px-2 py-0.5 rounded text-slate-400">PERSISTENT</span>
-                </h3>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Save Current Set</p>
-                    <div className="relative">
-                      <input type="text" value={newScenarioName} onChange={(e) => setNewScenarioName(e.target.value)} placeholder="Scenario Name" className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-500 transition-all pr-12" />
-                      <button onClick={handleSaveScenario} className={`absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-lg bg-indigo-600 text-white`}>+</button>
-                    </div>
+        <div className="grid lg:grid-cols-4 gap-6 animate-in slide-in-from-bottom-4 duration-700">
+          {/* Scenario Manager Sidebar */}
+          <div className="lg:col-span-1 space-y-6">
+            <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm flex flex-col h-full min-h-[600px]">
+              <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-b pb-4 flex items-center justify-between">
+                Scenario Vault
+                <span className="text-[8px] bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded">AUTO-SAVE</span>
+              </h3>
+              
+              <div className="mt-6 space-y-6 flex-1 flex flex-col overflow-hidden">
+                <div className="space-y-2">
+                  <label className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Save Comparison As</label>
+                  <div className="relative">
+                    <input 
+                      type="text" 
+                      value={newScenarioName} 
+                      onChange={(e) => setNewScenarioName(e.target.value)}
+                      placeholder="e.g., Aggressive Buy" 
+                      className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl text-xs font-bold focus:ring-2 focus:ring-indigo-500 transition-all pr-12"
+                    />
+                    <button 
+                      onClick={handleSaveScenario}
+                      className={`absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-lg transition-all ${saveStatus === 'success' ? 'bg-emerald-500 text-white' : 'bg-indigo-600 text-white hover:bg-indigo-700 active:scale-95'}`}
+                    >
+                      {saveStatus === 'success' ? '✓' : '+'}
+                    </button>
                   </div>
-                  <div className="flex-1 space-y-4 overflow-y-auto custom-scrollbar pr-1">
-                    {savedScenarios.map(s => (
-                      <div key={s.id} className="group relative bg-slate-50/50 hover:bg-indigo-50/30 border border-slate-100 rounded-2xl p-4 transition-all cursor-pointer" onClick={() => { setLoan1(s.loan1); setLoan2(s.loan2); }}>
-                        <p className="text-[11px] font-black text-slate-800 truncate leading-tight">{s.name}</p>
-                        <p className="text-[8px] text-slate-300 font-bold mt-1">{new Date(s.timestamp).toLocaleDateString()}</p>
+                </div>
+
+                <div className="flex-1 overflow-y-auto custom-scrollbar pr-1 space-y-3">
+                  {savedScenarios.length > 0 ? (
+                    savedScenarios.map(s => (
+                      <div 
+                        key={s.id} 
+                        onClick={() => handleLoadScenario(s)}
+                        className="group relative bg-slate-50/50 hover:bg-white hover:shadow-lg border border-slate-100 hover:border-indigo-100 rounded-2xl p-4 transition-all cursor-pointer overflow-hidden"
+                      >
+                        <div className="relative z-10 pr-6">
+                          <p className="text-[11px] font-black text-slate-800 truncate leading-tight group-hover:text-indigo-600">{s.name}</p>
+                          <div className="flex gap-2 mt-2">
+                            <span className="text-[8px] bg-slate-200/50 px-1.5 py-0.5 rounded text-slate-500 font-bold tracking-tighter">${(s.loan1.amount/1000).toFixed(0)}k</span>
+                            <span className="text-[8px] text-slate-300">vs</span>
+                            <span className="text-[8px] bg-slate-200/50 px-1.5 py-0.5 rounded text-slate-500 font-bold tracking-tighter">${(s.loan2.amount/1000).toFixed(0)}k</span>
+                          </div>
+                          <p className="text-[8px] text-slate-300 font-bold mt-2">{new Date(s.timestamp).toLocaleDateString()}</p>
+                        </div>
+                        <button 
+                          onClick={(e) => handleDeleteScenario(s.id, e)}
+                          className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 text-rose-300 hover:text-rose-600 transition-all p-1 z-20"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="py-12 text-center space-y-3 bg-slate-50/50 rounded-3xl border border-dashed border-slate-200">
+                       <div className="text-3xl grayscale opacity-30">📂</div>
+                       <p className="text-[10px] font-black text-slate-400 uppercase px-6 leading-relaxed">No custom benchmarks saved yet.</p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="pt-4 border-t border-slate-100">
+                  <p className="text-[9px] font-black text-slate-400 uppercase tracking-tighter mb-3">System Presets</p>
+                  <div className="grid grid-cols-1 gap-2">
+                    {Object.entries(PRESET_LOANS).map(([key, loan]) => (
+                      <div key={key} className="flex gap-1">
+                        <button 
+                          onClick={() => setLoan1(loan)}
+                          className="flex-1 text-left p-2 bg-white hover:bg-indigo-50 rounded-lg border border-slate-100 text-[10px] font-bold text-slate-600 transition-colors truncate"
+                        >
+                          {loan.name} → A
+                        </button>
+                        <button 
+                          onClick={() => setLoan2(loan)}
+                          className="w-8 bg-white hover:bg-emerald-50 border border-slate-100 rounded-lg text-[10px] font-bold text-slate-400 hover:text-emerald-600"
+                        >
+                          B
+                        </button>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="lg:col-span-3 space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm space-y-4">
-                  <div className="flex justify-between items-center border-b pb-4 mb-2">
-                    <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest flex items-center gap-2"><span className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs">A</span> Offer A</h3>
-                  </div>
-                  <input type="number" value={loan1.amount} onChange={(e) => setLoan1({...loan1, amount: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
-                  <div className="grid grid-cols-2 gap-4">
-                    <input type="number" step="0.1" value={loan1.rate} onChange={(e) => setLoan1({...loan1, rate: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
-                    <input type="number" value={loan1.tenure} onChange={(e) => setLoan1({...loan1, tenure: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
-                  </div>
+          {/* Calculator Work Area */}
+          <div className="lg:col-span-3 space-y-8">
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Slot A */}
+              <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm space-y-4">
+                <div className="flex justify-between items-center border-b pb-4 mb-2">
+                  <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                    <span className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs">A</span> Offer A
+                  </h3>
+                  <span className="text-[10px] font-black text-indigo-600 truncate max-w-[120px]">{loan1.name || 'Custom'}</span>
                 </div>
-                <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm space-y-4">
-                  <div className="flex justify-between items-center border-b pb-4 mb-2">
-                    <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest flex items-center gap-2"><span className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs">B</span> Offer B</h3>
-                  </div>
-                  <input type="number" value={loan2.amount} onChange={(e) => setLoan2({...loan2, amount: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
+                <div className="space-y-4">
+                  <input type="number" value={loan1.amount} onChange={(e) => setLoan1({...loan1, amount: Number(e.target.value), name: 'Custom Slot A'})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
                   <div className="grid grid-cols-2 gap-4">
-                    <input type="number" step="0.1" value={loan2.rate} onChange={(e) => setLoan2({...loan2, rate: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
-                    <input type="number" value={loan2.tenure} onChange={(e) => setLoan2({...loan2, tenure: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
+                    <input type="number" step="0.1" value={loan1.rate} onChange={(e) => setLoan1({...loan1, rate: Number(e.target.value), name: 'Custom Slot A'})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
+                    <input type="number" value={loan1.tenure} onChange={(e) => setLoan1({...loan1, tenure: Number(e.target.value), name: 'Custom Slot A'})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
                   </div>
                 </div>
               </div>
+              {/* Slot B */}
+              <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm space-y-4">
+                <div className="flex justify-between items-center border-b pb-4 mb-2">
+                  <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                    <span className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs">B</span> Offer B
+                  </h3>
+                  <span className="text-[10px] font-black text-indigo-600 truncate max-w-[120px]">{loan2.name || 'Custom'}</span>
+                </div>
+                <div className="space-y-4">
+                  <input type="number" value={loan2.amount} onChange={(e) => setLoan2({...loan2, amount: Number(e.target.value), name: 'Custom Slot B'})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
+                  <div className="grid grid-cols-2 gap-4">
+                    <input type="number" step="0.1" value={loan2.rate} onChange={(e) => setLoan2({...loan2, rate: Number(e.target.value), name: 'Custom Slot B'})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
+                    <input type="number" value={loan2.tenure} onChange={(e) => setLoan2({...loan2, tenure: Number(e.target.value), name: 'Custom Slot B'})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
+                  </div>
+                </div>
+              </div>
+            </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                {[stats1, stats2].map((s, idx) => {
-                  const risk = getDTIRisk(s.dti);
-                  return (
-                    <div key={idx} className={`p-8 rounded-[2.5rem] border ${risk.border} ${risk.bg} flex flex-col justify-between`}>
-                      <div className="space-y-6">
-                        <div className="flex justify-between items-center">
-                          <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">DTI Ratio {idx === 0 ? 'A' : 'B'}</span>
-                          <span className={`px-2 py-1 rounded text-[10px] font-black uppercase ${risk.text}`}>{risk.label}</span>
-                        </div>
-                        <div className={`text-6xl font-black ${risk.text} tracking-tight`}>{s.dti.toFixed(1)}%</div>
+            <div className="grid md:grid-cols-2 gap-6">
+              {[stats1, stats2].map((s, idx) => {
+                const risk = getDTIRisk(s.dti);
+                const char = idx === 0 ? 'A' : 'B';
+                return (
+                  <div key={idx} className={`p-8 rounded-[2.5rem] border ${risk.border} ${risk.bg} flex flex-col justify-between transition-all hover:shadow-lg`}>
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-center">
+                        <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">DTI Ratio {char}</span>
+                        <span className={`px-2 py-1 rounded text-[10px] font-black uppercase ${risk.text} border border-current/20`}>{risk.label}</span>
                       </div>
-                      <button onClick={() => setActiveSchedule(idx === 0 ? 'A' : 'B')} className="mt-8 w-full py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-slate-200">View Table</button>
+                      <div className={`text-6xl font-black ${risk.text} tracking-tight`}>{s.dti.toFixed(1)}%</div>
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-[10px] font-bold text-slate-400">
+                          <span>MONTHLY PAYMENT</span>
+                          <span className="text-slate-900">${Math.round(s.emi).toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between text-[10px] font-bold text-slate-400">
+                          <span>TOTAL INTEREST</span>
+                          <span className="text-slate-900">${Math.round(s.totalInterest).toLocaleString()}</span>
+                        </div>
+                      </div>
                     </div>
-                  );
-                })}
+                    <button 
+                      onClick={() => setActiveSchedule(char as any)} 
+                      className={`mt-8 w-full py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest border transition-all ${activeSchedule === char ? 'bg-slate-900 border-slate-900 text-white' : 'bg-white/50 border-slate-200 text-slate-500 hover:bg-white'}`}
+                    >
+                      {activeSchedule === char ? 'Closing Table' : 'Amortization Table'}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="bg-slate-900 p-8 rounded-[3rem] text-white flex items-center gap-8 relative overflow-hidden shadow-2xl">
+              <div className="text-6xl animate-pulse">🤖</div>
+              <div className="flex-1 space-y-2">
+                <h4 className="text-indigo-400 font-black uppercase text-[10px] tracking-widest">Gemini Comparison AI</h4>
+                {loadingAdvice ? (
+                  <div className="h-4 bg-white/10 rounded w-2/3 animate-pulse"></div>
+                ) : (
+                  <p className="text-xl text-slate-200 italic font-medium leading-relaxed">{advice}</p>
+                )}
               </div>
             </div>
           </div>

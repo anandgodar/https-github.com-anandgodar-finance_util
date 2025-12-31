@@ -10,9 +10,15 @@ interface StateCredit {
   description: string;
 }
 
+interface TaxBracket {
+  limit: number | null; // null for the top-most bracket
+  rate: number;
+}
+
 interface StateTaxInfo {
   name: string;
-  rate: number;
+  rate: number; // fallback flat rate if brackets not defined
+  brackets?: TaxBracket[];
   stdDeduction: number;
   commonCredits: StateCredit[];
 }
@@ -25,6 +31,17 @@ const STATE_TAX_DATA: Record<string, StateTaxInfo> = {
     name: 'California', 
     rate: 0.093, 
     stdDeduction: 5363, 
+    brackets: [
+      { limit: 10412, rate: 0.01 },
+      { limit: 24684, rate: 0.02 },
+      { limit: 38959, rate: 0.04 },
+      { limit: 54081, rate: 0.06 },
+      { limit: 68350, rate: 0.08 },
+      { limit: 349137, rate: 0.093 },
+      { limit: 418961, rate: 0.103 },
+      { limit: 698271, rate: 0.113 },
+      { limit: null, rate: 0.123 }
+    ],
     commonCredits: [
       { id: 'ca_renter', label: "Renter's Credit", amount: 60, description: "For low-to-moderate income renters." },
       { id: 'ca_dependent', label: "Dependent Credit", amount: 453, description: "Per qualifying dependent." }
@@ -38,6 +55,16 @@ const STATE_TAX_DATA: Record<string, StateTaxInfo> = {
     name: 'New York', 
     rate: 0.06, 
     stdDeduction: 8000, 
+    brackets: [
+      { limit: 8500, rate: 0.04 },
+      { limit: 11700, rate: 0.045 },
+      { limit: 13900, rate: 0.0525 },
+      { limit: 21400, rate: 0.0585 },
+      { limit: 80650, rate: 0.0625 },
+      { limit: 215400, rate: 0.0685 },
+      { limit: 1077550, rate: 0.0965 },
+      { limit: null, rate: 0.109 }
+    ],
     commonCredits: [
       { id: 'ny_household', label: "Household Credit", amount: 75, description: "Based on household size and income." },
       { id: 'ny_child', label: "Empire State Child Credit", amount: 100, description: "Per qualifying child." }
@@ -45,7 +72,6 @@ const STATE_TAX_DATA: Record<string, StateTaxInfo> = {
   },
   TX: { name: 'Texas', rate: 0.00, stdDeduction: 0, commonCredits: [] },
   WA: { name: 'Washington', rate: 0.00, stdDeduction: 0, commonCredits: [] },
-  // Default values for other states for brevity
   ...Object.fromEntries(
     ['AR', 'CT', 'DE', 'GA', 'HI', 'ID', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'UT', 'VT', 'VA', 'WV', 'WI', 'WY'].map(code => [
       code, { name: code, rate: 0.05, stdDeduction: 5000, commonCredits: [] }
@@ -60,6 +86,7 @@ const SalaryCalculator: React.FC = () => {
   const [contrib401k, setContrib401k] = useState<number>(10000);
   const [healthInsurance, setHealthInsurance] = useState<number>(2400);
   const [activeCreditIds, setActiveCreditIds] = useState<Set<string>>(new Set());
+  const [showBracketDetails, setShowBracketDetails] = useState(false);
 
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
@@ -75,24 +102,66 @@ const SalaryCalculator: React.FC = () => {
     const totalGross = annualGross + bonus;
     const preTax = contrib401k + healthInsurance;
     
-    // Federal Calculation
-    const fedTaxable = Math.max(0, totalGross - preTax - 14600); // 2024 Std Deduction
-    const fedTax = fedTaxable * 0.22; // Simplified 22% effective bracket
+    // Simplified Federal Brackets (2024 single filer)
+    const fedBrackets = [
+      { limit: 11600, rate: 0.10 },
+      { limit: 47150, rate: 0.12 },
+      { limit: 100525, rate: 0.22 },
+      { limit: 191950, rate: 0.24 },
+      { limit: 243725, rate: 0.32 },
+      { limit: 609350, rate: 0.35 },
+      { limit: null, rate: 0.37 }
+    ];
+
+    const calculateProgressiveTax = (taxable: number, brackets: TaxBracket[]) => {
+      let tax = 0;
+      let prevLimit = 0;
+      const bracketBreakdown: { rate: number; taxableInBracket: number; taxInBracket: number; limit: number | null }[] = [];
+
+      for (const bracket of brackets) {
+        const currentLimit = bracket.limit ?? Infinity;
+        const taxableInBracket = Math.max(0, Math.min(taxable, currentLimit) - prevLimit);
+        const taxInBracket = taxableInBracket * bracket.rate;
+        
+        tax += taxInBracket;
+        bracketBreakdown.push({
+          rate: bracket.rate,
+          taxableInBracket,
+          taxInBracket,
+          limit: bracket.limit
+        });
+
+        if (taxable <= currentLimit) break;
+        prevLimit = currentLimit;
+      }
+      return { totalTax: tax, breakdown: bracketBreakdown };
+    };
+
+    const fedTaxable = Math.max(0, totalGross - preTax - 14600); // 2024 Federal Std Deduction
+    const federalResult = calculateProgressiveTax(fedTaxable, fedBrackets);
     
     // State Calculation
     const stateInfo = STATE_TAX_DATA[stateCode];
     const stateTaxable = Math.max(0, totalGross - preTax - stateInfo.stdDeduction);
     
+    let stateTax = 0;
+    let stateBreakdown: any[] = [];
+    if (stateInfo.brackets) {
+      const stateResult = calculateProgressiveTax(stateTaxable, stateInfo.brackets);
+      stateTax = stateResult.totalTax;
+      stateBreakdown = stateResult.breakdown;
+    } else {
+      stateTax = stateTaxable * stateInfo.rate;
+    }
+
     const selectedCreditsAmount = stateInfo.commonCredits
       .filter(c => activeCreditIds.has(c.id))
       .reduce((sum, c) => sum + c.amount, 0);
       
-    const stateTax = Math.max(0, (stateTaxable * stateInfo.rate) - selectedCreditsAmount);
+    stateTax = Math.max(0, stateTax - selectedCreditsAmount);
     
-    // FICA
     const fica = totalGross * 0.0765;
-
-    const totalTaxes = fedTax + stateTax + fica;
+    const totalTaxes = federalResult.totalTax + stateTax + fica;
     const net = totalGross - totalTaxes - preTax;
 
     return {
@@ -100,11 +169,14 @@ const SalaryCalculator: React.FC = () => {
       monthly: net / 12,
       effectiveRate: (totalTaxes / totalGross) * 100,
       is401kOver: contrib401k > 23000,
-      fedTax,
+      fedTax: federalResult.totalTax,
+      fedBreakdown: federalResult.breakdown,
       stateTax,
+      stateBreakdown,
       fica,
       preTax,
-      creditsApplied: selectedCreditsAmount
+      creditsApplied: selectedCreditsAmount,
+      marginalRate: federalResult.breakdown[federalResult.breakdown.length - 1].rate * 100
     };
   }, [annualGross, bonus, stateCode, contrib401k, healthInsurance, activeCreditIds]);
 
@@ -120,13 +192,12 @@ const SalaryCalculator: React.FC = () => {
     setLoadingAdvice(true);
     const contextData = { 
       annualGross, 
-      bonus, 
       state: stateCode,
-      taxRate: calculation.effectiveRate.toFixed(1) + '%',
-      net: calculation.net,
-      credits: calculation.creditsApplied 
+      effectiveRate: calculation.effectiveRate.toFixed(1) + '%',
+      marginalRate: calculation.marginalRate.toFixed(1) + '%',
+      net: calculation.net
     };
-    const msg = await getFinancialAdvice(contextData, 'Advanced Salary & State Tax Optimization');
+    const msg = await getFinancialAdvice(contextData, 'Advanced Tax Bracket & Comp Planning Analysis');
     setAdvice(msg || '');
     setLoadingAdvice(false);
   };
@@ -148,12 +219,10 @@ const SalaryCalculator: React.FC = () => {
             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Effective Tax Rate</p>
             <p className="text-xl font-black text-indigo-600">{calculation.effectiveRate.toFixed(1)}%</p>
           </div>
-          {calculation.creditsApplied > 0 && (
-            <div className="bg-emerald-50 px-6 py-3 rounded-2xl border border-emerald-100 shadow-sm text-center">
-              <p className="text-[10px] font-black text-emerald-400 uppercase tracking-widest">Credits Saved</p>
-              <p className="text-xl font-black text-emerald-600">${calculation.creditsApplied}</p>
-            </div>
-          )}
+          <div className="bg-white px-6 py-3 rounded-2xl border border-slate-100 shadow-sm text-center">
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Top Marginal</p>
+            <p className="text-xl font-black text-slate-800">{calculation.marginalRate.toFixed(1)}%</p>
+          </div>
         </div>
       </header>
 
@@ -184,7 +253,6 @@ const SalaryCalculator: React.FC = () => {
                     type="number" value={contrib401k} onChange={(e) => setContrib401k(Number(e.target.value))}
                     className={`w-full p-4 border-none rounded-2xl focus:ring-2 focus:ring-indigo-500 font-black text-xl ${calculation.is401kOver ? 'bg-rose-50 text-rose-600' : 'bg-slate-50 text-slate-700'}`}
                   />
-                  {calculation.is401kOver && <p className="mt-1 text-[8px] font-black text-rose-500 uppercase">Warning: Exceeds 2024 IRS Limit ($23,000)</p>}
                 </div>
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase mb-4 tracking-widest">Tax Residence</label>
@@ -240,7 +308,7 @@ const SalaryCalculator: React.FC = () => {
         <div className="lg:col-span-5 space-y-6">
            <div className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-xl space-y-8">
               <div className="text-center space-y-2">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Estimated Monthly Take-Home</p>
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Monthly Take-Home</p>
                 <h3 className="text-6xl font-black text-indigo-600 tracking-tighter">${Math.round(calculation.monthly).toLocaleString()}</h3>
               </div>
               
@@ -267,6 +335,60 @@ const SalaryCalculator: React.FC = () => {
                   <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Retention</p>
                   <p className="text-xl font-black text-slate-700">{Math.round(100 - calculation.effectiveRate)}%</p>
                 </div>
+              </div>
+
+              {/* Progressive Bracket Explorer */}
+              <div className="border-t border-slate-50 pt-6">
+                <button 
+                  onClick={() => setShowBracketDetails(!showBracketDetails)}
+                  className="w-full flex justify-between items-center py-2 group"
+                >
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-indigo-600 transition-colors">Tax Bracket Explainer</span>
+                  <span className={`text-xs transition-transform ${showBracketDetails ? 'rotate-180' : ''}`}>▼</span>
+                </button>
+                
+                {showBracketDetails && (
+                  <div className="mt-6 space-y-6 animate-in slide-in-from-top-2 duration-300">
+                    <p className="text-[10px] text-slate-500 font-medium leading-relaxed">
+                      Your income is taxed in "steps." Only the dollars within a specific range are taxed at that bracket's rate. 
+                      This is why your <span className="font-black text-indigo-600">Effective Rate</span> is lower than your <span className="font-black text-slate-900">Top Marginal Rate</span>.
+                    </p>
+                    
+                    <div className="space-y-3">
+                      <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Federal Staircase (2024)</p>
+                      <div className="space-y-1">
+                        {calculation.fedBreakdown.map((b, i) => (
+                          <div key={i} className="relative h-6 bg-slate-50 rounded-lg overflow-hidden flex items-center px-3 border border-slate-100">
+                            <div 
+                              className="absolute left-0 top-0 h-full bg-indigo-600/10 transition-all duration-1000"
+                              style={{ width: `${(b.taxableInBracket / (calculation.fedBreakdown[calculation.fedBreakdown.length-1].taxableInBracket || 1)) * 100}%` }}
+                            />
+                            <div className="relative z-10 flex justify-between w-full text-[9px] font-bold">
+                              <span className="text-slate-400">{i === 0 ? '$0' : `$${calculation.fedBreakdown[i-1].limit?.toLocaleString()}`} - {b.limit ? `$${b.limit.toLocaleString()}` : '∞'}</span>
+                              <span className={b.taxableInBracket > 0 ? 'text-indigo-600' : 'text-slate-300'}>{(b.rate * 100).toFixed(0)}%</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {calculation.stateBreakdown.length > 0 && (
+                      <div className="space-y-3">
+                        <p className="text-[8px] font-black text-rose-400 uppercase tracking-widest">{stateCode} State Brackets</p>
+                        <div className="space-y-1">
+                          {calculation.stateBreakdown.map((b, i) => (
+                            <div key={i} className="relative h-6 bg-rose-50/30 rounded-lg overflow-hidden flex items-center px-3 border border-rose-100">
+                              <div className="relative z-10 flex justify-between w-full text-[9px] font-bold">
+                                <span className="text-slate-400">{i === 0 ? '$0' : `$${calculation.stateBreakdown[i-1].limit?.toLocaleString()}`} - {b.limit ? `$${b.limit.toLocaleString()}` : '∞'}</span>
+                                <span className={b.taxableInBracket > 0 ? 'text-rose-600' : 'text-slate-300'}>{(b.rate * 100).toFixed(1)}%</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
 
               <div className="space-y-4 pt-4 border-t border-slate-50">
