@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Type } from "@google/genai";
 
 /**
@@ -35,11 +36,11 @@ const getAIClient = () => {
 export const getMarketAnalysis = async () => {
   try {
     const ai = getAIClient();
-    if (!ai) return { marketSummary: "AI intelligence is unavailable due to missing credentials.", keyInsights: [] };
+    if (!ai) return { marketSummary: "AI intelligence is unavailable due to missing credentials.", keyInsights: [], ecosystemApps: [] };
     
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: 'Analyze the current 2024-2025 financial market landscape. Focus on interest rate trends, inflation impacts on personal finance, and why tools like EMI and salary calculators are crucial right now. Provide a concise summary and 3 key insights.',
+      contents: 'Analyze the current 2024-2025 financial market landscape. Focus on interest rate trends, inflation impacts, and the digital tools used by both institutional professionals and everyday retail users. Provide a concise summary, 3 key insights, and a list of 6-8 market-leading apps used daily (identify if they are for Pros or Retail).',
       config: {
         responseMimeType: "application/json",
         responseSchema: {
@@ -57,9 +58,22 @@ export const getMarketAnalysis = async () => {
                 },
                 required: ['title', 'content', 'sentiment']
               }
+            },
+            ecosystemApps: {
+              type: Type.ARRAY,
+              items: {
+                type: Type.OBJECT,
+                properties: {
+                  name: { type: Type.STRING },
+                  category: { type: Type.STRING },
+                  userType: { type: Type.STRING, description: 'Institutional or Retail' },
+                  description: { type: Type.STRING }
+                },
+                required: ['name', 'category', 'userType', 'description']
+              }
             }
           },
-          required: ['marketSummary', 'keyInsights']
+          required: ['marketSummary', 'keyInsights', 'ecosystemApps']
         }
       }
     });
@@ -67,7 +81,7 @@ export const getMarketAnalysis = async () => {
     return parseJSONSafely(response.text);
   } catch (e) {
     console.error("Market Analysis Failure:", e);
-    return { marketSummary: "A temporary error occurred while fetching market insights.", keyInsights: [] };
+    return { marketSummary: "A temporary error occurred while fetching market insights.", keyInsights: [], ecosystemApps: [] };
   }
 };
 

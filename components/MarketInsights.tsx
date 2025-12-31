@@ -107,8 +107,45 @@ const MarketInsights: React.FC = () => {
         })}
       </div>
 
+      {/* Modern Ecosystem Section - NEW */}
+      <section className="space-y-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+          <div>
+            <h3 className="text-2xl font-black text-slate-900">Modern FinTech <span className="text-indigo-600">Stack</span></h3>
+            <p className="text-slate-500 text-sm font-medium mt-1">Leading platforms used across Institutional and Retail sectors.</p>
+          </div>
+          <div className="flex gap-2">
+            <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-[9px] font-black uppercase tracking-widest">Institutional</span>
+            <span className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-lg text-[9px] font-black uppercase tracking-widest">Retail</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {data?.ecosystemApps?.map((app: any, idx: number) => {
+            const isPro = app.userType?.toLowerCase().includes('institutional') || app.userType?.toLowerCase().includes('pro');
+            return (
+              <div key={idx} className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-lg transition-all group overflow-hidden relative">
+                <div className={`absolute top-0 right-0 w-16 h-16 ${isPro ? 'bg-indigo-50' : 'bg-emerald-50'} -mr-8 -mt-8 rounded-full transition-all group-hover:scale-150 group-hover:opacity-100 opacity-50`}></div>
+                <div className="relative z-10">
+                  <span className={`inline-block px-2 py-0.5 rounded-md text-[8px] font-black uppercase tracking-widest mb-3 ${isPro ? 'bg-indigo-600 text-white' : 'bg-emerald-600 text-white'}`}>
+                    {app.category}
+                  </span>
+                  <h4 className="text-lg font-black text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">{app.name}</h4>
+                  <p className="text-slate-500 text-[11px] leading-relaxed font-medium">
+                    {app.description}
+                  </p>
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Primary: {app.userType}</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
       {/* Bottom Technical Section */}
-      <div className="grid lg:grid-cols-5 gap-8">
+      <div className="grid lg:grid-cols-5 gap-8 pb-12">
         <div className="lg:col-span-3 bg-slate-900 rounded-[2rem] p-8 md:p-10 text-white relative overflow-hidden shadow-2xl">
           <div className="relative z-10">
             <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
