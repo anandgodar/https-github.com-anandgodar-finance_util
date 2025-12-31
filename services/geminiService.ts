@@ -40,7 +40,7 @@ export const getMarketAnalysis = async () => {
     
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: 'Analyze the current 2024-2025 financial market landscape. Focus on interest rate trends, inflation impacts, and the digital tools used by both institutional professionals and everyday retail users. Provide a concise summary, 3 key insights, and a list of 6-8 market-leading apps used daily (identify if they are for Pros or Retail).',
+      contents: 'Analyze the current 2024-2025 financial market landscape. Focus on interest rate trends, inflation impacts, and a specific list of digital apps used by institutional professionals (Bloomberg, Terminal, Refinitiv, etc.) versus everyday people for day-to-day finance (Venmo, PayPal, Robinhood, CashApp, Revolut, etc.). Provide a concise summary, 3 key insights, and a list of 8-10 market-leading apps with descriptions of their daily utility.',
       config: {
         responseMimeType: "application/json",
         responseSchema: {
@@ -66,7 +66,7 @@ export const getMarketAnalysis = async () => {
                 properties: {
                   name: { type: Type.STRING },
                   category: { type: Type.STRING },
-                  userType: { type: Type.STRING, description: 'Institutional or Retail' },
+                  userType: { type: Type.STRING, description: 'Institutional or Everyday User' },
                   description: { type: Type.STRING }
                 },
                 required: ['name', 'category', 'userType', 'description']

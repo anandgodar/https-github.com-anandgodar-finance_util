@@ -19,13 +19,12 @@ const EMICalculator: React.FC = () => {
     const totalWithoutExtra = emi * n;
     const totalInterestWithoutExtra = totalWithoutExtra - loanAmount;
 
-    // Calculate with Extra Payment
     let balance = loanAmount;
     let monthsWithExtra = 0;
     let totalPaidWithExtra = 0;
     const schedule = [];
 
-    while (balance > 0 && monthsWithExtra < 600) { // Safety cap 50 years
+    while (balance > 0 && monthsWithExtra < 600) {
       const interest = balance * r;
       const principalFromEmi = emi - interest;
       const totalPrincipalPaid = principalFromEmi + extraPayment;
@@ -54,11 +53,6 @@ const EMICalculator: React.FC = () => {
     };
   }, [loanAmount, interestRate, tenure, extraPayment]);
 
-  const data = [
-    { name: 'Principal', value: loanAmount, color: '#4f46e5' },
-    { name: 'Interest', value: parseFloat(stats.totalInterest), color: '#fbbf24' },
-  ];
-
   const fetchAdvice = async () => {
     setLoadingAdvice(true);
     const msg = await getFinancialAdvice({ loanAmount, interestRate, tenure, emi: stats.monthlyEmi, extra: extraPayment, saved: stats.interestSaved }, 'Loan EMI & Prepayment');
@@ -72,7 +66,7 @@ const EMICalculator: React.FC = () => {
   }, [loanAmount, interestRate, tenure, extraPayment]);
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-500">
+    <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-500 pb-20">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
           <h2 className="text-3xl font-black text-slate-900">EMI <span className="text-indigo-600">Accelerator</span></h2>
@@ -119,7 +113,6 @@ const EMICalculator: React.FC = () => {
                   type="number" value={extraPayment} onChange={(e) => setExtraPayment(Number(e.target.value))}
                   className="w-full p-4 bg-indigo-50 border-none rounded-2xl focus:ring-2 focus:ring-indigo-500 font-black text-indigo-700 text-xl"
                 />
-                <p className="mt-2 text-[9px] font-bold text-slate-400">Apply this amount towards principal every month.</p>
               </div>
             </div>
           </div>
@@ -138,7 +131,6 @@ const EMICalculator: React.FC = () => {
             <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm text-center">
               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Payoff Time</p>
               <p className="text-2xl font-black text-indigo-600">{stats.monthsWithExtra} <span className="text-xs">Months</span></p>
-              {stats.monthsSaved > 0 && <p className="text-[9px] font-black text-emerald-500 mt-1">Saved {stats.monthsSaved} Months!</p>}
             </div>
           </div>
 
@@ -147,24 +139,18 @@ const EMICalculator: React.FC = () => {
              <div className="h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={stats.schedule}>
-                    <defs>
-                      <linearGradient id="colorBalance" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#6366f1" stopOpacity={0.1}/>
-                        <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
-                      </linearGradient>
-                    </defs>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                    <XAxis dataKey="month" stroke="#94a3b8" fontSize={10} axisLine={false} tickLine={false} tickFormatter={(v) => `M${v}`} />
-                    <YAxis stroke="#94a3b8" fontSize={10} axisLine={false} tickLine={false} tickFormatter={(v) => `$${v/1000}k`} />
-                    <Tooltip contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
-                    <Area type="monotone" dataKey="balance" stroke="#6366f1" strokeWidth={3} fillOpacity={1} fill="url(#colorBalance)" />
+                    <XAxis dataKey="month" stroke="#94a3b8" fontSize={10} axisLine={false} tickLine={false} />
+                    <YAxis stroke="#94a3b8" fontSize={10} axisLine={false} tickLine={false} />
+                    <Tooltip />
+                    <Area type="monotone" dataKey="balance" stroke="#6366f1" strokeWidth={3} fill="#6366f1" fillOpacity={0.1} />
                   </AreaChart>
                 </ResponsiveContainer>
              </div>
           </div>
 
-          <div className="bg-slate-900 p-8 rounded-[2rem] text-white flex items-center gap-6 shadow-2xl relative overflow-hidden">
-             <div className="text-5xl animate-pulse">🤖</div>
+          <div className="bg-slate-900 p-8 rounded-[2rem] text-white flex items-center gap-6 shadow-2xl">
+             <div className="text-5xl">🤖</div>
              <div className="flex-1">
                <h4 className="text-indigo-400 font-black uppercase text-[10px] tracking-widest mb-1">Gemini Debt Logic</h4>
                {loadingAdvice ? (
@@ -173,10 +159,32 @@ const EMICalculator: React.FC = () => {
                  <p className="text-lg italic font-medium leading-relaxed">{advice}</p>
                )}
              </div>
-             <div className="absolute right-0 top-0 p-4 opacity-5 text-6xl font-black">DEBT</div>
           </div>
         </div>
       </div>
+
+      <section className="mt-16 pt-12 border-t border-slate-200 grid md:grid-cols-3 gap-12">
+        <div className="space-y-4">
+          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Why use this?</h4>
+          <p className="text-sm text-slate-500 leading-relaxed font-medium">
+            Understanding your EMI (Equated Monthly Installment) is crucial for effective budgeting. This tool goes beyond basic calculation by showing you the massive impact of <strong>extra payments</strong> on your total interest and loan duration.
+          </p>
+        </div>
+        <div className="space-y-4">
+          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">How it works</h4>
+          <p className="text-sm text-slate-500 leading-relaxed font-medium">
+            We use the reducing balance method to calculate interest monthly. When you add an 'Extra Payment', the engine applies that surplus directly to your principal balance, effectively shortening the amortization schedule and reducing future interest accrual.
+          </p>
+        </div>
+        <div className="space-y-4">
+          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Examples</h4>
+          <ul className="text-sm text-slate-500 space-y-2 font-medium">
+            <li>• Car Loan: $30,000 @ 7% for 5 years</li>
+            <li>• Personal Loan: $10,000 @ 12% for 3 years</li>
+            <li>• Home Improvement: $50,000 @ 6% for 10 years</li>
+          </ul>
+        </div>
+      </section>
     </div>
   );
 };

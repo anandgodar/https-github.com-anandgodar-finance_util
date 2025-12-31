@@ -13,6 +13,8 @@ import MortgageCalculator from './components/MortgageCalculator';
 import CurrencyConverter from './components/CurrencyConverter';
 import GSTCalculator from './components/GSTCalculator';
 import CreditCardPayoff from './components/CreditCardPayoff';
+import FIREPlanner from './components/FIREPlanner';
+import FreelanceHub from './components/FreelanceHub';
 import FAQ from './components/FAQ';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Sitemap from './components/Sitemap';
@@ -30,6 +32,8 @@ const METADATA: Record<ToolType, { title: string; desc: string }> = {
   [ToolType.CURRENCY_CONV]: { title: "Currency Intel | Global Exchange & Forex Logic", desc: "Convert global currencies with real-time AI-powered market context." },
   [ToolType.GST_CALC]: { title: "GST Calculator | Direct & Indirect Tax Intel", desc: "Quickly calculate inclusive and exclusive tax amounts for business or shopping." },
   [ToolType.CREDIT_CARD_PAYOFF]: { title: "Card Payoff Intel | Debt Snowball Strategy", desc: "Exit the credit card debt loop with optimized monthly payment strategies." },
+  [ToolType.FIRE_PLANNER]: { title: "FIRE Planner | Early Retirement Freedom Logic", desc: "Calculate your freedom number and retirement crossover point with the 4% rule." },
+  [ToolType.FREELANCE_PROFIT]: { title: "Freelance Hub | Gig Economy Profit Optimizer", desc: "Analyze your true hourly rate and take-home profit as a contractor or freelancer." },
   [ToolType.FAQ]: { title: "Financial FAQ | Expert Guidance & Help", desc: "Frequently asked questions about loans, taxes, and financial planning." },
   [ToolType.PRIVACY]: { title: "Privacy Policy | Your Data Security", desc: "Learn how we protect your financial data and maintain your privacy." },
   [ToolType.SITEMAP]: { title: "Sitemap | Explore FinVault Utilities", desc: "Complete directory of all financial tools and resources on FinVault Pro." }
@@ -64,16 +68,14 @@ const App: React.FC = () => {
     try {
       const isBlob = window.location.protocol === 'blob:';
       const path = activeTool === ToolType.DASHBOARD ? '/' : `/${activeTool}`;
-      // CRITICAL FIX: Robust check for origin issues in sandboxed environments
       if (!isBlob && window.location.pathname !== path && window.history && typeof window.history.pushState === 'function') {
         const currentOrigin = window.location.origin;
-        // Only try to push state if the origin matches (simple heuristic)
         if (currentOrigin && !currentOrigin.includes('usercontent.goog')) {
            window.history.pushState({ tool: activeTool }, meta?.title || '', path);
         }
       }
     } catch (e) {
-      console.warn("FinVault Navigation: pushState restricted. Use manual navigation.");
+      console.warn("FinVault Navigation: pushState restricted.");
     }
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -104,6 +106,8 @@ const App: React.FC = () => {
       case ToolType.CURRENCY_CONV: return <CurrencyConverter />;
       case ToolType.GST_CALC: return <GSTCalculator />;
       case ToolType.CREDIT_CARD_PAYOFF: return <CreditCardPayoff />;
+      case ToolType.FIRE_PLANNER: return <FIREPlanner />;
+      case ToolType.FREELANCE_PROFIT: return <FreelanceHub />;
       case ToolType.FAQ: return <FAQ />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;
       case ToolType.SITEMAP: return <Sitemap onSelectTool={setActiveTool} />;

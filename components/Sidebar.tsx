@@ -12,14 +12,15 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool }) => {
     { id: ToolType.DASHBOARD, label: 'Dashboard', icon: '📊' },
     { id: ToolType.EMI_CALC, label: 'EMI Calculator', icon: '💳' },
     { id: ToolType.MORTGAGE_CALC, label: 'Mortgage Pro', icon: '🏡' },
+    { id: ToolType.FIRE_PLANNER, label: 'FIRE Planner', icon: '🔥' },
     { id: ToolType.SALARY_CALC, label: 'Salary Estimator', icon: '💰' },
+    { id: ToolType.FREELANCE_PROFIT, label: 'Freelance Hub', icon: '💼' },
     { id: ToolType.INVESTMENT_CALC, label: 'Wealth Projector', icon: '📈' },
     { id: ToolType.LOAN_COMPARE, label: 'Loan Intelligence', icon: '⚖️' },
-    { id: ToolType.CURRENCY_CONV, label: 'Currency Intel', icon: '🌍' },
-    { id: ToolType.LIVING_COST, label: 'Living Cost Tool', icon: '🏠' },
   ];
 
   const dailyTools = [
+    { id: ToolType.CURRENCY_CONV, label: 'Currency Intel', icon: '🌍' },
     { id: ToolType.GST_CALC, label: 'GST Calculator', icon: '🧾' },
     { id: ToolType.CREDIT_CARD_PAYOFF, label: 'Card Payoff', icon: '✂️' },
   ];

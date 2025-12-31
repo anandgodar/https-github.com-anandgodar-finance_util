@@ -1,48 +1,50 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
 
 const GSTCalculator: React.FC = () => {
-  const [amount, setAmount] = useState<number>(1000);
+  const [amount, setAmount] = useState<number>(5000);
   const [taxRate, setTaxRate] = useState<number>(18);
-  const [mode, setMode] = useState<'add' | 'remove'>('add');
+  const [mode, setMode] = useState<'exclusive' | 'inclusive'>('exclusive');
   
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
 
   const stats = useMemo(() => {
+    let baseAmount = 0;
     let taxAmount = 0;
-    let netAmount = 0;
-    let grossAmount = 0;
+    let totalAmount = 0;
 
-    if (mode === 'add') {
-      netAmount = amount;
+    if (mode === 'exclusive') {
+      baseAmount = amount;
       taxAmount = (amount * taxRate) / 100;
-      grossAmount = netAmount + taxAmount;
+      totalAmount = baseAmount + taxAmount;
     } else {
-      grossAmount = amount;
-      netAmount = (amount * 100) / (100 + taxRate);
-      taxAmount = grossAmount - netAmount;
+      totalAmount = amount;
+      baseAmount = (amount * 100) / (100 + taxRate);
+      taxAmount = totalAmount - baseAmount;
     }
 
-    return {
-      netAmount,
-      taxAmount,
-      grossAmount,
+    return { 
+      baseAmount, 
+      taxAmount, 
+      totalAmount,
       cgst: taxAmount / 2,
-      sgst: taxAmount / 2
+      sgst: taxAmount / 2,
+      igst: taxAmount
     };
   }, [amount, taxRate, mode]);
 
   const chartData = [
-    { name: 'Net Amount', value: stats.netAmount, color: '#4f46e5' },
-    { name: 'Tax Amount', value: stats.taxAmount, color: '#fbbf24' },
+    { name: 'Base Price', value: stats.baseAmount, color: '#10b981' },
+    { name: 'Central Tax (CGST)', value: stats.cgst, color: '#4f46e5' },
+    { name: 'State Tax (SGST)', value: stats.sgst, color: '#fbbf24' },
   ];
 
   const fetchAdvice = async () => {
     setLoadingAdvice(true);
-    const msg = await getFinancialAdvice({ amount, taxRate, mode, ...stats }, 'GST & Indirect Tax Analysis');
+    const msg = await getFinancialAdvice(stats, 'GST Tax Planning & Compliance');
     setAdvice(msg || '');
     setLoadingAdvice(false);
   };
@@ -53,118 +55,87 @@ const GSTCalculator: React.FC = () => {
   }, [amount, taxRate, mode]);
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-500 pb-20">
-      <header>
-        <h2 className="text-3xl font-black text-slate-900">GST <span className="text-emerald-600">Calculator</span></h2>
-        <p className="text-slate-500 mt-1 uppercase text-[10px] font-black tracking-widest">Business & Shopping Tax Intelligence</p>
+    <div className="max-w-7xl mx-auto space-y-10 animate-in fade-in duration-500 pb-24">
+      <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+        <div>
+          <h2 className="text-3xl font-black text-slate-900 leading-tight">Tax <span className="text-emerald-600">Intelligence</span></h2>
+          <p className="text-slate-500 mt-2 max-w-lg font-medium">Professional GST/VAT logic for business invoicing and shopping audits.</p>
+        </div>
+        <div className="flex bg-slate-100 p-1 rounded-2xl border border-slate-200 shadow-inner">
+           <button onClick={() => setMode('exclusive')} className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${mode === 'exclusive' ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-400'}`}>GST Exclusive</button>
+           <button onClick={() => setMode('inclusive')} className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${mode === 'inclusive' ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-400'}`}>GST Inclusive</button>
+        </div>
       </header>
 
-      <div className="grid lg:grid-cols-12 gap-8">
-        <div className="lg:col-span-4 space-y-6">
-          <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-8">
-            <div className="flex bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
-              <button 
-                onClick={() => setMode('add')}
-                className={`flex-1 py-3 rounded-xl text-[10px] font-black tracking-widest uppercase transition-all ${mode === 'add' ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-400'}`}
-              >
-                Add GST
-              </button>
-              <button 
-                onClick={() => setMode('remove')}
-                className={`flex-1 py-3 rounded-xl text-[10px] font-black tracking-widest uppercase transition-all ${mode === 'remove' ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-400'}`}
-              >
-                Remove GST
-              </button>
-            </div>
-
-            <div className="space-y-6">
-              <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase mb-4 tracking-widest">Base Amount ($)</label>
-                <input 
-                  type="number" value={amount} onChange={(e) => setAmount(Number(e.target.value))}
-                  className="w-full p-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-indigo-500 font-black text-slate-700 text-xl"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase mb-4 tracking-widest">Tax Rate (%)</label>
-                <div className="grid grid-cols-4 gap-2 mb-4">
-                  {[5, 12, 18, 28].map(r => (
-                    <button 
-                      key={r} 
-                      onClick={() => setTaxRate(r)}
-                      className={`py-2 rounded-xl text-xs font-black border ${taxRate === r ? 'bg-indigo-50 border-indigo-200 text-indigo-600' : 'bg-white border-slate-100 text-slate-400'}`}
-                    >
-                      {r}%
-                    </button>
-                  ))}
+      <div className="grid lg:grid-cols-12 gap-10">
+        <div className="lg:col-span-5 space-y-6">
+          <section className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm space-y-10">
+             <div>
+                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Input Amount ($)</label>
+                <input type="number" value={amount} onChange={e => setAmount(Number(e.target.value))} className="w-full p-6 bg-slate-50 border-none rounded-[2rem] font-black text-4xl text-emerald-600" />
+             </div>
+             
+             <div className="grid grid-cols-2 gap-6">
+                <div>
+                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Tax Rate (%)</label>
+                   <select value={taxRate} onChange={e => setTaxRate(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700">
+                      {[5, 12, 18, 28].map(r => <option key={r} value={r}>{r}% Slab</option>)}
+                   </select>
                 </div>
-                <input 
-                  type="number" value={taxRate} onChange={(e) => setTaxRate(Number(e.target.value))}
-                  className="w-full p-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-indigo-500 font-black text-slate-700 text-xl"
-                />
-              </div>
-            </div>
-          </div>
+                <div className="flex flex-col justify-end">
+                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 text-right">Tax Slab</p>
+                   <p className="text-xl font-black text-slate-900 text-right">{taxRate === 28 ? 'Luxury' : taxRate >= 18 ? 'Standard' : 'Essentials'}</p>
+                </div>
+             </div>
+
+             <div className="pt-8 border-t border-slate-50 grid grid-cols-2 gap-6">
+                <div className="bg-slate-900 p-6 rounded-3xl text-white">
+                   <p className="text-[9px] font-black text-indigo-400 uppercase mb-1">CGST (9%)</p>
+                   <p className="text-xl font-black">${stats.cgst.toLocaleString()}</p>
+                </div>
+                <div className="bg-slate-900 p-6 rounded-3xl text-white">
+                   <p className="text-[9px] font-black text-amber-400 uppercase mb-1">SGST (9%)</p>
+                   <p className="text-xl font-black">${stats.sgst.toLocaleString()}</p>
+                </div>
+             </div>
+          </section>
         </div>
 
-        <div className="lg:col-span-8 space-y-6">
+        <div className="lg:col-span-7 space-y-8">
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-slate-900 p-8 rounded-[2.5rem] text-white flex flex-col justify-center shadow-2xl relative overflow-hidden">
-               <p className="text-indigo-400 text-[10px] font-black uppercase tracking-[0.3em] mb-2">Total Gross Amount</p>
-               <h3 className="text-6xl font-black tracking-tighter">
-                 ${stats.grossAmount.toLocaleString(undefined, { maximumFractionDigits: 2 })}
-               </h3>
-               <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-[10px] text-slate-400 font-bold uppercase mb-1">Net Price</p>
-                    <p className="text-xl font-black">${stats.netAmount.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-slate-400 font-bold uppercase mb-1">Total Tax</p>
-                    <p className="text-xl font-black text-emerald-400">${stats.taxAmount.toLocaleString(undefined, { maximumFractionDigits: 2 })}</p>
-                  </div>
-               </div>
-               <div className="absolute -right-10 -top-10 text-[200px] font-black text-white/5 select-none pointer-events-none uppercase">TAX</div>
-            </div>
+             <div className="bg-emerald-600 p-8 rounded-[3rem] text-white shadow-xl flex flex-col justify-center">
+                <p className="text-white/60 text-[10px] font-black uppercase tracking-widest mb-1">Total Bill Amount</p>
+                <h3 className="text-5xl font-black text-white">${Math.round(stats.totalAmount).toLocaleString()}</h3>
+             </div>
+             <div className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col justify-center text-center">
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Tax Component</p>
+                <h4 className="text-4xl font-black text-slate-900">${Math.round(stats.taxAmount).toLocaleString()}</h4>
+             </div>
+          </div>
 
-            <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm flex flex-col items-center justify-center">
-              <div className="h-48 w-full relative">
+          <div className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col md:flex-row items-center gap-12">
+             <div className="h-64 w-64 flex-shrink-0">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
-                    <Pie data={chartData} cx="50%" cy="50%" innerRadius={50} outerRadius={70} paddingAngle={5} dataKey="value">
+                    <Pie data={chartData} cx="50%" cy="50%" innerRadius={70} outerRadius={90} paddingAngle={8} dataKey="value">
                       {chartData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.color} />)}
                     </Pie>
                     <Tooltip />
+                    <Legend verticalAlign="bottom" align="center" iconType="circle" />
                   </PieChart>
                 </ResponsiveContainer>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-4 text-center">
-                  <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Ratio</p>
-                  <p className="text-lg font-black text-slate-700">{((stats.taxAmount/stats.grossAmount)*100).toFixed(1)}%</p>
+             </div>
+             <div className="flex-1">
+                <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100">
+                  <h4 className="text-emerald-600 font-black uppercase text-[10px] tracking-widest mb-4 flex items-center gap-2">
+                    <span className="text-lg">🤖</span> Gemini Tax Strategy
+                  </h4>
+                  {loadingAdvice ? (
+                    <div className="space-y-2 animate-pulse"><div className="h-4 bg-slate-200 rounded w-full"></div><div className="h-4 bg-slate-200 rounded w-2/3"></div></div>
+                  ) : (
+                    <p className="text-lg text-slate-700 italic font-medium leading-relaxed">{advice}</p>
+                  )}
                 </div>
-              </div>
-              <div className="w-full space-y-3 mt-6">
-                <div className="flex justify-between items-center px-4 py-2 bg-slate-50 rounded-xl">
-                  <span className="text-[10px] font-black text-slate-400 uppercase">CGST (Tax/2)</span>
-                  <span className="text-xs font-black text-slate-700">${stats.cgst.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
-                </div>
-                <div className="flex justify-between items-center px-4 py-2 bg-slate-50 rounded-xl">
-                  <span className="text-[10px] font-black text-slate-400 uppercase">SGST (Tax/2)</span>
-                  <span className="text-xs font-black text-slate-700">${stats.sgst.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-indigo-600 p-8 rounded-[2.5rem] text-white flex items-center gap-8 shadow-2xl relative overflow-hidden">
-             <div className="text-6xl animate-pulse">🤖</div>
-             <div className="flex-1 space-y-2">
-               <h4 className="text-indigo-200 font-black uppercase text-[10px] tracking-widest">Gemini Tax Intel</h4>
-               {loadingAdvice ? (
-                 <div className="h-4 bg-white/10 rounded w-2/3 animate-pulse"></div>
-               ) : (
-                 <p className="text-lg italic font-medium leading-relaxed">{advice || 'Evaluating tax implications for your scenario...'}</p>
-               )}
              </div>
           </div>
         </div>

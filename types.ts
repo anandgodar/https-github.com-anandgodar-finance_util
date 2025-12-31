@@ -11,6 +11,8 @@ export enum ToolType {
   CURRENCY_CONV = 'currency-intel',
   GST_CALC = 'gst-calculator',
   CREDIT_CARD_PAYOFF = 'credit-card-payoff',
+  FIRE_PLANNER = 'fire-planner',
+  FREELANCE_PROFIT = 'freelance-hub',
   FAQ = 'faq',
   PRIVACY = 'privacy-policy',
   SITEMAP = 'sitemap'
