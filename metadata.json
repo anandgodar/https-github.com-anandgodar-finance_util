@@ -1,0 +1,7 @@
+{
+  "name": "FinVault Pro",
+  "description": "A comprehensive suite of financial utilities including EMI, Salary, and Investment calculators, coupled with real-time AI-driven market insights.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
