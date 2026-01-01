@@ -1,7 +1,13 @@
 {
   "name": "quantcurb",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -11,6 +17,8 @@
   "devDependencies": {
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react": "^4.2.0"
   }
 }

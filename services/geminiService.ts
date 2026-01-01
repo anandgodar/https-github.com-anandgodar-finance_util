@@ -47,7 +47,7 @@ export const getMarketAnalysis = async () => {
     
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: 'Perform a comprehensive analysis of the 2024-2025 financial market tool ecosystem. Categorize the digital stack into: 1. Institutional Pro Tools (Bloomberg, FactSet, Aladdin) and 2. Retail/Day-to-day Apps (Robinhood, Wise, Rocket Money). Focus specifically on the "Daily Workflow". Compare them on 4 metrics: Data Latency, Terminal Cost, Data Depth, and UX Simplicity. Provide a market summary, 3 key insights, 10 app profiles, and a comparison table data structure.',
+      contents: 'Perform a comprehensive analysis of the 2024-2025 financial market tool ecosystem. Categorize the digital stack into: 1. Institutional Pro Tools (Bloomberg Terminal, FactSet, Aladdin, Refinitiv) used by banks and hedge funds. 2. Retail/Day-to-day Apps (Robinhood, Wise, Rocket Money, Mint alternatives, Vanguard App) used by the general public. Focus specifically on the "Daily Professional Workflow" vs "Consumer Convenience". Compare them on 4 metrics: Data Latency, Terminal Cost, Data Depth, and UX Simplicity. Provide a market summary, 3 key insights, 10 app profiles, and a comparison table data structure.',
       config: {
         responseMimeType: "application/json",
         responseSchema: {
