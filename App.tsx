@@ -22,6 +22,9 @@ import EmergencyFundTool from './components/EmergencyFundTool';
 import FAQ from './components/FAQ';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Sitemap from './components/Sitemap';
+import AboutUs from './components/AboutUs';
+import ContactUs from './components/ContactUs';
+import Disclaimer from './components/Disclaimer';
 import { ToolType } from './types';
 
 const METADATA: Record<ToolType, { title: string; desc: string; keywords: string }> = {
@@ -124,6 +127,21 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "QuantCurb Sitemap - Explore Professional Financial Utilities", 
     desc: "A complete directory of high-fidelity financial modeling tools and educational resources in the QuantCurb intelligence ecosystem.",
     keywords: "sitemap, financial calculators, wealth modeling"
+  },
+  [ToolType.ABOUT]: { 
+    title: "About QuantCurb - Our Mission & Institutional Philosophy", 
+    desc: "Learn about the core team and engineering principles behind QuantCurb. Bridging the gap between banking software and retail finance.",
+    keywords: "about us, quantcurb mission, financial transparency, wealth engineering"
+  },
+  [ToolType.CONTACT]: { 
+    title: "Contact QuantCurb - Professional Inquiries & Support", 
+    desc: "Get in touch with the QuantCurb intelligence team for support, feature requests, or professional partnerships.",
+    keywords: "contact us, financial support, quantcurb help"
+  },
+  [ToolType.DISCLAIMER]: { 
+    title: "Legal Disclaimer - Terms of Use & Financial Compliance", 
+    desc: "Important legal information regarding the algorithmic nature of QuantCurb. We provide models, not advice.",
+    keywords: "legal disclaimer, financial compliance, terms of use"
   }
 };
 
@@ -155,7 +173,7 @@ const App: React.FC = () => {
       }
       descriptionTag.setAttribute('content', meta.desc);
 
-      // Update Keywords (Crawler Support)
+      // Update Keywords
       let keywordsTag = document.querySelector('meta[name="keywords"]');
       if (!keywordsTag) {
         keywordsTag = document.createElement('meta');
@@ -246,6 +264,9 @@ const App: React.FC = () => {
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;
       case ToolType.SITEMAP: return <Sitemap onSelectTool={setActiveTool} />;
+      case ToolType.ABOUT: return <AboutUs />;
+      case ToolType.CONTACT: return <ContactUs />;
+      case ToolType.DISCLAIMER: return <Disclaimer />;
       default: return <Dashboard onSelectTool={setActiveTool} />;
     }
   };
@@ -276,7 +297,6 @@ const App: React.FC = () => {
 
         <Footer setActiveTool={setActiveTool} />
 
-        {/* Mobile Floating Nav - Pure UX improvement */}
         <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-xl border border-slate-200 px-6 py-4 rounded-[2rem] shadow-2xl flex gap-10 z-50">
            <button onClick={() => setActiveTool(ToolType.DASHBOARD)} className={`${activeTool === ToolType.DASHBOARD ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`} aria-label="Dashboard">📊</button>
            <button onClick={() => setActiveTool(ToolType.NET_WORTH)} className={`${activeTool === ToolType.NET_WORTH ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`} aria-label="Net Worth">💎</button>

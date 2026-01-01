@@ -9,7 +9,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
   return (
     <footer className="bg-white border-t mt-auto pt-16 pb-24 md:pb-16 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-left">
         <div className="col-span-2">
           <h4 className="text-xl font-black text-slate-900 mb-6 flex items-center gap-3">
             <span className="p-2 bg-indigo-600 text-white rounded-lg shadow-lg">📈</span> QuantCurb Intelligence
@@ -37,10 +37,10 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
         <div>
           <h5 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Company</h5>
           <ul className="space-y-4">
-            <li><button onClick={() => setActiveTool(ToolType.FAQ)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Knowledge Base</button></li>
+            <li><button onClick={() => setActiveTool(ToolType.ABOUT)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">About QuantCurb</button></li>
+            <li><button onClick={() => setActiveTool(ToolType.CONTACT)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Contact Support</button></li>
+            <li><button onClick={() => setActiveTool(ToolType.DISCLAIMER)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors text-rose-500">Legal Disclaimer</button></li>
             <li><button onClick={() => setActiveTool(ToolType.PRIVACY)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Privacy Policy</button></li>
-            <li><button onClick={() => setActiveTool(ToolType.SITEMAP)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Sitemap</button></li>
-            <li><button onClick={() => setActiveTool(ToolType.MARKET_INSIGHTS)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Market Pulse</button></li>
           </ul>
         </div>
       </div>

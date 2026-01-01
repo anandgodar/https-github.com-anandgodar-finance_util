@@ -19,7 +19,10 @@ export enum ToolType {
   EXCEL_MODELER = 'excel-power-modeler',
   FAQ = 'financial-knowledge-base',
   PRIVACY = 'privacy-policy',
-  SITEMAP = 'sitemap'
+  SITEMAP = 'sitemap',
+  ABOUT = 'about-quantcurb',
+  CONTACT = 'contact-us',
+  DISCLAIMER = 'legal-disclaimer'
 }
 
 export interface MarketInsight {
