@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 
 const parseJSONSafely = (text: string | undefined) => {
@@ -47,7 +46,18 @@ export const getMarketAnalysis = async () => {
     
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: 'Perform a comprehensive analysis of the 2024-2025 financial market tool ecosystem. Categorize the digital stack into: 1. Institutional Pro Tools (Bloomberg Terminal, FactSet, Aladdin, Refinitiv) used by banks and hedge funds. 2. Retail/Day-to-day Apps (Robinhood, Wise, Rocket Money, Mint alternatives, Vanguard App) used by the general public. Focus specifically on the "Daily Professional Workflow" vs "Consumer Convenience". Compare them on 4 metrics: Data Latency, Terminal Cost, Data Depth, and UX Simplicity. Provide a market summary, 3 key insights, 10 app profiles, and a comparison table data structure.',
+      contents: `Analyze the modern finance market ecosystem. Contrast the tools used by 'Professional Institutional Traders' vs 'Normal People/Retail Users'. 
+      Include:
+      1. Institutional Stack: Bloomberg Terminal, FactSet, Aladdin, Refinitiv Eikon, Charles River.
+      2. Retail/Day-to-Day Apps: Robinhood, Wise (TransferWise), Revolut, Rocket Money, YNAB, Vanguard, and Coinbase.
+      
+      Compare them on:
+      - Execution Speed (Latency)
+      - Annual Subscription Cost
+      - Data Granularity/Depth
+      - User Interface Accessibility
+      
+      Provide a summary of the 'Data Divide', 3 specific insights on market democratization, and profiles for 10 key apps.`,
       config: {
         responseMimeType: "application/json",
         responseSchema: {
