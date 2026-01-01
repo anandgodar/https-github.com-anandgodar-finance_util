@@ -10,6 +10,7 @@
     <meta name="theme-color" content="#4f46e5">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://quantcurb.com/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
     <!-- Performance & Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,8 +30,8 @@
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; -webkit-font-smoothing: antialiased; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        /* Simple styling for the fallback content to ensure it doesn't flash awkwardly */
-        .seo-fallback { display: none; }
+        /* Hide the fallback once React takes over */
+        #root:not(:empty) .seo-fallback { display: none; }
     </style>
 <script type="importmap">
 {
@@ -49,34 +50,33 @@
 <body>
     <div id="root">
         <!-- Static Fallback for Search Engines (SEO) -->
-        <div class="seo-fallback" style="display: block; padding: 20px; font-family: sans-serif; color: #333; max-width: 800px; margin: auto;">
-            <header>
-                <h1>QuantCurb - Institutional Financial Intelligence & Wealth Modeling</h1>
-                <p>QuantCurb brings banking-grade precision to retail financial planning. Audit your mortgage, simulate early retirement, and model tax-optimized salary outcomes with 100% algorithmic accuracy.</p>
+        <div class="seo-fallback" style="padding: 40px; font-family: 'Inter', sans-serif; color: #1e293b; max-width: 1000px; margin: auto;">
+            <header style="margin-bottom: 40px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px;">
+                <h1 style="font-size: 32px; font-weight: 900; letter-spacing: -0.05em; color: #4f46e5;">QuantCurb: Institutional Financial Intelligence</h1>
+                <p style="font-size: 18px; line-height: 1.6; color: #64748b;">QuantCurb brings banking-grade precision to retail financial planning. Audit your mortgage, simulate early retirement, and model tax-optimized salary outcomes with 100% algorithmic accuracy across all 50 US States.</p>
             </header>
             <main>
-                <section>
-                    <h2>Core Quantitative Utilities</h2>
-                    <ul>
-                        <li><strong>Loan EMI Pro:</strong> Institutional-grade reducing balance loan calculator for Home, Car, and Personal debt payoff optimization.</li>
-                        <li><strong>Mortgage Intelligence:</strong> Advanced real estate financing tool with PITI logic, property tax, insurance, and PMI stress testing.</li>
-                        <li><strong>Salary Tax Estimator:</strong> Precision after-tax income modeling for all 50 US states including 401k tax-shield and FICA analysis.</li>
-                        <li><strong>Wealth SIP Projector:</strong> Visualize compound interest growth trajectories with inflation-adjusted investment modeling.</li>
-                        <li><strong>FIRE Planner:</strong> Calculate your "Freedom Number" using the 4% safe withdrawal rule and crossover math.</li>
-                        <li><strong>AI Market Pulse:</strong> Professional market analysis comparing institutional platforms (Bloomberg, FactSet) with retail apps (Robinhood, Wise).</li>
+                <section style="margin-bottom: 40px;">
+                    <h2 style="font-size: 24px; font-weight: 800; color: #0f172a;">Core Quantitative Utilities</h2>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px;"><strong>Loan EMI Pro:</strong> Institutional-grade reducing balance loan calculator for Home, Car, and Personal debt payoff optimization.</li>
+                        <li style="margin-bottom: 15px;"><strong>Mortgage Intelligence:</strong> Advanced real estate financing tool with PITI logic (Principal, Interest, Taxes, Insurance) and PMI stress testing.</li>
+                        <li style="margin-bottom: 15px;"><strong>Salary Tax Estimator:</strong> Precision after-tax income modeling for 2024-2025 including 401k tax-shield and FICA analysis.</li>
+                        <li style="margin-bottom: 15px;"><strong>Wealth SIP Projector:</strong> Visualize compound interest growth trajectories with inflation-adjusted investment modeling for index funds and ETFs.</li>
+                        <li style="margin-bottom: 15px;"><strong>FIRE Planner:</strong> Financial Independence Retire Early (FIRE) modeling using the 4% safe withdrawal rule.</li>
+                        <li style="margin-bottom: 15px;"><strong>AI Market Pulse:</strong> Deep analysis of the digital finance stack, comparing Bloomberg Terminals and Aladdin with Robinhood, Wise, and Revolut.</li>
                     </ul>
                 </section>
-                <section>
-                    <h2>Institutional Standards</h2>
-                    <p>Our platform uses Reducing Balance Amortization, Mark-to-Market asset analysis, and 2024-2025 US Tax Code compliance to ensure financial modeling sovereignty.</p>
+                <section style="background: #f8fafc; padding: 30px; border-radius: 20px; border: 1px solid #e2e8f0;">
+                    <h2 style="font-size: 20px; font-weight: 800; color: #0f172a;">Professional Financial Standards</h2>
+                    <p>QuantCurb utilizes <strong>Reducing Balance Amortization</strong>, <strong>Mark-to-Market asset analysis</strong>, and <strong>2024-2025 US Federal and State Tax Code</strong> logic to ensure mathematical sovereignty for individual users.</p>
                 </section>
             </main>
-            <footer>
-                <p>&copy; 2025 QuantCurb Intelligence. Financial modelling, not advice.</p>
+            <footer style="margin-top: 40px; font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em;">
+                <p>&copy; 2025 QuantCurb Intelligence. Financial modeling for educational purposes.</p>
             </footer>
         </div>
     </div>
-    <!-- Vite will handle the JS injection and versioning -->
     <script type="module" src="/index.tsx"></script>
 </body>
 </html>
