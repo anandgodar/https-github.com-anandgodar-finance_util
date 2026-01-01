@@ -16,29 +16,115 @@ import CreditCardPayoff from './components/CreditCardPayoff';
 import FIREPlanner from './components/FIREPlanner';
 import FreelanceHub from './components/FreelanceHub';
 import InvestmentAcademy from './components/InvestmentAcademy';
+import ExcelModeler from './components/ExcelModeler';
+import NetWorthTracker from './components/NetWorthTracker';
+import EmergencyFundTool from './components/EmergencyFundTool';
 import FAQ from './components/FAQ';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Sitemap from './components/Sitemap';
 import { ToolType } from './types';
 
-const METADATA: Record<ToolType, { title: string; desc: string }> = {
-  [ToolType.DASHBOARD]: { title: "QuantCurb | AI Financial Intelligence Dashboard", desc: "Professional-grade wealth management with AI-driven calculators for EMI, Mortgages, and Investments." },
-  [ToolType.EMI_CALC]: { title: "Loan EMI Pro | QuantCurb Debt Optimization", desc: "Calculate monthly loan payments and interest savings using the institutional reducing balance method." },
-  [ToolType.MORTGAGE_CALC]: { title: "Mortgage Intelligence | QuantCurb Real Estate Analysis", desc: "Plan your home purchase with detailed PITI calculations, property tax, and PMI estimation." },
-  [ToolType.SALARY_CALC]: { title: "Salary Estimator | QuantCurb After-Tax Analysis", desc: "Calculate precise net take-home pay across 50 states including 401k and tax deductions." },
-  [ToolType.INVESTMENT_CALC]: { title: "Wealth Projector | QuantCurb SIP & Compound Growth", desc: "Visualize long-term wealth growth with monthly contributions and inflation-adjusted modeling." },
-  [ToolType.MARKET_INSIGHTS]: { title: "Market Pulse | QuantCurb App Ecosystem Intelligence", desc: "AI-driven analysis of the financial app ecosystem for professionals and retail users." },
-  [ToolType.LOAN_COMPARE]: { title: "Loan Intel | QuantCurb Comparison Hub", desc: "Compare multiple loan offers side-by-side to minimize total interest and refinance costs." },
-  [ToolType.LIVING_COST]: { title: "Budget Vitals | QuantCurb Regional Cost Audit", desc: "Compare your living expenses against regional indices to improve your financial efficiency." },
-  [ToolType.CURRENCY_CONV]: { title: "Currency Intel | QuantCurb Global Exchange Rates", desc: "Convert global currencies with real-time rates and AI-driven market sentiment." },
-  [ToolType.GST_CALC]: { title: "Tax Intelligence | QuantCurb GST & VAT Tool", desc: "Quickly calculate inclusive and exclusive tax amounts for professional business invoicing." },
-  [ToolType.CREDIT_CARD_PAYOFF]: { title: "Debt Strategist | QuantCurb Card Payoff Triage", desc: "Exit the high-interest debt loop with optimized card payoff simulation using Avalanche logic." },
-  [ToolType.FIRE_PLANNER]: { title: "FIRE Freedom Logic | QuantCurb Early Retirement", desc: "Calculate your retirement crossover point with the 4% safe withdrawal rule." },
-  [ToolType.FREELANCE_PROFIT]: { title: "Freelance Hub | QuantCurb Profit Engine", desc: "Analyze true hourly rates and tax burdens for 1099 freelancers and independent contractors." },
-  [ToolType.INVESTMENT_ACADEMY]: { title: "Fund Academy | QuantCurb Institutional Knowledge", desc: "Deep dive into the global fund ecosystem, risk-reward patterns, and institutional benchmarks." },
-  [ToolType.FAQ]: { title: "Knowledge Base | QuantCurb Financial FAQ", desc: "Deep-dive into the mathematical and strategic logic powering QuantCurb utilities." },
-  [ToolType.PRIVACY]: { title: "Privacy Standards | QuantCurb Data Sovereignty", desc: "Our commitment to protecting your financial data and maintaining algorithmic transparency." },
-  [ToolType.SITEMAP]: { title: "QuantCurb Sitemap | Explore Our Utility Suite", desc: "Complete directory of all financial intelligence tools and knowledge resources." }
+const METADATA: Record<ToolType, { title: string; desc: string; keywords: string }> = {
+  [ToolType.DASHBOARD]: { 
+    title: "QuantCurb | Professional Financial Intelligence & AI Wealth Insights", 
+    desc: "Maximize your net worth with QuantCurb. Institutional-grade financial modeling, real-time market insights, and precision calculators for EMI, tax, and wealth growth.",
+    keywords: "financial intelligence, wealth management, mortgage calculator, tax estimator"
+  },
+  [ToolType.NET_WORTH]: { 
+    title: "Net Worth Tracker - Professional Asset & Liability Balance Sheet", 
+    desc: "Track your private balance sheet with QuantCurb. Mark-to-market asset analysis, debt triage, and solvency grading for institutional-grade wealth tracking.",
+    keywords: "net worth tracker, balance sheet, asset liability, wealth tracking"
+  },
+  [ToolType.EMERGENCY_FUND]: { 
+    title: "Emergency Fund Calculator - Survival Runway & Inflation Stress Test", 
+    desc: "Calculate your liquid safety net. Stress-test your survival runway against inflation and audit your term life insurance needs with Emergency Guard.",
+    keywords: "emergency fund calculator, financial safety net, survival runway, inflation stress"
+  },
+  [ToolType.EMI_CALC]: { 
+    title: "EMI Calculator - Reducing Balance Loan & Interest Savings Pro", 
+    desc: "Optimize your loan repayments. Use our reducing balance EMI calculator to model principal prepayments and shave years off your debt tenure.",
+    keywords: "emi calculator, loan repayment, interest savings, prepayment calculator"
+  },
+  [ToolType.MORTGAGE_CALC]: { 
+    title: "Mortgage Calculator with PITI, PMI & LTV Audit Pro", 
+    desc: "Professional home financing tool. Model Principal, Interest, Taxes, and Insurance (PITI) with automated PMI logic and LTV stress testing.",
+    keywords: "mortgage calculator, piti calculator, pmi calculator, home loan audit"
+  },
+  [ToolType.SALARY_CALC]: { 
+    title: "Take Home Pay Calculator - 2025 Salary Tax & 401k Estimator", 
+    desc: "Precise net pay modeling for all 50 US states. Account for 401k tax shields, FICA, Federal, and State tax deductions with the Salary Estimator.",
+    keywords: "salary calculator, take home pay, 401k calculator, tax estimator"
+  },
+  [ToolType.INVESTMENT_CALC]: { 
+    title: "Investment Calculator - Wealth SIP & Compounding Growth Simulator", 
+    desc: "Visualize your compound interest trajectory. Model recurring SIPs, expected returns, and inflation-adjusted wealth growth for 2025.",
+    keywords: "investment calculator, sip calculator, compound interest, wealth growth"
+  },
+  [ToolType.MARKET_INSIGHTS]: { 
+    title: "AI Market Pulse - Institutional vs Retail App Ecosystem Analysis", 
+    desc: "Compare Bloomberg and FactSet against Robinhood and Wise. Deep AI-driven analysis of the digital financial stack for professional workflows.",
+    keywords: "market insights, fintech analysis, bloomberg vs robinhood, financial apps"
+  },
+  [ToolType.LOAN_COMPARE]: { 
+    title: "Loan Comparison Pro - Refinance Break-even & APR Matrix", 
+    desc: "Audit loan offers side-by-side. Calculate refinancing ROI, break-even periods, and the total interest delta between different debt structures.",
+    keywords: "loan comparison, refinance calculator, apr comparison, debt audit"
+  },
+  [ToolType.LIVING_COST]: { 
+    title: "Cost of Living Calculator - Regional Budget & Efficiency Audit", 
+    desc: "Benchmark your monthly spend against regional COL indices. Audit your 50/30/20 budget efficiency for major US cities and states.",
+    keywords: "cost of living, budget audit, 50 30 20 rule, regional cost"
+  },
+  [ToolType.CURRENCY_CONV]: { 
+    title: "Live Currency Converter - Interbank Rates & Forex Sentiment AI", 
+    desc: "Real-time interbank forex conversion. AI-powered market sentiment, 12-month volatility heatmaps, and zero-markup spread auditing.",
+    keywords: "currency converter, forex rates, interbank rate, usd to inr, eur to usd"
+  },
+  [ToolType.GST_CALC]: { 
+    title: "GST Calculator - Professional Tax Invoicing & Compliance Hub", 
+    desc: "Accurate GST and VAT splitting for businesses. Handle inclusive and exclusive pricing with automated CGST, SGST, and IGST breakdowns.",
+    keywords: "gst calculator, vat calculator, tax invoicing, business tax tool"
+  },
+  [ToolType.CREDIT_CARD_PAYOFF]: { 
+    title: "Credit Card Payoff Strategist - Avalanche vs Snowball Method", 
+    desc: "Eliminate debt using optimized algorithms. Compare Avalanche and Snowball trajectories to save on interest and shave months off debt.",
+    keywords: "credit card payoff, debt avalanche, debt snowball, interest savings"
+  },
+  [ToolType.FIRE_PLANNER]: { 
+    title: "FIRE Planner - 4% Rule & Early Retirement Freedom Number", 
+    desc: "Calculate your crossover point to freedom. Plan for Lean, Standard, or Fat FIRE with inflation-adjusted investment and expense modeling.",
+    keywords: "fire planner, early retirement, 4 percent rule, freedom number"
+  },
+  [ToolType.FREELANCE_PROFIT]: { 
+    title: "Freelance Hub - 1099 Net Profit & FTE Salary Equivalent Tool", 
+    desc: "Analyze your true hourly rate as a contractor. Factor in self-employment taxes, health insurance, and OpEx to find your salary equivalent.",
+    keywords: "freelance calculator, 1099 taxes, self employment tax, contractor rate"
+  },
+  [ToolType.INVESTMENT_ACADEMY]: { 
+    title: "Fund Academy - Mastering Index Funds, ETFs & REITs Strategy", 
+    desc: "Institutional knowledge on fund selection. Master risk-reward profiles, expense ratios, and asset allocation strategies for long-term alpha.",
+    keywords: "investment funds, index funds vs etfs, reit strategy, fund selection"
+  },
+  [ToolType.EXCEL_MODELER]: { 
+    title: "Excel Power Modeler - Professional DCF & Valuation Engine", 
+    desc: "Run institutional 5-stage DCF models without spreadsheets. Analyze enterprise value, terminal growth, and WACC sensitivity matrices.",
+    keywords: "dcf calculator, business valuation, wacc matrix, enterprise value"
+  },
+  [ToolType.FAQ]: { 
+    title: "Financial Knowledge Base - Expert Logic & Strategy FAQ", 
+    desc: "Deep technical documentation on the mathematical frameworks and strategies powering QuantCurb's institutional finance suite.",
+    keywords: "finance faq, amortization math, ppi calculation, fire logic"
+  },
+  [ToolType.PRIVACY]: { 
+    title: "Privacy Policy - Financial Data Sovereignty & Algorithm Standards", 
+    desc: "QuantCurb's commitment to financial data privacy and algorithmic integrity. Your private balance sheet data remains your own.",
+    keywords: "privacy policy, financial privacy, data sovereignty"
+  },
+  [ToolType.SITEMAP]: { 
+    title: "QuantCurb Sitemap - Explore Professional Financial Utilities", 
+    desc: "A complete directory of high-fidelity financial modeling tools and educational resources in the QuantCurb intelligence ecosystem.",
+    keywords: "sitemap, financial calculators, wealth modeling"
+  }
 };
 
 const App: React.FC = () => {
@@ -54,10 +140,13 @@ const App: React.FC = () => {
 
   const [activeTool, setActiveTool] = useState<ToolType>(getInitialTool());
 
+  // ADVANCED SEO: Dynamic JSON-LD & Meta Management
   useEffect(() => {
     const meta = METADATA[activeTool];
     if (meta) {
       document.title = meta.title;
+      
+      // Update Description
       let descriptionTag = document.querySelector('meta[name="description"]');
       if (!descriptionTag) {
         descriptionTag = document.createElement('meta');
@@ -65,6 +154,46 @@ const App: React.FC = () => {
         document.head.appendChild(descriptionTag);
       }
       descriptionTag.setAttribute('content', meta.desc);
+
+      // Update Keywords (Crawler Support)
+      let keywordsTag = document.querySelector('meta[name="keywords"]');
+      if (!keywordsTag) {
+        keywordsTag = document.createElement('meta');
+        keywordsTag.setAttribute('name', 'keywords');
+        document.head.appendChild(keywordsTag);
+      }
+      keywordsTag.setAttribute('content', meta.keywords);
+
+      // DYNAMIC SCHEMA INJECTION
+      const scriptId = 'quantcurb-json-ld';
+      let scriptTag = document.getElementById(scriptId) as HTMLScriptElement;
+      if (scriptTag) scriptTag.remove();
+
+      scriptTag = document.createElement('script');
+      scriptTag.id = scriptId;
+      scriptTag.type = 'application/ld+json';
+      
+      const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": meta.title,
+        "description": meta.desc,
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "url": `https://quantcurb.com/${activeTool}`,
+        "author": {
+          "@type": "Organization",
+          "name": "QuantCurb Intelligence"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      };
+
+      scriptTag.text = JSON.stringify(schemaData);
+      document.head.appendChild(scriptTag);
     }
 
     try {
@@ -98,6 +227,8 @@ const App: React.FC = () => {
   const renderTool = () => {
     switch (activeTool) {
       case ToolType.DASHBOARD: return <Dashboard onSelectTool={setActiveTool} />;
+      case ToolType.NET_WORTH: return <NetWorthTracker />;
+      case ToolType.EMERGENCY_FUND: return <EmergencyFundTool />;
       case ToolType.EMI_CALC: return <EMICalculator />;
       case ToolType.MORTGAGE_CALC: return <MortgageCalculator />;
       case ToolType.SALARY_CALC: return <SalaryCalculator />;
@@ -111,6 +242,7 @@ const App: React.FC = () => {
       case ToolType.FIRE_PLANNER: return <FIREPlanner />;
       case ToolType.FREELANCE_PROFIT: return <FreelanceHub />;
       case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
+      case ToolType.EXCEL_MODELER: return <ExcelModeler />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;
       case ToolType.SITEMAP: return <Sitemap onSelectTool={setActiveTool} />;
@@ -124,12 +256,13 @@ const App: React.FC = () => {
       
       <main className="flex-1 flex flex-col min-h-screen overflow-x-hidden">
         <header className="flex justify-between items-center p-6 md:hidden bg-white border-b sticky top-0 z-40">
-          <h1 className="text-xl font-black text-indigo-600 flex items-center gap-2">
+          <div className="text-xl font-black text-indigo-600 flex items-center gap-2">
             <span>📈</span> QuantCurb
-          </h1>
+          </div>
           <button 
             onClick={() => setActiveTool(ToolType.DASHBOARD)}
             className="p-3 bg-indigo-50 text-indigo-600 rounded-xl font-bold"
+            aria-label="Back to Home"
           >
             🏠
           </button>
@@ -143,11 +276,12 @@ const App: React.FC = () => {
 
         <Footer setActiveTool={setActiveTool} />
 
+        {/* Mobile Floating Nav - Pure UX improvement */}
         <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-xl border border-slate-200 px-6 py-4 rounded-[2rem] shadow-2xl flex gap-10 z-50">
-           <button onClick={() => setActiveTool(ToolType.DASHBOARD)} className={`${activeTool === ToolType.DASHBOARD ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`}>📊</button>
-           <button onClick={() => setActiveTool(ToolType.EMI_CALC)} className={`${activeTool === ToolType.EMI_CALC ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`}>💳</button>
-           <button onClick={() => setActiveTool(ToolType.MARKET_INSIGHTS)} className={`${activeTool === ToolType.MARKET_INSIGHTS ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`}>🤖</button>
-           <button onClick={() => setActiveTool(ToolType.SITEMAP)} className={`${activeTool === ToolType.SITEMAP ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`}>🗺️</button>
+           <button onClick={() => setActiveTool(ToolType.DASHBOARD)} className={`${activeTool === ToolType.DASHBOARD ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`} aria-label="Dashboard">📊</button>
+           <button onClick={() => setActiveTool(ToolType.NET_WORTH)} className={`${activeTool === ToolType.NET_WORTH ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`} aria-label="Net Worth">💎</button>
+           <button onClick={() => setActiveTool(ToolType.MARKET_INSIGHTS)} className={`${activeTool === ToolType.MARKET_INSIGHTS ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`} aria-label="Market Insights">🤖</button>
+           <button onClick={() => setActiveTool(ToolType.SITEMAP)} className={`${activeTool === ToolType.SITEMAP ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`} aria-label="Sitemap">🗺️</button>
         </div>
       </main>
     </div>

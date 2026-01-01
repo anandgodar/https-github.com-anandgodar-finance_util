@@ -4,9 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantCurb - High-Fidelity Financial Intelligence</title>
-    <meta name="description" content="QuantCurb provides professional-grade financial modeling, AI market insights, and daily utilities for debt, wealth, and tax optimization.">
+    <title>QuantCurb - Institutional Financial Intelligence & Wealth Modeling</title>
+    <meta name="description" content="QuantCurb: Professional-grade financial calculators, mortgage audits, investment projectors, and AI-driven market sentiment. Bridging institutional logic for daily wealth.">
+    <meta name="keywords" content="financial intelligence, mortgage calculator, emi accelerator, fire planner, currency converter, tax estimator, dcf modeling, quantcurb, wealth management">
+    <meta name="author" content="QuantCurb Intelligence">
     <meta name="theme-color" content="#4f46e5">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://quantcurb.com/" />
+
+    <!-- Performance & Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://esm.sh">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quantcurb.com/">
+    <meta property="og:title" content="QuantCurb - High-Fidelity Financial Intelligence">
+    <meta property="og:description" content="Professional-grade wealth management with AI-driven calculators for EMI, Mortgages, and Investments.">
+    <meta property="og:image" content="https://quantcurb.com/og-image.png">
+    <meta property="og:site_name" content="QuantCurb">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://quantcurb.com/">
+    <meta property="twitter:title" content="QuantCurb - High-Fidelity Financial Intelligence">
+    <meta property="twitter:description" content="Professional-grade wealth management with AI-driven calculators for EMI, Mortgages, and Investments.">
+    <meta property="twitter:image" content="https://quantcurb.com/og-image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "QuantCurb",
+      "url": "https://quantcurb.com",
+      "description": "QuantCurb provides professional-grade financial modeling, AI market insights, and daily utilities for debt, wealth, and tax optimization.",
+      "applicationCategory": "FinanceApplication",
+      "genre": "Finance",
+      "browserRequirements": "Requires JavaScript",
+      "softwareVersion": "3.5.0",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "QuantCurb Intelligence"
+      }
+    }
+    </script>
+
     <script>
         /**
          * GLOBAL POLYFILLS & ERROR HARDENING
@@ -15,7 +65,6 @@
             var g = typeof globalThis !== 'undefined' ? globalThis : window;
             g.global = g;
             
-            // Comprehensive process polyfill
             var processPolyfill = {
                 env: { NODE_ENV: 'production' },
                 platform: 'browser',
@@ -34,7 +83,6 @@
                 }
             }
 
-            // Error suppression and logging
             window.addEventListener('error', function(event) {
                 if (event.message && event.message.indexOf('pushState') !== -1) {
                     event.preventDefault();
@@ -60,6 +108,17 @@
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        
+        /* Smooth transitions for SEO UI */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
     </style>
 <script type="importmap">
 {

@@ -1,6 +1,8 @@
 
 export enum ToolType {
   DASHBOARD = 'dashboard',
+  NET_WORTH = 'net-worth-command-center',
+  EMERGENCY_FUND = 'emergency-fund-guard',
   EMI_CALC = 'loan-emi-calculator',
   SALARY_CALC = 'salary-tax-estimator',
   INVESTMENT_CALC = 'wealth-investment-projector',
@@ -14,6 +16,7 @@ export enum ToolType {
   FIRE_PLANNER = 'early-retirement-fire-planner',
   FREELANCE_PROFIT = 'freelance-profit-hub',
   INVESTMENT_ACADEMY = 'investment-funds-academy',
+  EXCEL_MODELER = 'excel-power-modeler',
   FAQ = 'financial-knowledge-base',
   PRIVACY = 'privacy-policy',
   SITEMAP = 'sitemap'

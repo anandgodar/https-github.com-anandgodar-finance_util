@@ -70,42 +70,43 @@ const MortgageCalculator: React.FC = () => {
   }, [homePrice, downPaymentPercent, interestRate, tenure]);
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
+    <article className="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h2 className="text-3xl font-black text-slate-900">Mortgage <span className="text-indigo-600">Intelligence</span></h2>
-          <p className="text-slate-500 mt-1 uppercase text-[10px] font-black tracking-[0.2em]">Comprehensive Home Financing Analysis</p>
+          <h1 className="text-3xl font-black text-slate-900">Mortgage <span className="text-indigo-600">Intelligence</span></h1>
+          <p className="text-slate-500 mt-1 uppercase text-[10px] font-black tracking-[0.2em]">Comprehensive Home Financing Analysis for Buyers</p>
         </div>
         <div className="flex gap-4">
-          <div className="bg-white px-6 py-3 rounded-2xl border border-slate-100 shadow-sm text-center">
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">LTV Ratio</p>
+          <section className="bg-white px-6 py-3 rounded-2xl border border-slate-100 shadow-sm text-center">
+            <h2 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">LTV Ratio</h2>
             <p className={`text-xl font-black ${stats.ltv > 80 ? 'text-rose-600' : 'text-indigo-600'}`}>{stats.ltv}%</p>
-          </div>
+          </section>
         </div>
       </header>
 
       <div className="grid lg:grid-cols-12 gap-8">
         <div className="lg:col-span-7 space-y-6">
           <section className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-8">
+            <h2 className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-b pb-4">Financing Inputs</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest">Home Price ($)</label>
-                  <input type="number" value={homePrice} onChange={(e) => setHomePrice(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700 text-xl" />
+                  <label htmlFor="homePrice" className="block text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest">Home Price ($)</label>
+                  <input id="homePrice" type="number" value={homePrice} onChange={(e) => setHomePrice(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700 text-xl" />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest">Down Payment (%)</label>
-                  <input type="number" value={downPaymentPercent} onChange={(e) => setDownPaymentPercent(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700 text-xl" />
+                  <label htmlFor="downPayment" className="block text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest">Down Payment (%)</label>
+                  <input id="downPayment" type="number" value={downPaymentPercent} onChange={(e) => setDownPaymentPercent(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700 text-xl" />
                 </div>
               </div>
               <div className="space-y-6">
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest">Interest Rate (%)</label>
-                  <input type="number" step="0.1" value={interestRate} onChange={(e) => setInterestRate(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700 text-xl" />
+                  <label htmlFor="mortgageRate" className="block text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest">Interest Rate (%)</label>
+                  <input id="mortgageRate" type="number" step="0.1" value={interestRate} onChange={(e) => setInterestRate(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700 text-xl" />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest">Loan Term (Years)</label>
-                  <select value={tenure} onChange={(e) => setTenure(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700 text-xl appearance-none">
+                  <label htmlFor="loanTerm" className="block text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest">Loan Term (Years)</label>
+                  <select id="loanTerm" value={tenure} onChange={(e) => setTenure(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700 text-xl appearance-none" aria-label="Mortgage Term">
                     <option value={15}>15 Years</option>
                     <option value={30}>30 Years</option>
                   </select>
@@ -114,21 +115,21 @@ const MortgageCalculator: React.FC = () => {
             </div>
           </section>
 
-          <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white flex items-center gap-8 shadow-2xl relative overflow-hidden">
-            <div className="text-6xl">🤖</div>
+          <aside className="bg-slate-900 rounded-[2.5rem] p-10 text-white flex items-center gap-8 shadow-2xl relative overflow-hidden">
+            <div className="text-6xl" aria-hidden="true">🤖</div>
             <div className="flex-1 space-y-2">
-              <h4 className="text-indigo-400 font-black uppercase text-[10px] tracking-widest">Gemini Mortgage Analyst</h4>
+              <h3 className="text-indigo-400 font-black uppercase text-[10px] tracking-widest">Gemini Mortgage Analyst</h3>
               {loadingAdvice ? <div className="animate-pulse space-y-2"><div className="h-4 bg-white/5 rounded w-full"></div></div> : <p className="text-xl text-slate-200 italic font-medium leading-relaxed">{advice}</p>}
             </div>
-          </div>
+          </aside>
         </div>
 
         <div className="lg:col-span-5 space-y-6">
-          <div className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-xl space-y-8 sticky top-6">
-            <div className="text-center space-y-2">
-              <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Estimated Total Monthly</p>
-              <h3 className="text-6xl font-black text-indigo-600 tracking-tighter">${Math.round(stats.totalMonthly).toLocaleString()}</h3>
-            </div>
+          <section className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-xl space-y-8 sticky top-6">
+            <header className="text-center space-y-2">
+              <h2 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Estimated Total Monthly</h2>
+              <p className="text-6xl font-black text-indigo-600 tracking-tighter">${Math.round(stats.totalMonthly).toLocaleString()}</p>
+            </header>
             <div className="h-64 w-full relative">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -140,41 +141,68 @@ const MortgageCalculator: React.FC = () => {
                 </PieChart>
               </ResponsiveContainer>
             </div>
-          </div>
+          </section>
         </div>
       </div>
 
+      {/* SEO ENHANCED KNOWLEDGE BASE */}
       <section className="mt-20 pt-16 border-t border-slate-200 space-y-16">
-        <header className="max-w-3xl">
-          <h3 className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em] mb-4">PITI & PMI LOGIC</h3>
-          <h2 className="text-4xl font-black text-slate-900 leading-tight">Institutional <span className="text-indigo-600">Accuracy</span> Standards</h2>
-          <p className="text-slate-500 mt-4 text-lg font-medium leading-relaxed">
-            Buying a home is the largest purchase most people will ever make. This calculator provides absolute clarity by including <strong>PITI</strong> (Principal, Interest, Taxes, and Insurance) plus <strong>PMI</strong>.
+        <header className="max-w-4xl">
+          <h3 className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.3em] mb-4">Strategic Home Finance Framework</h3>
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tighter">Understanding the <span className="text-indigo-600">PITI Breakdown</span></h2>
+          <p className="text-slate-500 mt-6 text-xl font-medium leading-relaxed max-w-3xl">
+            A standard mortgage involves more than just principal and interest. Lenders look at your <strong>Debt-to-Income (DTI)</strong> based on your all-in housing costs.
           </p>
         </header>
 
         <div className="grid md:grid-cols-3 gap-12">
-          <div className="space-y-4">
-            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">PMI Logic</h4>
-            <p className="text-sm text-slate-500 leading-relaxed font-medium">
-              Private Mortgage Insurance (PMI) is automatically added if your <strong>Loan-to-Value (LTV)</strong> ratio is above 80%. This mimics the risk-mitigation requirements of conventional lenders.
-            </p>
-          </div>
-          <div className="space-y-4">
-            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Tax & Insurance</h4>
-            <p className="text-sm text-slate-500 leading-relaxed font-medium">
-              Property taxes are calculated as a percentage of the <strong>Home Value</strong>, not the loan amount. Monthly insurance is added as a flat escrow estimate to provide a realistic "All-in" payment.
-            </p>
-          </div>
-          <div className="space-y-4">
-            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Verification Audit</h4>
-            <p className="text-sm text-slate-500 leading-relaxed font-medium">
-              We use 12-period annual compounding with monthly payments. This matches the <strong>Truth in Lending Act (TILA)</strong> disclosure standards required in United States mortgage origination.
-            </p>
+          <section className="space-y-6 group">
+             <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-6 transition-transform shadow-sm">🏦</div>
+             <h3 className="text-2xl font-black text-slate-900 leading-tight">PMI & LTV Logic <br/>Benchmarks</h3>
+             <p className="text-slate-500 text-sm leading-relaxed font-medium">
+               Private Mortgage Insurance (PMI) is usually required if your <strong>Loan-to-Value (LTV)</strong> ratio is greater than 80% (less than a 20% down payment). PMI serves as risk mitigation for the lender and typically costs between 0.5% and 1.5% of the annual loan balance.
+             </p>
+          </section>
+          <section className="space-y-6 group">
+             <div className="w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-6 transition-transform shadow-xl">⚖️</div>
+             <h3 className="text-2xl font-black text-slate-900 leading-tight">Escrow, Tax & <br/>Insurance Triage</h3>
+             <p className="text-slate-500 text-sm leading-relaxed font-medium">
+               Property taxes vary wildly by state and county. QuantCurb models this as a percentage of the home value. Combined with hazard insurance, these "escrowed" items can increase your monthly commitment by 20% to 30% over the base loan payment.
+             </p>
+          </section>
+          <section className="space-y-6 group">
+             <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-6 transition-transform shadow-sm">📑</div>
+             <h3 className="text-2xl font-black text-slate-900 leading-tight">Truth in Lending <br/>Compliance</h3>
+             <p className="text-slate-500 text-sm leading-relaxed font-medium">
+               We utilize the standard reducing balance amortization formula, aligning with the <strong>Truth in Lending Act (TILA)</strong> standards used by institutional banks. This ensures that the interest and principal splits are mathematically accurate for US-based mortgages.
+             </p>
+          </section>
+        </div>
+
+        <div className="bg-slate-50 p-12 rounded-[3.5rem] border border-slate-100">
+          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-8 text-center">Institutional Mortgage FAQs</h4>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-3">
+              <p className="text-base font-black text-indigo-600">How is the DTI front-end ratio calculated?</p>
+              <p className="text-sm text-slate-600 font-medium leading-relaxed">The front-end ratio is your total PITI divided by your gross monthly income. Most conventional lenders look for a ratio below 28% to qualify for prime interest rates.</p>
+            </div>
+            <div className="space-y-3">
+              <p className="text-base font-black text-indigo-600">When should I drop PMI on my current mortgage?</p>
+              <p className="text-sm text-slate-600 font-medium leading-relaxed">Under the Homeowners Protection Act, you can request PMI cancellation when your LTV reaches 80% of the original value. Lenders are legally required to terminate it automatically at 78% LTV.</p>
+            </div>
           </div>
         </div>
       </section>
-    </div>
+
+      <footer className="text-center pt-16 border-t border-slate-100 flex flex-col items-center gap-6">
+        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.5em]">QuantCurb Home Finance Hub v4.0 • PITI Amortization Engine</p>
+        <div className="flex flex-wrap justify-center gap-3">
+           {["Mortgage Interest Rates", "PITI Breakdown", "LTV Thresholds", "PMI Cost Analysis", "Loan Amortization Table", "Escrow Forecasting"].map(tag => (
+             <span key={tag} className="px-5 py-2 bg-white text-slate-500 rounded-xl text-[9px] font-black uppercase tracking-widest border border-slate-100">{tag}</span>
+           ))}
+        </div>
+      </footer>
+    </article>
   );
 };
 

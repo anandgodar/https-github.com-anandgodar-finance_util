@@ -1,14 +1,41 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid, AreaChart, Area } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
 
-const STATE_TAX_DATA: Record<string, { name: string; rate: number; stdDeduction: number }> = {
-  AL: { name: 'Alabama', rate: 0.05, stdDeduction: 2500 },
+interface TaxBracket {
+  limit: number | null;
+  rate: number;
+}
+
+interface StateData {
+  name: string;
+  rate: number; // Fallback or flat rate
+  stdDeduction: number;
+  brackets?: TaxBracket[];
+}
+
+const STATE_TAX_DATA: Record<string, StateData> = {
+  AL: { name: 'Alabama', rate: 0.05, stdDeduction: 2500, brackets: [{ limit: 500, rate: 0.02 }, { limit: 3000, rate: 0.04 }, { limit: null, rate: 0.05 }] },
   AK: { name: 'Alaska', rate: 0.00, stdDeduction: 0 },
-  AZ: { name: 'Arizona', rate: 0.025, stdDeduction: 13850 },
+  AZ: { name: 'Arizona', rate: 0.025, stdDeduction: 14600 },
   AR: { name: 'Arkansas', rate: 0.044, stdDeduction: 2200 },
-  CA: { name: 'California', rate: 0.093, stdDeduction: 5363 },
+  CA: { 
+    name: 'California', 
+    rate: 0.093, 
+    stdDeduction: 5363,
+    brackets: [
+      { limit: 10412, rate: 0.01 },
+      { limit: 24684, rate: 0.02 },
+      { limit: 38959, rate: 0.04 },
+      { limit: 54081, rate: 0.06 },
+      { limit: 68350, rate: 0.08 },
+      { limit: 349137, rate: 0.093 },
+      { limit: 418961, rate: 0.103 },
+      { limit: 698271, rate: 0.113 },
+      { limit: null, rate: 0.123 }
+    ]
+  },
   CO: { name: 'Colorado', rate: 0.044, stdDeduction: 14600 },
   CT: { name: 'Connecticut', rate: 0.055, stdDeduction: 15000 },
   DE: { name: 'Delaware', rate: 0.066, stdDeduction: 3250 },
@@ -35,7 +62,22 @@ const STATE_TAX_DATA: Record<string, { name: string; rate: number; stdDeduction:
   NH: { name: 'New Hampshire', rate: 0.00, stdDeduction: 0 },
   NJ: { name: 'New Jersey', rate: 0.0637, stdDeduction: 1000 },
   NM: { name: 'New Mexico', rate: 0.059, stdDeduction: 14600 },
-  NY: { name: 'New York', rate: 0.065, stdDeduction: 8000 },
+  NY: { 
+    name: 'New York', 
+    rate: 0.065, 
+    stdDeduction: 8000,
+    brackets: [
+      { limit: 8500, rate: 0.04 },
+      { limit: 11700, rate: 0.045 },
+      { limit: 13900, rate: 0.0525 },
+      { limit: 21400, rate: 0.0585 },
+      { limit: 80650, rate: 0.0625 },
+      { limit: 215400, rate: 0.0685 },
+      { limit: 1077550, rate: 0.0965 },
+      { limit: 5000000, rate: 0.103 },
+      { limit: null, rate: 0.109 }
+    ]
+  },
   NC: { name: 'North Carolina', rate: 0.045, stdDeduction: 12750 },
   ND: { name: 'North Dakota', rate: 0.029, stdDeduction: 0 },
   OH: { name: 'Ohio', rate: 0.035, stdDeduction: 0 },
@@ -57,166 +99,468 @@ const STATE_TAX_DATA: Record<string, { name: string; rate: number; stdDeduction:
   DC: { name: 'Dist. of Columbia', rate: 0.085, stdDeduction: 14600 },
 };
 
+const calculateProgressiveTax = (taxableIncome: number, brackets: TaxBracket[]): number => {
+  let tax = 0;
+  let prevLimit = 0;
+  for (const bracket of brackets) {
+    const limit = bracket.limit ?? Infinity;
+    if (taxableIncome > prevLimit) {
+      const taxableInBracket = Math.min(taxableIncome, limit) - prevLimit;
+      tax += taxableInBracket * bracket.rate;
+      prevLimit = limit;
+    } else {
+      break;
+    }
+  }
+  return tax;
+};
+
 const SalaryCalculator: React.FC = () => {
   const [annualGross, setAnnualGross] = useState<number>(125000);
   const [bonus, setBonus] = useState<number>(15000);
   const [stateCode, setStateCode] = useState<string>('CA');
-  const [contrib401k, setContrib401k] = useState<number>(12000);
+  const [contrib401kPercent, setContrib401kPercent] = useState<number>(10);
   const [healthInsurance, setHealthInsurance] = useState<number>(3600);
 
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
 
+  const stateInfo = useMemo(() => STATE_TAX_DATA[stateCode] || STATE_TAX_DATA['TX'], [stateCode]);
+
   const stats = useMemo(() => {
     const totalGross = annualGross + bonus;
-    const taxableGross = Math.max(0, totalGross - contrib401k - healthInsurance);
+    const contrib401kAmount = (annualGross * contrib401kPercent) / 100;
+    const taxableGross = Math.max(0, totalGross - contrib401kAmount - healthInsurance);
     
-    // Simple federal tax bracket approximation for 2024
+    // 2024 Federal Tax Approximation (Single Filer Simplified Brackets)
     let fedTax = 0;
-    if (taxableGross > 609350) fedTax = (taxableGross - 609350) * 0.37 + 174238;
-    else if (taxableGross > 243725) fedTax = (taxableGross - 243725) * 0.35 + 46226;
-    else if (taxableGross > 191950) fedTax = (taxableGross - 191950) * 0.32 + 37101;
-    else if (taxableGross > 100525) fedTax = (taxableGross - 100525) * 0.24 + 15213;
-    else if (taxableGross > 47150) fedTax = (taxableGross - 47150) * 0.22 + 5406;
-    else fedTax = taxableGross * 0.12;
+    const fedBrackets = [
+      { limit: 11600, rate: 0.10 },
+      { limit: 47150, rate: 0.12 },
+      { limit: 100525, rate: 0.22 },
+      { limit: 191950, rate: 0.24 },
+      { limit: 243725, rate: 0.32 },
+      { limit: 609350, rate: 0.35 },
+      { limit: null, rate: 0.37 }
+    ];
+    fedTax = calculateProgressiveTax(taxableGross, fedBrackets);
 
-    const fica = Math.min(totalGross, 168600) * 0.062 + totalGross * 0.0145; // Social Security (capped) + Medicare
-    const stateInfo = STATE_TAX_DATA[stateCode] || STATE_TAX_DATA['TX'];
+    const fica = Math.min(totalGross, 168600) * 0.062 + totalGross * 0.0145;
+    
     const stateTaxable = Math.max(0, taxableGross - stateInfo.stdDeduction);
-    const stateTax = stateTaxable * stateInfo.rate;
+    let stateTax = 0;
+    if (stateInfo.brackets) {
+      stateTax = calculateProgressiveTax(stateTaxable, stateInfo.brackets);
+    } else {
+      stateTax = stateTaxable * stateInfo.rate;
+    }
     
     const totalTax = fedTax + fica + stateTax;
-    const net = totalGross - totalTax - contrib401k - healthInsurance;
+    const net = totalGross - totalTax - contrib401kAmount - healthInsurance;
     
     return {
       totalGross,
+      taxableGross,
       net,
       monthlyNet: net / 12,
+      biWeeklyNet: net / 26,
       fedTax,
       fica,
       stateTax,
       totalTax,
-      effectiveRate: (totalTax / totalGross) * 100,
-      deductions: contrib401k + healthInsurance
+      effectiveRate: totalGross > 0 ? (totalTax / totalGross) * 100 : 0,
+      deductions: contrib401kAmount + healthInsurance,
+      contrib401kAmount,
+      stateTaxable
     };
-  }, [annualGross, bonus, stateCode, contrib401k, healthInsurance]);
+  }, [annualGross, bonus, stateInfo, contrib401kPercent, healthInsurance]);
+
+  // Marginal Rate Visualization Data
+  const bracketVisualData = useMemo(() => {
+    if (!stateInfo.brackets) return [];
+    let prev = 0;
+    return stateInfo.brackets.map((b, i) => {
+      const isCurrent = stats.stateTaxable > prev && stats.stateTaxable <= (b.limit ?? Infinity);
+      const label = b.limit ? `$${(b.limit / 1000).toFixed(0)}k` : 'Max';
+      const range = b.limit ? `${(prev / 1000).toFixed(0)}k - ${(b.limit / 1000).toFixed(0)}k` : `>${(prev / 1000).toFixed(0)}k`;
+      const res = {
+        name: label,
+        rate: b.rate * 100,
+        range,
+        isActive: stats.stateTaxable > prev,
+        isCurrent: isCurrent
+      };
+      prev = b.limit ?? Infinity;
+      return res;
+    });
+  }, [stateInfo.brackets, stats.stateTaxable]);
 
   const chartData = [
     { name: 'Take Home', value: stats.net, color: '#4f46e5' },
     { name: 'Federal Tax', value: stats.fedTax, color: '#f43f5e' },
     { name: 'FICA', value: stats.fica, color: '#fbbf24' },
     { name: 'State Tax', value: stats.stateTax, color: '#10b981' },
-    { name: 'Pre-tax Savings', value: stats.deductions, color: '#94a3b8' },
+    { name: '401k / Benefits', value: stats.deductions, color: '#94a3b8' },
+  ];
+
+  const cascadeData = [
+    { name: 'Gross', value: stats.totalGross },
+    { name: 'Taxable', value: stats.taxableGross },
+    { name: 'Net Pay', value: stats.net }
   ];
 
   const fetchAdvice = async () => {
     setLoadingAdvice(true);
-    const msg = await getFinancialAdvice(stats, 'After-Tax Compensation & Tax Strategy');
+    const msg = await getFinancialAdvice(stats, 'After-Tax Compensation & Deduction Strategy');
     setAdvice(msg || '');
     setLoadingAdvice(false);
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => fetchAdvice(), 2000);
+    const timer = setTimeout(() => fetchAdvice(), 2500);
     return () => clearTimeout(timer);
-  }, [annualGross, stateCode]);
+  }, [annualGross, stateCode, contrib401kPercent]);
 
   return (
-    <div className="max-w-7xl mx-auto space-y-10 animate-in fade-in duration-500 pb-24">
-      <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-        <div>
-          <h2 className="text-3xl font-black text-slate-900">Salary <span className="text-indigo-600">Estimator</span></h2>
-          <p className="text-slate-500 mt-2 max-w-lg font-medium">Precision take-home pay logic covering all 50 US states for 2024-2025.</p>
+    <article className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-500 pb-24">
+      <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 bg-white p-12 rounded-[4.5rem] border border-slate-100 shadow-sm relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-[100px] -mr-32 -mt-32"></div>
+        <div className="relative z-10 flex-1">
+          <div className="flex items-center gap-3 mb-4">
+             <span className="px-4 py-1.5 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg shadow-indigo-100">Tax Intelligence</span>
+             <span className="text-slate-400 font-bold text-[10px] uppercase tracking-widest">2024 Filer Standard</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight">Salary <span className="text-indigo-600">Estimator</span></h1>
+          <p className="text-slate-500 mt-2 max-w-lg font-medium text-lg leading-relaxed">Precision modeling of your take-home pay across 50 States. Audit the impact of 401(k) tax-shields and local nexus tax rates.</p>
         </div>
-        <div className="bg-slate-900 px-8 py-5 rounded-[2.5rem] shadow-2xl text-white">
-           <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 mb-1">Effective Tax Rate</p>
-           <p className="text-3xl font-black tracking-tighter">{stats.effectiveRate.toFixed(1)}%</p>
+        <div className="bg-slate-900 px-12 py-10 rounded-[3.5rem] text-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center min-w-[320px] border border-slate-800">
+           <div className="relative z-10 text-center">
+             <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-400 mb-2">Effective Tax Burden</h2>
+             <p className="text-6xl font-black tracking-tighter">{stats.effectiveRate.toFixed(1)}%</p>
+             <p className="text-[9px] font-black text-slate-500 uppercase mt-1 tracking-widest">Global Aggregate Rate</p>
+           </div>
+           <div className="absolute inset-0 opacity-5 flex items-center justify-center pointer-events-none">
+              <span className="text-[10rem] font-black select-none uppercase">Tax</span>
+           </div>
         </div>
       </header>
 
       <div className="grid lg:grid-cols-12 gap-10">
-        <div className="lg:col-span-4 space-y-6">
-          <section className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-8">
-            <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest border-b pb-4">Compensation</h3>
-            <div className="space-y-6">
-              <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase mb-3 tracking-widest">Base Annual ($)</label>
-                <input type="number" value={annualGross} onChange={e => setAnnualGross(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-xl text-slate-700" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">Bonus ($)</label>
-                  <input type="number" value={bonus} onChange={e => setBonus(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
+        {/* Left Input Console */}
+        <div className="lg:col-span-5 space-y-8">
+          <section className="bg-white p-10 rounded-[3.5rem] border border-slate-100 shadow-sm space-y-10">
+            <header className="flex justify-between items-center border-b border-slate-50 pb-6">
+               <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest">Earnings Console</h3>
+               <span className="text-[10px] font-black text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full uppercase">Step 1</span>
+            </header>
+            
+            <div className="space-y-10">
+              <div className="space-y-4">
+                <div className="flex justify-between items-end px-2">
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Base Annual Salary ($)</label>
+                  <span className="text-2xl font-black text-slate-900">${annualGross.toLocaleString()}</span>
                 </div>
-                <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">State</label>
-                  <select value={stateCode} onChange={e => setStateCode(e.target.value)} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700 appearance-none custom-scrollbar">
-                    {Object.keys(STATE_TAX_DATA).sort().map(code => <option key={code} value={code}>{code} - {STATE_TAX_DATA[code].name}</option>)}
-                  </select>
+                <input 
+                  type="range" 
+                  min="20000" 
+                  max="500000" 
+                  step="5000" 
+                  value={annualGross} 
+                  onChange={e => setAnnualGross(Number(e.target.value))} 
+                  className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-indigo-600" 
+                />
+                <input 
+                  type="number" 
+                  value={annualGross} 
+                  onChange={e => setAnnualGross(Number(e.target.value))} 
+                  className="w-full p-5 bg-slate-50 border-none rounded-[1.5rem] font-black text-2xl text-slate-700 shadow-inner focus:ring-2 focus:ring-indigo-500 transition-all" 
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-3">
+                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Annual Bonus ($)</label>
+                   <input 
+                     type="number" 
+                     value={bonus} 
+                     onChange={e => setBonus(Number(e.target.value))} 
+                     className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-lg text-slate-700 shadow-inner" 
+                   />
+                </div>
+                <div className="space-y-3">
+                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Tax State (Nexus)</label>
+                   <select 
+                     value={stateCode} 
+                     onChange={e => setStateCode(e.target.value)} 
+                     className="w-full p-4 bg-slate-900 text-white border-none rounded-2xl font-black text-sm appearance-none shadow-xl cursor-pointer"
+                   >
+                     {Object.keys(STATE_TAX_DATA).sort().map(code => (
+                       <option key={code} value={code}>{code} - {STATE_TAX_DATA[code].name}</option>
+                     ))}
+                   </select>
                 </div>
               </div>
             </div>
           </section>
 
-          <section className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-6">
-            <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest border-b pb-4">Pre-Tax Deductions</h3>
-            <div className="space-y-6">
-              <div>
-                <label className="block text-[10px] font-black text-indigo-500 uppercase mb-1">401(k) / Retirement Contribution</label>
-                <input type="number" value={contrib401k} onChange={e => setContrib401k(Number(e.target.value))} className="w-full p-4 bg-indigo-50 border-none rounded-2xl font-black text-indigo-700" />
+          <section className="bg-white p-10 rounded-[3.5rem] border border-indigo-100 shadow-sm space-y-10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-6 text-6xl opacity-5 font-black select-none pointer-events-none">🛡️</div>
+            <header className="flex justify-between items-center border-b border-slate-50 pb-6 relative z-10">
+               <h3 className="text-sm font-black text-indigo-600 uppercase tracking-widest">Deduction Strategy</h3>
+               <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full uppercase">Step 2</span>
+            </header>
+
+            <div className="space-y-10 relative z-10">
+              <div className="space-y-4">
+                <div className="flex justify-between items-end px-2">
+                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest">401(k) Contribution (%)</label>
+                  <span className="text-2xl font-black text-indigo-600">{contrib401kPercent}%</span>
+                </div>
+                <input 
+                  type="range" 
+                  min="0" 
+                  max="30" 
+                  step="1" 
+                  value={contrib401kPercent} 
+                  onChange={e => setContrib401kPercent(Number(e.target.value))} 
+                  className="w-full h-2 bg-indigo-50 rounded-lg appearance-none cursor-pointer accent-indigo-600" 
+                />
+                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter px-1">Effective Reduction: -${Math.round(stats.contrib401kAmount).toLocaleString()} Annual</p>
               </div>
-              <div>
-                <label className="block text-[10px] font-black text-indigo-500 uppercase mb-1">Health & Medical Premiums</label>
-                <input type="number" value={healthInsurance} onChange={e => setHealthInsurance(Number(e.target.value))} className="w-full p-4 bg-indigo-50 border-none rounded-2xl font-black text-indigo-700" />
+
+              <div className="space-y-4">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">Medical / Health Premiums ($/yr)</label>
+                <input 
+                  type="number" 
+                  value={healthInsurance} 
+                  onChange={e => setHealthInsurance(Number(e.target.value))} 
+                  className="w-full p-5 bg-slate-50 border-none rounded-[1.5rem] font-black text-2xl text-slate-700 shadow-inner focus:ring-2 focus:ring-indigo-500 transition-all" 
+                />
               </div>
             </div>
           </section>
         </div>
 
-        <div className="lg:col-span-8 space-y-8">
+        {/* Right Results Dashboard */}
+        <div className="lg:col-span-7 space-y-8">
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-indigo-600 p-8 rounded-[3rem] text-white shadow-xl flex flex-col justify-center">
-               <p className="text-white/60 text-[10px] font-black uppercase tracking-widest mb-1">Monthly Net Pay</p>
-               <h3 className="text-4xl font-black text-white">${Math.round(stats.monthlyNet).toLocaleString()}</h3>
+            <div className="bg-indigo-600 p-8 rounded-[3rem] text-white shadow-xl flex flex-col justify-center text-center group hover:scale-105 transition-transform duration-500">
+               <p className="text-white/60 text-[9px] font-black uppercase tracking-widest mb-1">Monthly Net Pay</p>
+               <h3 className="text-4xl font-black text-white tracking-tighter">${Math.round(stats.monthlyNet).toLocaleString()}</h3>
+               <p className="text-[9px] font-black text-indigo-300 uppercase mt-2">After all taxes</p>
             </div>
-            <div className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-sm text-center flex flex-col justify-center">
-               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Annual Take Home</p>
-               <h4 className="text-3xl font-black text-slate-900">${Math.round(stats.net).toLocaleString()}</h4>
+            <div className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col justify-center text-center group hover:scale-105 transition-transform duration-500">
+               <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Bi-Weekly Paycheck</p>
+               <h4 className="text-3xl font-black text-slate-900 tracking-tighter">${Math.round(stats.biWeeklyNet).toLocaleString()}</h4>
+               <p className="text-[9px] font-black text-emerald-500 uppercase mt-2">26 Pay Periods</p>
             </div>
-            <div className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-sm text-center flex flex-col justify-center">
-               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Tax Owed</p>
-               <h4 className="text-3xl font-black text-rose-500">${Math.round(stats.totalTax).toLocaleString()}</h4>
+            <div className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col justify-center text-center group hover:scale-105 transition-transform duration-500">
+               <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Annual Take Home</p>
+               <h4 className="text-3xl font-black text-slate-900 tracking-tighter">${Math.round(stats.net).toLocaleString()}</h4>
+               <p className="text-[9px] font-black text-indigo-600 uppercase mt-2">Final Yield</p>
             </div>
           </div>
 
-          <div className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col md:flex-row items-center gap-12">
-             <div className="h-72 w-72 flex-shrink-0">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie data={chartData} cx="50%" cy="50%" innerRadius={75} outerRadius={95} paddingAngle={5} dataKey="value">
-                      {chartData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.color} />)}
-                    </Pie>
-                    <Tooltip />
-                    <Legend verticalAlign="bottom" align="center" iconType="circle" />
-                  </PieChart>
-                </ResponsiveContainer>
-             </div>
-             <div className="flex-1 space-y-6">
-                <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100">
-                  <h4 className="text-indigo-600 font-black uppercase text-[10px] tracking-widest mb-4 flex items-center gap-2">
-                    <span className="text-lg">🤖</span> Tax Optimization Insights
-                  </h4>
-                  {loadingAdvice ? (
-                    <div className="space-y-2 animate-pulse"><div className="h-4 bg-slate-200 rounded w-full"></div><div className="h-4 bg-slate-200 rounded w-2/3"></div></div>
-                  ) : (
-                    <p className="text-lg text-slate-700 italic font-medium leading-relaxed">{advice}</p>
-                  )}
-                </div>
+          <div className="bg-white p-10 rounded-[4rem] border border-slate-100 shadow-sm space-y-12">
+             <header className="flex justify-between items-end border-b border-slate-50 pb-6">
+               <div>
+                  <h3 className="text-xl font-black text-slate-900 tracking-tight">Allocation Breakdown</h3>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Institutional Revenue Capture Analysis</p>
+               </div>
+               <div className="flex gap-4">
+                  <div className="flex items-center gap-2"><div className="w-2.5 h-2.5 rounded-full bg-indigo-600"></div><span className="text-[9px] font-black text-slate-400 uppercase">Yield</span></div>
+                  <div className="flex items-center gap-2"><div className="w-2.5 h-2.5 rounded-full bg-rose-500"></div><span className="text-[9px] font-black text-slate-400 uppercase">Taxes</span></div>
+               </div>
+             </header>
+
+             <div className="flex flex-col md:flex-row items-center gap-12">
+               <div className="h-72 w-full md:w-1/2">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie 
+                        data={chartData} 
+                        cx="50%" 
+                        cy="50%" 
+                        innerRadius={80} 
+                        outerRadius={105} 
+                        paddingAngle={8} 
+                        dataKey="value"
+                        stroke="none"
+                      >
+                        {chartData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.color} />)}
+                      </Pie>
+                      <Tooltip 
+                        contentStyle={{ borderRadius: '24px', border: 'none', boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.1)' }} 
+                        itemStyle={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '10px' }}
+                      />
+                      <Legend verticalAlign="bottom" align="center" iconType="circle" wrapperStyle={{ paddingTop: '20px', fontSize: '10px', fontWeight: 900, textTransform: 'uppercase' }} />
+                    </PieChart>
+                  </ResponsiveContainer>
+               </div>
+               
+               <div className="w-full md:w-1/2 space-y-6">
+                  <div className="bg-slate-900 p-8 rounded-[2.5rem] shadow-xl space-y-6">
+                    <h4 className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.2em] text-center">Gross to Net Cascade ($k)</h4>
+                    <div className="h-44 w-full">
+                       <ResponsiveContainer width="100%" height="100%">
+                          <BarChart data={cascadeData} layout="vertical">
+                            <XAxis type="number" hide />
+                            <YAxis dataKey="name" type="category" stroke="#94a3b8" fontSize={9} fontWeight={900} width={60} axisLine={false} tickLine={false} />
+                            <Tooltip cursor={{fill: 'rgba(255,255,255,0.05)'}} contentStyle={{backgroundColor: '#0f172a', border: 'none', borderRadius: '12px'}} />
+                            <Bar dataKey="value" fill="#6366f1" radius={[0, 8, 8, 0]} barSize={25} />
+                          </BarChart>
+                       </ResponsiveContainer>
+                    </div>
+                  </div>
+               </div>
              </div>
           </div>
+
+          {/* PROGRESSIVE BRACKET VISUALIZATION */}
+          {stateInfo.brackets && (
+            <section className="bg-white p-10 rounded-[4rem] border border-slate-100 shadow-sm space-y-8 animate-in slide-in-from-bottom-5 duration-700">
+               <header className="flex justify-between items-end border-b border-slate-50 pb-6">
+                  <div>
+                    <h3 className="text-xl font-black text-slate-900 tracking-tight">{stateInfo.name} Marginal Tax Matrix</h3>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Marginal Rate Hierarchy & Active Nexus Bracket</p>
+                  </div>
+                  <span className="text-[10px] font-black text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full uppercase">Progressive Model</span>
+               </header>
+               
+               <div className="h-64 w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={bracketVisualData} margin={{ top: 20, right: 0, left: -20, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                      <XAxis dataKey="name" axisLine={false} tickLine={false} stroke="#94a3b8" fontSize={9} fontWeight={900} />
+                      <YAxis axisLine={false} tickLine={false} stroke="#94a3b8" fontSize={9} hide />
+                      <Tooltip 
+                        cursor={{ fill: '#f8fafc' }}
+                        content={({ active, payload }) => {
+                          if (active && payload && payload.length) {
+                            const data = payload[0].payload;
+                            return (
+                              <div className="bg-slate-900 text-white p-4 rounded-2xl shadow-2xl border border-slate-800 space-y-1">
+                                <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Bracket Range</p>
+                                <p className="text-sm font-black">{data.range}</p>
+                                <p className="text-xl font-black">{data.rate}% <span className="text-[10px] text-slate-500 font-bold uppercase">Rate</span></p>
+                                {data.isCurrent && <p className="text-[8px] font-black text-emerald-400 uppercase mt-2 flex items-center gap-1">● Current Margin</p>}
+                              </div>
+                            );
+                          }
+                          return null;
+                        }}
+                      />
+                      <Bar dataKey="rate" radius={[8, 8, 8, 8]} barSize={40}>
+                        {bracketVisualData.map((entry, index) => (
+                          <Cell 
+                            key={`cell-${index}`} 
+                            fill={entry.isCurrent ? '#4f46e5' : entry.isActive ? '#e2e8f0' : '#f1f5f9'}
+                            className="transition-all duration-500"
+                          />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+               </div>
+               
+               <div className="bg-slate-50 p-6 rounded-[2.5rem] flex flex-col md:flex-row justify-between items-center gap-6">
+                  <div className="space-y-1 text-center md:text-left">
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Calculated Nexus Tax</p>
+                    <p className="text-3xl font-black text-slate-900">${Math.round(stats.stateTax).toLocaleString()}</p>
+                  </div>
+                  <div className="flex-1 max-w-sm">
+                    <p className="text-[10px] text-slate-500 font-medium leading-relaxed text-center md:text-right">
+                      Your income spans <strong>{bracketVisualData.filter(b => b.isActive).length}</strong> state tax brackets. The <span className="text-indigo-600 font-black">highlighted bracket</span> represents your marginal rate on the next dollar earned.
+                    </p>
+                  </div>
+               </div>
+            </section>
+          )}
+
+          <aside className="bg-slate-900 p-12 rounded-[4rem] text-white flex items-start gap-10 shadow-2xl relative overflow-hidden group min-h-[300px] flex flex-col justify-center">
+             <div className="absolute top-0 right-0 p-10 text-8xl opacity-10 group-hover:scale-125 transition-transform pointer-events-none select-none">🏦</div>
+             <div className="relative z-10 space-y-6 w-full">
+                <div className="flex items-center gap-3">
+                  <h4 className="text-indigo-400 font-black uppercase text-[10px] tracking-[0.3em]">Tax Strategy Oracle</h4>
+                  <div className="h-px flex-1 bg-white/10"></div>
+                </div>
+                {loadingAdvice ? (
+                  <div className="space-y-3 animate-pulse">
+                    <div className="h-4 bg-white/10 rounded w-full"></div>
+                    <div className="h-4 bg-white/10 rounded w-4/5"></div>
+                    <div className="h-4 bg-white/10 rounded w-3/4"></div>
+                  </div>
+                ) : (
+                  <p className="text-2xl text-slate-200 italic font-medium leading-relaxed">{advice}</p>
+                )}
+             </div>
+             <div className="absolute -left-10 -bottom-10 text-[250px] font-black text-white/[0.02] pointer-events-none select-none tracking-tighter">ESTIMATE</div>
+          </aside>
         </div>
       </div>
-    </div>
+
+      {/* SEO ENHANCED KNOWLEDGE GRAPH SECTION */}
+      <section className="mt-20 pt-16 border-t border-slate-200 space-y-20">
+        <header className="max-w-4xl">
+          <h3 className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em] mb-4">Compensation Optimization Framework</h3>
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tighter">The QuantCurb <span className="text-indigo-600">Net Pay Protocol</span></h2>
+          <p className="text-slate-500 mt-6 text-xl font-medium leading-relaxed max-w-3xl">
+            We use a multi-stage tax cascade to model every dollar from gross receipt to net deposit. Understanding the spread between nominal salary and economic yield is critical for life planning.
+          </p>
+        </header>
+
+        <div className="grid md:grid-cols-3 gap-16">
+          <section className="space-y-6 group">
+            <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-6 transition-transform shadow-sm">📑</div>
+            <h4 className="text-2xl font-black text-slate-900 leading-tight tracking-tight uppercase">Tax Shield <br/>Economics</h4>
+            <p className="text-slate-500 text-base leading-relaxed font-medium">
+              401(k) and Health Insurance deductions are "Above-the-line." This means they reduce your <strong>Taxable Gross</strong> before federal and state rates are applied, effectively giving you a discount on your contributions equal to your marginal tax rate.
+            </p>
+          </section>
+          <section className="space-y-6 group">
+            <div className="w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-6 transition-transform shadow-xl">⚖️</div>
+            <h4 className="text-2xl font-black text-slate-900 leading-tight tracking-tight uppercase">Marginal vs <br/>Effective Triage</h4>
+            <p className="text-slate-500 text-base leading-relaxed font-medium">
+              Your <strong>Effective Rate</strong> is the actual percentage of gross pay you lose to taxes. Your <strong>Marginal Rate</strong> is the tax on your <em>next</em> dollar of income. High earners must focus on lowering their effective rate through strategic pre-tax deferrals.
+            </p>
+          </section>
+          <section className="space-y-6 group">
+            <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-6 transition-transform shadow-sm">🌎</div>
+            <h4 className="text-2xl font-black text-slate-900 leading-tight tracking-tight uppercase">State Nexus <br/>Audit Logic</h4>
+            <p className="text-slate-500 text-base leading-relaxed font-medium">
+              State income taxes vary from 0% (TX, FL, WA) to over 13% (CA high brackets). For remote workers, the choice of "Tax Home" can influence net take-home pay by tens of thousands of dollars annually, affecting your FIRE timeline and wealth accrual speed.
+            </p>
+          </section>
+        </div>
+
+        <div className="bg-indigo-50 p-12 rounded-[3.5rem] border border-indigo-100">
+           <h4 className="text-sm font-black text-indigo-900 uppercase tracking-widest mb-8 text-center">Filer Standard FAQs</h4>
+           <div className="grid md:grid-cols-2 gap-12">
+             <div className="space-y-3">
+               <p className="text-base font-black text-indigo-700">What is FICA and why is it constant?</p>
+               <p className="text-sm text-slate-600 font-medium leading-relaxed">FICA consists of Social Security (6.2%) and Medicare (1.45%). While Social Security has an income cap ($168,600 for 2024), Medicare tax applies to all earned income, making it a persistent drag on high earners.</p>
+             </div>
+             <div className="space-y-3">
+               <p className="text-base font-black text-indigo-700">How do pre-tax deductions lower my bill?</p>
+               <p className="text-sm text-slate-600 font-medium leading-relaxed">Pre-tax deductions like 401(k) and HSA contributions are subtracted from your gross income before taxes are calculated. If you're in the 24% bracket, a $1,000 contribution only reduces your take-home pay by $760.</p>
+             </div>
+           </div>
+        </div>
+      </section>
+
+      <footer className="text-center pt-12 border-t border-slate-100 flex flex-col items-center gap-6">
+        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.5em]">QuantCurb Compensation Intelligence v4.0 • After-Tax Modeling Protocol</p>
+        <div className="flex flex-wrap justify-center gap-4 max-w-4xl">
+           {[
+             'FICA Audit', 'Federal Bracket Triage', '401k Tax Shield', 'Effective Yield Modeling',
+             'Nexus Optimization', 'Marginal Rate Analysis', 'Deduction Cascade', 'State Nexus Standard',
+             'Paycheck Calculator', 'Net Pay Estimator', '2025 Tax Brackets'
+           ].map(tag => (
+             <span key={tag} className="text-[8px] font-black text-slate-400 bg-slate-50 px-3 py-1 rounded-full border border-slate-100 uppercase tracking-widest">{tag}</span>
+           ))}
+        </div>
+      </footer>
+    </article>
   );
 };
 

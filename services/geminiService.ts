@@ -43,11 +43,11 @@ async function withRetry<T>(fn: () => Promise<T>, retries = 3, delay = 2000): Pr
 export const getMarketAnalysis = async () => {
   return withRetry(async () => {
     const ai = getAIClient();
-    if (!ai) return { marketSummary: "AI intelligence unavailable.", keyInsights: [], ecosystemApps: [] };
+    if (!ai) return { marketSummary: "AI intelligence unavailable.", keyInsights: [], ecosystemApps: [], comparisonMetrics: [] };
     
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: 'Perform a comprehensive analysis of the 2024-2025 financial market. Specifically, categorize the digital ecosystem into: 1. Institutional Pro Apps (Bloomberg, Refinitiv, Aladdin, etc.) and 2. Retail/Day-to-day Apps (Robinhood, Wise, Venmo, Rocket Money, etc.). Explain how professionals use data vs how everyday people use convenience. Provide a market summary, 3 key insights, and 10 apps with descriptions.',
+      contents: 'Perform a comprehensive analysis of the 2024-2025 financial market tool ecosystem. Categorize the digital stack into: 1. Institutional Pro Tools (Bloomberg, FactSet, Aladdin) and 2. Retail/Day-to-day Apps (Robinhood, Wise, Rocket Money). Focus specifically on the "Daily Workflow". Compare them on 4 metrics: Data Latency, Terminal Cost, Data Depth, and UX Simplicity. Provide a market summary, 3 key insights, 10 app profiles, and a comparison table data structure.',
       config: {
         responseMimeType: "application/json",
         responseSchema: {
@@ -66,6 +66,19 @@ export const getMarketAnalysis = async () => {
                 required: ['title', 'content', 'sentiment']
               }
             },
+            comparisonMetrics: {
+              type: Type.ARRAY,
+              items: {
+                type: Type.OBJECT,
+                properties: {
+                  metric: { type: Type.STRING },
+                  proScore: { type: Type.NUMBER },
+                  retailScore: { type: Type.NUMBER },
+                  label: { type: Type.STRING }
+                },
+                required: ['metric', 'proScore', 'retailScore', 'label']
+              }
+            },
             ecosystemApps: {
               type: Type.ARRAY,
               items: {
@@ -80,13 +93,13 @@ export const getMarketAnalysis = async () => {
               }
             }
           },
-          required: ['marketSummary', 'keyInsights', 'ecosystemApps']
+          required: ['marketSummary', 'keyInsights', 'ecosystemApps', 'comparisonMetrics']
         }
       }
     });
 
     return parseJSONSafely(response.text);
-  }) || { marketSummary: "AI engine is busy.", keyInsights: [], ecosystemApps: [] };
+  }) || { marketSummary: "AI engine is busy.", keyInsights: [], ecosystemApps: [], comparisonMetrics: [] };
 };
 
 export const getFinancialAdvice = async (data: any, context: string) => {
