@@ -46,18 +46,18 @@ export const getMarketAnalysis = async () => {
     
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: `Analyze the modern finance market ecosystem. Contrast the tools used by 'Professional Institutional Traders' vs 'Normal People/Retail Users'. 
-      Include:
-      1. Institutional Stack: Bloomberg Terminal, FactSet, Aladdin, Refinitiv Eikon, Charles River.
-      2. Retail/Day-to-Day Apps: Robinhood, Wise (TransferWise), Revolut, Rocket Money, YNAB, Vanguard, and Coinbase.
+      contents: `Perform a deep analysis of the current financial market ecosystem (2024-2025). 
+      Contrast the "Digital Stack" used by Institutional Market Professionals (Banks, Hedge Funds) versus "Normal People" (Retail Users).
       
-      Compare them on:
-      - Execution Speed (Latency)
-      - Annual Subscription Cost
-      - Data Granularity/Depth
-      - User Interface Accessibility
+      Specifically list and profile:
+      1. Institutional/Professional Apps: Bloomberg Terminal, Refinitiv Eikon, FactSet, Aladdin by BlackRock, Charles River.
+      2. Retail/Consumer Apps: Robinhood, Wise, Revolut, Vanguard, Rocket Money, YNAB.
       
-      Provide a summary of the 'Data Divide', 3 specific insights on market democratization, and profiles for 10 key apps.`,
+      Provide:
+      - A high-level market summary of the "Data Democratization" trend.
+      - 3 key insights comparing the professional vs retail experience.
+      - 10 app profiles with user types and core value propositions.
+      - 4 comparison metrics (Data Depth, Execution Speed, Cost, UX Simplicity) scored 1-100 for both groups.`,
       config: {
         responseMimeType: "application/json",
         responseSchema: {

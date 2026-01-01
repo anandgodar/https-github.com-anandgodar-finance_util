@@ -29,23 +29,54 @@
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; -webkit-font-smoothing: antialiased; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        /* Simple styling for the fallback content to ensure it doesn't flash awkwardly */
+        .seo-fallback { display: none; }
     </style>
 <script type="importmap">
 {
   "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "recharts": "https://esm.sh/recharts@^3.6.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "vite": "https://esm.sh/vite@^7.3.0"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <!-- Static Fallback for Search Engines (SEO) -->
+        <div class="seo-fallback" style="display: block; padding: 20px; font-family: sans-serif; color: #333; max-width: 800px; margin: auto;">
+            <header>
+                <h1>QuantCurb - Institutional Financial Intelligence & Wealth Modeling</h1>
+                <p>QuantCurb brings banking-grade precision to retail financial planning. Audit your mortgage, simulate early retirement, and model tax-optimized salary outcomes with 100% algorithmic accuracy.</p>
+            </header>
+            <main>
+                <section>
+                    <h2>Core Quantitative Utilities</h2>
+                    <ul>
+                        <li><strong>Loan EMI Pro:</strong> Institutional-grade reducing balance loan calculator for Home, Car, and Personal debt payoff optimization.</li>
+                        <li><strong>Mortgage Intelligence:</strong> Advanced real estate financing tool with PITI logic, property tax, insurance, and PMI stress testing.</li>
+                        <li><strong>Salary Tax Estimator:</strong> Precision after-tax income modeling for all 50 US states including 401k tax-shield and FICA analysis.</li>
+                        <li><strong>Wealth SIP Projector:</strong> Visualize compound interest growth trajectories with inflation-adjusted investment modeling.</li>
+                        <li><strong>FIRE Planner:</strong> Calculate your "Freedom Number" using the 4% safe withdrawal rule and crossover math.</li>
+                        <li><strong>AI Market Pulse:</strong> Professional market analysis comparing institutional platforms (Bloomberg, FactSet) with retail apps (Robinhood, Wise).</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Institutional Standards</h2>
+                    <p>Our platform uses Reducing Balance Amortization, Mark-to-Market asset analysis, and 2024-2025 US Tax Code compliance to ensure financial modeling sovereignty.</p>
+                </section>
+            </main>
+            <footer>
+                <p>&copy; 2025 QuantCurb Intelligence. Financial modelling, not advice.</p>
+            </footer>
+        </div>
+    </div>
+    <!-- Vite will handle the JS injection and versioning -->
     <script type="module" src="/index.tsx"></script>
 </body>
 </html>
