@@ -19,7 +19,7 @@ const parseJSONSafely = (text: string | undefined) => {
 };
 
 const getAIClient = () => {
-  const apiKey = process.env.API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
   if (!apiKey) return null;
   return new GoogleGenAI({ apiKey });
 };
