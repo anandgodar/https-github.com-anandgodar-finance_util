@@ -65,7 +65,7 @@ const RetirementOptimizer: React.FC = () => {
 
     // Tax implications at retirement (assuming same bracket)
     const taxOn401kWithdrawal = fv401k * (taxBracket / 100);
-    const after Tax401k = fv401k - taxOn401kWithdrawal;
+    const afterTax401k = fv401k - taxOn401kWithdrawal;
     const taxOnIRAWithdrawal = fvIRA * (taxBracket / 100);
     const afterTaxIRA = fvIRA - taxOnIRAWithdrawal;
     const afterTaxRoth = fvRoth; // Tax-free withdrawals
@@ -77,8 +77,8 @@ const RetirementOptimizer: React.FC = () => {
         taxSavingsNow: taxSavings401k,
         netCost: netCost401k,
         futureValue: fv401k,
-        afterTaxValue: after Tax401k,
-        effectiveReturn: ((after Tax401k / (netCost401k * yearsToRetirement)) ** (1 / yearsToRetirement) - 1) * 100
+        afterTaxValue: afterTax401k,
+        effectiveReturn: ((afterTax401k / (netCost401k * yearsToRetirement)) ** (1 / yearsToRetirement) - 1) * 100
       },
       traditionalIRA: {
         annualContribution: iraContribution,
