@@ -21,6 +21,7 @@ import NetWorthTracker from './components/NetWorthTracker';
 import EmergencyFundTool from './components/EmergencyFundTool';
 import RetirementOptimizer from './components/RetirementOptimizer';
 import FAQ from './components/FAQ';
+import Methodology from './components/Methodology';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Sitemap from './components/Sitemap';
 import AboutUs from './components/AboutUs';
@@ -119,10 +120,15 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     desc: "Compare 401(k), Traditional IRA, and Roth IRA tax strategies. Maximize employer match, minimize lifetime tax burden with AI-driven optimization for 2025 contribution limits.",
     keywords: "retirement optimizer, 401k calculator, roth ira calculator, traditional ira, retirement tax strategy"
   },
-  [ToolType.FAQ]: { 
-    title: "Financial Knowledge Base - Expert Logic & Strategy FAQ", 
+  [ToolType.FAQ]: {
+    title: "Financial Knowledge Base - Expert Logic & Strategy FAQ",
     desc: "Deep technical documentation on the mathematical frameworks and strategies powering QuantCurb's institutional finance suite.",
     keywords: "finance faq, amortization math, ppi calculation, fire logic"
+  },
+  [ToolType.METHODOLOGY]: {
+    title: "Methodology & Assumptions - Data Sources & Tax Logic Transparency",
+    desc: "Complete disclosure of all calculation methodologies, tax brackets, data sources, and assumptions. YMYL compliance for 2025-2026 tax year with IRS-sourced brackets.",
+    keywords: "financial methodology, tax calculations, ymyl compliance, data sources, calculation assumptions"
   },
   [ToolType.PRIVACY]: { 
     title: "Privacy Policy - Financial Data Sovereignty & Algorithm Standards", 
@@ -300,6 +306,7 @@ const App: React.FC = () => {
       case ToolType.EXCEL_MODELER: return <ExcelModeler />;
       case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
+      case ToolType.METHODOLOGY: return <Methodology />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;
       case ToolType.SITEMAP: return <Sitemap onSelectTool={setActiveTool} />;
       case ToolType.ABOUT: return <AboutUs />;

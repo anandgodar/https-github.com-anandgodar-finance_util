@@ -19,6 +19,7 @@ export enum ToolType {
   EXCEL_MODELER = 'excel-power-modeler',
   RETIREMENT_OPTIMIZER = 'retirement-account-optimizer',
   FAQ = 'financial-knowledge-base',
+  METHODOLOGY = 'methodology-assumptions',
   PRIVACY = 'privacy-policy',
   SITEMAP = 'sitemap',
   ABOUT = 'about-quantcurb',

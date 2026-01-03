@@ -38,6 +38,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
           <h5 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Company</h5>
           <ul className="space-y-4">
             <li><button onClick={() => setActiveTool(ToolType.ABOUT)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">About QuantCurb</button></li>
+            <li><button onClick={() => setActiveTool(ToolType.METHODOLOGY)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Methodology</button></li>
             <li><button onClick={() => setActiveTool(ToolType.CONTACT)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Contact Support</button></li>
             <li><button onClick={() => setActiveTool(ToolType.DISCLAIMER)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors text-rose-500">Legal Disclaimer</button></li>
             <li><button onClick={() => setActiveTool(ToolType.PRIVACY)} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">Privacy Policy</button></li>
