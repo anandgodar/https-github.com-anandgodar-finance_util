@@ -8,9 +8,20 @@ const MarketInsights: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getMarketAnalysis();
-      setData(result);
-      setLoading(false);
+      try {
+        const result = await getMarketAnalysis();
+        setData(result);
+      } catch (error) {
+        console.error('Failed to fetch market analysis:', error);
+        setData({
+          marketSummary: "Unable to load market analysis. Please refresh the page.",
+          keyInsights: [],
+          ecosystemApps: [],
+          comparisonMetrics: []
+        });
+      } finally {
+        setLoading(false);
+      }
     };
     fetchData();
   }, []);

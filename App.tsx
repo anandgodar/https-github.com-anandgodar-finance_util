@@ -19,6 +19,7 @@ import InvestmentAcademy from './components/InvestmentAcademy';
 import ExcelModeler from './components/ExcelModeler';
 import NetWorthTracker from './components/NetWorthTracker';
 import EmergencyFundTool from './components/EmergencyFundTool';
+import RetirementOptimizer from './components/RetirementOptimizer';
 import FAQ from './components/FAQ';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Sitemap from './components/Sitemap';
@@ -108,10 +109,15 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     desc: "Institutional knowledge on fund selection. Master risk-reward profiles, expense ratios, and asset allocation strategies for long-term alpha.",
     keywords: "investment funds, index funds vs etfs, reit strategy, fund selection"
   },
-  [ToolType.EXCEL_MODELER]: { 
-    title: "Excel Power Modeler - Professional DCF & Valuation Engine", 
+  [ToolType.EXCEL_MODELER]: {
+    title: "Excel Power Modeler - Professional DCF & Valuation Engine",
     desc: "Run institutional 5-stage DCF models without spreadsheets. Analyze enterprise value, terminal growth, and WACC sensitivity matrices.",
     keywords: "dcf calculator, business valuation, wacc matrix, enterprise value"
+  },
+  [ToolType.RETIREMENT_OPTIMIZER]: {
+    title: "Retirement Account Optimizer - 401k vs IRA vs Roth Strategy",
+    desc: "Compare 401(k), Traditional IRA, and Roth IRA tax strategies. Maximize employer match, minimize lifetime tax burden with AI-driven optimization for 2025 contribution limits.",
+    keywords: "retirement optimizer, 401k calculator, roth ira calculator, traditional ira, retirement tax strategy"
   },
   [ToolType.FAQ]: { 
     title: "Financial Knowledge Base - Expert Logic & Strategy FAQ", 
@@ -212,6 +218,37 @@ const App: React.FC = () => {
 
       scriptTag.text = JSON.stringify(schemaData);
       document.head.appendChild(scriptTag);
+
+      // Add BreadcrumbList Schema
+      const breadcrumbId = 'quantcurb-breadcrumb';
+      let breadcrumbScript = document.getElementById(breadcrumbId) as HTMLScriptElement;
+      if (breadcrumbScript) breadcrumbScript.remove();
+
+      breadcrumbScript = document.createElement('script');
+      breadcrumbScript.id = breadcrumbId;
+      breadcrumbScript.type = 'application/ld+json';
+
+      const breadcrumbData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://quantcurb.com/"
+          },
+          ...(activeTool !== ToolType.DASHBOARD ? [{
+            "@type": "ListItem",
+            "position": 2,
+            "name": meta.title.split(' - ')[0] || meta.title,
+            "item": `https://quantcurb.com/${activeTool}`
+          }] : [])
+        ]
+      };
+
+      breadcrumbScript.text = JSON.stringify(breadcrumbData);
+      document.head.appendChild(breadcrumbScript);
     }
 
     try {
@@ -261,6 +298,7 @@ const App: React.FC = () => {
       case ToolType.FREELANCE_PROFIT: return <FreelanceHub />;
       case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
       case ToolType.EXCEL_MODELER: return <ExcelModeler />;
+      case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;
       case ToolType.SITEMAP: return <Sitemap onSelectTool={setActiveTool} />;

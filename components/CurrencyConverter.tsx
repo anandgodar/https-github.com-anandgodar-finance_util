@@ -80,9 +80,15 @@ const CurrencyConverter: React.FC = () => {
 
   const fetchAdvice = async () => {
     setLoadingAdvice(true);
-    const msg = await getFinancialAdvice({ base, target, rate: data.rate, amount }, 'Forex Market Sentiment, Volatility & Hedging');
-    setAdvice(msg || '');
-    setLoadingAdvice(false);
+    try {
+      const msg = await getFinancialAdvice({ base, target, rate: data.rate, amount }, 'Forex Market Sentiment, Volatility & Hedging');
+      setAdvice(msg || '');
+    } catch (error) {
+      console.error('Failed to fetch forex advice:', error);
+      setAdvice('Unable to load market intelligence at this time. Please try again later.');
+    } finally {
+      setLoadingAdvice(false);
+    }
   };
 
   useEffect(() => {
