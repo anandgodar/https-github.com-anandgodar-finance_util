@@ -17,6 +17,7 @@ export enum ToolType {
   FREELANCE_PROFIT = 'freelance-profit-hub',
   INVESTMENT_ACADEMY = 'investment-funds-academy',
   EXCEL_MODELER = 'excel-power-modeler',
+  RETIREMENT_OPTIMIZER = 'retirement-account-optimizer',
   FAQ = 'financial-knowledge-base',
   PRIVACY = 'privacy-policy',
   SITEMAP = 'sitemap',

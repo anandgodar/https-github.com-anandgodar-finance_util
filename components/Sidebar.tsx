@@ -16,6 +16,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool }) => {
     { id: ToolType.EMI_CALC, label: 'Loan EMI Pro', icon: '💳' },
     { id: ToolType.MORTGAGE_CALC, label: 'Mortgage Pro', icon: '🏡' },
     { id: ToolType.FIRE_PLANNER, label: 'FIRE Planner', icon: '🔥' },
+    { id: ToolType.RETIREMENT_OPTIMIZER, label: 'Retirement Optimizer', icon: '🎯' },
     { id: ToolType.SALARY_CALC, label: 'Salary Estimator', icon: '💰' },
     { id: ToolType.FREELANCE_PROFIT, label: 'Freelance Hub', icon: '💼' },
     { id: ToolType.INVESTMENT_CALC, label: 'Wealth Projector', icon: '📈' },
