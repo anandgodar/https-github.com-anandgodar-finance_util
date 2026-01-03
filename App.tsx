@@ -212,6 +212,37 @@ const App: React.FC = () => {
 
       scriptTag.text = JSON.stringify(schemaData);
       document.head.appendChild(scriptTag);
+
+      // Add BreadcrumbList Schema
+      const breadcrumbId = 'quantcurb-breadcrumb';
+      let breadcrumbScript = document.getElementById(breadcrumbId) as HTMLScriptElement;
+      if (breadcrumbScript) breadcrumbScript.remove();
+
+      breadcrumbScript = document.createElement('script');
+      breadcrumbScript.id = breadcrumbId;
+      breadcrumbScript.type = 'application/ld+json';
+
+      const breadcrumbData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://quantcurb.com/"
+          },
+          ...(activeTool !== ToolType.DASHBOARD ? [{
+            "@type": "ListItem",
+            "position": 2,
+            "name": meta.title.split(' - ')[0] || meta.title,
+            "item": `https://quantcurb.com/${activeTool}`
+          }] : [])
+        ]
+      };
+
+      breadcrumbScript.text = JSON.stringify(breadcrumbData);
+      document.head.appendChild(breadcrumbScript);
     }
 
     try {
