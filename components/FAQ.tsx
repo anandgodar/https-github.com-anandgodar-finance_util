@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ToolType } from '../types';
 
 interface FAQProps {
@@ -117,6 +117,43 @@ const FAQ: React.FC<FAQProps> = ({ onSelectTool }) => {
       ]
     }
   ];
+
+  // Add FAQPage structured data schema
+  useEffect(() => {
+    const schemaId = 'faq-page-schema';
+    let schemaScript = document.getElementById(schemaId) as HTMLScriptElement;
+    if (schemaScript) schemaScript.remove();
+
+    schemaScript = document.createElement('script');
+    schemaScript.id = schemaId;
+    schemaScript.type = 'application/ld+json';
+
+    // Flatten all questions from all sections for schema
+    const allQuestions = sections.flatMap(section =>
+      section.questions.map(q => ({
+        "@type": "Question",
+        "name": q.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": q.a
+        }
+      }))
+    );
+
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": allQuestions
+    };
+
+    schemaScript.text = JSON.stringify(faqSchema);
+    document.head.appendChild(schemaScript);
+
+    return () => {
+      const script = document.getElementById(schemaId);
+      if (script) script.remove();
+    };
+  }, []);
 
   return (
     <div className="max-w-6xl mx-auto space-y-16 animate-in fade-in slide-in-from-bottom-6 duration-700 pb-24">
