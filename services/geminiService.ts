@@ -6,12 +6,13 @@ const parseJSONSafely = (text: string | undefined) => {
   try {
     return JSON.parse(cleaned);
   } catch (e) {
+    console.error("Initial JSON parsing failure:", e);
     const jsonMatch = cleaned.match(/```json\s*([\s\S]*?)\s*```/) || cleaned.match(/{[\s\S]*}/);
     if (jsonMatch) {
       try {
         return JSON.parse(jsonMatch[1] || jsonMatch[0]);
       } catch (innerE) {
-        console.error("Inner JSON parsing failure:", innerE);
+        console.error("Fallback JSON parsing failure:", innerE);
       }
     }
     return {};
