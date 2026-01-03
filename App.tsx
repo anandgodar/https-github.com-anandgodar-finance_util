@@ -50,10 +50,10 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     desc: "Optimize your loan repayments. Use our reducing balance EMI calculator to model principal prepayments and shave years off your debt tenure.",
     keywords: "emi calculator, loan repayment, interest savings, prepayment calculator"
   },
-  [ToolType.MORTGAGE_CALC]: { 
-    title: "Mortgage Calculator with PITI, PMI & LTV Audit Pro", 
-    desc: "Professional home financing tool. Model Principal, Interest, Taxes, and Insurance (PITI) with automated PMI logic and LTV stress testing.",
-    keywords: "mortgage calculator, piti calculator, pmi calculator, home loan audit"
+  [ToolType.MORTGAGE_CALC]: {
+    title: "Mortgage Calculator - State-Specific PITI, PMI, HOA & Property Tax Estimator",
+    desc: "Professional home financing tool with all 50 US states property tax rates. Model Principal, Interest, Taxes, Insurance, HOA with automated PMI logic and LTV stress testing for 2026.",
+    keywords: "mortgage calculator, piti calculator, state property tax rates, hoa calculator, pmi calculator, home loan estimator, mortgage by state"
   },
   [ToolType.SALARY_CALC]: { 
     title: "Take Home Pay Calculator - 2025 Salary Tax & 401k Estimator", 
