@@ -266,11 +266,11 @@ const FreelanceHub: React.FC = () => {
           </p>
         </div>
         <div className="space-y-4">
-          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Calculated Logic</h4>
+          <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Related Tools</h4>
           <ul className="text-sm text-slate-500 space-y-2 font-medium">
-            <li>• SE Tax: Calculated at 15.3% of Net Profit</li>
-            <li>• Nexus: State-specific progressive rate logic</li>
-            <li>• Op-Ex: Fully deductible from gross revenue</li>
+            <li>• <strong>Quarterly Tax Calculator</strong> - Plan your 1040-ES estimated payments</li>
+            <li>• <strong>ACA Health Subsidy</strong> - Calculate healthcare costs for self-employed</li>
+            <li>• <strong>Child Tax Credit</strong> - Reduce tax liability with family credits</li>
           </ul>
         </div>
       </section>

@@ -398,8 +398,8 @@ const ChildTaxCreditCalculator: React.FC = () => {
         <div className="space-y-4">
           <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Related Tools</h4>
           <ul className="text-sm text-slate-500 space-y-2 font-medium">
-            <li>• <strong>EITC Calculator</strong> - Earned Income Tax Credit (coming soon)</li>
-            <li>• <strong>Salary Tax Estimator</strong> - Calculate take-home pay</li>
+            <li>• <strong>Quarterly Tax Calculator</strong> - Plan estimated tax payments</li>
+            <li>• <strong>ACA Health Subsidy</strong> - Healthcare costs for families</li>
             <li>• <strong>529 College Savings</strong> - Plan for education costs (coming soon)</li>
           </ul>
         </div>
