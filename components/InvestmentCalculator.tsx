@@ -8,6 +8,8 @@ const InvestmentCalculator: React.FC = () => {
   const [monthlyContribution, setMonthlyContribution] = useState<number>(500);
   const [expectedReturn, setExpectedReturn] = useState<number>(10);
   const [years, setYears] = useState<number>(20);
+  const [inflationRate, setInflationRate] = useState<number>(2.5);
+  const [showInflationAdjusted, setShowInflationAdjusted] = useState<boolean>(true);
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
 

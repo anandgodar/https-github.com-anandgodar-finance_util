@@ -18,6 +18,7 @@ export enum ToolType {
   INVESTMENT_ACADEMY = 'investment-funds-academy',
   EXCEL_MODELER = 'excel-power-modeler',
   RETIREMENT_OPTIMIZER = 'retirement-account-optimizer',
+  CHILD_TAX_CREDIT = 'child-tax-credit-calculator',
   FAQ = 'financial-knowledge-base',
   METHODOLOGY = 'methodology-assumptions',
   PRIVACY = 'privacy-policy',
