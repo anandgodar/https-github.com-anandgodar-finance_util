@@ -20,6 +20,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool }) => {
     { id: ToolType.SALARY_CALC, label: 'Salary Estimator', icon: '💰' },
     { id: ToolType.CHILD_TAX_CREDIT, label: 'Child Tax Credit', icon: '👨‍👩‍👧‍👦' },
     { id: ToolType.QUARTERLY_TAX, label: 'Quarterly Tax', icon: '📅' },
+    { id: ToolType.ACA_SUBSIDY, label: 'ACA Health Subsidy', icon: '🏥' },
     { id: ToolType.FREELANCE_PROFIT, label: 'Freelance Hub', icon: '💼' },
     { id: ToolType.INVESTMENT_CALC, label: 'Wealth Projector', icon: '📈' },
     { id: ToolType.LOAN_COMPARE, label: 'Loan Intel', icon: '⚖️' },

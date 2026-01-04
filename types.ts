@@ -20,6 +20,7 @@ export enum ToolType {
   RETIREMENT_OPTIMIZER = 'retirement-account-optimizer',
   CHILD_TAX_CREDIT = 'child-tax-credit-calculator',
   QUARTERLY_TAX = 'quarterly-estimated-tax-calculator',
+  ACA_SUBSIDY = 'aca-health-insurance-subsidy-calculator',
   FAQ = 'financial-knowledge-base',
   METHODOLOGY = 'methodology-assumptions',
   PRIVACY = 'privacy-policy',
