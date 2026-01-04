@@ -20,6 +20,9 @@ import ExcelModeler from './components/ExcelModeler';
 import NetWorthTracker from './components/NetWorthTracker';
 import EmergencyFundTool from './components/EmergencyFundTool';
 import RetirementOptimizer from './components/RetirementOptimizer';
+import ChildTaxCreditCalculator from './components/ChildTaxCreditCalculator';
+import QuarterlyTaxCalculator from './components/QuarterlyTaxCalculator';
+import ACASubsidyCalculator from './components/ACASubsidyCalculator';
 import FAQ from './components/FAQ';
 import Methodology from './components/Methodology';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -119,6 +122,21 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Retirement Account Optimizer - 401k vs IRA vs Roth Strategy",
     desc: "Compare 401(k), Traditional IRA, and Roth IRA tax strategies. Maximize employer match, minimize lifetime tax burden with AI-driven optimization for 2025 contribution limits.",
     keywords: "retirement optimizer, 401k calculator, roth ira calculator, traditional ira, retirement tax strategy"
+  },
+  [ToolType.CHILD_TAX_CREDIT]: {
+    title: "Child Tax Credit Calculator 2025 - CTC & ACTC Estimator",
+    desc: "Calculate your 2025 Child Tax Credit (CTC) and Additional Child Tax Credit (ACTC). Estimate up to $2,000 per child with phase-out analysis, refundable credit calculations, and EITC eligibility check for single parents and families.",
+    keywords: "child tax credit calculator 2025, ctc calculator, child tax credit phase out, additional child tax credit, actc calculator, child tax credit single parent, eitc eligibility, tax credit for children"
+  },
+  [ToolType.QUARTERLY_TAX]: {
+    title: "Quarterly Estimated Tax Calculator 2025 - IRS Form 1040-ES",
+    desc: "Calculate quarterly estimated tax payments for freelancers, self-employed, and 1099 contractors. Avoid IRS underpayment penalties with safe harbor rules (100%/110% prior year, 90% current year). Plan Q1-Q4 payments with self-employment tax calculations.",
+    keywords: "quarterly tax calculator, 1040-es calculator, estimated tax payments, quarterly taxes, self employment tax calculator, freelance tax calculator, how much to pay quarterly taxes, estimated tax due dates 2025, safe harbor tax rule"
+  },
+  [ToolType.ACA_SUBSIDY]: {
+    title: "ACA Health Insurance Subsidy Calculator 2025 - Obamacare Premium Tax Credit",
+    desc: "Calculate ACA marketplace subsidies and Premium Tax Credits for 2025. Determine Medicaid eligibility, cost-sharing reductions, and monthly healthcare costs for freelancers, self-employed, and families. Check coverage gap status and Federal Poverty Level percentage.",
+    keywords: "aca subsidy calculator, obamacare subsidy calculator, premium tax credit calculator, healthcare subsidy calculator, aca marketplace calculator, health insurance subsidy, medicaid eligibility calculator, federal poverty level calculator, cost sharing reduction, healthcare.gov calculator"
   },
   [ToolType.FAQ]: {
     title: "Financial Knowledge Base - Expert Logic & Strategy FAQ",
@@ -305,6 +323,9 @@ const App: React.FC = () => {
       case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
       case ToolType.EXCEL_MODELER: return <ExcelModeler />;
       case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer />;
+      case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator />;
+      case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator />;
+      case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.METHODOLOGY: return <Methodology />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;
