@@ -21,6 +21,7 @@ import NetWorthTracker from './components/NetWorthTracker';
 import EmergencyFundTool from './components/EmergencyFundTool';
 import RetirementOptimizer from './components/RetirementOptimizer';
 import ChildTaxCreditCalculator from './components/ChildTaxCreditCalculator';
+import QuarterlyTaxCalculator from './components/QuarterlyTaxCalculator';
 import FAQ from './components/FAQ';
 import Methodology from './components/Methodology';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -125,6 +126,11 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Child Tax Credit Calculator 2025 - CTC & ACTC Estimator",
     desc: "Calculate your 2025 Child Tax Credit (CTC) and Additional Child Tax Credit (ACTC). Estimate up to $2,000 per child with phase-out analysis, refundable credit calculations, and EITC eligibility check for single parents and families.",
     keywords: "child tax credit calculator 2025, ctc calculator, child tax credit phase out, additional child tax credit, actc calculator, child tax credit single parent, eitc eligibility, tax credit for children"
+  },
+  [ToolType.QUARTERLY_TAX]: {
+    title: "Quarterly Estimated Tax Calculator 2025 - IRS Form 1040-ES",
+    desc: "Calculate quarterly estimated tax payments for freelancers, self-employed, and 1099 contractors. Avoid IRS underpayment penalties with safe harbor rules (100%/110% prior year, 90% current year). Plan Q1-Q4 payments with self-employment tax calculations.",
+    keywords: "quarterly tax calculator, 1040-es calculator, estimated tax payments, quarterly taxes, self employment tax calculator, freelance tax calculator, how much to pay quarterly taxes, estimated tax due dates 2025, safe harbor tax rule"
   },
   [ToolType.FAQ]: {
     title: "Financial Knowledge Base - Expert Logic & Strategy FAQ",
@@ -312,6 +318,7 @@ const App: React.FC = () => {
       case ToolType.EXCEL_MODELER: return <ExcelModeler />;
       case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer />;
       case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator />;
+      case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.METHODOLOGY: return <Methodology />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;

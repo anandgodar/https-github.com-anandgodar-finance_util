@@ -19,6 +19,7 @@ export enum ToolType {
   EXCEL_MODELER = 'excel-power-modeler',
   RETIREMENT_OPTIMIZER = 'retirement-account-optimizer',
   CHILD_TAX_CREDIT = 'child-tax-credit-calculator',
+  QUARTERLY_TAX = 'quarterly-estimated-tax-calculator',
   FAQ = 'financial-knowledge-base',
   METHODOLOGY = 'methodology-assumptions',
   PRIVACY = 'privacy-policy',
