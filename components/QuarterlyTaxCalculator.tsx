@@ -628,8 +628,8 @@ const QuarterlyTaxCalculator: React.FC = () => {
         <div className="space-y-4">
           <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">Related Tools</h4>
           <ul className="text-sm text-slate-500 space-y-2 font-medium">
-            <li>• <strong>Freelance Profit Hub</strong> - Calculate net income after taxes</li>
-            <li>• <strong>Salary Tax Estimator</strong> - Compare W-2 vs 1099</li>
+            <li>• <strong>Freelance Profit Hub</strong> - Calculate net income for MAGI</li>
+            <li>• <strong>ACA Health Subsidy</strong> - Lower MAGI for healthcare subsidies</li>
             <li>• <strong>Child Tax Credit</strong> - Reduce tax liability with credits</li>
           </ul>
         </div>
