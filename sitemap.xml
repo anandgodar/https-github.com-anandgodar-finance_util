@@ -75,6 +75,26 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- High-CPC SEO Content & Guides -->
+  <url>
+    <loc>https://quantcurb.com/blog/child-tax-credit-2025-guide</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://quantcurb.com/blog/aca-health-insurance-freelancers-2025</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://quantcurb.com/blog/quarterly-estimated-taxes-complete-guide</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <!-- Intelligence & Insights -->
   <url>
     <loc>https://quantcurb.com/market-intelligence-pulse</loc>
