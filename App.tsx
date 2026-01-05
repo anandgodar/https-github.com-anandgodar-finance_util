@@ -23,6 +23,9 @@ import RetirementOptimizer from './components/RetirementOptimizer';
 import ChildTaxCreditCalculator from './components/ChildTaxCreditCalculator';
 import QuarterlyTaxCalculator from './components/QuarterlyTaxCalculator';
 import ACASubsidyCalculator from './components/ACASubsidyCalculator';
+import ChildTaxCreditGuide2025 from './components/blog/ChildTaxCreditGuide2025';
+import ACAHealthInsuranceFreelancers2025 from './components/blog/ACAHealthInsuranceFreelancers2025';
+import QuarterlyEstimatedTaxesGuide2025 from './components/blog/QuarterlyEstimatedTaxesGuide2025';
 import FAQ from './components/FAQ';
 import Methodology from './components/Methodology';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -137,6 +140,21 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "ACA Health Insurance Subsidy Calculator 2025 - Obamacare Premium Tax Credit",
     desc: "Calculate ACA marketplace subsidies and Premium Tax Credits for 2025. Determine Medicaid eligibility, cost-sharing reductions, and monthly healthcare costs for freelancers, self-employed, and families. Check coverage gap status and Federal Poverty Level percentage.",
     keywords: "aca subsidy calculator, obamacare subsidy calculator, premium tax credit calculator, healthcare subsidy calculator, aca marketplace calculator, health insurance subsidy, medicaid eligibility calculator, federal poverty level calculator, cost sharing reduction, healthcare.gov calculator"
+  },
+  [ToolType.BLOG_CTC_2025]: {
+    title: "Child Tax Credit 2025: Complete Guide to CTC, ACTC, and Tax Savings",
+    desc: "Comprehensive guide to the 2025 Child Tax Credit. Learn eligibility requirements, income phase-outs, how to claim the $2,000 CTC and $1,700 refundable ACTC, and strategies to maximize your tax savings. Essential reading for parents, single filers, and families.",
+    keywords: "child tax credit 2025, ctc guide, additional child tax credit, actc guide, child tax credit eligibility, child tax credit phase out 2025, how to claim child tax credit, tax credit for children, child tax credit income limits, schedule 8812"
+  },
+  [ToolType.BLOG_ACA_FREELANCERS]: {
+    title: "ACA Health Insurance for Freelancers 2025: Complete Guide to Subsidies & Marketplace",
+    desc: "Ultimate guide to ACA health insurance for freelancers, self-employed, and contractors in 2025. Master Premium Tax Credits, Medicaid expansion, coverage gaps, enrollment deadlines, and cost optimization strategies. Save thousands on healthcare with our expert freelancer insurance guide.",
+    keywords: "health insurance for freelancers, self employed health insurance, aca marketplace freelancers, health insurance for contractors, freelance health insurance 2025, premium tax credit, medicaid expansion, healthcare.gov for self employed, health insurance tax deduction, cost sharing reduction"
+  },
+  [ToolType.BLOG_QUARTERLY_TAX]: {
+    title: "Quarterly Estimated Taxes 2025: Complete Guide for Freelancers & Self-Employed",
+    desc: "Master quarterly estimated taxes with our comprehensive 2025 guide. Learn safe harbor rules (100%/110% prior year, 90% current year), payment deadlines, penalty avoidance, IRS Form 1040-ES, and exact calculations for freelancers, contractors, and gig workers. Essential tax planning for the self-employed.",
+    keywords: "quarterly estimated taxes, quarterly tax guide, 1040-es guide, estimated tax payments, safe harbor rules, quarterly tax deadlines 2025, self employment tax guide, freelance quarterly taxes, how to pay quarterly taxes, estimated tax penalty, quarterly tax calculator guide"
   },
   [ToolType.FAQ]: {
     title: "Financial Knowledge Base - Expert Logic & Strategy FAQ",
@@ -326,6 +344,9 @@ const App: React.FC = () => {
       case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator />;
       case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator />;
       case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator />;
+      case ToolType.BLOG_CTC_2025: return <ChildTaxCreditGuide2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_ACA_FREELANCERS: return <ACAHealthInsuranceFreelancers2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_QUARTERLY_TAX: return <QuarterlyEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.METHODOLOGY: return <Methodology />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;
