@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { ToolType } from '../../types';
-import { ArrowLeft, Calculator, TrendingUp, PiggyBank, DollarSign, FileText, CheckCircle2, AlertCircle, Calendar } from 'lucide-react';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -92,14 +91,13 @@ const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
         onClick={() => onNavigate?.(ToolType.DASHBOARD)}
         className="flex items-center gap-2 text-indigo-600 hover:text-indigo-800 mb-6 transition-colors"
       >
-        <ArrowLeft className="w-4 h-4" />
-        Back to Dashboard
+        ← Back to Dashboard
       </button>
 
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <PiggyBank className="w-10 h-10" />
+          <div className="text-4xl">🐷</div>
           <h1 className="text-4xl font-bold">SEP-IRA vs Solo 401(k) 2025</h1>
         </div>
         <p className="text-xl text-indigo-50 mb-4">
@@ -107,16 +105,13 @@ const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </p>
         <div className="flex flex-wrap gap-4 text-sm">
           <div className="flex items-center gap-2">
-            <DollarSign className="w-4 h-4" />
-            <span>$69k Max Contributions</span>
+            <span>💰 $69k Max Contributions</span>
           </div>
           <div className="flex items-center gap-2">
-            <TrendingUp className="w-4 h-4" />
-            <span>Tax-Deferred Growth</span>
+            <span>📈 Tax-Deferred Growth</span>
           </div>
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4" />
-            <span>2025 Limits & Deadlines</span>
+            <span>📅 2025 Limits & Deadlines</span>
           </div>
         </div>
       </div>
@@ -124,7 +119,7 @@ const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
       {/* Table of Contents */}
       <div className="bg-gray-50 rounded-xl p-6 mb-8">
         <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-          <FileText className="w-5 h-5 text-indigo-600" />
+          <span className="text-indigo-600">📋</span>
           Table of Contents
         </h2>
         <div className="grid md:grid-cols-2 gap-2">
@@ -376,7 +371,7 @@ const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             <div className="bg-green-50 rounded-lg p-4 border border-green-200">
               <h4 className="font-semibold mb-2 flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                <span className="text-green-600">✅</span>
                 Pros
               </h4>
               <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
@@ -390,7 +385,7 @@ const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
             </div>
             <div className="bg-red-50 rounded-lg p-4 border border-red-200">
               <h4 className="font-semibold mb-2 flex items-center gap-2">
-                <AlertCircle className="w-5 h-5 text-red-600" />
+                <span className="text-red-600">⚠️</span>
                 Cons
               </h4>
               <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
@@ -493,7 +488,7 @@ const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             <div className="bg-green-50 rounded-lg p-4 border border-green-200">
               <h4 className="font-semibold mb-2 flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                <span className="text-green-600">✅</span>
                 Pros
               </h4>
               <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
@@ -507,7 +502,7 @@ const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
             </div>
             <div className="bg-red-50 rounded-lg p-4 border border-red-200">
               <h4 className="font-semibold mb-2 flex items-center gap-2">
-                <AlertCircle className="w-5 h-5 text-red-600" />
+                <span className="text-red-600">⚠️</span>
                 Cons
               </h4>
               <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
@@ -828,30 +823,30 @@ const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <h2 className="text-2xl font-bold mb-6 text-gray-900">Related Financial Tools</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <button
-              onClick={() => onNavigate?.(ToolType.RETIREMENT_CALCULATOR)}
+              onClick={() => onNavigate?.(ToolType.RETIREMENT_OPTIMIZER)}
               className="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
             >
-              <PiggyBank className="w-8 h-8 text-indigo-600 mb-3 group-hover:scale-110 transition-transform" />
+              <div className="text-3xl mb-3">🐷</div>
               <h3 className="font-semibold text-lg mb-2 text-gray-900">Retirement Calculator</h3>
               <p className="text-sm text-gray-600 mb-3">Calculate how much you need to save and project your retirement nest egg</p>
               <span className="text-indigo-600 text-sm font-medium group-hover:underline">Plan Retirement →</span>
             </button>
 
             <button
-              onClick={() => onNavigate?.(ToolType.SE_TAX_CALCULATOR)}
+              onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}
               className="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
             >
-              <Calculator className="w-8 h-8 text-purple-600 mb-3 group-hover:scale-110 transition-transform" />
+              <div className="text-3xl mb-3">📊</div>
               <h3 className="font-semibold text-lg mb-2 text-gray-900">Self-Employment Tax Calculator</h3>
               <p className="text-sm text-gray-600 mb-3">Calculate your 15.3% SE tax and see how retirement contributions reduce it</p>
               <span className="text-purple-600 text-sm font-medium group-hover:underline">Calculate SE Tax →</span>
             </button>
 
             <button
-              onClick={() => onNavigate?.(ToolType.QUARTERLY_TAX_CALCULATOR)}
+              onClick={() => onNavigate?.(ToolType.QUARTERLY_TAX)}
               className="bg-gradient-to-br from-orange-50 to-red-50 border border-orange-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
             >
-              <TrendingUp className="w-8 h-8 text-orange-600 mb-3 group-hover:scale-110 transition-transform" />
+              <div className="text-3xl mb-3">📈</div>
               <h3 className="font-semibold text-lg mb-2 text-gray-900">Quarterly Tax Calculator</h3>
               <p className="text-sm text-gray-600 mb-3">Estimate quarterly payments after retirement contributions</p>
               <span className="text-orange-600 text-sm font-medium group-hover:underline">Estimate Payments →</span>
@@ -868,8 +863,8 @@ const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
               className="bg-white border border-gray-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <TrendingUp className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0 text-3xl">
+                  📈
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg mb-2 text-gray-900 group-hover:text-indigo-600 transition-colors">
@@ -885,8 +880,8 @@ const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
               className="bg-white border border-gray-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <DollarSign className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0 text-3xl">
+                  💰
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg mb-2 text-gray-900 group-hover:text-green-600 transition-colors">
@@ -930,13 +925,13 @@ const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <button
-              onClick={() => onNavigate?.(ToolType.RETIREMENT_CALCULATOR)}
+              onClick={() => onNavigate?.(ToolType.RETIREMENT_OPTIMIZER)}
               className="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
             >
               Calculate Retirement Savings
             </button>
             <button
-              onClick={() => onNavigate?.(ToolType.SE_TAX_CALCULATOR)}
+              onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}
               className="bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-800 transition-colors"
             >
               Calculate SE Tax Impact

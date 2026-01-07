@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { ToolType } from '../../types';
-import { ArrowLeft, Calculator, Home, DollarSign, FileText, CheckCircle2, XCircle, AlertTriangle, Ruler } from 'lucide-react';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -92,14 +91,13 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
         onClick={() => onNavigate?.(ToolType.DASHBOARD)}
         className="flex items-center gap-2 text-yellow-600 hover:text-yellow-800 mb-6 transition-colors"
       >
-        <ArrowLeft className="w-4 h-4" />
-        Back to Dashboard
+        ← Back to Dashboard
       </button>
 
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-2xl p-8 mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <Home className="w-10 h-10" />
+          <div className="text-4xl">🏠</div>
           <h1 className="text-4xl font-bold">Home Office Deduction 2025</h1>
         </div>
         <p className="text-xl text-yellow-50 mb-4">
@@ -107,16 +105,13 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </p>
         <div className="flex flex-wrap gap-4 text-sm">
           <div className="flex items-center gap-2">
-            <Ruler className="w-4 h-4" />
-            <span>$5/Sq Ft Simplified Method</span>
+            <span>📏 $5/Sq Ft Simplified Method</span>
           </div>
           <div className="flex items-center gap-2">
-            <DollarSign className="w-4 h-4" />
-            <span>Actual Expense Method</span>
+            <span>💰 Actual Expense Method</span>
           </div>
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4" />
-            <span>Qualification Requirements</span>
+            <span>✅ Qualification Requirements</span>
           </div>
         </div>
       </div>
@@ -124,7 +119,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
       {/* Table of Contents */}
       <div className="bg-gray-50 rounded-xl p-6 mb-8">
         <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-          <FileText className="w-5 h-5 text-yellow-600" />
+          <span className="text-yellow-600">📋</span>
           Table of Contents
         </h2>
         <div className="grid md:grid-cols-2 gap-2">
@@ -247,7 +242,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             <div className="bg-green-50 rounded-lg p-4 border border-green-200">
               <h4 className="font-semibold mb-2 flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                <span className="text-green-600">✅</span>
                 Qualifies (Exclusive Use)
               </h4>
               <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
@@ -259,7 +254,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
             </div>
             <div className="bg-red-50 rounded-lg p-4 border border-red-200">
               <h4 className="font-semibold mb-2 flex items-center gap-2">
-                <XCircle className="w-5 h-5 text-red-600" />
+                <span className="text-red-600">❌</span>
                 Does NOT Qualify (Mixed Use)
               </h4>
               <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
@@ -697,7 +692,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <div className="space-y-4 mb-6">
             <div className="flex gap-3">
-              <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              <span className="text-green-600 text-xl flex-shrink-0 mt-1">✅</span>
               <div>
                 <h4 className="font-semibold mb-1">1. Measure and Diagram Your Office</h4>
                 <p className="text-sm text-gray-700">Measure your office square footage accurately (length × width). Create a simple floor plan showing the office location within your home. Take photos of the space from multiple angles. Update annually if you move offices.</p>
@@ -705,7 +700,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
             </div>
 
             <div className="flex gap-3">
-              <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              <span className="text-green-600 text-xl flex-shrink-0 mt-1">✅</span>
               <div>
                 <h4 className="font-semibold mb-1">2. Document Exclusive Use</h4>
                 <p className="text-sm text-gray-700">Take photos showing the space is used ONLY for business (desk, computer, filing cabinets—no TV, bed, or personal items). If you use a shared room, install a physical divider (curtain, screen, bookshelf) and document it.</p>
@@ -713,7 +708,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
             </div>
 
             <div className="flex gap-3">
-              <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              <span className="text-green-600 text-xl flex-shrink-0 mt-1">✅</span>
               <div>
                 <h4 className="font-semibold mb-1">3. Track All Home Expenses (Regular Method)</h4>
                 <p className="text-sm text-gray-700">Keep receipts/statements for: mortgage/rent, property tax, insurance, utilities, repairs, HOA fees. Use a spreadsheet to track monthly. Save 1098 (mortgage interest), property tax bills, insurance invoices.</p>
@@ -721,7 +716,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
             </div>
 
             <div className="flex gap-3">
-              <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              <span className="text-green-600 text-xl flex-shrink-0 mt-1">✅</span>
               <div>
                 <h4 className="font-semibold mb-1">4. Prove Principal Place of Business</h4>
                 <p className="text-sm text-gray-700">Document that you conduct business activities from home: client invoices with home address, contracts listing home office, business license/DBA showing home address, calendar showing work schedule from home.</p>
@@ -729,7 +724,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
             </div>
 
             <div className="flex gap-3">
-              <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              <span className="text-green-600 text-xl flex-shrink-0 mt-1">✅</span>
               <div>
                 <h4 className="font-semibold mb-1">5. Calculate Your Business Percentage</h4>
                 <p className="text-sm text-gray-700">For regular method: Office sq ft ÷ Total home sq ft = Business %. Document total home size (use property tax records, lease agreement, or measure entire home). Keep this calculation with your tax records.</p>
@@ -737,7 +732,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
             </div>
 
             <div className="flex gap-3">
-              <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              <span className="text-green-600 text-xl flex-shrink-0 mt-1">✅</span>
               <div>
                 <h4 className="font-semibold mb-1">6. File Correctly on Schedule C</h4>
                 <p className="text-sm text-gray-700">Simplified method: Report on Line 30 ("Expenses for business use of home"). Regular method: Complete Form 8829 ("Expenses for Business Use of Your Home") and attach to Schedule C. Software like TurboTax Self-Employed handles this automatically.</p>
@@ -773,30 +768,30 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <h2 className="text-2xl font-bold mb-6 text-gray-900">Related Financial Tools</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <button
-              onClick={() => onNavigate?.(ToolType.DEDUCTION_TRACKER)}
+              onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}
               className="bg-gradient-to-br from-green-50 to-teal-50 border border-green-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
             >
-              <FileText className="w-8 h-8 text-green-600 mb-3 group-hover:scale-110 transition-transform" />
+              <div className="text-3xl mb-3">📄</div>
               <h3 className="font-semibold text-lg mb-2 text-gray-900">Deduction Tracker</h3>
               <p className="text-sm text-gray-600 mb-3">Track all business expenses including home office costs throughout the year</p>
               <span className="text-green-600 text-sm font-medium group-hover:underline">Track Expenses →</span>
             </button>
 
             <button
-              onClick={() => onNavigate?.(ToolType.SE_TAX_CALCULATOR)}
+              onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}
               className="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
             >
-              <Calculator className="w-8 h-8 text-purple-600 mb-3 group-hover:scale-110 transition-transform" />
+              <div className="text-3xl mb-3">📊</div>
               <h3 className="font-semibold text-lg mb-2 text-gray-900">Self-Employment Tax Calculator</h3>
               <p className="text-sm text-gray-600 mb-3">Calculate SE tax savings from home office deduction</p>
               <span className="text-purple-600 text-sm font-medium group-hover:underline">Calculate Savings →</span>
             </button>
 
             <button
-              onClick={() => onNavigate?.(ToolType.QUARTERLY_TAX_CALCULATOR)}
+              onClick={() => onNavigate?.(ToolType.QUARTERLY_TAX)}
               className="bg-gradient-to-br from-orange-50 to-red-50 border border-orange-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
             >
-              <DollarSign className="w-8 h-8 text-orange-600 mb-3 group-hover:scale-110 transition-transform" />
+              <div className="text-3xl mb-3">💰</div>
               <h3 className="font-semibold text-lg mb-2 text-gray-900">Quarterly Tax Calculator</h3>
               <p className="text-sm text-gray-600 mb-3">Estimate quarterly payments after home office deduction</p>
               <span className="text-orange-600 text-sm font-medium group-hover:underline">Estimate Payments →</span>
@@ -813,8 +808,8 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
               className="bg-white border border-gray-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <DollarSign className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0 text-3xl">
+                  💰
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg mb-2 text-gray-900 group-hover:text-green-600 transition-colors">
@@ -830,8 +825,8 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
               className="bg-white border border-gray-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Calculator className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0 text-3xl">
+                  📊
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg mb-2 text-gray-900 group-hover:text-indigo-600 transition-colors">
@@ -875,13 +870,13 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <button
-              onClick={() => onNavigate?.(ToolType.DEDUCTION_TRACKER)}
+              onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}
               className="bg-white text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-50 transition-colors"
             >
               Track Home Office Expenses
             </button>
             <button
-              onClick={() => onNavigate?.(ToolType.SE_TAX_CALCULATOR)}
+              onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}
               className="bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors"
             >
               Calculate Tax Savings
