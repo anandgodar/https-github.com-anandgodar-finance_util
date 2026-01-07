@@ -29,6 +29,9 @@ import QuarterlyEstimatedTaxesGuide2025 from './components/blog/QuarterlyEstimat
 import SelfEmploymentTaxGuide2025 from './components/blog/SelfEmploymentTaxGuide2025';
 import TaxDeductionsFreelancers2025 from './components/blog/TaxDeductionsFreelancers2025';
 import Comparison1099VsW2_2025 from './components/blog/Comparison1099VsW2_2025';
+import LLCvsSoleProp2025 from './components/blog/LLCvsSoleProp2025';
+import SEPIRAvsSolo401k2025 from './components/blog/SEPIRAvsSolo401k2025';
+import HomeOfficeDeduction2025 from './components/blog/HomeOfficeDeduction2025';
 import FAQ from './components/FAQ';
 import Methodology from './components/Methodology';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -173,6 +176,21 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "1099 vs W-2 in 2025: Complete Tax & Benefits Comparison for Contractors",
     desc: "Understand the complete difference between 1099 independent contractor and W-2 employee status in 2025. Compare taxes (self-employment vs payroll), benefits, take-home pay, legal classification rules, and when to negotiate each status. Essential guide for freelancers and contractors.",
     keywords: "1099 vs w2, independent contractor vs employee, 1099 vs w2 taxes, contractor vs employee benefits, w2 to 1099 conversion, self employment tax vs payroll tax, 1099 employee, irs 20 factor test, misclassification, freelance vs employee"
+  },
+  [ToolType.BLOG_LLC_SOLE_PROP]: {
+    title: "LLC vs Sole Proprietor 2025: Complete Tax & Legal Comparison Guide",
+    desc: "Comprehensive comparison of LLC vs Sole Proprietorship for freelancers and small business owners. Understand tax differences, liability protection, formation costs by state, S-Corp election benefits, and which structure saves you the most money in 2025.",
+    keywords: "llc vs sole proprietor, llc vs sole proprietorship taxes, sole proprietor vs llc, should i form an llc, s corp election, llc tax benefits, sole proprietorship liability, llc formation costs, business structure comparison, llc for freelancers"
+  },
+  [ToolType.BLOG_SEP_SOLO401K]: {
+    title: "SEP-IRA vs Solo 401(k) 2025: Complete Contribution Limits & Comparison Guide",
+    desc: "Comprehensive comparison of SEP-IRA vs Solo 401(k) for self-employed individuals and freelancers. Understand 2025 contribution limits ($69k max), tax benefits, setup costs, deadlines, Roth options, and which retirement plan saves you the most money.",
+    keywords: "sep ira vs solo 401k, sep ira vs individual 401k, self employed retirement plans, solo 401k contribution limits 2025, sep ira contribution limits 2025, best retirement plan for self employed, roth solo 401k, sep ira vs 401k, retirement plans for freelancers"
+  },
+  [ToolType.BLOG_HOME_OFFICE]: {
+    title: "Home Office Deduction 2025: Complete Guide to Simplified vs Regular Method",
+    desc: "Comprehensive guide to claiming the home office deduction for self-employed individuals and freelancers in 2025. Learn the simplified method ($5/sq ft, max $1,500), regular method (actual expenses), qualification requirements, exclusive use rules, depreciation, and audit-proof documentation.",
+    keywords: "home office deduction 2025, simplified home office deduction, home office deduction rules, how to claim home office deduction, home office tax deduction, exclusive use test, principal place of business, home office deduction calculator, irs home office deduction, form 8829"
   },
   [ToolType.FAQ]: {
     title: "Financial Knowledge Base - Expert Logic & Strategy FAQ",
@@ -368,6 +386,9 @@ const App: React.FC = () => {
       case ToolType.BLOG_SE_TAX: return <SelfEmploymentTaxGuide2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_TAX_DEDUCTIONS: return <TaxDeductionsFreelancers2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_1099_W2: return <Comparison1099VsW2_2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_LLC_SOLE_PROP: return <LLCvsSoleProp2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_SEP_SOLO401K: return <SEPIRAvsSolo401k2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_HOME_OFFICE: return <HomeOfficeDeduction2025 onNavigate={setActiveTool} />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.METHODOLOGY: return <Methodology />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;

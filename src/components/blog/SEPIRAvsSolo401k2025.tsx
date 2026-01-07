@@ -1,0 +1,952 @@
+import React, { useEffect, useState } from 'react';
+import { ToolType } from '../../types';
+import { ArrowLeft, Calculator, TrendingUp, PiggyBank, DollarSign, FileText, CheckCircle2, AlertCircle, Calendar } from 'lucide-react';
+
+interface BlogProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const articleSchema = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "SEP-IRA vs Solo 401(k) 2025: Complete Contribution Limits & Comparison Guide",
+      "description": "Comprehensive comparison of SEP-IRA vs Solo 401(k) for self-employed individuals and freelancers. Understand 2025 contribution limits ($69k max), tax benefits, setup costs, deadlines, and which retirement plan saves you the most money.",
+      "author": {
+        "@type": "Organization",
+        "name": "QuantCurb"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "QuantCurb",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://quantcurb.com/logo.png"
+        }
+      },
+      "datePublished": "2026-01-06",
+      "dateModified": "2026-01-06",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://quantcurb.com/blog/sep-ira-vs-solo-401k-2025"
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(articleSchema);
+    script.id = 'article-schema-sep-solo401k';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('article-schema-sep-solo401k');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const faqs = [
+    {
+      question: "Which is better: SEP-IRA or Solo 401(k)?",
+      answer: "Solo 401(k) is better for most self-employed individuals because it allows higher contributions at lower income levels. With a Solo 401(k), you can contribute $23,500 as an 'employee' plus 25% of compensation as 'employer' (up to $69,000 total in 2025). SEP-IRA only allows 25% of compensation (max $69,000). Example: On $80k income, Solo 401(k) allows $43,500 vs SEP-IRA's $20,000. SEP-IRA is simpler for those who want minimal paperwork and contribute under $20k/year."
+    },
+    {
+      question: "Can I contribute to both SEP-IRA and Solo 401(k) in the same year?",
+      answer: "No, you cannot maximize both in the same year. If you have both plans, your total employee deferrals across all plans are capped at $23,500 (2025 limit). However, you can contribute to a Solo 401(k) through your business AND a traditional/Roth IRA ($7,000 limit) separately. Most self-employed people choose ONE plan (Solo 401(k) or SEP-IRA) to avoid complexity and maximize tax benefits."
+    },
+    {
+      question: "What are the 2025 contribution limits for SEP-IRA vs Solo 401(k)?",
+      answer: "2025 SEP-IRA: Up to 25% of net self-employment income (after deducting 1/2 SE tax), max $69,000. 2025 Solo 401(k): Employee deferrals up to $23,500 PLUS employer profit-sharing up to 25% of compensation, combined max $69,000. Age 50+ add $7,500 catch-up to Solo 401(k) employee deferrals (total $77,500). SEP-IRA has no catch-up provision."
+    },
+    {
+      question: "Is Solo 401(k) setup more complicated than SEP-IRA?",
+      answer: "Yes, slightly. SEP-IRA: 5-minute setup with any brokerage (Vanguard, Fidelity, Schwab), one-page form, no annual filings unless assets exceed $250k. Solo 401(k): 10-15 minute setup, requires plan adoption agreement, must file Form 5500-EZ annually once assets exceed $250k. However, the extra contribution potential ($23,500 employee deferrals) usually justifies the minimal extra paperwork for most self-employed people earning $60k+."
+    },
+    {
+      question: "When are the contribution deadlines for SEP-IRA vs Solo 401(k)?",
+      answer: "SEP-IRA: Contributions can be made up until your tax filing deadline (April 15, or October 15 with extension). Solo 401(k) EMPLOYEE deferrals: Must be made by December 31 of the tax year. Solo 401(k) EMPLOYER profit-sharing: Can be made until tax filing deadline (April 15 or extension). This is a key difference—if you want to max employee deferrals ($23,500), you must do it by Dec 31."
+    },
+    {
+      question: "Can I do a Roth Solo 401(k) but not a Roth SEP-IRA?",
+      answer: "Correct. Solo 401(k) plans can have a Roth option, allowing you to make after-tax contributions ($23,500 employee deferrals) that grow tax-free forever. SEP-IRAs do NOT have a Roth option—all contributions are pre-tax. If you want tax-free retirement income, Solo 401(k) with Roth contributions is the only option (or contribute to a separate Roth IRA with the $7,000 limit)."
+    }
+  ];
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      {/* Back Navigation */}
+      <button
+        onClick={() => onNavigate?.(ToolType.DASHBOARD)}
+        className="flex items-center gap-2 text-indigo-600 hover:text-indigo-800 mb-6 transition-colors"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        Back to Dashboard
+      </button>
+
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <PiggyBank className="w-10 h-10" />
+          <h1 className="text-4xl font-bold">SEP-IRA vs Solo 401(k) 2025</h1>
+        </div>
+        <p className="text-xl text-indigo-50 mb-4">
+          Complete Contribution Limits & Comparison for Self-Employed
+        </p>
+        <div className="flex flex-wrap gap-4 text-sm">
+          <div className="flex items-center gap-2">
+            <DollarSign className="w-4 h-4" />
+            <span>$69k Max Contributions</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <TrendingUp className="w-4 h-4" />
+            <span>Tax-Deferred Growth</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Calendar className="w-4 h-4" />
+            <span>2025 Limits & Deadlines</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Table of Contents */}
+      <div className="bg-gray-50 rounded-xl p-6 mb-8">
+        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <FileText className="w-5 h-5 text-indigo-600" />
+          Table of Contents
+        </h2>
+        <div className="grid md:grid-cols-2 gap-2">
+          <button onClick={() => scrollToSection('overview')} className="text-left text-indigo-600 hover:text-indigo-800 hover:underline">
+            → Quick Comparison Overview
+          </button>
+          <button onClick={() => scrollToSection('contribution-limits')} className="text-left text-indigo-600 hover:text-indigo-800 hover:underline">
+            → 2025 Contribution Limits
+          </button>
+          <button onClick={() => scrollToSection('sep-ira')} className="text-left text-indigo-600 hover:text-indigo-800 hover:underline">
+            → SEP-IRA Deep Dive
+          </button>
+          <button onClick={() => scrollToSection('solo-401k')} className="text-left text-indigo-600 hover:text-indigo-800 hover:underline">
+            → Solo 401(k) Deep Dive
+          </button>
+          <button onClick={() => scrollToSection('scenarios')} className="text-left text-indigo-600 hover:text-indigo-800 hover:underline">
+            → Real Contribution Scenarios
+          </button>
+          <button onClick={() => scrollToSection('decision')} className="text-left text-indigo-600 hover:text-indigo-800 hover:underline">
+            → Which Plan to Choose
+          </button>
+          <button onClick={() => scrollToSection('setup')} className="text-left text-indigo-600 hover:text-indigo-800 hover:underline">
+            → Setup Process & Costs
+          </button>
+          <button onClick={() => scrollToSection('faqs')} className="text-left text-indigo-600 hover:text-indigo-800 hover:underline">
+            → Frequently Asked Questions
+          </button>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="prose max-w-none">
+
+        {/* Overview */}
+        <section id="overview" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">SEP-IRA vs Solo 401(k): Quick Comparison</h2>
+
+          <p className="text-lg text-gray-700 mb-6">
+            If you're self-employed, a freelancer, or run a one-person business, choosing between a <strong>SEP-IRA</strong> and <strong>Solo 401(k)</strong> is one of the most important retirement planning decisions you'll make. Both allow massive tax-deferred contributions (up to $69,000 in 2025), but they work very differently.
+          </p>
+
+          <div className="bg-indigo-50 border-l-4 border-indigo-600 p-6 mb-6">
+            <p className="text-gray-800 font-semibold mb-2">💡 Bottom Line Up Front</p>
+            <p className="text-gray-700">
+              <strong>Solo 401(k)</strong> is better for most self-employed individuals earning $60k+ because it allows higher contributions at lower income levels (thanks to the $23,500 employee deferral). <strong>SEP-IRA</strong> is simpler and better if you want minimal paperwork and plan to contribute under $20k/year. Both max out at $69,000 annually for those earning $276k+.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto mb-8">
+            <table className="min-w-full border border-gray-300">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Feature</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left font-semibold">SEP-IRA</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Solo 401(k)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 px-4 py-3 font-medium">2025 Max Contribution</td>
+                  <td className="border border-gray-300 px-4 py-3">$69,000 (25% of compensation)</td>
+                  <td className="border border-gray-300 px-4 py-3">$69,000 ($23.5k employee + profit-sharing)</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-300 px-4 py-3 font-medium">Age 50+ Catch-Up</td>
+                  <td className="border border-gray-300 px-4 py-3 text-red-600">❌ Not available</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600">✅ +$7,500 ($77,500 total)</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 px-4 py-3 font-medium">Contribution Formula</td>
+                  <td className="border border-gray-300 px-4 py-3">25% of net SE income only</td>
+                  <td className="border border-gray-300 px-4 py-3">$23.5k + 25% of compensation</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-300 px-4 py-3 font-medium">Roth Option</td>
+                  <td className="border border-gray-300 px-4 py-3 text-red-600">❌ No Roth option</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600">✅ Roth 401(k) available</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 px-4 py-3 font-medium">Loan Option</td>
+                  <td className="border border-gray-300 px-4 py-3 text-red-600">❌ Cannot borrow</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600">✅ Borrow up to $50k</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-300 px-4 py-3 font-medium">Setup Complexity</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600">Very simple (5 min)</td>
+                  <td className="border border-gray-300 px-4 py-3 text-orange-600">Moderate (15 min)</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 px-4 py-3 font-medium">Annual Filings</td>
+                  <td className="border border-gray-300 px-4 py-3">None (unless $250k+ assets)</td>
+                  <td className="border border-gray-300 px-4 py-3">Form 5500-EZ if $250k+ assets</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-300 px-4 py-3 font-medium">Contribution Deadline</td>
+                  <td className="border border-gray-300 px-4 py-3">Tax filing deadline (Apr 15 + extensions)</td>
+                  <td className="border border-gray-300 px-4 py-3">Employee: Dec 31 | Employer: Apr 15</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 px-4 py-3 font-medium">Setup Cost</td>
+                  <td className="border border-gray-300 px-4 py-3">$0 (free at Vanguard, Fidelity, Schwab)</td>
+                  <td className="border border-gray-300 px-4 py-3">$0-50 (free at most brokerages)</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-300 px-4 py-3 font-medium">Best For</td>
+                  <td className="border border-gray-300 px-4 py-3">Simple setup, contributions under $20k/year</td>
+                  <td className="border border-gray-300 px-4 py-3">Max contributions, Roth option, income $60k+</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* Contribution Limits */}
+        <section id="contribution-limits" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">2025 Contribution Limits Explained</h2>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">SEP-IRA Contribution Limits (2025)</h3>
+
+          <p className="text-lg text-gray-700 mb-4">
+            SEP-IRA contributions are calculated as <strong>25% of your net self-employment income</strong> (after deducting half of your self-employment tax). The maximum contribution is <strong>$69,000</strong> in 2025.
+          </p>
+
+          <div className="bg-gray-100 rounded-lg p-6 mb-6">
+            <h4 className="font-semibold text-lg mb-3">SEP-IRA Calculation Example: $100,000 Net Profit</h4>
+            <div className="space-y-2 text-gray-700">
+              <p>• <strong>Net self-employment income:</strong> $100,000</p>
+              <p>• <strong>Minus 1/2 SE tax:</strong> $100k × 92.35% × 15.3% ÷ 2 = -$7,065</p>
+              <p>• <strong>Adjusted net income:</strong> $92,935</p>
+              <p>• <strong>SEP-IRA contribution (25%):</strong> $92,935 × 0.25 = <span className="text-indigo-600 font-semibold">$23,234</span></p>
+              <p className="mt-3 text-sm text-gray-600">Note: The actual calculation uses 20% of gross SE income as a shortcut (20% × $100k = $20k), but the IRS formula is 25% of net after SE tax adjustment.</p>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Solo 401(k) Contribution Limits (2025)</h3>
+
+          <p className="text-lg text-gray-700 mb-4">
+            Solo 401(k) has TWO contribution types that stack:
+          </p>
+
+          <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
+            <li><strong>Employee deferrals:</strong> Up to $23,500 (100% of first $23.5k earned) — this is the game-changer</li>
+            <li><strong>Employer profit-sharing:</strong> Up to 25% of compensation (same as SEP-IRA)</li>
+            <li><strong>Combined maximum:</strong> $69,000 in 2025</li>
+            <li><strong>Age 50+ catch-up:</strong> Additional $7,500 employee deferrals (total $77,500)</li>
+          </ul>
+
+          <div className="bg-green-50 rounded-lg p-6 mb-6 border-l-4 border-green-600">
+            <h4 className="font-semibold text-lg mb-3">Solo 401(k) Calculation Example: $100,000 Net Profit</h4>
+            <div className="space-y-2 text-gray-700">
+              <p>• <strong>Net self-employment income:</strong> $100,000</p>
+              <p>• <strong>Employee deferral:</strong> $23,500 (max for 2025)</p>
+              <p>• <strong>Adjusted net for employer:</strong> $100k - $7,065 (1/2 SE tax) - $23,500 (employee contrib) = $69,435</p>
+              <p>• <strong>Employer profit-sharing (25%):</strong> $69,435 × 0.25 = $17,359</p>
+              <p>• <strong>Total Solo 401(k) contribution:</strong> $23,500 + $17,359 = <span className="text-green-600 font-semibold text-xl">$40,859</span></p>
+              <p className="mt-4 pt-4 border-t border-green-300 font-bold text-green-700">
+                Solo 401(k) allows $17,625 MORE than SEP-IRA on the same income!
+              </p>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Side-by-Side at Different Income Levels</h3>
+
+          <div className="overflow-x-auto mb-8">
+            <table className="min-w-full border border-gray-300">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Net Profit</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left font-semibold">SEP-IRA Max</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Solo 401(k) Max</th>
+                  <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Advantage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 px-4 py-3">$40,000</td>
+                  <td className="border border-gray-300 px-4 py-3">~$8,000</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600 font-semibold">~$27,100</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600">Solo 401(k) +$19,100</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-300 px-4 py-3">$60,000</td>
+                  <td className="border border-gray-300 px-4 py-3">~$12,000</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600 font-semibold">~$32,400</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600">Solo 401(k) +$20,400</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 px-4 py-3">$80,000</td>
+                  <td className="border border-gray-300 px-4 py-3">~$16,000</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600 font-semibold">~$37,700</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600">Solo 401(k) +$21,700</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-300 px-4 py-3">$100,000</td>
+                  <td className="border border-gray-300 px-4 py-3">~$20,000</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600 font-semibold">~$40,859</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600">Solo 401(k) +$20,859</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 px-4 py-3">$150,000</td>
+                  <td className="border border-gray-300 px-4 py-3">~$30,000</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600 font-semibold">~$51,100</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600">Solo 401(k) +$21,100</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-300 px-4 py-3">$200,000</td>
+                  <td className="border border-gray-300 px-4 py-3">~$40,000</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600 font-semibold">~$61,000</td>
+                  <td className="border border-gray-300 px-4 py-3 text-green-600">Solo 401(k) +$21,000</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 px-4 py-3">$276,000+</td>
+                  <td className="border border-gray-300 px-4 py-3">$69,000 (max)</td>
+                  <td className="border border-gray-300 px-4 py-3">$69,000 (max)</td>
+                  <td className="border border-gray-300 px-4 py-3 text-gray-600">Equal at max</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="bg-yellow-50 border-l-4 border-yellow-600 p-6 mb-6">
+            <p className="text-gray-800 font-semibold mb-2">⚠️ Key Insight</p>
+            <p className="text-gray-700">
+              Solo 401(k) allows <strong>$20,000+ more in contributions</strong> at typical freelancer income levels ($60k-150k) thanks to the $23,500 employee deferral. They only equalize at $276k+ income when both hit the $69k max.
+            </p>
+          </div>
+        </section>
+
+        {/* SEP-IRA Deep Dive */}
+        <section id="sep-ira" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">SEP-IRA: Simple, Flexible Retirement Plan</h2>
+
+          <p className="text-lg text-gray-700 mb-6">
+            SEP-IRA stands for <strong>Simplified Employee Pension Individual Retirement Account</strong>. It's the easiest self-employed retirement plan to set up and maintain.
+          </p>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">How SEP-IRA Works</h3>
+
+          <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
+            <li><strong>Contributions:</strong> You (as the employer) contribute up to 25% of your net self-employment income</li>
+            <li><strong>Tax treatment:</strong> Contributions are tax-deductible, reduce your taxable income immediately</li>
+            <li><strong>Withdrawals:</strong> Tax-deferred growth until retirement; withdrawals taxed as ordinary income</li>
+            <li><strong>Required distributions:</strong> Must start taking RMDs at age 73 (as of 2025)</li>
+            <li><strong>Early withdrawal penalty:</strong> 10% penalty + income tax if withdrawn before age 59½ (with exceptions)</li>
+          </ul>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">SEP-IRA Advantages</h3>
+
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
+            <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                Pros
+              </h4>
+              <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li><strong>Extremely simple setup:</strong> 5-minute online application, one-page form</li>
+                <li><strong>No annual filings:</strong> No Form 5500 required unless assets exceed $250k</li>
+                <li><strong>Flexible contributions:</strong> Contribute different amounts each year (0% to 25%)</li>
+                <li><strong>Late contribution deadline:</strong> Contribute until tax filing deadline (April 15 + extensions)</li>
+                <li><strong>Free setup:</strong> $0 at Vanguard, Fidelity, Schwab, E*TRADE</li>
+                <li><strong>Scales with employees:</strong> If you hire later, SEP-IRA contributions are same % for everyone</li>
+              </ul>
+            </div>
+            <div className="bg-red-50 rounded-lg p-4 border border-red-200">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-red-600" />
+                Cons
+              </h4>
+              <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li><strong>Lower contributions at typical income:</strong> Only 25% vs Solo 401(k)'s $23.5k + 25%</li>
+                <li><strong>No Roth option:</strong> All contributions are pre-tax (can't do Roth SEP-IRA)</li>
+                <li><strong>No catch-up contributions:</strong> Age 50+ get no extra contribution room</li>
+                <li><strong>No loan provision:</strong> Cannot borrow from your SEP-IRA</li>
+                <li><strong>Must contribute same % for employees:</strong> If you contribute 20% for yourself, must do 20% for employees</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Who Should Choose SEP-IRA?</h3>
+
+          <p className="text-lg text-gray-700 mb-4">
+            SEP-IRA is best for:
+          </p>
+
+          <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
+            <li><strong>Simplicity seekers:</strong> You value minimal paperwork over maximum contributions</li>
+            <li><strong>Variable income:</strong> Your income fluctuates wildly year-to-year (easy to adjust contributions)</li>
+            <li><strong>Lower contribution goals:</strong> You plan to save under $20k/year for retirement</li>
+            <li><strong>High earners ($250k+):</strong> Both plans max at $69k, so SEP-IRA's simplicity wins</li>
+            <li><strong>Future employees possible:</strong> You might hire W-2 employees (SEP-IRA scales better than Solo 401k)</li>
+            <li><strong>Last-minute savers:</strong> You often wait until tax time to decide retirement contributions</li>
+          </ul>
+        </section>
+
+        {/* Solo 401k Deep Dive */}
+        <section id="solo-401k" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Solo 401(k): Maximum Contribution Power</h2>
+
+          <p className="text-lg text-gray-700 mb-6">
+            Solo 401(k) (also called Individual 401(k) or One-Participant 401(k)) is a traditional 401(k) plan designed for self-employed individuals with no employees (except a spouse).
+          </p>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">How Solo 401(k) Works</h3>
+
+          <p className="text-lg text-gray-700 mb-4">
+            You wear TWO hats with a Solo 401(k):
+          </p>
+
+          <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
+            <li><strong>As the employee:</strong> Defer up to $23,500 of your income (like a W-2 employee's 401k contributions)</li>
+            <li><strong>As the employer:</strong> Contribute up to 25% of your compensation as "profit-sharing"</li>
+            <li><strong>Combined limit:</strong> Total contributions capped at $69,000 (or $77,500 if age 50+)</li>
+          </ul>
+
+          <div className="bg-indigo-50 rounded-lg p-6 mb-6 border-l-4 border-indigo-600">
+            <h4 className="font-semibold text-lg mb-3">Real Example: $90,000 Net Profit, Age 52</h4>
+            <div className="space-y-2 text-gray-700">
+              <p><strong>Employee Deferrals:</strong></p>
+              <p>• Base limit: $23,500</p>
+              <p>• Age 50+ catch-up: +$7,500</p>
+              <p>• <strong>Total employee:</strong> $31,000</p>
+
+              <p className="mt-3"><strong>Employer Profit-Sharing:</strong></p>
+              <p>• Net profit: $90,000</p>
+              <p>• Minus 1/2 SE tax: -$6,359</p>
+              <p>• Minus employee deferrals: -$31,000</p>
+              <p>• Adjusted compensation: $52,641</p>
+              <p>• Employer contribution (25%): $13,160</p>
+
+              <p className="mt-3 pt-3 border-t border-indigo-300 font-bold text-indigo-700">
+                Total 2025 Contribution: $31,000 + $13,160 = $44,160
+              </p>
+              <p className="text-sm text-gray-600 mt-2">
+                (Compare to SEP-IRA: ~$18,000 on same income — that's $26,160 less!)
+              </p>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Solo 401(k) Unique Features</h3>
+
+          <div className="space-y-4 mb-6">
+            <div className="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-600">
+              <h4 className="font-semibold mb-2">🎯 Roth 401(k) Option</h4>
+              <p className="text-gray-700 text-sm">
+                You can designate all or part of your employee deferrals ($23,500) as <strong>Roth contributions</strong>. These are after-tax now but grow tax-free forever—no taxes on withdrawals in retirement. SEP-IRA doesn't offer this.
+              </p>
+            </div>
+
+            <div className="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-600">
+              <h4 className="font-semibold mb-2">💰 Loan Provision</h4>
+              <p className="text-gray-700 text-sm">
+                You can borrow up to <strong>$50,000 or 50% of your account balance</strong> (whichever is less) and pay it back with interest to yourself. Useful for emergencies without the 10% early withdrawal penalty.
+              </p>
+            </div>
+
+            <div className="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-600">
+              <h4 className="font-semibold mb-2">📈 Mega Backdoor Roth (Advanced)</h4>
+              <p className="text-gray-700 text-sm">
+                If your Solo 401(k) plan document allows it, you can make after-tax contributions beyond the $23,500 limit (up to the $69k total) and immediately convert them to Roth. This is the "mega backdoor Roth" strategy for high earners.
+              </p>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Solo 401(k) Advantages & Disadvantages</h3>
+
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
+            <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                Pros
+              </h4>
+              <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li><strong>Much higher contributions:</strong> $20k+ more at typical income levels vs SEP-IRA</li>
+                <li><strong>$23,500 employee deferrals:</strong> Contribute from first dollar earned (not just 25%)</li>
+                <li><strong>Roth option:</strong> Tax-free retirement income via Roth 401(k) contributions</li>
+                <li><strong>Age 50+ catch-up:</strong> Extra $7,500/year (total $77,500 vs SEP's $69k)</li>
+                <li><strong>Loan access:</strong> Borrow up to $50k from your own plan</li>
+                <li><strong>Free setup:</strong> $0 at Fidelity, Schwab, E*TRADE, Vanguard</li>
+              </ul>
+            </div>
+            <div className="bg-red-50 rounded-lg p-4 border border-red-200">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-red-600" />
+                Cons
+              </h4>
+              <ul className="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li><strong>Slightly more setup:</strong> 15-minute application vs SEP's 5 minutes</li>
+                <li><strong>Form 5500-EZ filing:</strong> Required annually if assets exceed $250k</li>
+                <li><strong>December 31 deadline:</strong> Employee deferrals must be made by Dec 31 (not Apr 15)</li>
+                <li><strong>Plan adoption agreement:</strong> Need to sign plan documents (still free)</li>
+                <li><strong>Employee complications:</strong> If you hire non-spouse employees, must switch to regular 401(k)</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Who Should Choose Solo 401(k)?</h3>
+
+          <p className="text-lg text-gray-700 mb-4">
+            Solo 401(k) is best for:
+          </p>
+
+          <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
+            <li><strong>Maximum savers:</strong> You want to shelter as much income as possible from taxes</li>
+            <li><strong>Consistent income $60k+:</strong> High enough to benefit from the $23.5k employee deferral</li>
+            <li><strong>Age 50+:</strong> The $7,500 catch-up is a huge advantage ($77.5k total)</li>
+            <li><strong>Roth preference:</strong> You want tax-free retirement income (Roth 401k option)</li>
+            <li><strong>True solopreneurs:</strong> You're confident you won't hire employees (hiring complicates Solo 401k)</li>
+            <li><strong>December planners:</strong> You can decide contributions by end of year (not waiting until April)</li>
+          </ul>
+        </section>
+
+        {/* Real Scenarios */}
+        <section id="scenarios" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Real-World Contribution Scenarios</h2>
+
+          <div className="space-y-6">
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-3">💻 Freelance Developer: $75k Net Profit, Age 35</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <h4 className="font-medium mb-2 text-red-700">SEP-IRA Contribution</h4>
+                  <p className="text-sm text-gray-700 mb-1">• 25% of adjusted income</p>
+                  <p className="text-sm text-gray-700 mb-1">• ~$15,000 contribution</p>
+                  <p className="text-sm text-gray-700 mb-1">• Tax savings (24% bracket): $3,600</p>
+                  <p className="text-sm text-gray-700">• <strong>Remaining income:</strong> $60,000</p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2 text-green-700">Solo 401(k) Contribution</h4>
+                  <p className="text-sm text-gray-700 mb-1">• Employee: $23,500</p>
+                  <p className="text-sm text-gray-700 mb-1">• Employer: ~$12,875</p>
+                  <p className="text-sm text-gray-700 mb-1">• <strong>Total: $36,375</strong></p>
+                  <p className="text-sm text-gray-700 mb-1">• Tax savings (24% bracket): $8,730</p>
+                  <p className="text-sm text-gray-700 font-semibold text-green-700">Saves $21,375 MORE for retirement!</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-gray-600 italic">
+                <strong>Best choice:</strong> Solo 401(k) — allows nearly 2.5x the contribution
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-3">✍️ Freelance Writer: $35k Net Profit, Age 28</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <h4 className="font-medium mb-2 text-red-700">SEP-IRA Contribution</h4>
+                  <p className="text-sm text-gray-700 mb-1">• 25% of adjusted income</p>
+                  <p className="text-sm text-gray-700 mb-1">• ~$7,000 contribution</p>
+                  <p className="text-sm text-gray-700">• Simple setup, late deadline (April 15)</p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2 text-green-700">Solo 401(k) Contribution</h4>
+                  <p className="text-sm text-gray-700 mb-1">• Employee: up to $23,500 (could contribute full $35k!)</p>
+                  <p className="text-sm text-gray-700 mb-1">• Practical max: ~$20,000 (leave $15k to live on)</p>
+                  <p className="text-sm text-gray-700">• More admin, Dec 31 deadline</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-gray-600 italic">
+                <strong>Best choice:</strong> SEP-IRA — at lower income, simplicity matters more. Can save $7k easily by April deadline.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-3">📸 Photographer: $120k Net Profit, Age 54</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <h4 className="font-medium mb-2 text-red-700">SEP-IRA Contribution</h4>
+                  <p className="text-sm text-gray-700 mb-1">• 25% of adjusted income</p>
+                  <p className="text-sm text-gray-700 mb-1">• ~$24,000 contribution</p>
+                  <p className="text-sm text-gray-700 mb-1">• No catch-up available</p>
+                  <p className="text-sm text-gray-700">• <strong>Max: $24,000</strong></p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2 text-green-700">Solo 401(k) Contribution</h4>
+                  <p className="text-sm text-gray-700 mb-1">• Employee: $23,500</p>
+                  <p className="text-sm text-gray-700 mb-1">• Age 50+ catch-up: $7,500</p>
+                  <p className="text-sm text-gray-700 mb-1">• Employer: ~$19,000</p>
+                  <p className="text-sm text-gray-700 font-semibold text-green-700"><strong>Total: $50,000</strong></p>
+                  <p className="text-sm text-gray-700 font-semibold text-green-700">Saves $26,000 MORE!</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-gray-600 italic">
+                <strong>Best choice:</strong> Solo 401(k) — catch-up contributions alone make it a no-brainer for age 50+
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-3">💼 Consultant: $300k Net Profit, Age 42</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <h4 className="font-medium mb-2 text-orange-700">SEP-IRA Contribution</h4>
+                  <p className="text-sm text-gray-700 mb-1">• 25% of adjusted income</p>
+                  <p className="text-sm text-gray-700 mb-1">• <strong>Max: $69,000</strong></p>
+                  <p className="text-sm text-gray-700 mb-1">• Simpler setup/maintenance</p>
+                  <p className="text-sm text-gray-700">• No annual filings (under $250k assets)</p>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2 text-orange-700">Solo 401(k) Contribution</h4>
+                  <p className="text-sm text-gray-700 mb-1">• Employee: $23,500</p>
+                  <p className="text-sm text-gray-700 mb-1">• Employer: $45,500</p>
+                  <p className="text-sm text-gray-700 mb-1">• <strong>Max: $69,000 (same)</strong></p>
+                  <p className="text-sm text-gray-700">• Roth option available</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-gray-600 italic">
+                <strong>Best choice:</strong> Toss-up — both max at $69k. Choose SEP-IRA for simplicity or Solo 401(k) if you want Roth option.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Decision Framework */}
+        <section id="decision" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Which Plan Should You Choose?</h2>
+
+          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-xl p-6 mb-8">
+            <h3 className="text-xl font-semibold mb-4 text-indigo-900">Decision Flowchart</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
+                <div>
+                  <p className="font-medium text-gray-900">Are you age 50 or older?</p>
+                  <p className="text-sm text-gray-700">→ <strong className="text-green-600">YES:</strong> Choose Solo 401(k) for $7,500 catch-up ($77,500 total)</p>
+                  <p className="text-sm text-gray-700">→ <strong className="text-orange-600">NO:</strong> Continue to question 2</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
+                <div>
+                  <p className="font-medium text-gray-900">Is your net profit $60,000 or more?</p>
+                  <p className="text-sm text-gray-700">→ <strong className="text-green-600">YES:</strong> Choose Solo 401(k) for $20k+ extra contribution room</p>
+                  <p className="text-sm text-gray-700">→ <strong className="text-orange-600">NO:</strong> Continue to question 3</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
+                <div>
+                  <p className="font-medium text-gray-900">Do you want Roth (tax-free) retirement income?</p>
+                  <p className="text-sm text-gray-700">→ <strong className="text-green-600">YES:</strong> Choose Solo 401(k) (only plan with Roth option)</p>
+                  <p className="text-sm text-gray-700">→ <strong className="text-orange-600">NO:</strong> Continue to question 4</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">4</div>
+                <div>
+                  <p className="font-medium text-gray-900">Might you hire employees (non-spouse) in the next 3-5 years?</p>
+                  <p className="text-sm text-gray-700">→ <strong className="text-green-600">YES:</strong> Choose SEP-IRA (scales better with employees)</p>
+                  <p className="text-sm text-gray-700">→ <strong className="text-orange-600">NO:</strong> Continue to question 5</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">5</div>
+                <div>
+                  <p className="font-medium text-gray-900">Do you value extreme simplicity over maximum contributions?</p>
+                  <p className="text-sm text-gray-700">→ <strong className="text-green-600">YES:</strong> Choose SEP-IRA (5-min setup, no annual filings)</p>
+                  <p className="text-sm text-gray-700">→ <strong className="text-green-600">NO:</strong> Choose Solo 401(k) (maximum contribution power)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Quick Reference Guide</h3>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-600">
+              <h4 className="text-lg font-semibold mb-3 text-blue-800">Choose SEP-IRA If:</h4>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li>✓ Net profit under $60k</li>
+                <li>✓ You want the simplest possible setup</li>
+                <li>✓ You plan to contribute under $20k/year</li>
+                <li>✓ Your income fluctuates wildly (easy to adjust contributions)</li>
+                <li>✓ You often decide contributions at tax time (April deadline)</li>
+                <li>✓ You might hire employees soon</li>
+                <li>✓ Net profit $276k+ (both plans max at $69k, so SEP is simpler)</li>
+              </ul>
+            </div>
+
+            <div className="bg-purple-50 rounded-lg p-6 border-l-4 border-purple-600">
+              <h4 className="text-lg font-semibold mb-3 text-purple-800">Choose Solo 401(k) If:</h4>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li>✓ Net profit $60k or more</li>
+                <li>✓ You want maximum tax-deferred contributions</li>
+                <li>✓ You're age 50+ (catch-up contributions)</li>
+                <li>✓ You want Roth option (tax-free retirement)</li>
+                <li>✓ You value loan access (borrow up to $50k)</li>
+                <li>✓ You're a true solopreneur (no plans to hire)</li>
+                <li>✓ You can commit to contributions by December 31</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-yellow-50 border-l-4 border-yellow-600 p-6">
+            <p className="text-gray-800 font-semibold mb-2">💡 Can You Switch Plans Later?</p>
+            <p className="text-gray-700">
+              Yes! You can have both a SEP-IRA and Solo 401(k) open, but you can't maximize both in the same year (they share the $69k limit). Many people start with SEP-IRA for simplicity, then switch to Solo 401(k) when their income crosses $60k. You can rollover SEP-IRA funds into a Solo 401(k) if desired.
+            </p>
+          </div>
+        </section>
+
+        {/* Setup Process */}
+        <section id="setup" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Setup Process & Costs</h2>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Setting Up a SEP-IRA (5 Minutes)</h3>
+
+          <div className="space-y-3 mb-6">
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+              <div>
+                <h4 className="font-semibold mb-1">Choose a Brokerage</h4>
+                <p className="text-sm text-gray-700">Vanguard, Fidelity, Schwab, E*TRADE all offer free SEP-IRA setup. Pick one with low expense ratio index funds.</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+              <div>
+                <h4 className="font-semibold mb-1">Complete Online Application</h4>
+                <p className="text-sm text-gray-700">Provide SSN or EIN, business name, choose investments. Takes 5 minutes.</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+              <div>
+                <h4 className="font-semibold mb-1">Fund Your Account</h4>
+                <p className="text-sm text-gray-700">Transfer money from business checking. Contributions can be made anytime until your tax filing deadline (April 15 or Oct 15 with extension).</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">4</div>
+              <div>
+                <h4 className="font-semibold mb-1">Deduct on Your Tax Return</h4>
+                <p className="text-sm text-gray-700">Report SEP-IRA contributions on Schedule 1 (Form 1040), line 16. Reduces taxable income dollar-for-dollar.</p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-gray-700 mb-6">
+            <strong>Total setup cost:</strong> $0 | <strong>Annual maintenance:</strong> $0 (no filings unless assets exceed $250k)
+          </p>
+
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">Setting Up a Solo 401(k) (15 Minutes)</h3>
+
+          <div className="space-y-3 mb-6">
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+              <div>
+                <h4 className="font-semibold mb-1">Choose a Provider</h4>
+                <p className="text-sm text-gray-700">Fidelity, Schwab, E*TRADE, Vanguard offer free Solo 401(k) plans. Check if they offer Roth option if you want it.</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+              <div>
+                <h4 className="font-semibold mb-1">Complete Plan Adoption Agreement</h4>
+                <p className="text-sm text-gray-700">Online application (~10-15 minutes). You'll sign a plan document establishing the Solo 401(k).</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+              <div>
+                <h4 className="font-semibold mb-1">Get an EIN (If Needed)</h4>
+                <p className="text-sm text-gray-700">The Solo 401(k) plan needs its own EIN (separate from your business EIN). Free from IRS, takes 5 minutes online.</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm">4</div>
+              <div>
+                <h4 className="font-semibold mb-1">Make Contributions</h4>
+                <p className="text-sm text-gray-700">
+                  • <strong>Employee deferrals:</strong> Must be made by Dec 31 of tax year<br/>
+                  • <strong>Employer profit-sharing:</strong> Can be made until tax filing deadline (April 15 or extension)
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm">5</div>
+              <div>
+                <h4 className="font-semibold mb-1">File Form 5500-EZ (If Required)</h4>
+                <p className="text-sm text-gray-700">Only if plan assets exceed $250,000. Due by July 31 (or Oct 15 with extension). Simple one-page form.</p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-gray-700">
+            <strong>Total setup cost:</strong> $0-50 | <strong>Annual maintenance:</strong> $0 (until $250k+ assets, then $50-200 for 5500-EZ filing)
+          </p>
+        </section>
+
+        {/* Related Tools */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-6 text-gray-900">Related Financial Tools</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <button
+              onClick={() => onNavigate?.(ToolType.RETIREMENT_CALCULATOR)}
+              className="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
+            >
+              <PiggyBank className="w-8 h-8 text-indigo-600 mb-3 group-hover:scale-110 transition-transform" />
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">Retirement Calculator</h3>
+              <p className="text-sm text-gray-600 mb-3">Calculate how much you need to save and project your retirement nest egg</p>
+              <span className="text-indigo-600 text-sm font-medium group-hover:underline">Plan Retirement →</span>
+            </button>
+
+            <button
+              onClick={() => onNavigate?.(ToolType.SE_TAX_CALCULATOR)}
+              className="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
+            >
+              <Calculator className="w-8 h-8 text-purple-600 mb-3 group-hover:scale-110 transition-transform" />
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">Self-Employment Tax Calculator</h3>
+              <p className="text-sm text-gray-600 mb-3">Calculate your 15.3% SE tax and see how retirement contributions reduce it</p>
+              <span className="text-purple-600 text-sm font-medium group-hover:underline">Calculate SE Tax →</span>
+            </button>
+
+            <button
+              onClick={() => onNavigate?.(ToolType.QUARTERLY_TAX_CALCULATOR)}
+              className="bg-gradient-to-br from-orange-50 to-red-50 border border-orange-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
+            >
+              <TrendingUp className="w-8 h-8 text-orange-600 mb-3 group-hover:scale-110 transition-transform" />
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">Quarterly Tax Calculator</h3>
+              <p className="text-sm text-gray-600 mb-3">Estimate quarterly payments after retirement contributions</p>
+              <span className="text-orange-600 text-sm font-medium group-hover:underline">Estimate Payments →</span>
+            </button>
+          </div>
+        </section>
+
+        {/* Related Articles */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-6 text-gray-900">Related Tax & Retirement Guides</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <button
+              onClick={() => onNavigate?.(ToolType.BLOG_SE_TAX)}
+              className="bg-white border border-gray-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-2 text-gray-900 group-hover:text-indigo-600 transition-colors">
+                    Self-Employment Tax Guide 2025 →
+                  </h3>
+                  <p className="text-sm text-gray-600">Understand the 15.3% SE tax and how SEP-IRA/Solo 401(k) contributions reduce your taxable income</p>
+                </div>
+              </div>
+            </button>
+
+            <button
+              onClick={() => onNavigate?.(ToolType.BLOG_TAX_DEDUCTIONS)}
+              className="bg-white border border-gray-200 rounded-xl p-6 text-left hover:shadow-lg transition-all group"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <DollarSign className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-2 text-gray-900 group-hover:text-green-600 transition-colors">
+                    Tax Deductions for Freelancers 2025 →
+                  </h3>
+                  <p className="text-sm text-gray-600">Maximize write-offs (home office, mileage, equipment) to increase your retirement contribution room</p>
+                </div>
+              </div>
+            </button>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faqs" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
+                  className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 flex justify-between items-center transition-colors"
+                >
+                  <span className="font-semibold text-gray-900">{faq.question}</span>
+                  <span className="text-2xl text-gray-400">{openFAQ === index ? '−' : '+'}</span>
+                </button>
+                {openFAQ === index && (
+                  <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
+                    <p className="text-gray-700">{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 text-center">
+          <h2 className="text-2xl font-bold mb-4">Ready to Maximize Your Retirement Savings?</h2>
+          <p className="text-lg text-indigo-50 mb-6">
+            Use our calculators to estimate your exact contribution limits and tax savings
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <button
+              onClick={() => onNavigate?.(ToolType.RETIREMENT_CALCULATOR)}
+              className="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
+            >
+              Calculate Retirement Savings
+            </button>
+            <button
+              onClick={() => onNavigate?.(ToolType.SE_TAX_CALCULATOR)}
+              className="bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-800 transition-colors"
+            >
+              Calculate SE Tax Impact
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default SEPIRAvsSolo401k2025;
