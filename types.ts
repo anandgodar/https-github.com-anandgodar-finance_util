@@ -25,6 +25,8 @@ export enum ToolType {
   BLOG_ACA_FREELANCERS = 'blog/aca-health-insurance-freelancers-2025',
   BLOG_QUARTERLY_TAX = 'blog/quarterly-estimated-taxes-complete-guide',
   BLOG_SE_TAX = 'blog/self-employment-tax-guide-2025',
+  BLOG_TAX_DEDUCTIONS = 'blog/tax-deductions-freelancers-2025',
+  BLOG_1099_W2 = 'blog/1099-vs-w2-comparison-2025',
   FAQ = 'financial-knowledge-base',
   METHODOLOGY = 'methodology-assumptions',
   PRIVACY = 'privacy-policy',
