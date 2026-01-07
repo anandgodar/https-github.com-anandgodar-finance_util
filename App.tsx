@@ -27,6 +27,8 @@ import ChildTaxCreditGuide2025 from './components/blog/ChildTaxCreditGuide2025';
 import ACAHealthInsuranceFreelancers2025 from './components/blog/ACAHealthInsuranceFreelancers2025';
 import QuarterlyEstimatedTaxesGuide2025 from './components/blog/QuarterlyEstimatedTaxesGuide2025';
 import SelfEmploymentTaxGuide2025 from './components/blog/SelfEmploymentTaxGuide2025';
+import TaxDeductionsFreelancers2025 from './components/blog/TaxDeductionsFreelancers2025';
+import Comparison1099VsW2_2025 from './components/blog/Comparison1099VsW2_2025';
 import FAQ from './components/FAQ';
 import Methodology from './components/Methodology';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -161,6 +163,16 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Self-Employment Tax Guide 2025: Complete Schedule SE & Tax Calculation Guide",
     desc: "Master self-employment tax in 2025. Understand the 15.3% SE tax rate, Schedule SE calculations, 92.35% rule, SE tax deduction strategies, and how to minimize your tax burden. Essential guide for freelancers, contractors, and sole proprietors navigating Social Security and Medicare taxes.",
     keywords: "self employment tax, schedule SE, self employment tax rate 2025, how to calculate self employment tax, self employment tax deduction, freelance taxes, independent contractor taxes, social security tax self employed, medicare tax self employed, 92.35 rule, SE tax calculator"
+  },
+  [ToolType.BLOG_TAX_DEDUCTIONS]: {
+    title: "Tax Deductions for Freelancers 2025: Complete Write-Off Guide & Strategies",
+    desc: "Maximize your freelance tax deductions in 2025. Master home office deduction ($5/sq ft simplified method), mileage tracking ($0.67/mile), Section 179 equipment deduction, health insurance write-off, retirement contributions, and more. Save thousands with our comprehensive freelancer tax deduction guide.",
+    keywords: "tax deductions for freelancers, self employed tax deductions 2025, freelance write offs, home office deduction, business expense deductions, section 179 deduction, self employed health insurance deduction, mileage deduction 2025, freelance tax savings"
+  },
+  [ToolType.BLOG_1099_W2]: {
+    title: "1099 vs W-2 in 2025: Complete Tax & Benefits Comparison for Contractors",
+    desc: "Understand the complete difference between 1099 independent contractor and W-2 employee status in 2025. Compare taxes (self-employment vs payroll), benefits, take-home pay, legal classification rules, and when to negotiate each status. Essential guide for freelancers and contractors.",
+    keywords: "1099 vs w2, independent contractor vs employee, 1099 vs w2 taxes, contractor vs employee benefits, w2 to 1099 conversion, self employment tax vs payroll tax, 1099 employee, irs 20 factor test, misclassification, freelance vs employee"
   },
   [ToolType.FAQ]: {
     title: "Financial Knowledge Base - Expert Logic & Strategy FAQ",
@@ -354,6 +366,8 @@ const App: React.FC = () => {
       case ToolType.BLOG_ACA_FREELANCERS: return <ACAHealthInsuranceFreelancers2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_QUARTERLY_TAX: return <QuarterlyEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_SE_TAX: return <SelfEmploymentTaxGuide2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_TAX_DEDUCTIONS: return <TaxDeductionsFreelancers2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_1099_W2: return <Comparison1099VsW2_2025 onNavigate={setActiveTool} />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.METHODOLOGY: return <Methodology />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;
