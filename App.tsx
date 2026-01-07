@@ -26,6 +26,7 @@ import ACASubsidyCalculator from './components/ACASubsidyCalculator';
 import ChildTaxCreditGuide2025 from './components/blog/ChildTaxCreditGuide2025';
 import ACAHealthInsuranceFreelancers2025 from './components/blog/ACAHealthInsuranceFreelancers2025';
 import QuarterlyEstimatedTaxesGuide2025 from './components/blog/QuarterlyEstimatedTaxesGuide2025';
+import SelfEmploymentTaxGuide2025 from './components/blog/SelfEmploymentTaxGuide2025';
 import FAQ from './components/FAQ';
 import Methodology from './components/Methodology';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -155,6 +156,11 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Quarterly Estimated Taxes 2025: Complete Guide for Freelancers & Self-Employed",
     desc: "Master quarterly estimated taxes with our comprehensive 2025 guide. Learn safe harbor rules (100%/110% prior year, 90% current year), payment deadlines, penalty avoidance, IRS Form 1040-ES, and exact calculations for freelancers, contractors, and gig workers. Essential tax planning for the self-employed.",
     keywords: "quarterly estimated taxes, quarterly tax guide, 1040-es guide, estimated tax payments, safe harbor rules, quarterly tax deadlines 2025, self employment tax guide, freelance quarterly taxes, how to pay quarterly taxes, estimated tax penalty, quarterly tax calculator guide"
+  },
+  [ToolType.BLOG_SE_TAX]: {
+    title: "Self-Employment Tax Guide 2025: Complete Schedule SE & Tax Calculation Guide",
+    desc: "Master self-employment tax in 2025. Understand the 15.3% SE tax rate, Schedule SE calculations, 92.35% rule, SE tax deduction strategies, and how to minimize your tax burden. Essential guide for freelancers, contractors, and sole proprietors navigating Social Security and Medicare taxes.",
+    keywords: "self employment tax, schedule SE, self employment tax rate 2025, how to calculate self employment tax, self employment tax deduction, freelance taxes, independent contractor taxes, social security tax self employed, medicare tax self employed, 92.35 rule, SE tax calculator"
   },
   [ToolType.FAQ]: {
     title: "Financial Knowledge Base - Expert Logic & Strategy FAQ",
@@ -347,6 +353,7 @@ const App: React.FC = () => {
       case ToolType.BLOG_CTC_2025: return <ChildTaxCreditGuide2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_ACA_FREELANCERS: return <ACAHealthInsuranceFreelancers2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_QUARTERLY_TAX: return <QuarterlyEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_SE_TAX: return <SelfEmploymentTaxGuide2025 onNavigate={setActiveTool} />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.METHODOLOGY: return <Methodology />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;

@@ -710,6 +710,54 @@ const ACAHealthInsuranceFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) 
           </div>
         </div>
 
+        {/* Related Articles Section */}
+        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-200 rounded-xl p-8 mt-8">
+          <h2 className="text-2xl font-bold mb-4 text-gray-900">📚 Complete Freelancer Financial Guide Series</h2>
+          <p className="text-gray-600 mb-6">Navigate the full self-employed financial landscape with our expert guides:</p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <button
+              onClick={() => onNavigate?.(ToolType.BLOG_QUARTERLY_TAX)}
+              className="text-left bg-white hover:bg-emerald-50 border-2 border-emerald-200 hover:border-emerald-400 rounded-xl p-6 transition-all group shadow-sm"
+            >
+              <div className="flex items-start gap-4">
+                <div className="text-4xl">📅</div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-emerald-700 mb-2">
+                    Quarterly Estimated Taxes 2025: Complete Guide
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-3">
+                    Master IRS Form 1040-ES, safe harbor rules, and payment strategies to avoid underpayment penalties.
+                  </p>
+                  <div className="text-xs font-semibold text-emerald-600">
+                    Read Guide →
+                  </div>
+                </div>
+              </div>
+            </button>
+
+            <button
+              onClick={() => onNavigate?.(ToolType.BLOG_CTC_2025)}
+              className="text-left bg-white hover:bg-teal-50 border-2 border-teal-200 hover:border-teal-400 rounded-xl p-6 transition-all group shadow-sm"
+            >
+              <div className="flex items-start gap-4">
+                <div className="text-4xl">👶</div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-teal-700 mb-2">
+                    Child Tax Credit 2025: Complete CTC & ACTC Guide
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-3">
+                    Maximize up to $2,000 per child with phase-out strategies and refundable credit calculations for freelance families.
+                  </p>
+                  <div className="text-xs font-semibold text-teal-600">
+                    Read Guide →
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+
       </article>
 
       {/* Author/Updated Info */}

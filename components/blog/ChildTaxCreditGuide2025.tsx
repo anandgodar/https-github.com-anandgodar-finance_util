@@ -629,6 +629,54 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
         </div>
 
+        {/* Related Articles Section */}
+        <div className="bg-gradient-to-br from-purple-50 to-blue-50 border-2 border-purple-200 rounded-xl p-8 mt-8">
+          <h2 className="text-2xl font-bold mb-4 text-gray-900">📚 Related Tax Guides for Freelancers</h2>
+          <p className="text-gray-600 mb-6">Master the complete freelancer tax strategy with our comprehensive guide series:</p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <button
+              onClick={() => onNavigate?.(ToolType.BLOG_QUARTERLY_TAX)}
+              className="text-left bg-white hover:bg-purple-50 border-2 border-purple-200 hover:border-purple-400 rounded-xl p-6 transition-all group shadow-sm"
+            >
+              <div className="flex items-start gap-4">
+                <div className="text-4xl">📅</div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">
+                    Quarterly Estimated Taxes 2025: Complete Guide
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-3">
+                    Master safe harbor rules, payment deadlines, and penalty avoidance strategies for self-employed individuals.
+                  </p>
+                  <div className="text-xs font-semibold text-purple-600">
+                    Read Guide →
+                  </div>
+                </div>
+              </div>
+            </button>
+
+            <button
+              onClick={() => onNavigate?.(ToolType.BLOG_ACA_FREELANCERS)}
+              className="text-left bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-400 rounded-xl p-6 transition-all group shadow-sm"
+            >
+              <div className="flex items-start gap-4">
+                <div className="text-4xl">🏥</div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">
+                    ACA Health Insurance for Freelancers 2025
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-3">
+                    Navigate Premium Tax Credits, Medicaid expansion, and save thousands on healthcare as a self-employed professional.
+                  </p>
+                  <div className="text-xs font-semibold text-blue-600">
+                    Read Guide →
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+
       </article>
 
       {/* Author/Updated Info */}

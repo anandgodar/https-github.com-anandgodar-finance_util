@@ -1036,6 +1036,87 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
         </div>
       </section>
 
+      {/* Related Tools Section */}
+      <div className="bg-white rounded-lg shadow-md p-8">
+        <h2 className="text-2xl font-bold mb-6 text-gray-900">📊 Related Freelancer Tools</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <button
+            onClick={() => onNavigate?.(ToolType.CHILD_TAX_CREDIT)}
+            className="bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 p-6 rounded-lg text-left transition-colors group"
+          >
+            <div className="text-3xl mb-3">👶</div>
+            <h3 className="font-bold text-blue-900 mb-2 group-hover:text-blue-700">Child Tax Credit Calculator</h3>
+            <p className="text-sm text-gray-600">Calculate your $2,000 CTC and up to $1,700 refundable ACTC</p>
+          </button>
+
+          <button
+            onClick={() => onNavigate?.(ToolType.ACA_SUBSIDY)}
+            className="bg-green-50 hover:bg-green-100 border-2 border-green-200 p-6 rounded-lg text-left transition-colors group"
+          >
+            <div className="text-3xl mb-3">🏥</div>
+            <h3 className="font-bold text-green-900 mb-2 group-hover:text-green-700">ACA Health Subsidy Calculator</h3>
+            <p className="text-sm text-gray-600">Estimate Premium Tax Credits for Marketplace health insurance</p>
+          </button>
+
+          <button
+            onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}
+            className="bg-purple-50 hover:bg-purple-100 border-2 border-purple-200 p-6 rounded-lg text-left transition-colors group"
+          >
+            <div className="text-3xl mb-3">💰</div>
+            <h3 className="font-bold text-purple-900 mb-2 group-hover:text-purple-700">Freelance Profit Calculator</h3>
+            <p className="text-sm text-gray-600">Track income, expenses, and net profit for tax planning</p>
+          </button>
+        </div>
+      </div>
+
+      {/* Related Articles Section */}
+      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl p-8">
+        <h2 className="text-2xl font-bold mb-4 text-gray-900">📚 Essential Tax Guides for Self-Employed</h2>
+        <p className="text-gray-600 mb-6">Build complete tax mastery with our freelancer financial guide series:</p>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_CTC_2025)}
+            className="text-left bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-400 rounded-xl p-6 transition-all group shadow-sm"
+          >
+            <div className="flex items-start gap-4">
+              <div className="text-4xl">👶</div>
+              <div className="flex-1">
+                <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">
+                  Child Tax Credit 2025: Complete CTC & ACTC Guide
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Maximize up to $2,000 per child with phase-out analysis and refundable credit strategies for freelance families.
+                </p>
+                <div className="text-xs font-semibold text-blue-600">
+                  Read Guide →
+                </div>
+              </div>
+            </div>
+          </button>
+
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_ACA_FREELANCERS)}
+            className="text-left bg-white hover:bg-indigo-50 border-2 border-indigo-200 hover:border-indigo-400 rounded-xl p-6 transition-all group shadow-sm"
+          >
+            <div className="flex items-start gap-4">
+              <div className="text-4xl">🏥</div>
+              <div className="flex-1">
+                <h3 className="font-bold text-lg text-gray-900 group-hover:text-indigo-700 mb-2">
+                  ACA Health Insurance for Freelancers 2025
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Master Premium Tax Credits, Medicaid eligibility, and cost optimization to save thousands on healthcare.
+                </p>
+                <div className="text-xs font-semibold text-indigo-600">
+                  Read Guide →
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+
       {/* Final CTA */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 shadow-xl text-center">
         <h2 className="text-3xl font-bold mb-4">Ready to Calculate Your Quarterly Taxes?</h2>
