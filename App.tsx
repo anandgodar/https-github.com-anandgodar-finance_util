@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import Dashboard from './components/Dashboard';
@@ -22,6 +23,7 @@ import EmergencyFundTool from './components/EmergencyFundTool';
 import RetirementOptimizer from './components/RetirementOptimizer';
 import DividendReinvestmentCalculator from './components/DividendReinvestmentCalculator';
 import CryptoTaxLossHarvester from './components/CryptoTaxLossHarvester';
+import DividendStockPage from './src/components/DividendStockPage';
 import ChildTaxCreditCalculator from './components/ChildTaxCreditCalculator';
 import QuarterlyTaxCalculator from './components/QuarterlyTaxCalculator';
 import ACASubsidyCalculator from './components/ACASubsidyCalculator';
@@ -241,7 +243,7 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
   }
 };
 
-const App: React.FC = () => {
+const AppShell: React.FC = () => {
   const getInitialTool = (): ToolType => {
     try {
       const path = window.location.pathname.replace('/', '');
@@ -450,5 +452,14 @@ const App: React.FC = () => {
     </div>
   );
 };
+
+const App: React.FC = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/dividend-calculator/:ticker" element={<DividendStockPage />} />
+      <Route path="/*" element={<AppShell />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;

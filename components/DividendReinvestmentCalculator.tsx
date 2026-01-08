@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   LineChart,
   Line,
@@ -10,14 +10,50 @@ import {
   Legend,
 } from 'recharts';
 
-const DividendReinvestmentCalculator: React.FC = () => {
-  const [initialPrincipal, setInitialPrincipal] = useState<number>(50000);
+interface DividendReinvestmentCalculatorProps {
+  initialPrincipal?: number;
+  initialDividendYield?: number;
+  initialStockAppreciation?: number;
+  initialTimeHorizon?: number;
+}
+
+const DividendReinvestmentCalculator: React.FC<DividendReinvestmentCalculatorProps> = ({
+  initialPrincipal: initialPrincipalProp,
+  initialDividendYield: initialDividendYieldProp,
+  initialStockAppreciation: initialStockAppreciationProp,
+  initialTimeHorizon: initialTimeHorizonProp,
+}) => {
+  const [initialPrincipal, setInitialPrincipal] = useState<number>(initialPrincipalProp ?? 50000);
   const [annualContribution, setAnnualContribution] = useState<number>(12000);
-  const [dividendYield, setDividendYield] = useState<number>(3.5);
-  const [stockAppreciation, setStockAppreciation] = useState<number>(7);
-  const [timeHorizon, setTimeHorizon] = useState<number>(30);
+  const [dividendYield, setDividendYield] = useState<number>(initialDividendYieldProp ?? 3.5);
+  const [stockAppreciation, setStockAppreciation] = useState<number>(initialStockAppreciationProp ?? 7);
+  const [timeHorizon, setTimeHorizon] = useState<number>(initialTimeHorizonProp ?? 30);
   const [taxRate, setTaxRate] = useState<number>(15);
   const [reinvestDividends, setReinvestDividends] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (typeof initialPrincipalProp === 'number') {
+      setInitialPrincipal(initialPrincipalProp);
+    }
+  }, [initialPrincipalProp]);
+
+  useEffect(() => {
+    if (typeof initialDividendYieldProp === 'number') {
+      setDividendYield(initialDividendYieldProp);
+    }
+  }, [initialDividendYieldProp]);
+
+  useEffect(() => {
+    if (typeof initialStockAppreciationProp === 'number') {
+      setStockAppreciation(initialStockAppreciationProp);
+    }
+  }, [initialStockAppreciationProp]);
+
+  useEffect(() => {
+    if (typeof initialTimeHorizonProp === 'number') {
+      setTimeHorizon(initialTimeHorizonProp);
+    }
+  }, [initialTimeHorizonProp]);
 
   const { chartData, withDripFinal, withoutDripFinal } = useMemo(() => {
     const data: { year: number; label: string; withDrip: number; withoutDrip: number }[] = [];
