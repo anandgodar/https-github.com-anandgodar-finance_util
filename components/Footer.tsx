@@ -46,6 +46,20 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
         </div>
       </div>
       
+      <div className="max-w-7xl mx-auto mt-10 rounded-3xl border border-amber-200 bg-amber-50 px-6 py-5 text-xs text-amber-900 leading-relaxed font-semibold">
+        Financial Disclaimer: All figures, projections, and outputs shown on this calculator site are
+        estimates only, provided for informational purposes, and should not be relied upon as
+        financial, tax, investment, or legal advice. Results can vary based on market conditions,
+        fees, taxes, and individual circumstances. You are responsible for verifying information and
+        consulting qualified professionals before making any financial decisions.
+        <span className="block mt-3">
+          FTC Affiliate Disclosure: This site may include affiliate links or partnerships. If you
+          click or purchase through those links, we may receive compensation at no additional cost to
+          you. We only feature partners we believe may be useful, but you should evaluate any service
+          independently.
+        </span>
+      </div>
+
       <div className="max-w-7xl mx-auto border-t mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">© 2025 QUANTCURB.COM - CALCULATED WITH PRECISION</p>
         <div className="flex gap-6">

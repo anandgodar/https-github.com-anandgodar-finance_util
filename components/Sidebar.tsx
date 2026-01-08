@@ -17,6 +17,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool }) => {
     { id: ToolType.MORTGAGE_CALC, label: 'Mortgage Pro', icon: '🏡' },
     { id: ToolType.FIRE_PLANNER, label: 'FIRE Planner', icon: '🔥' },
     { id: ToolType.RETIREMENT_OPTIMIZER, label: 'Retirement Optimizer', icon: '🎯' },
+    { id: ToolType.DRIP_CALCULATOR, label: 'DRIP Calculator', icon: '💹' },
+    { id: ToolType.CRYPTO_TAX_LOSS, label: 'Crypto Tax Loss', icon: '🧮' },
     { id: ToolType.SALARY_CALC, label: 'Salary Estimator', icon: '💰' },
     { id: ToolType.CHILD_TAX_CREDIT, label: 'Child Tax Credit', icon: '👨‍👩‍👧‍👦' },
     { id: ToolType.QUARTERLY_TAX, label: 'Quarterly Tax', icon: '📅' },

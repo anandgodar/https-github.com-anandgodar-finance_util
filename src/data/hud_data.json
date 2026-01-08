@@ -1,0 +1,14 @@
+[
+  {
+    "citySlug": "new-york",
+    "medianAnnualRent": 36000
+  },
+  {
+    "citySlug": "san-francisco",
+    "medianAnnualRent": 42000
+  },
+  {
+    "citySlug": "chicago",
+    "medianAnnualRent": 24000
+  }
+]
