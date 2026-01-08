@@ -18,6 +18,8 @@ export enum ToolType {
   INVESTMENT_ACADEMY = 'investment-funds-academy',
   EXCEL_MODELER = 'excel-power-modeler',
   RETIREMENT_OPTIMIZER = 'retirement-account-optimizer',
+  DRIP_CALCULATOR = 'dividend-reinvestment-calculator',
+  CRYPTO_TAX_LOSS = 'crypto-tax-loss-harvester',
   CHILD_TAX_CREDIT = 'child-tax-credit-calculator',
   QUARTERLY_TAX = 'quarterly-estimated-tax-calculator',
   ACA_SUBSIDY = 'aca-health-insurance-subsidy-calculator',
