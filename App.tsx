@@ -20,6 +20,8 @@ import ExcelModeler from './components/ExcelModeler';
 import NetWorthTracker from './components/NetWorthTracker';
 import EmergencyFundTool from './components/EmergencyFundTool';
 import RetirementOptimizer from './components/RetirementOptimizer';
+import DividendReinvestmentCalculator from './components/DividendReinvestmentCalculator';
+import CryptoTaxLossHarvester from './components/CryptoTaxLossHarvester';
 import ChildTaxCreditCalculator from './components/ChildTaxCreditCalculator';
 import QuarterlyTaxCalculator from './components/QuarterlyTaxCalculator';
 import ACASubsidyCalculator from './components/ACASubsidyCalculator';
@@ -131,6 +133,16 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Retirement Account Optimizer - 401k vs IRA vs Roth Strategy",
     desc: "Compare 401(k), Traditional IRA, and Roth IRA tax strategies. Maximize employer match, minimize lifetime tax burden with AI-driven optimization for 2025 contribution limits.",
     keywords: "retirement optimizer, 401k calculator, roth ira calculator, traditional ira, retirement tax strategy"
+  },
+  [ToolType.DRIP_CALCULATOR]: {
+    title: "Dividend Reinvestment (DRIP) Calculator - Snowball Compounding Model",
+    desc: "Model dividend reinvestment compounding vs cash payouts. Visualize the DRIP snowball effect, cost of waiting, and projected passive income.",
+    keywords: "drip calculator, dividend reinvestment, dividend yield, passive income, compounding"
+  },
+  [ToolType.CRYPTO_TAX_LOSS]: {
+    title: "Crypto Tax Loss Harvester - Estimated Tax Bill Reduction Simulator",
+    desc: "Estimate harvestable crypto losses and tax savings across multiple positions with a clean, client-side simulator.",
+    keywords: "crypto tax loss harvesting, tax loss harvester, crypto taxes, capital losses"
   },
   [ToolType.CHILD_TAX_CREDIT]: {
     title: "Child Tax Credit Calculator 2025 - CTC & ACTC Estimator",
@@ -377,6 +389,8 @@ const App: React.FC = () => {
       case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
       case ToolType.EXCEL_MODELER: return <ExcelModeler />;
       case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer />;
+      case ToolType.DRIP_CALCULATOR: return <DividendReinvestmentCalculator />;
+      case ToolType.CRYPTO_TAX_LOSS: return <CryptoTaxLossHarvester />;
       case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator />;
       case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator />;
       case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator />;
