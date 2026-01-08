@@ -1,0 +1,20 @@
+[
+  {
+    "city": "New York",
+    "citySlug": "new-york",
+    "medianSalary": 90000,
+    "netPay": 68000
+  },
+  {
+    "city": "San Francisco",
+    "citySlug": "san-francisco",
+    "medianSalary": 115000,
+    "netPay": 82000
+  },
+  {
+    "city": "Chicago",
+    "citySlug": "chicago",
+    "medianSalary": 78000,
+    "netPay": 59000
+  }
+]
