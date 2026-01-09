@@ -107,7 +107,8 @@ const MortgageCalculator: React.FC = () => {
       });
     }
 
-    const pmiApplies = pmiDropMonth === null || 1 < pmiDropMonth;
+    const pmiRequiredAtOrigination = downPaymentPercent < 20;
+    const pmiApplies = pmiRequiredAtOrigination && (pmiDropMonth === null || 1 < pmiDropMonth);
     const monthlyPMI = pmiApplies ? monthlyPMIBase : 0;
 
     return {
