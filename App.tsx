@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import Dashboard from './components/Dashboard';
@@ -20,6 +21,9 @@ import ExcelModeler from './components/ExcelModeler';
 import NetWorthTracker from './components/NetWorthTracker';
 import EmergencyFundTool from './components/EmergencyFundTool';
 import RetirementOptimizer from './components/RetirementOptimizer';
+import DividendReinvestmentCalculator from './components/DividendReinvestmentCalculator';
+import CryptoTaxLossHarvester from './components/CryptoTaxLossHarvester';
+import DividendStockPage from './src/components/DividendStockPage';
 import ChildTaxCreditCalculator from './components/ChildTaxCreditCalculator';
 import QuarterlyTaxCalculator from './components/QuarterlyTaxCalculator';
 import ACASubsidyCalculator from './components/ACASubsidyCalculator';
@@ -132,6 +136,16 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     desc: "Compare 401(k), Traditional IRA, and Roth IRA tax strategies. Maximize employer match, minimize lifetime tax burden with AI-driven optimization for 2025 contribution limits.",
     keywords: "retirement optimizer, 401k calculator, roth ira calculator, traditional ira, retirement tax strategy"
   },
+  [ToolType.DRIP_CALCULATOR]: {
+    title: "Dividend Reinvestment (DRIP) Calculator - Snowball Compounding Model",
+    desc: "Model dividend reinvestment compounding vs cash payouts. Visualize the DRIP snowball effect, cost of waiting, and projected passive income.",
+    keywords: "drip calculator, dividend reinvestment, dividend yield, passive income, compounding"
+  },
+  [ToolType.CRYPTO_TAX_LOSS]: {
+    title: "Crypto Tax Loss Harvester - Estimated Tax Bill Reduction Simulator",
+    desc: "Estimate harvestable crypto losses and tax savings across multiple positions with a clean, client-side simulator.",
+    keywords: "crypto tax loss harvesting, tax loss harvester, crypto taxes, capital losses"
+  },
   [ToolType.CHILD_TAX_CREDIT]: {
     title: "Child Tax Credit Calculator 2025 - CTC & ACTC Estimator",
     desc: "Calculate your 2025 Child Tax Credit (CTC) and Additional Child Tax Credit (ACTC). Estimate up to $2,000 per child with phase-out analysis, refundable credit calculations, and EITC eligibility check for single parents and families.",
@@ -229,7 +243,7 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
   }
 };
 
-const App: React.FC = () => {
+const AppShell: React.FC = () => {
   const getInitialTool = (): ToolType => {
     try {
       const path = window.location.pathname.replace('/', '');
@@ -377,6 +391,8 @@ const App: React.FC = () => {
       case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
       case ToolType.EXCEL_MODELER: return <ExcelModeler />;
       case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer />;
+      case ToolType.DRIP_CALCULATOR: return <DividendReinvestmentCalculator />;
+      case ToolType.CRYPTO_TAX_LOSS: return <CryptoTaxLossHarvester />;
       case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator />;
       case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator />;
       case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator />;
@@ -436,5 +452,14 @@ const App: React.FC = () => {
     </div>
   );
 };
+
+const App: React.FC = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/dividend-calculator/:ticker" element={<DividendStockPage />} />
+      <Route path="/*" element={<AppShell />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;

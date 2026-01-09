@@ -21,6 +21,7 @@ const Sitemap: React.FC<SitemapProps> = ({ onSelectTool }) => {
       title: "Wealth & Retirement",
       items: [
         { id: ToolType.INVESTMENT_CALC, label: "Wealth Projector", desc: "Visualize long-term compound growth for SIPs and general index fund investing." },
+        { id: ToolType.DRIP_CALCULATOR, label: "Dividend Reinvestment (DRIP)", desc: "Model dividend reinvestment compounding and snowball growth scenarios." },
         { id: ToolType.FIRE_PLANNER, label: "FIRE Freedom Logic", desc: "Plan your early retirement using the 4% safe withdrawal rule and crossover math." },
         { id: ToolType.SALARY_CALC, label: "Salary Tax Estimator", desc: "Precise after-tax income calculation across 50 states with 401k optimization." },
         { id: ToolType.FREELANCE_PROFIT, label: "Freelance Hub", desc: "Profitability analyzer for 1099 contractors including self-employment taxes." },
@@ -29,6 +30,7 @@ const Sitemap: React.FC<SitemapProps> = ({ onSelectTool }) => {
     {
       title: "Utilities & Intelligence",
       items: [
+        { id: ToolType.CRYPTO_TAX_LOSS, label: "Crypto Tax Loss Harvester", desc: "Estimate harvestable crypto losses and potential tax bill reduction." },
         { id: ToolType.MARKET_INSIGHTS, label: "AI Market Pulse", desc: "Macro-economic analysis and app ecosystem reviews powered by Gemini AI." },
         { id: ToolType.CURRENCY_CONV, label: "Currency Exchange Intel", desc: "Global forex converter with AI market sentiment for travelers and investors." },
         { id: ToolType.GST_CALC, label: "GST & VAT Calculator", desc: "Professional tax tool for inclusive and exclusive invoicing calculations." },
