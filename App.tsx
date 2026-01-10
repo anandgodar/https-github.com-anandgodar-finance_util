@@ -287,6 +287,31 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     desc: "Compare the best mortgage calculators in 2025. Review top tools including QuantCurb, Bankrate, Zillow, and find the perfect calculator with PITI, PMI, and property tax calculations.",
     keywords: "best mortgage calculator, mortgage calculator comparison, piti calculator, best mortgage calculator 2025, mortgage calculator review, home loan calculator comparison"
   },
+  [ToolType.BLOG_STUDENT_LOANS]: {
+    title: "Student Loan Repayment Strategies 2025: Complete Guide to Paying Off Student Debt",
+    desc: "Master student loan repayment in 2025. Learn about income-driven repayment plans (SAVE, PAYE, IBR), loan forgiveness programs (PSLF), refinancing strategies, and how to pay off student debt faster.",
+    keywords: "student loan repayment, student loan forgiveness, income driven repayment, SAVE plan, PSLF, student loan refinancing, pay off student loans, student debt, student loan calculator, student loan strategies"
+  },
+  [ToolType.BLOG_TAX_BRACKETS]: {
+    title: "Tax Brackets Explained 2025: Complete Guide to Federal Income Tax Rates",
+    desc: "Understand 2025 federal tax brackets and how progressive taxation works. Learn effective vs marginal tax rate, tax bracket calculations, and how to reduce your tax bill legally.",
+    keywords: "tax brackets, federal tax brackets 2025, marginal tax rate, effective tax rate, tax brackets explained, income tax brackets, tax rates 2025, progressive tax, tax bracket calculator"
+  },
+  [ToolType.BLOG_401K_VS_IRA]: {
+    title: "401(k) vs IRA 2025: Complete Comparison Guide - Which Retirement Account is Better?",
+    desc: "Compare 401(k) vs IRA in 2025. Learn contribution limits, employer match, tax benefits, withdrawal rules, and which retirement account is better for your situation.",
+    keywords: "401k vs ira, 401k vs roth ira, traditional 401k vs ira, which retirement account is better, 401k contribution limits 2025, ira contribution limits 2025, employer match, retirement planning"
+  },
+  [ToolType.BLOG_BUDGETING]: {
+    title: "Complete Budgeting Guide 2025: 50/30/20 Rule, Zero-Based Budgeting & More",
+    desc: "Master budgeting in 2025 with our complete guide. Learn the 50/30/20 rule, zero-based budgeting, envelope method, and proven strategies to take control of your finances.",
+    keywords: "budgeting guide, 50 30 20 rule, zero based budgeting, envelope method, how to budget, monthly budget, budgeting tips, personal finance budgeting, budget planner"
+  },
+  [ToolType.BLOG_CAPITAL_GAINS]: {
+    title: "Capital Gains Tax Guide 2025: Complete Guide to Long-Term vs Short-Term Capital Gains",
+    desc: "Understand capital gains tax in 2025. Learn long-term vs short-term capital gains rates, tax brackets, how to reduce capital gains tax, and strategies for tax-loss harvesting.",
+    keywords: "capital gains tax, long term capital gains, short term capital gains, capital gains tax rates 2025, how to reduce capital gains tax, tax loss harvesting, capital gains calculator"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Financial Blog - Expert Guides & Calculators 2025",
     desc: "Comprehensive financial guides, calculators, and expert insights for mortgages, taxes, retirement planning, and wealth management. Learn how to make smarter financial decisions with institutional-grade tools.",

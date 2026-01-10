@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { ToolType } from '../../types';
 import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
-import RecommendedTools from '../RecommendedTools';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -503,36 +502,39 @@ const BudgetingGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
       <AdPlacement size="responsive" position="bottom" />
 
-      <RecommendedTools
-        title="Related Calculators & Guides"
-        tools={[
-          {
-            name: "Salary Calculator",
-            description: "Calculate your take-home pay to know exactly how much you have to budget",
-            link: ToolType.SALARY_CALC,
-            icon: "💰"
-          },
-          {
-            name: "Emergency Fund Calculator",
-            description: "Calculate how much emergency fund you need (part of your budget)",
-            link: ToolType.EMERGENCY_FUND,
-            icon: "🛡️"
-          },
-          {
-            name: "Net Worth Tracker",
-            description: "Track your net worth to see how budgeting improves your financial health",
-            link: ToolType.NET_WORTH,
-            icon: "📊"
-          },
-          {
-            name: "How to Calculate Take-Home Pay",
-            description: "Learn how to calculate your exact take-home pay for budgeting",
-            link: ToolType.BLOG_TAKE_HOME_PAY,
-            icon: "📖"
-          }
-        ]}
-        onNavigate={onNavigate}
-      />
+      <div className="mt-12 space-y-6">
+        <h3 className="text-2xl font-black text-slate-900">Related Calculators & Guides</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.SALARY_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">💰 Salary Calculator</h4>
+            <p className="text-sm text-slate-600">Calculate your take-home pay to know exactly how much you have to budget</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.EMERGENCY_FUND)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">🛡️ Emergency Fund Calculator</h4>
+            <p className="text-sm text-slate-600">Calculate how much emergency fund you need (part of your budget)</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.NET_WORTH)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">📊 Net Worth Tracker</h4>
+            <p className="text-sm text-slate-600">Track your net worth to see how budgeting improves your financial health</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_TAKE_HOME_PAY)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">📖 How to Calculate Take-Home Pay</h4>
+            <p className="text-sm text-slate-600">Learn how to calculate your exact take-home pay for budgeting</p>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

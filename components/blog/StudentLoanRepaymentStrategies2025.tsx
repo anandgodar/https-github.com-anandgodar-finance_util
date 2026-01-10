@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { ToolType } from '../../types';
 import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
-import RecommendedTools from '../RecommendedTools';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -416,36 +415,39 @@ const StudentLoanRepaymentStrategies2025: React.FC<BlogProps> = ({ onNavigate })
 
       <AdPlacement size="responsive" position="bottom" />
 
-      <RecommendedTools
-        title="Related Calculators"
-        tools={[
-          {
-            name: "Loan EMI Calculator",
-            description: "Calculate your student loan payment and see how extra payments save interest",
-            link: ToolType.EMI_CALC,
-            icon: "💳"
-          },
-          {
-            name: "Credit Card Payoff Calculator",
-            description: "If you also have credit card debt, use this to prioritize which debt to pay first",
-            link: ToolType.CREDIT_CARD_PAYOFF,
-            icon: "💳"
-          },
-          {
-            name: "Loan Comparison Tool",
-            description: "Compare refinancing offers to see if refinancing makes sense",
-            link: ToolType.LOAN_COMPARE,
-            icon: "⚖️"
-          },
-          {
-            name: "Should I Pay Off Debt or Invest?",
-            description: "Decide whether to pay off student loans or invest your extra money",
-            link: ToolType.BLOG_DEBT_OR_INVEST,
-            icon: "📊"
-          }
-        ]}
-        onNavigate={onNavigate}
-      />
+      <div className="mt-12 space-y-6">
+        <h3 className="text-2xl font-black text-slate-900">Related Calculators</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.EMI_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">💳 Loan EMI Calculator</h4>
+            <p className="text-sm text-slate-600">Calculate your student loan payment and see how extra payments save interest</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.CREDIT_CARD_PAYOFF)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">💳 Credit Card Payoff Calculator</h4>
+            <p className="text-sm text-slate-600">If you also have credit card debt, use this to prioritize which debt to pay first</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.LOAN_COMPARE)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">⚖️ Loan Comparison Tool</h4>
+            <p className="text-sm text-slate-600">Compare refinancing offers to see if refinancing makes sense</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_DEBT_OR_INVEST)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">📊 Should I Pay Off Debt or Invest?</h4>
+            <p className="text-sm text-slate-600">Decide whether to pay off student loans or invest your extra money</p>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

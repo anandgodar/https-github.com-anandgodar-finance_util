@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { ToolType } from '../../types';
 import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
-import RecommendedTools from '../RecommendedTools';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -476,36 +475,39 @@ const TaxBracketsExplained2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
       <AdPlacement size="responsive" position="bottom" />
 
-      <RecommendedTools
-        title="Related Calculators & Guides"
-        tools={[
-          {
-            name: "Salary Calculator",
-            description: "Calculate your take-home pay and see your exact tax brackets and effective tax rate",
-            link: ToolType.SALARY_CALC,
-            icon: "💰"
-          },
-          {
-            name: "How to Calculate Take-Home Pay",
-            description: "Complete guide to understanding your paycheck and tax deductions",
-            link: ToolType.BLOG_TAKE_HOME_PAY,
-            icon: "📖"
-          },
-          {
-            name: "Tax Deductions for Freelancers",
-            description: "Learn about tax deductions that can reduce your taxable income",
-            link: ToolType.BLOG_TAX_DEDUCTIONS,
-            icon: "📊"
-          },
-          {
-            name: "Quarterly Tax Calculator",
-            description: "Estimate your quarterly tax payments if you're self-employed",
-            link: ToolType.QUARTERLY_TAX,
-            icon: "📅"
-          }
-        ]}
-        onNavigate={onNavigate}
-      />
+      <div className="mt-12 space-y-6">
+        <h3 className="text-2xl font-black text-slate-900">Related Calculators & Guides</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.SALARY_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">💰 Salary Calculator</h4>
+            <p className="text-sm text-slate-600">Calculate your take-home pay and see your exact tax brackets and effective tax rate</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_TAKE_HOME_PAY)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">📖 How to Calculate Take-Home Pay</h4>
+            <p className="text-sm text-slate-600">Complete guide to understanding your paycheck and tax deductions</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_TAX_DEDUCTIONS)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">📊 Tax Deductions for Freelancers</h4>
+            <p className="text-sm text-slate-600">Learn about tax deductions that can reduce your taxable income</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.QUARTERLY_TAX)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">📅 Quarterly Tax Calculator</h4>
+            <p className="text-sm text-slate-600">Estimate your quarterly tax payments if you're self-employed</p>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

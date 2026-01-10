@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { ToolType } from '../../types';
 import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
-import RecommendedTools from '../RecommendedTools';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -503,36 +502,39 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
 
       <AdPlacement size="responsive" position="bottom" />
 
-      <RecommendedTools
-        title="Related Calculators & Guides"
-        tools={[
-          {
-            name: "Retirement Account Optimizer",
-            description: "Compare 401(k) vs IRA and see which retirement account saves you the most money",
-            link: ToolType.RETIREMENT_OPTIMIZER,
-            icon: "🎯"
-          },
-          {
-            name: "Roth IRA vs Traditional IRA",
-            description: "Complete comparison of Roth vs Traditional retirement accounts",
-            link: ToolType.BLOG_ROTH_TRADITIONAL,
-            icon: "📖"
-          },
-          {
-            name: "Investment Calculator",
-            description: "See how your 401(k) and IRA contributions grow over time",
-            link: ToolType.INVESTMENT_CALC,
-            icon: "📈"
-          },
-          {
-            name: "FIRE Planner",
-            description: "Plan for early retirement using 401(k) and IRA accounts",
-            link: ToolType.FIRE_PLANNER,
-            icon: "🔥"
-          }
-        ]}
-        onNavigate={onNavigate}
-      />
+      <div className="mt-12 space-y-6">
+        <h3 className="text-2xl font-black text-slate-900">Related Calculators & Guides</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.RETIREMENT_OPTIMIZER)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">🎯 Retirement Account Optimizer</h4>
+            <p className="text-sm text-slate-600">Compare 401(k) vs IRA and see which retirement account saves you the most money</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_ROTH_TRADITIONAL)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">📖 Roth IRA vs Traditional IRA</h4>
+            <p className="text-sm text-slate-600">Complete comparison of Roth vs Traditional retirement accounts</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.INVESTMENT_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">📈 Investment Calculator</h4>
+            <p className="text-sm text-slate-600">See how your 401(k) and IRA contributions grow over time</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.FIRE_PLANNER)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h4 className="font-bold text-slate-900 mb-2">🔥 FIRE Planner</h4>
+            <p className="text-sm text-slate-600">Plan for early retirement using 401(k) and IRA accounts</p>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
