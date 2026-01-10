@@ -722,21 +722,21 @@ const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavig
         <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
         <div className="grid md:grid-cols-2 gap-4">
           <button
-            onClick={() => onNavigate?.(ToolType.BLOG_QUARTERLY_TAXES)}
+            onClick={() => onNavigate?.(ToolType.BLOG_QUARTERLY_TAX)}
             className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
           >
             <h3 className="font-bold text-slate-900 mb-2">📖 Quarterly Estimated Taxes Guide 2025</h3>
             <p className="text-sm text-slate-600">Complete guide to quarterly tax payments, safe harbor rules, and penalty avoidance for freelancers.</p>
           </button>
           <button
-            onClick={() => onNavigate?.(ToolType.FREELANCE_HUB)}
+            onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}
             className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
           >
             <h3 className="font-bold text-slate-900 mb-2">💼 Freelance Hub</h3>
             <p className="text-sm text-slate-600">Calculate net profit, tax deductions, and quarterly tax obligations for freelancers.</p>
           </button>
           <button
-            onClick={() => onNavigate?.(ToolType.BLOG_SELF_EMPLOYMENT_TAX)}
+            onClick={() => onNavigate?.(ToolType.BLOG_SE_TAX)}
             className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
           >
             <h3 className="font-bold text-slate-900 mb-2">📖 Self-Employment Tax Guide 2025</h3>

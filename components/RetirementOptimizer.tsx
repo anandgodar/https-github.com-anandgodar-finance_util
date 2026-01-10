@@ -77,6 +77,16 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
     const afterTaxIRA = fvIRA - taxOnIRAWithdrawal;
     const afterTaxRoth = fvRoth; // Tax-free withdrawals
 
+    // Social Security estimate (~40% of pre-retirement income)
+    const socialSecurity = income * 0.4;
+
+    // Target retirement savings (4% rule: 25x annual expenses)
+    const targetRetirement = annualExpenses * 25;
+
+    // Retirement readiness score (projected savings / target savings * 100)
+    const bestProjectedSavings = Math.max(afterTax401k, afterTaxIRA, afterTaxRoth);
+    const retirementReadiness = (bestProjectedSavings / targetRetirement) * 100;
+
     return {
       traditional401k: {
         annualContribution: total401kContribution,
@@ -102,9 +112,12 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
         futureValue: fvRoth,
         afterTaxValue: afterTaxRoth,
         effectiveReturn: ((afterTaxRoth / (netCostRoth * yearsToRetirement)) ** (1 / yearsToRetirement) - 1) * 100
-      }
+      },
+      socialSecurity,
+      targetRetirement,
+      retirementReadiness
     };
-  }, [age, income, currentSavings, monthlyContribution, employerMatch, taxBracket, retirementAge, expectedReturn, yearsToRetirement, isCatchUpEligible]);
+  }, [age, income, currentSavings, monthlyContribution, employerMatch, taxBracket, retirementAge, expectedReturn, yearsToRetirement, isCatchUpEligible, annualExpenses]);
 
   const chartData = [
     {
