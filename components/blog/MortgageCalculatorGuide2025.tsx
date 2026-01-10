@@ -1,6 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { ToolType } from '../../types';
+import EmailCapture from '../EmailCapture';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -569,6 +570,19 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           >
             Calculate Mortgage Payment →
           </button>
+        </section>
+
+        {/* Email Capture Section */}
+        <section className="mt-12">
+          <EmailCapture
+            title="Get More Mortgage & Home Buying Resources"
+            description="Subscribe to get exclusive mortgage guides, home buying tips, and financial strategies delivered to your inbox."
+            leadMagnet={{
+              title: "Mortgage Planning Resources",
+              description: "Weekly tips on mortgages, home buying, and real estate investing."
+            }}
+            buttonText="Subscribe Free"
+          />
         </section>
       </article>
     </div>

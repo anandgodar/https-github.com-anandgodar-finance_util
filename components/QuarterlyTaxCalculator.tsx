@@ -2,6 +2,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, Legend } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
+import EmailCapture from './EmailCapture';
 
 type FilingStatus = 'single' | 'married' | 'hoh';
 type SafeHarborMethod = 'prior_year' | 'current_year';
@@ -633,6 +634,19 @@ const QuarterlyTaxCalculator: React.FC = () => {
             <li>• <strong>Child Tax Credit</strong> - Reduce tax liability with credits</li>
           </ul>
         </div>
+      </section>
+
+      {/* Email Capture Section */}
+      <section className="mt-12">
+        <EmailCapture
+          title="Get Your Free Freelancer Tax Checklist 2025"
+          description="Download our comprehensive quarterly tax checklist with safe harbor rules, payment deadlines, and penalty avoidance strategies."
+          leadMagnet={{
+            title: "Quarterly Tax Checklist 2025",
+            description: "Complete guide to quarterly estimated taxes including safe harbor rules, payment deadlines, and penalty avoidance."
+          }}
+          buttonText="Get Free Checklist"
+        />
       </section>
     </div>
   );

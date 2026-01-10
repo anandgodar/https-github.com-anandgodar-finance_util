@@ -9,6 +9,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import EmailCapture from './EmailCapture';
 
 interface AmortizationEntry {
   month: number;
@@ -322,6 +323,19 @@ const MortgageCalculator: React.FC = () => {
             </ResponsiveContainer>
           </div>
         </div>
+      </section>
+
+      {/* Email Capture Section */}
+      <section className="mt-12">
+        <EmailCapture
+          title="Get Your Free Mortgage Planning Checklist"
+          description="Download our comprehensive mortgage planning checklist with PITI breakdown, PMI removal strategies, and home buying tips."
+          leadMagnet={{
+            title: "Mortgage Planning Checklist 2025",
+            description: "Complete guide to mortgage planning including PITI calculations, PMI strategies, and home buying tips."
+          }}
+          buttonText="Get Free Checklist"
+        />
       </section>
     </article>
   );
