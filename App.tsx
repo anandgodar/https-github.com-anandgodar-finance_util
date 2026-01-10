@@ -123,9 +123,9 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "credit card payoff, debt avalanche, debt snowball, interest savings"
   },
   [ToolType.FIRE_PLANNER]: { 
-    title: "FIRE Planner - 4% Rule & Early Retirement Freedom Number", 
-    desc: "Calculate your crossover point to freedom. Plan for Lean, Standard, or Fat FIRE with inflation-adjusted investment and expense modeling.",
-    keywords: "fire planner, early retirement, 4 percent rule, freedom number"
+    title: "FIRE Calculator 2025 - Early Retirement Planner with Coast FIRE, Barista FIRE & Geographic Arbitrage", 
+    desc: "Free FIRE calculator to calculate your early retirement number using the 4% rule. Includes Lean FIRE, Fat FIRE, Coast FIRE, Barista FIRE, and geographic arbitrage calculator. Plan your path to financial independence and early retirement.",
+    keywords: "fire calculator, fire planner, early retirement calculator, fire number calculator, coast fire calculator, barista fire calculator, geographic arbitrage, 4 percent rule, financial independence retire early, lean fire, fat fire, fire planning, early retirement planning"
   },
   [ToolType.FREELANCE_PROFIT]: { 
     title: "Freelance Hub - 1099 Net Profit & FTE Salary Equivalent Tool", 
@@ -452,7 +452,7 @@ const AppShell: React.FC = () => {
       case ToolType.CURRENCY_CONV: return <CurrencyConverter />;
       case ToolType.GST_CALC: return <GSTCalculator />;
       case ToolType.CREDIT_CARD_PAYOFF: return <CreditCardPayoff />;
-      case ToolType.FIRE_PLANNER: return <FIREPlanner />;
+      case ToolType.FIRE_PLANNER: return <FIREPlanner onNavigate={setActiveTool} />;
       case ToolType.FREELANCE_PROFIT: return <FreelanceHub />;
       case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
       case ToolType.EXCEL_MODELER: return <ExcelModeler />;
