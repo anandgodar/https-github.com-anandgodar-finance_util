@@ -143,9 +143,9 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "dcf calculator, business valuation, wacc matrix, enterprise value"
   },
   [ToolType.RETIREMENT_OPTIMIZER]: {
-    title: "Retirement Account Optimizer - 401k vs IRA vs Roth Strategy",
-    desc: "Compare 401(k), Traditional IRA, and Roth IRA tax strategies. Maximize employer match, minimize lifetime tax burden with AI-driven optimization for 2025 contribution limits.",
-    keywords: "retirement optimizer, 401k calculator, roth ira calculator, traditional ira, retirement tax strategy"
+    title: "Retirement Account Optimizer 2025 - 401k vs IRA vs Roth Calculator with Readiness Score",
+    desc: "Free retirement calculator to compare 401(k), Traditional IRA, and Roth IRA strategies. Calculate retirement readiness score, RMD estimates, Social Security, and maximize employer match. Optimize your retirement savings for 2025 contribution limits.",
+    keywords: "retirement optimizer, retirement calculator, 401k calculator, roth ira calculator, traditional ira calculator, retirement tax strategy, retirement readiness score, rmd calculator, social security calculator, 401k vs roth, retirement account comparison, 2025 contribution limits"
   },
   [ToolType.DRIP_CALCULATOR]: {
     title: "Dividend Reinvestment (DRIP) Calculator - Snowball Compounding Model",
@@ -456,7 +456,7 @@ const AppShell: React.FC = () => {
       case ToolType.FREELANCE_PROFIT: return <FreelanceHub />;
       case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
       case ToolType.EXCEL_MODELER: return <ExcelModeler />;
-      case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer />;
+      case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer onNavigate={setActiveTool} />;
       case ToolType.DRIP_CALCULATOR: return <DividendReinvestmentCalculator />;
       case ToolType.CRYPTO_TAX_LOSS: return <CryptoTaxLossHarvester />;
       case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator />;
