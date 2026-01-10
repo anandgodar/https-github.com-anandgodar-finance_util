@@ -361,6 +361,151 @@ const CreditCardPayoff: React.FC<CreditCardPayoffProps> = ({ onNavigate }) => {
           </ul>
         </div>
       </section>
+
+      {/* Balance Transfer Calculator Section */}
+      {cards.length > 0 && (
+        <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+          <h2 className="text-2xl font-black text-slate-900 mb-6">Balance Transfer Calculator</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Transfer Rate (APR %)</label>
+              <input 
+                type="number" 
+                step="0.1"
+                value={balanceTransferRate} 
+                onChange={(e) => setBalanceTransferRate(Number(e.target.value))} 
+                className="w-full p-4 bg-white border border-slate-200 rounded-xl font-bold" 
+                placeholder="0"
+              />
+              <p className="text-xs text-slate-500 mt-1">Enter 0 for 0% promotional APR</p>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Transfer Fee (%)</label>
+              <input 
+                type="number" 
+                step="0.1"
+                value={balanceTransferFee} 
+                onChange={(e) => setBalanceTransferFee(Number(e.target.value))} 
+                className="w-full p-4 bg-white border border-slate-200 rounded-xl font-bold" 
+                placeholder="3"
+              />
+              <p className="text-xs text-slate-500 mt-1">Typically 3-5% of transferred amount</p>
+            </div>
+          </div>
+          {balanceTransferRate >= 0 && cards.length > 0 && (
+            <div className="mt-6 bg-white rounded-2xl p-6 border border-indigo-200">
+              {cards.map(card => {
+                const transferFee = card.balance * (balanceTransferFee / 100);
+                const currentAnnualInterest = card.balance * (card.rate / 100);
+                const newAnnualInterest = (card.balance + transferFee) * (balanceTransferRate / 100);
+                const annualSavings = currentAnnualInterest - newAnnualInterest;
+                const breakEvenMonths = transferFee / Math.max(0.01, (currentAnnualInterest / 12 - newAnnualInterest / 12));
+                
+                return (
+                  <div key={card.id} className="mb-4 pb-4 border-b border-slate-100 last:border-0">
+                    <h4 className="font-bold text-slate-900 mb-2">{card.name}</h4>
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <p className="text-slate-600">Transfer Fee</p>
+                        <p className="font-bold text-slate-900">${Math.round(transferFee).toLocaleString()}</p>
+                      </div>
+                      <div>
+                        <p className="text-slate-600">Annual Savings</p>
+                        <p className="font-bold text-emerald-600">${Math.round(annualSavings).toLocaleString()}</p>
+                      </div>
+                      <div>
+                        <p className="text-slate-600">Break-Even</p>
+                        <p className="font-bold text-slate-900">{breakEvenMonths > 0 && breakEvenMonths < 120 ? `${Math.round(breakEvenMonths)} months` : 'Check manually'}</p>
+                      </div>
+                      <div>
+                        <p className="text-slate-600">Worth It?</p>
+                        <p className={`font-bold ${annualSavings > transferFee ? 'text-emerald-600' : 'text-red-600'}`}>
+                          {annualSavings > transferFee ? '✅ Yes' : '❌ No'}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_DEBT_OR_INVEST)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 Should I Pay Off Debt or Invest?</h3>
+            <p className="text-sm text-slate-600">Learn when to prioritize debt payoff vs investing based on interest rates and returns.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.EMI_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">💳 Loan EMI Calculator</h3>
+            <p className="text-sm text-slate-600">Calculate loan payments and see how extra payments save interest.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.LOAN_COMPARE)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">⚖️ Loan Comparison Tool</h3>
+            <p className="text-sm text-slate-600">Compare different loan offers and refinancing options.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.INVESTMENT_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📈 Investment Calculator</h3>
+            <p className="text-sm text-slate-600">See how investing the money you save from debt payoff can grow.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="Credit Card Payoff Calculator"
+        calculatorUrl="https://quantcurb.com/credit-card-debt-strategist"
+        faqs={[
+          {
+            question: "What's the difference between Avalanche and Snowball debt payoff methods?",
+            answer: "Avalanche method pays off debts with the highest interest rates first, saving the most money in interest. Snowball method pays off smallest balances first for psychological wins and momentum. Avalanche is mathematically optimal, but Snowball works better for some people who need motivation. Our calculator shows both strategies so you can compare."
+          },
+          {
+            question: "How do I calculate how long it will take to pay off my credit cards?",
+            answer: "Use our calculator! Enter all your credit cards (balance, APR, minimum payment), set your monthly budget, and choose Avalanche or Snowball strategy. The calculator shows exactly how many months until debt-free, total interest paid, and your payoff timeline. It accounts for minimum payments, interest compounding, and extra payments."
+          },
+          {
+            question: "Should I do a balance transfer to pay off credit card debt?",
+            answer: "Balance transfers can save money if you move high-interest debt to a 0% APR card. However, consider: 1) Transfer fees (typically 3-5%), 2) Promotional period length, 3) Whether you can pay off before the rate increases. Use our balance transfer calculator to see if it's worth it. Generally, if you can pay off within the promotional period, it's a good move."
+          },
+          {
+            question: "How much should I pay toward credit card debt each month?",
+            answer: "Pay as much as possible above minimum payments. The more you pay, the faster you become debt-free and the less interest you pay. Our calculator shows the impact of different monthly budgets. Aim to pay at least 2-3x the minimum payment if possible. Every extra dollar saves significant interest over time."
+          },
+          {
+            question: "What happens if I only make minimum payments?",
+            answer: "Making only minimum payments means you'll pay thousands in interest and take years (or decades) to pay off debt. For example, a $5,000 balance at 25% APR with $150 minimum payment takes ~4 years and costs ~$2,000 in interest. Our calculator shows the true cost of minimum payments vs aggressive payoff."
+          },
+          {
+            question: "Can I negotiate my credit card interest rate?",
+            answer: "Yes! Call your credit card company and ask for a lower rate. Mention competitor offers, your payment history, and financial hardship if applicable. Many companies will reduce rates to keep you as a customer. Even a 2-3% reduction can save hundreds in interest. If they refuse, consider balance transfer or debt consolidation."
+          },
+          {
+            question: "Should I pay off credit cards or invest?",
+            answer: "Generally, if your credit card APR is higher than expected investment returns (7-8%), pay off debt first. Credit card rates (20-30%) are much higher than stock market returns. However, if you have low-rate debt (<5%) and high investment returns expected, investing might make sense. Use our 'Should I Pay Off Debt or Invest' calculator to see the math."
+          },
+          {
+            question: "How does credit card interest work?",
+            answer: "Credit card interest compounds daily based on your average daily balance. The APR (Annual Percentage Rate) is divided by 365 to get the daily rate, then applied to your balance each day. This means interest charges grow quickly. Paying more than the minimum reduces the principal faster, saving significant interest over time."
+          }
+        ]}
+      />
     </div>
   );
 };
