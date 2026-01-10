@@ -3,6 +3,8 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, Legend } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
 import EmailCapture from './EmailCapture';
+import CalculatorFAQ from './CalculatorFAQ';
+import { ToolType } from '../types';
 
 type FilingStatus = 'single' | 'married' | 'hoh';
 type SafeHarborMethod = 'prior_year' | 'current_year';
@@ -65,7 +67,11 @@ const QUARTERLY_DEADLINES = [
   { quarter: 'Q4', period: 'Sep 1 - Dec 31', deadline: 'January 15, 2026' }
 ];
 
-const QuarterlyTaxCalculator: React.FC = () => {
+interface QuarterlyTaxCalculatorProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavigate }) => {
   const [estimatedIncome, setEstimatedIncome] = useState<number>(120000);
   const [selfEmploymentIncome, setSelfEmploymentIncome] = useState<number>(120000);
   const [w2Income, setW2Income] = useState<number>(0);
@@ -188,6 +194,67 @@ const QuarterlyTaxCalculator: React.FC = () => {
     const timer = setTimeout(() => fetchAdvice(), 2000);
     return () => clearTimeout(timer);
   }, [estimatedIncome, selfEmploymentIncome, w2Income, priorYearTax, filingStatus, stateCode, safeHarborMethod]);
+
+  useEffect(() => {
+    // Add HowTo schema for "How to calculate quarterly estimated taxes"
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Quarterly Estimated Taxes for Self-Employed and Freelancers",
+      "description": "Step-by-step guide to calculating and paying quarterly estimated taxes (Form 1040-ES) to avoid IRS penalties. Learn safe harbor rules and payment deadlines.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Estimate Your Annual Income",
+          "text": "Enter your expected self-employment income, W-2 income (if any), and business expenses for the year."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Calculate Self-Employment Tax",
+          "text": "Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on net self-employment income after expenses."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Calculate Federal and State Income Tax",
+          "text": "Calculate federal income tax using progressive tax brackets and state tax based on your state's rate."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Determine Safe Harbor Method",
+          "text": "Choose Prior Year Safe Harbor (pay 100% of last year's tax) or Current Year Safe Harbor (pay 90% of this year's tax). Prior year is easier and safer."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Calculate Quarterly Payment",
+          "text": "Divide your total estimated tax by 4 to get your quarterly payment amount. Pay this amount by each quarterly deadline."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Pay by Deadlines",
+          "text": "Pay quarterly estimated taxes by: Q1 (April 15), Q2 (June 15), Q3 (September 15), Q4 (January 15). Missing deadlines results in penalties."
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(howToSchema);
+    script.id = 'howto-schema-quarterly-tax';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('howto-schema-quarterly-tax');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
@@ -649,6 +716,81 @@ const QuarterlyTaxCalculator: React.FC = () => {
           buttonText="Get Free Checklist"
         />
       </section>
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_QUARTERLY_TAXES)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 Quarterly Estimated Taxes Guide 2025</h3>
+            <p className="text-sm text-slate-600">Complete guide to quarterly tax payments, safe harbor rules, and penalty avoidance for freelancers.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.FREELANCE_HUB)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">💼 Freelance Hub</h3>
+            <p className="text-sm text-slate-600">Calculate net profit, tax deductions, and quarterly tax obligations for freelancers.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_SELF_EMPLOYMENT_TAX)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 Self-Employment Tax Guide 2025</h3>
+            <p className="text-sm text-slate-600">Learn about self-employment tax (15.3%), deductions, and how to minimize your tax burden.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_HOME_OFFICE)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 Home Office Deduction Guide 2025</h3>
+            <p className="text-sm text-slate-600">Maximize your home office deduction and reduce your taxable income as a freelancer.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="Quarterly Tax Calculator"
+        calculatorUrl="https://quantcurb.com/quarterly-tax-calculator"
+        faqs={[
+          {
+            question: "Who needs to pay quarterly estimated taxes?",
+            answer: "You need to pay quarterly estimated taxes if you're self-employed, a freelancer, or have income not subject to withholding (like rental income, dividends, or capital gains). Generally, if you expect to owe $1,000 or more in taxes for the year after subtracting withholding and credits, you must pay quarterly."
+          },
+          {
+            question: "What are quarterly tax payment deadlines?",
+            answer: "Quarterly estimated tax deadlines are: Q1 (Jan-Mar): April 15, Q2 (Apr-May): June 15, Q3 (Jun-Aug): September 15, Q4 (Sep-Dec): January 15 of the following year. If a deadline falls on a weekend or holiday, it's moved to the next business day."
+          },
+          {
+            question: "What is the safe harbor rule for quarterly taxes?",
+            answer: "Safe harbor rules let you avoid underpayment penalties if you pay either: 1) 100% of last year's tax (110% if AGI > $150,000), or 2) 90% of this year's tax. The prior year safe harbor is easier because you know the exact amount. Our calculator shows both methods."
+          },
+          {
+            question: "How do I calculate quarterly estimated tax payments?",
+            answer: "Calculate your total estimated tax (federal income tax + self-employment tax + state tax), then divide by 4. For example, if your total tax is $20,000, pay $5,000 per quarter. Our calculator does this automatically and accounts for safe harbor rules."
+          },
+          {
+            question: "What happens if I miss a quarterly tax payment?",
+            answer: "Missing quarterly payments results in underpayment penalties. The penalty is calculated based on how much you underpaid and for how long. The penalty rate is typically around 5-6% annually. Paying on time and using safe harbor rules avoids penalties."
+          },
+          {
+            question: "Do I need to pay quarterly taxes if I have a W-2 job?",
+            answer: "If you have a W-2 job with withholding, you may not need quarterly payments if your withholding covers your tax liability. However, if you also have self-employment income, you may need to pay quarterly on that income. Our calculator accounts for both W-2 and self-employment income."
+          },
+          {
+            question: "What is self-employment tax?",
+            answer: "Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on net self-employment income. This is in addition to income tax. W-2 employees split this with their employer (7.65% each), but self-employed pay the full 15.3%. You can deduct 50% of SE tax on your income tax return."
+          },
+          {
+            question: "Can I adjust my quarterly payments during the year?",
+            answer: "Yes! If your income changes during the year, you can adjust your quarterly payments. If you earn more, increase payments to avoid penalties. If you earn less, you can reduce payments, but be careful not to underpay too much. It's better to overpay slightly and get a refund."
+          }
+        ]}
+      />
     </div>
   );
 };
