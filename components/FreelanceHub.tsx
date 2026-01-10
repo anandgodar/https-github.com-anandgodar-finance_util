@@ -3,6 +3,8 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
 import EmailCapture from './EmailCapture';
+import CalculatorFAQ from './CalculatorFAQ';
+import { ToolType } from '../types';
 
 const STATE_TAX_DATA: Record<string, { name: string; rate: number }> = {
   AL: { name: 'Alabama', rate: 0.05 }, AK: { name: 'Alaska', rate: 0.00 }, AZ: { name: 'Arizona', rate: 0.025 },
@@ -24,7 +26,11 @@ const STATE_TAX_DATA: Record<string, { name: string; rate: number }> = {
   WI: { name: 'Wisconsin', rate: 0.053 }, WY: { name: 'Wyoming', rate: 0.00 },
 };
 
-const FreelanceHub: React.FC = () => {
+interface FreelanceHubProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+const FreelanceHub: React.FC<FreelanceHubProps> = ({ onNavigate }) => {
   const [grossIncome, setGrossIncome] = useState<number>(12000);
   const [hoursWorked, setHoursWorked] = useState<number>(160);
   const [stateCode, setStateCode] = useState<string>('CA');
@@ -77,6 +83,73 @@ const FreelanceHub: React.FC = () => {
     const timer = setTimeout(() => fetchAdvice(), 2000);
     return () => clearTimeout(timer);
   }, [grossIncome, hoursWorked, stateCode]);
+
+  useEffect(() => {
+    // Add HowTo schema for "How to calculate freelance net profit"
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Freelance Net Profit and Tax Obligations",
+      "description": "Step-by-step guide to calculating net profit, self-employment tax, and corporate salary equivalent for freelancers and independent contractors.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Enter Your Gross Income",
+          "text": "Enter your monthly gross revenue from freelance work (before any deductions)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Enter Business Expenses",
+          "text": "Enter all deductible business expenses: software, marketing, hardware, office expenses. These reduce your taxable income."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Enter Personal Benefits",
+          "text": "Enter health insurance and retirement contributions. These are handled differently depending on your business structure."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Calculate Net Income",
+          "text": "Net income = Gross income - Business expenses - Taxes. The calculator shows your take-home pay after all deductions."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Calculate Self-Employment Tax",
+          "text": "Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on your net profit. This is in addition to income tax."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Calculate Real Hourly Rate",
+          "text": "Real hourly rate = Net income / Total hours worked (including non-billable hours). Compare this to your previous corporate wage."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 7,
+          "name": "Compare to Corporate Salary",
+          "text": "The calculator shows your FTE (Full-Time Employee) salary equivalent, helping you understand if freelancing is financially viable."
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(howToSchema);
+    script.id = 'howto-schema-freelance';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('howto-schema-freelance');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-500 pb-24">
@@ -289,6 +362,81 @@ const FreelanceHub: React.FC = () => {
           buttonText="Get Free Guide"
         />
       </section>
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_TAX_DEDUCTIONS)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 Tax Deductions for Freelancers 2025</h3>
+            <p className="text-sm text-slate-600">Complete guide to maximizing tax deductions including home office, mileage, equipment, and more.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.QUARTERLY_TAX)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📊 Quarterly Tax Calculator</h3>
+            <p className="text-sm text-slate-600">Calculate your estimated quarterly tax payments and avoid IRS penalties.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_SE_TAX)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 Self-Employment Tax Guide 2025</h3>
+            <p className="text-sm text-slate-600">Learn about the 15.3% self-employment tax, deductions, and how to minimize your tax burden.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_1099_W2)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 1099 vs W-2 Comparison 2025</h3>
+            <p className="text-sm text-slate-600">Compare 1099 contractor vs W-2 employee to understand the financial implications.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="Freelance Hub"
+        calculatorUrl="https://quantcurb.com/freelance-profit-hub"
+        faqs={[
+          {
+            question: "How do I calculate my freelance net profit?",
+            answer: "Net profit = Gross income - Business expenses - Taxes. Business expenses (software, marketing, hardware, office) are deductible and reduce your taxable income. After subtracting federal tax, state tax, and self-employment tax (15.3%), you get your net profit. Our calculator does this automatically."
+          },
+          {
+            question: "What is self-employment tax and how much is it?",
+            answer: "Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on your net profit. W-2 employees split this with their employer (7.65% each), but freelancers pay the full 15.3%. You can deduct 50% of SE tax on your income tax return. This is in addition to income tax."
+          },
+          {
+            question: "What business expenses can I deduct as a freelancer?",
+            answer: "You can deduct ordinary and necessary business expenses: software subscriptions, marketing/advertising, hardware/equipment, office supplies, home office (if you qualify), mileage, professional development, and more. Keep receipts and track expenses throughout the year. Our calculator helps you see how deductions reduce your tax burden."
+          },
+          {
+            question: "How do I calculate my real hourly rate as a freelancer?",
+            answer: "Real hourly rate = Net income / Total hours worked (including non-billable hours like admin, sales, and marketing). If you bill $100/hour but only work 20 billable hours out of 40 total hours, your real rate is $50/hour. Compare this to your previous corporate wage to see if freelancing is financially viable."
+          },
+          {
+            question: "What's the difference between gross and net income?",
+            answer: "Gross income is your total revenue before any deductions. Net income (net profit) is what you take home after subtracting business expenses and taxes. For example, if you earn $10,000/month gross, have $2,000 in expenses, and pay $2,500 in taxes, your net income is $5,500/month."
+          },
+          {
+            question: "Should I be a 1099 contractor or W-2 employee?",
+            answer: "1099 contractors have more flexibility but pay 15.3% self-employment tax and must pay quarterly estimated taxes. W-2 employees have taxes withheld and get benefits. Generally, you need to earn 20-30% more as a 1099 contractor to match a W-2 salary after taxes and benefits. Use our calculator to compare."
+          },
+          {
+            question: "How much should I set aside for taxes as a freelancer?",
+            answer: "Set aside 25-30% of your gross income for taxes (federal + state + self-employment tax). For example, if you earn $10,000/month, set aside $2,500-$3,000. Pay quarterly estimated taxes to avoid penalties. Our Quarterly Tax Calculator shows exactly how much to pay each quarter."
+          },
+          {
+            question: "What is the home office deduction for freelancers?",
+            answer: "If you use part of your home exclusively for business, you can deduct home office expenses. You can use the simplified method ($5 per square foot, up to 300 sq ft = $1,500) or the actual expense method (percentage of home expenses). The home office must be your principal place of business or used regularly for client meetings."
+          }
+        ]}
+      />
     </div>
   );
 };

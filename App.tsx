@@ -453,7 +453,7 @@ const AppShell: React.FC = () => {
       case ToolType.GST_CALC: return <GSTCalculator />;
       case ToolType.CREDIT_CARD_PAYOFF: return <CreditCardPayoff onNavigate={setActiveTool} />;
       case ToolType.FIRE_PLANNER: return <FIREPlanner onNavigate={setActiveTool} />;
-      case ToolType.FREELANCE_PROFIT: return <FreelanceHub />;
+      case ToolType.FREELANCE_PROFIT: return <FreelanceHub onNavigate={setActiveTool} />;
       case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
       case ToolType.EXCEL_MODELER: return <ExcelModeler />;
       case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer onNavigate={setActiveTool} />;
