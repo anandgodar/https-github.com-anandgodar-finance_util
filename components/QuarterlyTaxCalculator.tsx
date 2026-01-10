@@ -643,7 +643,8 @@ const QuarterlyTaxCalculator: React.FC = () => {
           description="Download our comprehensive quarterly tax checklist with safe harbor rules, payment deadlines, and penalty avoidance strategies."
           leadMagnet={{
             title: "Quarterly Tax Checklist 2025",
-            description: "Complete guide to quarterly estimated taxes including safe harbor rules, payment deadlines, and penalty avoidance."
+            description: "Complete guide to quarterly estimated taxes including safe harbor rules, payment deadlines, and penalty avoidance.",
+            type: "quarterly_tax"
           }}
           buttonText="Get Free Checklist"
         />

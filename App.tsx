@@ -42,6 +42,10 @@ import ShouldIPayOffDebtOrInvest2025 from './components/blog/ShouldIPayOffDebtOr
 import HowToCalculateTakeHomePay2025 from './components/blog/HowToCalculateTakeHomePay2025';
 import RothIRAvsTraditionalIRA2025 from './components/blog/RothIRAvsTraditionalIRA2025';
 import HowMuchEmergencyFundDoINeed2025 from './components/blog/HowMuchEmergencyFundDoINeed2025';
+import FIRECalculatorGuide2025 from './components/blog/FIRECalculatorGuide2025';
+import BestRetirementCalculator2025 from './components/blog/BestRetirementCalculator2025';
+import InvestmentCalculatorGuide2025 from './components/blog/InvestmentCalculatorGuide2025';
+import BestMortgageCalculator2025 from './components/blog/BestMortgageCalculator2025';
 import BlogIndex from './components/BlogIndex';
 import FAQ from './components/FAQ';
 import Methodology from './components/Methodology';
@@ -242,6 +246,26 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "How Much Emergency Fund Do I Need? Complete 2025 Guide with Calculator",
     desc: "Calculate how much emergency fund you need in 2025. Learn the 3-6 month rule, how to build your emergency fund, where to keep it, and use our calculator to find your perfect safety net.",
     keywords: "how much emergency fund, emergency fund calculator, emergency fund guide, how much should i save, emergency savings, 3 6 month rule, emergency fund amount, financial safety net"
+  },
+  [ToolType.BLOG_FIRE_GUIDE]: {
+    title: "FIRE Calculator: Calculate Your Early Retirement Number - Complete 2025 Guide",
+    desc: "Calculate your FIRE (Financial Independence Retire Early) number with our comprehensive guide. Learn the 4% rule, Lean FIRE vs Fat FIRE, and how to achieve financial independence.",
+    keywords: "fire calculator, fire number, financial independence retire early, 4 percent rule, early retirement calculator, fire planning, lean fire, fat fire, financial independence"
+  },
+  [ToolType.BLOG_BEST_RETIREMENT]: {
+    title: "Best Retirement Calculator 2025: Compare Top Tools & Find Your Perfect Match",
+    desc: "Compare the best retirement calculators in 2025. Review top tools including QuantCurb, Bankrate, NerdWallet, and find the perfect calculator for your retirement planning needs.",
+    keywords: "best retirement calculator, retirement calculator comparison, 401k calculator, ira calculator, retirement planning tools, best retirement planning calculator 2025"
+  },
+  [ToolType.BLOG_INVESTMENT_GUIDE]: {
+    title: "Complete Guide to Investment Calculator 2025: SIP, Compound Interest & Wealth Growth",
+    desc: "Master investment calculations with our comprehensive 2025 guide. Learn SIP investing, compound interest, inflation-adjusted returns, and how to use an investment calculator to project your wealth growth.",
+    keywords: "investment calculator, sip calculator, compound interest calculator, investment growth calculator, wealth calculator, sip investing, compound interest guide"
+  },
+  [ToolType.BLOG_BEST_MORTGAGE]: {
+    title: "Best Mortgage Calculator 2025: Compare Top Tools & Features",
+    desc: "Compare the best mortgage calculators in 2025. Review top tools including QuantCurb, Bankrate, Zillow, and find the perfect calculator with PITI, PMI, and property tax calculations.",
+    keywords: "best mortgage calculator, mortgage calculator comparison, piti calculator, best mortgage calculator 2025, mortgage calculator review, home loan calculator comparison"
   },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Financial Blog - Expert Guides & Calculators 2025",
@@ -453,6 +477,10 @@ const AppShell: React.FC = () => {
       case ToolType.BLOG_TAKE_HOME_PAY: return <HowToCalculateTakeHomePay2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_ROTH_TRADITIONAL: return <RothIRAvsTraditionalIRA2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_EMERGENCY_FUND: return <HowMuchEmergencyFundDoINeed2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_FIRE_GUIDE: return <FIRECalculatorGuide2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_BEST_RETIREMENT: return <BestRetirementCalculator2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_INVESTMENT_GUIDE: return <InvestmentCalculatorGuide2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_BEST_MORTGAGE: return <BestMortgageCalculator2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_INDEX: return <BlogIndex onNavigate={setActiveTool} />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.METHODOLOGY: return <Methodology />;

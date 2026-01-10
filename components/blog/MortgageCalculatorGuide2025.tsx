@@ -2,6 +2,8 @@
 import React, { useEffect } from 'react';
 import { ToolType } from '../../types';
 import EmailCapture from '../EmailCapture';
+import AdPlacement from '../AdPlacement';
+import RecommendedTools from '../RecommendedTools';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -303,6 +305,11 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
         </section>
 
+        {/* Ad Placement - Middle of Article */}
+        <div className="my-12">
+          <AdPlacement size="responsive" position="middle" lazy={true} />
+        </div>
+
         {/* Section 5 */}
         <section id="pmi" className="space-y-6">
           <h2 className="text-3xl font-black text-slate-900">PMI (Private Mortgage Insurance): When You Need It</h2>
@@ -556,6 +563,11 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               </p>
             </div>
           </div>
+        </section>
+
+        {/* Recommended Tools - Affiliate Section */}
+        <section className="my-12">
+          <RecommendedTools calculatorType="mortgage" />
         </section>
 
         {/* CTA Section */}

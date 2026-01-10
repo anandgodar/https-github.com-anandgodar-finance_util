@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { pdfService } from '../services/pdfService';
 
 interface EmailCaptureProps {
   title?: string;
@@ -10,6 +11,7 @@ interface EmailCaptureProps {
   leadMagnet?: {
     title: string;
     description: string;
+    type?: 'mortgage' | 'quarterly_tax' | 'freelancer_tax' | 'fire' | 'general';
   };
 }
 
@@ -66,6 +68,32 @@ const EmailCapture: React.FC<EmailCaptureProps> = ({
       setIsSuccess(true);
       setEmail('');
       
+      // Generate and download PDF if lead magnet type is specified
+      if (leadMagnet?.type) {
+        let pdfContent;
+        switch (leadMagnet.type) {
+          case 'mortgage':
+            pdfContent = pdfService.generateMortgageChecklist();
+            break;
+          case 'quarterly_tax':
+            pdfContent = pdfService.generateQuarterlyTaxChecklist();
+            break;
+          case 'freelancer_tax':
+            pdfContent = pdfService.generateFreelancerTaxDeductionGuide();
+            break;
+          case 'fire':
+            pdfContent = pdfService.generateFIREWorkbook();
+            break;
+          default:
+            pdfContent = null;
+        }
+
+        if (pdfContent) {
+          // Generate PDF (triggers browser print-to-PDF)
+          pdfService.generatePDF(pdfContent);
+        }
+      }
+      
       if (onSuccess) {
         onSuccess();
       }
@@ -91,9 +119,19 @@ const EmailCapture: React.FC<EmailCaptureProps> = ({
       <div className={`bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-6 text-center ${className}`}>
         <div className="text-4xl mb-3">✅</div>
         <h3 className="font-bold text-emerald-900 text-lg mb-2">Successfully Subscribed!</h3>
-        <p className="text-emerald-800 text-sm">
-          Check your email for confirmation and your free resource.
+        <p className="text-emerald-800 text-sm mb-4">
+          Check your email for confirmation.
         </p>
+        {leadMagnet?.type && (
+          <div className="mt-4">
+            <p className="text-emerald-800 text-sm mb-2 font-semibold">
+              Your {leadMagnet.title} should open in a new window.
+            </p>
+            <p className="text-emerald-700 text-xs">
+              If it didn't open, check your popup blocker settings.
+            </p>
+          </div>
+        )}
       </div>
     );
   }

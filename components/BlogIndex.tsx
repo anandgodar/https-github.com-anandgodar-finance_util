@@ -107,6 +107,42 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       date: "January 2026",
       icon: "🛡️"
     },
+    {
+      id: ToolType.BLOG_FIRE_GUIDE,
+      title: "FIRE Calculator: Calculate Your Early Retirement Number - Complete 2025 Guide",
+      description: "Calculate your FIRE (Financial Independence Retire Early) number with our comprehensive guide. Learn the 4% rule, Lean FIRE vs Fat FIRE, and how to achieve financial independence.",
+      category: "Early Retirement",
+      readTime: "16 min",
+      date: "January 2026",
+      icon: "🔥"
+    },
+    {
+      id: ToolType.BLOG_BEST_RETIREMENT,
+      title: "Best Retirement Calculator 2025: Compare Top Tools & Find Your Perfect Match",
+      description: "Compare the best retirement calculators in 2025. Review top tools including QuantCurb, Bankrate, NerdWallet, and find the perfect calculator for your retirement planning needs.",
+      category: "Retirement Planning",
+      readTime: "14 min",
+      date: "January 2026",
+      icon: "💎"
+    },
+    {
+      id: ToolType.BLOG_INVESTMENT_GUIDE,
+      title: "Complete Guide to Investment Calculator 2025: SIP, Compound Interest & Wealth Growth",
+      description: "Master investment calculations with our comprehensive 2025 guide. Learn SIP investing, compound interest, inflation-adjusted returns, and how to use an investment calculator to project your wealth growth.",
+      category: "Investing",
+      readTime: "13 min",
+      date: "January 2026",
+      icon: "📈"
+    },
+    {
+      id: ToolType.BLOG_BEST_MORTGAGE,
+      title: "Best Mortgage Calculator 2025: Compare Top Tools & Features",
+      description: "Compare the best mortgage calculators in 2025. Review top tools including QuantCurb, Bankrate, Zillow, and find the perfect calculator with PITI, PMI, and property tax calculations.",
+      category: "Home Buying",
+      readTime: "12 min",
+      date: "January 2026",
+      icon: "🏠"
+    },
     // Tax & Freelancer Posts
     {
       id: ToolType.BLOG_CTC_2025,
@@ -211,6 +247,9 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
           <span>•</span>
           <span>📊 Interactive Calculators</span>
         </div>
+        <p className="text-center text-slate-500 text-sm mt-2">
+          Updated regularly with the latest 2025 tax laws, financial strategies, and calculator guides
+        </p>
       </header>
 
       {/* Category Filter */}

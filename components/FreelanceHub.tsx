@@ -283,7 +283,8 @@ const FreelanceHub: React.FC = () => {
           description="Download our comprehensive tax deduction guide for freelancers including home office, mileage, equipment, and health insurance deductions."
           leadMagnet={{
             title: "Freelancer Tax Deduction Guide 2025",
-            description: "Complete guide to maximizing tax deductions for freelancers and self-employed professionals."
+            description: "Complete guide to maximizing tax deductions for freelancers and self-employed professionals.",
+            type: "freelancer_tax"
           }}
           buttonText="Get Free Guide"
         />

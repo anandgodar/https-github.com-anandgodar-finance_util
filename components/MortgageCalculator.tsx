@@ -10,6 +10,8 @@ import {
   YAxis,
 } from 'recharts';
 import EmailCapture from './EmailCapture';
+import RecommendedTools from './RecommendedTools';
+import AdPlacement from './AdPlacement';
 
 interface AmortizationEntry {
   month: number;
@@ -325,6 +327,16 @@ const MortgageCalculator: React.FC = () => {
         </div>
       </section>
 
+      {/* Recommended Tools - Affiliate Section */}
+      <section className="mt-12">
+        <RecommendedTools calculatorType="mortgage" />
+      </section>
+
+      {/* Ad Placement */}
+      <div className="mt-8">
+        <AdPlacement size="responsive" position="bottom" lazy={true} />
+      </div>
+
       {/* Email Capture Section */}
       <section className="mt-12">
         <EmailCapture
@@ -332,7 +344,8 @@ const MortgageCalculator: React.FC = () => {
           description="Download our comprehensive mortgage planning checklist with PITI breakdown, PMI removal strategies, and home buying tips."
           leadMagnet={{
             title: "Mortgage Planning Checklist 2025",
-            description: "Complete guide to mortgage planning including PITI calculations, PMI strategies, and home buying tips."
+            description: "Complete guide to mortgage planning including PITI calculations, PMI strategies, and home buying tips.",
+            type: "mortgage"
           }}
           buttonText="Get Free Checklist"
         />
