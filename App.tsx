@@ -454,59 +454,63 @@ const AppShell: React.FC = () => {
   }, []);
 
   const renderTool = () => {
-    switch (activeTool) {
-      case ToolType.DASHBOARD: return <Dashboard onSelectTool={setActiveTool} />;
-      case ToolType.NET_WORTH: return <NetWorthTracker onNavigate={setActiveTool} />;
-      case ToolType.EMERGENCY_FUND: return <EmergencyFundTool onNavigate={setActiveTool} />;
-      case ToolType.EMI_CALC: return <EMICalculator onNavigate={setActiveTool} />;
-      case ToolType.MORTGAGE_CALC: return <MortgageCalculator onNavigate={setActiveTool} />;
-      case ToolType.SALARY_CALC: return <SalaryCalculator onNavigate={setActiveTool} />;
-      case ToolType.INVESTMENT_CALC: return <InvestmentCalculator onNavigate={setActiveTool} />;
-      case ToolType.MARKET_INSIGHTS: return <MarketInsights />;
-      case ToolType.LOAN_COMPARE: return <LoanComparison onNavigate={setActiveTool} />;
-      case ToolType.LIVING_COST: return <LivingCostTool />;
-      case ToolType.CURRENCY_CONV: return <CurrencyConverter />;
-      case ToolType.GST_CALC: return <GSTCalculator />;
-      case ToolType.CREDIT_CARD_PAYOFF: return <CreditCardPayoff onNavigate={setActiveTool} />;
-      case ToolType.FIRE_PLANNER: return <FIREPlanner onNavigate={setActiveTool} />;
-      case ToolType.FREELANCE_PROFIT: return <FreelanceHub onNavigate={setActiveTool} />;
-      case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
-      case ToolType.EXCEL_MODELER: return <ExcelModeler />;
-      case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer onNavigate={setActiveTool} />;
-      case ToolType.DRIP_CALCULATOR: return <DividendReinvestmentCalculator />;
-      case ToolType.CRYPTO_TAX_LOSS: return <CryptoTaxLossHarvester />;
-      case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator onNavigate={setActiveTool} />;
-      case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator onNavigate={setActiveTool} />;
-      case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator onNavigate={setActiveTool} />;
-      case ToolType.BLOG_CTC_2025: return <ChildTaxCreditGuide2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_ACA_FREELANCERS: return <ACAHealthInsuranceFreelancers2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_QUARTERLY_TAX: return <QuarterlyEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_SE_TAX: return <SelfEmploymentTaxGuide2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_TAX_DEDUCTIONS: return <TaxDeductionsFreelancers2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_1099_W2: return <Comparison1099VsW2_2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_LLC_SOLE_PROP: return <LLCvsSoleProp2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_SEP_SOLO401K: return <SEPIRAvsSolo401k2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_HOME_OFFICE: return <HomeOfficeDeduction2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_MORTGAGE_GUIDE: return <MortgageCalculatorGuide2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_HOW_MUCH_HOUSE: return <HowMuchHouseCanIAfford2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_DEBT_OR_INVEST: return <ShouldIPayOffDebtOrInvest2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_TAKE_HOME_PAY: return <HowToCalculateTakeHomePay2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_ROTH_TRADITIONAL: return <RothIRAvsTraditionalIRA2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_EMERGENCY_FUND: return <HowMuchEmergencyFundDoINeed2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_FIRE_GUIDE: return <FIRECalculatorGuide2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_BEST_RETIREMENT: return <BestRetirementCalculator2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_INVESTMENT_GUIDE: return <InvestmentCalculatorGuide2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_BEST_MORTGAGE: return <BestMortgageCalculator2025 onNavigate={setActiveTool} />;
-      case ToolType.BLOG_INDEX: return <BlogIndex onNavigate={setActiveTool} />;
-      case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
-      case ToolType.METHODOLOGY: return <Methodology />;
-      case ToolType.PRIVACY: return <PrivacyPolicy />;
-      case ToolType.SITEMAP: return <Sitemap onSelectTool={setActiveTool} />;
-      case ToolType.ABOUT: return <AboutUs />;
-      case ToolType.CONTACT: return <ContactUs />;
-      case ToolType.DISCLAIMER: return <Disclaimer />;
-      default: return <Dashboard onSelectTool={setActiveTool} />;
-    }
+    const toolComponent = (() => {
+      switch (activeTool) {
+        case ToolType.DASHBOARD: return <Dashboard onSelectTool={setActiveTool} />;
+        case ToolType.NET_WORTH: return <NetWorthTracker onNavigate={setActiveTool} />;
+        case ToolType.EMERGENCY_FUND: return <EmergencyFundTool onNavigate={setActiveTool} />;
+        case ToolType.EMI_CALC: return <EMICalculator onNavigate={setActiveTool} />;
+        case ToolType.MORTGAGE_CALC: return <MortgageCalculator onNavigate={setActiveTool} />;
+        case ToolType.SALARY_CALC: return <SalaryCalculator onNavigate={setActiveTool} />;
+        case ToolType.INVESTMENT_CALC: return <InvestmentCalculator onNavigate={setActiveTool} />;
+        case ToolType.MARKET_INSIGHTS: return <MarketInsights />;
+        case ToolType.LOAN_COMPARE: return <LoanComparison onNavigate={setActiveTool} />;
+        case ToolType.LIVING_COST: return <LivingCostTool />;
+        case ToolType.CURRENCY_CONV: return <CurrencyConverter />;
+        case ToolType.GST_CALC: return <GSTCalculator />;
+        case ToolType.CREDIT_CARD_PAYOFF: return <CreditCardPayoff onNavigate={setActiveTool} />;
+        case ToolType.FIRE_PLANNER: return <FIREPlanner onNavigate={setActiveTool} />;
+        case ToolType.FREELANCE_PROFIT: return <FreelanceHub onNavigate={setActiveTool} />;
+        case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
+        case ToolType.EXCEL_MODELER: return <ExcelModeler />;
+        case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer onNavigate={setActiveTool} />;
+        case ToolType.DRIP_CALCULATOR: return <DividendReinvestmentCalculator />;
+        case ToolType.CRYPTO_TAX_LOSS: return <CryptoTaxLossHarvester />;
+        case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator onNavigate={setActiveTool} />;
+        case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator onNavigate={setActiveTool} />;
+        case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator onNavigate={setActiveTool} />;
+        case ToolType.BLOG_CTC_2025: return <ChildTaxCreditGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_ACA_FREELANCERS: return <ACAHealthInsuranceFreelancers2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_QUARTERLY_TAX: return <QuarterlyEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_SE_TAX: return <SelfEmploymentTaxGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_TAX_DEDUCTIONS: return <TaxDeductionsFreelancers2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_1099_W2: return <Comparison1099VsW2_2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_LLC_SOLE_PROP: return <LLCvsSoleProp2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_SEP_SOLO401K: return <SEPIRAvsSolo401k2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_HOME_OFFICE: return <HomeOfficeDeduction2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_MORTGAGE_GUIDE: return <MortgageCalculatorGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_HOW_MUCH_HOUSE: return <HowMuchHouseCanIAfford2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_DEBT_OR_INVEST: return <ShouldIPayOffDebtOrInvest2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_TAKE_HOME_PAY: return <HowToCalculateTakeHomePay2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_ROTH_TRADITIONAL: return <RothIRAvsTraditionalIRA2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_EMERGENCY_FUND: return <HowMuchEmergencyFundDoINeed2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_FIRE_GUIDE: return <FIRECalculatorGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_BEST_RETIREMENT: return <BestRetirementCalculator2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_INVESTMENT_GUIDE: return <InvestmentCalculatorGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_BEST_MORTGAGE: return <BestMortgageCalculator2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_INDEX: return <BlogIndex onNavigate={setActiveTool} />;
+        case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
+        case ToolType.METHODOLOGY: return <Methodology />;
+        case ToolType.PRIVACY: return <PrivacyPolicy />;
+        case ToolType.SITEMAP: return <Sitemap onSelectTool={setActiveTool} />;
+        case ToolType.ABOUT: return <AboutUs />;
+        case ToolType.CONTACT: return <ContactUs />;
+        case ToolType.DISCLAIMER: return <Disclaimer />;
+        default: return <Dashboard onSelectTool={setActiveTool} />;
+      }
+    })();
+
+    return <Suspense fallback={<LoadingFallback />}>{toolComponent}</Suspense>;
   };
 
   return (
