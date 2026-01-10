@@ -36,6 +36,12 @@ import Comparison1099VsW2_2025 from './components/blog/Comparison1099VsW2_2025';
 import LLCvsSoleProp2025 from './components/blog/LLCvsSoleProp2025';
 import SEPIRAvsSolo401k2025 from './components/blog/SEPIRAvsSolo401k2025';
 import HomeOfficeDeduction2025 from './components/blog/HomeOfficeDeduction2025';
+import MortgageCalculatorGuide2025 from './components/blog/MortgageCalculatorGuide2025';
+import HowMuchHouseCanIAfford2025 from './components/blog/HowMuchHouseCanIAfford2025';
+import ShouldIPayOffDebtOrInvest2025 from './components/blog/ShouldIPayOffDebtOrInvest2025';
+import HowToCalculateTakeHomePay2025 from './components/blog/HowToCalculateTakeHomePay2025';
+import RothIRAvsTraditionalIRA2025 from './components/blog/RothIRAvsTraditionalIRA2025';
+import HowMuchEmergencyFundDoINeed2025 from './components/blog/HowMuchEmergencyFundDoINeed2025';
 import FAQ from './components/FAQ';
 import Methodology from './components/Methodology';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -205,6 +211,36 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Home Office Deduction 2025: Complete Guide to Simplified vs Regular Method",
     desc: "Comprehensive guide to claiming the home office deduction for self-employed individuals and freelancers in 2025. Learn the simplified method ($5/sq ft, max $1,500), regular method (actual expenses), qualification requirements, exclusive use rules, depreciation, and audit-proof documentation.",
     keywords: "home office deduction 2025, simplified home office deduction, home office deduction rules, how to claim home office deduction, home office tax deduction, exclusive use test, principal place of business, home office deduction calculator, irs home office deduction, form 8829"
+  },
+  [ToolType.BLOG_MORTGAGE_GUIDE]: {
+    title: "Complete Guide to Mortgage Calculator 2025: PITI, PMI, Property Tax & More",
+    desc: "Master mortgage calculations with our comprehensive 2025 guide. Learn PITI (Principal, Interest, Taxes, Insurance), PMI, property tax rates by state, and how to use a mortgage calculator to find your perfect home.",
+    keywords: "mortgage calculator guide, piti calculator, mortgage payment calculator, property tax by state, pmi calculator, how to calculate mortgage, mortgage calculator 2025, home buying guide, mortgage guide"
+  },
+  [ToolType.BLOG_HOW_MUCH_HOUSE]: {
+    title: "How Much House Can I Afford? Complete 2025 Guide with Calculator",
+    desc: "Calculate how much house you can afford in 2025. Learn the 28/36 rule, debt-to-income ratios, down payment requirements, and use our mortgage calculator to find your perfect home price range.",
+    keywords: "how much house can i afford, house affordability calculator, 28 36 rule, debt to income ratio, how much can i afford, home buying calculator, mortgage affordability, house price calculator"
+  },
+  [ToolType.BLOG_DEBT_OR_INVEST]: {
+    title: "Should I Pay Off Debt or Invest? Complete 2025 Guide with Calculator",
+    desc: "Decide whether to pay off debt or invest your money in 2025. Learn the debt vs investment math, interest rate comparisons, and strategies to maximize your wealth.",
+    keywords: "pay off debt or invest, debt vs investment, should i pay off debt, debt payoff vs investing, pay off mortgage or invest, student loan vs invest, credit card debt or invest"
+  },
+  [ToolType.BLOG_TAKE_HOME_PAY]: {
+    title: "How to Calculate Take-Home Pay After Taxes: Complete 2025 Guide",
+    desc: "Learn how to calculate your take-home pay after taxes in 2025. Understand federal tax, state tax, FICA, 401k deductions, and use our salary calculator to get your exact net pay.",
+    keywords: "take home pay calculator, net pay calculator, salary after taxes, how to calculate take home pay, salary calculator 2025, after tax salary, net income calculator, take home pay after taxes"
+  },
+  [ToolType.BLOG_ROTH_TRADITIONAL]: {
+    title: "Roth IRA vs Traditional IRA 2025: Which is Better? Complete Comparison",
+    desc: "Compare Roth IRA vs Traditional IRA in 2025. Learn contribution limits, tax benefits, withdrawal rules, and which retirement account is better for your situation.",
+    keywords: "roth ira vs traditional ira, roth vs traditional ira, which ira is better, roth ira vs traditional, traditional ira vs roth, roth ira comparison, traditional ira comparison, retirement account comparison"
+  },
+  [ToolType.BLOG_EMERGENCY_FUND]: {
+    title: "How Much Emergency Fund Do I Need? Complete 2025 Guide with Calculator",
+    desc: "Calculate how much emergency fund you need in 2025. Learn the 3-6 month rule, how to build your emergency fund, where to keep it, and use our calculator to find your perfect safety net.",
+    keywords: "how much emergency fund, emergency fund calculator, emergency fund guide, how much should i save, emergency savings, 3 6 month rule, emergency fund amount, financial safety net"
   },
   [ToolType.FAQ]: {
     title: "Financial Knowledge Base - Expert Logic & Strategy FAQ",
@@ -405,6 +441,12 @@ const AppShell: React.FC = () => {
       case ToolType.BLOG_LLC_SOLE_PROP: return <LLCvsSoleProp2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_SEP_SOLO401K: return <SEPIRAvsSolo401k2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_HOME_OFFICE: return <HomeOfficeDeduction2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_MORTGAGE_GUIDE: return <MortgageCalculatorGuide2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_HOW_MUCH_HOUSE: return <HowMuchHouseCanIAfford2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_DEBT_OR_INVEST: return <ShouldIPayOffDebtOrInvest2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_TAKE_HOME_PAY: return <HowToCalculateTakeHomePay2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_ROTH_TRADITIONAL: return <RothIRAvsTraditionalIRA2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_EMERGENCY_FUND: return <HowMuchEmergencyFundDoINeed2025 onNavigate={setActiveTool} />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.METHODOLOGY: return <Methodology />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;
