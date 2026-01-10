@@ -2,10 +2,16 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
+import CalculatorFAQ from './CalculatorFAQ';
+import { ToolType } from '../types';
 
 type FilingStatus = 'single' | 'married' | 'hoh';
 
-const ChildTaxCreditCalculator: React.FC = () => {
+interface ChildTaxCreditCalculatorProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onNavigate }) => {
   const [childrenUnder17, setChildrenUnder17] = useState<number>(2);
   const [otherDependents, setOtherDependents] = useState<number>(0);
   const [filingStatus, setFilingStatus] = useState<FilingStatus>('single');
@@ -109,6 +115,67 @@ const ChildTaxCreditCalculator: React.FC = () => {
     const timer = setTimeout(() => fetchAdvice(), 2000);
     return () => clearTimeout(timer);
   }, [childrenUnder17, otherDependents, filingStatus, magi]);
+
+  useEffect(() => {
+    // Add HowTo schema for "How to calculate Child Tax Credit"
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Child Tax Credit (CTC) and Additional Child Tax Credit (ACTC)",
+      "description": "Step-by-step guide to calculating your Child Tax Credit for 2025, including phase-out rules, refundable credits, and eligibility requirements.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Count Your Dependents",
+          "text": "Enter the number of children under 17 (eligible for $2,000 credit each) and other dependents (eligible for $500 credit each)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Enter Your Filing Status",
+          "text": "Select your filing status (Single, Married Filing Jointly, or Head of Household) as phase-out thresholds differ."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Enter Your Modified Adjusted Gross Income (MAGI)",
+          "text": "Enter your MAGI for the tax year. This determines if your credit is reduced due to phase-out rules."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Calculate Base Credit",
+          "text": "Base credit is $2,000 per child under 17 plus $500 per other dependent. This is your starting credit amount."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Apply Phase-Out Rules",
+          "text": "If your MAGI exceeds the threshold ($200,000 single/HOH, $400,000 married), your credit is reduced by $50 per $1,000 over the threshold."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Calculate Refundable Portion (ACTC)",
+          "text": "The Additional Child Tax Credit (ACTC) allows up to $1,700 per child to be refundable if you have earned income over $2,500."
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(howToSchema);
+    script.id = 'howto-schema-child-tax-credit';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('howto-schema-child-tax-credit');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
@@ -404,6 +471,81 @@ const ChildTaxCreditCalculator: React.FC = () => {
           </ul>
         </div>
       </section>
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_CTC_2025)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 Child Tax Credit Guide 2025</h3>
+            <p className="text-sm text-slate-600">Complete guide to Child Tax Credit, phase-out rules, ACTC, and how to maximize your tax savings.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.QUARTERLY_TAX)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📊 Quarterly Tax Calculator</h3>
+            <p className="text-sm text-slate-600">Plan your estimated tax payments and see how Child Tax Credit affects your quarterly obligations.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.ACA_SUBSIDY)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">🏥 ACA Health Insurance Subsidy</h3>
+            <p className="text-sm text-slate-600">Calculate healthcare subsidies for families and see how CTC affects your eligibility.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.SALARY_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">💰 Salary Calculator</h3>
+            <p className="text-sm text-slate-600">Calculate your take-home pay and see how Child Tax Credit reduces your tax burden.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="Child Tax Credit Calculator"
+        calculatorUrl="https://quantcurb.com/child-tax-credit-calculator"
+        faqs={[
+          {
+            question: "How much is the Child Tax Credit for 2025?",
+            answer: "The Child Tax Credit is $2,000 per child under 17 for 2025. Up to $1,700 per child can be refundable through the Additional Child Tax Credit (ACTC) if you have earned income over $2,500. Other dependents (17+) qualify for a $500 credit."
+          },
+          {
+            question: "What is the income limit for Child Tax Credit?",
+            answer: "The Child Tax Credit begins to phase out at: $200,000 for single filers and head of household, $400,000 for married filing jointly. For every $1,000 over the threshold, your credit is reduced by $50. The credit phases out completely at higher income levels."
+          },
+          {
+            question: "What is the Additional Child Tax Credit (ACTC)?",
+            answer: "ACTC is the refundable portion of the Child Tax Credit. If your CTC exceeds your tax liability, up to $1,700 per child can be refunded to you. ACTC is calculated as 15% of earned income over $2,500, up to the maximum refundable amount."
+          },
+          {
+            question: "Can I claim Child Tax Credit if I'm divorced?",
+            answer: "Yes, but only the custodial parent (the parent the child lives with more than half the year) can claim the Child Tax Credit. The non-custodial parent cannot claim it, even if they pay child support. The custodial parent can release the claim to the non-custodial parent using Form 8332."
+          },
+          {
+            question: "Do I qualify for Child Tax Credit if I'm a single parent?",
+            answer: "Yes! Single parents can claim the full Child Tax Credit. The phase-out threshold is $200,000 for single filers and head of household. Single parents often also qualify for Earned Income Tax Credit (EITC), which can provide additional tax savings."
+          },
+          {
+            question: "What age do children qualify for Child Tax Credit?",
+            answer: "Children must be under 17 at the end of the tax year to qualify for the $2,000 Child Tax Credit. Children 17 and older qualify for the $500 Other Dependent Credit. The child must be your dependent, related to you, and live with you for more than half the year."
+          },
+          {
+            question: "Is Child Tax Credit refundable?",
+            answer: "Partially. The Child Tax Credit itself is non-refundable (it can only reduce your tax to zero). However, the Additional Child Tax Credit (ACTC) is refundable - up to $1,700 per child can be refunded if you have earned income over $2,500 and your credit exceeds your tax liability."
+          },
+          {
+            question: "How does Child Tax Credit affect my tax return?",
+            answer: "The Child Tax Credit directly reduces your tax liability dollar-for-dollar. If your credit exceeds your tax, the refundable portion (ACTC) is refunded to you. For example, if you owe $1,000 in tax and have a $2,000 CTC, you pay $0 tax and receive $1,000 as a refund (up to the ACTC limit)."
+          }
+        ]}
+      />
     </div>
   );
 };

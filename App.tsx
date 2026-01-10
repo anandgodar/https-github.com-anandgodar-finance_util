@@ -459,7 +459,7 @@ const AppShell: React.FC = () => {
       case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer onNavigate={setActiveTool} />;
       case ToolType.DRIP_CALCULATOR: return <DividendReinvestmentCalculator />;
       case ToolType.CRYPTO_TAX_LOSS: return <CryptoTaxLossHarvester />;
-      case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator />;
+      case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator onNavigate={setActiveTool} />;
       case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator onNavigate={setActiveTool} />;
       case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator />;
       case ToolType.BLOG_CTC_2025: return <ChildTaxCreditGuide2025 onNavigate={setActiveTool} />;
