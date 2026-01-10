@@ -2,6 +2,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid, AreaChart, Area } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
+import CalculatorFAQ from './CalculatorFAQ';
+import { ToolType } from '../types';
 
 interface TaxBracket {
   limit: number | null;
@@ -132,12 +134,20 @@ const calculateProgressiveTax = (taxableIncome: number, brackets: TaxBracket[]):
   return tax;
 };
 
-const SalaryCalculator: React.FC = () => {
+interface SalaryCalculatorProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+type PayFrequency = 'weekly' | 'bi-weekly' | 'semi-monthly' | 'monthly' | 'annual';
+
+const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate }) => {
   const [annualGross, setAnnualGross] = useState<number>(125000);
   const [bonus, setBonus] = useState<number>(15000);
   const [stateCode, setStateCode] = useState<string>('CA');
   const [contrib401kPercent, setContrib401kPercent] = useState<number>(10);
   const [healthInsurance, setHealthInsurance] = useState<number>(3600);
+  const [payFrequency, setPayFrequency] = useState<PayFrequency>('monthly');
+  const [filingStatus, setFilingStatus] = useState<'single' | 'married' | 'hoh'>('single');
 
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
@@ -176,12 +186,24 @@ const SalaryCalculator: React.FC = () => {
     const totalTax = fedTax + fica + stateTax;
     const net = totalGross - totalTax - contrib401kAmount - healthInsurance;
     
+    // Calculate pay frequency amounts
+    const payFrequencyAmounts = {
+      weekly: net / 52,
+      'bi-weekly': net / 26,
+      'semi-monthly': net / 24,
+      monthly: net / 12,
+      annual: net
+    };
+
     return {
       totalGross,
       taxableGross,
       net,
       monthlyNet: net / 12,
       biWeeklyNet: net / 26,
+      weeklyNet: net / 52,
+      semiMonthlyNet: net / 24,
+      payFrequencyAmount: payFrequencyAmounts[payFrequency],
       fedTax,
       fica,
       stateTax,
@@ -191,7 +213,7 @@ const SalaryCalculator: React.FC = () => {
       contrib401kAmount,
       stateTaxable
     };
-  }, [annualGross, bonus, stateInfo, contrib401kPercent, healthInsurance]);
+  }, [annualGross, bonus, stateInfo, contrib401kPercent, healthInsurance, payFrequency]);
 
   // Marginal Rate Visualization Data
   const bracketVisualData = useMemo(() => {
@@ -238,6 +260,73 @@ const SalaryCalculator: React.FC = () => {
     const timer = setTimeout(() => fetchAdvice(), 2500);
     return () => clearTimeout(timer);
   }, [annualGross, stateCode, contrib401kPercent]);
+
+  useEffect(() => {
+    // Add HowTo schema for "How to calculate take-home pay"
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Your Take-Home Pay After Taxes",
+      "description": "Step-by-step guide to calculating your net pay after federal taxes, state taxes, FICA, and deductions.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Enter Your Annual Salary",
+          "text": "Enter your gross annual salary (before taxes and deductions)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Add Bonuses",
+          "text": "Add any annual bonuses or additional income."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Select Your State",
+          "text": "Choose your state of residence to calculate state income tax."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Enter 401(k) Contribution",
+          "text": "Enter your 401(k) contribution percentage (reduces taxable income)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Add Health Insurance",
+          "text": "Enter annual health insurance premiums (also reduces taxable income)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Select Pay Frequency",
+          "text": "Choose your pay frequency (weekly, bi-weekly, semi-monthly, or monthly) to see your paycheck amount."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 7,
+          "name": "Review Results",
+          "text": "The calculator shows your take-home pay, effective tax rate, and breakdown of all deductions."
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(howToSchema);
+    script.id = 'howto-schema-salary';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('howto-schema-salary');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   return (
     <article className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-500 pb-24">
@@ -354,6 +443,38 @@ const SalaryCalculator: React.FC = () => {
                   className="w-full p-5 bg-slate-50 border-none rounded-[1.5rem] font-black text-2xl text-slate-700 shadow-inner focus:ring-2 focus:ring-indigo-500 transition-all" 
                 />
               </div>
+
+              <div className="space-y-4">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">Filing Status</label>
+                <select 
+                  value={filingStatus} 
+                  onChange={e => setFilingStatus(e.target.value as 'single' | 'married' | 'hoh')} 
+                  className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-sm text-slate-700 shadow-inner"
+                >
+                  <option value="single">Single</option>
+                  <option value="married">Married Filing Jointly</option>
+                  <option value="hoh">Head of Household</option>
+                </select>
+              </div>
+
+              <div className="space-y-4">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">Pay Frequency</label>
+                <div className="grid grid-cols-2 gap-3">
+                  {(['weekly', 'bi-weekly', 'semi-monthly', 'monthly'] as PayFrequency[]).map((freq) => (
+                    <button
+                      key={freq}
+                      onClick={() => setPayFrequency(freq)}
+                      className={`p-4 rounded-2xl font-bold text-sm transition-all ${
+                        payFrequency === freq
+                          ? 'bg-indigo-600 text-white shadow-lg'
+                          : 'bg-slate-50 text-slate-700 hover:bg-slate-100'
+                      }`}
+                    >
+                      {freq === 'bi-weekly' ? 'Bi-Weekly' : freq === 'semi-monthly' ? 'Semi-Monthly' : freq.charAt(0).toUpperCase() + freq.slice(1)}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
         </div>
@@ -361,14 +482,16 @@ const SalaryCalculator: React.FC = () => {
         <div className="lg:col-span-7 space-y-8">
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-indigo-600 p-8 rounded-[3rem] text-white shadow-xl flex flex-col justify-center text-center group hover:scale-105 transition-transform duration-500">
-               <p className="text-white/60 text-[9px] font-black uppercase tracking-widest mb-1">Monthly Net Pay</p>
-               <h3 className="text-4xl font-black text-white tracking-tighter">${Math.round(stats.monthlyNet).toLocaleString()}</h3>
+               <p className="text-white/60 text-[9px] font-black uppercase tracking-widest mb-1">
+                 {payFrequency === 'weekly' ? 'Weekly' : payFrequency === 'bi-weekly' ? 'Bi-Weekly' : payFrequency === 'semi-monthly' ? 'Semi-Monthly' : 'Monthly'} Net Pay
+               </p>
+               <h3 className="text-4xl font-black text-white tracking-tighter">${Math.round(stats.payFrequencyAmount).toLocaleString()}</h3>
                <p className="text-[9px] font-black text-indigo-300 uppercase mt-2">After-Tax Yield</p>
             </div>
             <div className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col justify-center text-center group hover:scale-105 transition-transform duration-500">
-               <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Paycheck Estimate</p>
-               <h4 className="text-3xl font-black text-slate-900 tracking-tighter">${Math.round(stats.biWeeklyNet).toLocaleString()}</h4>
-               <p className="text-[9px] font-black text-emerald-500 uppercase mt-2">Bi-Weekly Cycle</p>
+               <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Monthly Equivalent</p>
+               <h4 className="text-3xl font-black text-slate-900 tracking-tighter">${Math.round(stats.monthlyNet).toLocaleString()}</h4>
+               <p className="text-[9px] font-black text-emerald-500 uppercase mt-2">Standardized View</p>
             </div>
             <div className="bg-white p-8 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col justify-center text-center group hover:scale-105 transition-transform duration-500">
                <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Annual Take Home</p>
@@ -572,6 +695,81 @@ const SalaryCalculator: React.FC = () => {
            ))}
         </div>
       </footer>
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_TAKE_HOME_PAY)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 How to Calculate Take-Home Pay 2025</h3>
+            <p className="text-sm text-slate-600">Complete guide to understanding federal tax, state tax, FICA, and 401(k) deductions.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.RETIREMENT_OPTIMIZER)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">🎯 Retirement Account Optimizer</h3>
+            <p className="text-sm text-slate-600">Maximize your 401(k) and IRA contributions to reduce taxes.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">💼 Freelance Profit Hub</h3>
+            <p className="text-sm text-slate-600">Calculate your 1099 income and self-employment taxes.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.QUARTERLY_TAX)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📅 Quarterly Tax Calculator</h3>
+            <p className="text-sm text-slate-600">Plan your estimated tax payments for freelancers and contractors.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="Salary Calculator"
+        calculatorUrl="https://quantcurb.com/salary-tax-estimator"
+        faqs={[
+          {
+            question: "How do I calculate my take-home pay?",
+            answer: "Your take-home pay is your gross salary minus federal taxes, state taxes, FICA (Social Security and Medicare), and deductions like 401(k) contributions and health insurance. Use our calculator above by entering your annual salary, state, 401(k) contribution percentage, and health insurance costs. The calculator automatically computes all taxes and shows your net pay."
+          },
+          {
+            question: "What is the difference between gross pay and net pay?",
+            answer: "Gross pay is your total salary before any deductions. Net pay (take-home pay) is what you actually receive after all taxes and deductions are subtracted. For example, if you earn $100,000 gross, you might take home $70,000-$80,000 net depending on your state, deductions, and tax bracket."
+          },
+          {
+            question: "How much will I take home if I make $100,000 a year?",
+            answer: "It depends on your state, filing status, and deductions. In a state with no income tax (like Texas or Florida), you might take home around $75,000-$78,000. In a high-tax state like California or New York, you might take home $70,000-$73,000. Use our calculator with your specific details for an accurate estimate."
+          },
+          {
+            question: "How does 401(k) contribution affect my take-home pay?",
+            answer: "401(k) contributions reduce your taxable income, which lowers your taxes. For example, if you contribute $10,000 to your 401(k) and you're in the 24% tax bracket, you save $2,400 in taxes. Your take-home pay decreases by $7,600 ($10,000 - $2,400), but you're saving $10,000 for retirement."
+          },
+          {
+            question: "What is FICA tax?",
+            answer: "FICA (Federal Insurance Contributions Act) includes Social Security tax (6.2% on income up to $168,600 in 2025) and Medicare tax (1.45% on all income). High earners pay an additional 0.9% Medicare tax on income above $200,000. FICA is automatically deducted from your paycheck."
+          },
+          {
+            question: "How do state taxes affect my take-home pay?",
+            answer: "State income tax rates vary significantly. Seven states have no income tax (Alaska, Florida, Nevada, South Dakota, Tennessee, Texas, Washington, Wyoming). Other states range from 2.5% (Arizona) to over 13% (California for high earners). Use our calculator to see how your state's tax rate impacts your take-home pay."
+          },
+          {
+            question: "What's the difference between weekly, bi-weekly, semi-monthly, and monthly pay?",
+            answer: "Weekly pay = 52 paychecks per year. Bi-weekly = 26 paychecks per year (every 2 weeks). Semi-monthly = 24 paychecks per year (twice per month). Monthly = 12 paychecks per year. Your annual take-home pay is the same regardless of frequency, but your paycheck amount varies. Use our calculator to see your paycheck amount for any frequency."
+          },
+          {
+            question: "How can I increase my take-home pay?",
+            answer: "Strategies to increase take-home pay: 1) Negotiate a higher salary, 2) Reduce 401(k) contributions (though this reduces retirement savings), 3) Move to a state with lower/no income tax, 4) Maximize pre-tax deductions (HSA, health insurance), 5) Claim all eligible tax deductions and credits. Use our calculator to see the impact of different scenarios."
+          }
+        ]}
+      />
     </article>
   );
 };

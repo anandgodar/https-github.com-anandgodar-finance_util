@@ -12,6 +12,8 @@ import {
 import EmailCapture from './EmailCapture';
 import RecommendedTools from './RecommendedTools';
 import AdPlacement from './AdPlacement';
+import CalculatorFAQ from './CalculatorFAQ';
+import { ToolType } from '../types';
 
 interface AmortizationEntry {
   month: number;
@@ -29,20 +31,87 @@ interface MortgageCalculationState {
   monthlyInterest: number;
   monthlyTaxes: number;
   monthlyInsurance: number;
+  monthlyHOA: number;
   monthlyPMI: number;
   totalMonthlyPayment: number;
   amortization: AmortizationEntry[];
   breakEvenMonth: number | null;
 }
 
-const MortgageCalculator: React.FC = () => {
+interface MortgageCalculatorProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) => {
   const [homePrice, setHomePrice] = useState<number>(500000);
   const [downPaymentPercent, setDownPaymentPercent] = useState<number>(20);
   const [interestRate, setInterestRate] = useState<number>(6.5);
   const [propertyTaxRate, setPropertyTaxRate] = useState<number>(1.1);
   const [insuranceMonthly, setInsuranceMonthly] = useState<number>(140);
+  const [hoaMonthly, setHoaMonthly] = useState<number>(0);
   const [pmiRate, setPmiRate] = useState<number>(0.85);
   const [pmiDropMonth, setPmiDropMonth] = useState<number | null>(null);
+
+  useEffect(() => {
+    // Add HowTo schema for "How to calculate mortgage payment"
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Your Mortgage Payment (PITI)",
+      "description": "Step-by-step guide to calculating your total monthly mortgage payment including principal, interest, taxes, insurance, and HOA fees.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Enter Home Price",
+          "text": "Enter the total purchase price of the home you're considering."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Set Down Payment",
+          "text": "Enter your down payment percentage (typically 3-20%). A 20% down payment avoids PMI."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Enter Interest Rate",
+          "text": "Enter your mortgage interest rate (current rates are typically 6-7% in 2025)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Add Property Tax Rate",
+          "text": "Enter your state's property tax rate (varies by state, typically 0.5-2.5% annually)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Add Insurance and HOA",
+          "text": "Enter monthly homeowners insurance and HOA fees (if applicable)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Review Results",
+          "text": "The calculator shows your total monthly PITI payment, PMI if applicable, and when PMI will drop."
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(howToSchema);
+    script.id = 'howto-schema-mortgage';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('howto-schema-mortgage');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const downPaymentAmount = (homePrice * downPaymentPercent) / 100;
@@ -121,12 +190,13 @@ const MortgageCalculator: React.FC = () => {
       monthlyInterest: amortization[0]?.interest ?? 0,
       monthlyTaxes,
       monthlyInsurance: insuranceMonthly,
+      monthlyHOA: hoaMonthly,
       monthlyPMI,
-      totalMonthlyPayment: monthlyPI + monthlyTaxes + insuranceMonthly + monthlyPMI,
+      totalMonthlyPayment: monthlyPI + monthlyTaxes + insuranceMonthly + hoaMonthly + monthlyPMI,
       amortization,
       breakEvenMonth,
     };
-  }, [downPaymentPercent, homePrice, insuranceMonthly, interestRate, pmiDropMonth, pmiRate, propertyTaxRate]);
+  }, [downPaymentPercent, homePrice, insuranceMonthly, hoaMonthly, interestRate, pmiDropMonth, pmiRate, propertyTaxRate]);
 
   const breakEvenLabel = useMemo(() => {
     if (!calculations.breakEvenMonth) {
@@ -231,6 +301,16 @@ const MortgageCalculator: React.FC = () => {
                 />
               </label>
               <label className="space-y-2 text-xs font-bold text-slate-500">
+                HOA Fees ($/mo)
+                <input
+                  type="number"
+                  value={hoaMonthly}
+                  onChange={(event) => setHoaMonthly(Number(event.target.value))}
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-lg font-black text-slate-700"
+                  placeholder="0"
+                />
+              </label>
+              <label className="space-y-2 text-xs font-bold text-slate-500">
                 PMI Rate (% annually)
                 <input
                   type="number"
@@ -245,7 +325,7 @@ const MortgageCalculator: React.FC = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
-              <p className="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-black">Monthly PITI</p>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-black">Monthly PITI + HOA</p>
               <p className="mt-4 text-4xl font-black text-slate-900">
                 {formatCurrency(calculations.totalMonthlyPayment)}
               </p>
@@ -254,6 +334,9 @@ const MortgageCalculator: React.FC = () => {
                 <div className="flex justify-between"><span>Interest</span><span>{formatCurrency(calculations.monthlyInterest)}</span></div>
                 <div className="flex justify-between"><span>Taxes</span><span>{formatCurrency(calculations.monthlyTaxes)}</span></div>
                 <div className="flex justify-between"><span>Insurance</span><span>{formatCurrency(calculations.monthlyInsurance)}</span></div>
+                {calculations.monthlyHOA > 0 && (
+                  <div className="flex justify-between"><span>HOA</span><span>{formatCurrency(calculations.monthlyHOA)}</span></div>
+                )}
                 <div className="flex justify-between"><span>PMI</span><span>{formatCurrency(calculations.monthlyPMI)}</span></div>
               </div>
             </div>
@@ -336,6 +419,81 @@ const MortgageCalculator: React.FC = () => {
       <div className="mt-8">
         <AdPlacement size="responsive" position="bottom" lazy={true} />
       </div>
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_MORTGAGE_GUIDE)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 Complete Mortgage Calculator Guide 2025</h3>
+            <p className="text-sm text-slate-600">Learn about PITI, PMI, property taxes by state, and mortgage strategies.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_HOW_MUCH_HOUSE)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">💰 How Much House Can I Afford?</h3>
+            <p className="text-sm text-slate-600">Use the 28/36 rule to determine your maximum home price.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_BEST_MORTGAGE)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">🏆 Best Mortgage Calculator 2025</h3>
+            <p className="text-sm text-slate-600">Compare top mortgage calculators and find the best tool for you.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.LOAN_COMPARE)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">⚖️ Loan Comparison Tool</h3>
+            <p className="text-sm text-slate-600">Compare multiple mortgage offers side-by-side.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="Mortgage Calculator"
+        calculatorUrl="https://quantcurb.com/mortgage-payment-calculator"
+        faqs={[
+          {
+            question: "What is PITI in a mortgage payment?",
+            answer: "PITI stands for Principal, Interest, Taxes, and Insurance. It represents your total monthly mortgage payment. Principal is the loan amount you're paying down, Interest is the cost of borrowing, Taxes are property taxes (varies by state), and Insurance includes homeowners insurance and PMI (Private Mortgage Insurance) if your down payment is less than 20%."
+          },
+          {
+            question: "How do I calculate my mortgage payment?",
+            answer: "Use our mortgage calculator above! Enter your home price, down payment percentage, interest rate, property tax rate (varies by state), homeowners insurance, and HOA fees if applicable. The calculator automatically computes your monthly PITI payment, PMI if needed, and shows when PMI will drop (when your loan-to-value ratio falls below 78%)."
+          },
+          {
+            question: "What is PMI and when does it drop?",
+            answer: "PMI (Private Mortgage Insurance) is required when your down payment is less than 20% of the home price. It protects the lender if you default. PMI automatically drops when your loan-to-value (LTV) ratio falls below 78% based on the original amortization schedule, or you can request removal when LTV reaches 80% with a new appraisal."
+          },
+          {
+            question: "How much house can I afford?",
+            answer: "Use the 28/36 rule: Your monthly housing costs (PITI) should not exceed 28% of your gross monthly income, and total debt payments should not exceed 36%. For example, if you earn $100,000/year ($8,333/month), your maximum monthly housing payment should be around $2,333. Use our 'How Much House Can I Afford' calculator for a detailed analysis."
+          },
+          {
+            question: "What are property tax rates by state?",
+            answer: "Property tax rates vary significantly by state. New Jersey has the highest average rate at 2.49%, while Hawaii has the lowest at 0.28%. Our calculator includes state-specific property tax rates for all 50 US states. Property taxes are typically 1-2% of your home's assessed value annually, paid monthly through escrow."
+          },
+          {
+            question: "Should I pay extra on my mortgage?",
+            answer: "Paying extra on your mortgage can save thousands in interest and shorten your loan term. For example, paying an extra $200/month on a $400,000 mortgage at 6.5% can save over $100,000 in interest and pay off the loan 7 years early. However, consider if you could earn more by investing that money instead, especially if your mortgage rate is low."
+          },
+          {
+            question: "What's the difference between a 15-year and 30-year mortgage?",
+            answer: "A 15-year mortgage has higher monthly payments but much lower total interest paid and builds equity faster. A 30-year mortgage has lower monthly payments, making it more affordable, but you'll pay significantly more interest over the life of the loan. Use our calculator to compare both options side-by-side."
+          },
+          {
+            question: "What are closing costs?",
+            answer: "Closing costs typically range from 2-5% of the home price and include loan origination fees, appraisal, title insurance, home inspection, prepaid property taxes and insurance, and other fees. On a $500,000 home, expect closing costs of $10,000-$25,000. These are separate from your down payment."
+          }
+        ]}
+      />
 
       {/* Email Capture Section */}
       <section className="mt-12">

@@ -73,24 +73,24 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "emergency fund calculator, financial safety net, survival runway, inflation stress"
   },
   [ToolType.EMI_CALC]: { 
-    title: "EMI Calculator - Reducing Balance Loan & Interest Savings Pro", 
+    title: "EMI Calculator 2025 - Loan EMI Calculator with Extra Payment Savings", 
     desc: "Optimize your loan repayments. Use our reducing balance EMI calculator to model principal prepayments and shave years off your debt tenure.",
     keywords: "emi calculator, loan repayment, interest savings, prepayment calculator"
   },
   [ToolType.MORTGAGE_CALC]: {
-    title: "Mortgage Calculator - State-Specific PITI, PMI, HOA & Property Tax Estimator",
-    desc: "Professional home financing tool with all 50 US states property tax rates. Model Principal, Interest, Taxes, Insurance, HOA with automated PMI logic and LTV stress testing for 2026.",
-    keywords: "mortgage calculator, piti calculator, state property tax rates, hoa calculator, pmi calculator, home loan estimator, mortgage by state"
+    title: "Mortgage Calculator 2025 - PITI, PMI, HOA & Property Tax Calculator by State",
+    desc: "Free mortgage calculator with PITI breakdown, PMI calculations, HOA fees, and all 50 US states property tax rates. Calculate your monthly mortgage payment, see when PMI drops, and plan your home purchase with our professional-grade tool.",
+    keywords: "mortgage calculator, mortgage calculator 2025, piti calculator, monthly mortgage payment, pmi calculator, property tax calculator, hoa calculator, mortgage payment calculator, home loan calculator, mortgage by state, mortgage calculator with taxes, mortgage calculator with pmi"
   },
   [ToolType.SALARY_CALC]: { 
-    title: "Take Home Pay Calculator - 2025 Salary Tax & 401k Estimator", 
-    desc: "Precise net pay modeling for all 50 US states. Account for 401k tax shields, FICA, Federal, and State tax deductions with the Salary Estimator.",
-    keywords: "salary calculator, take home pay, 401k calculator, tax estimator"
+    title: "Take Home Pay Calculator 2025 - Salary Tax Calculator by State with 401k", 
+    desc: "Free salary calculator to calculate your take-home pay after taxes. Includes federal tax, state tax (all 50 states), FICA, 401(k) deductions, and pay frequency options. Get your exact net pay for weekly, bi-weekly, semi-monthly, or monthly paychecks.",
+    keywords: "salary calculator, take home pay calculator, salary calculator 2025, net pay calculator, after tax salary, paycheck calculator, take home pay by state, 401k calculator, tax estimator, salary after taxes, biweekly paycheck calculator, weekly paycheck calculator"
   },
   [ToolType.INVESTMENT_CALC]: { 
-    title: "Investment Calculator - Wealth SIP & Compounding Growth Simulator", 
-    desc: "Visualize your compound interest trajectory. Model recurring SIPs, expected returns, and inflation-adjusted wealth growth for 2025.",
-    keywords: "investment calculator, sip calculator, compound interest, wealth growth"
+    title: "Investment Calculator 2025 - SIP Calculator with Compound Interest & Goal-Based Investing", 
+    desc: "Free investment calculator to calculate investment growth with compound interest. Includes SIP investing, dividend reinvestment (DRIP), goal-based investing, and wealth projection. See how your investments grow over time with monthly contributions.",
+    keywords: "investment calculator, investment calculator 2025, sip calculator, compound interest calculator, investment growth calculator, wealth calculator, sip investing, compound interest, dividend reinvestment, drip calculator, goal based investing, investment projection, wealth growth calculator"
   },
   [ToolType.MARKET_INSIGHTS]: { 
     title: "AI Market Pulse - Institutional vs Retail App Ecosystem Analysis", 
@@ -118,14 +118,14 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "gst calculator, vat calculator, tax invoicing, business tax tool"
   },
   [ToolType.CREDIT_CARD_PAYOFF]: { 
-    title: "Credit Card Payoff Strategist - Avalanche vs Snowball Method", 
-    desc: "Eliminate debt using optimized algorithms. Compare Avalanche and Snowball trajectories to save on interest and shave months off debt.",
-    keywords: "credit card payoff, debt avalanche, debt snowball, interest savings"
+    title: "Credit Card Payoff Calculator 2025 - Avalanche vs Snowball Method with Balance Transfer", 
+    desc: "Free credit card payoff calculator to eliminate debt faster. Compare Avalanche vs Snowball methods, calculate payoff timeline, total interest paid, and balance transfer savings. Find the best strategy to become debt-free.",
+    keywords: "credit card payoff calculator, debt payoff calculator, avalanche method, snowball method, credit card debt calculator, balance transfer calculator, debt free calculator, credit card interest calculator, debt payoff strategy, avalanche vs snowball"
   },
   [ToolType.FIRE_PLANNER]: { 
-    title: "FIRE Planner - 4% Rule & Early Retirement Freedom Number", 
-    desc: "Calculate your crossover point to freedom. Plan for Lean, Standard, or Fat FIRE with inflation-adjusted investment and expense modeling.",
-    keywords: "fire planner, early retirement, 4 percent rule, freedom number"
+    title: "FIRE Calculator 2025 - Early Retirement Planner with Coast FIRE, Barista FIRE & Geographic Arbitrage", 
+    desc: "Free FIRE calculator to calculate your early retirement number using the 4% rule. Includes Lean FIRE, Fat FIRE, Coast FIRE, Barista FIRE, and geographic arbitrage calculator. Plan your path to financial independence and early retirement.",
+    keywords: "fire calculator, fire planner, early retirement calculator, fire number calculator, coast fire calculator, barista fire calculator, geographic arbitrage, 4 percent rule, financial independence retire early, lean fire, fat fire, fire planning, early retirement planning"
   },
   [ToolType.FREELANCE_PROFIT]: { 
     title: "Freelance Hub - 1099 Net Profit & FTE Salary Equivalent Tool", 
@@ -143,9 +143,9 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "dcf calculator, business valuation, wacc matrix, enterprise value"
   },
   [ToolType.RETIREMENT_OPTIMIZER]: {
-    title: "Retirement Account Optimizer - 401k vs IRA vs Roth Strategy",
-    desc: "Compare 401(k), Traditional IRA, and Roth IRA tax strategies. Maximize employer match, minimize lifetime tax burden with AI-driven optimization for 2025 contribution limits.",
-    keywords: "retirement optimizer, 401k calculator, roth ira calculator, traditional ira, retirement tax strategy"
+    title: "Retirement Account Optimizer 2025 - 401k vs IRA vs Roth Calculator with Readiness Score",
+    desc: "Free retirement calculator to compare 401(k), Traditional IRA, and Roth IRA strategies. Calculate retirement readiness score, RMD estimates, Social Security, and maximize employer match. Optimize your retirement savings for 2025 contribution limits.",
+    keywords: "retirement optimizer, retirement calculator, 401k calculator, roth ira calculator, traditional ira calculator, retirement tax strategy, retirement readiness score, rmd calculator, social security calculator, 401k vs roth, retirement account comparison, 2025 contribution limits"
   },
   [ToolType.DRIP_CALCULATOR]: {
     title: "Dividend Reinvestment (DRIP) Calculator - Snowball Compounding Model",
@@ -442,25 +442,25 @@ const AppShell: React.FC = () => {
       case ToolType.DASHBOARD: return <Dashboard onSelectTool={setActiveTool} />;
       case ToolType.NET_WORTH: return <NetWorthTracker />;
       case ToolType.EMERGENCY_FUND: return <EmergencyFundTool />;
-      case ToolType.EMI_CALC: return <EMICalculator />;
-      case ToolType.MORTGAGE_CALC: return <MortgageCalculator />;
-      case ToolType.SALARY_CALC: return <SalaryCalculator />;
-      case ToolType.INVESTMENT_CALC: return <InvestmentCalculator />;
+      case ToolType.EMI_CALC: return <EMICalculator onNavigate={setActiveTool} />;
+      case ToolType.MORTGAGE_CALC: return <MortgageCalculator onNavigate={setActiveTool} />;
+      case ToolType.SALARY_CALC: return <SalaryCalculator onNavigate={setActiveTool} />;
+      case ToolType.INVESTMENT_CALC: return <InvestmentCalculator onNavigate={setActiveTool} />;
       case ToolType.MARKET_INSIGHTS: return <MarketInsights />;
       case ToolType.LOAN_COMPARE: return <LoanComparison />;
       case ToolType.LIVING_COST: return <LivingCostTool />;
       case ToolType.CURRENCY_CONV: return <CurrencyConverter />;
       case ToolType.GST_CALC: return <GSTCalculator />;
-      case ToolType.CREDIT_CARD_PAYOFF: return <CreditCardPayoff />;
-      case ToolType.FIRE_PLANNER: return <FIREPlanner />;
-      case ToolType.FREELANCE_PROFIT: return <FreelanceHub />;
+      case ToolType.CREDIT_CARD_PAYOFF: return <CreditCardPayoff onNavigate={setActiveTool} />;
+      case ToolType.FIRE_PLANNER: return <FIREPlanner onNavigate={setActiveTool} />;
+      case ToolType.FREELANCE_PROFIT: return <FreelanceHub onNavigate={setActiveTool} />;
       case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;
       case ToolType.EXCEL_MODELER: return <ExcelModeler />;
-      case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer />;
+      case ToolType.RETIREMENT_OPTIMIZER: return <RetirementOptimizer onNavigate={setActiveTool} />;
       case ToolType.DRIP_CALCULATOR: return <DividendReinvestmentCalculator />;
       case ToolType.CRYPTO_TAX_LOSS: return <CryptoTaxLossHarvester />;
-      case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator />;
-      case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator />;
+      case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator onNavigate={setActiveTool} />;
+      case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator onNavigate={setActiveTool} />;
       case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator />;
       case ToolType.BLOG_CTC_2025: return <ChildTaxCreditGuide2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_ACA_FREELANCERS: return <ACAHealthInsuranceFreelancers2025 onNavigate={setActiveTool} />;

@@ -2,8 +2,14 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, AreaChart, Area, XAxis, YAxis, CartesianGrid, BarChart, Bar, ComposedChart, Line } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
+import CalculatorFAQ from './CalculatorFAQ';
+import { ToolType } from '../types';
 
-const EMICalculator: React.FC = () => {
+interface EMICalculatorProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+const EMICalculator: React.FC<EMICalculatorProps> = ({ onNavigate }) => {
   const [loanAmount, setLoanAmount] = useState<number>(50000);
   const [interestRate, setInterestRate] = useState<number>(8.5);
   const [tenure, setTenure] = useState<number>(5);
@@ -88,6 +94,67 @@ const EMICalculator: React.FC = () => {
     const timer = setTimeout(() => fetchAdvice(), 2000);
     return () => clearTimeout(timer);
   }, [loanAmount, interestRate, tenure, extraPayment]);
+
+  useEffect(() => {
+    // Add HowTo schema for "How to calculate EMI"
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate EMI (Equated Monthly Installment) and Save on Interest",
+      "description": "Step-by-step guide to calculating loan EMI, understanding amortization, and using extra payments to save interest and pay off loans faster.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Enter Loan Amount",
+          "text": "Enter your loan principal amount (the total amount you're borrowing)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Enter Interest Rate",
+          "text": "Enter your annual interest rate (APR) as a percentage. This is the rate your lender charges."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Set Loan Tenure",
+          "text": "Enter the loan term in years (how long you have to repay the loan)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Calculate Standard EMI",
+          "text": "The calculator shows your monthly EMI using the reducing balance method. This is your fixed monthly payment."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Add Extra Payments (Optional)",
+          "text": "Enter any extra monthly payment you plan to make. This goes directly toward principal, saving interest and reducing loan term."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Review Savings",
+          "text": "See how much interest you'll save and how many months you'll shave off your loan term with extra payments."
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(howToSchema);
+    script.id = 'howto-schema-emi';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('howto-schema-emi');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   return (
     <article className="max-w-7xl mx-auto space-y-10 animate-in fade-in duration-500 pb-24">
@@ -246,6 +313,81 @@ const EMICalculator: React.FC = () => {
           </section>
         </div>
       </section>
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.MORTGAGE_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">🏠 Mortgage Calculator</h3>
+            <p className="text-sm text-slate-600">Calculate mortgage payments, PITI, PMI, and see how extra payments save interest on home loans.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.CREDIT_CARD_PAYOFF)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">💳 Credit Card Payoff Calculator</h3>
+            <p className="text-sm text-slate-600">Compare Avalanche vs Snowball methods to pay off credit card debt faster.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.LOAN_COMPARE)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">⚖️ Loan Comparison Tool</h3>
+            <p className="text-sm text-slate-600">Compare different loan offers, interest rates, and terms to find the best deal.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_DEBT_OR_INVEST)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 Should I Pay Off Debt or Invest?</h3>
+            <p className="text-sm text-slate-600">Learn when to prioritize debt payoff vs investing based on interest rates and returns.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="EMI Calculator"
+        calculatorUrl="https://quantcurb.com/emi-accelerator"
+        faqs={[
+          {
+            question: "How do I calculate EMI (Equated Monthly Installment)?",
+            answer: "EMI is calculated using the formula: EMI = [P × R × (1+R)^N] / [(1+R)^N - 1], where P = Principal, R = Monthly Interest Rate (APR/12), N = Number of Months. Our calculator uses the reducing balance method, which is the standard for most loans. Just enter your loan amount, interest rate, and tenure to get your monthly EMI."
+          },
+          {
+            question: "What is the reducing balance method?",
+            answer: "Reducing balance method means interest is calculated on the remaining principal balance each month. As you pay down the principal, the interest portion decreases and more of your payment goes toward principal. This is the standard method for home loans, personal loans, and auto loans. Our calculator uses this method for accurate calculations."
+          },
+          {
+            question: "How much interest can I save by making extra payments?",
+            answer: "Extra payments save significant interest because they go directly toward principal, reducing the balance on which interest is calculated. For example, paying an extra $200/month on a $50,000 loan at 8.5% for 5 years can save $2,000+ in interest and shave 6-12 months off your loan term. Use our sensitivity analysis to see the impact of different extra payment amounts."
+          },
+          {
+            question: "Should I pay extra on my loan or invest the money?",
+            answer: "If your loan interest rate is higher than expected investment returns (typically 7-8%), paying extra on the loan is better. For example, paying off an 8.5% loan is like earning a guaranteed 8.5% return. However, if you have low-rate debt (<4%) and can invest at higher returns, investing might make sense. Use our 'Should I Pay Off Debt or Invest' calculator to compare."
+          },
+          {
+            question: "What's the difference between EMI and principal payment?",
+            answer: "EMI is your total monthly payment (principal + interest). The principal portion is the amount that reduces your loan balance. Early in the loan, most of your EMI goes toward interest. As the balance decreases, more goes toward principal. Extra payments go 100% toward principal, accelerating payoff."
+          },
+          {
+            question: "Can I reduce my EMI by extending the loan tenure?",
+            answer: "Yes, extending the loan tenure reduces your monthly EMI but increases total interest paid. For example, a $50,000 loan at 8.5%: 5 years = $1,026/month EMI, $11,560 total interest. 10 years = $620/month EMI, $24,400 total interest. You pay less monthly but $12,840 more in interest. Our calculator shows both scenarios."
+          },
+          {
+            question: "How does prepayment affect my loan?",
+            answer: "Prepayment (extra payments) reduces your principal balance immediately, which means: 1) Less interest accrues each month, 2) More of your regular EMI goes toward principal, 3) You pay off the loan faster, 4) You save thousands in interest. Our calculator shows exactly how much you'll save and how many months you'll shave off."
+          },
+          {
+            question: "What is amortization?",
+            answer: "Amortization is the process of paying off a loan through regular payments over time. Each payment covers both interest and principal. Early payments are mostly interest; later payments are mostly principal. Our calculator shows your amortization schedule, showing how your balance decreases over time."
+          }
+        ]}
+      />
 
       <footer className="text-center pt-16 border-t border-slate-100">
         <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.5em] mb-8">QuantCurb Debt Engineering Hub v4.0 • Institutional Modeling</p>

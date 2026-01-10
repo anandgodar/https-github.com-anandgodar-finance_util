@@ -1,9 +1,15 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
+import CalculatorFAQ from './CalculatorFAQ';
+import { ToolType } from '../types';
 
-const RetirementOptimizer: React.FC = () => {
+interface RetirementOptimizerProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate }) => {
   const [age, setAge] = useState<number>(35);
   const [income, setIncome] = useState<number>(100000);
   const [currentSavings, setCurrentSavings] = useState<number>(50000);
@@ -12,6 +18,7 @@ const RetirementOptimizer: React.FC = () => {
   const [taxBracket, setTaxBracket] = useState<number>(24);
   const [retirementAge, setRetirementAge] = useState<number>(65);
   const [expectedReturn, setExpectedReturn] = useState<number>(7);
+  const [annualExpenses, setAnnualExpenses] = useState<number>(80000);
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
 
@@ -70,6 +77,16 @@ const RetirementOptimizer: React.FC = () => {
     const afterTaxIRA = fvIRA - taxOnIRAWithdrawal;
     const afterTaxRoth = fvRoth; // Tax-free withdrawals
 
+    // Social Security estimate (~40% of pre-retirement income)
+    const socialSecurity = income * 0.4;
+
+    // Target retirement savings (4% rule: 25x annual expenses)
+    const targetRetirement = annualExpenses * 25;
+
+    // Retirement readiness score (projected savings / target savings * 100)
+    const bestProjectedSavings = Math.max(afterTax401k, afterTaxIRA, afterTaxRoth);
+    const retirementReadiness = (bestProjectedSavings / targetRetirement) * 100;
+
     return {
       traditional401k: {
         annualContribution: total401kContribution,
@@ -95,9 +112,12 @@ const RetirementOptimizer: React.FC = () => {
         futureValue: fvRoth,
         afterTaxValue: afterTaxRoth,
         effectiveReturn: ((afterTaxRoth / (netCostRoth * yearsToRetirement)) ** (1 / yearsToRetirement) - 1) * 100
-      }
+      },
+      socialSecurity,
+      targetRetirement,
+      retirementReadiness
     };
-  }, [age, income, currentSavings, monthlyContribution, employerMatch, taxBracket, retirementAge, expectedReturn, yearsToRetirement, isCatchUpEligible]);
+  }, [age, income, currentSavings, monthlyContribution, employerMatch, taxBracket, retirementAge, expectedReturn, yearsToRetirement, isCatchUpEligible, annualExpenses]);
 
   const chartData = [
     {
@@ -121,13 +141,20 @@ const RetirementOptimizer: React.FC = () => {
   const fetchAdvice = async () => {
     setLoadingAdvice(true);
     try {
+      const bestAccount = Math.max(
+        calculations.traditional401k.afterTaxValue,
+        calculations.traditionalIRA.afterTaxValue,
+        calculations.rothIRA.afterTaxValue
+      );
       const context = {
         age,
         income,
         monthlyContribution,
         taxBracket,
         yearsToRetirement,
-        best: calculations.traditional401k.afterTaxValue > calculations.rothIRA.afterTaxValue ? '401k' : 'Roth'
+        retirementReadiness: calculations.retirementReadiness,
+        best: calculations.traditional401k.afterTaxValue > calculations.rothIRA.afterTaxValue ? '401k' : 'Roth',
+        socialSecurity: calculations.socialSecurity
       };
       const msg = await getFinancialAdvice(context, 'Retirement Account Strategy & Tax Optimization');
       setAdvice(msg || '');
@@ -143,6 +170,67 @@ const RetirementOptimizer: React.FC = () => {
     const timer = setTimeout(() => fetchAdvice(), 2000);
     return () => clearTimeout(timer);
   }, [age, income, taxBracket, monthlyContribution]);
+
+  useEffect(() => {
+    // Add HowTo schema for "How to optimize retirement accounts"
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Optimize Your Retirement Accounts: 401(k) vs IRA vs Roth",
+      "description": "Step-by-step guide to choosing between 401(k), Traditional IRA, and Roth IRA to maximize your retirement savings and minimize taxes.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Enter Your Information",
+          "text": "Enter your age, income, current savings, monthly contribution, employer match percentage, tax bracket, and retirement age."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Review 401(k) Projections",
+          "text": "See how much your 401(k) will be worth at retirement, including employer match and tax savings."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Compare Traditional IRA",
+          "text": "Review Traditional IRA projections with immediate tax deductions but taxable withdrawals."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Evaluate Roth IRA",
+          "text": "See Roth IRA projections with no upfront tax deduction but tax-free withdrawals and no RMDs."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Check Retirement Readiness",
+          "text": "Review your retirement readiness score to see if you're on track for your retirement goals."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Optimize Your Strategy",
+          "text": "Follow the recommended strategy: maximize employer match, then Roth IRA, then max out 401(k)."
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(howToSchema);
+    script.id = 'howto-schema-retirement';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('howto-schema-retirement');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   return (
     <article className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-500 pb-24">
@@ -221,6 +309,18 @@ const RetirementOptimizer: React.FC = () => {
             </div>
 
             <div>
+              <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Expected Annual Expenses in Retirement ($)</label>
+              <input
+                type="number"
+                value={annualExpenses}
+                onChange={e => setAnnualExpenses(Number(e.target.value))}
+                className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-2xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                placeholder="80000"
+              />
+              <p className="text-xs text-slate-500 mt-2">Used to calculate retirement readiness (4% rule)</p>
+            </div>
+
+            <div>
               <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Federal Tax Bracket (%)</label>
               <select
                 value={taxBracket}
@@ -268,6 +368,47 @@ const RetirementOptimizer: React.FC = () => {
 
         {/* Results Section */}
         <div className="space-y-8">
+          {/* Retirement Readiness Score */}
+          <section className="bg-gradient-to-br from-emerald-500 to-teal-600 p-10 rounded-[4rem] text-white shadow-2xl">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-emerald-100 text-sm font-black uppercase tracking-widest mb-2">Retirement Readiness Score</h3>
+                <p className="text-2xl font-black">Based on 4% Rule</p>
+              </div>
+              <div className="text-right">
+                <div className="text-6xl font-black">{Math.round(calculations.retirementReadiness)}%</div>
+                <p className="text-emerald-100 text-xs font-bold uppercase mt-2">
+                  {calculations.retirementReadiness >= 100 ? '✅ On Track' : 
+                   calculations.retirementReadiness >= 75 ? '🟡 Almost There' : 
+                   calculations.retirementReadiness >= 50 ? '🟠 Getting There' : '🔴 Needs Work'}
+                </p>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+              <div className="bg-white/10 rounded-2xl p-4">
+                <p className="text-emerald-100 text-xs font-bold mb-1">Target Retirement Savings</p>
+                <p className="text-2xl font-black">${(calculations.targetRetirement / 1000).toFixed(0)}K</p>
+              </div>
+              <div className="bg-white/10 rounded-2xl p-4">
+                <p className="text-emerald-100 text-xs font-bold mb-1">Projected Savings</p>
+                <p className="text-2xl font-black">${(Math.max(calculations.traditional401k.afterTaxValue, calculations.rothIRA.afterTaxValue) / 1000).toFixed(0)}K</p>
+              </div>
+              <div className="bg-white/10 rounded-2xl p-4">
+                <p className="text-emerald-100 text-xs font-bold mb-1">Social Security Est.</p>
+                <p className="text-2xl font-black">${(calculations.socialSecurity / 1000).toFixed(0)}K/yr</p>
+              </div>
+            </div>
+            {calculations.retirementReadiness < 100 && (
+              <div className="mt-6 bg-white/10 rounded-2xl p-4">
+                <p className="text-sm font-bold mb-2">💡 To reach 100%:</p>
+                <p className="text-sm">
+                  You need ${((calculations.targetRetirement - Math.max(calculations.traditional401k.afterTaxValue, calculations.rothIRA.afterTaxValue)) / 1000).toFixed(0)}K more. 
+                  Consider increasing monthly contributions or extending retirement age.
+                </p>
+              </div>
+            )}
+          </section>
+
           {/* AI Advice */}
           <section className="bg-slate-900 p-12 rounded-[4rem] text-white shadow-2xl min-h-[400px] flex flex-col justify-center relative overflow-hidden">
             <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-purple-600/5 to-transparent pointer-events-none"></div>
@@ -452,6 +593,81 @@ const RetirementOptimizer: React.FC = () => {
           </p>
         </div>
       </footer>
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_ROTH_TRADITIONAL)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 Roth IRA vs Traditional IRA 2025</h3>
+            <p className="text-sm text-slate-600">Complete comparison of Roth vs Traditional IRA including contribution limits, tax benefits, and withdrawal rules.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_BEST_RETIREMENT)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">🏆 Best Retirement Calculator 2025</h3>
+            <p className="text-sm text-slate-600">Compare top retirement calculators and find the best tool for your retirement planning needs.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.FIRE_PLANNER)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">🔥 FIRE Planner</h3>
+            <p className="text-sm text-slate-600">Calculate your early retirement number using the 4% rule and FIRE strategies.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.INVESTMENT_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📈 Investment Calculator</h3>
+            <p className="text-sm text-slate-600">Project your investment growth with compound interest and SIP calculations.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="Retirement Optimizer"
+        calculatorUrl="https://quantcurb.com/retirement-account-optimizer"
+        faqs={[
+          {
+            question: "What's the difference between 401(k), Traditional IRA, and Roth IRA?",
+            answer: "401(k) has the highest contribution limits ($23,500 in 2025, $31,000 with catch-up) and often includes employer match. Traditional IRA offers immediate tax deductions but lower limits ($7,000 in 2025). Roth IRA has no upfront tax deduction but offers tax-free withdrawals and no RMDs. Use our calculator to see which is best for your situation."
+          },
+          {
+            question: "Should I contribute to 401(k) or Roth IRA first?",
+            answer: "The optimal strategy: 1) Always maximize employer 401(k) match first (it's free money), 2) Then max out Roth IRA for tax-free growth, 3) Return to 401(k) to maximize contributions up to the limit. This balances immediate tax savings with long-term tax-free growth."
+          },
+          {
+            question: "What are 2025 retirement contribution limits?",
+            answer: "2025 limits: 401(k) = $23,500 ($31,000 with catch-up age 50+), Traditional IRA = $7,000 ($8,000 with catch-up), Roth IRA = $7,000 ($8,000 with catch-up). Income limits apply for Roth IRA contributions (phases out at $161,000-$176,000 for single filers, $240,000-$254,000 for married filing jointly)."
+          },
+          {
+            question: "What is RMD (Required Minimum Distribution)?",
+            answer: "RMD is the minimum amount you must withdraw from Traditional 401(k) and Traditional IRA starting at age 73. RMD = Account Balance / Life Expectancy Factor. Roth IRAs have no RMDs, making them attractive for estate planning. Our calculator shows your estimated RMDs at retirement age."
+          },
+          {
+            question: "How much Social Security will I get?",
+            answer: "Social Security typically replaces about 40% of pre-retirement income for average earners. The exact amount depends on your 35 highest-earning years, age when you claim benefits, and inflation adjustments. Our calculator provides an estimate based on your current income. For precise estimates, check your Social Security statement at ssa.gov."
+          },
+          {
+            question: "What is a good retirement readiness score?",
+            answer: "Retirement readiness is based on the 4% rule: you need 25x your annual expenses saved. A score of 100% means you're on track. 75-99% is almost there, 50-74% is getting there, and below 50% needs work. Our calculator shows your score and how much more you need to save."
+          },
+          {
+            question: "Should I choose Traditional or Roth for my 401(k)?",
+            answer: "Choose Traditional 401(k) if you expect to be in a lower tax bracket in retirement (common for most people). Choose Roth 401(k) if you expect higher taxes in retirement or want tax-free withdrawals. Younger workers often benefit from Roth due to lower current tax brackets and longer time horizons."
+          },
+          {
+            question: "What happens if I exceed contribution limits?",
+            answer: "Exceeding contribution limits results in a 6% excise tax on excess contributions. You must withdraw the excess by the tax filing deadline (including extensions) to avoid penalties. Our calculator ensures you stay within limits based on your age and account type."
+          }
+        ]}
+      />
     </article>
   );
 };
