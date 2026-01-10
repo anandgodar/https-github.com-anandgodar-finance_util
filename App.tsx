@@ -461,7 +461,7 @@ const AppShell: React.FC = () => {
       case ToolType.CRYPTO_TAX_LOSS: return <CryptoTaxLossHarvester />;
       case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator onNavigate={setActiveTool} />;
       case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator onNavigate={setActiveTool} />;
-      case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator />;
+      case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator onNavigate={setActiveTool} />;
       case ToolType.BLOG_CTC_2025: return <ChildTaxCreditGuide2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_ACA_FREELANCERS: return <ACAHealthInsuranceFreelancers2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_QUARTERLY_TAX: return <QuarterlyEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;

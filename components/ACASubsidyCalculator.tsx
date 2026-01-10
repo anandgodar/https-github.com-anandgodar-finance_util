@@ -2,6 +2,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
+import CalculatorFAQ from './CalculatorFAQ';
+import { ToolType } from '../types';
 
 type FilingStatus = 'single' | 'married' | 'hoh';
 
@@ -39,7 +41,11 @@ const STATE_BENCHMARK_PREMIUMS: Record<string, number> = {
   SD: 620, TN: 540, TX: 560, UT: 490, VT: 670, VA: 590, WA: 570, WV: 640, WI: 590, WY: 780
 };
 
-const ACASubsidyCalculator: React.FC = () => {
+interface ACASubsidyCalculatorProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate }) => {
   const [householdIncome, setHouseholdIncome] = useState<number>(50000);
   const [householdSize, setHouseholdSize] = useState<number>(2);
   const [age, setAge] = useState<number>(40);
@@ -166,6 +172,73 @@ const ACASubsidyCalculator: React.FC = () => {
     const timer = setTimeout(() => fetchAdvice(), 2000);
     return () => clearTimeout(timer);
   }, [householdIncome, householdSize, age, stateCode]);
+
+  useEffect(() => {
+    // Add HowTo schema for "How to calculate ACA subsidy"
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate ACA Health Insurance Subsidy and Premium Tax Credit",
+      "description": "Step-by-step guide to calculating your ACA marketplace subsidy, Premium Tax Credit, Medicaid eligibility, and monthly healthcare costs for 2025.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Enter Your Household Income",
+          "text": "Enter your Modified Adjusted Gross Income (MAGI) for the year. This includes wages, self-employment income, and other taxable income."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Enter Household Size",
+          "text": "Enter the number of people in your household (yourself, spouse, dependents). This affects your Federal Poverty Level (FPL) calculation."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Enter Your Age",
+          "text": "Enter your age (18-64). Premiums increase with age, so older individuals pay more but receive larger subsidies if eligible."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Select Your State",
+          "text": "Select your state. Medicaid expansion status and benchmark premiums vary by state, affecting your subsidy eligibility."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Check Medicaid Eligibility",
+          "text": "The calculator shows if you're eligible for Medicaid (free coverage) based on your income and state's expansion status. In expanded states, eligibility is up to 138% of FPL."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Calculate Premium Tax Credit",
+          "text": "If eligible (100-400% FPL), the calculator shows your Premium Tax Credit (subsidy). This reduces your monthly premium. The subsidy is based on a percentage of your income (0-8.5%)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 7,
+          "name": "Review Your Monthly Cost",
+          "text": "See your monthly premium after subsidy. For example, if benchmark premium is $600/month and your subsidy is $400/month, you pay $200/month."
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(howToSchema);
+    script.id = 'howto-schema-aca-subsidy';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('howto-schema-aca-subsidy');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
@@ -565,6 +638,81 @@ const ACASubsidyCalculator: React.FC = () => {
           </ul>
         </div>
       </section>
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_ACA_FREELANCERS)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 ACA Health Insurance for Freelancers 2025</h3>
+            <p className="text-sm text-slate-600">Complete guide to ACA marketplace, subsidies, and health insurance for self-employed and freelancers.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">💼 Freelance Hub</h3>
+            <p className="text-sm text-slate-600">Calculate your net income (MAGI) to determine ACA subsidy eligibility.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.QUARTERLY_TAX)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📊 Quarterly Tax Calculator</h3>
+            <p className="text-sm text-slate-600">Estimate your tax liability to understand your Modified Adjusted Gross Income (MAGI).</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.FIRE_PLANNER)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">🔥 FIRE Planner</h3>
+            <p className="text-sm text-slate-600">Plan for early retirement healthcare costs and ACA subsidies in retirement.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="ACA Subsidy Calculator"
+        calculatorUrl="https://quantcurb.com/aca-health-insurance-subsidy-calculator"
+        faqs={[
+          {
+            question: "How do I calculate my ACA subsidy?",
+            answer: "Your ACA subsidy (Premium Tax Credit) is based on your Modified Adjusted Gross Income (MAGI), household size, age, and state. The subsidy equals the difference between the benchmark premium (Silver plan) and your maximum premium payment (based on income percentage). Use our calculator by entering your income, household size, age, and state to see your estimated subsidy."
+          },
+          {
+            question: "What income qualifies for ACA subsidy?",
+            answer: "You qualify for ACA subsidies if your income is between 100% and 400% of the Federal Poverty Level (FPL). For 2025, that's roughly $15,060-$60,240 for a single person, $30,120-$120,480 for a family of 4. Below 100% FPL, you may qualify for Medicaid (in expanded states). Above 400% FPL, subsidies are capped at 8.5% of income."
+          },
+          {
+            question: "What is Modified Adjusted Gross Income (MAGI)?",
+            answer: "MAGI is your Adjusted Gross Income (AGI) plus tax-exempt interest, foreign earned income, and certain deductions. For most people, MAGI is close to their AGI. Include wages, self-employment income, interest, dividends, and other taxable income. Use our Freelance Hub to calculate your net income for MAGI estimation."
+          },
+          {
+            question: "Am I eligible for Medicaid or ACA subsidy?",
+            answer: "In Medicaid expansion states (most states), you're eligible for Medicaid if income is up to 138% of FPL. Above 138% FPL, you qualify for ACA subsidies. In non-expansion states, Medicaid eligibility is very limited (often only for parents/caretakers at ~41% FPL), creating a 'coverage gap' for adults without children. Our calculator shows your eligibility based on your state."
+          },
+          {
+            question: "How much will I pay for health insurance with ACA subsidy?",
+            answer: "Your monthly premium depends on your income. At 100-150% FPL, you pay 0% of income (free coverage). At 150-200% FPL, you pay 0-2% of income. At 200-250% FPL, you pay 2-4% of income. At 250-400% FPL, you pay 4-8.5% of income. Above 400% FPL, subsidies are capped at 8.5% of income. Our calculator shows your exact monthly cost."
+          },
+          {
+            question: "What is the coverage gap?",
+            answer: "The coverage gap exists in non-Medicaid expansion states (like Texas, Florida, Georgia) for adults without children. If your income is below 100% FPL, you don't qualify for Medicaid (unless you're a parent/caretaker) or ACA subsidies (which start at 100% FPL). This leaves you without affordable coverage options. Our calculator shows if you're in the coverage gap."
+          },
+          {
+            question: "Do I qualify for Cost-Sharing Reductions (CSR)?",
+            answer: "Cost-Sharing Reductions (CSR) are available if your income is 100-250% of FPL and you choose a Silver plan. CSR reduces deductibles, copays, and out-of-pocket maximums. At 100-150% FPL, you get 'Platinum-level' benefits. At 150-200% FPL, you get 'Gold-level' benefits. At 200-250% FPL, you get 'Silver-level' benefits. Our calculator shows your CSR eligibility."
+          },
+          {
+            question: "How does age affect my ACA premium?",
+            answer: "Older individuals pay higher premiums (up to 3x more than younger people). However, subsidies also increase with age because they're based on the benchmark premium. So while your premium is higher, your subsidy is also larger, keeping your out-of-pocket cost based on income percentage. Our calculator accounts for age adjustments."
+          }
+        ]}
+      />
     </div>
   );
 };
