@@ -78,9 +78,9 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "emi calculator, loan repayment, interest savings, prepayment calculator"
   },
   [ToolType.MORTGAGE_CALC]: {
-    title: "Mortgage Calculator - State-Specific PITI, PMI, HOA & Property Tax Estimator",
-    desc: "Professional home financing tool with all 50 US states property tax rates. Model Principal, Interest, Taxes, Insurance, HOA with automated PMI logic and LTV stress testing for 2026.",
-    keywords: "mortgage calculator, piti calculator, state property tax rates, hoa calculator, pmi calculator, home loan estimator, mortgage by state"
+    title: "Mortgage Calculator 2025 - PITI, PMI, HOA & Property Tax Calculator by State",
+    desc: "Free mortgage calculator with PITI breakdown, PMI calculations, HOA fees, and all 50 US states property tax rates. Calculate your monthly mortgage payment, see when PMI drops, and plan your home purchase with our professional-grade tool.",
+    keywords: "mortgage calculator, mortgage calculator 2025, piti calculator, monthly mortgage payment, pmi calculator, property tax calculator, hoa calculator, mortgage payment calculator, home loan calculator, mortgage by state, mortgage calculator with taxes, mortgage calculator with pmi"
   },
   [ToolType.SALARY_CALC]: { 
     title: "Take Home Pay Calculator - 2025 Salary Tax & 401k Estimator", 
@@ -443,7 +443,7 @@ const AppShell: React.FC = () => {
       case ToolType.NET_WORTH: return <NetWorthTracker />;
       case ToolType.EMERGENCY_FUND: return <EmergencyFundTool />;
       case ToolType.EMI_CALC: return <EMICalculator />;
-      case ToolType.MORTGAGE_CALC: return <MortgageCalculator />;
+      case ToolType.MORTGAGE_CALC: return <MortgageCalculator onNavigate={setActiveTool} />;
       case ToolType.SALARY_CALC: return <SalaryCalculator />;
       case ToolType.INVESTMENT_CALC: return <InvestmentCalculator />;
       case ToolType.MARKET_INSIGHTS: return <MarketInsights />;
