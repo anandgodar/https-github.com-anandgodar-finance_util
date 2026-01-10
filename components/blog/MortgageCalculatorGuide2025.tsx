@@ -1,6 +1,9 @@
 
 import React, { useEffect } from 'react';
 import { ToolType } from '../../types';
+import EmailCapture from '../EmailCapture';
+import AdPlacement from '../AdPlacement';
+import RecommendedTools from '../RecommendedTools';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -302,6 +305,11 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
         </section>
 
+        {/* Ad Placement - Middle of Article */}
+        <div className="my-12">
+          <AdPlacement size="responsive" position="middle" lazy={true} />
+        </div>
+
         {/* Section 5 */}
         <section id="pmi" className="space-y-6">
           <h2 className="text-3xl font-black text-slate-900">PMI (Private Mortgage Insurance): When You Need It</h2>
@@ -557,6 +565,11 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
         </section>
 
+        {/* Recommended Tools - Affiliate Section */}
+        <section className="my-12">
+          <RecommendedTools calculatorType="mortgage" />
+        </section>
+
         {/* CTA Section */}
         <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">
           <h2 className="text-3xl font-black mb-4">Ready to Calculate Your Mortgage?</h2>
@@ -569,6 +582,19 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           >
             Calculate Mortgage Payment →
           </button>
+        </section>
+
+        {/* Email Capture Section */}
+        <section className="mt-12">
+          <EmailCapture
+            title="Get More Mortgage & Home Buying Resources"
+            description="Subscribe to get exclusive mortgage guides, home buying tips, and financial strategies delivered to your inbox."
+            leadMagnet={{
+              title: "Mortgage Planning Resources",
+              description: "Weekly tips on mortgages, home buying, and real estate investing."
+            }}
+            buttonText="Subscribe Free"
+          />
         </section>
       </article>
     </div>

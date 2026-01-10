@@ -2,6 +2,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
+import EmailCapture from './EmailCapture';
 
 const STATE_TAX_DATA: Record<string, { name: string; rate: number }> = {
   AL: { name: 'Alabama', rate: 0.05 }, AK: { name: 'Alaska', rate: 0.00 }, AZ: { name: 'Arizona', rate: 0.025 },
@@ -273,6 +274,20 @@ const FreelanceHub: React.FC = () => {
             <li>• <strong>Child Tax Credit</strong> - Reduce tax liability with family credits</li>
           </ul>
         </div>
+      </section>
+
+      {/* Email Capture Section */}
+      <section className="mt-12">
+        <EmailCapture
+          title="Get Your Free Freelancer Tax Deduction Guide"
+          description="Download our comprehensive tax deduction guide for freelancers including home office, mileage, equipment, and health insurance deductions."
+          leadMagnet={{
+            title: "Freelancer Tax Deduction Guide 2025",
+            description: "Complete guide to maximizing tax deductions for freelancers and self-employed professionals.",
+            type: "freelancer_tax"
+          }}
+          buttonText="Get Free Guide"
+        />
       </section>
     </div>
   );
