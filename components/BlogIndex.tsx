@@ -143,6 +143,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       date: "January 2026",
       icon: "🏠"
     },
+    {
+      id: ToolType.BLOG_STUDENT_LOANS,
+      title: "Student Loan Repayment Strategies 2025: Complete Guide to Paying Off Student Debt",
+      description: "Master student loan repayment in 2025. Learn about income-driven repayment plans (SAVE, PAYE, IBR), loan forgiveness programs (PSLF), refinancing strategies, and how to pay off student debt faster.",
+      category: "Debt Management",
+      readTime: "18 min",
+      date: "January 2026",
+      icon: "🎓"
+    },
     // Tax & Freelancer Posts
     {
       id: ToolType.BLOG_CTC_2025,
