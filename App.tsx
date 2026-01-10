@@ -1,60 +1,76 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import Dashboard from './components/Dashboard';
-import EMICalculator from './components/EMICalculator';
-import SalaryCalculator from './components/SalaryCalculator';
-import InvestmentCalculator from './components/InvestmentCalculator';
-import MarketInsights from './components/MarketInsights';
-import LoanComparison from './components/LoanComparison';
-import LivingCostTool from './components/LivingCostTool';
-import MortgageCalculator from './components/MortgageCalculator';
-import CurrencyConverter from './components/CurrencyConverter';
-import GSTCalculator from './components/GSTCalculator';
-import CreditCardPayoff from './components/CreditCardPayoff';
-import FIREPlanner from './components/FIREPlanner';
-import FreelanceHub from './components/FreelanceHub';
-import InvestmentAcademy from './components/InvestmentAcademy';
-import ExcelModeler from './components/ExcelModeler';
-import NetWorthTracker from './components/NetWorthTracker';
-import EmergencyFundTool from './components/EmergencyFundTool';
-import RetirementOptimizer from './components/RetirementOptimizer';
-import DividendReinvestmentCalculator from './components/DividendReinvestmentCalculator';
-import CryptoTaxLossHarvester from './components/CryptoTaxLossHarvester';
-import DividendStockPage from './src/components/DividendStockPage';
-import ChildTaxCreditCalculator from './components/ChildTaxCreditCalculator';
-import QuarterlyTaxCalculator from './components/QuarterlyTaxCalculator';
-import ACASubsidyCalculator from './components/ACASubsidyCalculator';
-import ChildTaxCreditGuide2025 from './components/blog/ChildTaxCreditGuide2025';
-import ACAHealthInsuranceFreelancers2025 from './components/blog/ACAHealthInsuranceFreelancers2025';
-import QuarterlyEstimatedTaxesGuide2025 from './components/blog/QuarterlyEstimatedTaxesGuide2025';
-import SelfEmploymentTaxGuide2025 from './components/blog/SelfEmploymentTaxGuide2025';
-import TaxDeductionsFreelancers2025 from './components/blog/TaxDeductionsFreelancers2025';
-import Comparison1099VsW2_2025 from './components/blog/Comparison1099VsW2_2025';
-import LLCvsSoleProp2025 from './components/blog/LLCvsSoleProp2025';
-import SEPIRAvsSolo401k2025 from './components/blog/SEPIRAvsSolo401k2025';
-import HomeOfficeDeduction2025 from './components/blog/HomeOfficeDeduction2025';
-import MortgageCalculatorGuide2025 from './components/blog/MortgageCalculatorGuide2025';
-import HowMuchHouseCanIAfford2025 from './components/blog/HowMuchHouseCanIAfford2025';
-import ShouldIPayOffDebtOrInvest2025 from './components/blog/ShouldIPayOffDebtOrInvest2025';
-import HowToCalculateTakeHomePay2025 from './components/blog/HowToCalculateTakeHomePay2025';
-import RothIRAvsTraditionalIRA2025 from './components/blog/RothIRAvsTraditionalIRA2025';
-import HowMuchEmergencyFundDoINeed2025 from './components/blog/HowMuchEmergencyFundDoINeed2025';
-import FIRECalculatorGuide2025 from './components/blog/FIRECalculatorGuide2025';
-import BestRetirementCalculator2025 from './components/blog/BestRetirementCalculator2025';
-import InvestmentCalculatorGuide2025 from './components/blog/InvestmentCalculatorGuide2025';
-import BestMortgageCalculator2025 from './components/blog/BestMortgageCalculator2025';
-import BlogIndex from './components/BlogIndex';
-import FAQ from './components/FAQ';
-import Methodology from './components/Methodology';
-import PrivacyPolicy from './components/PrivacyPolicy';
-import Sitemap from './components/Sitemap';
-import AboutUs from './components/AboutUs';
-import ContactUs from './components/ContactUs';
-import Disclaimer from './components/Disclaimer';
 import { ToolType } from './types';
+
+// Lazy load all calculator components for code splitting
+const EMICalculator = lazy(() => import('./components/EMICalculator'));
+const SalaryCalculator = lazy(() => import('./components/SalaryCalculator'));
+const InvestmentCalculator = lazy(() => import('./components/InvestmentCalculator'));
+const MarketInsights = lazy(() => import('./components/MarketInsights'));
+const LoanComparison = lazy(() => import('./components/LoanComparison'));
+const LivingCostTool = lazy(() => import('./components/LivingCostTool'));
+const MortgageCalculator = lazy(() => import('./components/MortgageCalculator'));
+const CurrencyConverter = lazy(() => import('./components/CurrencyConverter'));
+const GSTCalculator = lazy(() => import('./components/GSTCalculator'));
+const CreditCardPayoff = lazy(() => import('./components/CreditCardPayoff'));
+const FIREPlanner = lazy(() => import('./components/FIREPlanner'));
+const FreelanceHub = lazy(() => import('./components/FreelanceHub'));
+const InvestmentAcademy = lazy(() => import('./components/InvestmentAcademy'));
+const ExcelModeler = lazy(() => import('./components/ExcelModeler'));
+const NetWorthTracker = lazy(() => import('./components/NetWorthTracker'));
+const EmergencyFundTool = lazy(() => import('./components/EmergencyFundTool'));
+const RetirementOptimizer = lazy(() => import('./components/RetirementOptimizer'));
+const DividendReinvestmentCalculator = lazy(() => import('./components/DividendReinvestmentCalculator'));
+const CryptoTaxLossHarvester = lazy(() => import('./components/CryptoTaxLossHarvester'));
+const DividendStockPage = lazy(() => import('./src/components/DividendStockPage'));
+const ChildTaxCreditCalculator = lazy(() => import('./components/ChildTaxCreditCalculator'));
+const QuarterlyTaxCalculator = lazy(() => import('./components/QuarterlyTaxCalculator'));
+const ACASubsidyCalculator = lazy(() => import('./components/ACASubsidyCalculator'));
+
+// Lazy load blog posts
+const ChildTaxCreditGuide2025 = lazy(() => import('./components/blog/ChildTaxCreditGuide2025'));
+const ACAHealthInsuranceFreelancers2025 = lazy(() => import('./components/blog/ACAHealthInsuranceFreelancers2025'));
+const QuarterlyEstimatedTaxesGuide2025 = lazy(() => import('./components/blog/QuarterlyEstimatedTaxesGuide2025'));
+const SelfEmploymentTaxGuide2025 = lazy(() => import('./components/blog/SelfEmploymentTaxGuide2025'));
+const TaxDeductionsFreelancers2025 = lazy(() => import('./components/blog/TaxDeductionsFreelancers2025'));
+const Comparison1099VsW2_2025 = lazy(() => import('./components/blog/Comparison1099VsW2_2025'));
+const LLCvsSoleProp2025 = lazy(() => import('./components/blog/LLCvsSoleProp2025'));
+const SEPIRAvsSolo401k2025 = lazy(() => import('./components/blog/SEPIRAvsSolo401k2025'));
+const HomeOfficeDeduction2025 = lazy(() => import('./components/blog/HomeOfficeDeduction2025'));
+const MortgageCalculatorGuide2025 = lazy(() => import('./components/blog/MortgageCalculatorGuide2025'));
+const HowMuchHouseCanIAfford2025 = lazy(() => import('./components/blog/HowMuchHouseCanIAfford2025'));
+const ShouldIPayOffDebtOrInvest2025 = lazy(() => import('./components/blog/ShouldIPayOffDebtOrInvest2025'));
+const HowToCalculateTakeHomePay2025 = lazy(() => import('./components/blog/HowToCalculateTakeHomePay2025'));
+const RothIRAvsTraditionalIRA2025 = lazy(() => import('./components/blog/RothIRAvsTraditionalIRA2025'));
+const HowMuchEmergencyFundDoINeed2025 = lazy(() => import('./components/blog/HowMuchEmergencyFundDoINeed2025'));
+const FIRECalculatorGuide2025 = lazy(() => import('./components/blog/FIRECalculatorGuide2025'));
+const BestRetirementCalculator2025 = lazy(() => import('./components/blog/BestRetirementCalculator2025'));
+const InvestmentCalculatorGuide2025 = lazy(() => import('./components/blog/InvestmentCalculatorGuide2025'));
+const BestMortgageCalculator2025 = lazy(() => import('./components/blog/BestMortgageCalculator2025'));
+const BlogIndex = lazy(() => import('./components/BlogIndex'));
+
+// Lazy load static pages
+const FAQ = lazy(() => import('./components/FAQ'));
+const Methodology = lazy(() => import('./components/Methodology'));
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
+const Sitemap = lazy(() => import('./components/Sitemap'));
+const AboutUs = lazy(() => import('./components/AboutUs'));
+const ContactUs = lazy(() => import('./components/ContactUs'));
+const Disclaimer = lazy(() => import('./components/Disclaimer'));
+
+// Loading component
+const LoadingFallback: React.FC = () => (
+  <div className="min-h-screen flex items-center justify-center bg-slate-50">
+    <div className="text-center">
+      <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mb-4"></div>
+      <p className="text-slate-600 font-medium">Loading calculator...</p>
+    </div>
+  </div>
+);
 
 const METADATA: Record<ToolType, { title: string; desc: string; keywords: string }> = {
   [ToolType.DASHBOARD]: { 
