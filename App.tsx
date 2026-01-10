@@ -73,7 +73,7 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "emergency fund calculator, financial safety net, survival runway, inflation stress"
   },
   [ToolType.EMI_CALC]: { 
-    title: "EMI Calculator - Reducing Balance Loan & Interest Savings Pro", 
+    title: "EMI Calculator 2025 - Loan EMI Calculator with Extra Payment Savings", 
     desc: "Optimize your loan repayments. Use our reducing balance EMI calculator to model principal prepayments and shave years off your debt tenure.",
     keywords: "emi calculator, loan repayment, interest savings, prepayment calculator"
   },
