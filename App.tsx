@@ -42,6 +42,7 @@ import ShouldIPayOffDebtOrInvest2025 from './components/blog/ShouldIPayOffDebtOr
 import HowToCalculateTakeHomePay2025 from './components/blog/HowToCalculateTakeHomePay2025';
 import RothIRAvsTraditionalIRA2025 from './components/blog/RothIRAvsTraditionalIRA2025';
 import HowMuchEmergencyFundDoINeed2025 from './components/blog/HowMuchEmergencyFundDoINeed2025';
+import BlogIndex from './components/BlogIndex';
 import FAQ from './components/FAQ';
 import Methodology from './components/Methodology';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -241,6 +242,11 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "How Much Emergency Fund Do I Need? Complete 2025 Guide with Calculator",
     desc: "Calculate how much emergency fund you need in 2025. Learn the 3-6 month rule, how to build your emergency fund, where to keep it, and use our calculator to find your perfect safety net.",
     keywords: "how much emergency fund, emergency fund calculator, emergency fund guide, how much should i save, emergency savings, 3 6 month rule, emergency fund amount, financial safety net"
+  },
+  [ToolType.BLOG_INDEX]: {
+    title: "QuantCurb Financial Blog - Expert Guides & Calculators 2025",
+    desc: "Comprehensive financial guides, calculators, and expert insights for mortgages, taxes, retirement planning, and wealth management. Learn how to make smarter financial decisions with institutional-grade tools.",
+    keywords: "financial blog, finance guides, mortgage calculator guide, tax planning guide, retirement planning guide, financial education, personal finance blog, wealth management guides"
   },
   [ToolType.FAQ]: {
     title: "Financial Knowledge Base - Expert Logic & Strategy FAQ",
@@ -447,6 +453,7 @@ const AppShell: React.FC = () => {
       case ToolType.BLOG_TAKE_HOME_PAY: return <HowToCalculateTakeHomePay2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_ROTH_TRADITIONAL: return <RothIRAvsTraditionalIRA2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_EMERGENCY_FUND: return <HowMuchEmergencyFundDoINeed2025 onNavigate={setActiveTool} />;
+      case ToolType.BLOG_INDEX: return <BlogIndex onNavigate={setActiveTool} />;
       case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
       case ToolType.METHODOLOGY: return <Methodology />;
       case ToolType.PRIVACY: return <PrivacyPolicy />;
