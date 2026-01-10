@@ -447,7 +447,7 @@ const AppShell: React.FC = () => {
       case ToolType.SALARY_CALC: return <SalaryCalculator onNavigate={setActiveTool} />;
       case ToolType.INVESTMENT_CALC: return <InvestmentCalculator onNavigate={setActiveTool} />;
       case ToolType.MARKET_INSIGHTS: return <MarketInsights />;
-      case ToolType.LOAN_COMPARE: return <LoanComparison />;
+      case ToolType.LOAN_COMPARE: return <LoanComparison onNavigate={setActiveTool} />;
       case ToolType.LIVING_COST: return <LivingCostTool />;
       case ToolType.CURRENCY_CONV: return <CurrencyConverter />;
       case ToolType.GST_CALC: return <GSTCalculator />;

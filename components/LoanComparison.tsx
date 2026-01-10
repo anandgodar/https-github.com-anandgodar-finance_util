@@ -2,6 +2,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell, AreaChart, Area } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
+import CalculatorFAQ from './CalculatorFAQ';
+import { ToolType } from '../types';
 
 type Mode = 'compare' | 'refinance' | 'prequal';
 
@@ -13,7 +15,11 @@ interface AmortizationRow {
   balance: number;
 }
 
-const LoanComparison: React.FC = () => {
+interface LoanComparisonProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+const LoanComparison: React.FC<LoanComparisonProps> = ({ onNavigate }) => {
   const [mode, setMode] = useState<Mode>('compare');
   const [activeSchedule, setActiveSchedule] = useState<'none' | 'loan1' | 'loan2'>('none');
   
@@ -109,6 +115,67 @@ const LoanComparison: React.FC = () => {
     const timer = setTimeout(() => fetchAdvice(), 3000);
     return () => clearTimeout(timer);
   }, [mode, loan1, loan2, monthlyIncome, existingDebt, creditScore]);
+
+  useEffect(() => {
+    // Add HowTo schema for "How to compare loans"
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Compare Loans: Compare Offers, Refinance Analysis, and Prequalification",
+      "description": "Step-by-step guide to comparing loan offers, analyzing refinancing options, and calculating loan prequalification based on income, debt, and credit score.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Choose Comparison Mode",
+          "text": "Select Compare (side-by-side loan offers), Refinance (analyze refinancing savings), or Prequal (calculate maximum loan amount)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Enter Loan Details",
+          "text": "For Compare/Refinance: Enter loan amount, interest rate, term (years), and closing costs. For Prequal: Enter monthly income, existing debt, credit score, and target debt-to-income ratio."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Review Monthly Payments",
+          "text": "Compare monthly payments (EMI) between loans. Lower payment means more cash flow, but may result in more total interest paid."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Calculate Total Interest",
+          "text": "See total interest paid over the life of each loan. Lower interest rate saves thousands over time."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Analyze Break-Even (Refinance)",
+          "text": "For refinancing, calculate break-even point: closing costs ÷ monthly savings = months to break even. If you plan to stay longer, refinancing makes sense."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Review Amortization Schedule",
+          "text": "View month-by-month payment breakdown showing principal vs interest. Early payments are mostly interest; later payments are mostly principal."
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(howToSchema);
+    script.id = 'howto-schema-loan-comparison';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('howto-schema-loan-comparison');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   const activeAmortization = activeSchedule === 'loan1' ? results.schedule1 : results.schedule2;
 
@@ -433,6 +500,81 @@ const LoanComparison: React.FC = () => {
            ))}
         </div>
       </footer>
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.MORTGAGE_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">🏠 Mortgage Calculator</h3>
+            <p className="text-sm text-slate-600">Calculate monthly mortgage payments, PITI, PMI, and see how extra payments save interest.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.EMI_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">💳 Loan EMI Calculator</h3>
+            <p className="text-sm text-slate-600">Calculate loan payments and see how extra payments save interest and reduce loan term.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.CREDIT_CARD_PAYOFF)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">💳 Credit Card Payoff Calculator</h3>
+            <p className="text-sm text-slate-600">Compare Avalanche vs Snowball methods to pay off credit card debt faster.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_HOW_MUCH_HOUSE)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 How Much House Can I Afford?</h3>
+            <p className="text-sm text-slate-600">Learn about the 28/36 rule, debt-to-income ratios, and how to determine housing affordability.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="Loan Comparison Tool"
+        calculatorUrl="https://quantcurb.com/loan-comparison-tool"
+        faqs={[
+          {
+            question: "How do I compare two loan offers?",
+            answer: "Use our Compare mode! Enter both loan amounts, interest rates, terms, and closing costs. The calculator shows monthly payments, total interest paid, and total cost. Lower monthly payment doesn't always mean better - check total interest paid over the life of the loan. Our calculator makes it easy to see which loan saves you more money."
+          },
+          {
+            question: "Should I refinance my loan?",
+            answer: "Refinancing makes sense if: 1) New rate is at least 0.5-1% lower, 2) You plan to stay in the home/keep the loan long enough to break even (closing costs ÷ monthly savings), 3) You can reduce your loan term. Use our Refinance mode to calculate break-even point and total savings. If you'll move before break-even, refinancing may not be worth it."
+          },
+          {
+            question: "What is a loan break-even point?",
+            answer: "Break-even point is when your refinancing savings equal the closing costs. Formula: Closing costs ÷ Monthly savings = Months to break even. For example, if closing costs are $4,500 and you save $150/month, break-even is 30 months. If you plan to stay longer than 30 months, refinancing saves money."
+          },
+          {
+            question: "How much can I borrow? (Loan prequalification)",
+            answer: "Use our Prequal mode! Enter your monthly income, existing debt payments, credit score, and target debt-to-income (DTI) ratio. The calculator shows your maximum monthly payment and estimated loan amount. Lenders typically allow DTI up to 36-43%, but lower is better for approval and rates."
+          },
+          {
+            question: "What is debt-to-income (DTI) ratio?",
+            answer: "DTI is your total monthly debt payments divided by gross monthly income, expressed as a percentage. For example, if you earn $8,000/month and have $2,000 in debt payments, your DTI is 25%. Lenders prefer DTI under 36% for mortgages, but may approve up to 43%. Lower DTI = better rates and easier approval."
+          },
+          {
+            question: "How does credit score affect loan rates?",
+            answer: "Credit score significantly impacts loan rates. Excellent credit (760+) gets the best rates (~6.4%), good credit (700-759) gets slightly higher rates (~6.8%), fair credit (640-699) gets higher rates (~7.5%), and poor credit (<640) gets the highest rates (~8.5%+). Our calculator shows estimated rates based on your credit score."
+          },
+          {
+            question: "What's the difference between interest rate and APR?",
+            answer: "Interest rate is the cost of borrowing money. APR (Annual Percentage Rate) includes interest rate plus fees and closing costs, giving you the true cost of the loan. Always compare APRs when shopping for loans, not just interest rates. A loan with a lower rate but higher fees may have a higher APR."
+          },
+          {
+            question: "Should I choose a 15-year or 30-year loan?",
+            answer: "15-year loans have higher monthly payments but much less total interest. 30-year loans have lower payments but more total interest. Use our calculator to compare: If you can afford the 15-year payment, you'll save tens of thousands in interest. If cash flow is tight, 30-year gives flexibility, and you can always pay extra to shorten the term."
+          }
+        ]}
+      />
     </div>
   );
 };
