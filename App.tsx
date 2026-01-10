@@ -118,9 +118,9 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "gst calculator, vat calculator, tax invoicing, business tax tool"
   },
   [ToolType.CREDIT_CARD_PAYOFF]: { 
-    title: "Credit Card Payoff Strategist - Avalanche vs Snowball Method", 
-    desc: "Eliminate debt using optimized algorithms. Compare Avalanche and Snowball trajectories to save on interest and shave months off debt.",
-    keywords: "credit card payoff, debt avalanche, debt snowball, interest savings"
+    title: "Credit Card Payoff Calculator 2025 - Avalanche vs Snowball Method with Balance Transfer", 
+    desc: "Free credit card payoff calculator to eliminate debt faster. Compare Avalanche vs Snowball methods, calculate payoff timeline, total interest paid, and balance transfer savings. Find the best strategy to become debt-free.",
+    keywords: "credit card payoff calculator, debt payoff calculator, avalanche method, snowball method, credit card debt calculator, balance transfer calculator, debt free calculator, credit card interest calculator, debt payoff strategy, avalanche vs snowball"
   },
   [ToolType.FIRE_PLANNER]: { 
     title: "FIRE Calculator 2025 - Early Retirement Planner with Coast FIRE, Barista FIRE & Geographic Arbitrage", 
@@ -451,7 +451,7 @@ const AppShell: React.FC = () => {
       case ToolType.LIVING_COST: return <LivingCostTool />;
       case ToolType.CURRENCY_CONV: return <CurrencyConverter />;
       case ToolType.GST_CALC: return <GSTCalculator />;
-      case ToolType.CREDIT_CARD_PAYOFF: return <CreditCardPayoff />;
+      case ToolType.CREDIT_CARD_PAYOFF: return <CreditCardPayoff onNavigate={setActiveTool} />;
       case ToolType.FIRE_PLANNER: return <FIREPlanner onNavigate={setActiveTool} />;
       case ToolType.FREELANCE_PROFIT: return <FreelanceHub />;
       case ToolType.INVESTMENT_ACADEMY: return <InvestmentAcademy />;

@@ -2,6 +2,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Cell, PieChart, Pie } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
+import CalculatorFAQ from './CalculatorFAQ';
+import { ToolType } from '../types';
 
 interface Card {
   id: string;
@@ -11,7 +13,11 @@ interface Card {
   minPayment: number;
 }
 
-const CreditCardPayoff: React.FC = () => {
+interface CreditCardPayoffProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+const CreditCardPayoff: React.FC<CreditCardPayoffProps> = ({ onNavigate }) => {
   const [cards, setCards] = useState<Card[]>([
     { id: '1', name: 'Sapphire Preferred', balance: 5200, rate: 24.99, minPayment: 150 },
     { id: '2', name: 'Store Card (Tech)', balance: 1850, rate: 29.99, minPayment: 60 }
@@ -19,6 +25,8 @@ const CreditCardPayoff: React.FC = () => {
   const [targetMonthly, setTargetMonthly] = useState<number>(600);
   const [newCard, setNewCard] = useState({ name: '', balance: '', rate: '', min: '' });
   const [strategy, setStrategy] = useState<'avalanche' | 'snowball'>('avalanche');
+  const [balanceTransferRate, setBalanceTransferRate] = useState<number>(0); // For balance transfer calculator
+  const [balanceTransferFee, setBalanceTransferFee] = useState<number>(3); // Typical 3-5%
   
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
@@ -111,6 +119,67 @@ const CreditCardPayoff: React.FC = () => {
     const timer = setTimeout(() => fetchAdvice(), 2000);
     return () => clearTimeout(timer);
   }, [cards, targetMonthly, strategy]);
+
+  useEffect(() => {
+    // Add HowTo schema for "How to pay off credit card debt"
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Pay Off Credit Card Debt: Avalanche vs Snowball Method",
+      "description": "Step-by-step guide to paying off credit card debt using the Avalanche or Snowball method to save on interest and become debt-free faster.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "List All Your Credit Cards",
+          "text": "Enter all your credit cards with their balances, interest rates (APR), and minimum payments."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Set Your Monthly Budget",
+          "text": "Enter the total amount you can pay toward debt each month (minimum payments + extra)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Choose Your Strategy",
+          "text": "Select Avalanche (pay highest interest first, saves most money) or Snowball (pay smallest balance first, psychological wins)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Review Your Payoff Plan",
+          "text": "The calculator shows how long it will take to pay off all debt, total interest paid, and your payoff timeline."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Consider Balance Transfers",
+          "text": "If you have high-interest debt, consider transferring to a 0% APR card to save on interest (watch for transfer fees)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Stick to Your Plan",
+          "text": "Make minimum payments on all cards, then put all extra money toward your target card until it's paid off."
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(howToSchema);
+    script.id = 'howto-schema-credit-card';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('howto-schema-credit-card');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto space-y-10 animate-in fade-in duration-500 pb-24">
