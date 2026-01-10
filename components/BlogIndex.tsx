@@ -143,6 +143,42 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       date: "January 2026",
       icon: "🏠"
     },
+    {
+      id: ToolType.BLOG_STUDENT_LOANS,
+      title: "Student Loan Repayment Strategies 2025: Complete Guide to Paying Off Student Debt",
+      description: "Master student loan repayment in 2025. Learn about income-driven repayment plans (SAVE, PAYE, IBR), loan forgiveness programs (PSLF), refinancing strategies, and how to pay off student debt faster.",
+      category: "Debt Management",
+      readTime: "18 min",
+      date: "January 2026",
+      icon: "🎓"
+    },
+    {
+      id: ToolType.BLOG_TAX_BRACKETS,
+      title: "Tax Brackets Explained 2025: Complete Guide to Federal Income Tax Rates",
+      description: "Understand 2025 federal tax brackets and how progressive taxation works. Learn effective vs marginal tax rate, tax bracket calculations, and how to reduce your tax bill legally.",
+      category: "Tax Planning",
+      readTime: "16 min",
+      date: "January 2026",
+      icon: "💰"
+    },
+    {
+      id: ToolType.BLOG_401K_VS_IRA,
+      title: "401(k) vs IRA 2025: Complete Comparison Guide - Which Retirement Account is Better?",
+      description: "Compare 401(k) vs IRA in 2025. Learn contribution limits, employer match, tax benefits, withdrawal rules, and which retirement account is better for your situation.",
+      category: "Retirement Planning",
+      readTime: "17 min",
+      date: "January 2026",
+      icon: "🎯"
+    },
+    {
+      id: ToolType.BLOG_BUDGETING,
+      title: "Complete Budgeting Guide 2025: 50/30/20 Rule, Zero-Based Budgeting & More",
+      description: "Master budgeting in 2025 with our complete guide. Learn the 50/30/20 rule, zero-based budgeting, envelope method, and proven strategies to take control of your finances.",
+      category: "Financial Planning",
+      readTime: "19 min",
+      date: "January 2026",
+      icon: "📊"
+    },
     // Tax & Freelancer Posts
     {
       id: ToolType.BLOG_CTC_2025,
