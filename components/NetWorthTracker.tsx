@@ -379,6 +379,81 @@ const NetWorthTracker: React.FC<NetWorthTrackerProps> = ({ onNavigate }) => {
            ))}
         </div>
       </footer>
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.EMERGENCY_FUND)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">🛡️ Emergency Fund Calculator</h3>
+            <p className="text-sm text-slate-600">Calculate how much emergency fund you need (part of your liquid assets).</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.INVESTMENT_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📈 Investment Calculator</h3>
+            <p className="text-sm text-slate-600">See how your investments can grow and increase your net worth over time.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.RETIREMENT_OPTIMIZER)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">🎯 Retirement Account Optimizer</h3>
+            <p className="text-sm text-slate-600">Maximize your 401(k) and IRA contributions to build retirement assets.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.CREDIT_CARD_PAYOFF)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">💳 Credit Card Payoff Calculator</h3>
+            <p className="text-sm text-slate-600">Pay off high-interest debt to improve your net worth and debt-to-asset ratio.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="Net Worth Tracker"
+        calculatorUrl="https://quantcurb.com/net-worth-command-center"
+        faqs={[
+          {
+            question: "How do I calculate my net worth?",
+            answer: "Net worth = Total Assets - Total Liabilities. List all assets (cash, investments, property, vehicles) and subtract all debts (mortgage, loans, credit cards). For example, if you have $500,000 in assets and $200,000 in debts, your net worth is $300,000. Our calculator makes this easy by organizing assets and liabilities separately."
+          },
+          {
+            question: "What counts as an asset?",
+            answer: "Assets include: cash (checking, savings), investments (stocks, bonds, retirement accounts, crypto), property (home value, rental properties, vehicles), and other assets (jewelry, collectibles, business equity). Use current market values, not purchase prices. For your home, use estimated market value, not what you paid."
+          },
+          {
+            question: "What counts as a liability?",
+            answer: "Liabilities are all debts you owe: mortgage balance, home equity loans, student loans, car loans, credit card debt, personal loans, medical debt, and any other outstanding debts. Use current balances, not original loan amounts. For mortgages, use the remaining balance, not the original loan."
+          },
+          {
+            question: "What is a good net worth by age?",
+            answer: "General benchmarks: Age 30: 1x annual income, Age 40: 3x annual income, Age 50: 6x annual income, Age 60: 8x annual income. However, these vary based on income, location, and life circumstances. Focus on increasing your net worth over time rather than comparing to others."
+          },
+          {
+            question: "What is debt-to-asset ratio?",
+            answer: "Debt-to-asset ratio = (Total Liabilities ÷ Total Assets) × 100. It shows how leveraged you are. Under 25% is excellent (low leverage), 25-50% is stable, over 50% indicates high leverage risk. For example, if you have $400,000 in assets and $100,000 in debt, your ratio is 25% (excellent)."
+          },
+          {
+            question: "Should I include my home in net worth?",
+            answer: "Yes, include your home's current market value as an asset, but also include your mortgage balance as a liability. For example, if your home is worth $500,000 and you owe $300,000, you have $200,000 in home equity. This is the net value that contributes to your net worth."
+          },
+          {
+            question: "What is the difference between liquid and illiquid assets?",
+            answer: "Liquid assets (cash, stocks, bonds) can be quickly converted to cash without significant loss. Illiquid assets (real estate, vehicles) take time to sell and may have transaction costs. Aim for 20-30% of assets in liquid form for financial flexibility. Too much illiquid assets can limit your options during emergencies."
+          },
+          {
+            question: "How often should I calculate my net worth?",
+            answer: "Calculate net worth monthly or quarterly to track progress. Monthly tracking helps you stay motivated and catch issues early. Quarterly is sufficient for most people. Update asset values (especially investments and property) to current market values, not purchase prices. Increasing net worth over time means you're building wealth."
+          }
+        ]}
+      />
     </article>
   );
 };
