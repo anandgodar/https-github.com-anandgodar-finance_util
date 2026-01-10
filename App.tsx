@@ -52,6 +52,9 @@ const BestRetirementCalculator2025 = lazy(() => import('./components/blog/BestRe
 const InvestmentCalculatorGuide2025 = lazy(() => import('./components/blog/InvestmentCalculatorGuide2025'));
 const BestMortgageCalculator2025 = lazy(() => import('./components/blog/BestMortgageCalculator2025'));
 const StudentLoanRepaymentStrategies2025 = lazy(() => import('./components/blog/StudentLoanRepaymentStrategies2025'));
+const TaxBracketsExplained2025 = lazy(() => import('./components/blog/TaxBracketsExplained2025'));
+const FourZeroOneKVsIRAComparison2025 = lazy(() => import('./components/blog/401kVsIRAComparison2025'));
+const BudgetingGuide2025 = lazy(() => import('./components/blog/BudgetingGuide2025'));
 const BlogIndex = lazy(() => import('./components/BlogIndex'));
 
 // Lazy load static pages
@@ -500,6 +503,9 @@ const AppShell: React.FC = () => {
         case ToolType.BLOG_INVESTMENT_GUIDE: return <InvestmentCalculatorGuide2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_BEST_MORTGAGE: return <BestMortgageCalculator2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_STUDENT_LOANS: return <StudentLoanRepaymentStrategies2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_TAX_BRACKETS: return <TaxBracketsExplained2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_401K_VS_IRA: return <FourZeroOneKVsIRAComparison2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_BUDGETING: return <BudgetingGuide2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_INDEX: return <BlogIndex onNavigate={setActiveTool} />;
         case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
         case ToolType.METHODOLOGY: return <Methodology />;
