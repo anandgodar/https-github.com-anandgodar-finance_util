@@ -440,14 +440,14 @@ const AppShell: React.FC = () => {
   const renderTool = () => {
     switch (activeTool) {
       case ToolType.DASHBOARD: return <Dashboard onSelectTool={setActiveTool} />;
-      case ToolType.NET_WORTH: return <NetWorthTracker />;
-      case ToolType.EMERGENCY_FUND: return <EmergencyFundTool />;
+      case ToolType.NET_WORTH: return <NetWorthTracker onNavigate={setActiveTool} />;
+      case ToolType.EMERGENCY_FUND: return <EmergencyFundTool onNavigate={setActiveTool} />;
       case ToolType.EMI_CALC: return <EMICalculator onNavigate={setActiveTool} />;
       case ToolType.MORTGAGE_CALC: return <MortgageCalculator onNavigate={setActiveTool} />;
       case ToolType.SALARY_CALC: return <SalaryCalculator onNavigate={setActiveTool} />;
       case ToolType.INVESTMENT_CALC: return <InvestmentCalculator onNavigate={setActiveTool} />;
       case ToolType.MARKET_INSIGHTS: return <MarketInsights />;
-      case ToolType.LOAN_COMPARE: return <LoanComparison />;
+      case ToolType.LOAN_COMPARE: return <LoanComparison onNavigate={setActiveTool} />;
       case ToolType.LIVING_COST: return <LivingCostTool />;
       case ToolType.CURRENCY_CONV: return <CurrencyConverter />;
       case ToolType.GST_CALC: return <GSTCalculator />;
@@ -461,7 +461,7 @@ const AppShell: React.FC = () => {
       case ToolType.CRYPTO_TAX_LOSS: return <CryptoTaxLossHarvester />;
       case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator onNavigate={setActiveTool} />;
       case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator onNavigate={setActiveTool} />;
-      case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator />;
+      case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator onNavigate={setActiveTool} />;
       case ToolType.BLOG_CTC_2025: return <ChildTaxCreditGuide2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_ACA_FREELANCERS: return <ACAHealthInsuranceFreelancers2025 onNavigate={setActiveTool} />;
       case ToolType.BLOG_QUARTERLY_TAX: return <QuarterlyEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;
