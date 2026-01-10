@@ -88,9 +88,9 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "salary calculator, take home pay calculator, salary calculator 2025, net pay calculator, after tax salary, paycheck calculator, take home pay by state, 401k calculator, tax estimator, salary after taxes, biweekly paycheck calculator, weekly paycheck calculator"
   },
   [ToolType.INVESTMENT_CALC]: { 
-    title: "Investment Calculator - Wealth SIP & Compounding Growth Simulator", 
-    desc: "Visualize your compound interest trajectory. Model recurring SIPs, expected returns, and inflation-adjusted wealth growth for 2025.",
-    keywords: "investment calculator, sip calculator, compound interest, wealth growth"
+    title: "Investment Calculator 2025 - SIP Calculator with Compound Interest & Goal-Based Investing", 
+    desc: "Free investment calculator to calculate investment growth with compound interest. Includes SIP investing, dividend reinvestment (DRIP), goal-based investing, and wealth projection. See how your investments grow over time with monthly contributions.",
+    keywords: "investment calculator, investment calculator 2025, sip calculator, compound interest calculator, investment growth calculator, wealth calculator, sip investing, compound interest, dividend reinvestment, drip calculator, goal based investing, investment projection, wealth growth calculator"
   },
   [ToolType.MARKET_INSIGHTS]: { 
     title: "AI Market Pulse - Institutional vs Retail App Ecosystem Analysis", 
@@ -445,7 +445,7 @@ const AppShell: React.FC = () => {
       case ToolType.EMI_CALC: return <EMICalculator />;
       case ToolType.MORTGAGE_CALC: return <MortgageCalculator onNavigate={setActiveTool} />;
       case ToolType.SALARY_CALC: return <SalaryCalculator onNavigate={setActiveTool} />;
-      case ToolType.INVESTMENT_CALC: return <InvestmentCalculator />;
+      case ToolType.INVESTMENT_CALC: return <InvestmentCalculator onNavigate={setActiveTool} />;
       case ToolType.MARKET_INSIGHTS: return <MarketInsights />;
       case ToolType.LOAN_COMPARE: return <LoanComparison />;
       case ToolType.LIVING_COST: return <LivingCostTool />;
