@@ -83,9 +83,9 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "mortgage calculator, mortgage calculator 2025, piti calculator, monthly mortgage payment, pmi calculator, property tax calculator, hoa calculator, mortgage payment calculator, home loan calculator, mortgage by state, mortgage calculator with taxes, mortgage calculator with pmi"
   },
   [ToolType.SALARY_CALC]: { 
-    title: "Take Home Pay Calculator - 2025 Salary Tax & 401k Estimator", 
-    desc: "Precise net pay modeling for all 50 US states. Account for 401k tax shields, FICA, Federal, and State tax deductions with the Salary Estimator.",
-    keywords: "salary calculator, take home pay, 401k calculator, tax estimator"
+    title: "Take Home Pay Calculator 2025 - Salary Tax Calculator by State with 401k", 
+    desc: "Free salary calculator to calculate your take-home pay after taxes. Includes federal tax, state tax (all 50 states), FICA, 401(k) deductions, and pay frequency options. Get your exact net pay for weekly, bi-weekly, semi-monthly, or monthly paychecks.",
+    keywords: "salary calculator, take home pay calculator, salary calculator 2025, net pay calculator, after tax salary, paycheck calculator, take home pay by state, 401k calculator, tax estimator, salary after taxes, biweekly paycheck calculator, weekly paycheck calculator"
   },
   [ToolType.INVESTMENT_CALC]: { 
     title: "Investment Calculator - Wealth SIP & Compounding Growth Simulator", 
@@ -444,7 +444,7 @@ const AppShell: React.FC = () => {
       case ToolType.EMERGENCY_FUND: return <EmergencyFundTool />;
       case ToolType.EMI_CALC: return <EMICalculator />;
       case ToolType.MORTGAGE_CALC: return <MortgageCalculator onNavigate={setActiveTool} />;
-      case ToolType.SALARY_CALC: return <SalaryCalculator />;
+      case ToolType.SALARY_CALC: return <SalaryCalculator onNavigate={setActiveTool} />;
       case ToolType.INVESTMENT_CALC: return <InvestmentCalculator />;
       case ToolType.MARKET_INSIGHTS: return <MarketInsights />;
       case ToolType.LOAN_COMPARE: return <LoanComparison />;
