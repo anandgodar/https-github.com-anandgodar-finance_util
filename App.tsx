@@ -441,7 +441,7 @@ const AppShell: React.FC = () => {
     switch (activeTool) {
       case ToolType.DASHBOARD: return <Dashboard onSelectTool={setActiveTool} />;
       case ToolType.NET_WORTH: return <NetWorthTracker />;
-      case ToolType.EMERGENCY_FUND: return <EmergencyFundTool />;
+      case ToolType.EMERGENCY_FUND: return <EmergencyFundTool onNavigate={setActiveTool} />;
       case ToolType.EMI_CALC: return <EMICalculator onNavigate={setActiveTool} />;
       case ToolType.MORTGAGE_CALC: return <MortgageCalculator onNavigate={setActiveTool} />;
       case ToolType.SALARY_CALC: return <SalaryCalculator onNavigate={setActiveTool} />;

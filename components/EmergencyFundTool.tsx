@@ -1,8 +1,14 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { getFinancialAdvice } from '../services/geminiService';
+import CalculatorFAQ from './CalculatorFAQ';
+import { ToolType } from '../types';
 
-const EmergencyFundTool: React.FC = () => {
+interface EmergencyFundToolProps {
+  onNavigate?: (tool: ToolType) => void;
+}
+
+const EmergencyFundTool: React.FC<EmergencyFundToolProps> = ({ onNavigate }) => {
   const [monthlyExpenses, setMonthlyExpenses] = useState<number>(4500);
   const [currentCash, setCurrentCash] = useState<number>(12000);
   const [targetMonths, setTargetMonths] = useState<number>(6);
@@ -50,6 +56,73 @@ const EmergencyFundTool: React.FC = () => {
     const timer = setTimeout(() => fetchAdvice(), 2500);
     return () => clearTimeout(timer);
   }, [currentCash, monthlyExpenses, essentialsOnly, inflationStress]);
+
+  useEffect(() => {
+    // Add HowTo schema for "How to calculate emergency fund"
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Calculate Your Emergency Fund: 3-6 Month Rule and Inflation Stress Testing",
+      "description": "Step-by-step guide to calculating your emergency fund using the 3-6 month rule, stress testing for inflation, and determining how much cash you need for financial security.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Calculate Your Monthly Expenses",
+          "text": "Enter your total monthly expenses. This includes housing, food, utilities, transportation, insurance, and other essential costs."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Choose Essentials-Only Mode (Optional)",
+          "text": "Toggle 'Essentials Only' mode to calculate based on 70% of your expenses (cutting non-essential spending during emergencies)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Set Your Target Duration",
+          "text": "Choose how many months of expenses you want to cover: 3 months (starter), 6 months (recommended), 12 months (aggressive), or 24 months (maximum security)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Enter Your Current Cash Savings",
+          "text": "Enter your current liquid savings (checking, savings, money market accounts). This is your emergency fund balance."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Stress Test for Inflation",
+          "text": "Use the inflation stress test slider to see how your emergency fund would hold up if expenses increased by 10%, 20%, or even 50% due to inflation or lifestyle changes."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Review Your Survival Runway",
+          "text": "The calculator shows how many months your current savings will last at your expense rate. Aim for at least 6 months of runway."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 7,
+          "name": "Calculate Your Target Emergency Fund",
+          "text": "Your target emergency fund = Monthly expenses × Target months. For example, $5,000/month × 6 months = $30,000 emergency fund."
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(howToSchema);
+    script.id = 'howto-schema-emergency-fund';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('howto-schema-emergency-fund');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   return (
     <article className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-500 pb-24">
@@ -298,6 +371,81 @@ const EmergencyFundTool: React.FC = () => {
            </div>
         </div>
       </section>
+
+      {/* Related Resources Section */}
+      <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-6">Related Resources</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <button
+            onClick={() => onNavigate?.(ToolType.BLOG_EMERGENCY_FUND)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📖 How Much Emergency Fund Do I Need?</h3>
+            <p className="text-sm text-slate-600">Complete guide to emergency fund planning, the 3-6 month rule, and where to keep your savings.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.NET_WORTH)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📊 Net Worth Tracker</h3>
+            <p className="text-sm text-slate-600">Track your total net worth including emergency fund, investments, and assets.</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.INVESTMENT_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">📈 Investment Calculator</h3>
+            <p className="text-sm text-slate-600">See how your emergency fund could grow if invested, but remember: emergency funds should be liquid!</p>
+          </button>
+          <button
+            onClick={() => onNavigate?.(ToolType.SALARY_CALC)}
+            className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
+          >
+            <h3 className="font-bold text-slate-900 mb-2">💰 Salary Calculator</h3>
+            <p className="text-sm text-slate-600">Calculate your take-home pay to determine how much you can save for your emergency fund each month.</p>
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <CalculatorFAQ
+        calculatorName="Emergency Fund Calculator"
+        calculatorUrl="https://quantcurb.com/emergency-fund-guard"
+        faqs={[
+          {
+            question: "How much should I have in my emergency fund?",
+            answer: "The general rule is 3-6 months of expenses. Start with 3 months if you're building your fund, then work toward 6 months. If you have variable income, are self-employed, or have dependents, aim for 6-12 months. Our calculator helps you determine the exact amount based on your monthly expenses and target duration."
+          },
+          {
+            question: "What is the 3-6 month rule for emergency funds?",
+            answer: "The 3-6 month rule means having enough cash to cover 3-6 months of living expenses. This provides a financial buffer if you lose your job, face medical expenses, or encounter unexpected expenses. Our calculator shows how many months your current savings will last and how much more you need to reach your target."
+          },
+          {
+            question: "Should I include my emergency fund in my net worth?",
+            answer: "Yes, your emergency fund is part of your net worth. However, it should be kept separate from your investment portfolio. Emergency funds should be liquid (easily accessible) and low-risk, while investments can be in stocks, bonds, or real estate for long-term growth."
+          },
+          {
+            question: "Where should I keep my emergency fund?",
+            answer: "Keep your emergency fund in a high-yield savings account, money market account, or short-term CD. These accounts are FDIC-insured, liquid (you can access funds quickly), and earn some interest. Don't invest emergency funds in stocks or bonds, as you may need to access them during market downturns."
+          },
+          {
+            question: "How do I calculate my emergency fund if I'm self-employed?",
+            answer: "Self-employed individuals should aim for 6-12 months of expenses due to variable income. Use your average monthly expenses and multiply by your target duration. Our calculator includes an inflation stress test to account for rising costs and helps you see how your fund would hold up during tough times."
+          },
+          {
+            question: "What expenses should I include in my emergency fund calculation?",
+            answer: "Include all essential expenses: housing (rent/mortgage), utilities, food, transportation, insurance, minimum debt payments, and healthcare. You can use 'Essentials Only' mode in our calculator, which calculates based on 70% of your expenses (cutting non-essential spending during emergencies)."
+          },
+          {
+            question: "Should I use my emergency fund to pay off debt?",
+            answer: "Generally, no. Your emergency fund protects you from going into more debt during emergencies. However, if you have high-interest debt (credit cards >20% APR) and a small emergency fund, you might keep a minimal fund ($1,000-$2,500) while aggressively paying off debt, then rebuild your fund. Our calculator helps you see the trade-offs."
+          },
+          {
+            question: "How often should I review my emergency fund?",
+            answer: "Review your emergency fund annually or whenever your expenses change significantly (new job, move, family changes). Use our inflation stress test to see how rising costs affect your fund's purchasing power. If your expenses increase by 20%, your 6-month fund might only last 5 months."
+          }
+        ]}
+      />
 
       <footer className="text-center pt-12 border-t border-slate-100 flex flex-col items-center gap-6">
         <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.5em]">QuantCurb Survival Hub v4.5 • Risk Mitigation Modeling Protocol</p>
