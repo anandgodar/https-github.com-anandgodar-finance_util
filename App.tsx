@@ -56,6 +56,18 @@ const StudentLoanRepaymentStrategies2025 = lazy(() => import('./components/blog/
 const TaxBracketsExplained2025 = lazy(() => import('./components/blog/TaxBracketsExplained2025'));
 const FourZeroOneKVsIRAComparison2025 = lazy(() => import('./components/blog/401kVsIRAComparison2025'));
 const BudgetingGuide2025 = lazy(() => import('./components/blog/BudgetingGuide2025'));
+const NetWorthTrackerGuide2025 = lazy(() => import('./components/blog/NetWorthTrackerGuide2025'));
+const LoanEmiCalculatorGuide2025 = lazy(() => import('./components/blog/LoanEmiCalculatorGuide2025'));
+const LoanComparisonGuide2025 = lazy(() => import('./components/blog/LoanComparisonGuide2025'));
+const CostOfLivingCalculatorGuide2025 = lazy(() => import('./components/blog/CostOfLivingCalculatorGuide2025'));
+const CurrencyConverterGuide2025 = lazy(() => import('./components/blog/CurrencyConverterGuide2025'));
+const GstCalculatorGuide2025 = lazy(() => import('./components/blog/GstCalculatorGuide2025'));
+const CreditCardPayoffGuide2025 = lazy(() => import('./components/blog/CreditCardPayoffGuide2025'));
+const MarketInsightsGuide2025 = lazy(() => import('./components/blog/MarketInsightsGuide2025'));
+const InvestmentAcademyGuide2025 = lazy(() => import('./components/blog/InvestmentAcademyGuide2025'));
+const ExcelModelerGuide2025 = lazy(() => import('./components/blog/ExcelModelerGuide2025'));
+const DividendReinvestmentGuide2025 = lazy(() => import('./components/blog/DividendReinvestmentGuide2025'));
+const DtiCalculatorGuide2025 = lazy(() => import('./components/blog/DtiCalculatorGuide2025'));
 const CryptoTaxLossHarvestingNoWashSale2025 = lazy(() => import('./components/blog/CryptoTaxLossHarvestingNoWashSale2025'));
 const BlogIndex = lazy(() => import('./components/BlogIndex'));
 
@@ -313,6 +325,66 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Complete Budgeting Guide 2025: 50/30/20 Rule, Zero-Based Budgeting & More",
     desc: "Master budgeting in 2025 with our complete guide. Learn the 50/30/20 rule, zero-based budgeting, envelope method, and proven strategies to take control of your finances.",
     keywords: "budgeting guide, 50 30 20 rule, zero based budgeting, envelope method, how to budget, monthly budget, budgeting tips, personal finance budgeting, budget planner"
+  },
+  [ToolType.BLOG_NET_WORTH]: {
+    title: "Net Worth Tracker Guide 2025: How to Track Assets, Debts, and Real Wealth",
+    desc: "Learn how to calculate net worth, track assets and liabilities, and build a monthly net worth tracking habit.",
+    keywords: "net worth tracker, how to calculate net worth, net worth calculator, assets and liabilities list, track net worth monthly"
+  },
+  [ToolType.BLOG_EMI_GUIDE]: {
+    title: "Loan EMI Calculator Guide 2025: How to Calculate EMI and Save Interest",
+    desc: "Understand EMI calculations, amortization, and practical ways to reduce loan interest with an EMI calculator.",
+    keywords: "loan emi calculator, how to calculate emi, emi formula, monthly loan payment calculator, reduce loan interest"
+  },
+  [ToolType.BLOG_LOAN_COMPARE]: {
+    title: "Loan Comparison Guide 2025: Compare APR, Fees, and Refinance Break-Even",
+    desc: "Compare loan offers with APR, fees, and break-even analysis so you can choose the lowest total cost option.",
+    keywords: "loan comparison tool, compare loan offers, refinance break even calculator, apr vs interest rate"
+  },
+  [ToolType.BLOG_LIVING_COST]: {
+    title: "Cost of Living Calculator Guide 2025: Compare Cities and Build a Realistic Budget",
+    desc: "Use a cost of living calculator to compare cities, understand key expense categories, and plan your budget.",
+    keywords: "cost of living calculator, compare cost of living by city, cost of living index, moving budget calculator"
+  },
+  [ToolType.BLOG_CURRENCY_CONVERTER]: {
+    title: "Currency Converter Guide 2025: Live Rates, Fees, and Smart FX Tips",
+    desc: "Learn how live exchange rates work, how to avoid FX fees, and how to use a currency converter smartly.",
+    keywords: "currency converter, live exchange rates, forex rate calculator, currency exchange fees, usd to eur converter"
+  },
+  [ToolType.BLOG_GST_GUIDE]: {
+    title: "GST Calculator Guide 2025: Inclusive vs Exclusive Pricing Made Simple",
+    desc: "Calculate GST accurately, split inclusive pricing, and avoid invoicing errors with a GST calculator.",
+    keywords: "gst calculator, gst inclusive vs exclusive, gst tax formula, vat calculator, gst invoice breakdown"
+  },
+  [ToolType.BLOG_CREDIT_CARD_PAYOFF]: {
+    title: "Credit Card Payoff Guide 2025: Avalanche vs Snowball Strategy",
+    desc: "Pay off credit card debt faster with avalanche or snowball strategies and a payoff calculator.",
+    keywords: "credit card payoff calculator, avalanche vs snowball, pay off credit card debt fast, debt payoff plan"
+  },
+  [ToolType.BLOG_MARKET_INSIGHTS]: {
+    title: "AI Market Insights Guide 2025: How to Read Signals Without the Noise",
+    desc: "Use AI market insights to interpret macro signals, sentiment shifts, and trend confirmation.",
+    keywords: "ai market insights, market sentiment analysis, macro trend signals, market intelligence tools"
+  },
+  [ToolType.BLOG_INVESTMENT_ACADEMY]: {
+    title: "Index Funds & ETFs Guide 2025: Build a Simple, Diversified Portfolio",
+    desc: "Learn index funds vs ETFs, diversification basics, and a simple portfolio blueprint for long-term investing.",
+    keywords: "index funds guide, etf investing basics, diversified portfolio strategy, beginner investing guide"
+  },
+  [ToolType.BLOG_EXCEL_MODELER]: {
+    title: "DCF Valuation Guide 2025: Build a Simple Model Without Excel",
+    desc: "Learn DCF valuation basics, WACC, and terminal value in a clear, practical format.",
+    keywords: "dcf valuation guide, wacc calculator, terminal value formula, discounted cash flow model"
+  },
+  [ToolType.BLOG_DRIP_GUIDE]: {
+    title: "Dividend Reinvestment (DRIP) Guide 2025: Compounding Explained",
+    desc: "Understand how dividend reinvestment works and how DRIP compounding builds long-term wealth.",
+    keywords: "dividend reinvestment calculator, drip investing, dividend compounding, passive income calculator"
+  },
+  [ToolType.BLOG_DTI_GUIDE]: {
+    title: "DTI Calculator Guide 2025: What Debt-to-Income Ratio Lenders Want",
+    desc: "Learn how DTI is calculated, what lenders prefer, and how to improve your ratios before applying.",
+    keywords: "dti calculator, debt to income ratio, 28 36 rule, mortgage qualification dti"
   },
   [ToolType.BLOG_CRYPTO_WASH_SALE]: {
     title: "Why Crypto Tax Loss Harvesting is 10X Better Than Stocks: The No Wash Sale Rule Loophole",
@@ -596,6 +668,18 @@ const AppShell: React.FC = () => {
         case ToolType.BLOG_TAX_BRACKETS: return <TaxBracketsExplained2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_401K_VS_IRA: return <FourZeroOneKVsIRAComparison2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_BUDGETING: return <BudgetingGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_NET_WORTH: return <NetWorthTrackerGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_EMI_GUIDE: return <LoanEmiCalculatorGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_LOAN_COMPARE: return <LoanComparisonGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_LIVING_COST: return <CostOfLivingCalculatorGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_CURRENCY_CONVERTER: return <CurrencyConverterGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_GST_GUIDE: return <GstCalculatorGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_CREDIT_CARD_PAYOFF: return <CreditCardPayoffGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_MARKET_INSIGHTS: return <MarketInsightsGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_INVESTMENT_ACADEMY: return <InvestmentAcademyGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_EXCEL_MODELER: return <ExcelModelerGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_DRIP_GUIDE: return <DividendReinvestmentGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_DTI_GUIDE: return <DtiCalculatorGuide2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_CRYPTO_WASH_SALE: return <CryptoTaxLossHarvestingNoWashSale2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_INDEX: return <BlogIndex onNavigate={setActiveTool} />;
         case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;

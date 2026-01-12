@@ -25,7 +25,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       "url": "https://quantcurb.com/blog",
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 24,
+        "numberOfItems": 35,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -187,6 +187,114 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "19 min",
       date: "January 2026",
       icon: "📊"
+    },
+    {
+      id: ToolType.BLOG_NET_WORTH,
+      title: "Net Worth Tracker Guide 2025: How to Track Assets, Debts, and Real Wealth",
+      description: "Learn how to calculate net worth, track assets and liabilities, and build a simple monthly tracking habit.",
+      category: "Financial Planning",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "💎"
+    },
+    {
+      id: ToolType.BLOG_EMI_GUIDE,
+      title: "Loan EMI Calculator Guide 2025: How to Calculate EMI and Save Interest",
+      description: "Break down EMI math, amortization, and practical ways to reduce total loan interest.",
+      category: "Debt & Loans",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "💳"
+    },
+    {
+      id: ToolType.BLOG_LOAN_COMPARE,
+      title: "Loan Comparison Guide 2025: Compare APR, Fees, and Refinance Break-Even",
+      description: "Compare loan offers with APR, fees, and break-even analysis to pick the lowest total cost.",
+      category: "Debt & Loans",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "⚖️"
+    },
+    {
+      id: ToolType.BLOG_CREDIT_CARD_PAYOFF,
+      title: "Credit Card Payoff Guide 2025: Avalanche vs Snowball Strategy",
+      description: "Choose the fastest credit card payoff strategy and build a debt-free plan that sticks.",
+      category: "Debt & Loans",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "✂️"
+    },
+    {
+      id: ToolType.BLOG_DTI_GUIDE,
+      title: "DTI Calculator Guide 2025: What Debt-to-Income Ratio Lenders Want",
+      description: "Understand DTI ratios, the 28/36 rule, and how to improve mortgage approval odds.",
+      category: "Home Buying",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🏦"
+    },
+    {
+      id: ToolType.BLOG_LIVING_COST,
+      title: "Cost of Living Calculator Guide 2025: Compare Cities and Build a Realistic Budget",
+      description: "Compare city costs, plan a relocation budget, and understand the biggest expense categories.",
+      category: "Lifestyle",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🌆"
+    },
+    {
+      id: ToolType.BLOG_CURRENCY_CONVERTER,
+      title: "Currency Converter Guide 2025: Live Rates, Fees, and Smart FX Tips",
+      description: "Use live exchange rates, avoid FX fees, and convert money with confidence.",
+      category: "Utilities",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🌍"
+    },
+    {
+      id: ToolType.BLOG_GST_GUIDE,
+      title: "GST Calculator Guide 2025: Inclusive vs Exclusive Pricing Made Simple",
+      description: "Calculate GST accurately, split inclusive pricing, and avoid invoice mistakes.",
+      category: "Business",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🧾"
+    },
+    {
+      id: ToolType.BLOG_MARKET_INSIGHTS,
+      title: "AI Market Insights Guide 2025: How to Read Signals Without the Noise",
+      description: "Interpret macro signals, sentiment shifts, and trend confirmation with AI market insights.",
+      category: "Investing",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🤖"
+    },
+    {
+      id: ToolType.BLOG_INVESTMENT_ACADEMY,
+      title: "Index Funds & ETFs Guide 2025: Build a Simple, Diversified Portfolio",
+      description: "Learn index funds vs ETFs, diversification basics, and a simple portfolio blueprint.",
+      category: "Investing",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "🎓"
+    },
+    {
+      id: ToolType.BLOG_EXCEL_MODELER,
+      title: "DCF Valuation Guide 2025: Build a Simple Model Without Excel",
+      description: "Understand cash flows, WACC, and terminal value with a clean DCF walkthrough.",
+      category: "Investing",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "📁"
+    },
+    {
+      id: ToolType.BLOG_DRIP_GUIDE,
+      title: "Dividend Reinvestment (DRIP) Guide 2025: Compounding Explained",
+      description: "See how dividend reinvestment compounds and how to model long-term income growth.",
+      category: "Investing",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "💹"
     },
     // Tax & Freelancer Posts
     {
