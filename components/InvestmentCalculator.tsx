@@ -167,6 +167,93 @@ const InvestmentCalculator: React.FC<InvestmentCalculatorProps> = ({ onNavigate 
     };
   }, []);
 
+  useEffect(() => {
+    // Add FAQ schema for rich snippets
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate investment growth with compound interest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Compound interest means your investment earnings generate their own earnings. Use our calculator by entering your initial investment, monthly contribution (SIP), expected return rate, and time horizon. The calculator automatically compounds returns monthly and shows your projected portfolio value, total invested, and total earnings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is SIP (Systematic Investment Plan)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SIP is investing a fixed amount regularly (monthly, quarterly) regardless of market conditions. This approach uses dollar-cost averaging (buying more shares when prices are low, fewer when high) and compounds faster due to regular contributions. Our calculator models SIP investing with monthly contributions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a realistic expected return for long-term investing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Historical stock market returns average 7-10% annually over long periods (20+ years). For index funds and ETFs, 7-8% is a conservative estimate. Higher returns (10%+) assume more risk. Our calculator lets you adjust the expected return to see different scenarios."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does dividend reinvestment (DRIP) affect returns?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dividend reinvestment automatically reinvests dividends back into your investment, accelerating compound growth. For example, a 2% dividend yield reinvested over 20 years can add 20-30% to your final portfolio value. Enter your dividend yield percentage in our calculator to see the impact."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much should I invest monthly to reach my goal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use our Goal-Based Investing feature! Enter your target amount and timeline, and the calculator shows the required monthly contribution. For example, to reach $1,000,000 in 30 years at 8% returns, you'd need to invest about $670/month (plus initial investment)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between investing $500/month for 20 years vs 30 years?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Time is the most powerful factor in compound interest. Investing $500/month at 8% for 20 years = ~$295,000. For 30 years = ~$745,000. That extra 10 years more than doubles your wealth due to compound interest. Our calculator shows the dramatic impact of starting early."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I invest in a lump sum or monthly (SIP)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SIP (monthly investing) is generally better because: 1) Dollar-cost averaging reduces timing risk, 2) It's more affordable and sustainable, 3) You invest consistently regardless of market conditions. However, if you have a large lump sum, investing it immediately typically outperforms SIP over long periods."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I account for inflation in my investment calculations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inflation reduces your purchasing power over time. If you earn 8% returns but inflation is 3%, your real return is 5%. Our calculator shows nominal returns. To see inflation-adjusted values, mentally reduce your final balance by 2-3% per year, or use a lower expected return rate (5-6% instead of 8%)."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-investment';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-investment');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   return (
     <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header>
