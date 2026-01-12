@@ -47,6 +47,7 @@ export enum ToolType {
   BLOG_TAX_BRACKETS = 'blog/tax-brackets-explained-2025',
   BLOG_401K_VS_IRA = 'blog/401k-vs-ira-comparison-2025',
   BLOG_BUDGETING = 'blog/budgeting-guide-2025',
+  BLOG_CRYPTO_WASH_SALE = 'blog/no-wash-sale-rule-crypto-tax-loss-harvesting',
   BLOG_CAPITAL_GAINS = 'blog/capital-gains-tax-guide-2025',
   BLOG_INDEX = 'blog',
   FAQ = 'financial-knowledge-base',

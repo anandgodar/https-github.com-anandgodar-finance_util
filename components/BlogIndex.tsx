@@ -25,7 +25,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       "url": "https://quantcurb.com/blog",
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 15,
+        "numberOfItems": 24,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -160,6 +160,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "16 min",
       date: "January 2026",
       icon: "💰"
+    },
+    {
+      id: ToolType.BLOG_CRYPTO_WASH_SALE,
+      title: "Why Crypto Tax Loss Harvesting is 10X Better Than Stocks: The No Wash Sale Rule Loophole",
+      description: "Learn how the no wash sale rule for crypto lets you harvest losses, rebuy immediately, and cut your tax bill without losing exposure.",
+      category: "Tax Planning",
+      readTime: "20 min",
+      date: "February 2026",
+      icon: "🪙"
     },
     {
       id: ToolType.BLOG_401K_VS_IRA,
