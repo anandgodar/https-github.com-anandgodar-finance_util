@@ -56,6 +56,7 @@ const StudentLoanRepaymentStrategies2025 = lazy(() => import('./components/blog/
 const TaxBracketsExplained2025 = lazy(() => import('./components/blog/TaxBracketsExplained2025'));
 const FourZeroOneKVsIRAComparison2025 = lazy(() => import('./components/blog/401kVsIRAComparison2025'));
 const BudgetingGuide2025 = lazy(() => import('./components/blog/BudgetingGuide2025'));
+const CryptoTaxLossHarvestingNoWashSale2025 = lazy(() => import('./components/blog/CryptoTaxLossHarvestingNoWashSale2025'));
 const BlogIndex = lazy(() => import('./components/BlogIndex'));
 
 // Lazy load static pages
@@ -312,6 +313,11 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Complete Budgeting Guide 2025: 50/30/20 Rule, Zero-Based Budgeting & More",
     desc: "Master budgeting in 2025 with our complete guide. Learn the 50/30/20 rule, zero-based budgeting, envelope method, and proven strategies to take control of your finances.",
     keywords: "budgeting guide, 50 30 20 rule, zero based budgeting, envelope method, how to budget, monthly budget, budgeting tips, personal finance budgeting, budget planner"
+  },
+  [ToolType.BLOG_CRYPTO_WASH_SALE]: {
+    title: "Why Crypto Tax Loss Harvesting is 10X Better Than Stocks: The No Wash Sale Rule Loophole",
+    desc: "Discover why crypto tax loss harvesting beats stocks. Learn the no wash sale rule advantage, how to immediately rebuy crypto after selling, and step-by-step loss harvesting.",
+    keywords: "no wash sale rule crypto, crypto tax loss harvesting vs stocks, can you immediately rebuy crypto after selling, why crypto tax loss harvesting is better"
   },
   [ToolType.BLOG_CAPITAL_GAINS]: {
     title: "Capital Gains Tax Guide 2025: Complete Guide to Long-Term vs Short-Term Capital Gains",
@@ -590,6 +596,7 @@ const AppShell: React.FC = () => {
         case ToolType.BLOG_TAX_BRACKETS: return <TaxBracketsExplained2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_401K_VS_IRA: return <FourZeroOneKVsIRAComparison2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_BUDGETING: return <BudgetingGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_CRYPTO_WASH_SALE: return <CryptoTaxLossHarvestingNoWashSale2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_INDEX: return <BlogIndex onNavigate={setActiveTool} />;
         case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
         case ToolType.METHODOLOGY: return <Methodology />;
