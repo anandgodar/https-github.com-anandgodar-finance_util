@@ -328,6 +328,93 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate }) => {
     };
   }, []);
 
+  useEffect(() => {
+    // Add FAQ schema for rich snippets
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate my take-home pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your take-home pay is your gross salary minus federal taxes, state taxes, FICA (Social Security and Medicare), and deductions like 401(k) contributions and health insurance. Use our calculator above by entering your annual salary, state, 401(k) contribution percentage, and health insurance costs. The calculator automatically computes all taxes and shows your net pay."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between gross pay and net pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gross pay is your total salary before any deductions. Net pay (take-home pay) is what you actually receive after all taxes and deductions are subtracted. For example, if you earn $100,000 gross, you might take home $70,000-$80,000 net depending on your state, deductions, and tax bracket."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much will I take home if I make $100,000 a year?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on your state, filing status, and deductions. In a state with no income tax (like Texas or Florida), you might take home around $75,000-$78,000. In a high-tax state like California or New York, you might take home $70,000-$73,000. Use our calculator with your specific details for an accurate estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does 401(k) contribution affect my take-home pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "401(k) contributions reduce your taxable income, which lowers your taxes. For example, if you contribute $10,000 to your 401(k) and you're in the 24% tax bracket, you save $2,400 in taxes. Your take-home pay decreases by $7,600 ($10,000 - $2,400), but you're saving $10,000 for retirement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is FICA tax?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FICA (Federal Insurance Contributions Act) includes Social Security tax (6.2% on income up to $168,600 in 2025) and Medicare tax (1.45% on all income). High earners pay an additional 0.9% Medicare tax on income above $200,000. FICA is automatically deducted from your paycheck."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do state taxes affect my take-home pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "State income tax rates vary significantly. Seven states have no income tax (Alaska, Florida, Nevada, South Dakota, Tennessee, Texas, Washington, Wyoming). Other states range from 2.5% (Arizona) to over 13% (California for high earners). Use our calculator to see how your state's tax rate impacts your take-home pay."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between weekly, bi-weekly, semi-monthly, and monthly pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Weekly pay = 52 paychecks per year. Bi-weekly = 26 paychecks per year (every 2 weeks). Semi-monthly = 24 paychecks per year (twice per month). Monthly = 12 paychecks per year. Your annual take-home pay is the same regardless of frequency, but your paycheck amount varies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I increase my take-home pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Strategies to increase take-home pay: 1) Negotiate a higher salary, 2) Reduce 401(k) contributions (though this reduces retirement savings), 3) Move to a state with lower/no income tax, 4) Maximize pre-tax deductions (HSA, health insurance), 5) Claim all eligible tax deductions and credits."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-salary';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-salary');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   return (
     <article className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-500 pb-24">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 bg-white p-12 rounded-[4.5rem] border border-slate-100 shadow-sm relative overflow-hidden">

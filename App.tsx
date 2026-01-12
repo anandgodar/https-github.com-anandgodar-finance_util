@@ -391,6 +391,58 @@ const AppShell: React.FC = () => {
       }
       keywordsTag.setAttribute('content', meta.keywords);
 
+      // Update Canonical URL
+      const currentUrl = activeTool === ToolType.DASHBOARD ? 'https://quantcurb.com/' : `https://quantcurb.com/${activeTool}`;
+      let canonicalTag = document.querySelector('link[rel="canonical"]');
+      if (!canonicalTag) {
+        canonicalTag = document.createElement('link');
+        canonicalTag.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonicalTag);
+      }
+      canonicalTag.setAttribute('href', currentUrl);
+
+      // Update Open Graph Tags
+      let ogTitleTag = document.querySelector('meta[property="og:title"]');
+      if (!ogTitleTag) {
+        ogTitleTag = document.createElement('meta');
+        ogTitleTag.setAttribute('property', 'og:title');
+        document.head.appendChild(ogTitleTag);
+      }
+      ogTitleTag.setAttribute('content', meta.title);
+
+      let ogDescTag = document.querySelector('meta[property="og:description"]');
+      if (!ogDescTag) {
+        ogDescTag = document.createElement('meta');
+        ogDescTag.setAttribute('property', 'og:description');
+        document.head.appendChild(ogDescTag);
+      }
+      ogDescTag.setAttribute('content', meta.desc);
+
+      let ogUrlTag = document.querySelector('meta[property="og:url"]');
+      if (!ogUrlTag) {
+        ogUrlTag = document.createElement('meta');
+        ogUrlTag.setAttribute('property', 'og:url');
+        document.head.appendChild(ogUrlTag);
+      }
+      ogUrlTag.setAttribute('content', currentUrl);
+
+      // Update Twitter Card Tags
+      let twitterTitleTag = document.querySelector('meta[name="twitter:title"]');
+      if (!twitterTitleTag) {
+        twitterTitleTag = document.createElement('meta');
+        twitterTitleTag.setAttribute('name', 'twitter:title');
+        document.head.appendChild(twitterTitleTag);
+      }
+      twitterTitleTag.setAttribute('content', meta.title);
+
+      let twitterDescTag = document.querySelector('meta[name="twitter:description"]');
+      if (!twitterDescTag) {
+        twitterDescTag = document.createElement('meta');
+        twitterDescTag.setAttribute('name', 'twitter:description');
+        document.head.appendChild(twitterDescTag);
+      }
+      twitterDescTag.setAttribute('content', meta.desc);
+
       // DYNAMIC SCHEMA INJECTION
       const scriptId = 'quantcurb-json-ld';
       let scriptTag = document.getElementById(scriptId) as HTMLScriptElement;
