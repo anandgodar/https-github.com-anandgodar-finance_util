@@ -256,6 +256,93 @@ const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavig
     };
   }, []);
 
+  useEffect(() => {
+    // Add FAQ schema for rich snippets
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who needs to pay quarterly estimated taxes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You need to pay quarterly estimated taxes if you're self-employed, a freelancer, or have income not subject to withholding (like rental income, dividends, or capital gains). Generally, if you expect to owe $1,000 or more in taxes for the year after subtracting withholding and credits, you must pay quarterly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are quarterly tax payment deadlines?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quarterly estimated tax deadlines are: Q1 (Jan-Mar): April 15, Q2 (Apr-May): June 15, Q3 (Jun-Aug): September 15, Q4 (Sep-Dec): January 15 of the following year. If a deadline falls on a weekend or holiday, it's moved to the next business day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the safe harbor rule for quarterly taxes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Safe harbor rules let you avoid underpayment penalties if you pay either: 1) 100% of last year's tax (110% if AGI > $150,000), or 2) 90% of this year's tax. The prior year safe harbor is easier because you know the exact amount. Our calculator shows both methods."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate quarterly estimated tax payments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Calculate your total estimated tax (federal income tax + self-employment tax + state tax), then divide by 4. For example, if your total tax is $20,000, pay $5,000 per quarter. Our calculator does this automatically and accounts for safe harbor rules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I miss a quarterly tax payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Missing quarterly payments results in underpayment penalties. The penalty is calculated based on how much you underpaid and for how long. The penalty rate is typically around 5-6% annually. Paying on time and using safe harbor rules avoids penalties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to pay quarterly taxes if I have a W-2 job?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you have a W-2 job with withholding, you may not need quarterly payments if your withholding covers your tax liability. However, if you also have self-employment income, you may need to pay quarterly on that income. Our calculator accounts for both W-2 and self-employment income."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is self-employment tax?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on net self-employment income. This is in addition to income tax. W-2 employees split this with their employer (7.65% each), but self-employed pay the full 15.3%. You can deduct 50% of SE tax on your income tax return."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I adjust my quarterly payments during the year?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! If your income changes during the year, you can adjust your quarterly payments. If you earn more, increase payments to avoid penalties. If you earn less, you can reduce payments, but be careful not to underpay too much. It's better to overpay slightly and get a refund."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-quarterly-tax';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-quarterly-tax');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header>

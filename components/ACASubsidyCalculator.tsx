@@ -240,6 +240,93 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
     };
   }, []);
 
+  useEffect(() => {
+    // Add FAQPage schema for ACA subsidy questions
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate my ACA subsidy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your ACA subsidy (Premium Tax Credit) is based on your Modified Adjusted Gross Income (MAGI), household size, age, and state. The subsidy equals the difference between the benchmark premium (Silver plan) and your maximum premium payment (based on income percentage). Use our calculator by entering your income, household size, age, and state to see your estimated subsidy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What income qualifies for ACA subsidy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You qualify for ACA subsidies if your income is between 100% and 400% of the Federal Poverty Level (FPL). For 2025, that's roughly $15,060-$60,240 for a single person, $30,120-$120,480 for a family of 4. Below 100% FPL, you may qualify for Medicaid (in expanded states). Above 400% FPL, subsidies are capped at 8.5% of income."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Modified Adjusted Gross Income (MAGI)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MAGI is your Adjusted Gross Income (AGI) plus tax-exempt interest, foreign earned income, and certain deductions. For most people, MAGI is close to their AGI. Include wages, self-employment income, interest, dividends, and other taxable income. Use our Freelance Hub to calculate your net income for MAGI estimation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Am I eligible for Medicaid or ACA subsidy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In Medicaid expansion states (most states), you're eligible for Medicaid if income is up to 138% of FPL. Above 138% FPL, you qualify for ACA subsidies. In non-expansion states, Medicaid eligibility is very limited (often only for parents/caretakers at ~41% FPL), creating a 'coverage gap' for adults without children. Our calculator shows your eligibility based on your state."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much will I pay for health insurance with ACA subsidy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your monthly premium depends on your income. At 100-150% FPL, you pay 0% of income (free coverage). At 150-200% FPL, you pay 0-2% of income. At 200-250% FPL, you pay 2-4% of income. At 250-400% FPL, you pay 4-8.5% of income. Above 400% FPL, subsidies are capped at 8.5% of income. Our calculator shows your exact monthly cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the coverage gap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The coverage gap exists in non-Medicaid expansion states (like Texas, Florida, Georgia) for adults without children. If your income is below 100% FPL, you don't qualify for Medicaid (unless you're a parent/caretaker) or ACA subsidies (which start at 100% FPL). This leaves you without affordable coverage options. Our calculator shows if you're in the coverage gap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I qualify for Cost-Sharing Reductions (CSR)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cost-Sharing Reductions (CSR) are available if your income is 100-250% of FPL and you choose a Silver plan. CSR reduces deductibles, copays, and out-of-pocket maximums. At 100-150% FPL, you get 'Platinum-level' benefits. At 150-200% FPL, you get 'Gold-level' benefits. At 200-250% FPL, you get 'Silver-level' benefits. Our calculator shows your CSR eligibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does age affect my ACA premium?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Older individuals pay higher premiums (up to 3x more than younger people). However, subsidies also increase with age because they're based on the benchmark premium. So while your premium is higher, your subsidy is also larger, keeping your out-of-pocket cost based on income percentage. Our calculator accounts for age adjustments."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-aca-subsidy';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-aca-subsidy');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header>

@@ -156,6 +156,93 @@ const EMICalculator: React.FC<EMICalculatorProps> = ({ onNavigate }) => {
     };
   }, []);
 
+  useEffect(() => {
+    // Add FAQPage schema for EMI and loan prepayment questions
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate EMI (Equated Monthly Installment)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EMI is calculated using the formula: EMI = [P × R × (1+R)^N] / [(1+R)^N - 1], where P = Principal, R = Monthly Interest Rate (APR/12), N = Number of Months. Our calculator uses the reducing balance method, which is the standard for most loans. Just enter your loan amount, interest rate, and tenure to get your monthly EMI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the reducing balance method?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reducing balance method means interest is calculated on the remaining principal balance each month. As you pay down the principal, the interest portion decreases and more of your payment goes toward principal. This is the standard method for home loans, personal loans, and auto loans. Our calculator uses this method for accurate calculations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much interest can I save by making extra payments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Extra payments save significant interest because they go directly toward principal, reducing the balance on which interest is calculated. For example, paying an extra $200/month on a $50,000 loan at 8.5% for 5 years can save $2,000+ in interest and shave 6-12 months off your loan term. Use our sensitivity analysis to see the impact of different extra payment amounts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I pay extra on my loan or invest the money?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If your loan interest rate is higher than expected investment returns (typically 7-8%), paying extra on the loan is better. For example, paying off an 8.5% loan is like earning a guaranteed 8.5% return. However, if you have low-rate debt (<4%) and can invest at higher returns, investing might make sense. Use our 'Should I Pay Off Debt or Invest' calculator to compare."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between EMI and principal payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EMI is your total monthly payment (principal + interest). The principal portion is the amount that reduces your loan balance. Early in the loan, most of your EMI goes toward interest. As the balance decreases, more goes toward principal. Extra payments go 100% toward principal, accelerating payoff."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I reduce my EMI by extending the loan tenure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, extending the loan tenure reduces your monthly EMI but increases total interest paid. For example, a $50,000 loan at 8.5%: 5 years = $1,026/month EMI, $11,560 total interest. 10 years = $620/month EMI, $24,400 total interest. You pay less monthly but $12,840 more in interest. Our calculator shows both scenarios."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does prepayment affect my loan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prepayment (extra payments) reduces your principal balance immediately, which means: 1) Less interest accrues each month, 2) More of your regular EMI goes toward principal, 3) You pay off the loan faster, 4) You save thousands in interest. Our calculator shows exactly how much you'll save and how many months you'll shave off."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is amortization?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Amortization is the process of paying off a loan through regular payments over time. Each payment covers both interest and principal. Early payments are mostly interest; later payments are mostly principal. Our calculator shows your amortization schedule, showing how your balance decreases over time."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-emi';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-emi');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   return (
     <article className="max-w-7xl mx-auto space-y-10 animate-in fade-in duration-500 pb-24">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm relative overflow-hidden">
