@@ -181,6 +181,93 @@ const CreditCardPayoff: React.FC<CreditCardPayoffProps> = ({ onNavigate }) => {
     };
   }, []);
 
+  useEffect(() => {
+    // Add FAQ schema for rich snippets
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What's the difference between Avalanche and Snowball debt payoff methods?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Avalanche method pays off debts with the highest interest rates first, saving the most money in interest. Snowball method pays off smallest balances first for psychological wins and momentum. Avalanche is mathematically optimal, but Snowball works better for some people who need motivation. Our calculator shows both strategies so you can compare."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate how long it will take to pay off my credit cards?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use our calculator! Enter all your credit cards (balance, APR, minimum payment), set your monthly budget, and choose Avalanche or Snowball strategy. The calculator shows exactly how many months until debt-free, total interest paid, and your payoff timeline. It accounts for minimum payments, interest compounding, and extra payments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I do a balance transfer to pay off credit card debt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Balance transfers can save money if you move high-interest debt to a 0% APR card. However, consider: 1) Transfer fees (typically 3-5%), 2) Promotional period length, 3) Whether you can pay off before the rate increases. Generally, if you can pay off within the promotional period, it's a good move."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much should I pay toward credit card debt each month?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pay as much as possible above minimum payments. The more you pay, the faster you become debt-free and the less interest you pay. Our calculator shows the impact of different monthly budgets. Aim to pay at least 2-3x the minimum payment if possible. Every extra dollar saves significant interest over time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I only make minimum payments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Making only minimum payments means you'll pay thousands in interest and take years (or decades) to pay off debt. For example, a $5,000 balance at 25% APR with $150 minimum payment takes ~4 years and costs ~$2,000 in interest. Our calculator shows the true cost of minimum payments vs aggressive payoff."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I negotiate my credit card interest rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Call your credit card company and ask for a lower rate. Mention competitor offers, your payment history, and financial hardship if applicable. Many companies will reduce rates to keep you as a customer. Even a 2-3% reduction can save hundreds in interest. If they refuse, consider balance transfer or debt consolidation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I pay off credit cards or invest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally, if your credit card APR is higher than expected investment returns (7-8%), pay off debt first. Credit card rates (20-30%) are much higher than stock market returns. However, if you have low-rate debt (<5%) and high investment returns expected, investing might make sense."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does credit card interest work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Credit card interest compounds daily based on your average daily balance. The APR (Annual Percentage Rate) is divided by 365 to get the daily rate, then applied to your balance each day. This means interest charges grow quickly. Paying more than the minimum reduces the principal faster, saving significant interest over time."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-credit-card';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-credit-card');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto space-y-10 animate-in fade-in duration-500 pb-24">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">

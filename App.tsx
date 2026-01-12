@@ -30,6 +30,7 @@ const DividendStockPage = lazy(() => import('./src/components/DividendStockPage'
 const ChildTaxCreditCalculator = lazy(() => import('./components/ChildTaxCreditCalculator'));
 const QuarterlyTaxCalculator = lazy(() => import('./components/QuarterlyTaxCalculator'));
 const ACASubsidyCalculator = lazy(() => import('./components/ACASubsidyCalculator'));
+const DTICalculator = lazy(() => import('./components/DTICalculator'));
 
 // Lazy load blog posts
 const ChildTaxCreditGuide2025 = lazy(() => import('./components/blog/ChildTaxCreditGuide2025'));
@@ -191,6 +192,11 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "ACA Health Insurance Subsidy Calculator 2025 - Obamacare Premium Tax Credit",
     desc: "Calculate ACA marketplace subsidies and Premium Tax Credits for 2025. Determine Medicaid eligibility, cost-sharing reductions, and monthly healthcare costs for freelancers, self-employed, and families. Check coverage gap status and Federal Poverty Level percentage.",
     keywords: "aca subsidy calculator, obamacare subsidy calculator, premium tax credit calculator, healthcare subsidy calculator, aca marketplace calculator, health insurance subsidy, medicaid eligibility calculator, federal poverty level calculator, cost sharing reduction, healthcare.gov calculator"
+  },
+  [ToolType.DTI_CALCULATOR]: {
+    title: "Debt-to-Income (DTI) Ratio Calculator 2025 - Mortgage Qualification Calculator",
+    desc: "Calculate your debt-to-income ratio to see if you qualify for a mortgage or loan. Learn the 28/36 rule, front-end vs back-end DTI, and how lenders use DTI for FHA, VA, conventional, and USDA loans. Free DTI calculator for mortgage pre-approval.",
+    keywords: "debt to income ratio calculator, dti calculator, dti ratio calculator, debt to income calculator, mortgage dti calculator, what is debt to income ratio, 28 36 rule, how to calculate dti, front end dti, back end dti, mortgage qualification calculator, dti ratio for mortgage, fha dti requirements, conventional loan dti"
   },
   [ToolType.BLOG_CTC_2025]: {
     title: "Child Tax Credit 2025: Complete Guide to CTC, ACTC, and Tax Savings",
@@ -560,6 +566,7 @@ const AppShell: React.FC = () => {
         case ToolType.CHILD_TAX_CREDIT: return <ChildTaxCreditCalculator onNavigate={setActiveTool} />;
         case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator onNavigate={setActiveTool} />;
         case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator onNavigate={setActiveTool} />;
+        case ToolType.DTI_CALCULATOR: return <DTICalculator onNavigate={setActiveTool} />;
         case ToolType.BLOG_CTC_2025: return <ChildTaxCreditGuide2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_ACA_FREELANCERS: return <ACAHealthInsuranceFreelancers2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_QUARTERLY_TAX: return <QuarterlyEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;
