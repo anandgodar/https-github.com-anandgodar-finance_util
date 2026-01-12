@@ -93,25 +93,25 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     desc: "Calculate your liquid safety net. Stress-test your survival runway against inflation and audit your term life insurance needs with Emergency Guard.",
     keywords: "emergency fund calculator, financial safety net, survival runway, inflation stress"
   },
-  [ToolType.EMI_CALC]: { 
-    title: "EMI Calculator 2025 - Loan EMI Calculator with Extra Payment Savings", 
-    desc: "Optimize your loan repayments. Use our reducing balance EMI calculator to model principal prepayments and shave years off your debt tenure.",
-    keywords: "emi calculator, loan repayment, interest savings, prepayment calculator"
+  [ToolType.EMI_CALC]: {
+    title: "How to Calculate EMI? Loan EMI Calculator 2025 with Extra Payment Savings",
+    desc: "Calculate your loan EMI (Equated Monthly Installment) with our reducing balance calculator. Model principal prepayments and see how much interest you can save by paying extra each month.",
+    keywords: "how to calculate emi, emi calculator, loan repayment calculator, interest savings calculator, prepayment calculator, what is emi"
   },
   [ToolType.MORTGAGE_CALC]: {
-    title: "Mortgage Calculator 2025 - PITI, PMI, HOA & Property Tax Calculator by State",
-    desc: "Free mortgage calculator with PITI breakdown, PMI calculations, HOA fees, and all 50 US states property tax rates. Calculate your monthly mortgage payment, see when PMI drops, and plan your home purchase with our professional-grade tool.",
-    keywords: "mortgage calculator, mortgage calculator 2025, piti calculator, monthly mortgage payment, pmi calculator, property tax calculator, hoa calculator, mortgage payment calculator, home loan calculator, mortgage by state, mortgage calculator with taxes, mortgage calculator with pmi"
+    title: "How to Calculate Mortgage Payment? PITI Calculator 2025 with PMI & Property Tax",
+    desc: "Calculate your monthly mortgage payment with PITI breakdown (Principal, Interest, Taxes, Insurance), PMI calculations, and property tax rates for all 50 US states. See when PMI drops and plan your home purchase.",
+    keywords: "how to calculate mortgage payment, mortgage calculator, piti calculator, what is piti, pmi calculator, property tax calculator, monthly mortgage payment, home loan calculator"
   },
-  [ToolType.SALARY_CALC]: { 
-    title: "Take Home Pay Calculator 2025 - Salary Tax Calculator by State with 401k", 
-    desc: "Free salary calculator to calculate your take-home pay after taxes. Includes federal tax, state tax (all 50 states), FICA, 401(k) deductions, and pay frequency options. Get your exact net pay for weekly, bi-weekly, semi-monthly, or monthly paychecks.",
+  [ToolType.SALARY_CALC]: {
+    title: "How Much Will I Take Home? Salary Calculator 2025 - Calculate Net Pay by State",
+    desc: "Calculate your take-home pay after taxes with our salary calculator. Includes federal tax, state tax (all 50 states), FICA, 401(k) deductions, and pay frequency options for accurate net pay calculation.",
     keywords: "salary calculator, take home pay calculator, salary calculator 2025, net pay calculator, after tax salary, paycheck calculator, take home pay by state, 401k calculator, tax estimator, salary after taxes, biweekly paycheck calculator, weekly paycheck calculator"
   },
-  [ToolType.INVESTMENT_CALC]: { 
-    title: "Investment Calculator 2025 - SIP Calculator with Compound Interest & Goal-Based Investing", 
-    desc: "Free investment calculator to calculate investment growth with compound interest. Includes SIP investing, dividend reinvestment (DRIP), goal-based investing, and wealth projection. See how your investments grow over time with monthly contributions.",
-    keywords: "investment calculator, investment calculator 2025, sip calculator, compound interest calculator, investment growth calculator, wealth calculator, sip investing, compound interest, dividend reinvestment, drip calculator, goal based investing, investment projection, wealth growth calculator"
+  [ToolType.INVESTMENT_CALC]: {
+    title: "How to Calculate Investment Growth? SIP Calculator 2025 with Compound Interest",
+    desc: "Calculate your investment growth with compound interest using our SIP calculator. Includes dividend reinvestment (DRIP), goal-based investing, and wealth projection to see how your investments grow over time.",
+    keywords: "how to calculate investment growth, investment calculator, sip calculator, compound interest calculator, what is compound interest, wealth calculator, drip calculator, goal based investing"
   },
   [ToolType.MARKET_INSIGHTS]: { 
     title: "AI Market Pulse - Institutional vs Retail App Ecosystem Analysis", 
@@ -138,15 +138,15 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     desc: "Accurate GST and VAT splitting for businesses. Handle inclusive and exclusive pricing with automated CGST, SGST, and IGST breakdowns.",
     keywords: "gst calculator, vat calculator, tax invoicing, business tax tool"
   },
-  [ToolType.CREDIT_CARD_PAYOFF]: { 
-    title: "Credit Card Payoff Calculator 2025 - Avalanche vs Snowball Method with Balance Transfer", 
-    desc: "Free credit card payoff calculator to eliminate debt faster. Compare Avalanche vs Snowball methods, calculate payoff timeline, total interest paid, and balance transfer savings. Find the best strategy to become debt-free.",
-    keywords: "credit card payoff calculator, debt payoff calculator, avalanche method, snowball method, credit card debt calculator, balance transfer calculator, debt free calculator, credit card interest calculator, debt payoff strategy, avalanche vs snowball"
+  [ToolType.CREDIT_CARD_PAYOFF]: {
+    title: "How Long to Pay Off Credit Card Debt? Avalanche vs Snowball Calculator 2025",
+    desc: "Calculate how long it will take to pay off your credit card debt. Compare Avalanche vs Snowball methods, see total interest paid, and find the fastest strategy to become debt-free.",
+    keywords: "how long to pay off credit card debt, credit card payoff calculator, avalanche vs snowball, debt payoff calculator, avalanche method, snowball method, balance transfer calculator"
   },
-  [ToolType.FIRE_PLANNER]: { 
-    title: "FIRE Calculator 2025 - Early Retirement Planner with Coast FIRE, Barista FIRE & Geographic Arbitrage", 
-    desc: "Free FIRE calculator to calculate your early retirement number using the 4% rule. Includes Lean FIRE, Fat FIRE, Coast FIRE, Barista FIRE, and geographic arbitrage calculator. Plan your path to financial independence and early retirement.",
-    keywords: "fire calculator, fire planner, early retirement calculator, fire number calculator, coast fire calculator, barista fire calculator, geographic arbitrage, 4 percent rule, financial independence retire early, lean fire, fat fire, fire planning, early retirement planning"
+  [ToolType.FIRE_PLANNER]: {
+    title: "What is My FIRE Number? Early Retirement Calculator 2025 with 4% Rule",
+    desc: "Calculate your FIRE number for early retirement using the 4% rule. Includes Lean FIRE, Fat FIRE, Coast FIRE, Barista FIRE, and geographic arbitrage to plan your financial independence.",
+    keywords: "what is my fire number, fire calculator, early retirement calculator, 4 percent rule, coast fire calculator, barista fire calculator, financial independence, lean fire, fat fire"
   },
   [ToolType.FREELANCE_PROFIT]: { 
     title: "Freelance Hub - 1099 Net Profit & FTE Salary Equivalent Tool", 
@@ -164,9 +164,9 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "dcf calculator, business valuation, wacc matrix, enterprise value"
   },
   [ToolType.RETIREMENT_OPTIMIZER]: {
-    title: "Retirement Account Optimizer 2025 - 401k vs IRA vs Roth Calculator with Readiness Score",
-    desc: "Free retirement calculator to compare 401(k), Traditional IRA, and Roth IRA strategies. Calculate retirement readiness score, RMD estimates, Social Security, and maximize employer match. Optimize your retirement savings for 2025 contribution limits.",
-    keywords: "retirement optimizer, retirement calculator, 401k calculator, roth ira calculator, traditional ira calculator, retirement tax strategy, retirement readiness score, rmd calculator, social security calculator, 401k vs roth, retirement account comparison, 2025 contribution limits"
+    title: "401k vs Roth IRA: Which is Better? Retirement Calculator 2025 with Readiness Score",
+    desc: "Compare 401(k) vs Traditional IRA vs Roth IRA to find the best retirement strategy. Calculate your retirement readiness score, RMD estimates, and maximize employer match with 2025 contribution limits.",
+    keywords: "401k vs roth ira which is better, retirement calculator, 401k vs ira, retirement readiness score, rmd calculator, 401k vs roth, roth vs traditional ira, retirement account comparison"
   },
   [ToolType.DRIP_CALCULATOR]: {
     title: "Dividend Reinvestment (DRIP) Calculator - Snowball Compounding Model",
@@ -179,14 +179,14 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "crypto tax loss harvesting, tax loss harvester, crypto taxes, capital losses"
   },
   [ToolType.CHILD_TAX_CREDIT]: {
-    title: "Child Tax Credit Calculator 2025 - CTC & ACTC Estimator",
-    desc: "Calculate your 2025 Child Tax Credit (CTC) and Additional Child Tax Credit (ACTC). Estimate up to $2,000 per child with phase-out analysis, refundable credit calculations, and EITC eligibility check for single parents and families.",
-    keywords: "child tax credit calculator 2025, ctc calculator, child tax credit phase out, additional child tax credit, actc calculator, child tax credit single parent, eitc eligibility, tax credit for children"
+    title: "How Much is the Child Tax Credit? CTC Calculator 2025 - Up to $2,000 Per Child",
+    desc: "Calculate your 2025 Child Tax Credit (CTC) and Additional Child Tax Credit (ACTC). Get up to $2,000 per child with our phase-out calculator and refundable credit estimator for single parents and families.",
+    keywords: "how much is child tax credit, child tax credit calculator 2025, ctc calculator, child tax credit phase out, additional child tax credit, actc calculator, tax credit for children"
   },
   [ToolType.QUARTERLY_TAX]: {
-    title: "Quarterly Estimated Tax Calculator 2025 - IRS Form 1040-ES",
-    desc: "Calculate quarterly estimated tax payments for freelancers, self-employed, and 1099 contractors. Avoid IRS underpayment penalties with safe harbor rules (100%/110% prior year, 90% current year). Plan Q1-Q4 payments with self-employment tax calculations.",
-    keywords: "quarterly tax calculator, 1040-es calculator, estimated tax payments, quarterly taxes, self employment tax calculator, freelance tax calculator, how much to pay quarterly taxes, estimated tax due dates 2025, safe harbor tax rule"
+    title: "How to Calculate Quarterly Taxes? Estimated Tax Calculator 2025 - Form 1040-ES",
+    desc: "Calculate your quarterly estimated tax payments for freelancers, self-employed, and 1099 contractors. Avoid IRS penalties with safe harbor rules and plan Q1-Q4 payments with self-employment tax calculations.",
+    keywords: "how to calculate quarterly taxes, quarterly tax calculator, 1040-es calculator, estimated tax payments, quarterly taxes, safe harbor rule, self employment tax calculator"
   },
   [ToolType.ACA_SUBSIDY]: {
     title: "ACA Health Insurance Subsidy Calculator 2025 - Obamacare Premium Tax Credit",
@@ -194,9 +194,9 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "aca subsidy calculator, obamacare subsidy calculator, premium tax credit calculator, healthcare subsidy calculator, aca marketplace calculator, health insurance subsidy, medicaid eligibility calculator, federal poverty level calculator, cost sharing reduction, healthcare.gov calculator"
   },
   [ToolType.DTI_CALCULATOR]: {
-    title: "Debt-to-Income (DTI) Ratio Calculator 2025 - Mortgage Qualification Calculator",
-    desc: "Calculate your debt-to-income ratio to see if you qualify for a mortgage or loan. Learn the 28/36 rule, front-end vs back-end DTI, and how lenders use DTI for FHA, VA, conventional, and USDA loans. Free DTI calculator for mortgage pre-approval.",
-    keywords: "debt to income ratio calculator, dti calculator, dti ratio calculator, debt to income calculator, mortgage dti calculator, what is debt to income ratio, 28 36 rule, how to calculate dti, front end dti, back end dti, mortgage qualification calculator, dti ratio for mortgage, fha dti requirements, conventional loan dti"
+    title: "What is Debt-to-Income Ratio? DTI Calculator 2025 - 28/36 Rule for Mortgages",
+    desc: "Calculate your debt-to-income (DTI) ratio to see if you qualify for a mortgage. Learn the 28/36 rule, front-end vs back-end DTI, and how lenders use DTI for FHA, VA, conventional, and USDA loans.",
+    keywords: "what is debt to income ratio, dti calculator, how to calculate dti, 28 36 rule, debt to income calculator, dti ratio calculator, mortgage qualification calculator, front end dti, back end dti"
   },
   [ToolType.BLOG_CTC_2025]: {
     title: "Child Tax Credit 2025: Complete Guide to CTC, ACTC, and Tax Savings",
