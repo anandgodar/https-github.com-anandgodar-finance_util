@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { pdfService } from '../services/pdfService';
+import { emailService } from '../services/emailService';
 
 interface EmailCaptureProps {
   title?: string;
@@ -51,19 +52,17 @@ const EmailCapture: React.FC<EmailCaptureProps> = ({
     setIsSubmitting(true);
 
     try {
-      // TODO: Integrate with email service (Mailchimp/ConvertKit)
-      // For now, we'll store in localStorage and log to console
-      const subscribers = JSON.parse(localStorage.getItem('quantcurb_subscribers') || '[]');
-      subscribers.push({
+      // Use centralized email service for subscription
+      const success = await emailService.subscribe(
         email,
-        timestamp: new Date().toISOString(),
-        source: window.location.pathname,
-        leadMagnet: leadMagnet?.title || 'general'
-      });
-      localStorage.setItem('quantcurb_subscribers', JSON.stringify(subscribers));
+        window.location.pathname,
+        leadMagnet?.title || 'general',
+        leadMagnet?.type ? [leadMagnet.type] : []
+      );
 
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 500));
+      if (!success) {
+        throw new Error('Subscription failed');
+      }
 
       setIsSuccess(true);
       setEmail('');
