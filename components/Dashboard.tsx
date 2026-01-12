@@ -58,11 +58,33 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
           Institutional <span className="text-indigo-600">Financial Modeling</span> <br/>for Daily Wealth.
         </h1>
         <p className="mt-8 text-xl md:text-2xl text-slate-500 leading-relaxed font-medium max-w-3xl">
-          QuantCurb brings banking-grade precision to retail financial planning. Audit your mortgage, simulate early retirement, and model tax-optimized salary outcomes with 100% algorithmic accuracy.
+          QuantCurb brings banking-grade precision to retail financial planning. Compare mortgage payments, track net worth,
+          calculate take-home pay, and project investment growth with professional-grade financial calculators.
         </p>
         <div className="flex gap-4 mt-10">
           <span className="px-4 py-2 bg-indigo-50 text-indigo-600 rounded-xl text-[10px] font-black uppercase tracking-widest border border-indigo-100 shadow-sm">Verified Logic</span>
           <span className="px-4 py-2 bg-slate-50 text-slate-400 rounded-xl text-[10px] font-black uppercase tracking-widest border border-slate-100">AI-Powered Insights</span>
+        </div>
+        <div className="mt-10">
+          <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Popular Calculators</p>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { id: ToolType.MORTGAGE_CALC, label: 'Mortgage Calculator' },
+              { id: ToolType.NET_WORTH, label: 'Net Worth Tracker' },
+              { id: ToolType.SALARY_CALC, label: 'Salary Calculator' },
+              { id: ToolType.INVESTMENT_CALC, label: 'Investment Calculator' },
+              { id: ToolType.CRYPTO_TAX_LOSS, label: 'Crypto Tax Loss Harvester' },
+              { id: ToolType.BLOG_INDEX, label: 'Read the Blog' }
+            ].map((item) => (
+              <button
+                key={item.label}
+                onClick={() => onSelectTool(item.id)}
+                className="px-5 py-2 bg-white text-slate-600 rounded-xl text-[11px] font-black uppercase tracking-widest border border-slate-100 hover:text-indigo-600 hover:border-indigo-200 transition-all shadow-sm"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
         </div>
       </header>
 
