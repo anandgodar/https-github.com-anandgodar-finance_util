@@ -46,6 +46,13 @@ const MortgageCalculatorGuide2025 = lazy(() => import('./components/blog/Mortgag
 const HowMuchHouseCanIAfford2025 = lazy(() => import('./components/blog/HowMuchHouseCanIAfford2025'));
 const ShouldIPayOffDebtOrInvest2025 = lazy(() => import('./components/blog/ShouldIPayOffDebtOrInvest2025'));
 const HowToCalculateTakeHomePay2025 = lazy(() => import('./components/blog/HowToCalculateTakeHomePay2025'));
+const CaliforniaVsTexasTakeHome2025 = lazy(() => import('./components/blog/CaliforniaVsTexasTakeHome2025'));
+const BonusTaxMyth2025 = lazy(() => import('./components/blog/BonusTaxMyth2025'));
+const RaiseWorthMoving2025 = lazy(() => import('./components/blog/RaiseWorthMoving2025'));
+const MaxOut401kTakeHome2025 = lazy(() => import('./components/blog/MaxOut401kTakeHome2025'));
+const GrossVsNetPay2025 = lazy(() => import('./components/blog/GrossVsNetPay2025'));
+const FreelancerEstimatedTaxesGuide2025 = lazy(() => import('./components/blog/FreelancerEstimatedTaxesGuide2025'));
+const MovingToFloridaSunshineTax2025 = lazy(() => import('./components/blog/MovingToFloridaSunshineTax2025'));
 const RothIRAvsTraditionalIRA2025 = lazy(() => import('./components/blog/RothIRAvsTraditionalIRA2025'));
 const HowMuchEmergencyFundDoINeed2025 = lazy(() => import('./components/blog/HowMuchEmergencyFundDoINeed2025'));
 const FIRECalculatorGuide2025 = lazy(() => import('./components/blog/FIRECalculatorGuide2025'));
@@ -275,6 +282,41 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "How to Calculate Take-Home Pay After Taxes: Complete 2025 Guide",
     desc: "Learn how to calculate your take-home pay after taxes in 2025. Understand federal tax, state tax, FICA, 401k deductions, and use our salary calculator to get your exact net pay.",
     keywords: "take home pay calculator, net pay calculator, salary after taxes, how to calculate take home pay, salary calculator 2025, after tax salary, net income calculator, take home pay after taxes"
+  },
+  [ToolType.BLOG_CA_TX_TAKE_HOME]: {
+    title: "$100k in California vs Texas: Take-Home Pay & Cost of Living Comparison",
+    desc: "Compare a $100k salary in California vs Texas. See take-home pay differences, state tax impact, and which state stretches your paycheck further in 2025.",
+    keywords: "100k salary california vs texas, california vs texas take home pay, cost of living california vs texas, state tax comparison, salary comparison by state"
+  },
+  [ToolType.BLOG_BONUS_TAX]: {
+    title: "Bonus Tax Myth: 22% Withholding vs Real Bonus Tax Liability",
+    desc: "Learn why bonuses are withheld at 22% and how to calculate your real bonus tax liability. Stop overestimating the bonus tax rate and get accurate take-home pay.",
+    keywords: "bonus tax myth, bonus tax withholding 22 percent, bonus tax calculator, supplemental wage tax, how are bonuses taxed, bonus take home pay"
+  },
+  [ToolType.BLOG_RAISE_MOVE]: {
+    title: "Is a $10,000 Raise Worth Moving For? Relocation Cost Calculator",
+    desc: "Break down a $10k raise after taxes and relocation costs. Compare cost of living, moving expenses, and net pay to decide if relocating makes sense.",
+    keywords: "is a 10k raise worth moving, relocation cost calculator, raise vs cost of living, moving for a job, relocation salary comparison"
+  },
+  [ToolType.BLOG_MAX_401K]: {
+    title: "Max Out 401(k) Take-Home Pay: How Pre-Tax Contributions Reduce Taxes",
+    desc: "See how maxing out a 401(k) lowers taxable income and makes the take-home impact smaller than expected. Includes marginal tax bracket examples.",
+    keywords: "max out 401k take home pay, 401k tax savings, pre tax 401k contribution, 401k marginal tax bracket, 401k contribution impact"
+  },
+  [ToolType.BLOG_GROSS_NET]: {
+    title: "Gross vs Net Pay Explained: Paycheck Deductions for New Grads",
+    desc: "A beginner guide to gross vs net pay, FICA, Medicare, and state taxes. Learn why your paycheck is smaller than expected and how to estimate net pay.",
+    keywords: "gross vs net pay, paycheck deductions explained, fica tax, medicare tax, why is my paycheck smaller, net pay calculator"
+  },
+  [ToolType.BLOG_FREELANCE_ESTIMATED]: {
+    title: "Freelancer Estimated Taxes Guide 2025: How Much to Set Aside",
+    desc: "A 1099-friendly estimated tax guide. Learn safe harbor rules, how much to save for quarterly taxes, and how to calculate payments in 2025.",
+    keywords: "freelancer estimated taxes, quarterly taxes for freelancers, 1099 estimated tax guide, how much to set aside for taxes, safe harbor rules 2025"
+  },
+  [ToolType.BLOG_FLORIDA_MOVE]: {
+    title: "Moving to Florida: Sunshine Tax Savings for NY/NJ Residents",
+    desc: "See how moving to Florida changes your take-home pay. Compare New York and New Jersey state taxes to Florida in 2025 and estimate real savings.",
+    keywords: "moving to florida tax savings, sunshine tax savings, florida vs new york taxes, florida vs new jersey taxes, florida take home pay"
   },
   [ToolType.BLOG_ROTH_TRADITIONAL]: {
     title: "Roth IRA vs Traditional IRA 2025: Which is Better? Complete Comparison",
@@ -658,6 +700,13 @@ const AppShell: React.FC = () => {
         case ToolType.BLOG_HOW_MUCH_HOUSE: return <HowMuchHouseCanIAfford2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_DEBT_OR_INVEST: return <ShouldIPayOffDebtOrInvest2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_TAKE_HOME_PAY: return <HowToCalculateTakeHomePay2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_CA_TX_TAKE_HOME: return <CaliforniaVsTexasTakeHome2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_BONUS_TAX: return <BonusTaxMyth2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_RAISE_MOVE: return <RaiseWorthMoving2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_MAX_401K: return <MaxOut401kTakeHome2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_GROSS_NET: return <GrossVsNetPay2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_FREELANCE_ESTIMATED: return <FreelancerEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_FLORIDA_MOVE: return <MovingToFloridaSunshineTax2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_ROTH_TRADITIONAL: return <RothIRAvsTraditionalIRA2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_EMERGENCY_FUND: return <HowMuchEmergencyFundDoINeed2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_FIRE_GUIDE: return <FIRECalculatorGuide2025 onNavigate={setActiveTool} />;

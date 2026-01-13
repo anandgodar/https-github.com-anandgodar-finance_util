@@ -25,7 +25,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       "url": "https://quantcurb.com/blog",
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 35,
+        "numberOfItems": 42,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -88,6 +88,69 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "13 min",
       date: "January 2026",
       icon: "💵"
+    },
+    {
+      id: ToolType.BLOG_CA_TX_TAKE_HOME,
+      title: "$100k in California vs. Texas: Where Does Your Dollar Go Further?",
+      description: "Compare take-home pay, state taxes, and cost of living to see how a $100k salary stretches in California vs Texas.",
+      category: "Salary & Taxes",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "🌴"
+    },
+    {
+      id: ToolType.BLOG_BONUS_TAX,
+      title: "The \"Bonus Tax\" Myth: Why Your Bonus Is Withheld Differently",
+      description: "Understand 22% bonus withholding vs actual tax liability and calculate your real bonus take-home pay.",
+      category: "Salary & Taxes",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🎁"
+    },
+    {
+      id: ToolType.BLOG_RAISE_MOVE,
+      title: "Is a $10,000 Raise Worth Moving For? The Real Cost of Relocation",
+      description: "Compare taxes, relocation expenses, and cost of living to see if a $10k raise is actually a net win.",
+      category: "Career Moves",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "🚚"
+    },
+    {
+      id: ToolType.BLOG_MAX_401K,
+      title: "How Maxing Out Your 401(k) Can Increase Take-Home Pay (Sort Of)",
+      description: "See how 401(k) tax shielding lowers taxable income and makes the take-home hit smaller than expected.",
+      category: "Retirement Planning",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🧮"
+    },
+    {
+      id: ToolType.BLOG_GROSS_NET,
+      title: "Gross vs. Net Pay: Why Your Paycheck Is Smaller Than You Think",
+      description: "A beginner-friendly breakdown of FICA, Medicare, and state taxes that shrink your paycheck.",
+      category: "Salary & Taxes",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🧾"
+    },
+    {
+      id: ToolType.BLOG_FREELANCE_ESTIMATED,
+      title: "The Freelancer’s Guide to Estimated Taxes: How Much Should You Set Aside?",
+      description: "A 1099-friendly guide to quarterly taxes, safe harbor rules, and how much to save for the IRS.",
+      category: "Tax Planning",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "🧑‍💻"
+    },
+    {
+      id: ToolType.BLOG_FLORIDA_MOVE,
+      title: "Moving to Florida? The \"Sunshine Tax\" Savings Explained",
+      description: "See how Florida's no-income-tax status changes your take-home pay compared to NY/NJ.",
+      category: "Relocation",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🌞"
     },
     {
       id: ToolType.BLOG_ROTH_TRADITIONAL,
