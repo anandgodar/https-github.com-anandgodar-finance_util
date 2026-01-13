@@ -24,6 +24,11 @@ const AdPlacement: React.FC<AdPlacementProps> = ({
   useEffect(() => {
     if (!lazy) return;
 
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -44,12 +49,14 @@ const AdPlacement: React.FC<AdPlacementProps> = ({
   }, [lazy]);
 
   useEffect(() => {
-    // TODO: Initialize AdSense when approved
-    // For now, this is a placeholder that will be replaced with actual AdSense code
-    if (isVisible && adUnitId && typeof window !== 'undefined' && (window as any).adsbygoogle === undefined) {
-      // AdSense initialization will go here
-      // (window as any).adsbygoogle = (window as any).adsbygoogle || [];
-      // (window as any).adsbygoogle.push({});
+    if (!isVisible || !adUnitId || typeof window === 'undefined') return;
+
+    try {
+      const adsbygoogle = (window as any).adsbygoogle || [];
+      (window as any).adsbygoogle = adsbygoogle;
+      adsbygoogle.push({});
+    } catch (error) {
+      console.warn('AdSense failed to initialize', error);
     }
   }, [isVisible, adUnitId]);
 

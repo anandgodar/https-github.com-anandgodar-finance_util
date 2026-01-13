@@ -69,6 +69,13 @@ const DebtSnowballVsAvalanche2026 = lazy(() => import('./components/blog/DebtSno
 const CarLoan72MonthCost2026 = lazy(() => import('./components/blog/CarLoan72MonthCost2026'));
 const StudentLoanRefinanceMath2026 = lazy(() => import('./components/blog/StudentLoanRefinanceMath2026'));
 const CreditCardMinimumPayments2026 = lazy(() => import('./components/blog/CreditCardMinimumPayments2026'));
+const AssetsVsLiabilitiesNetWorth2026 = lazy(() => import('./components/blog/AssetsVsLiabilitiesNetWorth2026'));
+const FinancialOrderOfOperations2026 = lazy(() => import('./components/blog/FinancialOrderOfOperations2026'));
+const InflationMillionWorth2026 = lazy(() => import('./components/blog/InflationMillionWorth2026'));
+const EmergencyFundRule2026 = lazy(() => import('./components/blog/EmergencyFundRule2026'));
+const LatteFactorBigWins2026 = lazy(() => import('./components/blog/LatteFactorBigWins2026'));
+const DcfModelingRetailInvestors2026 = lazy(() => import('./components/blog/DcfModelingRetailInvestors2026'));
+const LumpSumVsDca2026 = lazy(() => import('./components/blog/LumpSumVsDca2026'));
 const RothIRAvsTraditionalIRA2025 = lazy(() => import('./components/blog/RothIRAvsTraditionalIRA2025'));
 const HowMuchEmergencyFundDoINeed2025 = lazy(() => import('./components/blog/HowMuchEmergencyFundDoINeed2025'));
 const FIRECalculatorGuide2025 = lazy(() => import('./components/blog/FIRECalculatorGuide2025'));
@@ -413,6 +420,41 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Credit Card Minimum Payments: Why You Will Be in Debt for 20 Years",
     desc: "Understand how minimum payments stretch credit card debt and how small extra payments shrink payoff time.",
     keywords: "credit card minimum payments, 2 percent minimum payment, credit card payoff timeline, pay off credit card faster"
+  },
+  [ToolType.BLOG_ASSETS_LIABILITIES]: {
+    title: "Assets vs Liabilities: How to Calculate Your True Net Worth",
+    desc: "Learn the difference between assets and liabilities and calculate your true net worth in minutes.",
+    keywords: "assets vs liabilities, net worth formula, calculate net worth, assets minus liabilities"
+  },
+  [ToolType.BLOG_ORDER_OPS]: {
+    title: "Where Should Your Next Dollar Go? Financial Order of Operations",
+    desc: "Follow a simple financial order of operations: emergency fund, employer match, high-interest debt, and investing.",
+    keywords: "financial order of operations, where to put your money, emergency fund first, employer match priority"
+  },
+  [ToolType.BLOG_INFLATION_MILLION]: {
+    title: "Inflation Calculator: What $1 Million Will Be Worth When You Retire",
+    desc: "See how inflation erodes purchasing power and what $1 million could feel like in retirement dollars.",
+    keywords: "inflation calculator, million dollars worth in retirement, purchasing power erosion, inflation impact"
+  },
+  [ToolType.BLOG_EMERGENCY_RULE]: {
+    title: "How Much Cash Should You Keep? The 6-Month Emergency Fund Rule",
+    desc: "Learn the 6-month emergency fund rule and calculate the cash buffer that keeps you safe during layoffs.",
+    keywords: "6 month emergency fund rule, how much cash to keep, emergency fund calculator, survival number"
+  },
+  [ToolType.BLOG_LATTE_FACTOR]: {
+    title: "The Latte Factor vs Big Wins: What Actually Builds Wealth?",
+    desc: "Focus on housing, transportation, and taxes before obsessing over small daily expenses.",
+    keywords: "latte factor, big wins wealth, housing cost impact, car payment budget, tax savings strategy"
+  },
+  [ToolType.BLOG_DCF_RETAIL]: {
+    title: "DCF Modeling for Retail Investors: How to Value a Stock Like a Pro",
+    desc: "Learn discounted cash flow basics and build a professional valuation with clear assumptions.",
+    keywords: "dcf modeling, value a stock, discounted cash flow explained, stock valuation for beginners"
+  },
+  [ToolType.BLOG_LUMP_SUM_DCA]: {
+    title: "Lump Sum vs Dollar Cost Averaging: What the Data Says",
+    desc: "Compare lump sum investing vs dollar cost averaging and learn which strategy fits your risk tolerance.",
+    keywords: "lump sum vs dca, dollar cost averaging data, investment timing strategy, lump sum investing"
   },
   [ToolType.BLOG_ROTH_TRADITIONAL]: {
     title: "Roth IRA vs Traditional IRA 2025: Which is Better? Complete Comparison",
@@ -819,6 +861,13 @@ const AppShell: React.FC = () => {
         case ToolType.BLOG_CAR_LOAN_72: return <CarLoan72MonthCost2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_STUDENT_LOAN_REFI: return <StudentLoanRefinanceMath2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_CC_MIN_PAY: return <CreditCardMinimumPayments2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_ASSETS_LIABILITIES: return <AssetsVsLiabilitiesNetWorth2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_ORDER_OPS: return <FinancialOrderOfOperations2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_INFLATION_MILLION: return <InflationMillionWorth2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_EMERGENCY_RULE: return <EmergencyFundRule2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_LATTE_FACTOR: return <LatteFactorBigWins2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_DCF_RETAIL: return <DcfModelingRetailInvestors2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_LUMP_SUM_DCA: return <LumpSumVsDca2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_ROTH_TRADITIONAL: return <RothIRAvsTraditionalIRA2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_EMERGENCY_FUND: return <HowMuchEmergencyFundDoINeed2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_FIRE_GUIDE: return <FIRECalculatorGuide2025 onNavigate={setActiveTool} />;

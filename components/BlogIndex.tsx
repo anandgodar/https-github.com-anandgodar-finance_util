@@ -25,7 +25,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       "url": "https://quantcurb.com/blog",
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 58,
+        "numberOfItems": 65,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -295,6 +295,69 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "9 min",
       date: "February 2026",
       icon: "🧾"
+    },
+    {
+      id: ToolType.BLOG_ASSETS_LIABILITIES,
+      title: "Assets vs. Liabilities: How to Calculate Your True Net Worth",
+      description: "Learn the simple net worth formula and categorize assets vs liabilities correctly.",
+      category: "Financial Planning",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "💎"
+    },
+    {
+      id: ToolType.BLOG_ORDER_OPS,
+      title: "Where Should Your Next Dollar Go? The Financial Order of Operations",
+      description: "Follow the emergency fund → match → high-interest debt flowchart for smarter money decisions.",
+      category: "Financial Strategy",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🧭"
+    },
+    {
+      id: ToolType.BLOG_INFLATION_MILLION,
+      title: "Inflation Calculator: What $1 Million Will Be Worth When You Retire",
+      description: "See how inflation erodes purchasing power and why future dollars feel smaller.",
+      category: "Investing",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "📉"
+    },
+    {
+      id: ToolType.BLOG_EMERGENCY_RULE,
+      title: "How Much Cash Should You Keep? The 6-Month Emergency Fund Rule",
+      description: "Calculate a six-month safety net and adjust for your job stability.",
+      category: "Financial Planning",
+      readTime: "8 min",
+      date: "February 2026",
+      icon: "🛡️"
+    },
+    {
+      id: ToolType.BLOG_LATTE_FACTOR,
+      title: "The \"Latte Factor\" vs. Big Wins: What Actually Builds Wealth?",
+      description: "Focus on housing, car, and tax wins before sweating small daily expenses.",
+      category: "Financial Strategy",
+      readTime: "8 min",
+      date: "February 2026",
+      icon: "☕"
+    },
+    {
+      id: ToolType.BLOG_DCF_RETAIL,
+      title: "DCF Modeling for Retail Investors: How to Value a Stock Like a Pro",
+      description: "Bring Wall Street valuation tools to Main Street with a simple DCF framework.",
+      category: "Investing",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "📊"
+    },
+    {
+      id: ToolType.BLOG_LUMP_SUM_DCA,
+      title: "Lump Sum vs. Dollar Cost Averaging: What the Data Says",
+      description: "Compare time-in-market vs smoothing risk and decide the right strategy.",
+      category: "Investing",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "📈"
     },
     {
       id: ToolType.BLOG_ROTH_TRADITIONAL,
