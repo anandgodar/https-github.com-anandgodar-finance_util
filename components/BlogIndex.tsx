@@ -25,7 +25,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       "url": "https://quantcurb.com/blog",
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 48,
+        "numberOfItems": 54,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -205,6 +205,60 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "9 min",
       date: "February 2026",
       icon: "🔁"
+    },
+    {
+      id: ToolType.BLOG_FI_NUMBER,
+      title: "What is Your \"FI Number\"? The Math Behind Financial Independence",
+      description: "Understand the 25x rule and calculate the freedom number that fits your annual expenses.",
+      category: "Financial Independence",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🔥"
+    },
+    {
+      id: ToolType.BLOG_LEAN_FAT_FIRE,
+      title: "LeanFIRE vs. FatFIRE: Which Lifestyle Can You Afford?",
+      description: "Compare $40k vs $100k retirement lifestyles and see how the FI target changes.",
+      category: "Financial Independence",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "💎"
+    },
+    {
+      id: ToolType.BLOG_FOUR_PERCENT,
+      title: "The 4% Rule Is Dead? Why Safe Withdrawal Rates Are Changing",
+      description: "Explore inflation and longevity risk and stress test different withdrawal rates.",
+      category: "Financial Independence",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "📈"
+    },
+    {
+      id: ToolType.BLOG_COAST_FIRE,
+      title: "Coast FIRE: How to \"Retire\" at 30 Without Stopping Work Completely",
+      description: "Front-load investments and coast later with a lower-stress career path.",
+      category: "Financial Independence",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🌊"
+    },
+    {
+      id: ToolType.BLOG_COST_WAITING,
+      title: "The Cost of Waiting: Why Starting at 25 vs. 35 Costs You $1 Million",
+      description: "See the compounding gap and why delaying investments is so expensive.",
+      category: "Investing",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "⏳"
+    },
+    {
+      id: ToolType.BLOG_ROTH_TRAD_401K,
+      title: "Roth vs. Traditional 401(k): The Tax Bracket Bet",
+      description: "Decide whether to pay taxes now or later by comparing Roth and Traditional 401(k) outcomes.",
+      category: "Retirement Planning",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🧠"
     },
     {
       id: ToolType.BLOG_ROTH_TRADITIONAL,

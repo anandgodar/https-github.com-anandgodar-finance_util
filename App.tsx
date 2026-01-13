@@ -59,6 +59,12 @@ const PmiMathGuide2026 = lazy(() => import('./components/blog/PmiMathGuide2026')
 const RentVsBuyRule2026 = lazy(() => import('./components/blog/RentVsBuyRule2026'));
 const HouseCostRateSensitivity2026 = lazy(() => import('./components/blog/HouseCostRateSensitivity2026'));
 const BiWeeklyMortgagePayments2026 = lazy(() => import('./components/blog/BiWeeklyMortgagePayments2026'));
+const FINumberMath2026 = lazy(() => import('./components/blog/FINumberMath2026'));
+const LeanVsFatFire2026 = lazy(() => import('./components/blog/LeanVsFatFire2026'));
+const FourPercentRuleDebate2026 = lazy(() => import('./components/blog/FourPercentRuleDebate2026'));
+const CoastFireGuide2026 = lazy(() => import('./components/blog/CoastFireGuide2026'));
+const CostOfWaiting2026 = lazy(() => import('./components/blog/CostOfWaiting2026'));
+const RothVsTraditional401k2026 = lazy(() => import('./components/blog/RothVsTraditional401k2026'));
 const RothIRAvsTraditionalIRA2025 = lazy(() => import('./components/blog/RothIRAvsTraditionalIRA2025'));
 const HowMuchEmergencyFundDoINeed2025 = lazy(() => import('./components/blog/HowMuchEmergencyFundDoINeed2025'));
 const FIRECalculatorGuide2025 = lazy(() => import('./components/blog/FIRECalculatorGuide2025'));
@@ -353,6 +359,36 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Bi-Weekly Mortgage Payments: Save Interest Faster",
     desc: "Learn how bi-weekly payments create one extra payment per year and reduce mortgage interest with a simple payment shift.",
     keywords: "biweekly mortgage payments, extra payment mortgage strategy, save interest on mortgage, 26 payments equals 13"
+  },
+  [ToolType.BLOG_FI_NUMBER]: {
+    title: "What is Your FI Number? The Math Behind Financial Independence",
+    desc: "Learn the 25x annual expenses rule and calculate your financial independence number with clear examples.",
+    keywords: "fi number, financial independence number, 25x rule, freedom number calculator, fi math"
+  },
+  [ToolType.BLOG_LEAN_FAT_FIRE]: {
+    title: "LeanFIRE vs FatFIRE: Which Lifestyle Can You Afford?",
+    desc: "Compare LeanFIRE and FatFIRE spending levels and see how lifestyle choices change your retirement target.",
+    keywords: "leanfire vs fatfire, fatfire lifestyle, leanfire budget, retirement lifestyle comparison"
+  },
+  [ToolType.BLOG_FOUR_PERCENT]: {
+    title: "The 4% Rule Is Dead? Why Safe Withdrawal Rates Are Changing",
+    desc: "Explore inflation, longevity risk, and alternative withdrawal rates to stress test your retirement plan.",
+    keywords: "4 percent rule, safe withdrawal rate, retirement withdrawal strategy, inflation risk retirement"
+  },
+  [ToolType.BLOG_COAST_FIRE]: {
+    title: "Coast FIRE: How to Retire at 30 Without Stopping Work Completely",
+    desc: "Understand Coast FIRE and how front-loading investments lets you coast to financial independence.",
+    keywords: "coast fire, coast fire age, front load investing, retire early without quitting"
+  },
+  [ToolType.BLOG_COST_WAITING]: {
+    title: "The Cost of Waiting: Starting at 25 vs 35 Costs You $1 Million",
+    desc: "See how delaying investing erodes compounding and why starting earlier builds a bigger portfolio.",
+    keywords: "cost of waiting investing, start investing early, compound interest delay, starting at 25 vs 35"
+  },
+  [ToolType.BLOG_ROTH_TRAD_401K]: {
+    title: "Roth vs Traditional 401(k): The Tax Bracket Bet",
+    desc: "Compare Roth vs Traditional 401(k) choices and learn when paying taxes now vs later makes sense.",
+    keywords: "roth vs traditional 401k, tax bracket bet, 401k tax strategy, roth 401k vs traditional"
   },
   [ToolType.BLOG_ROTH_TRADITIONAL]: {
     title: "Roth IRA vs Traditional IRA 2025: Which is Better? Complete Comparison",
@@ -749,6 +785,12 @@ const AppShell: React.FC = () => {
         case ToolType.BLOG_RENT_BUY_2026: return <RentVsBuyRule2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_500K_COST: return <HouseCostRateSensitivity2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_BIWEEKLY: return <BiWeeklyMortgagePayments2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_FI_NUMBER: return <FINumberMath2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_LEAN_FAT_FIRE: return <LeanVsFatFire2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_FOUR_PERCENT: return <FourPercentRuleDebate2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_COAST_FIRE: return <CoastFireGuide2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_COST_WAITING: return <CostOfWaiting2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_ROTH_TRAD_401K: return <RothVsTraditional401k2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_ROTH_TRADITIONAL: return <RothIRAvsTraditionalIRA2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_EMERGENCY_FUND: return <HowMuchEmergencyFundDoINeed2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_FIRE_GUIDE: return <FIRECalculatorGuide2025 onNavigate={setActiveTool} />;
