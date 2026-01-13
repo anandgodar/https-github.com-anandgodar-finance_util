@@ -14,7 +14,9 @@ type PageProps = {
 export const dynamic = 'force-static';
 export const dynamicParams = false;
 
-const toolSlugSet = new Set(toolSlugs);
+const toolSlugSet = new Set<ToolType>(toolSlugs as ToolType[]);
+
+const isToolType = (slug: string): slug is ToolType => toolSlugSet.has(slug as ToolType);
 
 export function generateStaticParams() {
   return [
@@ -46,11 +48,11 @@ export function generateMetadata({ params }: PageProps) {
 export default function ToolPage({ params }: PageProps) {
   const slug = params?.tool?.join('/') || ToolType.DASHBOARD;
 
-  if (!toolSlugSet.has(slug)) {
+  if (!isToolType(slug)) {
     notFound();
   }
 
-  const metadata = TOOL_METADATA[slug as ToolType];
+  const metadata = TOOL_METADATA[slug];
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
