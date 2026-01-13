@@ -25,7 +25,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       "url": "https://quantcurb.com/blog",
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 54,
+        "numberOfItems": 58,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -259,6 +259,42 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "10 min",
       date: "February 2026",
       icon: "🧠"
+    },
+    {
+      id: ToolType.BLOG_SNOWBALL_AVALANCHE,
+      title: "Snowball vs. Avalanche: Which Debt Payoff Method Saves You More Money?",
+      description: "Compare the math of avalanche vs snowball and find the payoff path that keeps you on track.",
+      category: "Debt & Loans",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "⚖️"
+    },
+    {
+      id: ToolType.BLOG_CAR_LOAN_72,
+      title: "The True Cost of a 72-Month Car Loan",
+      description: "Understand how long-term auto loans inflate interest and keep you underwater longer.",
+      category: "Debt & Loans",
+      readTime: "8 min",
+      date: "February 2026",
+      icon: "🚗"
+    },
+    {
+      id: ToolType.BLOG_STUDENT_LOAN_REFI,
+      title: "Should You Refinance Your Student Loans? The Math You Need to Know",
+      description: "See when a lower rate outweighs the loss of federal protections and forgiveness options.",
+      category: "Debt & Loans",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🎓"
+    },
+    {
+      id: ToolType.BLOG_CC_MIN_PAY,
+      title: "Credit Card Minimum Payments: Why You Will Be in Debt for 20 Years",
+      description: "Learn why 2% minimum payments keep you in debt and how a small extra payment changes the timeline.",
+      category: "Debt & Loans",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🧾"
     },
     {
       id: ToolType.BLOG_ROTH_TRADITIONAL,

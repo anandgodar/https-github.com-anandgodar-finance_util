@@ -65,6 +65,10 @@ const FourPercentRuleDebate2026 = lazy(() => import('./components/blog/FourPerce
 const CoastFireGuide2026 = lazy(() => import('./components/blog/CoastFireGuide2026'));
 const CostOfWaiting2026 = lazy(() => import('./components/blog/CostOfWaiting2026'));
 const RothVsTraditional401k2026 = lazy(() => import('./components/blog/RothVsTraditional401k2026'));
+const DebtSnowballVsAvalanche2026 = lazy(() => import('./components/blog/DebtSnowballVsAvalanche2026'));
+const CarLoan72MonthCost2026 = lazy(() => import('./components/blog/CarLoan72MonthCost2026'));
+const StudentLoanRefinanceMath2026 = lazy(() => import('./components/blog/StudentLoanRefinanceMath2026'));
+const CreditCardMinimumPayments2026 = lazy(() => import('./components/blog/CreditCardMinimumPayments2026'));
 const RothIRAvsTraditionalIRA2025 = lazy(() => import('./components/blog/RothIRAvsTraditionalIRA2025'));
 const HowMuchEmergencyFundDoINeed2025 = lazy(() => import('./components/blog/HowMuchEmergencyFundDoINeed2025'));
 const FIRECalculatorGuide2025 = lazy(() => import('./components/blog/FIRECalculatorGuide2025'));
@@ -389,6 +393,26 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Roth vs Traditional 401(k): The Tax Bracket Bet",
     desc: "Compare Roth vs Traditional 401(k) choices and learn when paying taxes now vs later makes sense.",
     keywords: "roth vs traditional 401k, tax bracket bet, 401k tax strategy, roth 401k vs traditional"
+  },
+  [ToolType.BLOG_SNOWBALL_AVALANCHE]: {
+    title: "Snowball vs Avalanche: Which Debt Payoff Method Saves More Money?",
+    desc: "Compare the avalanche and snowball debt payoff methods to see which saves more interest and fits your style.",
+    keywords: "snowball vs avalanche, debt payoff method, avalanche vs snowball interest savings, debt payoff strategy"
+  },
+  [ToolType.BLOG_CAR_LOAN_72]: {
+    title: "The True Cost of a 72-Month Car Loan",
+    desc: "See how long-term auto loans inflate total interest and keep you underwater longer than expected.",
+    keywords: "72 month car loan, long term auto loan cost, car loan interest calculator, auto loan term comparison"
+  },
+  [ToolType.BLOG_STUDENT_LOAN_REFI]: {
+    title: "Should You Refinance Your Student Loans? The Math You Need to Know",
+    desc: "Learn when refinancing student loans makes sense and how to weigh rate savings against federal protections.",
+    keywords: "student loan refinance math, refinance student loans, lower rate vs federal protections, student loan payment calculator"
+  },
+  [ToolType.BLOG_CC_MIN_PAY]: {
+    title: "Credit Card Minimum Payments: Why You Will Be in Debt for 20 Years",
+    desc: "Understand how minimum payments stretch credit card debt and how small extra payments shrink payoff time.",
+    keywords: "credit card minimum payments, 2 percent minimum payment, credit card payoff timeline, pay off credit card faster"
   },
   [ToolType.BLOG_ROTH_TRADITIONAL]: {
     title: "Roth IRA vs Traditional IRA 2025: Which is Better? Complete Comparison",
@@ -791,6 +815,10 @@ const AppShell: React.FC = () => {
         case ToolType.BLOG_COAST_FIRE: return <CoastFireGuide2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_COST_WAITING: return <CostOfWaiting2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_ROTH_TRAD_401K: return <RothVsTraditional401k2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_SNOWBALL_AVALANCHE: return <DebtSnowballVsAvalanche2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_CAR_LOAN_72: return <CarLoan72MonthCost2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_STUDENT_LOAN_REFI: return <StudentLoanRefinanceMath2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_CC_MIN_PAY: return <CreditCardMinimumPayments2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_ROTH_TRADITIONAL: return <RothIRAvsTraditionalIRA2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_EMERGENCY_FUND: return <HowMuchEmergencyFundDoINeed2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_FIRE_GUIDE: return <FIRECalculatorGuide2025 onNavigate={setActiveTool} />;
