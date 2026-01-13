@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import DividendReinvestmentCalculator from '../../components/DividendReinvestmentCalculator';
 
 type StockRow = {
@@ -9,8 +10,11 @@ type StockRow = {
   fiveYearGrowth: number;
 };
 
-const DividendStockPage: React.FC = () => {
-  const { ticker } = useParams();
+type DividendStockPageProps = {
+  ticker: string;
+};
+
+const DividendStockPage: React.FC<DividendStockPageProps> = ({ ticker }) => {
   const [rows, setRows] = useState<StockRow[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -20,7 +24,7 @@ const DividendStockPage: React.FC = () => {
     let isMounted = true;
     const loadCsv = async () => {
       try {
-        const response = await fetch(new URL('../data/stocks.csv', import.meta.url));
+        const response = await fetch('/data/stocks.csv');
         const text = await response.text();
         const lines = text.trim().split(/\r?\n/);
         const parsedRows = lines.slice(1).map((line) => {
