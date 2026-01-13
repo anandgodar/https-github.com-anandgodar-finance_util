@@ -25,7 +25,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       "url": "https://quantcurb.com/blog",
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 35,
+        "numberOfItems": 58,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -88,6 +88,213 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "13 min",
       date: "January 2026",
       icon: "💵"
+    },
+    {
+      id: ToolType.BLOG_CA_TX_TAKE_HOME,
+      title: "$100k in California vs. Texas: Where Does Your Dollar Go Further?",
+      description: "Compare take-home pay, state taxes, and cost of living to see how a $100k salary stretches in California vs Texas.",
+      category: "Salary & Taxes",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "🌴"
+    },
+    {
+      id: ToolType.BLOG_BONUS_TAX,
+      title: "The \"Bonus Tax\" Myth: Why Your Bonus Is Withheld Differently",
+      description: "Understand 22% bonus withholding vs actual tax liability and calculate your real bonus take-home pay.",
+      category: "Salary & Taxes",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🎁"
+    },
+    {
+      id: ToolType.BLOG_RAISE_MOVE,
+      title: "Is a $10,000 Raise Worth Moving For? The Real Cost of Relocation",
+      description: "Compare taxes, relocation expenses, and cost of living to see if a $10k raise is actually a net win.",
+      category: "Career Moves",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "🚚"
+    },
+    {
+      id: ToolType.BLOG_MAX_401K,
+      title: "How Maxing Out Your 401(k) Can Increase Take-Home Pay (Sort Of)",
+      description: "See how 401(k) tax shielding lowers taxable income and makes the take-home hit smaller than expected.",
+      category: "Retirement Planning",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🧮"
+    },
+    {
+      id: ToolType.BLOG_GROSS_NET,
+      title: "Gross vs. Net Pay: Why Your Paycheck Is Smaller Than You Think",
+      description: "A beginner-friendly breakdown of FICA, Medicare, and state taxes that shrink your paycheck.",
+      category: "Salary & Taxes",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🧾"
+    },
+    {
+      id: ToolType.BLOG_FREELANCE_ESTIMATED,
+      title: "The Freelancer’s Guide to Estimated Taxes: How Much Should You Set Aside?",
+      description: "A 1099-friendly guide to quarterly taxes, safe harbor rules, and how much to save for the IRS.",
+      category: "Tax Planning",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "🧑‍💻"
+    },
+    {
+      id: ToolType.BLOG_FLORIDA_MOVE,
+      title: "Moving to Florida? The \"Sunshine Tax\" Savings Explained",
+      description: "See how Florida's no-income-tax status changes your take-home pay compared to NY/NJ.",
+      category: "Relocation",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🌞"
+    },
+    {
+      id: ToolType.BLOG_PITI_EXPLAINED,
+      title: "PITI Explained: Why Your Mortgage Payment Is Higher Than the Sticker Price",
+      description: "Break down principal, interest, taxes, and insurance to understand your true monthly mortgage payment.",
+      category: "Home Buying",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🏡"
+    },
+    {
+      id: ToolType.BLOG_POINTS_BREAK_EVEN,
+      title: "Should You Pay Points on Your Mortgage in 2026? A Break-Even Analysis",
+      description: "See when buying down the rate makes sense and how long it takes to break even.",
+      category: "Home Buying",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "📉"
+    },
+    {
+      id: ToolType.BLOG_PMI_MATH,
+      title: "The Mathematics of PMI: How to Get Rid of It Faster",
+      description: "Understand the 80% LTV rule and strategies to eliminate private mortgage insurance sooner.",
+      category: "Home Buying",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🧮"
+    },
+    {
+      id: ToolType.BLOG_RENT_BUY_2026,
+      title: "Rent vs. Buy in 2026: The 5% Rule Explained",
+      description: "Use the 5% rule to compare renting vs buying and make a smarter housing decision.",
+      category: "Housing Strategy",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "🏠"
+    },
+    {
+      id: ToolType.BLOG_500K_COST,
+      title: "What Does a $500,000 House Actually Cost per Month? (6%, 7%, and 8% Rates)",
+      description: "See how interest rate changes affect monthly payments and buying power on a $500k home.",
+      category: "Home Buying",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "💸"
+    },
+    {
+      id: ToolType.BLOG_BIWEEKLY,
+      title: "Bi-Weekly Mortgage Payments: The \"Secret\" to Saving $50,000 in Interest",
+      description: "Learn how 26 half-payments per year reduce interest and shorten your mortgage term.",
+      category: "Debt & Loans",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🔁"
+    },
+    {
+      id: ToolType.BLOG_FI_NUMBER,
+      title: "What is Your \"FI Number\"? The Math Behind Financial Independence",
+      description: "Understand the 25x rule and calculate the freedom number that fits your annual expenses.",
+      category: "Financial Independence",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🔥"
+    },
+    {
+      id: ToolType.BLOG_LEAN_FAT_FIRE,
+      title: "LeanFIRE vs. FatFIRE: Which Lifestyle Can You Afford?",
+      description: "Compare $40k vs $100k retirement lifestyles and see how the FI target changes.",
+      category: "Financial Independence",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "💎"
+    },
+    {
+      id: ToolType.BLOG_FOUR_PERCENT,
+      title: "The 4% Rule Is Dead? Why Safe Withdrawal Rates Are Changing",
+      description: "Explore inflation and longevity risk and stress test different withdrawal rates.",
+      category: "Financial Independence",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "📈"
+    },
+    {
+      id: ToolType.BLOG_COAST_FIRE,
+      title: "Coast FIRE: How to \"Retire\" at 30 Without Stopping Work Completely",
+      description: "Front-load investments and coast later with a lower-stress career path.",
+      category: "Financial Independence",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🌊"
+    },
+    {
+      id: ToolType.BLOG_COST_WAITING,
+      title: "The Cost of Waiting: Why Starting at 25 vs. 35 Costs You $1 Million",
+      description: "See the compounding gap and why delaying investments is so expensive.",
+      category: "Investing",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "⏳"
+    },
+    {
+      id: ToolType.BLOG_ROTH_TRAD_401K,
+      title: "Roth vs. Traditional 401(k): The Tax Bracket Bet",
+      description: "Decide whether to pay taxes now or later by comparing Roth and Traditional 401(k) outcomes.",
+      category: "Retirement Planning",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🧠"
+    },
+    {
+      id: ToolType.BLOG_SNOWBALL_AVALANCHE,
+      title: "Snowball vs. Avalanche: Which Debt Payoff Method Saves You More Money?",
+      description: "Compare the math of avalanche vs snowball and find the payoff path that keeps you on track.",
+      category: "Debt & Loans",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "⚖️"
+    },
+    {
+      id: ToolType.BLOG_CAR_LOAN_72,
+      title: "The True Cost of a 72-Month Car Loan",
+      description: "Understand how long-term auto loans inflate interest and keep you underwater longer.",
+      category: "Debt & Loans",
+      readTime: "8 min",
+      date: "February 2026",
+      icon: "🚗"
+    },
+    {
+      id: ToolType.BLOG_STUDENT_LOAN_REFI,
+      title: "Should You Refinance Your Student Loans? The Math You Need to Know",
+      description: "See when a lower rate outweighs the loss of federal protections and forgiveness options.",
+      category: "Debt & Loans",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🎓"
+    },
+    {
+      id: ToolType.BLOG_CC_MIN_PAY,
+      title: "Credit Card Minimum Payments: Why You Will Be in Debt for 20 Years",
+      description: "Learn why 2% minimum payments keep you in debt and how a small extra payment changes the timeline.",
+      category: "Debt & Loans",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🧾"
     },
     {
       id: ToolType.BLOG_ROTH_TRADITIONAL,

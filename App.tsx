@@ -46,6 +46,29 @@ const MortgageCalculatorGuide2025 = lazy(() => import('./components/blog/Mortgag
 const HowMuchHouseCanIAfford2025 = lazy(() => import('./components/blog/HowMuchHouseCanIAfford2025'));
 const ShouldIPayOffDebtOrInvest2025 = lazy(() => import('./components/blog/ShouldIPayOffDebtOrInvest2025'));
 const HowToCalculateTakeHomePay2025 = lazy(() => import('./components/blog/HowToCalculateTakeHomePay2025'));
+const CaliforniaVsTexasTakeHome2025 = lazy(() => import('./components/blog/CaliforniaVsTexasTakeHome2025'));
+const BonusTaxMyth2025 = lazy(() => import('./components/blog/BonusTaxMyth2025'));
+const RaiseWorthMoving2025 = lazy(() => import('./components/blog/RaiseWorthMoving2025'));
+const MaxOut401kTakeHome2025 = lazy(() => import('./components/blog/MaxOut401kTakeHome2025'));
+const GrossVsNetPay2025 = lazy(() => import('./components/blog/GrossVsNetPay2025'));
+const FreelancerEstimatedTaxesGuide2025 = lazy(() => import('./components/blog/FreelancerEstimatedTaxesGuide2025'));
+const MovingToFloridaSunshineTax2025 = lazy(() => import('./components/blog/MovingToFloridaSunshineTax2025'));
+const PitiExplained2026 = lazy(() => import('./components/blog/PitiExplained2026'));
+const MortgagePointsBreakEven2026 = lazy(() => import('./components/blog/MortgagePointsBreakEven2026'));
+const PmiMathGuide2026 = lazy(() => import('./components/blog/PmiMathGuide2026'));
+const RentVsBuyRule2026 = lazy(() => import('./components/blog/RentVsBuyRule2026'));
+const HouseCostRateSensitivity2026 = lazy(() => import('./components/blog/HouseCostRateSensitivity2026'));
+const BiWeeklyMortgagePayments2026 = lazy(() => import('./components/blog/BiWeeklyMortgagePayments2026'));
+const FINumberMath2026 = lazy(() => import('./components/blog/FINumberMath2026'));
+const LeanVsFatFire2026 = lazy(() => import('./components/blog/LeanVsFatFire2026'));
+const FourPercentRuleDebate2026 = lazy(() => import('./components/blog/FourPercentRuleDebate2026'));
+const CoastFireGuide2026 = lazy(() => import('./components/blog/CoastFireGuide2026'));
+const CostOfWaiting2026 = lazy(() => import('./components/blog/CostOfWaiting2026'));
+const RothVsTraditional401k2026 = lazy(() => import('./components/blog/RothVsTraditional401k2026'));
+const DebtSnowballVsAvalanche2026 = lazy(() => import('./components/blog/DebtSnowballVsAvalanche2026'));
+const CarLoan72MonthCost2026 = lazy(() => import('./components/blog/CarLoan72MonthCost2026'));
+const StudentLoanRefinanceMath2026 = lazy(() => import('./components/blog/StudentLoanRefinanceMath2026'));
+const CreditCardMinimumPayments2026 = lazy(() => import('./components/blog/CreditCardMinimumPayments2026'));
 const RothIRAvsTraditionalIRA2025 = lazy(() => import('./components/blog/RothIRAvsTraditionalIRA2025'));
 const HowMuchEmergencyFundDoINeed2025 = lazy(() => import('./components/blog/HowMuchEmergencyFundDoINeed2025'));
 const FIRECalculatorGuide2025 = lazy(() => import('./components/blog/FIRECalculatorGuide2025'));
@@ -275,6 +298,121 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "How to Calculate Take-Home Pay After Taxes: Complete 2025 Guide",
     desc: "Learn how to calculate your take-home pay after taxes in 2025. Understand federal tax, state tax, FICA, 401k deductions, and use our salary calculator to get your exact net pay.",
     keywords: "take home pay calculator, net pay calculator, salary after taxes, how to calculate take home pay, salary calculator 2025, after tax salary, net income calculator, take home pay after taxes"
+  },
+  [ToolType.BLOG_CA_TX_TAKE_HOME]: {
+    title: "$100k in California vs Texas: Take-Home Pay & Cost of Living Comparison",
+    desc: "Compare a $100k salary in California vs Texas. See take-home pay differences, state tax impact, and which state stretches your paycheck further in 2025.",
+    keywords: "100k salary california vs texas, california vs texas take home pay, cost of living california vs texas, state tax comparison, salary comparison by state"
+  },
+  [ToolType.BLOG_BONUS_TAX]: {
+    title: "Bonus Tax Myth: 22% Withholding vs Real Bonus Tax Liability",
+    desc: "Learn why bonuses are withheld at 22% and how to calculate your real bonus tax liability. Stop overestimating the bonus tax rate and get accurate take-home pay.",
+    keywords: "bonus tax myth, bonus tax withholding 22 percent, bonus tax calculator, supplemental wage tax, how are bonuses taxed, bonus take home pay"
+  },
+  [ToolType.BLOG_RAISE_MOVE]: {
+    title: "Is a $10,000 Raise Worth Moving For? Relocation Cost Calculator",
+    desc: "Break down a $10k raise after taxes and relocation costs. Compare cost of living, moving expenses, and net pay to decide if relocating makes sense.",
+    keywords: "is a 10k raise worth moving, relocation cost calculator, raise vs cost of living, moving for a job, relocation salary comparison"
+  },
+  [ToolType.BLOG_MAX_401K]: {
+    title: "Max Out 401(k) Take-Home Pay: How Pre-Tax Contributions Reduce Taxes",
+    desc: "See how maxing out a 401(k) lowers taxable income and makes the take-home impact smaller than expected. Includes marginal tax bracket examples.",
+    keywords: "max out 401k take home pay, 401k tax savings, pre tax 401k contribution, 401k marginal tax bracket, 401k contribution impact"
+  },
+  [ToolType.BLOG_GROSS_NET]: {
+    title: "Gross vs Net Pay Explained: Paycheck Deductions for New Grads",
+    desc: "A beginner guide to gross vs net pay, FICA, Medicare, and state taxes. Learn why your paycheck is smaller than expected and how to estimate net pay.",
+    keywords: "gross vs net pay, paycheck deductions explained, fica tax, medicare tax, why is my paycheck smaller, net pay calculator"
+  },
+  [ToolType.BLOG_FREELANCE_ESTIMATED]: {
+    title: "Freelancer Estimated Taxes Guide 2025: How Much to Set Aside",
+    desc: "A 1099-friendly estimated tax guide. Learn safe harbor rules, how much to save for quarterly taxes, and how to calculate payments in 2025.",
+    keywords: "freelancer estimated taxes, quarterly taxes for freelancers, 1099 estimated tax guide, how much to set aside for taxes, safe harbor rules 2025"
+  },
+  [ToolType.BLOG_FLORIDA_MOVE]: {
+    title: "Moving to Florida: Sunshine Tax Savings for NY/NJ Residents",
+    desc: "See how moving to Florida changes your take-home pay. Compare New York and New Jersey state taxes to Florida in 2025 and estimate real savings.",
+    keywords: "moving to florida tax savings, sunshine tax savings, florida vs new york taxes, florida vs new jersey taxes, florida take home pay"
+  },
+  [ToolType.BLOG_PITI_EXPLAINED]: {
+    title: "PITI Explained: Why Your Mortgage Payment Is Higher Than the Sticker Price",
+    desc: "Break down principal, interest, taxes, and insurance to understand your true monthly mortgage payment and why PITI is higher than the list price suggests.",
+    keywords: "piti explained, mortgage payment breakdown, principal interest taxes insurance, monthly mortgage payment, what is piti"
+  },
+  [ToolType.BLOG_POINTS_BREAK_EVEN]: {
+    title: "Should You Pay Mortgage Points in 2026? Break-Even Analysis",
+    desc: "Learn when mortgage points make sense, how to calculate break-even, and when buying down the rate is worth it in 2026.",
+    keywords: "mortgage points break even, should i pay points, buy down rate math, mortgage points calculator, mortgage points 2026"
+  },
+  [ToolType.BLOG_PMI_MATH]: {
+    title: "The Mathematics of PMI: How to Get Rid of It Faster",
+    desc: "Understand PMI, the 80% LTV rule, and how extra payments or appraisal updates can remove private mortgage insurance sooner.",
+    keywords: "pmi math, private mortgage insurance removal, ltv ratio 80 percent, get rid of pmi faster, pmi drop off date"
+  },
+  [ToolType.BLOG_RENT_BUY_2026]: {
+    title: "Rent vs Buy in 2026: The 5% Rule Explained",
+    desc: "Use the 5% rule to compare renting vs buying in 2026. Learn the math and when homeownership is worth it.",
+    keywords: "rent vs buy 2026, 5 percent rule rent vs buy, should i rent or buy, rent vs buy calculator"
+  },
+  [ToolType.BLOG_500K_COST]: {
+    title: "What Does a $500,000 House Cost per Month? (6%, 7%, 8% Rates)",
+    desc: "See how interest rates change the monthly cost of a $500k home and why rate sensitivity matters for affordability.",
+    keywords: "500k house monthly cost, mortgage payment at 6 percent, mortgage payment at 7 percent, mortgage payment at 8 percent, rate sensitivity"
+  },
+  [ToolType.BLOG_BIWEEKLY]: {
+    title: "Bi-Weekly Mortgage Payments: Save Interest Faster",
+    desc: "Learn how bi-weekly payments create one extra payment per year and reduce mortgage interest with a simple payment shift.",
+    keywords: "biweekly mortgage payments, extra payment mortgage strategy, save interest on mortgage, 26 payments equals 13"
+  },
+  [ToolType.BLOG_FI_NUMBER]: {
+    title: "What is Your FI Number? The Math Behind Financial Independence",
+    desc: "Learn the 25x annual expenses rule and calculate your financial independence number with clear examples.",
+    keywords: "fi number, financial independence number, 25x rule, freedom number calculator, fi math"
+  },
+  [ToolType.BLOG_LEAN_FAT_FIRE]: {
+    title: "LeanFIRE vs FatFIRE: Which Lifestyle Can You Afford?",
+    desc: "Compare LeanFIRE and FatFIRE spending levels and see how lifestyle choices change your retirement target.",
+    keywords: "leanfire vs fatfire, fatfire lifestyle, leanfire budget, retirement lifestyle comparison"
+  },
+  [ToolType.BLOG_FOUR_PERCENT]: {
+    title: "The 4% Rule Is Dead? Why Safe Withdrawal Rates Are Changing",
+    desc: "Explore inflation, longevity risk, and alternative withdrawal rates to stress test your retirement plan.",
+    keywords: "4 percent rule, safe withdrawal rate, retirement withdrawal strategy, inflation risk retirement"
+  },
+  [ToolType.BLOG_COAST_FIRE]: {
+    title: "Coast FIRE: How to Retire at 30 Without Stopping Work Completely",
+    desc: "Understand Coast FIRE and how front-loading investments lets you coast to financial independence.",
+    keywords: "coast fire, coast fire age, front load investing, retire early without quitting"
+  },
+  [ToolType.BLOG_COST_WAITING]: {
+    title: "The Cost of Waiting: Starting at 25 vs 35 Costs You $1 Million",
+    desc: "See how delaying investing erodes compounding and why starting earlier builds a bigger portfolio.",
+    keywords: "cost of waiting investing, start investing early, compound interest delay, starting at 25 vs 35"
+  },
+  [ToolType.BLOG_ROTH_TRAD_401K]: {
+    title: "Roth vs Traditional 401(k): The Tax Bracket Bet",
+    desc: "Compare Roth vs Traditional 401(k) choices and learn when paying taxes now vs later makes sense.",
+    keywords: "roth vs traditional 401k, tax bracket bet, 401k tax strategy, roth 401k vs traditional"
+  },
+  [ToolType.BLOG_SNOWBALL_AVALANCHE]: {
+    title: "Snowball vs Avalanche: Which Debt Payoff Method Saves More Money?",
+    desc: "Compare the avalanche and snowball debt payoff methods to see which saves more interest and fits your style.",
+    keywords: "snowball vs avalanche, debt payoff method, avalanche vs snowball interest savings, debt payoff strategy"
+  },
+  [ToolType.BLOG_CAR_LOAN_72]: {
+    title: "The True Cost of a 72-Month Car Loan",
+    desc: "See how long-term auto loans inflate total interest and keep you underwater longer than expected.",
+    keywords: "72 month car loan, long term auto loan cost, car loan interest calculator, auto loan term comparison"
+  },
+  [ToolType.BLOG_STUDENT_LOAN_REFI]: {
+    title: "Should You Refinance Your Student Loans? The Math You Need to Know",
+    desc: "Learn when refinancing student loans makes sense and how to weigh rate savings against federal protections.",
+    keywords: "student loan refinance math, refinance student loans, lower rate vs federal protections, student loan payment calculator"
+  },
+  [ToolType.BLOG_CC_MIN_PAY]: {
+    title: "Credit Card Minimum Payments: Why You Will Be in Debt for 20 Years",
+    desc: "Understand how minimum payments stretch credit card debt and how small extra payments shrink payoff time.",
+    keywords: "credit card minimum payments, 2 percent minimum payment, credit card payoff timeline, pay off credit card faster"
   },
   [ToolType.BLOG_ROTH_TRADITIONAL]: {
     title: "Roth IRA vs Traditional IRA 2025: Which is Better? Complete Comparison",
@@ -658,6 +796,29 @@ const AppShell: React.FC = () => {
         case ToolType.BLOG_HOW_MUCH_HOUSE: return <HowMuchHouseCanIAfford2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_DEBT_OR_INVEST: return <ShouldIPayOffDebtOrInvest2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_TAKE_HOME_PAY: return <HowToCalculateTakeHomePay2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_CA_TX_TAKE_HOME: return <CaliforniaVsTexasTakeHome2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_BONUS_TAX: return <BonusTaxMyth2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_RAISE_MOVE: return <RaiseWorthMoving2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_MAX_401K: return <MaxOut401kTakeHome2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_GROSS_NET: return <GrossVsNetPay2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_FREELANCE_ESTIMATED: return <FreelancerEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_FLORIDA_MOVE: return <MovingToFloridaSunshineTax2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_PITI_EXPLAINED: return <PitiExplained2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_POINTS_BREAK_EVEN: return <MortgagePointsBreakEven2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_PMI_MATH: return <PmiMathGuide2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_RENT_BUY_2026: return <RentVsBuyRule2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_500K_COST: return <HouseCostRateSensitivity2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_BIWEEKLY: return <BiWeeklyMortgagePayments2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_FI_NUMBER: return <FINumberMath2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_LEAN_FAT_FIRE: return <LeanVsFatFire2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_FOUR_PERCENT: return <FourPercentRuleDebate2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_COAST_FIRE: return <CoastFireGuide2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_COST_WAITING: return <CostOfWaiting2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_ROTH_TRAD_401K: return <RothVsTraditional401k2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_SNOWBALL_AVALANCHE: return <DebtSnowballVsAvalanche2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_CAR_LOAN_72: return <CarLoan72MonthCost2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_STUDENT_LOAN_REFI: return <StudentLoanRefinanceMath2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_CC_MIN_PAY: return <CreditCardMinimumPayments2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_ROTH_TRADITIONAL: return <RothIRAvsTraditionalIRA2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_EMERGENCY_FUND: return <HowMuchEmergencyFundDoINeed2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_FIRE_GUIDE: return <FIRECalculatorGuide2025 onNavigate={setActiveTool} />;
