@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BlogIndex from '../../components/BlogIndex';
+import SiteShell from '../../components/SiteShell';
 import { TOOL_METADATA } from '../../lib/tool-metadata';
 import { ToolType } from '../../types';
 
@@ -33,7 +34,7 @@ export default function BlogIndexPage() {
   };
 
   return (
-    <>
+    <SiteShell activeTool={ToolType.BLOG_INDEX}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
@@ -41,6 +42,6 @@ export default function BlogIndexPage() {
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-10">
         <BlogIndex />
       </main>
-    </>
+    </SiteShell>
   );
 }
