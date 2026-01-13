@@ -1,7 +1,7 @@
 'use client';
 
 import React, { Suspense, lazy, useEffect, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import Dashboard from './Dashboard';
@@ -126,7 +126,6 @@ const LoadingFallback: React.FC = () => (
 
 const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
   const router = useRouter();
-  const pathname = usePathname();
   const [activeTool, setActiveTool] = useState<ToolType>(initialTool);
 
   useEffect(() => {
@@ -135,14 +134,12 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
 
   useEffect(() => {
     const nextPath = activeTool === ToolType.DASHBOARD ? '/' : `/${activeTool}`;
-    if (pathname !== nextPath) {
-      router.push(nextPath);
-    }
+    router.push(nextPath);
 
     if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [activeTool, pathname, router]);
+  }, [activeTool, router]);
 
   const renderTool = () => {
     const toolComponent = (() => {
