@@ -25,7 +25,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       "url": "https://quantcurb.com/blog",
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 42,
+        "numberOfItems": 48,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -151,6 +151,60 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "10 min",
       date: "February 2026",
       icon: "🌞"
+    },
+    {
+      id: ToolType.BLOG_PITI_EXPLAINED,
+      title: "PITI Explained: Why Your Mortgage Payment Is Higher Than the Sticker Price",
+      description: "Break down principal, interest, taxes, and insurance to understand your true monthly mortgage payment.",
+      category: "Home Buying",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🏡"
+    },
+    {
+      id: ToolType.BLOG_POINTS_BREAK_EVEN,
+      title: "Should You Pay Points on Your Mortgage in 2026? A Break-Even Analysis",
+      description: "See when buying down the rate makes sense and how long it takes to break even.",
+      category: "Home Buying",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "📉"
+    },
+    {
+      id: ToolType.BLOG_PMI_MATH,
+      title: "The Mathematics of PMI: How to Get Rid of It Faster",
+      description: "Understand the 80% LTV rule and strategies to eliminate private mortgage insurance sooner.",
+      category: "Home Buying",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🧮"
+    },
+    {
+      id: ToolType.BLOG_RENT_BUY_2026,
+      title: "Rent vs. Buy in 2026: The 5% Rule Explained",
+      description: "Use the 5% rule to compare renting vs buying and make a smarter housing decision.",
+      category: "Housing Strategy",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "🏠"
+    },
+    {
+      id: ToolType.BLOG_500K_COST,
+      title: "What Does a $500,000 House Actually Cost per Month? (6%, 7%, and 8% Rates)",
+      description: "See how interest rate changes affect monthly payments and buying power on a $500k home.",
+      category: "Home Buying",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "💸"
+    },
+    {
+      id: ToolType.BLOG_BIWEEKLY,
+      title: "Bi-Weekly Mortgage Payments: The \"Secret\" to Saving $50,000 in Interest",
+      description: "Learn how 26 half-payments per year reduce interest and shorten your mortgage term.",
+      category: "Debt & Loans",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🔁"
     },
     {
       id: ToolType.BLOG_ROTH_TRADITIONAL,

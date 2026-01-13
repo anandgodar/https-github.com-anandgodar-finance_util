@@ -53,6 +53,12 @@ const MaxOut401kTakeHome2025 = lazy(() => import('./components/blog/MaxOut401kTa
 const GrossVsNetPay2025 = lazy(() => import('./components/blog/GrossVsNetPay2025'));
 const FreelancerEstimatedTaxesGuide2025 = lazy(() => import('./components/blog/FreelancerEstimatedTaxesGuide2025'));
 const MovingToFloridaSunshineTax2025 = lazy(() => import('./components/blog/MovingToFloridaSunshineTax2025'));
+const PitiExplained2026 = lazy(() => import('./components/blog/PitiExplained2026'));
+const MortgagePointsBreakEven2026 = lazy(() => import('./components/blog/MortgagePointsBreakEven2026'));
+const PmiMathGuide2026 = lazy(() => import('./components/blog/PmiMathGuide2026'));
+const RentVsBuyRule2026 = lazy(() => import('./components/blog/RentVsBuyRule2026'));
+const HouseCostRateSensitivity2026 = lazy(() => import('./components/blog/HouseCostRateSensitivity2026'));
+const BiWeeklyMortgagePayments2026 = lazy(() => import('./components/blog/BiWeeklyMortgagePayments2026'));
 const RothIRAvsTraditionalIRA2025 = lazy(() => import('./components/blog/RothIRAvsTraditionalIRA2025'));
 const HowMuchEmergencyFundDoINeed2025 = lazy(() => import('./components/blog/HowMuchEmergencyFundDoINeed2025'));
 const FIRECalculatorGuide2025 = lazy(() => import('./components/blog/FIRECalculatorGuide2025'));
@@ -317,6 +323,36 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     title: "Moving to Florida: Sunshine Tax Savings for NY/NJ Residents",
     desc: "See how moving to Florida changes your take-home pay. Compare New York and New Jersey state taxes to Florida in 2025 and estimate real savings.",
     keywords: "moving to florida tax savings, sunshine tax savings, florida vs new york taxes, florida vs new jersey taxes, florida take home pay"
+  },
+  [ToolType.BLOG_PITI_EXPLAINED]: {
+    title: "PITI Explained: Why Your Mortgage Payment Is Higher Than the Sticker Price",
+    desc: "Break down principal, interest, taxes, and insurance to understand your true monthly mortgage payment and why PITI is higher than the list price suggests.",
+    keywords: "piti explained, mortgage payment breakdown, principal interest taxes insurance, monthly mortgage payment, what is piti"
+  },
+  [ToolType.BLOG_POINTS_BREAK_EVEN]: {
+    title: "Should You Pay Mortgage Points in 2026? Break-Even Analysis",
+    desc: "Learn when mortgage points make sense, how to calculate break-even, and when buying down the rate is worth it in 2026.",
+    keywords: "mortgage points break even, should i pay points, buy down rate math, mortgage points calculator, mortgage points 2026"
+  },
+  [ToolType.BLOG_PMI_MATH]: {
+    title: "The Mathematics of PMI: How to Get Rid of It Faster",
+    desc: "Understand PMI, the 80% LTV rule, and how extra payments or appraisal updates can remove private mortgage insurance sooner.",
+    keywords: "pmi math, private mortgage insurance removal, ltv ratio 80 percent, get rid of pmi faster, pmi drop off date"
+  },
+  [ToolType.BLOG_RENT_BUY_2026]: {
+    title: "Rent vs Buy in 2026: The 5% Rule Explained",
+    desc: "Use the 5% rule to compare renting vs buying in 2026. Learn the math and when homeownership is worth it.",
+    keywords: "rent vs buy 2026, 5 percent rule rent vs buy, should i rent or buy, rent vs buy calculator"
+  },
+  [ToolType.BLOG_500K_COST]: {
+    title: "What Does a $500,000 House Cost per Month? (6%, 7%, 8% Rates)",
+    desc: "See how interest rates change the monthly cost of a $500k home and why rate sensitivity matters for affordability.",
+    keywords: "500k house monthly cost, mortgage payment at 6 percent, mortgage payment at 7 percent, mortgage payment at 8 percent, rate sensitivity"
+  },
+  [ToolType.BLOG_BIWEEKLY]: {
+    title: "Bi-Weekly Mortgage Payments: Save Interest Faster",
+    desc: "Learn how bi-weekly payments create one extra payment per year and reduce mortgage interest with a simple payment shift.",
+    keywords: "biweekly mortgage payments, extra payment mortgage strategy, save interest on mortgage, 26 payments equals 13"
   },
   [ToolType.BLOG_ROTH_TRADITIONAL]: {
     title: "Roth IRA vs Traditional IRA 2025: Which is Better? Complete Comparison",
@@ -707,6 +743,12 @@ const AppShell: React.FC = () => {
         case ToolType.BLOG_GROSS_NET: return <GrossVsNetPay2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_FREELANCE_ESTIMATED: return <FreelancerEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_FLORIDA_MOVE: return <MovingToFloridaSunshineTax2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_PITI_EXPLAINED: return <PitiExplained2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_POINTS_BREAK_EVEN: return <MortgagePointsBreakEven2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_PMI_MATH: return <PmiMathGuide2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_RENT_BUY_2026: return <RentVsBuyRule2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_500K_COST: return <HouseCostRateSensitivity2026 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_BIWEEKLY: return <BiWeeklyMortgagePayments2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_ROTH_TRADITIONAL: return <RothIRAvsTraditionalIRA2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_EMERGENCY_FUND: return <HowMuchEmergencyFundDoINeed2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_FIRE_GUIDE: return <FIRECalculatorGuide2025 onNavigate={setActiveTool} />;
