@@ -136,14 +136,16 @@ const calculateProgressiveTax = (taxableIncome: number, brackets: TaxBracket[]):
 
 interface SalaryCalculatorProps {
   onNavigate?: (tool: ToolType) => void;
+  initialState?: string; // State code (e.g., 'CA', 'TX')
+  customTitle?: string; // Custom H1 title (e.g., "Salary Tax Calculator - California")
 }
 
 type PayFrequency = 'weekly' | 'bi-weekly' | 'semi-monthly' | 'monthly' | 'annual';
 
-const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate }) => {
+const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initialState, customTitle }) => {
   const [annualGross, setAnnualGross] = useState<number>(125000);
   const [bonus, setBonus] = useState<number>(15000);
-  const [stateCode, setStateCode] = useState<string>('CA');
+  const [stateCode, setStateCode] = useState<string>(initialState || 'CA');
   const [contrib401kPercent, setContrib401kPercent] = useState<number>(10);
   const [healthInsurance, setHealthInsurance] = useState<number>(3600);
   const [payFrequency, setPayFrequency] = useState<PayFrequency>('monthly');
@@ -424,7 +426,27 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate }) => {
              <span className="px-4 py-1.5 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg shadow-indigo-100">Tax Intelligence</span>
              <span className="text-slate-400 font-bold text-[10px] uppercase tracking-widest">2024-2025 Filer Standard</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight">Salary <span className="text-indigo-600">Estimator</span></h1>
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight">
+            {customTitle ? (
+              <span>{customTitle.split(' - ').map((part, i) => 
+                i === 0 ? (
+                  <span key={i}>{part.split(' ').map((word, j) => 
+                    j === 0 ? (
+                      <span key={j}><span className="text-indigo-600">{word}</span> </span>
+                    ) : (
+                      <span key={j}>{word} </span>
+                    )
+                  )}</span>
+                ) : (
+                  <span key={i}> - <span className="text-indigo-600">{part}</span></span>
+                )
+              )}</span>
+            ) : (
+              <>
+                Salary <span className="text-indigo-600">Estimator</span>
+              </>
+            )}
+          </h1>
           <p className="text-slate-500 mt-2 max-w-lg font-medium text-lg leading-relaxed">Precision modeling of your take-home pay across all 50 US States. Audit the impact of 401(k) tax-shields and local state tax rates.</p>
         </div>
         <div className="bg-slate-900 px-12 py-10 rounded-[3.5rem] text-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center min-w-[320px] border border-slate-800">
