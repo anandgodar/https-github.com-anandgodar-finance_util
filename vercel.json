@@ -1,12 +1,7 @@
 {
   "version": 2,
   "public": true,
-  "rewrites": [
-    {
-      "source": "/((?!sitemap\\.xml|robots\\.txt).*)",
-      "destination": "/index.html"
-    }
-  ],
+  "outputDirectory": "out",
   "headers": [
     {
       "source": "/sitemap.xml",

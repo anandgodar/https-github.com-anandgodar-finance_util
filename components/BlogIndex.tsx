@@ -1,4 +1,7 @@
+'use client';
+
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { ToolType } from '../types';
 
 interface BlogIndexProps {
@@ -16,6 +19,16 @@ interface BlogPost {
 }
 
 const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
+  const router = useRouter();
+
+  const handleNavigate = (tool: ToolType) => {
+    if (onNavigate) {
+      onNavigate(tool);
+      return;
+    }
+    const path = tool === ToolType.DASHBOARD ? '/' : `/${tool}`;
+    router.push(path);
+  };
   useEffect(() => {
     const blogSchema = {
       "@context": "https://schema.org",
@@ -695,7 +708,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
         {blogPosts.map((post) => (
           <article
             key={post.id}
-            onClick={() => onNavigate?.(post.id)}
+            onClick={() => handleNavigate(post.id)}
             className="bg-white border border-slate-200 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all cursor-pointer group"
           >
             <div className="flex items-start gap-4 mb-4">
@@ -738,7 +751,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
           taxes, retirement, and investments.
         </p>
         <button
-          onClick={() => onNavigate?.(ToolType.DASHBOARD)}
+          onClick={() => handleNavigate(ToolType.DASHBOARD)}
           className="bg-white text-indigo-600 font-bold py-4 px-8 rounded-xl hover:bg-indigo-50 transition text-lg"
         >
           Explore All Calculators →
