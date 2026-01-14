@@ -1,5 +1,6 @@
 
 import React from 'react';
+import AuthorBio from './AuthorBio';
 
 const AboutUs: React.FC = () => {
   return (
@@ -63,6 +64,9 @@ const AboutUs: React.FC = () => {
             ))}
          </div>
       </section>
+
+      {/* Author Bio Section */}
+      <AuthorBio variant="full" />
 
       <footer className="bg-indigo-600 p-12 md:p-16 rounded-[4rem] text-white text-center shadow-2xl relative overflow-hidden">
          <div className="relative z-10 space-y-6">
