@@ -10,76 +10,102 @@ import json
 import math
 from typing import Dict, Tuple
 
-# State tax data (matching SalaryCalculator component)
+# State tax data (matching SalaryCalculator component exactly)
+# Format: {'name': str, 'rate': float, 'stdDeduction': float, 'brackets': [(limit, rate), ...] or None}
 STATE_TAX_DATA = {
-    'AL': {'name': 'Alabama', 'rate': 0.05, 'brackets': [(500, 0.02), (3000, 0.04), (None, 0.05)]},
-    'AK': {'name': 'Alaska', 'rate': 0.00},
-    'AZ': {'name': 'Arizona', 'rate': 0.025},
-    'AR': {'name': 'Arkansas', 'rate': 0.044, 'brackets': [(5000, 0.02), (10000, 0.03), (None, 0.044)]},
-    'CA': {'name': 'California', 'rate': 0.093, 'brackets': [
+    'AL': {'name': 'Alabama', 'rate': 0.05, 'stdDeduction': 2500, 'brackets': [(500, 0.02), (3000, 0.04), (None, 0.05)]},
+    'AK': {'name': 'Alaska', 'rate': 0.00, 'stdDeduction': 0},
+    'AZ': {'name': 'Arizona', 'rate': 0.025, 'stdDeduction': 14600},
+    'AR': {'name': 'Arkansas', 'rate': 0.044, 'stdDeduction': 2320, 'brackets': [(5000, 0.02), (10000, 0.03), (None, 0.044)]},
+    'CA': {'name': 'California', 'rate': 0.093, 'stdDeduction': 5363, 'brackets': [
         (10412, 0.01), (24684, 0.02), (38959, 0.04), (54081, 0.06), (68350, 0.08),
         (349137, 0.093), (418961, 0.103), (698271, 0.113), (None, 0.123)
     ]},
-    'CO': {'name': 'Colorado', 'rate': 0.044},
-    'CT': {'name': 'Connecticut', 'rate': 0.05, 'brackets': [
+    'CO': {'name': 'Colorado', 'rate': 0.044, 'stdDeduction': 14600},
+    'CT': {'name': 'Connecticut', 'rate': 0.05, 'stdDeduction': 15000, 'brackets': [
         (10000, 0.03), (50000, 0.05), (100000, 0.055), (200000, 0.06), (250000, 0.065), (500000, 0.069), (None, 0.0699)
     ]},
-    'DE': {'name': 'Delaware', 'rate': 0.066, 'brackets': [
+    'DE': {'name': 'Delaware', 'rate': 0.066, 'stdDeduction': 3250, 'brackets': [
         (2000, 0.00), (5000, 0.022), (10000, 0.039), (20000, 0.048), (25000, 0.052), (60000, 0.0555), (None, 0.066)
     ]},
-    'FL': {'name': 'Florida', 'rate': 0.00},
-    'GA': {'name': 'Georgia', 'rate': 0.0549},
-    'HI': {'name': 'Hawaii', 'rate': 0.0825, 'brackets': [
+    'FL': {'name': 'Florida', 'rate': 0.00, 'stdDeduction': 0},
+    'GA': {'name': 'Georgia', 'rate': 0.0549, 'stdDeduction': 12000},
+    'HI': {'name': 'Hawaii', 'rate': 0.0825, 'stdDeduction': 2200, 'brackets': [
         (2400, 0.014), (4800, 0.032), (9600, 0.044), (14400, 0.055), (19200, 0.064), (24000, 0.068),
         (36000, 0.072), (48000, 0.076), (150000, 0.079), (175000, 0.0825), (200000, 0.09), (None, 0.11)
     ]},
-    'ID': {'name': 'Idaho', 'rate': 0.058},
-    'IL': {'name': 'Illinois', 'rate': 0.0495},
-    'IN': {'name': 'Indiana', 'rate': 0.0305},
-    'IA': {'name': 'Iowa', 'rate': 0.057, 'brackets': [(6000, 0.044), (30000, 0.0482), (75000, 0.057), (None, 0.06)]},
-    'KS': {'name': 'Kansas', 'rate': 0.057, 'brackets': [(15000, 0.031), (30000, 0.0525), (None, 0.057)]},
-    'KY': {'name': 'Kentucky', 'rate': 0.04},
-    'LA': {'name': 'Louisiana', 'rate': 0.0425, 'brackets': [(12500, 0.0185), (50000, 0.035), (None, 0.0425)]},
-    'ME': {'name': 'Maine', 'rate': 0.0715, 'brackets': [(24500, 0.058), (58050, 0.0675), (None, 0.0715)]},
-    'MD': {'name': 'Maryland', 'rate': 0.0475, 'brackets': [(1000, 0.02), (2000, 0.03), (3000, 0.04), (100000, 0.0475), (125000, 0.05), (150000, 0.0525), (250000, 0.055), (None, 0.0575)]},
-    'MA': {'name': 'Massachusetts', 'rate': 0.05},
-    'MI': {'name': 'Michigan', 'rate': 0.0425},
-    'MN': {'name': 'Minnesota', 'rate': 0.0705, 'brackets': [
-        (30130, 0.0535), (98760, 0.068), (183340, 0.0785), (None, 0.0985)
+    'ID': {'name': 'Idaho', 'rate': 0.058, 'stdDeduction': 14600},
+    'IL': {'name': 'Illinois', 'rate': 0.0495, 'stdDeduction': 2775},
+    'IN': {'name': 'Indiana', 'rate': 0.0305, 'stdDeduction': 1000},
+    'IA': {'name': 'Iowa', 'rate': 0.057, 'stdDeduction': 0, 'brackets': [(6000, 0.044), (30000, 0.0482), (None, 0.057)]},
+    'KS': {'name': 'Kansas', 'rate': 0.057, 'stdDeduction': 3500, 'brackets': [(15000, 0.031), (30000, 0.0525), (None, 0.057)]},
+    'KY': {'name': 'Kentucky', 'rate': 0.04, 'stdDeduction': 3160},
+    'LA': {'name': 'Louisiana', 'rate': 0.0425, 'stdDeduction': 4500, 'brackets': [(12500, 0.0185), (50000, 0.035), (None, 0.0425)]},
+    'ME': {'name': 'Maine', 'rate': 0.0715, 'stdDeduction': 14600, 'brackets': [(26050, 0.058), (61600, 0.0675), (None, 0.0715)]},
+    'MD': {'name': 'Maryland', 'rate': 0.0475, 'stdDeduction': 2550, 'brackets': [
+        (1000, 0.02), (2000, 0.03), (3000, 0.04), (100000, 0.0475), (125000, 0.05), (150000, 0.0525), (250000, 0.055), (None, 0.0575)
     ]},
-    'MS': {'name': 'Mississippi', 'rate': 0.05, 'brackets': [(10000, 0.00), (None, 0.05)]},
-    'MO': {'name': 'Missouri', 'rate': 0.048, 'brackets': [(1121, 0.015), (2242, 0.02), (3363, 0.025), (4484, 0.03), (5605, 0.035), (6726, 0.04), (7847, 0.045), (None, 0.048)]},
-    'MT': {'name': 'Montana', 'rate': 0.059, 'brackets': [(3100, 0.01), (5500, 0.02), (8400, 0.03), (11400, 0.04), (14600, 0.05), (18800, 0.06), (None, 0.0675)]},
-    'NE': {'name': 'Nebraska', 'rate': 0.0584, 'brackets': [(3700, 0.0246), (22170, 0.0351), (35730, 0.0501), (None, 0.0684)]},
-    'NV': {'name': 'Nevada', 'rate': 0.00},
-    'NH': {'name': 'New Hampshire', 'rate': 0.00},  # No wage tax, only interest/dividends
-    'NJ': {'name': 'New Jersey', 'rate': 0.0637, 'brackets': [
+    'MA': {'name': 'Massachusetts', 'rate': 0.05, 'stdDeduction': 4400},
+    'MI': {'name': 'Michigan', 'rate': 0.0425, 'stdDeduction': 5600},
+    'MN': {'name': 'Minnesota', 'rate': 0.0705, 'stdDeduction': 14575, 'brackets': [
+        (30070, 0.0535), (98760, 0.068), (193240, 0.0785), (None, 0.0985)
+    ]},
+    'MS': {'name': 'Mississippi', 'rate': 0.05, 'stdDeduction': 0, 'brackets': [(10000, 0.00), (None, 0.05)]},
+    'MO': {'name': 'Missouri', 'rate': 0.048, 'stdDeduction': 14600, 'brackets': [
+        (1207, 0.00), (2414, 0.02), (3621, 0.025), (4828, 0.03), (6035, 0.035), (7242, 0.04), (8449, 0.045), (None, 0.048)
+    ]},
+    'MT': {'name': 'Montana', 'rate': 0.059, 'stdDeduction': 0, 'brackets': [(20500, 0.047), (None, 0.059)]},
+    'NE': {'name': 'Nebraska', 'rate': 0.0584, 'stdDeduction': 7900, 'brackets': [
+        (3820, 0.0246), (22130, 0.0351), (35000, 0.0501), (None, 0.0584)
+    ]},
+    'NV': {'name': 'Nevada', 'rate': 0.00, 'stdDeduction': 0},
+    'NH': {'name': 'New Hampshire', 'rate': 0.00, 'stdDeduction': 0},
+    'NJ': {'name': 'New Jersey', 'rate': 0.0637, 'stdDeduction': 1000, 'brackets': [
         (20000, 0.014), (35000, 0.0175), (40000, 0.035), (75000, 0.05525), (500000, 0.0637), (1000000, 0.0897), (None, 0.1075)
     ]},
-    'NM': {'name': 'New Mexico', 'rate': 0.059, 'brackets': [(5500, 0.017), (11000, 0.032), (16000, 0.047), (210000, 0.049), (None, 0.059)]},
-    'NY': {'name': 'New York', 'rate': 0.065, 'brackets': [
-        (8500, 0.04), (11700, 0.045), (13900, 0.0525), (80650, 0.055), (215400, 0.06), (1077550, 0.0685), (5000000, 0.0962), (25000000, 0.103), (None, 0.109)
+    'NM': {'name': 'New Mexico', 'rate': 0.059, 'stdDeduction': 14600, 'brackets': [(5500, 0.017), (11000, 0.032), (16000, 0.047), (None, 0.059)]},
+    'NY': {'name': 'New York', 'rate': 0.065, 'stdDeduction': 8000, 'brackets': [
+        (8500, 0.04), (11700, 0.045), (13900, 0.0525), (21400, 0.0585), (80650, 0.0625), (215400, 0.0685),
+        (1077550, 0.0965), (5000000, 0.103), (None, 0.109)
     ]},
-    'NC': {'name': 'North Carolina', 'rate': 0.045},
-    'ND': {'name': 'North Dakota', 'rate': 0.02, 'brackets': [(40425, 0.011), (97950, 0.0202), (204675, 0.0227), (445000, 0.0264), (None, 0.029)]},
-    'OH': {'name': 'Ohio', 'rate': 0.0399, 'brackets': [(26050, 0.00), (None, 0.0399)]},
-    'OK': {'name': 'Oklahoma', 'rate': 0.05, 'brackets': [(1000, 0.0025), (2500, 0.0075), (3750, 0.0175), (4900, 0.0275), (7200, 0.0375), (None, 0.0475)]},
-    'OR': {'name': 'Oregon', 'rate': 0.099, 'brackets': [(3700, 0.0475), (9300, 0.0675), (125000, 0.0875), (None, 0.099)]},
-    'PA': {'name': 'Pennsylvania', 'rate': 0.0307},
-    'RI': {'name': 'Rhode Island', 'rate': 0.0599, 'brackets': [(68200, 0.0375), (155050, 0.0475), (None, 0.0599)]},
-    'SC': {'name': 'South Carolina', 'rate': 0.065, 'brackets': [(3200, 0.00), (6410, 0.03), (9610, 0.04), (12820, 0.05), (16030, 0.06), (None, 0.065)]},
-    'SD': {'name': 'South Dakota', 'rate': 0.00},
-    'TN': {'name': 'Tennessee', 'rate': 0.00},
-    'TX': {'name': 'Texas', 'rate': 0.00},
-    'UT': {'name': 'Utah', 'rate': 0.0485},
-    'VT': {'name': 'Vermont', 'rate': 0.0875, 'brackets': [(41650, 0.0335), (100900, 0.066), (206350, 0.076), (None, 0.0875)]},
-    'VA': {'name': 'Virginia', 'rate': 0.0575, 'brackets': [(3000, 0.02), (5000, 0.03), (17000, 0.05), (None, 0.0575)]},
-    'WA': {'name': 'Washington', 'rate': 0.00},
-    'WV': {'name': 'West Virginia', 'rate': 0.065, 'brackets': [(10000, 0.03), (25000, 0.04), (40000, 0.045), (60000, 0.06), (None, 0.065)]},
-    'WI': {'name': 'Wisconsin', 'rate': 0.07265, 'brackets': [(12760, 0.0354), (25520, 0.0405), (280950, 0.0654), (None, 0.0765)]},
-    'WY': {'name': 'Wyoming', 'rate': 0.00},
-    'DC': {'name': 'District of Columbia', 'rate': 0.085, 'brackets': [
-        (10000, 0.04), (40000, 0.06), (60000, 0.065), (350000, 0.085), (1000000, 0.0895), (None, 0.1075)
+    'NC': {'name': 'North Carolina', 'rate': 0.045, 'stdDeduction': 14250},
+    'ND': {'name': 'North Dakota', 'rate': 0.025, 'stdDeduction': 0, 'brackets': [
+        (44725, 0.00), (225975, 0.0195), (None, 0.025)
+    ]},
+    'OH': {'name': 'Ohio', 'rate': 0.035, 'stdDeduction': 0, 'brackets': [(26050, 0.00), (100000, 0.0275), (None, 0.035)]},
+    'OK': {'name': 'Oklahoma', 'rate': 0.0475, 'stdDeduction': 6350, 'brackets': [
+        (1000, 0.0025), (2500, 0.0075), (3750, 0.0175), (4900, 0.0275), (7200, 0.0375), (None, 0.0475)
+    ]},
+    'OR': {'name': 'Oregon', 'rate': 0.0875, 'stdDeduction': 2745, 'brackets': [
+        (4050, 0.0475), (10200, 0.0675), (125000, 0.0875), (None, 0.099)
+    ]},
+    'PA': {'name': 'Pennsylvania', 'rate': 0.0307, 'stdDeduction': 0},
+    'RI': {'name': 'Rhode Island', 'rate': 0.0599, 'stdDeduction': 10100, 'brackets': [
+        (73450, 0.0375), (166950, 0.0475), (None, 0.0599)
+    ]},
+    'SC': {'name': 'South Carolina', 'rate': 0.064, 'stdDeduction': 0, 'brackets': [
+        (3460, 0.00), (17330, 0.03), (None, 0.064)
+    ]},
+    'SD': {'name': 'South Dakota', 'rate': 0.00, 'stdDeduction': 0},
+    'TN': {'name': 'Tennessee', 'rate': 0.00, 'stdDeduction': 0},
+    'TX': {'name': 'Texas', 'rate': 0.00, 'stdDeduction': 0},
+    'UT': {'name': 'Utah', 'rate': 0.0465, 'stdDeduction': 14600},
+    'VT': {'name': 'Vermont', 'rate': 0.0875, 'stdDeduction': 0, 'brackets': [
+        (45400, 0.0335), (110000, 0.066), (229550, 0.076), (None, 0.0875)
+    ]},
+    'VA': {'name': 'Virginia', 'rate': 0.0575, 'stdDeduction': 8500, 'brackets': [
+        (3000, 0.02), (5000, 0.03), (17000, 0.05), (None, 0.0575)
+    ]},
+    'WA': {'name': 'Washington', 'rate': 0.00, 'stdDeduction': 0},
+    'WV': {'name': 'West Virginia', 'rate': 0.0512, 'stdDeduction': 0, 'brackets': [
+        (10000, 0.0236), (25000, 0.0315), (40000, 0.0354), (60000, 0.0472), (None, 0.0512)
+    ]},
+    'WI': {'name': 'Wisconsin', 'rate': 0.053, 'stdDeduction': 12760, 'brackets': [
+        (14320, 0.035), (28640, 0.044), (315310, 0.053), (None, 0.0765)
+    ]},
+    'WY': {'name': 'Wyoming', 'rate': 0.00, 'stdDeduction': 0},
+    'DC': {'name': 'District of Columbia', 'rate': 0.085, 'stdDeduction': 14600, 'brackets': [
+        (10000, 0.04), (40000, 0.06), (60000, 0.065), (250000, 0.085), (500000, 0.0925), (1000000, 0.095), (None, 0.1075)
     ]}
 }
 
@@ -96,44 +122,55 @@ STATE_FIPS = {
 }
 
 
-def calculate_state_tax(income: float, state_code: str) -> float:
-    """Calculate state income tax based on brackets or flat rate."""
-    state_info = STATE_TAX_DATA.get(state_code)
-    if not state_info:
-        return 0.0
-    
-    # If no brackets, use flat rate
-    if 'brackets' not in state_info:
-        return income * state_info['rate']
-    
-    # Calculate using progressive brackets (marginal rate system)
+def calculate_progressive_tax(taxable_income: float, brackets: list) -> float:
+    """Calculate tax using progressive brackets (matching SalaryCalculator logic)."""
     tax = 0.0
     prev_limit = 0
     
-    for bracket in state_info['brackets']:
+    for bracket in brackets:
         limit = bracket[0] if bracket[0] is not None else float('inf')
         rate = bracket[1]
         
-        if income > prev_limit:
-            taxable_in_bracket = min(income, limit) - prev_limit
+        if taxable_income > prev_limit:
+            taxable_in_bracket = min(taxable_income, limit) - prev_limit
             if taxable_in_bracket > 0:
                 tax += taxable_in_bracket * rate
         
-        if income <= limit:
+        if taxable_income <= limit:
             break
         prev_limit = limit
     
     return tax
 
 
+def calculate_state_tax(taxable_gross: float, state_code: str) -> float:
+    """Calculate state income tax based on brackets or flat rate (matching SalaryCalculator logic)."""
+    state_info = STATE_TAX_DATA.get(state_code)
+    if not state_info:
+        return 0.0
+    
+    # Apply state standard deduction
+    std_deduction = state_info.get('stdDeduction', 0)
+    state_taxable = max(0, taxable_gross - std_deduction)
+    
+    # If no brackets, use flat rate
+    if 'brackets' not in state_info or not state_info['brackets']:
+        return state_taxable * state_info['rate']
+    
+    # Calculate using progressive brackets
+    return calculate_progressive_tax(state_taxable, state_info['brackets'])
+
+
 def calculate_net_pay(gross: float, state_code: str, filing_status: str = 'single') -> float:
     """
     Calculate net pay after federal, state, and FICA taxes.
+    Matches SalaryCalculator component logic exactly.
     Assumes single filer, standard deduction, no 401k or health insurance.
     """
-    # 2024 Federal Tax Brackets (Single Filer)
+    # 2024 Federal Tax Brackets (Single Filer) - matching SalaryCalculator
     federal_std_deduction = 14600
-    taxable_income = max(0, gross - federal_std_deduction)
+    taxable_gross = gross  # No 401k or health insurance deductions for this calculation
+    taxable_income = max(0, taxable_gross - federal_std_deduction)
     
     federal_brackets = [
         (11600, 0.10),
@@ -145,34 +182,21 @@ def calculate_net_pay(gross: float, state_code: str, filing_status: str = 'singl
         (None, 0.37)
     ]
     
-    federal_tax = 0.0
-    prev_limit = 0
+    federal_tax = calculate_progressive_tax(taxable_income, federal_brackets)
     
-    for bracket in federal_brackets:
-        limit = bracket[0] if bracket[0] is not None else float('inf')
-        rate = bracket[1]
-        
-        if taxable_income > prev_limit:
-            taxable_in_bracket = min(taxable_income, limit) - prev_limit
-            federal_tax += taxable_in_bracket * rate
-        
-        if taxable_income <= limit:
-            break
-        prev_limit = limit
-    
-    # FICA taxes (Social Security + Medicare)
+    # FICA taxes (Social Security + Medicare) - matching SalaryCalculator
     ss_wage_base = 168600
     ss_tax = min(gross, ss_wage_base) * 0.062
     medicare_tax = gross * 0.0145
     
-    # Additional Medicare tax for high earners
+    # Additional Medicare tax for high earners (>$200k)
     if gross > 200000:
         medicare_tax += (gross - 200000) * 0.009
     
     fica_tax = ss_tax + medicare_tax
     
-    # State tax
-    state_tax = calculate_state_tax(gross, state_code)
+    # State tax (uses taxable_gross, applies state std deduction internally)
+    state_tax = calculate_state_tax(taxable_gross, state_code)
     
     # Net pay
     net_pay = gross - federal_tax - fica_tax - state_tax
