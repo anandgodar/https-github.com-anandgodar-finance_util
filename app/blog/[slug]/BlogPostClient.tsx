@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { blogContent } from '../../../lib/blog-content';
 import SiteShell from '../../../components/SiteShell';
 import BlogStickyFooter from '../../../components/BlogStickyFooter';
+import AuthorBio from '../../../components/AuthorBio';
 import { ToolType } from '../../../types';
 
 type BlogPostClientProps = {
@@ -39,6 +40,8 @@ export default function BlogPostClient({ slug }: BlogPostClientProps) {
     <SiteShell activeTool={ToolType.BLOG_INDEX}>
       <article className="w-full max-w-4xl pb-20 md:pb-0">
         <ArticleComponent onNavigate={handleNavigate} />
+        {/* Author Bio - appears on all blog posts */}
+        <AuthorBio variant="compact" />
       </article>
       <BlogStickyFooter blogSlug={slug} />
     </SiteShell>

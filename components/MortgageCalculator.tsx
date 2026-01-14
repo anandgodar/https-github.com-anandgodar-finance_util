@@ -13,6 +13,7 @@ import EmailCapture from './EmailCapture';
 import RecommendedTools from './RecommendedTools';
 import AdPlacement from './AdPlacement';
 import CalculatorFAQ from './CalculatorFAQ';
+import LenderComparisonTable from './LenderComparisonTable';
 import { ToolType } from '../types';
 
 interface AmortizationEntry {
@@ -581,6 +582,9 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
           }
         ]}
       />
+
+      {/* Lender Comparison Table */}
+      <LenderComparisonTable type="mortgage" />
 
       {/* Email Capture Section */}
       <section className="mt-12">
