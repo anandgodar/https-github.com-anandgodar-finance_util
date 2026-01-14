@@ -82,7 +82,7 @@ function generateSitemap() {
 
   STATE_SLUGS.forEach(state => {
     sitemap += `  <url>
-    <loc>https://quantcurb.com/salary-tax-estimator-${state}</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/${state}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>

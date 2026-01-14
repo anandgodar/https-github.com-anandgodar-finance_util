@@ -138,11 +138,12 @@ interface SalaryCalculatorProps {
   onNavigate?: (tool: ToolType) => void;
   initialState?: string; // State code (e.g., 'CA', 'TX')
   customTitle?: string; // Custom H1 title (e.g., "Salary Tax Calculator - California")
+  introText?: string; // Custom intro text for state-specific pages
 }
 
 type PayFrequency = 'weekly' | 'bi-weekly' | 'semi-monthly' | 'monthly' | 'annual';
 
-const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initialState, customTitle }) => {
+const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initialState, customTitle, introText }) => {
   const [annualGross, setAnnualGross] = useState<number>(125000);
   const [bonus, setBonus] = useState<number>(15000);
   const [stateCode, setStateCode] = useState<string>(initialState || 'CA');
@@ -447,7 +448,9 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
               </>
             )}
           </h1>
-          <p className="text-slate-500 mt-2 max-w-lg font-medium text-lg leading-relaxed">Precision modeling of your take-home pay across all 50 US States. Audit the impact of 401(k) tax-shields and local state tax rates.</p>
+               <p className="text-slate-500 mt-2 max-w-lg font-medium text-lg leading-relaxed">
+                 {introText || "Precision modeling of your take-home pay across all 50 US States. Audit the impact of 401(k) tax-shields and local state tax rates."}
+               </p>
         </div>
         <div className="bg-slate-900 px-12 py-10 rounded-[3.5rem] text-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center min-w-[320px] border border-slate-800">
            <div className="relative z-10 text-center">
@@ -879,6 +882,77 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
           }
         ]}
       />
+
+      {/* Internal Linking for Programmatic SEO */}
+      <section className="mt-20 pt-16 border-t border-slate-200">
+        <h3 className="text-2xl font-black text-slate-900 mb-6 text-center">State-Specific Paycheck Calculators</h3>
+        <p className="text-slate-600 text-center mb-8 max-w-2xl mx-auto">
+          Calculate your take-home pay for any US state. Each state has unique tax rates and brackets that affect your net pay.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-w-5xl mx-auto">
+          {[
+            { name: 'Alabama', slug: 'alabama' },
+            { name: 'Alaska', slug: 'alaska' },
+            { name: 'Arizona', slug: 'arizona' },
+            { name: 'Arkansas', slug: 'arkansas' },
+            { name: 'California', slug: 'california' },
+            { name: 'Colorado', slug: 'colorado' },
+            { name: 'Connecticut', slug: 'connecticut' },
+            { name: 'Delaware', slug: 'delaware' },
+            { name: 'Florida', slug: 'florida' },
+            { name: 'Georgia', slug: 'georgia' },
+            { name: 'Hawaii', slug: 'hawaii' },
+            { name: 'Idaho', slug: 'idaho' },
+            { name: 'Illinois', slug: 'illinois' },
+            { name: 'Indiana', slug: 'indiana' },
+            { name: 'Iowa', slug: 'iowa' },
+            { name: 'Kansas', slug: 'kansas' },
+            { name: 'Kentucky', slug: 'kentucky' },
+            { name: 'Louisiana', slug: 'louisiana' },
+            { name: 'Maine', slug: 'maine' },
+            { name: 'Maryland', slug: 'maryland' },
+            { name: 'Massachusetts', slug: 'massachusetts' },
+            { name: 'Michigan', slug: 'michigan' },
+            { name: 'Minnesota', slug: 'minnesota' },
+            { name: 'Mississippi', slug: 'mississippi' },
+            { name: 'Missouri', slug: 'missouri' },
+            { name: 'Montana', slug: 'montana' },
+            { name: 'Nebraska', slug: 'nebraska' },
+            { name: 'Nevada', slug: 'nevada' },
+            { name: 'New Hampshire', slug: 'new-hampshire' },
+            { name: 'New Jersey', slug: 'new-jersey' },
+            { name: 'New Mexico', slug: 'new-mexico' },
+            { name: 'New York', slug: 'new-york' },
+            { name: 'North Carolina', slug: 'north-carolina' },
+            { name: 'North Dakota', slug: 'north-dakota' },
+            { name: 'Ohio', slug: 'ohio' },
+            { name: 'Oklahoma', slug: 'oklahoma' },
+            { name: 'Oregon', slug: 'oregon' },
+            { name: 'Pennsylvania', slug: 'pennsylvania' },
+            { name: 'Rhode Island', slug: 'rhode-island' },
+            { name: 'South Carolina', slug: 'south-carolina' },
+            { name: 'South Dakota', slug: 'south-dakota' },
+            { name: 'Tennessee', slug: 'tennessee' },
+            { name: 'Texas', slug: 'texas' },
+            { name: 'Utah', slug: 'utah' },
+            { name: 'Vermont', slug: 'vermont' },
+            { name: 'Virginia', slug: 'virginia' },
+            { name: 'Washington', slug: 'washington' },
+            { name: 'West Virginia', slug: 'west-virginia' },
+            { name: 'Wisconsin', slug: 'wisconsin' },
+            { name: 'Wyoming', slug: 'wyoming' },
+            { name: 'District of Columbia', slug: 'district-of-columbia' }
+          ].map((state) => (
+            <a
+              key={state.slug}
+              href={`/salary-tax-estimator/${state.slug}`}
+              className="text-slate-600 hover:text-indigo-600 hover:underline text-sm font-medium transition-colors text-center py-2 px-3 rounded-lg hover:bg-indigo-50"
+            >
+              {state.name} Calculator
+            </a>
+          ))}
+        </div>
+      </section>
     </article>
   );
 };
