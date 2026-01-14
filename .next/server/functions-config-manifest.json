@@ -1,1 +1,1 @@
-{"version":1,"functions":{"/blog/[slug]":{},"/dividend-calculator/[ticker]":{},"/salary-tax-estimator-[state]":{},"/[[...tool]]":{},"/blog":{}}}
+{"version":1,"functions":{"/blog":{},"/blog/[slug]":{},"/dividend-calculator/[ticker]":{},"/[[...tool]]":{},"/salary-tax-estimator-[state]":{}}}
