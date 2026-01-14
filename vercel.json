@@ -2,6 +2,18 @@
   "version": 2,
   "public": true,
   "outputDirectory": "out",
+  "redirects": [
+    {
+      "source": "/salary-tax-estimator-dc",
+      "destination": "/salary-tax-estimator/district-of-columbia",
+      "permanent": true
+    },
+    {
+      "source": "/salary-tax-estimator-:state",
+      "destination": "/salary-tax-estimator/:state",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/sitemap.xml",
