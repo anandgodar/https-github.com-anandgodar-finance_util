@@ -133,6 +133,27 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
   }, [initialTool]);
 
   useEffect(() => {
+    const toolString = activeTool.toString();
+    
+    // Special handling for blog index - navigate to /blog route
+    if (activeTool === ToolType.BLOG_INDEX) {
+      router.push('/blog');
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+    
+    // Handle blog posts - navigate to /blog/[slug]
+    if (toolString.startsWith('blog/')) {
+      const blogSlug = toolString.replace('blog/', '');
+      router.push(`/blog/${blogSlug}`);
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+    
     const nextPath = activeTool === ToolType.DASHBOARD ? '/' : `/${activeTool}`;
     router.push(nextPath);
 
