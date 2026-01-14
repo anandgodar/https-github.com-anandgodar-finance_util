@@ -14,6 +14,7 @@ import RecommendedTools from './RecommendedTools';
 import AdPlacement from './AdPlacement';
 import CalculatorFAQ from './CalculatorFAQ';
 import LenderComparisonTable from './LenderComparisonTable';
+import RateTable from './RateTable';
 import { ToolType } from '../types';
 
 interface AmortizationEntry {
@@ -335,6 +336,9 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
           break-even equity timeline.
         </p>
       </header>
+
+      {/* Rate Table - Prominently placed after H1 for maximum visibility */}
+      <RateTable type="mortgage" compact={true} />
 
       <section className="grid lg:grid-cols-[1.2fr_1fr] gap-8">
         <div className="space-y-6">

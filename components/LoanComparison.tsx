@@ -4,6 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { getFinancialAdvice } from '../services/geminiService';
 import CalculatorFAQ from './CalculatorFAQ';
 import LenderComparisonTable from './LenderComparisonTable';
+import RateTable from './RateTable';
 import { ToolType } from '../types';
 
 type Mode = 'compare' | 'refinance' | 'prequal';
@@ -218,6 +219,9 @@ const LoanComparison: React.FC<LoanComparisonProps> = ({ onNavigate }) => {
            ))}
         </div>
       </header>
+
+      {/* Rate Table - Prominently placed after H1 for maximum visibility */}
+      <RateTable type="loan" compact={true} />
 
       <div className="grid lg:grid-cols-12 gap-10">
         <div className="lg:col-span-4 space-y-6">
