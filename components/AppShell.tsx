@@ -267,7 +267,7 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
           </button>
         </header>
 
-        <div className="flex-1 p-6 md:p-12">
+        <div className="flex-1 p-2 md:p-4 lg:p-6">
           <div className="max-w-7xl mx-auto">
             {renderTool()}
           </div>
