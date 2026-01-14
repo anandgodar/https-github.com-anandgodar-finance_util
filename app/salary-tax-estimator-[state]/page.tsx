@@ -34,6 +34,12 @@ export function generateMetadata({ params }: PageProps) {
     keywords: `${stateData.name} paycheck calculator, ${stateData.name} salary calculator, take home pay ${stateData.name}, ${stateData.name} tax calculator, ${stateData.name} income tax, net pay calculator ${stateData.name}`,
     alternates: {
       canonical: `https://quantcurb.com/salary-tax-estimator/${stateData.slug}`
+    },
+    robots: {
+      index: false, // Don't index redirect pages
+      follow: true, // Follow links for SEO
+      noarchive: true, // Don't archive redirect pages
+      nosnippet: true // Don't show snippets
     }
   };
 }

@@ -54,16 +54,6 @@
       "static/chunks/3499-7cf483d339036b14.js",
       "static/chunks/app/blog/page-9d8120a948b3746d.js"
     ],
-    "/dividend-calculator/[ticker]/page": [
-      "static/chunks/webpack-9cd783d801bb0388.js",
-      "static/chunks/fd9d1056-4ec1684851615968.js",
-      "static/chunks/2117-b32513d442d6732c.js",
-      "static/chunks/main-app-956921a05b145341.js",
-      "static/chunks/1096-ea3ca3c5d42558eb.js",
-      "static/chunks/7642-101edcb1805c0363.js",
-      "static/chunks/4061-bbba86ff69dda536.js",
-      "static/chunks/app/dividend-calculator/[ticker]/page-e8c368b5d6db7a04.js"
-    ],
     "/[[...tool]]/page": [
       "static/chunks/webpack-9cd783d801bb0388.js",
       "static/chunks/fd9d1056-4ec1684851615968.js",
@@ -71,13 +61,6 @@
       "static/chunks/main-app-956921a05b145341.js",
       "static/chunks/3499-7cf483d339036b14.js",
       "static/chunks/app/[[...tool]]/page-8253222f280e9b4e.js"
-    ],
-    "/salary-tax-estimator-[state]/page": [
-      "static/chunks/webpack-9cd783d801bb0388.js",
-      "static/chunks/fd9d1056-4ec1684851615968.js",
-      "static/chunks/2117-b32513d442d6732c.js",
-      "static/chunks/main-app-956921a05b145341.js",
-      "static/chunks/app/salary-tax-estimator-[state]/page-fd4ff348b2323ec4.js"
     ],
     "/salary-tax-estimator/[state]/page": [
       "static/chunks/webpack-9cd783d801bb0388.js",
@@ -91,6 +74,23 @@
       "static/chunks/3499-7cf483d339036b14.js",
       "static/chunks/5203-4214dcafff6d80d6.js",
       "static/chunks/app/salary-tax-estimator/[state]/page-2fc2afb822f747d5.js"
+    ],
+    "/salary-tax-estimator-[state]/page": [
+      "static/chunks/webpack-9cd783d801bb0388.js",
+      "static/chunks/fd9d1056-4ec1684851615968.js",
+      "static/chunks/2117-b32513d442d6732c.js",
+      "static/chunks/main-app-956921a05b145341.js",
+      "static/chunks/app/salary-tax-estimator-[state]/page-fd4ff348b2323ec4.js"
+    ],
+    "/dividend-calculator/[ticker]/page": [
+      "static/chunks/webpack-9cd783d801bb0388.js",
+      "static/chunks/fd9d1056-4ec1684851615968.js",
+      "static/chunks/2117-b32513d442d6732c.js",
+      "static/chunks/main-app-956921a05b145341.js",
+      "static/chunks/1096-ea3ca3c5d42558eb.js",
+      "static/chunks/7642-101edcb1805c0363.js",
+      "static/chunks/4061-bbba86ff69dda536.js",
+      "static/chunks/app/dividend-calculator/[ticker]/page-e8c368b5d6db7a04.js"
     ]
   }
 }
