@@ -1,7 +1,8 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 
-import { blogContent, blogSlugs } from '../../../lib/blog-content';
+import { blogSlugs } from '../../../lib/blog-metadata';
+import { blogMetadata } from '../../../lib/blog-metadata';
 import BlogPostClient from './BlogPostClient';
 import { ToolType } from '../../../types';
 
@@ -18,7 +19,7 @@ export function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: PageProps) {
-  const entry = blogContent[params.slug];
+  const entry = blogMetadata[params.slug];
 
   if (!entry) {
     return {
@@ -34,7 +35,7 @@ export function generateMetadata({ params }: PageProps) {
 }
 
 export default function BlogPostPage({ params }: PageProps) {
-  const entry = blogContent[params.slug];
+  const entry = blogMetadata[params.slug];
 
   if (!entry) {
     notFound();

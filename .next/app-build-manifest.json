@@ -1,0 +1,89 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-0a297b02122bc6e2.js",
+      "static/chunks/fd9d1056-4ec1684851615968.js",
+      "static/chunks/2117-b32513d442d6732c.js",
+      "static/chunks/main-app-956921a05b145341.js",
+      "static/chunks/app/_not-found/page-626e69927f8574aa.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-0a297b02122bc6e2.js",
+      "static/chunks/fd9d1056-4ec1684851615968.js",
+      "static/chunks/2117-b32513d442d6732c.js",
+      "static/chunks/main-app-956921a05b145341.js",
+      "static/css/e9cdd4727ebe9722.css",
+      "static/chunks/app/layout-7829f223a71ac7b5.js"
+    ],
+    "/blog/[slug]/page": [
+      "static/chunks/webpack-0a297b02122bc6e2.js",
+      "static/chunks/fd9d1056-4ec1684851615968.js",
+      "static/chunks/2117-b32513d442d6732c.js",
+      "static/chunks/main-app-956921a05b145341.js",
+      "static/chunks/8870-5e2634e42d1530b7.js",
+      "static/chunks/3499-5d8c9eddd5ec129b.js",
+      "static/chunks/3507-f801c10e3b118f05.js",
+      "static/chunks/5195-fec1b38a5ddd9050.js",
+      "static/chunks/931-10bc0f10b9087101.js",
+      "static/chunks/5833-44eac920c51a241e.js",
+      "static/chunks/3740-4b69b47f524bdee8.js",
+      "static/chunks/8833-a779eeffebf642ca.js",
+      "static/chunks/6663-6c638bcefa985ed5.js",
+      "static/chunks/5008-a1f671024cb45dc7.js",
+      "static/chunks/8627-51281c45c93859e4.js",
+      "static/chunks/6297-69532218e6074c92.js",
+      "static/chunks/8176-8d93802819bcf673.js",
+      "static/chunks/5792-a047484a6d37a0c2.js",
+      "static/chunks/6893-391f42f6751d8153.js",
+      "static/chunks/6746-71f3a028c6cfa421.js",
+      "static/chunks/753-a6face3bb9ea5776.js",
+      "static/chunks/9532-99da07e5d30dd205.js",
+      "static/chunks/4856-3f0231bfc8101ad7.js",
+      "static/chunks/8148-91fff02810eeb5ed.js",
+      "static/chunks/2708-38af77a1653fe614.js",
+      "static/chunks/3672-739758327eb394a1.js",
+      "static/chunks/5669-dce86042630de068.js",
+      "static/chunks/4005-000da9d97d6ae41f.js",
+      "static/chunks/app/blog/[slug]/page-d6b968e558b5f691.js"
+    ],
+    "/blog/page": [
+      "static/chunks/webpack-0a297b02122bc6e2.js",
+      "static/chunks/fd9d1056-4ec1684851615968.js",
+      "static/chunks/2117-b32513d442d6732c.js",
+      "static/chunks/main-app-956921a05b145341.js",
+      "static/chunks/3499-5d8c9eddd5ec129b.js",
+      "static/chunks/app/blog/page-9e2759e1a16c1ccd.js"
+    ],
+    "/[[...tool]]/page": [
+      "static/chunks/webpack-0a297b02122bc6e2.js",
+      "static/chunks/fd9d1056-4ec1684851615968.js",
+      "static/chunks/2117-b32513d442d6732c.js",
+      "static/chunks/main-app-956921a05b145341.js",
+      "static/chunks/3499-5d8c9eddd5ec129b.js",
+      "static/chunks/app/[[...tool]]/page-f5bff21a436b8ccd.js"
+    ],
+    "/salary-tax-estimator-[state]/page": [
+      "static/chunks/webpack-0a297b02122bc6e2.js",
+      "static/chunks/fd9d1056-4ec1684851615968.js",
+      "static/chunks/2117-b32513d442d6732c.js",
+      "static/chunks/main-app-956921a05b145341.js",
+      "static/chunks/95247769-29e2f50ff7a4aea1.js",
+      "static/chunks/1096-ea3ca3c5d42558eb.js",
+      "static/chunks/7642-101edcb1805c0363.js",
+      "static/chunks/9168-89a8e6989e12c3f2.js",
+      "static/chunks/3499-5d8c9eddd5ec129b.js",
+      "static/chunks/5203-ed7244094ba33246.js",
+      "static/chunks/app/salary-tax-estimator-[state]/page-6e3d100ce19aa6c4.js"
+    ],
+    "/dividend-calculator/[ticker]/page": [
+      "static/chunks/webpack-0a297b02122bc6e2.js",
+      "static/chunks/fd9d1056-4ec1684851615968.js",
+      "static/chunks/2117-b32513d442d6732c.js",
+      "static/chunks/main-app-956921a05b145341.js",
+      "static/chunks/1096-ea3ca3c5d42558eb.js",
+      "static/chunks/7642-101edcb1805c0363.js",
+      "static/chunks/4061-bbba86ff69dda536.js",
+      "static/chunks/app/dividend-calculator/[ticker]/page-e8c368b5d6db7a04.js"
+    ]
+  }
+}
