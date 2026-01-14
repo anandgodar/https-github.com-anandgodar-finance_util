@@ -44,7 +44,7 @@ export default function BlogPostPage({ params }: PageProps) {
 
   return (
     <SiteShell activeTool={ToolType.BLOG_INDEX}>
-      <article className="mx-auto w-full max-w-4xl">
+      <article className="w-full max-w-4xl">
         <ArticleComponent />
       </article>
     </SiteShell>
