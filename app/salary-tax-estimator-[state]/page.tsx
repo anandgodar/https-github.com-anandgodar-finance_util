@@ -1,5 +1,5 @@
 import React from 'react';
-import { usStates, getStateBySlug } from '../../lib/state-data';
+import { usStates, getStateBySlug, getStateByAbbreviation } from '../../lib/state-data';
 import RedirectClient from './RedirectClient';
 
 type PageProps = {
@@ -46,7 +46,14 @@ export function generateMetadata({ params }: PageProps) {
 
 export default function OldStateSalaryPage({ params }: PageProps) {
   const stateSlug = params.state?.toLowerCase();
-  const stateData = stateSlug ? getStateBySlug(stateSlug) : undefined;
+  
+  // First try to find by slug
+  let stateData = stateSlug ? getStateBySlug(stateSlug) : undefined;
+  
+  // If not found, try to find by abbreviation (for legacy aliases like 'dc')
+  if (!stateData && stateSlug) {
+    stateData = getStateByAbbreviation(stateSlug);
+  }
 
   if (!stateData) {
     // If state not found, redirect to main calculator
