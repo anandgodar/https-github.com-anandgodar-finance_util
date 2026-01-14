@@ -16,6 +16,20 @@ const SiteShell: React.FC<SiteShellProps> = ({ activeTool = ToolType.BLOG_INDEX,
   const router = useRouter();
 
   const handleNavigate = (tool: ToolType) => {
+    // Special handling for blog index - navigate to /blog route
+    if (tool === ToolType.BLOG_INDEX) {
+      router.push('/blog');
+      return;
+    }
+    
+    // Handle blog posts - navigate to /blog/[slug]
+    if (tool.toString().startsWith('blog/')) {
+      const blogSlug = tool.toString().replace('blog/', '');
+      router.push(`/blog/${blogSlug}`);
+      return;
+    }
+    
+    // Handle regular tools
     const path = tool === ToolType.DASHBOARD ? '/' : `/${tool}`;
     router.push(path);
   };
@@ -55,6 +69,13 @@ const SiteShell: React.FC<SiteShellProps> = ({ activeTool = ToolType.BLOG_INDEX,
             📊
           </button>
           <button
+            onClick={() => handleNavigate(ToolType.BLOG_INDEX)}
+            className={`${activeTool === ToolType.BLOG_INDEX ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`}
+            aria-label="Blog"
+          >
+            📝
+          </button>
+          <button
             onClick={() => handleNavigate(ToolType.NET_WORTH)}
             className={`${activeTool === ToolType.NET_WORTH ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`}
             aria-label="Net Worth"
@@ -67,13 +88,6 @@ const SiteShell: React.FC<SiteShellProps> = ({ activeTool = ToolType.BLOG_INDEX,
             aria-label="Market Insights"
           >
             🤖
-          </button>
-          <button
-            onClick={() => handleNavigate(ToolType.SITEMAP)}
-            className={`${activeTool === ToolType.SITEMAP ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`}
-            aria-label="Sitemap"
-          >
-            🗺️
           </button>
         </div>
       </main>
