@@ -2,7 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 
 import { blogContent, blogSlugs } from '../../../lib/blog-content';
-import SiteShell from '../../../components/SiteShell';
+import BlogPostClient from './BlogPostClient';
 import { ToolType } from '../../../types';
 
 type PageProps = {
@@ -40,13 +40,5 @@ export default function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const ArticleComponent = entry.component;
-
-  return (
-    <SiteShell activeTool={ToolType.BLOG_INDEX}>
-      <article className="w-full max-w-4xl">
-        <ArticleComponent />
-      </article>
-    </SiteShell>
-  );
+  return <BlogPostClient slug={params.slug} />;
 }

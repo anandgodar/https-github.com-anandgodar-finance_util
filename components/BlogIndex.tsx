@@ -26,6 +26,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       onNavigate(tool);
       return;
     }
+    
+    // Handle blog posts - extract slug from ToolType value
+    if (tool.toString().startsWith('blog/')) {
+      const slug = tool.toString().replace('blog/', '');
+      router.push(`/blog/${slug}`);
+      return;
+    }
+    
+    // Handle regular tools
     const path = tool === ToolType.DASHBOARD ? '/' : `/${tool}`;
     router.push(path);
   };
