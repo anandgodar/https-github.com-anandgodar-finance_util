@@ -51,13 +51,13 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
   ];
 
   return (
-    <div className="space-y-20 pb-32">
+    <div className="space-y-12 md:space-y-20 pb-24 md:pb-32 px-4 md:px-0">
       {/* Hero Section */}
       <header className="max-w-4xl animate-in fade-in slide-in-from-top-8 duration-700">
-        <h1 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-7xl font-black text-slate-900 tracking-tighter leading-tight">
           Institutional <span className="text-indigo-600">Financial Modeling</span> <br/>for Daily Wealth.
         </h1>
-        <p className="mt-8 text-xl md:text-2xl text-slate-500 leading-relaxed font-medium max-w-3xl">
+        <p className="mt-6 md:mt-8 text-base sm:text-lg md:text-2xl text-slate-500 leading-relaxed font-medium max-w-3xl">
           QuantCurb brings banking-grade precision to retail financial planning. Compare mortgage payments, track net worth,
           calculate take-home pay, and project investment growth with professional-grade financial calculators.
         </p>
@@ -65,9 +65,9 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
           <span className="px-4 py-2 bg-indigo-50 text-indigo-600 rounded-xl text-[10px] font-black uppercase tracking-widest border border-indigo-100 shadow-sm">Verified Logic</span>
           <span className="px-4 py-2 bg-slate-50 text-slate-400 rounded-xl text-[10px] font-black uppercase tracking-widest border border-slate-100">AI-Powered Insights</span>
         </div>
-        <div className="mt-10">
-          <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Popular Calculators</p>
-          <div className="flex flex-wrap gap-3">
+        <div className="mt-8 md:mt-10">
+          <p className="text-xs md:text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Popular Calculators</p>
+          <div className="flex flex-wrap gap-2 md:gap-3">
             {[
               { id: ToolType.MORTGAGE_CALC, label: 'Mortgage Calculator' },
               { id: ToolType.NET_WORTH, label: 'Net Worth Tracker' },
@@ -79,7 +79,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
               <button
                 key={item.label}
                 onClick={() => onSelectTool(item.id)}
-                className="px-5 py-2 bg-white text-slate-600 rounded-xl text-[11px] font-black uppercase tracking-widest border border-slate-100 hover:text-indigo-600 hover:border-indigo-200 transition-all shadow-sm"
+                className="px-4 py-3 md:px-5 md:py-2 bg-white text-slate-600 rounded-xl text-[10px] md:text-[11px] font-black uppercase tracking-widest border border-slate-100 hover:text-indigo-600 hover:border-indigo-200 transition-all shadow-sm active:scale-95"
               >
                 {item.label}
               </button>
@@ -98,18 +98,18 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
           <span className="text-[10px] font-black text-indigo-400 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-100">Release v3.1.2</span>
         </div>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-8">
           {cards.map((card) => (
             <button
               key={card.id}
               onClick={() => onSelectTool(card.id)}
-              className="text-left group bg-white p-8 rounded-[3rem] border border-slate-100 shadow-sm transition-all hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden flex flex-col h-full"
+              className="text-left group bg-white p-6 md:p-8 rounded-3xl md:rounded-[3rem] border border-slate-100 shadow-sm transition-all hover:shadow-2xl hover:-translate-y-2 active:scale-95 relative overflow-hidden flex flex-col h-full min-h-[280px]"
             >
-              <div className={`w-16 h-16 rounded-2xl ${card.color} flex items-center justify-center text-4xl mb-8 transition-transform group-hover:rotate-6 group-hover:scale-110 shadow-sm`}>
+              <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl ${card.color} flex items-center justify-center text-3xl md:text-4xl mb-6 md:mb-8 transition-transform group-hover:rotate-6 group-hover:scale-110 shadow-sm`}>
                 {card.icon}
               </div>
-              <h3 className="text-2xl font-black text-slate-900 mb-3 tracking-tight">{card.title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed mb-6 font-medium flex-1">
+              <h3 className="text-xl md:text-2xl font-black text-slate-900 mb-2 md:mb-3 tracking-tight">{card.title}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed mb-4 md:mb-6 font-medium flex-1">
                 {card.desc}
               </p>
               <div className="space-y-4">
@@ -130,22 +130,22 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
       </section>
 
       {/* AI Market Banner - High Value SEO Context */}
-      <div className="bg-slate-900 rounded-[5rem] p-10 md:p-20 text-white overflow-hidden relative shadow-2xl border border-slate-800">
-        <div className="relative z-10 grid lg:grid-cols-2 gap-20 items-center">
-            <div className="space-y-10">
+      <div className="bg-slate-900 rounded-3xl md:rounded-[5rem] p-8 md:p-20 text-white overflow-hidden relative shadow-2xl border border-slate-800">
+        <div className="relative z-10 grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
+            <div className="space-y-6 md:space-y-10">
                 <div className="space-y-4">
-                  <span className="inline-block px-5 py-2 bg-indigo-600 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-xl">Market Ecosystem Triage</span>
-                  <h2 className="text-5xl md:text-6xl font-black leading-tight tracking-tighter">
+                  <span className="inline-block px-4 py-2 md:px-5 md:py-2 bg-indigo-600 rounded-xl md:rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] shadow-xl">Market Ecosystem Triage</span>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tighter">
                     Institutional <span className="text-indigo-400">vs</span> <br/>Retail Paradigms
                   </h2>
                 </div>
-                <p className="text-slate-400 text-xl leading-relaxed font-medium max-w-xl">
+                <p className="text-slate-400 text-base md:text-xl leading-relaxed font-medium max-w-xl">
                   QuantCurb's proprietary AI engine audits the global financial stack. We bridge the gap between low-latency institutional platforms (FactSet, Aladdin) and modern retail convenience (Robinhood, Wise).
                 </p>
-                <div className="flex gap-6 pt-4">
-                  <button 
+                <div className="flex gap-4 md:gap-6 pt-2 md:pt-4">
+                  <button
                     onClick={() => onSelectTool(ToolType.MARKET_INSIGHTS)}
-                    className="px-10 py-5 bg-white text-slate-900 rounded-3xl font-black text-xs uppercase tracking-widest hover:bg-indigo-50 transition-all shadow-xl hover:scale-105"
+                    className="px-6 py-4 md:px-10 md:py-5 bg-white text-slate-900 rounded-2xl md:rounded-3xl font-black text-xs uppercase tracking-widest hover:bg-indigo-50 transition-all shadow-xl hover:scale-105 active:scale-95"
                   >
                       View Market Pulse
                   </button>

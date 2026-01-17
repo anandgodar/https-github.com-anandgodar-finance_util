@@ -127,6 +127,7 @@ const LoadingFallback: React.FC = () => (
 const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
   const router = useRouter();
   const [activeTool, setActiveTool] = useState<ToolType>(initialTool);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setActiveTool(initialTool);
@@ -270,21 +271,187 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
     return <Suspense fallback={<LoadingFallback />}>{toolComponent}</Suspense>;
   };
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [activeTool]);
+
+  const mainTools = [
+    { id: ToolType.DASHBOARD, label: 'Dashboard', icon: '📊' },
+    { id: ToolType.NET_WORTH, label: 'Net Worth Center', icon: '💎' },
+    { id: ToolType.EMERGENCY_FUND, label: 'Emergency Guard', icon: '🛡️' },
+    { id: ToolType.EXCEL_MODELER, label: 'Excel Power Modeler', icon: '📁' },
+    { id: ToolType.EMI_CALC, label: 'Loan EMI Pro', icon: '💳' },
+    { id: ToolType.MORTGAGE_CALC, label: 'Mortgage Pro', icon: '🏡' },
+    { id: ToolType.FIRE_PLANNER, label: 'FIRE Planner', icon: '🔥' },
+    { id: ToolType.RETIREMENT_OPTIMIZER, label: 'Retirement Optimizer', icon: '🎯' },
+    { id: ToolType.DRIP_CALCULATOR, label: 'DRIP Calculator', icon: '💹' },
+    { id: ToolType.CRYPTO_TAX_LOSS, label: 'Crypto Tax Loss', icon: '🧮' },
+    { id: ToolType.SALARY_CALC, label: 'Salary Estimator', icon: '💰' },
+    { id: ToolType.CHILD_TAX_CREDIT, label: 'Child Tax Credit', icon: '👨‍👩‍👧‍👦' },
+    { id: ToolType.QUARTERLY_TAX, label: 'Quarterly Tax', icon: '📅' },
+    { id: ToolType.ACA_SUBSIDY, label: 'ACA Health Subsidy', icon: '🏥' },
+    { id: ToolType.FREELANCE_PROFIT, label: 'Freelance Hub', icon: '💼' },
+    { id: ToolType.INVESTMENT_CALC, label: 'Wealth Projector', icon: '📈' },
+    { id: ToolType.LOAN_COMPARE, label: 'Loan Intel', icon: '⚖️' },
+    { id: ToolType.DTI_CALCULATOR, label: 'DTI Calculator', icon: '📊' },
+  ];
+
+  const dailyTools = [
+    { id: ToolType.CURRENCY_CONV, label: 'Currency Intel', icon: '🌍' },
+    { id: ToolType.GST_CALC, label: 'GST Calculator', icon: '🧾' },
+    { id: ToolType.CREDIT_CARD_PAYOFF, label: 'Card Payoff', icon: '✂️' },
+  ];
+
+  const insightTools = [
+    { id: ToolType.MARKET_INSIGHTS, label: 'Market Pulse', icon: '🤖' },
+    { id: ToolType.INVESTMENT_ACADEMY, label: 'Fund Academy', icon: '🎓' },
+    { id: ToolType.BLOG_INDEX, label: 'Blog', icon: '📝' },
+    { id: ToolType.FAQ, label: 'Knowledge Base', icon: '❓' },
+  ];
+
   return (
     <div className="flex min-h-screen bg-slate-50 flex-col md:flex-row">
       <Sidebar activeTool={activeTool} setActiveTool={setActiveTool} />
 
-      <main className="flex-1 flex flex-col min-h-screen overflow-x-hidden">
-        <header className="flex justify-between items-center p-6 md:hidden bg-white border-b sticky top-0 z-40">
-          <div className="text-xl font-black text-indigo-600 flex items-center gap-2">
-            <span>📈</span> QuantCurb
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-50 md:hidden backdrop-blur-sm"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Menu Drawer */}
+      <div className={`fixed top-0 left-0 h-full w-80 bg-white z-50 transform transition-transform duration-300 ease-in-out md:hidden overflow-y-auto ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="p-6 border-b flex justify-between items-center sticky top-0 bg-white z-10">
+          <button
+            onClick={() => {
+              setActiveTool(ToolType.DASHBOARD);
+              setMobileMenuOpen(false);
+            }}
+            className="text-2xl font-black text-slate-900 flex items-center gap-3"
+          >
+            <span className="p-2 bg-indigo-600 text-white rounded-xl shadow-lg">📈</span>
+            <span>Quant<span className="text-indigo-600">Curb</span></span>
+          </button>
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="p-2 hover:bg-slate-100 rounded-xl transition-colors"
+            aria-label="Close menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="p-4 space-y-6">
+          <section>
+            <h3 className="px-4 py-2 text-xs font-black text-slate-400 uppercase tracking-wider">Core Utilities</h3>
+            <nav className="space-y-1">
+              {mainTools.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setActiveTool(item.id);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all text-left ${
+                    activeTool === item.id
+                      ? 'bg-indigo-600 text-white font-bold shadow-lg'
+                      : 'text-slate-600 hover:bg-slate-50 font-medium active:bg-slate-100'
+                  }`}
+                >
+                  <span className="text-2xl">{item.icon}</span>
+                  <span className="text-sm">{item.label}</span>
+                </button>
+              ))}
+            </nav>
+          </section>
+
+          <section>
+            <h3 className="px-4 py-2 text-xs font-black text-slate-400 uppercase tracking-wider">Daily Logic</h3>
+            <nav className="space-y-1">
+              {dailyTools.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setActiveTool(item.id);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all text-left ${
+                    activeTool === item.id
+                      ? 'bg-emerald-600 text-white font-bold shadow-lg'
+                      : 'text-slate-600 hover:bg-slate-50 font-medium active:bg-slate-100'
+                  }`}
+                >
+                  <span className="text-2xl">{item.icon}</span>
+                  <span className="text-sm">{item.label}</span>
+                </button>
+              ))}
+            </nav>
+          </section>
+
+          <section>
+            <h3 className="px-4 py-2 text-xs font-black text-slate-400 uppercase tracking-wider">Intelligence</h3>
+            <nav className="space-y-1">
+              {insightTools.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setActiveTool(item.id);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all text-left ${
+                    activeTool === item.id
+                      ? 'bg-slate-900 text-white font-bold'
+                      : 'text-slate-600 hover:bg-slate-50 font-medium active:bg-slate-100'
+                  }`}
+                >
+                  <span className="text-2xl">{item.icon}</span>
+                  <span className="text-sm">{item.label}</span>
+                </button>
+              ))}
+            </nav>
+          </section>
+        </div>
+
+        <div className="p-6 border-t mt-6">
+          <div className="bg-slate-50 p-4 rounded-xl">
+            <p className="text-xs font-black text-slate-400 uppercase tracking-wider mb-1">NETWORK STATUS</p>
+            <p className="text-sm font-bold text-slate-700">Live: QuantCurb Oracle v3.1</p>
           </div>
+        </div>
+      </div>
+
+      <main className="flex-1 flex flex-col min-h-screen overflow-x-hidden">
+        {/* Enhanced Mobile Header */}
+        <header className="flex justify-between items-center px-4 py-4 md:hidden bg-white border-b sticky top-0 z-40 shadow-sm">
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="p-3 hover:bg-slate-100 rounded-xl transition-colors active:bg-slate-200"
+            aria-label="Open menu"
+          >
+            <svg className="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
           <button
             onClick={() => setActiveTool(ToolType.DASHBOARD)}
-            className="p-3 bg-indigo-50 text-indigo-600 rounded-xl font-bold"
-            aria-label="Back to Home"
+            className="text-xl font-black text-slate-900 flex items-center gap-2"
           >
-            🏠
+            <span className="text-2xl">📈</span>
+            <span>Quant<span className="text-indigo-600">Curb</span></span>
+          </button>
+
+          <button
+            onClick={() => setActiveTool(ToolType.BLOG_INDEX)}
+            className="p-3 bg-indigo-50 text-indigo-600 rounded-xl font-bold hover:bg-indigo-100 transition-colors active:bg-indigo-200"
+            aria-label="Blog"
+          >
+            📝
           </button>
         </header>
 
@@ -296,12 +463,51 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
 
         <Footer setActiveTool={setActiveTool} />
 
-        <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-xl border border-slate-200 px-6 py-4 rounded-[2rem] shadow-2xl flex gap-10 z-50">
-          <button onClick={() => setActiveTool(ToolType.DASHBOARD)} className={`${activeTool === ToolType.DASHBOARD ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`} aria-label="Dashboard">📊</button>
-          <button onClick={() => setActiveTool(ToolType.NET_WORTH)} className={`${activeTool === ToolType.NET_WORTH ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`} aria-label="Net Worth">💎</button>
-          <button onClick={() => setActiveTool(ToolType.MARKET_INSIGHTS)} className={`${activeTool === ToolType.MARKET_INSIGHTS ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`} aria-label="Market Insights">🤖</button>
-          <button onClick={() => setActiveTool(ToolType.SITEMAP)} className={`${activeTool === ToolType.SITEMAP ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`} aria-label="Sitemap">🗺️</button>
-        </div>
+        {/* Enhanced Bottom Navigation */}
+        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-2 py-2 z-40 shadow-2xl">
+          <div className="flex justify-around items-center max-w-md mx-auto">
+            <button
+              onClick={() => setActiveTool(ToolType.DASHBOARD)}
+              className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all min-w-[60px] ${activeTool === ToolType.DASHBOARD ? 'text-indigo-600 bg-indigo-50' : 'text-slate-500'}`}
+              aria-label="Dashboard"
+            >
+              <span className="text-2xl">📊</span>
+              <span className="text-[10px] font-bold">Home</span>
+            </button>
+            <button
+              onClick={() => setActiveTool(ToolType.MORTGAGE_CALC)}
+              className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all min-w-[60px] ${activeTool === ToolType.MORTGAGE_CALC ? 'text-indigo-600 bg-indigo-50' : 'text-slate-500'}`}
+              aria-label="Mortgage"
+            >
+              <span className="text-2xl">🏡</span>
+              <span className="text-[10px] font-bold">Mortgage</span>
+            </button>
+            <button
+              onClick={() => setActiveTool(ToolType.SALARY_CALC)}
+              className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all min-w-[60px] ${activeTool === ToolType.SALARY_CALC ? 'text-indigo-600 bg-indigo-50' : 'text-slate-500'}`}
+              aria-label="Salary"
+            >
+              <span className="text-2xl">💰</span>
+              <span className="text-[10px] font-bold">Salary</span>
+            </button>
+            <button
+              onClick={() => setActiveTool(ToolType.FIRE_PLANNER)}
+              className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all min-w-[60px] ${activeTool === ToolType.FIRE_PLANNER ? 'text-indigo-600 bg-indigo-50' : 'text-slate-500'}`}
+              aria-label="FIRE"
+            >
+              <span className="text-2xl">🔥</span>
+              <span className="text-[10px] font-bold">FIRE</span>
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all min-w-[60px] text-slate-500 hover:text-indigo-600 hover:bg-indigo-50"
+              aria-label="More"
+            >
+              <span className="text-2xl">☰</span>
+              <span className="text-[10px] font-bold">More</span>
+            </button>
+          </div>
+        </nav>
       </main>
     </div>
   );
