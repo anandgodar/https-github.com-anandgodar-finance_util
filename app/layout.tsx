@@ -15,11 +15,23 @@ export const metadata: Metadata = {
     'emi calculator',
     'salary calculator',
     'investment calculator',
-    'retirement planning'
+    'retirement planning',
+    'fire calculator',
+    'net worth tracker',
+    'tax calculator',
+    'financial planning tools'
   ],
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
+  themeColor: '#4f46e5',
   alternates: {
     canonical: '/'
   },
+  manifest: '/manifest.json',
   openGraph: {
     type: 'website',
     url: 'https://quantcurb.com/',

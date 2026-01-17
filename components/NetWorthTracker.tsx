@@ -29,12 +29,12 @@ const NetWorthTracker: React.FC<NetWorthTrackerProps> = ({ onNavigate }) => {
     const totalAssets = cash + investments + property + otherAssets;
     const totalLiabilities = mortgage + studentLoans + creditCardDebt + otherDebts;
     const netWorth = totalAssets - totalLiabilities;
-    const debtToAssetRatio = (totalLiabilities / totalAssets) * 100;
-    
+    const debtToAssetRatio = totalAssets > 0 ? (totalLiabilities / totalAssets) * 100 : 0;
+
     // Liquidity Analysis
     const liquidAssets = cash + investments;
     const illiquidAssets = property + otherAssets;
-    const liquidityRatio = (liquidAssets / totalAssets) * 100;
+    const liquidityRatio = totalAssets > 0 ? (liquidAssets / totalAssets) * 100 : 0;
 
     // Debt Quality
     const highInterestDebt = creditCardDebt + otherDebts; // Simplified
