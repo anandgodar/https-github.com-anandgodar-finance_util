@@ -28,12 +28,13 @@ const STATE_TAX_DATA: Record<string, { name: string; rate: number }> = {
 
 interface FreelanceHubProps {
   onNavigate?: (tool: ToolType) => void;
+  initialState?: string;
 }
 
-const FreelanceHub: React.FC<FreelanceHubProps> = ({ onNavigate }) => {
+const FreelanceHub: React.FC<FreelanceHubProps> = ({ onNavigate, initialState }) => {
   const [grossIncome, setGrossIncome] = useState<number>(12000);
   const [hoursWorked, setHoursWorked] = useState<number>(160);
-  const [stateCode, setStateCode] = useState<string>('CA');
+  const [stateCode, setStateCode] = useState<string>(initialState || 'CA');
   
   const [expSoftware, setExpSoftware] = useState<number>(200);
   const [expMarketing, setExpMarketing] = useState<number>(300);

@@ -116,7 +116,7 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
 
         {/* The Calculator Tool */}
         <div className="mb-12">
-          <FreelanceHub onNavigate={handleNavigate} />
+          <FreelanceHub onNavigate={handleNavigate} initialState={stateConfig.code} />
         </div>
 
         {/* SEO Content */}
