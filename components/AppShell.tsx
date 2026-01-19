@@ -31,6 +31,7 @@ const ChildTaxCreditCalculator = lazy(() => import('./ChildTaxCreditCalculator')
 const QuarterlyTaxCalculator = lazy(() => import('./QuarterlyTaxCalculator'));
 const ACASubsidyCalculator = lazy(() => import('./ACASubsidyCalculator'));
 const DTICalculator = lazy(() => import('./DTICalculator'));
+const OptionsStrategyVisualizer = lazy(() => import('./OptionsStrategyVisualizer'));
 
 // Lazy load blog posts
 const ChildTaxCreditGuide2025 = lazy(() => import('./blog/ChildTaxCreditGuide2025'));
@@ -190,6 +191,7 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
         case ToolType.QUARTERLY_TAX: return <QuarterlyTaxCalculator onNavigate={setActiveTool} />;
         case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator onNavigate={setActiveTool} />;
         case ToolType.DTI_CALCULATOR: return <DTICalculator onNavigate={setActiveTool} />;
+        case ToolType.OPTIONS_STRATEGY_VISUALIZER: return <OptionsStrategyVisualizer />;
         case ToolType.BLOG_CTC_2025: return <ChildTaxCreditGuide2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_ACA_FREELANCERS: return <ACAHealthInsuranceFreelancers2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_QUARTERLY_TAX: return <QuarterlyEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;

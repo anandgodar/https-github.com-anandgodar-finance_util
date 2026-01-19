@@ -121,6 +121,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Compute your DTI ratio to understand mortgage and loan qualification thresholds.",
     keywords: "dti calculator, debt to income ratio"
   },
+  [ToolType.OPTIONS_STRATEGY_VISUALIZER]: {
+    title: "Options Strategy Visualizer - Multi-Leg P&L Calculator with Greeks",
+    desc: "Build and visualize multi-leg options strategies (Iron Condor, Bull Call Spread, Straddles). Interactive P&L diagrams, Greeks dashboard (Delta, Theta, Vega, Gamma), IV slider, and risk metrics. Mobile-optimized for traders on Robinhood and Webull.",
+    keywords: "options strategy calculator, options visualizer, iron condor calculator, bull call spread, options greeks calculator, delta theta vega, options profit calculator, multi-leg options, options trading simulator, implied volatility"
+  },
   [ToolType.BLOG_CTC_2025]: {
     title: "Child Tax Credit 2025 Guide - Eligibility, Refunds, and Phaseouts",
     desc: "Learn how the 2025 Child Tax Credit works, who qualifies, and how to calculate refunds.",
