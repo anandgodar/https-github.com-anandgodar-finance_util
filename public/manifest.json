@@ -1,0 +1,55 @@
+{
+  "name": "QuantCurb - Institutional Financial Intelligence",
+  "short_name": "QuantCurb",
+  "description": "Professional-grade financial calculators, DCF valuation tools, options visualizers, and retirement planning. Your personal CFO terminal.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "productivity", "business"],
+  "shortcuts": [
+    {
+      "name": "FIRE Planner",
+      "short_name": "FIRE",
+      "description": "Calculate your path to financial independence",
+      "url": "/?tool=fire-planner",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Options Visualizer",
+      "short_name": "Options",
+      "description": "Visualize options strategies and Greeks",
+      "url": "/?tool=options-strategy-visualizer",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "DCF Modeler",
+      "short_name": "DCF",
+      "description": "Value companies with DCF and WACC",
+      "url": "/?tool=excel-power-modeler",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Salary Calculator",
+      "short_name": "Salary",
+      "description": "Calculate take-home pay by state",
+      "url": "/?tool=salary-tax-estimator",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
