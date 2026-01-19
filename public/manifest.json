@@ -27,28 +27,28 @@
       "name": "FIRE Planner",
       "short_name": "FIRE",
       "description": "Calculate your path to financial independence",
-      "url": "/?tool=fire-planner",
+      "url": "/early-retirement-fire-planner",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Options Visualizer",
       "short_name": "Options",
       "description": "Visualize options strategies and Greeks",
-      "url": "/?tool=options-strategy-visualizer",
+      "url": "/options-strategy-visualizer",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "DCF Modeler",
       "short_name": "DCF",
       "description": "Value companies with DCF and WACC",
-      "url": "/?tool=excel-power-modeler",
+      "url": "/excel-power-modeler",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Salary Calculator",
       "short_name": "Salary",
       "description": "Calculate take-home pay by state",
-      "url": "/?tool=salary-tax-estimator",
+      "url": "/salary-tax-estimator",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]
