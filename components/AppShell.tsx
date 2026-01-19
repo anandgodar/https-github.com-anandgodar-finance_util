@@ -33,6 +33,15 @@ const ACASubsidyCalculator = lazy(() => import('./ACASubsidyCalculator'));
 const DTICalculator = lazy(() => import('./DTICalculator'));
 const OptionsStrategyVisualizer = lazy(() => import('./OptionsStrategyVisualizer'));
 
+// Lazy load Valuation Academy components
+const ValuationAcademy = lazy(() => import('./ValuationAcademy'));
+const DCFGuide = lazy(() => import('./academy/DCFGuide'));
+const WACCGuide = lazy(() => import('./academy/WACCGuide'));
+const GreeksGuide = lazy(() => import('./academy/GreeksGuide'));
+const SafeHarborGuide = lazy(() => import('./academy/SafeHarborGuide'));
+const IronCondorGuide = lazy(() => import('./academy/IronCondorGuide'));
+const StateTaxComparison = lazy(() => import('./academy/StateTaxComparison'));
+
 // Lazy load blog posts
 const ChildTaxCreditGuide2025 = lazy(() => import('./blog/ChildTaxCreditGuide2025'));
 const ACAHealthInsuranceFreelancers2025 = lazy(() => import('./blog/ACAHealthInsuranceFreelancers2025'));
@@ -155,7 +164,17 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
       }
       return;
     }
-    
+
+    // Handle academy guides - navigate to /academy/[slug]
+    if (toolString.startsWith('academy/')) {
+      const academySlug = toolString.replace('academy/', '');
+      router.push(`/academy/${academySlug}`);
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
     const nextPath = activeTool === ToolType.DASHBOARD ? '/' : `/${activeTool}`;
     router.push(nextPath);
 
@@ -192,6 +211,13 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
         case ToolType.ACA_SUBSIDY: return <ACASubsidyCalculator onNavigate={setActiveTool} />;
         case ToolType.DTI_CALCULATOR: return <DTICalculator onNavigate={setActiveTool} />;
         case ToolType.OPTIONS_STRATEGY_VISUALIZER: return <OptionsStrategyVisualizer />;
+        case ToolType.VALUATION_ACADEMY: return <ValuationAcademy setActiveTool={setActiveTool} />;
+        case ToolType.ACADEMY_DCF_GUIDE: return <DCFGuide setActiveTool={setActiveTool} />;
+        case ToolType.ACADEMY_WACC_GUIDE: return <WACCGuide setActiveTool={setActiveTool} />;
+        case ToolType.ACADEMY_GREEKS_GUIDE: return <GreeksGuide setActiveTool={setActiveTool} />;
+        case ToolType.ACADEMY_SAFE_HARBOR: return <SafeHarborGuide setActiveTool={setActiveTool} />;
+        case ToolType.ACADEMY_IRON_CONDOR: return <IronCondorGuide setActiveTool={setActiveTool} />;
+        case ToolType.ACADEMY_STATE_TAX_COMPARISON: return <StateTaxComparison setActiveTool={setActiveTool} />;
         case ToolType.BLOG_CTC_2025: return <ChildTaxCreditGuide2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_ACA_FREELANCERS: return <ACAHealthInsuranceFreelancers2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_QUARTERLY_TAX: return <QuarterlyEstimatedTaxesGuide2025 onNavigate={setActiveTool} />;

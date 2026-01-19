@@ -126,6 +126,41 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Build and visualize multi-leg options strategies (Iron Condor, Bull Call Spread, Straddles). Interactive P&L diagrams, Greeks dashboard (Delta, Theta, Vega, Gamma), IV slider, and risk metrics. Mobile-optimized for traders on Robinhood and Webull.",
     keywords: "options strategy calculator, options visualizer, iron condor calculator, bull call spread, options greeks calculator, delta theta vega, options profit calculator, multi-leg options, options trading simulator, implied volatility"
   },
+  [ToolType.VALUATION_ACADEMY]: {
+    title: "Valuation Academy - Learn DCF, WACC, Options Greeks, and Tax Strategy",
+    desc: "Master institutional-grade financial analysis with in-depth guides on DCF valuation, WACC calculation, options Greeks, iron condor strategies, safe harbor tax rules, and state tax comparisons. Educational content hub with 2,000+ words per guide.",
+    keywords: "valuation academy, dcf guide, wacc explained, options greeks tutorial, financial education, stock valuation course, tax strategy guide"
+  },
+  [ToolType.ACADEMY_DCF_GUIDE]: {
+    title: "DCF Valuation Complete Guide - How to Value Stocks Like Wall Street",
+    desc: "Step-by-step guide to Discounted Cash Flow valuation. Learn FCF projection, terminal value calculation, WACC integration, and how to calculate intrinsic stock value using institutional methodology.",
+    keywords: "dcf valuation guide, how to calculate dcf, discounted cash flow tutorial, stock valuation guide, terminal value explained, fcf projection, intrinsic value calculator"
+  },
+  [ToolType.ACADEMY_WACC_GUIDE]: {
+    title: "WACC Explained - Weighted Average Cost of Capital Complete Guide",
+    desc: "Master WACC calculation with our comprehensive guide. Learn CAPM formula, cost of equity, cost of debt, capital structure weighting, and how WACC impacts DCF valuation.",
+    keywords: "wacc explained, cost of capital guide, capm calculator tutorial, wacc formula, cost of equity calculation, weighted average cost of capital"
+  },
+  [ToolType.ACADEMY_GREEKS_GUIDE]: {
+    title: "Options Greeks Explained - Delta, Theta, Vega, Gamma for Beginners",
+    desc: "Complete guide to options Greeks. Understand Delta (directional exposure), Theta (time decay), Vega (IV sensitivity), and Gamma (delta acceleration) with real examples and trading applications.",
+    keywords: "options greeks explained, delta theta vega gamma, options greeks tutorial, what is delta, theta decay, vega volatility, gamma risk"
+  },
+  [ToolType.ACADEMY_SAFE_HARBOR]: {
+    title: "IRS Safe Harbor Rules - Never Pay Estimated Tax Penalties Again",
+    desc: "Complete guide to IRS safe harbor provisions for estimated taxes. Learn the 100%/110% prior year rule, 90% current year method, quarterly deadlines, and HYSA arbitrage strategy to optimize cash flow.",
+    keywords: "irs safe harbor rules, estimated tax penalty avoidance, quarterly tax guide, safe harbor tax strategy, freelance tax planning"
+  },
+  [ToolType.ACADEMY_IRON_CONDOR]: {
+    title: "Iron Condor Strategy Guide - Neutral Options Income Strategy",
+    desc: "Learn how to trade iron condors for monthly income. Understand the 4-leg setup, Greeks profile, when to use (low IV, range-bound), exit rules, and strike selection for optimal probability of profit.",
+    keywords: "iron condor strategy, iron condor guide, neutral options strategy, theta decay trading, credit spread strategy, options income"
+  },
+  [ToolType.ACADEMY_STATE_TAX_COMPARISON]: {
+    title: "California vs Texas Take-Home Pay - State Tax Comparison 2026",
+    desc: "Compare real take-home pay between high-tax and no-tax states. Analyze California vs Texas salary differences, housing costs, tax migration trends, and wealth-building impact over 10 years.",
+    keywords: "california vs texas salary, state tax comparison, take home pay by state, best states for taxes, tax migration, no income tax states"
+  },
   [ToolType.BLOG_CTC_2025]: {
     title: "Child Tax Credit 2025 Guide - Eligibility, Refunds, and Phaseouts",
     desc: "Learn how the 2025 Child Tax Credit works, who qualifies, and how to calculate refunds.",

@@ -37,7 +37,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool }) => {
 
   const insightTools = [
     { id: ToolType.MARKET_INSIGHTS, label: 'Market Pulse', icon: '🤖' },
-    { id: ToolType.INVESTMENT_ACADEMY, label: 'Fund Academy', icon: '🎓' },
+    { id: ToolType.VALUATION_ACADEMY, label: 'Valuation Academy', icon: '🎓' },
+    { id: ToolType.INVESTMENT_ACADEMY, label: 'Fund Academy', icon: '📚' },
     { id: ToolType.BLOG_INDEX, label: 'Blog', icon: '📝' },
     { id: ToolType.FAQ, label: 'Knowledge Base', icon: '❓' },
   ];
