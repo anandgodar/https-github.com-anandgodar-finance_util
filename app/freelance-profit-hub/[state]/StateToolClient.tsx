@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import FIREPlanner from '../../../components/FIREPlanner';
+import FreelanceHub from '../../../components/FreelanceHub';
 import SiteShell from '../../../components/SiteShell';
 import { ToolType } from '../../../types';
 import { StateConfig } from '../../../lib/state-configs';
@@ -44,7 +44,7 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
   };
 
   const getToolContext = () => {
-    return 'early retirement planning';
+    return 'freelance business profits';
   };
 
   const getTaxAdvantages = () => {
@@ -70,14 +70,14 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
   };
 
   return (
-    <SiteShell activeTool={ToolType.FIRE_PLANNER}>
+    <SiteShell activeTool={ToolType.FREELANCE_PROFIT}>
       <div className="w-full max-w-7xl mx-auto">
         {/* SEO Header */}
         <header className="mb-8 text-center bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="text-5xl">{getStateEmoji(stateConfig.code)}</span>
             <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-              {stateConfig.name} FIRE Calculator
+              {stateConfig.name} Freelance Tax Calculator
             </h1>
           </div>
           <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
@@ -116,16 +116,16 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
 
         {/* The Calculator Tool */}
         <div className="mb-12">
-          <FIREPlanner onNavigate={handleNavigate} />
+          <FreelanceHub onNavigate={handleNavigate} initialState={stateConfig.code} />
         </div>
 
         {/* SEO Content */}
         <article className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12 prose prose-slate max-w-none">
           <h2 className="text-3xl font-black text-slate-900 mb-6">
-            Why Use a {stateConfig.name} FIRE Calculator?
+            Why Use a {stateConfig.name} Freelance Tax Calculator?
           </h2>
           <p className="text-lg text-slate-700 leading-relaxed mb-6">
-            {getWhyUseContent(stateConfig, 'early-retirement-fire-planner')}
+            {getWhyUseContent(stateConfig, 'freelance-profit-hub')}
           </p>
 
           <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 mt-8">
@@ -133,7 +133,7 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
               Key Factors for {stateConfig.name} Residents
             </h3>
             <ul className="space-y-3 text-slate-700">
-              {getKeyFactors(stateConfig, 'early-retirement-fire-planner').map((factor, idx) => (
+              {getKeyFactors(stateConfig, 'freelance-profit-hub').map((factor, idx) => (
                 <li key={idx} className="flex items-start gap-3">
                   <span className="text-indigo-600 font-black">•</span>
                   <span>{factor}</span>
@@ -149,7 +149,7 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
             More {stateConfig.name} Financial Tools
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {getRelatedTools('early-retirement-fire-planner', stateConfig.slug).map((tool) => (
+            {getRelatedTools('freelance-profit-hub', stateConfig.slug).map((tool) => (
               <a
                 key={tool.slug}
                 href={`/${tool.slug}/${stateConfig.slug}`}

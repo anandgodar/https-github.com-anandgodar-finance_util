@@ -5,8 +5,14 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// State slugs for salary calculator pages
-const STATE_SLUGS = [
+// State slugs for all state-specific tool pages
+// These match the states configured in lib/state-configs.ts
+const CONFIGURED_STATE_SLUGS = [
+  'texas', 'california', 'florida', 'new-york', 'washington', 'nevada'
+];
+
+// All 51 states for salary calculator (legacy)
+const ALL_STATE_SLUGS = [
   'alabama', 'alaska', 'arizona', 'arkansas', 'california', 'colorado',
   'connecticut', 'delaware', 'florida', 'georgia', 'hawaii', 'idaho',
   'illinois', 'indiana', 'iowa', 'kansas', 'kentucky', 'louisiana',
@@ -16,6 +22,14 @@ const STATE_SLUGS = [
   'oregon', 'pennsylvania', 'rhode-island', 'south-carolina', 'south-dakota',
   'tennessee', 'texas', 'utah', 'vermont', 'virginia', 'washington',
   'west-virginia', 'wisconsin', 'wyoming', 'district-of-columbia', 'dc'
+];
+
+// Tools with state-specific pages (using lib/state-configs.ts)
+const STATE_SPECIFIC_TOOLS = [
+  { slug: 'early-retirement-fire-planner', priority: 0.85 },
+  { slug: 'mortgage-calculator', priority: 0.85 },
+  { slug: 'freelance-profit-hub', priority: 0.80 },
+  { slug: 'quarterly-tax-calculator', priority: 0.80 }
 ];
 
 // Blog slugs from blog-content.tsx
@@ -77,10 +91,10 @@ function generateSitemap() {
     <priority>0.9</priority>
   </url>
 
-  <!-- 50 State-Specific Salary Calculator Pages -->
+  <!-- 50 State-Specific Salary Calculator Pages (Legacy - All States) -->
 `;
 
-  STATE_SLUGS.forEach(state => {
+  ALL_STATE_SLUGS.forEach(state => {
     sitemap += `  <url>
     <loc>https://quantcurb.com/salary-tax-estimator/${state}</loc>
     <lastmod>${today}</lastmod>
@@ -88,6 +102,22 @@ function generateSitemap() {
     <priority>0.85</priority>
   </url>
 `;
+  });
+
+  sitemap += `
+  <!-- State-Specific Tool Pages (6 Configured States × 4 Tools = 24 Pages) -->
+`;
+
+  STATE_SPECIFIC_TOOLS.forEach(tool => {
+    CONFIGURED_STATE_SLUGS.forEach(state => {
+      sitemap += `  <url>
+    <loc>https://quantcurb.com/${tool.slug}/${state}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>${tool.priority}</priority>
+  </url>
+`;
+    });
   });
 
   sitemap += `
@@ -265,4 +295,13 @@ function generateSitemap() {
 // Write sitemap to public directory
 const sitemap = generateSitemap();
 fs.writeFileSync(path.join(__dirname, '../public/sitemap.xml'), sitemap);
-console.log('✅ Sitemap generated successfully with', STATE_SLUGS.length, 'state pages and', BLOG_SLUGS.length, 'blog posts');
+
+const salaryStatePages = ALL_STATE_SLUGS.length;
+const newStatePages = STATE_SPECIFIC_TOOLS.length * CONFIGURED_STATE_SLUGS.length;
+const totalStatePages = salaryStatePages + newStatePages;
+
+console.log('✅ Sitemap generated successfully!');
+console.log(`   📍 ${salaryStatePages} salary calculator state pages (all 51 states)`);
+console.log(`   📍 ${newStatePages} new state pages (${CONFIGURED_STATE_SLUGS.length} states × ${STATE_SPECIFIC_TOOLS.length} tools)`);
+console.log(`   📍 ${totalStatePages} total state-specific pages`);
+console.log(`   📝 ${BLOG_SLUGS.length} blog posts`);

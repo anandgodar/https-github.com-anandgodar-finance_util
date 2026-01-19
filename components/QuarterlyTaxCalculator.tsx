@@ -69,16 +69,17 @@ const QUARTERLY_DEADLINES = [
 
 interface QuarterlyTaxCalculatorProps {
   onNavigate?: (tool: ToolType) => void;
+  initialState?: string;
 }
 
-const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavigate }) => {
+const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavigate, initialState }) => {
   const [estimatedIncome, setEstimatedIncome] = useState<number>(120000);
   const [selfEmploymentIncome, setSelfEmploymentIncome] = useState<number>(120000);
   const [w2Income, setW2Income] = useState<number>(0);
   const [priorYearTax, setPriorYearTax] = useState<number>(22000);
   const [priorYearAGI, setPriorYearAGI] = useState<number>(100000);
   const [filingStatus, setFilingStatus] = useState<FilingStatus>('single');
-  const [stateCode, setStateCode] = useState<string>('CA');
+  const [stateCode, setStateCode] = useState<string>(initialState || 'CA');
   const [businessExpenses, setBusinessExpenses] = useState<number>(12000);
   const [safeHarborMethod, setSafeHarborMethod] = useState<SafeHarborMethod>('prior_year');
   const [advice, setAdvice] = useState<string>('');

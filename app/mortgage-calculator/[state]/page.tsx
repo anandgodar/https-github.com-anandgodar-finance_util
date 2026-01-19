@@ -28,24 +28,24 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
   if (!stateConfig) {
     return {
-      title: 'FIRE Calculator',
-      description: 'Calculate your path to early retirement and financial independence'
+      title: 'Mortgage Calculator',
+      description: 'Calculate monthly mortgage payments with PITI breakdown'
     };
   }
 
   const stateName = stateConfig.name;
 
   return {
-    title: `${stateName} FIRE Calculator 2026 | Calculate your path to early retirement and financial independence`,
-    description: `Calculate your path to early retirement and financial independence for ${stateName} residents. Updated for 2026 with ${stateName}-specific tax rates, deductions, and regulations.`,
-    keywords: `${stateName} fire calculator, early retirement calculator, financial independence, ${stateName.toLowerCase()} early-retirement-fire-planner, ${stateName.toLowerCase()} taxes`,
+    title: `${stateName} Mortgage Calculator 2026 | Calculate monthly mortgage payments with PITI breakdown`,
+    description: `Calculate monthly mortgage payments with PITI breakdown for ${stateName} residents. Updated for 2026 with ${stateName}-specific tax rates, deductions, and regulations.`,
+    keywords: `${stateName} mortgage calculator, home loan calculator, piti calculator, ${stateName.toLowerCase()} mortgage-calculator, ${stateName.toLowerCase()} taxes`,
     alternates: {
-      canonical: `https://quantcurb.com/early-retirement-fire-planner/${params.state}`
+      canonical: `https://quantcurb.com/mortgage-calculator/${params.state}`
     }
   };
 }
 
-export default function StateFIREPlannerPage({ params }: PageProps) {
+export default function StateMortgageCalculatorPage({ params }: PageProps) {
   const stateConfig = STATE_CONFIGS[params.state];
 
   if (!stateConfig) {

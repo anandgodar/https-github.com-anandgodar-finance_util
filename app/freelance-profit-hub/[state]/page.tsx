@@ -28,24 +28,24 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
   if (!stateConfig) {
     return {
-      title: 'FIRE Calculator',
-      description: 'Calculate your path to early retirement and financial independence'
+      title: 'Freelance Tax Calculator',
+      description: 'Self-employment tax and profit calculation for freelancers'
     };
   }
 
   const stateName = stateConfig.name;
 
   return {
-    title: `${stateName} FIRE Calculator 2026 | Calculate your path to early retirement and financial independence`,
-    description: `Calculate your path to early retirement and financial independence for ${stateName} residents. Updated for 2026 with ${stateName}-specific tax rates, deductions, and regulations.`,
-    keywords: `${stateName} fire calculator, early retirement calculator, financial independence, ${stateName.toLowerCase()} early-retirement-fire-planner, ${stateName.toLowerCase()} taxes`,
+    title: `${stateName} Freelance Tax Calculator 2026 | Self-employment tax and profit calculation for freelancers`,
+    description: `Self-employment tax and profit calculation for freelancers for ${stateName} residents. Updated for 2026 with ${stateName}-specific tax rates, deductions, and regulations.`,
+    keywords: `${stateName} freelance tax calculator, self employment tax, 1099 calculator, ${stateName.toLowerCase()} freelance-profit-hub, ${stateName.toLowerCase()} taxes`,
     alternates: {
-      canonical: `https://quantcurb.com/early-retirement-fire-planner/${params.state}`
+      canonical: `https://quantcurb.com/freelance-profit-hub/${params.state}`
     }
   };
 }
 
-export default function StateFIREPlannerPage({ params }: PageProps) {
+export default function StateFreelanceHubPage({ params }: PageProps) {
   const stateConfig = STATE_CONFIGS[params.state];
 
   if (!stateConfig) {
