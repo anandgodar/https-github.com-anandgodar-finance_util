@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import FreelanceHub from '@/components/FreelanceHub';
-import SiteShell from '@/components/SiteShell';
-import { ToolType } from '@/types';
-import { StateConfig } from '@/lib/state-configs';
+import FreelanceHub from '../../../components/FreelanceHub';
+import SiteShell from '../../../components/SiteShell';
+import { ToolType } from '../../../types';
+import { StateConfig } from '../../../lib/state-configs';
 
 type StateToolClientProps = {
   stateConfig: StateConfig;

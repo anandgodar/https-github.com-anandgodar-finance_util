@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import QuarterlyTaxCalculator from '@/components/QuarterlyTaxCalculator';
-import SiteShell from '@/components/SiteShell';
-import { ToolType } from '@/types';
-import { StateConfig } from '@/lib/state-configs';
+import QuarterlyTaxCalculator from '../../../components/QuarterlyTaxCalculator';
+import SiteShell from '../../../components/SiteShell';
+import { ToolType } from '../../../types';
+import { StateConfig } from '../../../lib/state-configs';
 
 type StateToolClientProps = {
   stateConfig: StateConfig;
