@@ -116,7 +116,7 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
 
         {/* The Calculator Tool */}
         <div className="mb-12">
-          <FIREPlanner onNavigate={handleNavigate} initialState={stateConfig.code} />
+          <FIREPlanner onNavigate={handleNavigate} />
         </div>
 
         {/* SEO Content */}

@@ -116,7 +116,7 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
 
         {/* The Calculator Tool */}
         <div className="mb-12">
-          <QuarterlyTaxCalculator onNavigate={handleNavigate} initialState={stateConfig.code} />
+          <QuarterlyTaxCalculator onNavigate={handleNavigate} />
         </div>
 
         {/* SEO Content */}
