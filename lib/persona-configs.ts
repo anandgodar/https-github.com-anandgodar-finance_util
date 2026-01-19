@@ -391,7 +391,7 @@ export const PERSONA_CONFIGS: Record<string, PersonaConfig> = {
     ],
     contentAngles: [
       'Child Tax Credit 2026: Who gets the full $2,000?',
-      'Dependent Care FSA: The $1,000+ tax break you're missing',
+      'Dependent Care FSA: The $1,000+ tax break you\'re missing',
       '529 vs UTMA vs Roth IRA: Best way to save for college',
       'Life insurance: How much do parents really need?',
     ],
