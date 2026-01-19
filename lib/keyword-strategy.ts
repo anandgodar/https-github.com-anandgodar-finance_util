@@ -21,7 +21,7 @@ export interface KeywordSet {
   difficulty: 'Low' | 'Medium' | 'High';
 }
 
-export const TOOL_KEYWORDS: Record<ToolType, KeywordSet> = {
+export const TOOL_KEYWORDS: Partial<Record<ToolType, KeywordSet>> = {
   [ToolType.FIRE_PLANNER]: {
     primary: [
       'fire calculator',
