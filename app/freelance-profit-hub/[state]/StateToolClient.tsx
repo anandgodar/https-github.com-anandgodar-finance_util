@@ -44,18 +44,7 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
   };
 
   const getToolContext = () => {
-    switch('freelance-profit-hub') {
-      case 'early-retirement-fire-planner':
-        return 'early retirement planning';
-      case 'mortgage-calculator':
-        return 'home buying decisions';
-      case 'freelance-profit-hub':
-        return 'freelance business profits';
-      case 'quarterly-tax-calculator':
-        return 'quarterly tax obligations';
-      default:
-        return 'financial planning';
-    }
+    return 'freelance business profits';
   };
 
   const getTaxAdvantages = () => {
