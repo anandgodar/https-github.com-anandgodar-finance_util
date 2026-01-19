@@ -2,7 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
-import { STATE_CONFIGS } from '@/lib/state-configs';
+import { STATE_CONFIGS } from '../../../lib/state-configs';
 import StateToolClient from './StateToolClient';
 
 type PageProps = {
