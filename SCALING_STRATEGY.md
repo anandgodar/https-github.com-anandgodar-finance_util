@@ -4,6 +4,17 @@
 
 Transform QuantCurb from 25 tools to **1,000+ pages** through programmatic SEO and use case segmentation. Current foundation (51 state pages) proves the infrastructure works - now multiply it across tools and personas.
 
+## 🚨 CRITICAL ARCHITECTURE NOTE
+
+**State pages MUST use SiteShell, NOT AppShell!**
+
+AppShell contains a `useEffect` that redirects to `/${activeTool}` on mount, which breaks state-specific URLs. This would prevent all state pages from being indexed by Google.
+
+✅ **Correct:** Use `SiteShell` pattern (see `app/salary-tax-estimator/[state]/` or `app/early-retirement-fire-planner/[state]/`)
+❌ **Broken:** Using `AppShell` for state pages causes immediate redirect to base URL
+
+**Full details:** See `ARCHITECTURE_FIX_STATE_PAGES.md`
+
 ---
 
 ## 1. State-wise Scaling (Geographic Expansion)
@@ -59,45 +70,88 @@ Transform QuantCurb from 25 tools to **1,000+ pages** through programmatic SEO a
 
 ### Implementation Plan
 
-#### Step 1: Create Dynamic Route Structure
+#### Step 1: Generate State Pages Using Script
+
+**Use the generation script** (following SiteShell pattern):
+
+```bash
+# Generate state pages for priority tools
+node scripts/generate-state-pages.cjs --tool=early-retirement-fire-planner
+node scripts/generate-state-pages.cjs --tool=mortgage-calculator
+node scripts/generate-state-pages.cjs --tool=freelance-profit-hub
+node scripts/generate-state-pages.cjs --tool=quarterly-tax-calculator
+
+# Or generate for all tools at once
+node scripts/generate-state-pages.cjs --tool=all
+```
+
+This creates route structure: `app/[tool]/[state]/page.tsx` for each tool.
+
+#### Step 2: Page Structure (Generated Automatically)
+
+**app/[tool]/[state]/page.tsx** (Server Component):
 
 ```typescript
-// app/[state]/[tool]/page.tsx
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import { STATE_CONFIGS } from '@/lib/state-configs';
-import { TOOL_METADATA } from '@/lib/tool-metadata';
+import StateToolClient from './StateToolClient';
 
-export async function generateStaticParams() {
-  const states = Object.keys(STATE_CONFIGS); // 51 states
-  const tools = [
-    'mortgage-calculator',
-    'fire-calculator',
-    'freelance-tax-calculator',
-    // ... Tier 1 tools
-  ];
+export const dynamic = 'force-static';
+export const dynamicParams = false;
 
-  return states.flatMap(state =>
-    tools.map(tool => ({ state, tool }))
-  );
+export function generateStaticParams() {
+  const stateKeys = Object.keys(STATE_CONFIGS);
+  return stateKeys.map((stateKey) => ({ state: stateKey }));
 }
 
-export async function generateMetadata({ params }) {
-  const { state, tool } = params;
-  const stateConfig = STATE_CONFIGS[state];
-  const toolMeta = TOOL_METADATA[tool];
+export function generateMetadata({ params }: PageProps): Metadata {
+  const stateConfig = STATE_CONFIGS[params.state];
 
   return {
-    title: `${stateConfig.name} ${toolMeta.title} | ${stateConfig.stateTaxRate}% State Tax`,
-    description: `${toolMeta.desc} Includes ${stateConfig.name}-specific tax rates, deductions, and local regulations.`,
-    keywords: `${state} ${toolMeta.keywords}, ${state} taxes, ${stateConfig.name} calculator`,
+    title: `${stateConfig.name} [Tool] 2026 | [Description]`,
+    description: `[Tool description] for ${stateConfig.name} residents. Updated for 2026 with ${stateConfig.name}-specific tax rates.`,
+    keywords: `${stateConfig.name} [tool keywords], ${stateConfig.name} taxes`,
+    alternates: { canonical: `https://quantcurb.com/[tool]/${params.state}` }
   };
 }
 
-export default function StateTool({ params }) {
-  const { state, tool } = params;
-  const stateConfig = STATE_CONFIGS[state];
+export default function StateToolPage({ params }: PageProps) {
+  const stateConfig = STATE_CONFIGS[params.state];
+  if (!stateConfig) notFound();
 
+  return <StateToolClient stateConfig={stateConfig} />;
+}
+```
+
+**app/[tool]/[state]/StateToolClient.tsx** (Client Component):
+
+```typescript
+'use client';
+
+import ToolComponent from '@/components/ToolComponent';
+import SiteShell from '@/components/SiteShell';  // ✅ NOT AppShell!
+import { ToolType } from '@/types';
+
+export default function StateToolClient({ stateConfig }) {
   return (
-    <AppShell
+    <SiteShell activeTool={ToolType.TOOL_NAME}>  {/* ✅ No redirect */}
+      <div className="max-w-7xl mx-auto">
+        {/* State-specific SEO header */}
+        <h1>{stateConfig.name} [Tool Name]</h1>
+
+        {/* State stats */}
+        <div>Tax Rate: {stateConfig.stateTaxRate}%</div>
+
+        {/* The calculator */}
+        <ToolComponent initialState={stateConfig.code} />
+
+        {/* SEO content */}
+        <article>Why use a {stateConfig.name} calculator...</article>
+      </div>
+    </SiteShell>
+  );
+}
       initialTool={tool}
       stateOverride={stateConfig} // Pre-populate state-specific defaults
     />
