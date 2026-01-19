@@ -24,6 +24,7 @@ export enum ToolType {
   QUARTERLY_TAX = 'quarterly-estimated-tax-calculator',
   ACA_SUBSIDY = 'aca-health-insurance-subsidy-calculator',
   DTI_CALCULATOR = 'debt-to-income-ratio-calculator',
+  OPTIONS_STRATEGY_VISUALIZER = 'options-strategy-visualizer',
   BLOG_CTC_2025 = 'blog/child-tax-credit-2025-guide',
   BLOG_ACA_FREELANCERS = 'blog/aca-health-insurance-freelancers-2025',
   BLOG_QUARTERLY_TAX = 'blog/quarterly-estimated-taxes-complete-guide',

@@ -8,45 +8,45 @@ interface DashboardProps {
 
 const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
   const cards = [
-    { 
-      id: ToolType.EMI_CALC, 
-      title: 'Loan EMI Pro', 
-      desc: 'Institutional-grade reducing balance loan calculator for Home, Car, and Personal debt payoff optimization.', 
-      icon: '💳', 
-      color: 'bg-blue-50 text-blue-600',
-      keywords: 'Amortization, Principal reduction'
-    },
-    { 
-      id: ToolType.MORTGAGE_CALC, 
-      title: 'Mortgage Intel', 
-      desc: 'Advanced real estate financing tool with PITI logic, property tax, insurance, and PMI stress testing.', 
-      icon: '🏡', 
+    {
+      id: ToolType.OPTIONS_STRATEGY_VISUALIZER,
+      title: 'Options Visualizer',
+      desc: 'Build multi-leg options strategies with interactive P&L diagrams, Greeks dashboard, and IV modeling.',
+      icon: '📊',
       color: 'bg-indigo-50 text-indigo-600',
+      keywords: 'Iron Condor, Greeks, Delta'
+    },
+    {
+      id: ToolType.EXCEL_MODELER,
+      title: 'DCF + WACC Wizard',
+      desc: 'Institutional DCF valuation with CAPM-based WACC calculator and sensitivity matrices for equity analysis.',
+      icon: '📁',
+      color: 'bg-green-50 text-green-600',
+      keywords: 'DCF, WACC Calculator, CAPM'
+    },
+    {
+      id: ToolType.MORTGAGE_CALC,
+      title: 'Mortgage Intel',
+      desc: 'Advanced real estate financing tool with PITI logic, property tax, insurance, and PMI stress testing.',
+      icon: '🏡',
+      color: 'bg-blue-50 text-blue-600',
       keywords: 'LTV Ratio, Escrow analysis'
     },
-    { 
-      id: ToolType.EXCEL_MODELER, 
-      title: 'Excel Power Modeler', 
-      desc: 'Simulate high-fidelity DCF models and sensitivity matrices with professional spreadsheet logic.', 
-      icon: '📁', 
-      color: 'bg-green-50 text-green-600',
-      keywords: 'DCF Valuation, WACC matrix'
-    },
-    { 
-      id: ToolType.SALARY_CALC, 
-      title: 'Salary Estimator', 
-      desc: 'Precision after-tax income modeling for all US states including 401k tax-shield and FICA analysis.', 
-      icon: '💰', 
+    {
+      id: ToolType.SALARY_CALC,
+      title: 'Salary Estimator',
+      desc: 'Precision after-tax income modeling for all US states including 401k tax-shield and FICA analysis.',
+      icon: '💰',
       color: 'bg-emerald-50 text-emerald-600',
       keywords: 'Take-home pay, Tax brackets'
     },
-    { 
-      id: ToolType.INVESTMENT_CALC, 
-      title: 'Wealth SIP', 
-      desc: 'Visualize compound interest growth trajectories with inflation-adjusted investment modeling.', 
-      icon: '📈', 
-      color: 'bg-purple-50 text-purple-600',
-      keywords: 'SIP, Compounding growth'
+    {
+      id: ToolType.FIRE_PLANNER,
+      title: 'FIRE Calculator',
+      desc: 'Plan financial independence with Coast FIRE, 4% rule testing, and retirement date projection.',
+      icon: '🔥',
+      color: 'bg-orange-50 text-orange-600',
+      keywords: 'Financial Independence, Early Retirement'
     },
   ];
 
