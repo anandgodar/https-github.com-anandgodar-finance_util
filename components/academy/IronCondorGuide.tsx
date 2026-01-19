@@ -10,39 +10,102 @@ const IronCondorGuide: React.FC<IronCondorGuideProps> = ({ setActiveTool }) => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 text-white py-16">
         <div className="max-w-4xl mx-auto px-6">
-          <button onClick={() => setActiveTool(ToolType.VALUATION_ACADEMY)} className="text-purple-300 hover:text-white font-semibold text-sm mb-4">← Back to Academy</button>
-          <h1 className="text-5xl font-black mb-6">Iron Condor Strategy: When and How to Use It</h1>
-          <div className="flex gap-6 text-sm text-purple-200"><span>📚 14 min read</span><span>📊 Intermediate</span><span>Updated: January 2026</span></div>
+          <button
+            onClick={() => setActiveTool(ToolType.VALUATION_ACADEMY)}
+            className="text-purple-300 hover:text-white font-semibold text-sm mb-4"
+          >
+            ← Back to Academy
+          </button>
+          <h1 className="text-5xl font-black mb-6">
+            Iron Condor Strategy: When and How to Use It
+          </h1>
+          <div className="flex gap-6 text-sm text-purple-200">
+            <span>📚 14 min read</span>
+            <span>📊 Intermediate</span>
+            <span>Updated: January 2026</span>
+          </div>
         </div>
       </div>
 
       <article className="max-w-4xl mx-auto px-6 py-16">
         <div className="bg-purple-600 text-white rounded-2xl p-6 mb-12 shadow-xl flex items-center justify-between">
-          <div><p className="font-black text-xl mb-2">Build Your First Iron Condor</p><p className="text-purple-200">Visualize profit/loss, breakevens, and Greeks in real-time</p></div>
-          <button onClick={() => setActiveTool(ToolType.OPTIONS_STRATEGY_VISUALIZER)} className="bg-white text-purple-900 px-6 py-3 rounded-xl font-black hover:bg-purple-50 transition-all whitespace-nowrap">Open Visualizer →</button>
+          <div>
+            <p className="font-black text-xl mb-2">Build Your First Iron Condor</p>
+            <p className="text-purple-200">Visualize profit/loss, breakevens, and Greeks in real-time</p>
+          </div>
+          <button
+            onClick={() => setActiveTool(ToolType.OPTIONS_STRATEGY_VISUALIZER)}
+            className="bg-white text-purple-900 px-6 py-3 rounded-xl font-black hover:bg-purple-50 transition-all whitespace-nowrap"
+          >
+            Open Visualizer →
+          </button>
         </div>
 
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-4">What is an Iron Condor?</h2><p className="text-slate-700 leading-relaxed mb-4">An Iron Condor is a <strong>neutral income strategy</strong> that profits when the underlying stock stays within a range. It's one of the most popular strategies for generating monthly income from options.</p><div className="bg-slate-100 border-l-4 border-purple-600 p-6 rounded-r-xl my-6"><p className="text-lg font-bold text-slate-900 mb-2">The Setup (4-Leg Strategy):</p><ul className="list-decimal list-inside space-y-2 text-slate-700"><li><strong>Sell 1 OTM Put</strong> (collect premium)</li><li><strong>Buy 1 Further OTM Put</strong> (protection)</li><li><strong>Sell 1 OTM Call</strong> (collect premium)</li><li><strong>Buy 1 Further OTM Call</strong> (protection)</li></ul><p className="text-slate-600 mt-4 text-sm">Result: You collect net premium upfront and profit if the stock stays between the two sold strikes.</p></div></section>
+        <section className="mb-12">
+          <h2 className="text-3xl font-black text-slate-900 mb-4">What is an Iron Condor?</h2>
+          <p className="text-slate-700 leading-relaxed mb-4">
+            An Iron Condor is a <strong>neutral income strategy</strong> that profits when the underlying
+            stock stays within a range. It's one of the most popular strategies for generating monthly
+            income from options.
+          </p>
+          <div className="bg-slate-100 border-l-4 border-purple-600 p-6 rounded-r-xl my-6">
+            <p className="text-lg font-bold text-slate-900 mb-2">The Setup (4-Leg Strategy):</p>
+            <ul className="list-decimal list-inside space-y-2 text-slate-700">
+              <li><strong>Sell 1 OTM Put</strong> (collect premium)</li>
+              <li><strong>Buy 1 Further OTM Put</strong> (protection)</li>
+              <li><strong>Sell 1 OTM Call</strong> (collect premium)</li>
+              <li><strong>Buy 1 Further OTM Call</strong> (protection)</li>
+            </ul>
+            <p className="text-slate-600 mt-4 text-sm">
+              Result: You collect net premium upfront and profit if the stock stays between the two sold strikes.
+            </p>
+          </div>
+        </section>
 
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">Iron Condor Example: SPY</h2><div className="bg-gradient-to-br from-slate-900 to-purple-900 text-white rounded-2xl p-8"><h3 className="text-2xl font-black mb-4">Real Trade Setup</h3><p className="text-purple-200 mb-6">SPY trading at $450 | 45 days to expiration</p><div className="space-y-3 bg-white/10 rounded-xl p-6"><p className="font-bold text-lg border-b border-white/20 pb-2">Put Side:</p><p className="font-mono text-sm">• SELL $440 Put @ $2.50 (collect premium)</p><p className="font-mono text-sm">• BUY $435 Put @ $1.30 (protection)</p><p className="text-emerald-400 font-bold mt-2">Put Credit Spread: $2.50 - $1.30 = $1.20 credit</p><p className="font-bold text-lg border-b border-white/20 pb-2 mt-6">Call Side:</p><p className="font-mono text-sm">• SELL $460 Call @ $2.20 (collect premium)</p><p className="font-mono text-sm">• BUY $465 Call @ $1.10 (protection)</p><p className="text-emerald-400 font-bold mt-2">Call Credit Spread: $2.20 - $1.10 = $1.10 credit</p></div><div className="bg-emerald-900/30 rounded-xl p-6 mt-6 border-2 border-emerald-500"><p className="font-bold text-emerald-400 text-lg mb-3">Total Trade Metrics:</p><p className="font-mono text-sm">Credit Received: $1.20 + $1.10 = $2.30 per share</p><p className="font-mono text-sm">× 100 shares = <strong className="text-emerald-300">$230 total credit</strong></p><p className="font-mono text-sm mt-4">Max Risk: $5 width - $2.30 credit = $2.70</p><p className="font-mono text-sm">× 100 = <strong className="text-red-300">$270 max loss</strong></p><p className="font-mono text-lg mt-4 text-white">Return on Risk: $230 / $270 = <strong className="text-yellow-300">85% ROI</strong></p></div></div></section>
+        <section className="mb-12">
+          <div className="bg-gradient-to-br from-purple-600 to-indigo-600 text-white rounded-2xl p-12 text-center">
+            <h2 className="text-4xl font-black mb-4">Try Building Your First Iron Condor</h2>
+            <p className="text-xl text-purple-100 mb-8">
+              Our visualizer shows real-time P/L, breakevens, Greeks, and risk metrics
+            </p>
+            <button
+              onClick={() => setActiveTool(ToolType.OPTIONS_STRATEGY_VISUALIZER)}
+              className="bg-white text-purple-900 px-10 py-5 rounded-xl font-black text-xl hover:bg-purple-50 transition-all shadow-2xl"
+            >
+              Launch Options Visualizer →
+            </button>
+          </div>
+        </section>
 
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">Profit & Loss Breakdown</h2><div className="bg-white rounded-2xl p-8 shadow-lg"><div className="space-y-6"><div className="bg-emerald-50 rounded-xl p-6 border-2 border-emerald-500"><p className="font-black text-emerald-900 text-lg mb-3">✓ Max Profit: $230</p><p className="text-slate-700 mb-2"><strong>When:</strong> SPY closes between $440-$460 at expiration</p><p className="text-slate-600 text-sm">You keep the entire $230 premium collected upfront</p></div><div className="bg-yellow-50 rounded-xl p-6 border-2 border-yellow-500"><p className="font-black text-yellow-900 text-lg mb-3">⚠️ Breakeven Points</p><p className="text-slate-700"><strong>Lower Breakeven:</strong> $440 - $2.30 = $437.70</p><p className="text-slate-700 mt-2"><strong>Upper Breakeven:</strong> $460 + $2.30 = $462.30</p><p className="text-slate-600 text-sm mt-3">SPY can move $12.30 up or down (~2.7%) and you still profit</p></div><div className="bg-red-50 rounded-xl p-6 border-2 border-red-500"><p className="font-black text-red-900 text-lg mb-3">✗ Max Loss: $270</p><p className="text-slate-700 mb-2"><strong>When:</strong> SPY closes below $435 or above $465</p><p className="text-slate-600 text-sm">Loss is capped by your protective long options</p></div></div></div></section>
-
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">The Greeks: What You're Trading</h2><div className="grid md:grid-cols-2 gap-6"><div className="bg-white rounded-xl p-6 shadow-lg"><div className="text-3xl mb-3">⚖️</div><h3 className="font-black text-slate-900 mb-2">Delta: ~0 (Neutral)</h3><p className="text-slate-600 text-sm mb-3">Iron Condors are delta-neutral. You don't care if the stock goes up or down - you just want it to stay still.</p><p className="text-indigo-600 font-bold text-sm">Strategy: Adjust if Delta drifts beyond ±0.10</p></div><div className="bg-white rounded-xl p-6 shadow-lg"><div className="text-3xl mb-3">⏰</div><h3 className="font-black text-slate-900 mb-2">Theta: +$8-15/day (Your Friend)</h3><p className="text-slate-600 text-sm mb-3">You're short options, so time decay works FOR you. Every day that passes, you make money even if nothing happens.</p><p className="text-emerald-600 font-bold text-sm">Peak theta: 30-45 days to expiration</p></div><div className="bg-white rounded-xl p-6 shadow-lg"><div className="text-3xl mb-3">📉</div><h3 className="font-black text-slate-900 mb-2">Vega: Negative (Short Vol)</h3><p className="text-slate-600 text-sm mb-3">You profit when implied volatility decreases. IV crush (post-earnings) is your best friend.</p><p className="text-orange-600 font-bold text-sm">Avoid: Entering before major events</p></div><div className="bg-white rounded-xl p-6 shadow-lg"><div className="text-3xl mb-3">🎢</div><h3 className="font-black text-slate-900 mb-2">Gamma: Negative (Risk)</h3><p className="text-slate-600 text-sm mb-3">Big stock moves accelerate losses. Your worst enemy is a sudden breakout in either direction.</p><p className="text-red-600 font-bold text-sm">Defense: Close early if approaching breakeven</p></div></div></section>
-
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">When to Use an Iron Condor</h2><div className="space-y-4"><div className="bg-emerald-50 border-l-4 border-emerald-600 rounded-r-xl p-6"><h3 className="font-black text-emerald-900 mb-2">✓ Low Volatility Environment</h3><p className="text-slate-700">VIX < 20, market is calm. IV is stable or decreasing. Perfect conditions for selling premium.</p></div><div className="bg-emerald-50 border-l-4 border-emerald-600 rounded-r-xl p-6"><h3 className="font-black text-emerald-900 mb-2">✓ Range-Bound Stock</h3><p className="text-slate-700">Stock trading sideways for weeks/months. Support and resistance levels are clear. No major catalysts upcoming.</p></div><div className="bg-emerald-50 border-l-4 border-emerald-600 rounded-r-xl p-6"><h3 className="font-black text-emerald-900 mb-2">✓ Post-Earnings Period</h3><p className="text-slate-700">After earnings are announced, IV collapses. Great time to enter Iron Condors for the next 30-45 days.</p></div><div className="bg-emerald-50 border-l-4 border-emerald-600 rounded-r-xl p-6"><h3 className="font-black text-emerald-900 mb-2">✓ High IV Rank</h3><p className="text-slate-700">When IV is in the 70th-90th percentile for that stock. Options are expensive - sell them!</p></div></div></section>
-
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">When to AVOID Iron Condors</h2><div className="space-y-4"><div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-6"><h3 className="font-black text-red-900 mb-2">❌ Before Earnings</h3><p className="text-red-800">IV is elevated, but the risk of a big move is too high. One bad earnings report can wipe out months of profits.</p></div><div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-6"><h3 className="font-black text-red-900 mb-2">❌ High Volatility (VIX > 30)</h3><p className="text-red-800">Market is choppy. Big swings will breach your breakevens. Wait for volatility to settle.</p></div><div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-6"><h3 className="font-black text-red-900 mb-2">❌ Strong Trend</h3><p className="text-red-800">Stock is in a clear uptrend or downtrend. Don't fight the trend - use directional spreads instead.</p></div><div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-6"><h3 className="font-black text-red-900 mb-2">❌ News-Heavy Period</h3><p className="text-red-800">Fed announcements, elections, product launches. Any binary event can cause explosive moves.</p></div></div></section>
-
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">Management & Adjustments</h2><div className="bg-white rounded-2xl p-8 shadow-lg"><h3 className="text-xl font-black text-slate-900 mb-6">Exit Rules (Professional Traders)</h3><div className="space-y-4"><div className="bg-emerald-50 rounded-xl p-4"><p className="font-bold text-emerald-900 mb-2">✓ Take Profit at 50% Max Gain</p><p className="text-slate-700 text-sm">If you collected $230, close when profit hits $115 (option buyback costs $115). Don't be greedy - theta slows down near expiration.</p></div><div className="bg-yellow-50 rounded-xl p-4"><p className="font-bold text-yellow-900 mb-2">⚠️ Close at 21 DTE</p><p className="text-slate-700 text-sm">Gamma risk explodes in the final 3 weeks. Even if profitable, close and roll to next month to avoid weekend/overnight moves.</p></div><div className="bg-red-50 rounded-xl p-4"><p className="font-bold text-red-900 mb-2">✗ Stop Loss at 2x-3x Max Profit</p><p className="text-slate-700 text-sm">If max profit was $230, exit when loss hits $460-$690. Don't let one bad trade erase months of wins.</p></div><div className="bg-blue-50 rounded-xl p-4"><p className="font-bold text-blue-900 mb-2">🔄 Roll Threatened Side</p><p className="text-slate-700 text-sm">If stock moves close to one breakeven, close that side and roll strikes further out. Keep the profitable side.</p></div></div></div></section>
-
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">Common Mistakes</h2><div className="space-y-4"><div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-6"><h3 className="font-black text-red-900 mb-2">❌ Too Narrow Strikes (Greedy)</h3><p className="text-red-800">Selling strikes 2-3% away gives you $500 credit but 80% chance of being tested. Better: 10-15% away for 70% win rate.</p></div><div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-6"><h3 className="font-black text-red-900 mb-2">❌ Holding Until Expiration</h3><p className="text-red-800">Gamma risk explodes in final week. Close at 50% profit or 21 DTE, whichever comes first.</p></div><div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-6"><h3 className="font-black text-red-900 mb-2">❌ Not Defining Max Loss</h3><p className="text-red-800">Set a stop loss at 2x-3x max profit BEFORE entering. Stick to it. One undefined loss can wipe out months of theta.</p></div><div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-6"><h3 className="font-black text-red-900 mb-2">❌ Ignoring Earnings Calendar</h3><p className="text-red-800">Always check when earnings are. If it's within your 45-day window, skip that stock or adjust strikes wider.</p></div></div></section>
-
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">Strike Selection Guide</h2><div className="bg-slate-900 text-white rounded-xl p-6 overflow-x-auto"><table className="w-full text-sm"><thead><tr className="border-b border-white/20"><th className="text-left pb-3 pr-4">Probability of Profit</th><th className="text-left pb-3 pr-4">Strike Distance</th><th className="text-left pb-3 pr-4">Typical Credit</th><th className="text-left pb-3">Best For</th></tr></thead><tbody className="divide-y divide-white/10"><tr><td className="py-3 pr-4 text-emerald-400">75-80%</td><td className="py-3 pr-4">1 SD (~15-20% OTM)</td><td className="py-3 pr-4">$150-$250</td><td className="py-3 text-slate-300">Conservative income</td></tr><tr><td className="py-3 pr-4 text-yellow-400">60-70%</td><td className="py-3 pr-4">0.75 SD (~10-12% OTM)</td><td className="py-3 pr-4">$300-$450</td><td className="py-3 text-slate-300">Balanced (most common)</td></tr><tr><td className="py-3 pr-4 text-red-400">40-50%</td><td className="py-3 pr-4">0.5 SD (~5-7% OTM)</td><td className="py-3 pr-4">$500-$700</td><td className="py-3 text-slate-300">Aggressive (risky)</td></tr></tbody></table><p className="text-purple-200 mt-4 text-sm">Pro traders aim for 65-75% probability of profit (PoP) for sustainable monthly income.</p></div></section>
-
-        <section className="mb-12"><div className="bg-gradient-to-br from-purple-600 to-indigo-600 text-white rounded-2xl p-12 text-center"><h2 className="text-4xl font-black mb-4">Try Building Your First Iron Condor</h2><p className="text-xl text-purple-100 mb-8">Our visualizer shows real-time P/L, breakevens, Greeks, and risk metrics</p><button onClick={() => setActiveTool(ToolType.OPTIONS_STRATEGY_VISUALIZER)} className="bg-white text-purple-900 px-10 py-5 rounded-xl font-black text-xl hover:bg-purple-50 transition-all shadow-2xl">Launch Options Visualizer →</button></div></section>
-
-        <section><h2 className="text-3xl font-black text-slate-900 mb-6">Continue Learning</h2><div className="grid md:grid-cols-3 gap-6"><button onClick={() => setActiveTool(ToolType.ACADEMY_GREEKS_GUIDE)} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-purple-500"><div className="text-3xl mb-3">📊</div><h3 className="font-black text-slate-900 mb-2">Options Greeks</h3><p className="text-slate-600 text-sm">Master Delta, Theta, Vega, Gamma</p></button><button onClick={() => setActiveTool(ToolType.ACADEMY_DCF_GUIDE)} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-purple-500"><div className="text-3xl mb-3">📈</div><h3 className="font-black text-slate-900 mb-2">DCF Valuation</h3><p className="text-slate-600 text-sm">Stock valuation fundamentals</p></button><button onClick={() => setActiveTool(ToolType.VALUATION_ACADEMY)} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-purple-500"><div className="text-3xl mb-3">🎓</div><h3 className="font-black text-slate-900 mb-2">All Guides</h3><p className="text-slate-600 text-sm">Back to Academy</p></button></div></section>
+        <section>
+          <h2 className="text-3xl font-black text-slate-900 mb-6">Continue Learning</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <button
+              onClick={() => setActiveTool(ToolType.ACADEMY_GREEKS_GUIDE)}
+              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-purple-500"
+            >
+              <div className="text-3xl mb-3">📊</div>
+              <h3 className="font-black text-slate-900 mb-2">Options Greeks</h3>
+              <p className="text-slate-600 text-sm">Master Delta, Theta, Vega, Gamma</p>
+            </button>
+            <button
+              onClick={() => setActiveTool(ToolType.ACADEMY_DCF_GUIDE)}
+              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-purple-500"
+            >
+              <div className="text-3xl mb-3">📈</div>
+              <h3 className="font-black text-slate-900 mb-2">DCF Valuation</h3>
+              <p className="text-slate-600 text-sm">Stock valuation fundamentals</p>
+            </button>
+            <button
+              onClick={() => setActiveTool(ToolType.VALUATION_ACADEMY)}
+              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-purple-500"
+            >
+              <div className="text-3xl mb-3">🎓</div>
+              <h3 className="font-black text-slate-900 mb-2">All Guides</h3>
+              <p className="text-slate-600 text-sm">Back to Academy</p>
+            </button>
+          </div>
+        </section>
       </article>
     </div>
   );

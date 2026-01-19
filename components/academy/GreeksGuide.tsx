@@ -10,33 +10,101 @@ const GreeksGuide: React.FC<GreeksGuideProps> = ({ setActiveTool }) => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white py-16">
         <div className="max-w-4xl mx-auto px-6">
-          <button onClick={() => setActiveTool(ToolType.VALUATION_ACADEMY)} className="text-emerald-300 hover:text-white font-semibold text-sm mb-4">← Back to Academy</button>
-          <h1 className="text-5xl font-black mb-6">Options Greeks: Delta, Theta, Vega, Gamma for Beginners</h1>
-          <div className="flex gap-6 text-sm text-emerald-200"><span>📚 18 min read</span><span>📊 Beginner</span><span>Updated: January 2026</span></div>
+          <button
+            onClick={() => setActiveTool(ToolType.VALUATION_ACADEMY)}
+            className="text-emerald-300 hover:text-white font-semibold text-sm mb-4"
+          >
+            ← Back to Academy
+          </button>
+          <h1 className="text-5xl font-black mb-6">
+            Options Greeks: Delta, Theta, Vega, Gamma for Beginners
+          </h1>
+          <div className="flex gap-6 text-sm text-emerald-200">
+            <span>📚 18 min read</span>
+            <span>📊 Beginner</span>
+            <span>Updated: January 2026</span>
+          </div>
         </div>
       </div>
 
       <article className="max-w-4xl mx-auto px-6 py-16">
         <div className="bg-emerald-600 text-white rounded-2xl p-6 mb-12 shadow-xl flex items-center justify-between">
-          <div><p className="font-black text-xl mb-2">Visualize the Greeks in Real-Time</p><p className="text-emerald-200">Our Options Strategy Visualizer shows Delta, Theta, Vega, Gamma for any strategy</p></div>
-          <button onClick={() => setActiveTool(ToolType.OPTIONS_STRATEGY_VISUALIZER)} className="bg-white text-emerald-900 px-6 py-3 rounded-xl font-black hover:bg-emerald-50 transition-all whitespace-nowrap">Open Visualizer →</button>
+          <div>
+            <p className="font-black text-xl mb-2">Visualize the Greeks in Real-Time</p>
+            <p className="text-emerald-200">
+              Our Options Strategy Visualizer shows Delta, Theta, Vega, Gamma for any strategy
+            </p>
+          </div>
+          <button
+            onClick={() => setActiveTool(ToolType.OPTIONS_STRATEGY_VISUALIZER)}
+            className="bg-white text-emerald-900 px-6 py-3 rounded-xl font-black hover:bg-emerald-50 transition-all whitespace-nowrap"
+          >
+            Open Visualizer →
+          </button>
         </div>
 
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-4">What Are the Greeks?</h2><p className="text-slate-700 leading-relaxed mb-4">The Greeks are <strong>sensitivity measures</strong> that tell you how an option's price changes in response to different factors. Think of them as the "dashboard gauges" for your options position.</p><div className="bg-slate-100 border-l-4 border-emerald-600 p-6 rounded-r-xl my-6"><p className="text-lg font-bold text-slate-900">The Greeks answer four critical questions:</p><ul className="list-disc list-inside mt-3 space-y-1 text-slate-700"><li><strong>Delta:</strong> How much will the option price change if the stock moves $1?</li><li><strong>Theta:</strong> How much value do I lose every day due to time decay?</li><li><strong>Vega:</strong> How much will the option price change if volatility increases 1%?</li><li><strong>Gamma:</strong> How fast is my Delta changing as the stock moves?</li></ul></div></section>
+        <section className="mb-12">
+          <h2 className="text-3xl font-black text-slate-900 mb-4">What Are the Greeks?</h2>
+          <p className="text-slate-700 leading-relaxed mb-4">
+            The Greeks are <strong>sensitivity measures</strong> that tell you how an option's price
+            changes in response to different factors. Think of them as the "dashboard gauges" for your
+            options position.
+          </p>
+          <div className="bg-slate-100 border-l-4 border-emerald-600 p-6 rounded-r-xl my-6">
+            <p className="text-lg font-bold text-slate-900">The Greeks answer four critical questions:</p>
+            <ul className="list-disc list-inside mt-3 space-y-1 text-slate-700">
+              <li><strong>Delta:</strong> How much will the option price change if the stock moves $1?</li>
+              <li><strong>Theta:</strong> How much value do I lose every day due to time decay?</li>
+              <li><strong>Vega:</strong> How much will the option price change if volatility increases 1%?</li>
+              <li><strong>Gamma:</strong> How fast is my Delta changing as the stock moves?</li>
+            </ul>
+          </div>
+        </section>
 
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">Delta (Δ): Directional Exposure</h2><div className="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-emerald-600 mb-6"><p className="text-slate-900 font-bold text-xl mb-4">What is Delta?</p><p className="text-slate-700 mb-4">Delta measures how much an option's price changes for every $1 move in the underlying stock.</p><div className="bg-slate-50 rounded-xl p-4 mb-4"><p className="font-mono text-slate-900 text-center mb-2">Delta = ΔOption Price / ΔStock Price</p><p className="text-slate-600 text-sm text-center">Example: Delta of 0.50 means option gains $0.50 for every $1 stock increase</p></div><div className="grid md:grid-cols-2 gap-4 mt-6"><div className="bg-emerald-50 rounded-xl p-4"><p className="font-bold text-emerald-900 mb-2">Call Options</p><p className="text-sm text-slate-700">Delta: 0 to 1.0</p><p className="text-sm text-slate-600 mt-1">ITM Call: Δ ≈ 0.70-0.90</p><p className="text-sm text-slate-600">ATM Call: Δ ≈ 0.50</p><p className="text-sm text-slate-600">OTM Call: Δ ≈ 0.10-0.30</p></div><div className="bg-red-50 rounded-xl p-4"><p className="font-bold text-red-900 mb-2">Put Options</p><p className="text-sm text-slate-700">Delta: -1.0 to 0</p><p className="text-sm text-slate-600 mt-1">ITM Put: Δ ≈ -0.70 to -0.90</p><p className="text-sm text-slate-600">ATM Put: Δ ≈ -0.50</p><p className="text-sm text-slate-600">OTM Put: Δ ≈ -0.10 to -0.30</p></div></div></div><div className="bg-indigo-50 rounded-xl p-6 mb-6"><p className="font-bold text-slate-900 mb-3">💡 Delta as "Shares Equivalent"</p><p className="text-slate-700 mb-3">Delta tells you how many shares of stock your option behaves like.</p><p className="font-mono text-sm text-slate-700">Long 1 Call with Δ=0.60 ≈ Long 60 shares</p><p className="font-mono text-sm text-slate-700">Short 2 Puts with Δ=-0.40 ≈ Long 80 shares</p><p className="text-slate-600 text-sm mt-3">Professional traders use Delta to hedge: Sell 60 shares to neutralize a 0.60 Delta call.</p></div><div className="bg-slate-900 text-white rounded-xl p-6"><p className="font-bold mb-3">Real Example: Apple Call Option</p><p className="text-slate-300 mb-3">Stock: $180 | Strike: $175 (ITM) | Delta: 0.75</p><div className="space-y-2 text-sm"><p className="text-emerald-400">✓ Stock rises $1 → $181</p><p className="text-slate-200">  Option price increases by $0.75</p><p className="text-red-400 mt-3">✗ Stock falls $1 → $179</p><p className="text-slate-200">  Option price decreases by $0.75</p></div></div></section>
+        <section className="mb-12">
+          <div className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white rounded-2xl p-12 text-center">
+            <h2 className="text-4xl font-black mb-4">Visualize the Greeks in Action</h2>
+            <p className="text-xl text-emerald-100 mb-8">
+              Our Options Strategy Visualizer calculates Delta, Theta, Vega, Gamma in real-time for any strategy
+            </p>
+            <button
+              onClick={() => setActiveTool(ToolType.OPTIONS_STRATEGY_VISUALIZER)}
+              className="bg-white text-emerald-900 px-10 py-5 rounded-xl font-black text-xl hover:bg-emerald-50 transition-all shadow-2xl"
+            >
+              Launch Visualizer →
+            </button>
+          </div>
+        </section>
 
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">Theta (Θ): Time Decay</h2><div className="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-orange-600 mb-6"><p className="text-slate-900 font-bold text-xl mb-4">What is Theta?</p><p className="text-slate-700 mb-4">Theta measures how much value an option loses <strong>every day</strong> due to time passing. It's always negative for long options.</p><div className="bg-slate-50 rounded-xl p-4 mb-4"><p className="font-mono text-slate-900 text-center mb-2">Theta = ΔOption Price / ΔTime (per day)</p><p className="text-slate-600 text-sm text-center">Example: Theta of -0.05 means you lose $5 per day per contract</p></div></div><div className="grid md:grid-cols-2 gap-6 mb-6"><div className="bg-white rounded-xl p-6 shadow-lg"><div className="text-3xl mb-3">📉</div><h3 className="font-black text-slate-900 mb-2">Option Buyers (Long)</h3><p className="text-slate-600 text-sm mb-3">Theta is your enemy. Time decay eats away at your option value every single day, even if the stock doesn't move.</p><p className="text-orange-600 font-bold text-sm">Strategy: Close positions before expiration week when decay accelerates.</p></div><div className="bg-white rounded-xl p-6 shadow-lg"><div className="text-3xl mb-3">📈</div><h3 className="font-black text-slate-900 mb-2">Option Sellers (Short)</h3><p className="text-slate-600 text-sm mb-3">Theta is your friend. You collect time decay daily, profiting as options lose value from time passing alone.</p><p className="text-emerald-600 font-bold text-sm">Strategy: Sell options with 30-45 DTE for optimal theta collection.</p></div></div><div className="bg-orange-50 border-l-4 border-orange-600 rounded-r-xl p-6 mb-6"><p className="font-bold text-orange-900 mb-2">⚠️ Theta Accelerates Near Expiration</p><p className="text-orange-800">Time decay is NOT linear. Options lose value slowly at first, then rapidly in the final 30 days. The last week is brutal - avoid holding long options into expiration.</p></div><div className="bg-slate-900 text-white rounded-xl p-6"><p className="font-bold mb-3">Real Example: Tesla 30-Day Call</p><p className="text-slate-300 mb-3">Strike: $250 | Stock: $245 | Theta: -0.12 | Premium: $3.50</p><div className="space-y-2 text-sm"><p className="text-slate-200">Day 1: Premium = $3.50</p><p className="text-slate-200">Day 2: Premium = $3.38 (-$0.12)</p><p className="text-slate-200">Day 7: Premium = $2.66 (-$0.84 total)</p><p className="text-red-400 mt-3">After 30 days with no stock movement: $0.00</p></div></div></section>
-
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">Vega (ν): Volatility Sensitivity</h2><div className="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-purple-600 mb-6"><p className="text-slate-900 font-bold text-xl mb-4">What is Vega?</p><p className="text-slate-700 mb-4">Vega measures how much an option's price changes when <strong>implied volatility (IV)</strong> changes by 1 percentage point.</p><div className="bg-slate-50 rounded-xl p-4 mb-4"><p className="font-mono text-slate-900 text-center mb-2">Vega = ΔOption Price / ΔImplied Volatility</p><p className="text-slate-600 text-sm text-center">Example: Vega of 0.20 means +1% IV increases option value by $0.20</p></div></div><div className="bg-purple-50 rounded-xl p-6 mb-6"><p className="font-bold text-purple-900 mb-3">What is Implied Volatility (IV)?</p><p className="text-slate-700 mb-3">IV is the market's expectation of future stock movement. Think of it as "fear gauge" - higher IV = higher option prices.</p><div className="grid md:grid-cols-2 gap-4 mt-4"><div className="bg-white rounded-lg p-4"><p className="font-bold text-emerald-900 mb-1">Low IV (~15-20%)</p><p className="text-sm text-slate-600">Calm market, options are cheap</p><p className="text-sm text-emerald-700 font-bold mt-2">Buy options (they're on sale)</p></div><div className="bg-white rounded-lg p-4"><p className="font-bold text-red-900 mb-1">High IV (~40-60%)</p><p className="text-sm text-slate-600">Volatile market, options are expensive</p><p className="text-sm text-red-700 font-bold mt-2">Sell options (collect premium)</p></div></div></div><div className="bg-slate-900 text-white rounded-xl p-6 mb-6"><p className="font-bold mb-3">Real Example: Earnings IV Crush</p><p className="text-slate-300 mb-3">NVDA before earnings: IV = 60% | Call Premium: $8.00 | Vega: 0.25</p><div className="space-y-2 text-sm mt-4"><p className="text-yellow-400">Before Earnings: IV = 60%, Premium = $8.00</p><p className="text-emerald-400 mt-2">Stock jumps 5% after earnings (good!)</p><p className="text-red-400">But IV drops to 30% (IV crush)</p><p className="text-slate-200">ΔIV = -30 points × Vega 0.25 = -$7.50 loss</p><p className="text-red-400 font-bold mt-3">Final Premium: $5.50 - You lost money despite being right!</p></div></div><div className="bg-red-50 border-l-4 border-red-600 rounded-r-xl p-6"><p className="font-bold text-red-900 mb-2">⚠️ IV Crush After Events</p><p className="text-red-800">Earnings, FDA approvals, elections - these events inflate IV beforehand. After the event, IV collapses instantly. Long options can lose 30-50% of value overnight even if you're directionally correct.</p></div></section>
-
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">Gamma (Γ): Delta Acceleration</h2><div className="bg-white rounded-2xl p-8 shadow-lg border-l-8 border-blue-600"><p className="text-slate-900 font-bold text-xl mb-4">What is Gamma?</p><p className="text-slate-700 mb-4">Gamma measures the <strong>rate of change of Delta</strong>. It tells you how fast your Delta is changing as the stock moves.</p><div className="bg-slate-50 rounded-xl p-4 mb-4"><p className="font-mono text-slate-900 text-center mb-2">Gamma = ΔDelta / ΔStock Price</p><p className="text-slate-600 text-sm text-center">Example: Gamma of 0.05 means Delta increases by 0.05 per $1 stock move</p></div><div className="bg-blue-50 rounded-xl p-6 mt-6"><p className="font-bold text-blue-900 mb-3">Why Gamma Matters</p><p className="text-slate-700 mb-3">High Gamma means your position gains (or loses) directional exposure rapidly as the stock moves. It's "leverage on top of leverage."</p><div className="grid md:grid-cols-2 gap-4 mt-4"><div className="bg-white rounded-lg p-4 border-2 border-emerald-500"><p className="font-bold text-emerald-900 mb-1">Long Gamma (Good)</p><p className="text-sm text-slate-600">Benefits from big moves in either direction</p><p className="text-sm text-slate-600 mt-2">Example: Long straddles</p></div><div className="bg-white rounded-lg p-4 border-2 border-red-500"><p className="font-bold text-red-900 mb-1">Short Gamma (Risky)</p><p className="text-sm text-slate-600">Hurt by big moves, profits from stability</p><p className="text-sm text-slate-600 mt-2">Example: Iron condors</p></div></div></div></div></section>
-
-        <section className="mb-12"><h2 className="text-3xl font-black text-slate-900 mb-6">Putting It All Together: Strategy Selection</h2><div className="bg-gradient-to-br from-slate-900 to-emerald-900 text-white rounded-2xl p-8"><div className="space-y-6"><div className="bg-white/10 rounded-xl p-6"><p className="font-black text-xl mb-3">📈 Bullish on Stock</p><p className="text-emerald-200 mb-2"><strong>Buy Call</strong> - Long Delta (+), Long Vega (+), Short Theta (-)</p><p className="text-sm text-emerald-100">Profit from upward move, but lose value daily. Best when IV is low.</p></div><div className="bg-white/10 rounded-xl p-6"><p className="font-black text-xl mb-3">📉 Bearish on Stock</p><p className="text-red-200 mb-2"><strong>Buy Put</strong> - Short Delta (-), Long Vega (+), Short Theta (-)</p><p className="text-sm text-red-100">Profit from downward move, but time decay hurts. Best when IV is low.</p></div><div className="bg-white/10 rounded-xl p-6"><p className="font-black text-xl mb-3">😴 Neutral / Range-Bound</p><p className="text-purple-200 mb-2"><strong>Iron Condor</strong> - Delta Neutral, Short Vega (-), Long Theta (+)</p><p className="text-sm text-purple-100">Profit from time decay and IV crush. Loses if stock moves too much.</p></div><div className="bg-white/10 rounded-xl p-6"><p className="font-black text-xl mb-3">💥 Expecting Big Move (Either Direction)</p><p className="text-yellow-200 mb-2"><strong>Long Straddle</strong> - Delta Neutral, Long Vega (+), Short Theta (-)</p><p className="text-sm text-yellow-100">Profit from explosive moves. Best before earnings when IV is still low.</p></div></div></div></section>
-
-        <section className="mb-12"><div className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white rounded-2xl p-12 text-center"><h2 className="text-4xl font-black mb-4">Visualize the Greeks in Action</h2><p className="text-xl text-emerald-100 mb-8">Our Options Strategy Visualizer calculates Delta, Theta, Vega, Gamma in real-time for any strategy</p><button onClick={() => setActiveTool(ToolType.OPTIONS_STRATEGY_VISUALIZER)} className="bg-white text-emerald-900 px-10 py-5 rounded-xl font-black text-xl hover:bg-emerald-50 transition-all shadow-2xl">Launch Visualizer →</button></div></section>
-
-        <section><h2 className="text-3xl font-black text-slate-900 mb-6">Continue Learning</h2><div className="grid md:grid-cols-3 gap-6"><button onClick={() => setActiveTool(ToolType.ACADEMY_IRON_CONDOR)} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-emerald-500"><div className="text-3xl mb-3">📊</div><h3 className="font-black text-slate-900 mb-2">Iron Condor Guide</h3><p className="text-slate-600 text-sm">Master neutral income strategies</p></button><button onClick={() => setActiveTool(ToolType.ACADEMY_DCF_GUIDE)} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-emerald-500"><div className="text-3xl mb-3">📈</div><h3 className="font-black text-slate-900 mb-2">DCF Valuation</h3><p className="text-slate-600 text-sm">Learn stock valuation fundamentals</p></button><button onClick={() => setActiveTool(ToolType.VALUATION_ACADEMY)} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-emerald-500"><div className="text-3xl mb-3">🎓</div><h3 className="font-black text-slate-900 mb-2">All Guides</h3><p className="text-slate-600 text-sm">Back to Academy</p></button></div></section>
+        <section>
+          <h2 className="text-3xl font-black text-slate-900 mb-6">Continue Learning</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <button
+              onClick={() => setActiveTool(ToolType.ACADEMY_IRON_CONDOR)}
+              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-emerald-500"
+            >
+              <div className="text-3xl mb-3">📊</div>
+              <h3 className="font-black text-slate-900 mb-2">Iron Condor Guide</h3>
+              <p className="text-slate-600 text-sm">Master neutral income strategies</p>
+            </button>
+            <button
+              onClick={() => setActiveTool(ToolType.ACADEMY_DCF_GUIDE)}
+              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-emerald-500"
+            >
+              <div className="text-3xl mb-3">📈</div>
+              <h3 className="font-black text-slate-900 mb-2">DCF Valuation</h3>
+              <p className="text-slate-600 text-sm">Learn stock valuation fundamentals</p>
+            </button>
+            <button
+              onClick={() => setActiveTool(ToolType.VALUATION_ACADEMY)}
+              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all text-left border-2 border-transparent hover:border-emerald-500"
+            >
+              <div className="text-3xl mb-3">🎓</div>
+              <h3 className="font-black text-slate-900 mb-2">All Guides</h3>
+              <p className="text-slate-600 text-sm">Back to Academy</p>
+            </button>
+          </div>
+        </section>
       </article>
     </div>
   );
