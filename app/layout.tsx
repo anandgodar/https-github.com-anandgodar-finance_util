@@ -1,6 +1,14 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: '#4f46e5',
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://quantcurb.com'),
@@ -21,13 +29,6 @@ export const metadata: Metadata = {
     'tax calculator',
     'financial planning tools'
   ],
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
-  themeColor: '#4f46e5',
   alternates: {
     canonical: '/'
   },
