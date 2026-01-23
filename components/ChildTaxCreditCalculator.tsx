@@ -177,6 +177,93 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
     };
   }, []);
 
+  useEffect(() => {
+    // Add FAQPage schema for Child Tax Credit questions
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much is the Child Tax Credit for 2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Child Tax Credit is $2,000 per child under 17 for 2025. Up to $1,700 per child can be refundable through the Additional Child Tax Credit (ACTC) if you have earned income over $2,500. Other dependents (17+) qualify for a $500 credit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the income limit for Child Tax Credit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Child Tax Credit begins to phase out at: $200,000 for single filers and head of household, $400,000 for married filing jointly. For every $1,000 over the threshold, your credit is reduced by $50. The credit phases out completely at higher income levels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Additional Child Tax Credit (ACTC)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ACTC is the refundable portion of the Child Tax Credit. If your CTC exceeds your tax liability, up to $1,700 per child can be refunded to you. ACTC is calculated as 15% of earned income over $2,500, up to the maximum refundable amount."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I claim Child Tax Credit if I'm divorced?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but only the custodial parent (the parent the child lives with more than half the year) can claim the Child Tax Credit. The non-custodial parent cannot claim it, even if they pay child support. The custodial parent can release the claim to the non-custodial parent using Form 8332."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I qualify for Child Tax Credit if I'm a single parent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Single parents can claim the full Child Tax Credit. The phase-out threshold is $200,000 for single filers and head of household. Single parents often also qualify for Earned Income Tax Credit (EITC), which can provide additional tax savings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What age do children qualify for Child Tax Credit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Children must be under 17 at the end of the tax year to qualify for the $2,000 Child Tax Credit. Children 17 and older qualify for the $500 Other Dependent Credit. The child must be your dependent, related to you, and live with you for more than half the year."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Child Tax Credit refundable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Partially. The Child Tax Credit itself is non-refundable (it can only reduce your tax to zero). However, the Additional Child Tax Credit (ACTC) is refundable - up to $1,700 per child can be refunded if you have earned income over $2,500 and your credit exceeds your tax liability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Child Tax Credit affect my tax return?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Child Tax Credit directly reduces your tax liability dollar-for-dollar. If your credit exceeds your tax, the refundable portion (ACTC) is refunded to you. For example, if you owe $1,000 in tax and have a $2,000 CTC, you pay $0 tax and receive $1,000 as a refund (up to the ACTC limit)."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-child-tax-credit';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-child-tax-credit');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header>

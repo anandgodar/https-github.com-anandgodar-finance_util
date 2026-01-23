@@ -1,4 +1,7 @@
+'use client';
+
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { ToolType } from '../types';
 
 interface BlogIndexProps {
@@ -16,6 +19,25 @@ interface BlogPost {
 }
 
 const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
+  const router = useRouter();
+
+  const handleNavigate = (tool: ToolType) => {
+    if (onNavigate) {
+      onNavigate(tool);
+      return;
+    }
+    
+    // Handle blog posts - extract slug from ToolType value
+    if (tool.toString().startsWith('blog/')) {
+      const slug = tool.toString().replace('blog/', '');
+      router.push(`/blog/${slug}`);
+      return;
+    }
+    
+    // Handle regular tools
+    const path = tool === ToolType.DASHBOARD ? '/' : `/${tool}`;
+    router.push(path);
+  };
   useEffect(() => {
     const blogSchema = {
       "@context": "https://schema.org",
@@ -25,7 +47,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       "url": "https://quantcurb.com/blog",
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 15,
+        "numberOfItems": 65,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -88,6 +110,276 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "13 min",
       date: "January 2026",
       icon: "💵"
+    },
+    {
+      id: ToolType.BLOG_CA_TX_TAKE_HOME,
+      title: "$100k in California vs. Texas: Where Does Your Dollar Go Further?",
+      description: "Compare take-home pay, state taxes, and cost of living to see how a $100k salary stretches in California vs Texas.",
+      category: "Salary & Taxes",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "🌴"
+    },
+    {
+      id: ToolType.BLOG_BONUS_TAX,
+      title: "The \"Bonus Tax\" Myth: Why Your Bonus Is Withheld Differently",
+      description: "Understand 22% bonus withholding vs actual tax liability and calculate your real bonus take-home pay.",
+      category: "Salary & Taxes",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🎁"
+    },
+    {
+      id: ToolType.BLOG_RAISE_MOVE,
+      title: "Is a $10,000 Raise Worth Moving For? The Real Cost of Relocation",
+      description: "Compare taxes, relocation expenses, and cost of living to see if a $10k raise is actually a net win.",
+      category: "Career Moves",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "🚚"
+    },
+    {
+      id: ToolType.BLOG_MAX_401K,
+      title: "How Maxing Out Your 401(k) Can Increase Take-Home Pay (Sort Of)",
+      description: "See how 401(k) tax shielding lowers taxable income and makes the take-home hit smaller than expected.",
+      category: "Retirement Planning",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🧮"
+    },
+    {
+      id: ToolType.BLOG_GROSS_NET,
+      title: "Gross vs. Net Pay: Why Your Paycheck Is Smaller Than You Think",
+      description: "A beginner-friendly breakdown of FICA, Medicare, and state taxes that shrink your paycheck.",
+      category: "Salary & Taxes",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🧾"
+    },
+    {
+      id: ToolType.BLOG_FREELANCE_ESTIMATED,
+      title: "The Freelancer’s Guide to Estimated Taxes: How Much Should You Set Aside?",
+      description: "A 1099-friendly guide to quarterly taxes, safe harbor rules, and how much to save for the IRS.",
+      category: "Tax Planning",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "🧑‍💻"
+    },
+    {
+      id: ToolType.BLOG_FLORIDA_MOVE,
+      title: "Moving to Florida? The \"Sunshine Tax\" Savings Explained",
+      description: "See how Florida's no-income-tax status changes your take-home pay compared to NY/NJ.",
+      category: "Relocation",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🌞"
+    },
+    {
+      id: ToolType.BLOG_PITI_EXPLAINED,
+      title: "PITI Explained: Why Your Mortgage Payment Is Higher Than the Sticker Price",
+      description: "Break down principal, interest, taxes, and insurance to understand your true monthly mortgage payment.",
+      category: "Home Buying",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🏡"
+    },
+    {
+      id: ToolType.BLOG_POINTS_BREAK_EVEN,
+      title: "Should You Pay Points on Your Mortgage in 2026? A Break-Even Analysis",
+      description: "See when buying down the rate makes sense and how long it takes to break even.",
+      category: "Home Buying",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "📉"
+    },
+    {
+      id: ToolType.BLOG_PMI_MATH,
+      title: "The Mathematics of PMI: How to Get Rid of It Faster",
+      description: "Understand the 80% LTV rule and strategies to eliminate private mortgage insurance sooner.",
+      category: "Home Buying",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🧮"
+    },
+    {
+      id: ToolType.BLOG_RENT_BUY_2026,
+      title: "Rent vs. Buy in 2026: The 5% Rule Explained",
+      description: "Use the 5% rule to compare renting vs buying and make a smarter housing decision.",
+      category: "Housing Strategy",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "🏠"
+    },
+    {
+      id: ToolType.BLOG_500K_COST,
+      title: "What Does a $500,000 House Actually Cost per Month? (6%, 7%, and 8% Rates)",
+      description: "See how interest rate changes affect monthly payments and buying power on a $500k home.",
+      category: "Home Buying",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "💸"
+    },
+    {
+      id: ToolType.BLOG_BIWEEKLY,
+      title: "Bi-Weekly Mortgage Payments: The \"Secret\" to Saving $50,000 in Interest",
+      description: "Learn how 26 half-payments per year reduce interest and shorten your mortgage term.",
+      category: "Debt & Loans",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🔁"
+    },
+    {
+      id: ToolType.BLOG_FI_NUMBER,
+      title: "What is Your \"FI Number\"? The Math Behind Financial Independence",
+      description: "Understand the 25x rule and calculate the freedom number that fits your annual expenses.",
+      category: "Financial Independence",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🔥"
+    },
+    {
+      id: ToolType.BLOG_LEAN_FAT_FIRE,
+      title: "LeanFIRE vs. FatFIRE: Which Lifestyle Can You Afford?",
+      description: "Compare $40k vs $100k retirement lifestyles and see how the FI target changes.",
+      category: "Financial Independence",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "💎"
+    },
+    {
+      id: ToolType.BLOG_FOUR_PERCENT,
+      title: "The 4% Rule Is Dead? Why Safe Withdrawal Rates Are Changing",
+      description: "Explore inflation and longevity risk and stress test different withdrawal rates.",
+      category: "Financial Independence",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "📈"
+    },
+    {
+      id: ToolType.BLOG_COAST_FIRE,
+      title: "Coast FIRE: How to \"Retire\" at 30 Without Stopping Work Completely",
+      description: "Front-load investments and coast later with a lower-stress career path.",
+      category: "Financial Independence",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🌊"
+    },
+    {
+      id: ToolType.BLOG_COST_WAITING,
+      title: "The Cost of Waiting: Why Starting at 25 vs. 35 Costs You $1 Million",
+      description: "See the compounding gap and why delaying investments is so expensive.",
+      category: "Investing",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "⏳"
+    },
+    {
+      id: ToolType.BLOG_ROTH_TRAD_401K,
+      title: "Roth vs. Traditional 401(k): The Tax Bracket Bet",
+      description: "Decide whether to pay taxes now or later by comparing Roth and Traditional 401(k) outcomes.",
+      category: "Retirement Planning",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🧠"
+    },
+    {
+      id: ToolType.BLOG_SNOWBALL_AVALANCHE,
+      title: "Snowball vs. Avalanche: Which Debt Payoff Method Saves You More Money?",
+      description: "Compare the math of avalanche vs snowball and find the payoff path that keeps you on track.",
+      category: "Debt & Loans",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "⚖️"
+    },
+    {
+      id: ToolType.BLOG_CAR_LOAN_72,
+      title: "The True Cost of a 72-Month Car Loan",
+      description: "Understand how long-term auto loans inflate interest and keep you underwater longer.",
+      category: "Debt & Loans",
+      readTime: "8 min",
+      date: "February 2026",
+      icon: "🚗"
+    },
+    {
+      id: ToolType.BLOG_STUDENT_LOAN_REFI,
+      title: "Should You Refinance Your Student Loans? The Math You Need to Know",
+      description: "See when a lower rate outweighs the loss of federal protections and forgiveness options.",
+      category: "Debt & Loans",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🎓"
+    },
+    {
+      id: ToolType.BLOG_CC_MIN_PAY,
+      title: "Credit Card Minimum Payments: Why You Will Be in Debt for 20 Years",
+      description: "Learn why 2% minimum payments keep you in debt and how a small extra payment changes the timeline.",
+      category: "Debt & Loans",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🧾"
+    },
+    {
+      id: ToolType.BLOG_ASSETS_LIABILITIES,
+      title: "Assets vs. Liabilities: How to Calculate Your True Net Worth",
+      description: "Learn the simple net worth formula and categorize assets vs liabilities correctly.",
+      category: "Financial Planning",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "💎"
+    },
+    {
+      id: ToolType.BLOG_ORDER_OPS,
+      title: "Where Should Your Next Dollar Go? The Financial Order of Operations",
+      description: "Follow the emergency fund → match → high-interest debt flowchart for smarter money decisions.",
+      category: "Financial Strategy",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🧭"
+    },
+    {
+      id: ToolType.BLOG_INFLATION_MILLION,
+      title: "Inflation Calculator: What $1 Million Will Be Worth When You Retire",
+      description: "See how inflation erodes purchasing power and why future dollars feel smaller.",
+      category: "Investing",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "📉"
+    },
+    {
+      id: ToolType.BLOG_EMERGENCY_RULE,
+      title: "How Much Cash Should You Keep? The 6-Month Emergency Fund Rule",
+      description: "Calculate a six-month safety net and adjust for your job stability.",
+      category: "Financial Planning",
+      readTime: "8 min",
+      date: "February 2026",
+      icon: "🛡️"
+    },
+    {
+      id: ToolType.BLOG_LATTE_FACTOR,
+      title: "The \"Latte Factor\" vs. Big Wins: What Actually Builds Wealth?",
+      description: "Focus on housing, car, and tax wins before sweating small daily expenses.",
+      category: "Financial Strategy",
+      readTime: "8 min",
+      date: "February 2026",
+      icon: "☕"
+    },
+    {
+      id: ToolType.BLOG_DCF_RETAIL,
+      title: "DCF Modeling for Retail Investors: How to Value a Stock Like a Pro",
+      description: "Bring Wall Street valuation tools to Main Street with a simple DCF framework.",
+      category: "Investing",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "📊"
+    },
+    {
+      id: ToolType.BLOG_LUMP_SUM_DCA,
+      title: "Lump Sum vs. Dollar Cost Averaging: What the Data Says",
+      description: "Compare time-in-market vs smoothing risk and decide the right strategy.",
+      category: "Investing",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "📈"
     },
     {
       id: ToolType.BLOG_ROTH_TRADITIONAL,
@@ -162,6 +454,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       icon: "💰"
     },
     {
+      id: ToolType.BLOG_CRYPTO_WASH_SALE,
+      title: "Why Crypto Tax Loss Harvesting is 10X Better Than Stocks: The No Wash Sale Rule Loophole",
+      description: "Learn how the no wash sale rule for crypto lets you harvest losses, rebuy immediately, and cut your tax bill without losing exposure.",
+      category: "Tax Planning",
+      readTime: "20 min",
+      date: "February 2026",
+      icon: "🪙"
+    },
+    {
       id: ToolType.BLOG_401K_VS_IRA,
       title: "401(k) vs IRA 2025: Complete Comparison Guide - Which Retirement Account is Better?",
       description: "Compare 401(k) vs IRA in 2025. Learn contribution limits, employer match, tax benefits, withdrawal rules, and which retirement account is better for your situation.",
@@ -178,6 +479,114 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "19 min",
       date: "January 2026",
       icon: "📊"
+    },
+    {
+      id: ToolType.BLOG_NET_WORTH,
+      title: "Net Worth Tracker Guide 2025: How to Track Assets, Debts, and Real Wealth",
+      description: "Learn how to calculate net worth, track assets and liabilities, and build a simple monthly tracking habit.",
+      category: "Financial Planning",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "💎"
+    },
+    {
+      id: ToolType.BLOG_EMI_GUIDE,
+      title: "Loan EMI Calculator Guide 2025: How to Calculate EMI and Save Interest",
+      description: "Break down EMI math, amortization, and practical ways to reduce total loan interest.",
+      category: "Debt & Loans",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "💳"
+    },
+    {
+      id: ToolType.BLOG_LOAN_COMPARE,
+      title: "Loan Comparison Guide 2025: Compare APR, Fees, and Refinance Break-Even",
+      description: "Compare loan offers with APR, fees, and break-even analysis to pick the lowest total cost.",
+      category: "Debt & Loans",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "⚖️"
+    },
+    {
+      id: ToolType.BLOG_CREDIT_CARD_PAYOFF,
+      title: "Credit Card Payoff Guide 2025: Avalanche vs Snowball Strategy",
+      description: "Choose the fastest credit card payoff strategy and build a debt-free plan that sticks.",
+      category: "Debt & Loans",
+      readTime: "11 min",
+      date: "February 2026",
+      icon: "✂️"
+    },
+    {
+      id: ToolType.BLOG_DTI_GUIDE,
+      title: "DTI Calculator Guide 2025: What Debt-to-Income Ratio Lenders Want",
+      description: "Understand DTI ratios, the 28/36 rule, and how to improve mortgage approval odds.",
+      category: "Home Buying",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🏦"
+    },
+    {
+      id: ToolType.BLOG_LIVING_COST,
+      title: "Cost of Living Calculator Guide 2025: Compare Cities and Build a Realistic Budget",
+      description: "Compare city costs, plan a relocation budget, and understand the biggest expense categories.",
+      category: "Lifestyle",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "🌆"
+    },
+    {
+      id: ToolType.BLOG_CURRENCY_CONVERTER,
+      title: "Currency Converter Guide 2025: Live Rates, Fees, and Smart FX Tips",
+      description: "Use live exchange rates, avoid FX fees, and convert money with confidence.",
+      category: "Utilities",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🌍"
+    },
+    {
+      id: ToolType.BLOG_GST_GUIDE,
+      title: "GST Calculator Guide 2025: Inclusive vs Exclusive Pricing Made Simple",
+      description: "Calculate GST accurately, split inclusive pricing, and avoid invoice mistakes.",
+      category: "Business",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🧾"
+    },
+    {
+      id: ToolType.BLOG_MARKET_INSIGHTS,
+      title: "AI Market Insights Guide 2025: How to Read Signals Without the Noise",
+      description: "Interpret macro signals, sentiment shifts, and trend confirmation with AI market insights.",
+      category: "Investing",
+      readTime: "9 min",
+      date: "February 2026",
+      icon: "🤖"
+    },
+    {
+      id: ToolType.BLOG_INVESTMENT_ACADEMY,
+      title: "Index Funds & ETFs Guide 2025: Build a Simple, Diversified Portfolio",
+      description: "Learn index funds vs ETFs, diversification basics, and a simple portfolio blueprint.",
+      category: "Investing",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "🎓"
+    },
+    {
+      id: ToolType.BLOG_EXCEL_MODELER,
+      title: "DCF Valuation Guide 2025: Build a Simple Model Without Excel",
+      description: "Understand cash flows, WACC, and terminal value with a clean DCF walkthrough.",
+      category: "Investing",
+      readTime: "12 min",
+      date: "February 2026",
+      icon: "📁"
+    },
+    {
+      id: ToolType.BLOG_DRIP_GUIDE,
+      title: "Dividend Reinvestment (DRIP) Guide 2025: Compounding Explained",
+      description: "See how dividend reinvestment compounds and how to model long-term income growth.",
+      category: "Investing",
+      readTime: "10 min",
+      date: "February 2026",
+      icon: "💹"
     },
     // Tax & Freelancer Posts
     {
@@ -308,7 +717,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
         {blogPosts.map((post) => (
           <article
             key={post.id}
-            onClick={() => onNavigate?.(post.id)}
+            onClick={() => handleNavigate(post.id)}
             className="bg-white border border-slate-200 rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all cursor-pointer group"
           >
             <div className="flex items-start gap-4 mb-4">
@@ -351,7 +760,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
           taxes, retirement, and investments.
         </p>
         <button
-          onClick={() => onNavigate?.(ToolType.DASHBOARD)}
+          onClick={() => handleNavigate(ToolType.DASHBOARD)}
           className="bg-white text-indigo-600 font-bold py-4 px-8 rounded-xl hover:bg-indigo-50 transition text-lg"
         >
           Explore All Calculators →

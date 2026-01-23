@@ -232,6 +232,93 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
     };
   }, []);
 
+  useEffect(() => {
+    // Add FAQ schema for rich snippets
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What's the difference between 401(k), Traditional IRA, and Roth IRA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "401(k) has the highest contribution limits ($23,500 in 2025, $31,000 with catch-up) and often includes employer match. Traditional IRA offers immediate tax deductions but lower limits ($7,000 in 2025). Roth IRA has no upfront tax deduction but offers tax-free withdrawals and no RMDs. Use our calculator to see which is best for your situation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I contribute to 401(k) or Roth IRA first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The optimal strategy: 1) Always maximize employer 401(k) match first (it's free money), 2) Then max out Roth IRA for tax-free growth, 3) Return to 401(k) to maximize contributions up to the limit. This balances immediate tax savings with long-term tax-free growth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are 2025 retirement contribution limits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2025 limits: 401(k) = $23,500 ($31,000 with catch-up age 50+), Traditional IRA = $7,000 ($8,000 with catch-up), Roth IRA = $7,000 ($8,000 with catch-up). Income limits apply for Roth IRA contributions (phases out at $161,000-$176,000 for single filers, $240,000-$254,000 for married filing jointly)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is RMD (Required Minimum Distribution)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RMD is the minimum amount you must withdraw from Traditional 401(k) and Traditional IRA starting at age 73. RMD = Account Balance / Life Expectancy Factor. Roth IRAs have no RMDs, making them attractive for estate planning. Our calculator shows your estimated RMDs at retirement age."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much Social Security will I get?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Social Security typically replaces about 40% of pre-retirement income for average earners. The exact amount depends on your 35 highest-earning years, age when you claim benefits, and inflation adjustments. Our calculator provides an estimate based on your current income. For precise estimates, check your Social Security statement at ssa.gov."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good retirement readiness score?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Retirement readiness is based on the 4% rule: you need 25x your annual expenses saved. A score of 100% means you're on track. 75-99% is almost there, 50-74% is getting there, and below 50% needs work. Our calculator shows your score and how much more you need to save."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I choose Traditional or Roth for my 401(k)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose Traditional 401(k) if you expect to be in a lower tax bracket in retirement (common for most people). Choose Roth 401(k) if you expect higher taxes in retirement or want tax-free withdrawals. Younger workers often benefit from Roth due to lower current tax brackets and longer time horizons."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I exceed contribution limits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Exceeding contribution limits results in a 6% excise tax on excess contributions. You must withdraw the excess by the tax filing deadline (including extensions) to avoid penalties. Our calculator ensures you stay within limits based on your age and account type."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-retirement';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-retirement');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   return (
     <article className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-500 pb-24">
       {/* Featured Snippet Optimization - Definition Box */}

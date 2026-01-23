@@ -19,9 +19,48 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
   const [currentCOL, setCurrentCOL] = useState<number>(100); // Cost of living index (100 = average US)
   const [targetCOL, setTargetCOL] = useState<number>(80); // Target COL for geographic arbitrage
   const [partTimeIncome, setPartTimeIncome] = useState<number>(20000); // For Barista FIRE
+  const [volatility, setVolatility] = useState<number>(15); // Market volatility (std dev)
+  const [showMonteCarlo, setShowMonteCarlo] = useState<boolean>(false);
 
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
+
+  // Monte Carlo simulation helper
+  const runMonteCarloSimulation = (
+    startBalance: number,
+    monthlyContrib: number,
+    years: number,
+    meanReturn: number,
+    stdDev: number,
+    annualWithdrawal: number
+  ): number[] => {
+    const balances: number[] = [];
+    let balance = startBalance;
+    const months = years * 12;
+
+    for (let month = 0; month < months; month++) {
+      // Generate random annual return using Box-Muller transform
+      const u1 = Math.random();
+      const u2 = Math.random();
+      const z0 = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2);
+      const annualReturn = (meanReturn / 100) + (stdDev / 100) * z0;
+      const monthlyReturn = Math.pow(1 + annualReturn, 1/12) - 1;
+
+      // Apply contribution and growth
+      balance = (balance + monthlyContrib) * (1 + monthlyReturn);
+
+      // After retirement age, start withdrawals
+      if (month >= (65 - currentAge) * 12) {
+        balance -= annualWithdrawal / 12;
+      }
+
+      if (month % 12 === 0) {
+        balances.push(balance);
+      }
+    }
+
+    return balances;
+  };
 
   const stats = useMemo(() => {
     // Geographic arbitrage: adjust expenses based on COL
@@ -74,23 +113,86 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
       balance = (balance + monthlyContribution) * (1 + monthlyRate);
     }
 
-    return { 
-      fireNumber, 
+    // Monte Carlo simulation (1,000 runs)
+    let monteCarloData: any[] = [];
+    let successRate = 0;
+    let worstCaseBalance = Infinity;
+
+    if (showMonteCarlo) {
+      const numSimulations = 1000;
+      const simulationYears = 55; // Simulate to age 85
+      const allSimulations: number[][] = [];
+
+      // Run simulations
+      for (let i = 0; i < numSimulations; i++) {
+        const balances = runMonteCarloSimulation(
+          currentSavings,
+          monthlyContribution,
+          simulationYears,
+          expectedReturn,
+          volatility,
+          adjustedExpenses
+        );
+        allSimulations.push(balances);
+      }
+
+      // Calculate percentiles for each year
+      for (let year = 0; year < simulationYears; year++) {
+        const yearBalances = allSimulations.map(sim => sim[year] || 0).sort((a, b) => a - b);
+
+        const p10 = yearBalances[Math.floor(numSimulations * 0.10)];
+        const p25 = yearBalances[Math.floor(numSimulations * 0.25)];
+        const p50 = yearBalances[Math.floor(numSimulations * 0.50)];
+        const p75 = yearBalances[Math.floor(numSimulations * 0.75)];
+        const p90 = yearBalances[Math.floor(numSimulations * 0.90)];
+
+        monteCarloData.push({
+          age: currentAge + year,
+          p10: Math.round(p10),
+          p25: Math.round(p25),
+          p50: Math.round(p50),
+          p75: Math.round(p75),
+          p90: Math.round(p90)
+        });
+
+        if (p10 < worstCaseBalance) {
+          worstCaseBalance = p10;
+        }
+      }
+
+      // Calculate success rate (% of simulations that don't run out of money)
+      const retirementYearIndex = 65 - currentAge;
+      const successfulRuns = allSimulations.filter(sim => {
+        // Check if balance stays positive for 30 years after retirement
+        for (let i = retirementYearIndex; i < Math.min(retirementYearIndex + 30, sim.length); i++) {
+          if (sim[i] <= 0) return false;
+        }
+        return true;
+      }).length;
+
+      successRate = (successfulRuns / numSimulations) * 100;
+    }
+
+    return {
+      fireNumber,
       leanFireNumber,
       fatFireNumber,
       coastFireNumber: coastFireNumberNeeded,
       baristaFireNumber,
-      fireAge, 
+      fireAge,
       leanFireAge,
       baristaFireAge,
       coastFireAge,
       isCoastFire,
       data,
+      monteCarloData,
+      successRate,
+      worstCaseBalance,
       monthlyPassive: (fireNumber * (safeWithdrawalRate/100)) / 12,
       adjustedExpenses,
       colSavings: annualExpenses - adjustedExpenses
     };
-  }, [currentAge, currentSavings, monthlyContribution, expectedReturn, annualExpenses, safeWithdrawalRate, currentCOL, targetCOL, partTimeIncome]);
+  }, [currentAge, currentSavings, monthlyContribution, expectedReturn, annualExpenses, safeWithdrawalRate, currentCOL, targetCOL, partTimeIncome, volatility, showMonteCarlo]);
 
   const fetchAdvice = async () => {
     setLoadingAdvice(true);
@@ -167,6 +269,93 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
 
     return () => {
       const existingScript = document.getElementById('howto-schema-fire');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // Add FAQ schema for rich snippets
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is FIRE and how do I calculate my FIRE number?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FIRE (Financial Independence Retire Early) is achieving financial independence to retire decades earlier than traditional retirement age. Your FIRE number = Annual Expenses × 25 (based on the 4% rule). For example, if you spend $60,000/year, you need $1,500,000 saved. Use our calculator above to find your exact FIRE number and timeline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between Lean FIRE, Regular FIRE, and Fat FIRE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lean FIRE = 70% of your target (minimalist lifestyle, $25k-$40k/year expenses). Regular FIRE = 100% of target (comfortable lifestyle, $40k-$100k/year). Fat FIRE = 150% of target (luxury lifestyle, $100k+/year expenses). Our calculator shows when you'll reach each milestone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Coast FIRE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Coast FIRE means you have enough saved that it will grow to your full FIRE number by traditional retirement age (65) without any more contributions. You can 'coast' - work less, take lower-paying but more enjoyable jobs, or take extended breaks. Our calculator shows if you've reached Coast FIRE."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Barista FIRE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Barista FIRE is when your savings + part-time income (like working at a coffee shop) covers your expenses. You need less saved because part-time work fills the gap. For example, if you need $60k/year and earn $20k part-time, you only need $1,000,000 saved (25x the $40k gap). Our calculator shows your Barista FIRE age."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the 4% rule safe for early retirement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 4% rule was designed for 30-year retirements. For early retirees (under 50), many experts recommend 3-3.5% for longer retirement periods. However, 4% remains a solid starting point. Our calculator lets you adjust the withdrawal rate to see the impact on your FIRE number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does geographic arbitrage help with FIRE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Geographic arbitrage means moving to a lower cost-of-living area to reduce expenses and your FIRE number. For example, moving from San Francisco (COL 150) to Austin (COL 100) can reduce your FIRE number by 33%. Our calculator shows how adjusting COL affects your FIRE timeline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What savings rate do I need to reach FIRE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Higher savings rates = faster FIRE. At 50% savings rate, you can reach FIRE in ~17 years. At 65%, it's ~10.5 years. At 75%, it's ~7 years. The key is maximizing income and minimizing expenses. Our calculator shows your timeline based on your current savings rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I pay off debt or invest for FIRE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally, if your debt interest rate is higher than expected investment returns (7-8%), pay off debt first. If debt rate is lower, invest for FIRE while making minimum payments. High-interest credit card debt should always be paid off first."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-fire';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-fire');
       if (existingScript) {
         document.head.removeChild(existingScript);
       }
@@ -253,6 +442,44 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
                   <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">SWR (%)</label>
                   <input type="number" step="0.5" value={safeWithdrawalRate} onChange={e => setSafeWithdrawalRate(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
                 </div>
+              </div>
+
+              <div className="pt-6 border-t border-slate-100">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h4 className="text-[10px] font-black text-purple-600 uppercase tracking-wider">Monte Carlo Simulation</h4>
+                    <p className="text-[9px] text-slate-500 mt-1">1,000 scenarios with market volatility</p>
+                  </div>
+                  <button
+                    onClick={() => setShowMonteCarlo(!showMonteCarlo)}
+                    className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all ${
+                      showMonteCarlo
+                        ? 'bg-purple-600 text-white shadow-lg'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    {showMonteCarlo ? 'ON' : 'OFF'}
+                  </button>
+                </div>
+
+                {showMonteCarlo && (
+                  <div className="bg-purple-50 p-4 rounded-2xl border border-purple-200">
+                    <label className="block text-[10px] font-black text-purple-700 uppercase mb-2">Market Volatility (σ)</label>
+                    <input
+                      type="range"
+                      min="5"
+                      max="30"
+                      step="1"
+                      value={volatility}
+                      onChange={e => setVolatility(Number(e.target.value))}
+                      className="w-full h-2 bg-purple-200 rounded-lg appearance-none cursor-pointer accent-purple-600"
+                    />
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="text-xs text-purple-700 font-bold">{volatility}% std dev</span>
+                      <span className="text-[9px] text-purple-600">Historical S&P 500: ~15%</span>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </section>
@@ -355,27 +582,94 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
             </div>
           </div>
 
+          {/* Monte Carlo Success Rate (when enabled) */}
+          {showMonteCarlo && stats.successRate !== undefined && (
+            <div className="bg-gradient-to-br from-purple-900 to-indigo-900 p-8 rounded-[3rem] shadow-2xl border border-purple-800">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-4xl">🎲</span>
+                <div>
+                  <h4 className="text-lg font-black text-white uppercase tracking-wider">Monte Carlo Analysis</h4>
+                  <p className="text-xs text-purple-300">1,000 simulations with {volatility}% volatility</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white/10 backdrop-blur p-6 rounded-2xl border border-white/20">
+                  <p className="text-xs font-black text-purple-300 uppercase tracking-widest mb-2">Success Rate</p>
+                  <p className={`text-4xl font-black ${stats.successRate >= 90 ? 'text-green-400' : stats.successRate >= 75 ? 'text-yellow-400' : 'text-red-400'}`}>
+                    {stats.successRate.toFixed(1)}%
+                  </p>
+                  <p className="text-[10px] text-purple-200 mt-2">Portfolios that last 30+ yrs</p>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur p-6 rounded-2xl border border-white/20">
+                  <p className="text-xs font-black text-purple-300 uppercase tracking-widest mb-2">Worst 10th Percentile</p>
+                  <p className="text-4xl font-black text-white">
+                    ${stats.worstCaseBalance > 0 ? (stats.worstCaseBalance / 1000).toFixed(0) + 'K' : '0'}
+                  </p>
+                  <p className="text-[10px] text-purple-200 mt-2">Portfolio floor in bad scenarios</p>
+                </div>
+              </div>
+
+              {stats.successRate < 90 && (
+                <div className="mt-4 p-4 bg-red-900/30 border border-red-500/30 rounded-2xl">
+                  <p className="text-xs text-red-200">
+                    <strong className="text-red-100">⚠️ Success rate below 90%:</strong> Consider increasing contributions, reducing expenses, or adjusting your withdrawal rate to improve odds.
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
           <div className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm">
              <div className="flex justify-between items-center mb-8">
-                <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Wealth Accrual vs Target</h4>
-                <div className="flex gap-4">
-                   <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-orange-500"></div><span className="text-[9px] font-bold uppercase text-slate-400">Balance</span></div>
-                   <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-slate-200"></div><span className="text-[9px] font-bold uppercase text-slate-400">Target</span></div>
-                </div>
+                <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                  {showMonteCarlo ? 'Cone of Uncertainty (1,000 Simulations)' : 'Wealth Accrual vs Target'}
+                </h4>
+                {!showMonteCarlo && (
+                  <div className="flex gap-4">
+                     <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-orange-500"></div><span className="text-[9px] font-bold uppercase text-slate-400">Balance</span></div>
+                     <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-slate-200"></div><span className="text-[9px] font-bold uppercase text-slate-400">Target</span></div>
+                  </div>
+                )}
              </div>
              <div className="h-72 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={stats.data}>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                    <XAxis dataKey="age" stroke="#94a3b8" fontSize={10} axisLine={false} tickLine={false} />
-                    <YAxis stroke="#94a3b8" fontSize={10} axisLine={false} tickLine={false} />
-                    <Tooltip contentStyle={{ borderRadius: '20px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
-                    <Area type="monotone" dataKey="balance" stroke="#f97316" strokeWidth={4} fill="#f97316" fillOpacity={0.05} />
-                    <Area type="monotone" dataKey="target" stroke="#e2e8f0" strokeWidth={2} fill="transparent" strokeDasharray="5 5" />
-                    {stats.fireAge && <ReferenceLine x={stats.fireAge} stroke="#f97316" label={{ value: 'FIRE', position: 'top', fontSize: 10, fontWeight: 900, fill: '#f97316' }} />}
-                  </AreaChart>
+                  {showMonteCarlo && stats.monteCarloData ? (
+                    <AreaChart data={stats.monteCarloData}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                      <XAxis dataKey="age" stroke="#94a3b8" fontSize={10} axisLine={false} tickLine={false} />
+                      <YAxis stroke="#94a3b8" fontSize={10} axisLine={false} tickLine={false} />
+                      <Tooltip contentStyle={{ borderRadius: '20px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
+                      <Area type="monotone" dataKey="p90" stroke="#c084fc" strokeWidth={1} fill="#c084fc" fillOpacity={0.1} />
+                      <Area type="monotone" dataKey="p75" stroke="#a855f7" strokeWidth={1} fill="#a855f7" fillOpacity={0.1} />
+                      <Area type="monotone" dataKey="p50" stroke="#9333ea" strokeWidth={3} fill="#9333ea" fillOpacity={0.15} />
+                      <Area type="monotone" dataKey="p25" stroke="#7c3aed" strokeWidth={1} fill="#7c3aed" fillOpacity={0.1} />
+                      <Area type="monotone" dataKey="p10" stroke="#6b21a8" strokeWidth={2} fill="#6b21a8" fillOpacity={0.05} />
+                      <ReferenceLine y={stats.fireNumber} stroke="#f97316" strokeDasharray="5 5" label={{ value: 'FIRE Target', position: 'right', fontSize: 10, fontWeight: 900, fill: '#f97316' }} />
+                    </AreaChart>
+                  ) : (
+                    <AreaChart data={stats.data}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                      <XAxis dataKey="age" stroke="#94a3b8" fontSize={10} axisLine={false} tickLine={false} />
+                      <YAxis stroke="#94a3b8" fontSize={10} axisLine={false} tickLine={false} />
+                      <Tooltip contentStyle={{ borderRadius: '20px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
+                      <Area type="monotone" dataKey="balance" stroke="#f97316" strokeWidth={4} fill="#f97316" fillOpacity={0.05} />
+                      <Area type="monotone" dataKey="target" stroke="#e2e8f0" strokeWidth={2} fill="transparent" strokeDasharray="5 5" />
+                      {stats.fireAge && <ReferenceLine x={stats.fireAge} stroke="#f97316" label={{ value: 'FIRE', position: 'top', fontSize: 10, fontWeight: 900, fill: '#f97316' }} />}
+                    </AreaChart>
+                  )}
                 </ResponsiveContainer>
              </div>
+             {showMonteCarlo && (
+               <div className="mt-6 flex justify-center gap-4 text-xs">
+                 <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-900"></div><span className="font-bold text-slate-600">10th %ile (Worst)</span></div>
+                 <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-600"></div><span className="font-bold text-slate-600">25th %ile</span></div>
+                 <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-500"></div><span className="font-bold text-slate-600">50th %ile (Median)</span></div>
+                 <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-400"></div><span className="font-bold text-slate-600">75th %ile</span></div>
+                 <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-300"></div><span className="font-bold text-slate-600">90th %ile (Best)</span></div>
+               </div>
+             )}
           </div>
 
           <div className="bg-orange-50 p-10 rounded-[3rem] border border-orange-100 flex items-start gap-8 shadow-sm">

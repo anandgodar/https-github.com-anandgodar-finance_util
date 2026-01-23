@@ -1,5 +1,6 @@
 
 import React from 'react';
+import AuthorBio from './AuthorBio';
 
 const AboutUs: React.FC = () => {
   return (
@@ -45,6 +46,36 @@ const AboutUs: React.FC = () => {
         </div>
       </section>
 
+      {/* Founder Bio Section - E-E-A-T Compliance */}
+      <section className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl border-2 border-indigo-200 p-8 md:p-12">
+        <div className="flex flex-col md:flex-row gap-8 items-start">
+          <div className="flex-shrink-0">
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-4xl font-black shadow-lg">
+              AG
+            </div>
+          </div>
+          <div className="flex-1">
+            <h2 className="text-3xl font-black text-slate-900 mb-4">About the Founder</h2>
+            <p className="text-slate-700 text-lg leading-relaxed mb-4">
+              <strong className="font-black text-slate-900">Anand Godar</strong> is a financial engineer and the founder of QuantCurb. 
+              With a background in fintech data science, Anand spent years building algorithmic trading systems and risk models 
+              for institutional investors before realizing that retail investors deserve the same sophisticated tools.
+            </p>
+            <p className="text-slate-700 text-lg leading-relaxed mb-4">
+              QuantCurb was born from a simple premise: <em>why should only Wall Street have access to banking-grade financial models?</em> 
+              Every calculator on this site uses the same mathematical rigor you'd find at a Tier-1 bank, but designed for your daily 
+              financial decisions—mortgages, taxes, retirement planning, and wealth optimization.
+            </p>
+            <p className="text-slate-600 text-base leading-relaxed">
+              <strong className="font-semibold text-slate-900">Financial engineer and founder of QuantCurb.</strong> Former fintech data scientist building institutional-grade calculators for everyday wealth decisions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="space-y-12">
+      </section>
+
       <section className="space-y-12">
          <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.5em] text-center">Core Pillars</h3>
          <div className="grid md:grid-cols-3 gap-10">
@@ -63,6 +94,9 @@ const AboutUs: React.FC = () => {
             ))}
          </div>
       </section>
+
+      {/* Author Bio Section */}
+      <AuthorBio variant="full" />
 
       <footer className="bg-indigo-600 p-12 md:p-16 rounded-[4rem] text-white text-center shadow-2xl relative overflow-hidden">
          <div className="relative z-10 space-y-6">

@@ -13,6 +13,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool }) => {
     { id: ToolType.NET_WORTH, label: 'Net Worth Center', icon: '💎' },
     { id: ToolType.EMERGENCY_FUND, label: 'Emergency Guard', icon: '🛡️' },
     { id: ToolType.EXCEL_MODELER, label: 'Excel Power Modeler', icon: '📁' },
+    { id: ToolType.OPTIONS_STRATEGY_VISUALIZER, label: 'Options Visualizer', icon: '📊' },
     { id: ToolType.EMI_CALC, label: 'Loan EMI Pro', icon: '💳' },
     { id: ToolType.MORTGAGE_CALC, label: 'Mortgage Pro', icon: '🏡' },
     { id: ToolType.FIRE_PLANNER, label: 'FIRE Planner', icon: '🔥' },
@@ -36,7 +37,9 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool }) => {
 
   const insightTools = [
     { id: ToolType.MARKET_INSIGHTS, label: 'Market Pulse', icon: '🤖' },
-    { id: ToolType.INVESTMENT_ACADEMY, label: 'Fund Academy', icon: '🎓' },
+    { id: ToolType.VALUATION_ACADEMY, label: 'Valuation Academy', icon: '🎓' },
+    { id: ToolType.INVESTMENT_ACADEMY, label: 'Fund Academy', icon: '📚' },
+    { id: ToolType.BLOG_INDEX, label: 'Blog', icon: '📝' },
     { id: ToolType.FAQ, label: 'Knowledge Base', icon: '❓' },
   ];
 

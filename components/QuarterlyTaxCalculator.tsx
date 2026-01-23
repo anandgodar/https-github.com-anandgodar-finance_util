@@ -69,16 +69,17 @@ const QUARTERLY_DEADLINES = [
 
 interface QuarterlyTaxCalculatorProps {
   onNavigate?: (tool: ToolType) => void;
+  initialState?: string;
 }
 
-const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavigate }) => {
+const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavigate, initialState }) => {
   const [estimatedIncome, setEstimatedIncome] = useState<number>(120000);
   const [selfEmploymentIncome, setSelfEmploymentIncome] = useState<number>(120000);
   const [w2Income, setW2Income] = useState<number>(0);
   const [priorYearTax, setPriorYearTax] = useState<number>(22000);
   const [priorYearAGI, setPriorYearAGI] = useState<number>(100000);
   const [filingStatus, setFilingStatus] = useState<FilingStatus>('single');
-  const [stateCode, setStateCode] = useState<string>('CA');
+  const [stateCode, setStateCode] = useState<string>(initialState || 'CA');
   const [businessExpenses, setBusinessExpenses] = useState<number>(12000);
   const [safeHarborMethod, setSafeHarborMethod] = useState<SafeHarborMethod>('prior_year');
   const [advice, setAdvice] = useState<string>('');
@@ -190,6 +191,58 @@ const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavig
     }
   };
 
+  // Generate .ics calendar file for quarterly payments
+  const downloadCalendar = () => {
+    const events = QUARTERLY_DEADLINES.map((q, idx) => {
+      const amount = calculations.quarterlyPayment;
+      const deadlineDate = q.deadline.replace(/,\s*\d{4}/, ', 2025'); // Normalize year
+
+      // Parse deadline date (e.g., "April 15, 2025")
+      const date = new Date(deadlineDate);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+
+      // ICS format requires YYYYMMDD
+      const dateStr = `${year}${month}${day}`;
+
+      return `BEGIN:VEVENT
+UID:quarterly-tax-${q.quarter}-${Date.now()}@quantcurb.com
+DTSTAMP:${dateStr}T120000Z
+DTSTART:${dateStr}
+SUMMARY:Quarterly Tax Payment ${q.quarter} - $${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+DESCRIPTION:Pay ${q.quarter} estimated tax for ${q.period}. Amount: $${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\\n\\nPay online at: https://www.irs.gov/payments\\n\\nCalculated using ${safeHarborMethod === 'prior_year' ? 'Prior Year Safe Harbor' : 'Current Year Safe Harbor'} method.
+LOCATION:IRS Direct Pay (www.irs.gov/payments)
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Quarterly tax payment due in 7 days
+END:VALARM
+END:VEVENT`;
+    }).join('\n');
+
+    const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//QuantCurb//Quarterly Tax Calculator//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Quarterly Estimated Taxes 2025
+X-WR-TIMEZONE:America/New_York
+X-WR-CALDESC:Quarterly estimated tax payment schedule with safe harbor amounts
+${events}
+END:VCALENDAR`;
+
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `quarterly-taxes-2025-${safeHarborMethod}.ics`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => fetchAdvice(), 2000);
     return () => clearTimeout(timer);
@@ -250,6 +303,93 @@ const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavig
 
     return () => {
       const existingScript = document.getElementById('howto-schema-quarterly-tax');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // Add FAQ schema for rich snippets
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who needs to pay quarterly estimated taxes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You need to pay quarterly estimated taxes if you're self-employed, a freelancer, or have income not subject to withholding (like rental income, dividends, or capital gains). Generally, if you expect to owe $1,000 or more in taxes for the year after subtracting withholding and credits, you must pay quarterly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are quarterly tax payment deadlines?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quarterly estimated tax deadlines are: Q1 (Jan-Mar): April 15, Q2 (Apr-May): June 15, Q3 (Jun-Aug): September 15, Q4 (Sep-Dec): January 15 of the following year. If a deadline falls on a weekend or holiday, it's moved to the next business day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the safe harbor rule for quarterly taxes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Safe harbor rules let you avoid underpayment penalties if you pay either: 1) 100% of last year's tax (110% if AGI > $150,000), or 2) 90% of this year's tax. The prior year safe harbor is easier because you know the exact amount. Our calculator shows both methods."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate quarterly estimated tax payments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Calculate your total estimated tax (federal income tax + self-employment tax + state tax), then divide by 4. For example, if your total tax is $20,000, pay $5,000 per quarter. Our calculator does this automatically and accounts for safe harbor rules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I miss a quarterly tax payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Missing quarterly payments results in underpayment penalties. The penalty is calculated based on how much you underpaid and for how long. The penalty rate is typically around 5-6% annually. Paying on time and using safe harbor rules avoids penalties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to pay quarterly taxes if I have a W-2 job?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you have a W-2 job with withholding, you may not need quarterly payments if your withholding covers your tax liability. However, if you also have self-employment income, you may need to pay quarterly on that income. Our calculator accounts for both W-2 and self-employment income."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is self-employment tax?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on net self-employment income. This is in addition to income tax. W-2 employees split this with their employer (7.65% each), but self-employed pay the full 15.3%. You can deduct 50% of SE tax on your income tax return."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I adjust my quarterly payments during the year?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! If your income changes during the year, you can adjust your quarterly payments. If you earn more, increase payments to avoid penalties. If you earn less, you can reduce payments, but be careful not to underpay too much. It's better to overpay slightly and get a refund."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-quarterly-tax';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-quarterly-tax');
       if (existingScript) {
         document.head.removeChild(existingScript);
       }
@@ -467,9 +607,18 @@ const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavig
 
           {/* Payment Schedule */}
           <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
-            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-6">
-              2025 Payment Schedule
-            </h4>
+            <div className="flex justify-between items-center mb-6">
+              <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">
+                2025 Payment Schedule
+              </h4>
+              <button
+                onClick={downloadCalendar}
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-wider rounded-xl transition-all flex items-center gap-2 shadow-lg hover:shadow-xl active:scale-95"
+              >
+                <span>📅</span>
+                Download Calendar
+              </button>
+            </div>
             <div className="space-y-4">
               {QUARTERLY_DEADLINES.map((deadline, idx) => (
                 <div key={deadline.quarter} className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl hover:bg-indigo-50 transition">
@@ -490,6 +639,11 @@ const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavig
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="mt-6 p-4 bg-green-50 rounded-2xl border border-green-200">
+              <p className="text-xs text-green-800 leading-relaxed">
+                <strong>💡 Strategic Tip:</strong> Download this calendar to add payment reminders to your iPhone/Google Calendar. The .ics file includes 7-day advance alerts so you never miss a deadline and avoid IRS penalties.
+              </p>
             </div>
           </div>
 
@@ -540,39 +694,85 @@ const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavig
             </div>
           </div>
 
-          {/* Safe Harbor Comparison */}
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-              <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">
-                Prior Year Safe Harbor
-              </p>
-              <p className="text-3xl font-black text-indigo-600">
-                ${calculations.priorYearSafeHarbor.toLocaleString()}
-              </p>
-              <p className="text-xs text-slate-500 mt-1">
-                {calculations.isHighEarner ? '110%' : '100%'} of 2024 tax
-              </p>
+          {/* Enhanced Safe Harbor Strategy Section */}
+          <div className="bg-gradient-to-br from-indigo-900 to-purple-900 p-8 rounded-3xl shadow-2xl border border-indigo-800">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-3xl">🛡️</span>
+              <div>
+                <h4 className="text-lg font-black text-white uppercase tracking-wider">Safe Harbor Strategy</h4>
+                <p className="text-xs text-indigo-300">IRS Penalty Avoidance Protocol</p>
+              </div>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-              <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">
-                Current Year Safe Harbor
-              </p>
-              <p className="text-3xl font-black text-purple-600">
-                ${calculations.currentYearSafeHarbor.toLocaleString()}
-              </p>
-              <p className="text-xs text-slate-500 mt-1">90% of 2025 estimated</p>
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
+              <div className="bg-white/10 backdrop-blur p-6 rounded-2xl border border-white/20">
+                <p className="text-xs font-black text-indigo-300 uppercase tracking-widest mb-2">
+                  Prior Year Safe Harbor
+                </p>
+                <p className="text-3xl font-black text-white">
+                  ${calculations.priorYearSafeHarbor.toLocaleString()}
+                </p>
+                <p className="text-xs text-indigo-200 mt-2">
+                  {calculations.isHighEarner ? '110%' : '100%'} of 2024 tax
+                </p>
+                <p className="text-[10px] text-indigo-300 mt-1">
+                  {calculations.isHighEarner && '✓ High earner threshold (AGI > $150k)'}
+                </p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur p-6 rounded-2xl border border-white/20">
+                <p className="text-xs font-black text-purple-300 uppercase tracking-widest mb-2">
+                  Current Year Safe Harbor
+                </p>
+                <p className="text-3xl font-black text-white">
+                  ${calculations.currentYearSafeHarbor.toLocaleString()}
+                </p>
+                <p className="text-xs text-purple-200 mt-2">90% of 2025 estimated</p>
+                <p className="text-[10px] text-purple-300 mt-1">Requires accurate income forecast</p>
+              </div>
+
+              <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-6 rounded-2xl border-2 border-green-400 shadow-xl">
+                <p className="text-xs font-black text-green-50 uppercase tracking-widest mb-2">
+                  ✓ Recommended Payment
+                </p>
+                <p className="text-3xl font-black text-white">
+                  ${calculations.recommendedSafeHarbor.toLocaleString()}
+                </p>
+                <p className="text-xs text-green-50 font-bold mt-2">Minimum to avoid penalties</p>
+                <p className="text-[10px] text-green-100 mt-1">
+                  ${(calculations.recommendedSafeHarbor / 4).toLocaleString()} per quarter
+                </p>
+              </div>
             </div>
 
-            <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-200 shadow-sm">
-              <p className="text-xs font-black text-emerald-600 uppercase tracking-widest mb-2">
-                Recommended Total
-              </p>
-              <p className="text-3xl font-black text-emerald-700">
-                ${calculations.recommendedSafeHarbor.toLocaleString()}
-              </p>
-              <p className="text-xs text-emerald-600 mt-1">Use lower amount</p>
+            <div className="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10">
+              <h5 className="text-sm font-black text-white mb-3 flex items-center gap-2">
+                <span>💡</span> Strategic Cash Flow Optimization
+              </h5>
+              <div className="space-y-2 text-sm text-indigo-100 leading-relaxed">
+                <p>
+                  <strong className="text-white">Why use Safe Harbor:</strong> The IRS won't charge underpayment penalties if you pay at least one of these amounts, even if you ultimately owe more at tax time.
+                </p>
+                <p>
+                  <strong className="text-white">Prior Year Method (Recommended for most):</strong> Easiest and most predictable. You know exactly how much to pay based on last year's return. Great if income is variable or increasing.
+                </p>
+                <p>
+                  <strong className="text-white">Current Year Method:</strong> Better if your income is decreasing significantly. Lets you pay less now, but requires accurate forecasting to avoid paying 90%+.
+                </p>
+                <p className="text-xs text-green-300 bg-green-900/30 p-3 rounded-lg mt-3">
+                  <strong>🎯 Pro Tip:</strong> Pay the minimum safe harbor amount to preserve cash flow, then invest the difference in a High Yield Savings Account (HYSA) at 4-5% until April. If you owe more, you have the money ready. If you overpaid, you get a refund plus interest earned.
+                </p>
+              </div>
             </div>
+
+            {calculations.underpaymentPenalty > 100 && (
+              <div className="mt-4 p-4 bg-red-900/30 border border-red-500/30 rounded-2xl">
+                <p className="text-xs text-red-200">
+                  <strong className="text-red-100">⚠️ Estimated Underpayment Penalty:</strong> ${calculations.underpaymentPenalty.toLocaleString()}
+                  {' '}if you don't meet safe harbor. This assumes {((calculations.underpaymentPenalty / (calculations.totalTax - calculations.recommendedSafeHarbor)) * 100 || 0).toFixed(1)}% annual penalty rate on the shortfall.
+                </p>
+              </div>
+            )}
           </div>
 
           {/* AI Advice Panel */}

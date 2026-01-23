@@ -136,14 +136,17 @@ const calculateProgressiveTax = (taxableIncome: number, brackets: TaxBracket[]):
 
 interface SalaryCalculatorProps {
   onNavigate?: (tool: ToolType) => void;
+  initialState?: string; // State code (e.g., 'CA', 'TX')
+  customTitle?: string; // Custom H1 title (e.g., "Salary Tax Calculator - California")
+  introText?: string; // Custom intro text for state-specific pages
 }
 
 type PayFrequency = 'weekly' | 'bi-weekly' | 'semi-monthly' | 'monthly' | 'annual';
 
-const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate }) => {
+const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initialState, customTitle, introText }) => {
   const [annualGross, setAnnualGross] = useState<number>(125000);
   const [bonus, setBonus] = useState<number>(15000);
-  const [stateCode, setStateCode] = useState<string>('CA');
+  const [stateCode, setStateCode] = useState<string>(initialState || 'CA');
   const [contrib401kPercent, setContrib401kPercent] = useState<number>(10);
   const [healthInsurance, setHealthInsurance] = useState<number>(3600);
   const [payFrequency, setPayFrequency] = useState<PayFrequency>('monthly');
@@ -328,6 +331,93 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate }) => {
     };
   }, []);
 
+  useEffect(() => {
+    // Add FAQ schema for rich snippets
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate my take-home pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your take-home pay is your gross salary minus federal taxes, state taxes, FICA (Social Security and Medicare), and deductions like 401(k) contributions and health insurance. Use our calculator above by entering your annual salary, state, 401(k) contribution percentage, and health insurance costs. The calculator automatically computes all taxes and shows your net pay."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between gross pay and net pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gross pay is your total salary before any deductions. Net pay (take-home pay) is what you actually receive after all taxes and deductions are subtracted. For example, if you earn $100,000 gross, you might take home $70,000-$80,000 net depending on your state, deductions, and tax bracket."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much will I take home if I make $100,000 a year?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on your state, filing status, and deductions. In a state with no income tax (like Texas or Florida), you might take home around $75,000-$78,000. In a high-tax state like California or New York, you might take home $70,000-$73,000. Use our calculator with your specific details for an accurate estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does 401(k) contribution affect my take-home pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "401(k) contributions reduce your taxable income, which lowers your taxes. For example, if you contribute $10,000 to your 401(k) and you're in the 24% tax bracket, you save $2,400 in taxes. Your take-home pay decreases by $7,600 ($10,000 - $2,400), but you're saving $10,000 for retirement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is FICA tax?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FICA (Federal Insurance Contributions Act) includes Social Security tax (6.2% on income up to $168,600 in 2025) and Medicare tax (1.45% on all income). High earners pay an additional 0.9% Medicare tax on income above $200,000. FICA is automatically deducted from your paycheck."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do state taxes affect my take-home pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "State income tax rates vary significantly. Seven states have no income tax (Alaska, Florida, Nevada, South Dakota, Tennessee, Texas, Washington, Wyoming). Other states range from 2.5% (Arizona) to over 13% (California for high earners). Use our calculator to see how your state's tax rate impacts your take-home pay."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between weekly, bi-weekly, semi-monthly, and monthly pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Weekly pay = 52 paychecks per year. Bi-weekly = 26 paychecks per year (every 2 weeks). Semi-monthly = 24 paychecks per year (twice per month). Monthly = 12 paychecks per year. Your annual take-home pay is the same regardless of frequency, but your paycheck amount varies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I increase my take-home pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Strategies to increase take-home pay: 1) Negotiate a higher salary, 2) Reduce 401(k) contributions (though this reduces retirement savings), 3) Move to a state with lower/no income tax, 4) Maximize pre-tax deductions (HSA, health insurance), 5) Claim all eligible tax deductions and credits."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-salary';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-salary');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   return (
     <article className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-500 pb-24">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 bg-white p-12 rounded-[4.5rem] border border-slate-100 shadow-sm relative overflow-hidden">
@@ -337,8 +427,30 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate }) => {
              <span className="px-4 py-1.5 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg shadow-indigo-100">Tax Intelligence</span>
              <span className="text-slate-400 font-bold text-[10px] uppercase tracking-widest">2024-2025 Filer Standard</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight">Salary <span className="text-indigo-600">Estimator</span></h1>
-          <p className="text-slate-500 mt-2 max-w-lg font-medium text-lg leading-relaxed">Precision modeling of your take-home pay across all 50 US States. Audit the impact of 401(k) tax-shields and local state tax rates.</p>
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight">
+            {customTitle ? (
+              <span>{customTitle.split(' - ').map((part, i) => 
+                i === 0 ? (
+                  <span key={i}>{part.split(' ').map((word, j) => 
+                    j === 0 ? (
+                      <span key={j}><span className="text-indigo-600">{word}</span> </span>
+                    ) : (
+                      <span key={j}>{word} </span>
+                    )
+                  )}</span>
+                ) : (
+                  <span key={i}> - <span className="text-indigo-600">{part}</span></span>
+                )
+              )}</span>
+            ) : (
+              <>
+                Salary <span className="text-indigo-600">Estimator</span>
+              </>
+            )}
+          </h1>
+               <p className="text-slate-500 mt-2 max-w-lg font-medium text-lg leading-relaxed">
+                 {introText || "Precision modeling of your take-home pay across all 50 US States. Audit the impact of 401(k) tax-shields and local state tax rates."}
+               </p>
         </div>
         <div className="bg-slate-900 px-12 py-10 rounded-[3.5rem] text-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center min-w-[320px] border border-slate-800">
            <div className="relative z-10 text-center">
@@ -793,6 +905,77 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate }) => {
           }
         ]}
       />
+
+      {/* Internal Linking for Programmatic SEO */}
+      <section className="mt-20 pt-16 border-t border-slate-200">
+        <h3 className="text-2xl font-black text-slate-900 mb-6 text-center">State-Specific Paycheck Calculators</h3>
+        <p className="text-slate-600 text-center mb-8 max-w-2xl mx-auto">
+          Calculate your take-home pay for any US state. Each state has unique tax rates and brackets that affect your net pay.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-w-5xl mx-auto">
+          {[
+            { name: 'Alabama', slug: 'alabama' },
+            { name: 'Alaska', slug: 'alaska' },
+            { name: 'Arizona', slug: 'arizona' },
+            { name: 'Arkansas', slug: 'arkansas' },
+            { name: 'California', slug: 'california' },
+            { name: 'Colorado', slug: 'colorado' },
+            { name: 'Connecticut', slug: 'connecticut' },
+            { name: 'Delaware', slug: 'delaware' },
+            { name: 'Florida', slug: 'florida' },
+            { name: 'Georgia', slug: 'georgia' },
+            { name: 'Hawaii', slug: 'hawaii' },
+            { name: 'Idaho', slug: 'idaho' },
+            { name: 'Illinois', slug: 'illinois' },
+            { name: 'Indiana', slug: 'indiana' },
+            { name: 'Iowa', slug: 'iowa' },
+            { name: 'Kansas', slug: 'kansas' },
+            { name: 'Kentucky', slug: 'kentucky' },
+            { name: 'Louisiana', slug: 'louisiana' },
+            { name: 'Maine', slug: 'maine' },
+            { name: 'Maryland', slug: 'maryland' },
+            { name: 'Massachusetts', slug: 'massachusetts' },
+            { name: 'Michigan', slug: 'michigan' },
+            { name: 'Minnesota', slug: 'minnesota' },
+            { name: 'Mississippi', slug: 'mississippi' },
+            { name: 'Missouri', slug: 'missouri' },
+            { name: 'Montana', slug: 'montana' },
+            { name: 'Nebraska', slug: 'nebraska' },
+            { name: 'Nevada', slug: 'nevada' },
+            { name: 'New Hampshire', slug: 'new-hampshire' },
+            { name: 'New Jersey', slug: 'new-jersey' },
+            { name: 'New Mexico', slug: 'new-mexico' },
+            { name: 'New York', slug: 'new-york' },
+            { name: 'North Carolina', slug: 'north-carolina' },
+            { name: 'North Dakota', slug: 'north-dakota' },
+            { name: 'Ohio', slug: 'ohio' },
+            { name: 'Oklahoma', slug: 'oklahoma' },
+            { name: 'Oregon', slug: 'oregon' },
+            { name: 'Pennsylvania', slug: 'pennsylvania' },
+            { name: 'Rhode Island', slug: 'rhode-island' },
+            { name: 'South Carolina', slug: 'south-carolina' },
+            { name: 'South Dakota', slug: 'south-dakota' },
+            { name: 'Tennessee', slug: 'tennessee' },
+            { name: 'Texas', slug: 'texas' },
+            { name: 'Utah', slug: 'utah' },
+            { name: 'Vermont', slug: 'vermont' },
+            { name: 'Virginia', slug: 'virginia' },
+            { name: 'Washington', slug: 'washington' },
+            { name: 'West Virginia', slug: 'west-virginia' },
+            { name: 'Wisconsin', slug: 'wisconsin' },
+            { name: 'Wyoming', slug: 'wyoming' },
+            { name: 'District of Columbia', slug: 'district-of-columbia' }
+          ].map((state) => (
+            <a
+              key={state.slug}
+              href={`/salary-tax-estimator/${state.slug}`}
+              className="text-slate-600 hover:text-indigo-600 hover:underline text-sm font-medium transition-colors text-center py-2 px-3 rounded-lg hover:bg-indigo-50"
+            >
+              {state.name} Calculator
+            </a>
+          ))}
+        </div>
+      </section>
     </article>
   );
 };

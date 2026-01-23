@@ -23,7 +23,7 @@ const TEMPLATES: Record<Industry, IndustryTemplate> = {
 const ExcelModeler: React.FC = () => {
   const [industry, setIndustry] = useState<Industry>('custom');
   const [scenario, setScenario] = useState<Scenario>('base');
-  
+
   // Base Inputs (Controlled by Template or Manual)
   const [revenueBase, setRevenueBase] = useState<number>(5000000);
   const [growthRate, setGrowthRate] = useState<number>(15);
@@ -32,6 +32,26 @@ const ExcelModeler: React.FC = () => {
   const [discountRate, setDiscountRate] = useState<number>(10);
   const [terminalGrowth, setTerminalGrowth] = useState<number>(2.5);
   const [showFormulas, setShowFormulas] = useState<boolean>(false);
+
+  // WACC Wizard State
+  const [showWACCWizard, setShowWACCWizard] = useState<boolean>(false);
+  const [riskFreeRate, setRiskFreeRate] = useState<number>(4.2); // US 10-year treasury
+  const [beta, setBeta] = useState<number>(1.2);
+  const [marketRiskPremium, setMarketRiskPremium] = useState<number>(7.0); // Historical average
+  const [costOfDebt, setCostOfDebt] = useState<number>(5.5);
+  const [debtToEquity, setDebtToEquity] = useState<number>(0.4); // D/E ratio
+
+  // CAPM Calculation: Ke = Rf + β(Rm - Rf)
+  const costOfEquity = useMemo(() => {
+    return riskFreeRate + beta * marketRiskPremium;
+  }, [riskFreeRate, beta, marketRiskPremium]);
+
+  // WACC = (E/(E+D) × Ke) + (D/(E+D) × Kd × (1-Tax))
+  const calculatedWACC = useMemo(() => {
+    const equityWeight = 1 / (1 + debtToEquity);
+    const debtWeight = debtToEquity / (1 + debtToEquity);
+    return (equityWeight * costOfEquity) + (debtWeight * costOfDebt * (1 - taxRate / 100));
+  }, [costOfEquity, costOfDebt, debtToEquity, taxRate]);
 
   const applyTemplate = (key: Industry) => {
     const t = TEMPLATES[key];
@@ -199,23 +219,142 @@ const ExcelModeler: React.FC = () => {
           </section>
 
           <section className="bg-slate-900 p-8 rounded-[3rem] text-white space-y-8 border border-slate-800 shadow-2xl">
-            <h3 className="text-[10px] font-black text-green-400 uppercase tracking-[0.3em] border-b border-white/5 pb-4">WACC & Terminal Logic</h3>
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <div className="flex justify-between items-end px-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase">Cost of Capital (WACC)</label>
-                  <span className="text-sm font-black text-green-400">{discountRate}%</span>
-                </div>
-                <input type="range" min="5" max="25" step="0.5" value={discountRate} onChange={e => setDiscountRate(Number(e.target.value))} className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-green-500" />
-              </div>
-              <div className="space-y-4">
-                <div className="flex justify-between items-end px-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase">Terminal Growth Rate</label>
-                  <span className="text-sm font-black text-green-400">{terminalGrowth}%</span>
-                </div>
-                <input type="range" min="1" max="5" step="0.1" value={terminalGrowth} onChange={e => setTerminalGrowth(Number(e.target.value))} className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-green-500" />
-              </div>
+            <div className="flex justify-between items-center border-b border-white/5 pb-4">
+              <h3 className="text-[10px] font-black text-green-400 uppercase tracking-[0.3em]">WACC & Terminal Logic</h3>
+              <button
+                onClick={() => setShowWACCWizard(!showWACCWizard)}
+                className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-[9px] font-black uppercase tracking-wider rounded-xl transition-all"
+              >
+                {showWACCWizard ? 'Hide' : 'WACC Wizard'}
+              </button>
             </div>
+
+            {showWACCWizard ? (
+              <div className="space-y-6 bg-white/5 p-6 rounded-2xl border border-white/10">
+                <h4 className="text-xs font-black text-green-300 uppercase tracking-widest">CAPM Calculator (Cost of Equity)</h4>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-bold text-slate-400 uppercase flex items-center gap-1">
+                      Risk-Free Rate (Rf)
+                      <span className="cursor-help" title="US 10-Year Treasury Yield">ⓘ</span>
+                    </label>
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={riskFreeRate}
+                      onChange={e => setRiskFreeRate(Number(e.target.value))}
+                      className="w-full px-3 py-2 bg-slate-900 border border-white/20 rounded-lg text-white text-sm font-bold"
+                    />
+                    <span className="text-[8px] text-slate-500">Current: 4.2%</span>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-bold text-slate-400 uppercase flex items-center gap-1">
+                      Beta (β)
+                      <span className="cursor-help" title="Stock volatility vs market">ⓘ</span>
+                    </label>
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={beta}
+                      onChange={e => setBeta(Number(e.target.value))}
+                      className="w-full px-3 py-2 bg-slate-900 border border-white/20 rounded-lg text-white text-sm font-bold"
+                    />
+                    <div className="text-[8px] text-slate-500 space-x-2">
+                      <button onClick={() => setBeta(0.8)} className="hover:text-green-400">Tech: 1.2</button>
+                      <button onClick={() => setBeta(1.1)} className="hover:text-green-400">Finance: 1.1</button>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-bold text-slate-400 uppercase flex items-center gap-1">
+                      Market Risk Premium
+                      <span className="cursor-help" title="Expected market return - Rf">ⓘ</span>
+                    </label>
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={marketRiskPremium}
+                      onChange={e => setMarketRiskPremium(Number(e.target.value))}
+                      className="w-full px-3 py-2 bg-slate-900 border border-white/20 rounded-lg text-white text-sm font-bold"
+                    />
+                    <span className="text-[8px] text-slate-500">Historical: 7.0%</span>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-bold text-green-300 uppercase">Cost of Equity (Ke)</label>
+                    <div className="px-3 py-2 bg-green-600/20 border border-green-500/30 rounded-lg text-green-300 text-lg font-black">
+                      {costOfEquity.toFixed(2)}%
+                    </div>
+                    <span className="text-[8px] text-slate-500">= Rf + β × (Rm - Rf)</span>
+                  </div>
+                </div>
+
+                <div className="border-t border-white/10 pt-6 space-y-4">
+                  <h4 className="text-xs font-black text-green-300 uppercase tracking-widest">Capital Structure</h4>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-bold text-slate-400 uppercase">Cost of Debt (Kd)</label>
+                      <input
+                        type="number"
+                        step="0.1"
+                        value={costOfDebt}
+                        onChange={e => setCostOfDebt(Number(e.target.value))}
+                        className="w-full px-3 py-2 bg-slate-900 border border-white/20 rounded-lg text-white text-sm font-bold"
+                      />
+                      <span className="text-[8px] text-slate-500">After-tax interest rate</span>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-[9px] font-bold text-slate-400 uppercase">D/E Ratio</label>
+                      <input
+                        type="number"
+                        step="0.1"
+                        value={debtToEquity}
+                        onChange={e => setDebtToEquity(Number(e.target.value))}
+                        className="w-full px-3 py-2 bg-slate-900 border border-white/20 rounded-lg text-white text-sm font-bold"
+                      />
+                      <span className="text-[8px] text-slate-500">Debt / Equity</span>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-green-600 to-emerald-600 p-4 rounded-xl">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[9px] font-black text-green-100 uppercase tracking-widest">Calculated WACC</span>
+                      <span className="text-2xl font-black text-white">{calculatedWACC.toFixed(2)}%</span>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setDiscountRate(Number(calculatedWACC.toFixed(1)));
+                        setShowWACCWizard(false);
+                      }}
+                      className="mt-3 w-full py-2 bg-white text-green-700 rounded-lg text-[10px] font-black uppercase tracking-wider hover:bg-green-50 transition-all"
+                    >
+                      Apply to Model
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <div className="flex justify-between items-end px-2">
+                    <label className="text-[10px] font-black text-slate-400 uppercase">Cost of Capital (WACC)</label>
+                    <span className="text-sm font-black text-green-400">{discountRate}%</span>
+                  </div>
+                  <input type="range" min="5" max="25" step="0.5" value={discountRate} onChange={e => setDiscountRate(Number(e.target.value))} className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-green-500" />
+                </div>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-end px-2">
+                    <label className="text-[10px] font-black text-slate-400 uppercase">Terminal Growth Rate</label>
+                    <span className="text-sm font-black text-green-400">{terminalGrowth}%</span>
+                  </div>
+                  <input type="range" min="1" max="5" step="0.1" value={terminalGrowth} onChange={e => setTerminalGrowth(Number(e.target.value))} className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-green-500" />
+                </div>
+              </div>
+            )}
           </section>
         </div>
 

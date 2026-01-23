@@ -13,6 +13,8 @@ import EmailCapture from './EmailCapture';
 import RecommendedTools from './RecommendedTools';
 import AdPlacement from './AdPlacement';
 import CalculatorFAQ from './CalculatorFAQ';
+import LenderComparisonTable from './LenderComparisonTable';
+import RateTable from './RateTable';
 import { ToolType } from '../types';
 
 interface AmortizationEntry {
@@ -107,6 +109,93 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
 
     return () => {
       const existingScript = document.getElementById('howto-schema-mortgage');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // Add FAQ schema for rich snippets
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is PITI in a mortgage payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PITI stands for Principal, Interest, Taxes, and Insurance. It represents your total monthly mortgage payment. Principal is the loan amount you're paying down, Interest is the cost of borrowing, Taxes are property taxes (varies by state), and Insurance includes homeowners insurance and PMI (Private Mortgage Insurance) if your down payment is less than 20%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate my mortgage payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use our mortgage calculator above! Enter your home price, down payment percentage, interest rate, property tax rate (varies by state), homeowners insurance, and HOA fees if applicable. The calculator automatically computes your monthly PITI payment, PMI if needed, and shows when PMI will drop (when your loan-to-value ratio falls below 78%)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is PMI and when does it drop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PMI (Private Mortgage Insurance) is required when your down payment is less than 20% of the home price. It protects the lender if you default. PMI automatically drops when your loan-to-value (LTV) ratio falls below 78% based on the original amortization schedule, or you can request removal when LTV reaches 80% with a new appraisal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much house can I afford?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the 28/36 rule: Your monthly housing costs (PITI) should not exceed 28% of your gross monthly income, and total debt payments should not exceed 36%. For example, if you earn $100,000/year ($8,333/month), your maximum monthly housing payment should be around $2,333."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are property tax rates by state?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Property tax rates vary significantly by state. New Jersey has the highest average rate at 2.49%, while Hawaii has the lowest at 0.28%. Our calculator includes state-specific property tax rates for all 50 US states. Property taxes are typically 1-2% of your home's assessed value annually, paid monthly through escrow."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I pay extra on my mortgage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paying extra on your mortgage can save thousands in interest and shorten your loan term. For example, paying an extra $200/month on a $400,000 mortgage at 6.5% can save over $100,000 in interest and pay off the loan 7 years early. However, consider if you could earn more by investing that money instead, especially if your mortgage rate is low."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between a 15-year and 30-year mortgage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 15-year mortgage has higher monthly payments but much lower total interest paid and builds equity faster. A 30-year mortgage has lower monthly payments, making it more affordable, but you'll pay significantly more interest over the life of the loan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are closing costs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Closing costs typically range from 2-5% of the home price and include loan origination fees, appraisal, title insurance, home inspection, prepaid property taxes and insurance, and other fees. On a $500,000 home, expect closing costs of $10,000-$25,000. These are separate from your down payment."
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(faqSchema);
+    script.id = 'faq-schema-mortgage';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('faq-schema-mortgage');
       if (existingScript) {
         document.head.removeChild(existingScript);
       }
@@ -266,6 +355,9 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
           </p>
         </div>
       </section>
+
+      {/* Rate Table - Prominently placed after H1 for maximum visibility */}
+      <RateTable type="mortgage" compact={true} />
 
       <section className="grid lg:grid-cols-[1.2fr_1fr] gap-8">
         <div className="space-y-6">
@@ -513,6 +605,9 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
           }
         ]}
       />
+
+      {/* Lender Comparison Table */}
+      <LenderComparisonTable type="mortgage" />
 
       {/* Email Capture Section */}
       <section className="mt-12">
