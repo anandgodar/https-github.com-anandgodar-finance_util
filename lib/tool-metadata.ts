@@ -535,6 +535,31 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     title: "Legal Disclaimer - Terms of Use & Financial Compliance",
     desc: "Important legal information regarding the algorithmic nature of QuantCurb. We provide models, not advice.",
     keywords: "legal disclaimer, financial compliance, terms of use"
+  },
+  [ToolType.TAX_CALCULATORS_HUB]: {
+    title: "Free Tax Calculators 2025 - Income, Quarterly, Child Tax Credit & More",
+    desc: "Calculate your 2025 taxes with QuantCurb's free tax calculators. Estimate income tax, quarterly payments, child tax credit, self-employment tax, and ACA subsidies. Simplify your tax planning now!",
+    keywords: "free tax calculators, income tax calculator, quarterly tax calculator, child tax credit, self employment tax, aca subsidy calculator, 2025 tax tools, tax planning"
+  },
+  [ToolType.RETIREMENT_CALCULATORS_HUB]: {
+    title: "Free Retirement Calculators 2025 - 401k, IRA, FIRE & Early Retirement Planning",
+    desc: "Plan your financial independence and early retirement with our suite of high-fidelity retirement planning tools. Compare 401(k), IRA, Roth strategies, and calculate your FIRE number.",
+    keywords: "free retirement calculators, 401k calculator, ira calculator, roth ira calculator, fire calculator, early retirement calculator, retirement planning tools 2025"
+  },
+  [ToolType.MORTGAGE_CALCULATORS_HUB]: {
+    title: "Free Mortgage Calculators 2025 - PITI, PMI, Property Tax & Loan Comparison",
+    desc: "Navigate home financing with confidence. Our suite of mortgage calculators helps you estimate payments, compare loans, and plan your home purchase with PITI breakdown and PMI calculations.",
+    keywords: "free mortgage calculators, mortgage calculator, piti calculator, pmi calculator, property tax calculator, loan comparison calculator, mortgage payment calculator 2025"
+  },
+  [ToolType.INVESTMENT_CALCULATORS_HUB]: {
+    title: "Free Investment Calculators Hub 2025: Compound Interest, SIP, DRIP & Wealth Projection",
+    desc: "Complete collection of free investment calculators for 2025. Calculate compound interest, SIP investing, dividend reinvestment, and wealth projection. All tools are free and include comprehensive guides.",
+    keywords: "investment calculators, free investment calculator, compound interest calculator, sip calculator, drip calculator, investment growth calculator, wealth calculator, investment calculator 2025"
+  },
+  [ToolType.MORTGAGE_CALCULATOR_COMPARISON]: {
+    title: "Best Mortgage Calculator 2025: Complete Comparison - QuantCurb vs Bankrate vs Zillow",
+    desc: "Compare the best mortgage calculators in 2025. Review QuantCurb, Bankrate, Zillow, NerdWallet, and other top tools. Find the perfect mortgage calculator with PITI, PMI, and property tax calculations.",
+    keywords: "best mortgage calculator, mortgage calculator comparison, best mortgage calculator 2025, quantcurb vs bankrate, mortgage calculator review, piti calculator comparison, free mortgage calculator"
   }
 };
 
