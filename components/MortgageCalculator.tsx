@@ -337,6 +337,25 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
         </p>
       </header>
 
+      {/* Featured Snippet Optimization - Definition Box */}
+      <section className="bg-indigo-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-4">What is PITI in a Mortgage Payment?</h2>
+        <div className="prose prose-slate max-w-none">
+          <p className="text-slate-700 leading-relaxed font-medium mb-4">
+            <strong>PITI</strong> stands for <strong>Principal, Interest, Taxes, and Insurance</strong> - the four components that make up your total monthly mortgage payment.
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-slate-700 ml-4">
+            <li><strong>Principal:</strong> The amount you're paying down on your loan balance</li>
+            <li><strong>Interest:</strong> The cost of borrowing money from the lender</li>
+            <li><strong>Taxes:</strong> Property taxes (varies by state, typically 0.5-2.5% of home value annually)</li>
+            <li><strong>Insurance:</strong> Homeowners insurance and PMI (Private Mortgage Insurance) if your down payment is less than 20%</li>
+          </ul>
+          <p className="text-slate-600 text-sm mt-4">
+            Our calculator automatically calculates all PITI components for all 50 US states, including state-specific property tax rates.
+          </p>
+        </div>
+      </section>
+
       {/* Rate Table - Prominently placed after H1 for maximum visibility */}
       <RateTable type="mortgage" compact={true} />
 
@@ -531,7 +550,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
             <p className="text-sm text-slate-600">Use the 28/36 rule to determine your maximum home price.</p>
           </button>
           <button
-            onClick={() => onNavigate?.(ToolType.BLOG_BEST_MORTGAGE)}
+            onClick={() => onNavigate?.(ToolType.MORTGAGE_CALCULATOR_COMPARISON)}
             className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
           >
             <h3 className="font-bold text-slate-900 mb-2">🏆 Best Mortgage Calculator 2025</h3>

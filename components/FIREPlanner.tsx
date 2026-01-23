@@ -364,6 +364,33 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
 
   return (
     <div className="max-w-7xl mx-auto space-y-10 animate-in fade-in duration-500 pb-24">
+      {/* Featured Snippet Optimization - Definition Box */}
+      <section className="bg-orange-50 rounded-3xl p-8 border border-orange-200 mb-8">
+        <h2 className="text-2xl font-black text-slate-900 mb-4">What is the 4% Rule for FIRE?</h2>
+        <div className="prose prose-slate max-w-none">
+          <p className="text-slate-700 leading-relaxed font-medium mb-4">
+            The <strong>4% rule</strong> is a retirement withdrawal strategy that states you can safely withdraw 4% of your portfolio in the first year of retirement, 
+            then adjust that amount for inflation each subsequent year, and your money should last 30 years.
+          </p>
+          <p className="text-slate-700 leading-relaxed font-medium mb-4">
+            <strong>To calculate your FIRE number:</strong> Multiply your annual expenses by 25 (or divide by 0.04).
+          </p>
+          <div className="bg-white p-6 rounded-2xl border border-orange-100 mt-4">
+            <p className="text-slate-600 text-sm mb-2"><strong>Example:</strong></p>
+            <p className="text-slate-700 font-medium">
+              If you need $60,000/year to live: $60,000 × 25 = <strong>$1,500,000 FIRE number</strong>
+            </p>
+            <p className="text-slate-600 text-sm mt-2">
+              This means you need $1.5 million saved to safely withdraw $60,000/year (4%) adjusted for inflation.
+            </p>
+          </div>
+          <p className="text-slate-600 text-sm mt-6">
+            Our calculator automatically calculates your FIRE number, Lean FIRE (70% of target), Fat FIRE (150% of target), 
+            Coast FIRE, and Barista FIRE based on your inputs.
+          </p>
+        </div>
+      </section>
+
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
           <h2 className="text-3xl font-black text-slate-900 leading-tight">FIRE <span className="text-orange-500">Intelligence</span></h2>
