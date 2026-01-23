@@ -57,6 +57,13 @@ const FourZeroOneKVsIRAComparison2025 = lazy(() => import('./components/blog/401
 const BudgetingGuide2025 = lazy(() => import('./components/blog/BudgetingGuide2025'));
 const BlogIndex = lazy(() => import('./components/BlogIndex'));
 
+// Lazy load hub pages
+const TaxCalculatorsHub = lazy(() => import('./components/hubs/TaxCalculatorsHub'));
+const RetirementCalculatorsHub = lazy(() => import('./components/hubs/RetirementCalculatorsHub'));
+const MortgageCalculatorsHub = lazy(() => import('./components/hubs/MortgageCalculatorsHub'));
+const InvestmentCalculatorsHub = lazy(() => import('./components/hubs/InvestmentCalculatorsHub'));
+const MortgageCalculatorComparison = lazy(() => import('./components/comparisons/MortgageCalculatorComparison'));
+
 // Lazy load static pages
 const FAQ = lazy(() => import('./components/FAQ'));
 const Methodology = lazy(() => import('./components/Methodology'));
@@ -93,24 +100,24 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "emergency fund calculator, financial safety net, survival runway, inflation stress"
   },
   [ToolType.EMI_CALC]: { 
-    title: "EMI Calculator 2025 - Loan EMI Calculator with Extra Payment Savings", 
-    desc: "Optimize your loan repayments. Use our reducing balance EMI calculator to model principal prepayments and shave years off your debt tenure.",
-    keywords: "emi calculator, loan repayment, interest savings, prepayment calculator"
+    title: "Free EMI Calculator 2025: Loan EMI Calculator with Extra Payment Savings", 
+    desc: "Free EMI calculator 2025 to optimize your loan repayments instantly. Use our reducing balance EMI calculator to model principal prepayments and shave years off your debt tenure. Calculate interest savings and payoff timeline. Start saving today.",
+    keywords: "emi calculator, loan repayment calculator, free emi calculator, interest savings, prepayment calculator, loan calculator, reducing balance calculator, emi calculator 2025"
   },
   [ToolType.MORTGAGE_CALC]: {
-    title: "Mortgage Calculator 2025 - PITI, PMI, HOA & Property Tax Calculator by State",
-    desc: "Free mortgage calculator with PITI breakdown, PMI calculations, HOA fees, and all 50 US states property tax rates. Calculate your monthly mortgage payment, see when PMI drops, and plan your home purchase with our professional-grade tool.",
-    keywords: "mortgage calculator, mortgage calculator 2025, piti calculator, monthly mortgage payment, pmi calculator, property tax calculator, hoa calculator, mortgage payment calculator, home loan calculator, mortgage by state, mortgage calculator with taxes, mortgage calculator with pmi"
+    title: "Free Mortgage Calculator 2025: Calculate PITI Payment with PMI, Taxes & HOA | All 50 States",
+    desc: "Free mortgage calculator 2025 with PITI breakdown, PMI calculations, HOA fees, and all 50 US states property tax rates. Calculate your monthly mortgage payment instantly, see when PMI drops automatically, and plan your home purchase. No sign-up required.",
+    keywords: "mortgage calculator, mortgage calculator 2025, free mortgage calculator, piti calculator, monthly mortgage payment, pmi calculator, property tax calculator, hoa calculator, mortgage payment calculator, home loan calculator, mortgage by state, mortgage calculator with taxes, mortgage calculator with pmi, free mortgage calculator 2025"
   },
   [ToolType.SALARY_CALC]: { 
-    title: "Take Home Pay Calculator 2025 - Salary Tax Calculator by State with 401k", 
-    desc: "Free salary calculator to calculate your take-home pay after taxes. Includes federal tax, state tax (all 50 states), FICA, 401(k) deductions, and pay frequency options. Get your exact net pay for weekly, bi-weekly, semi-monthly, or monthly paychecks.",
-    keywords: "salary calculator, take home pay calculator, salary calculator 2025, net pay calculator, after tax salary, paycheck calculator, take home pay by state, 401k calculator, tax estimator, salary after taxes, biweekly paycheck calculator, weekly paycheck calculator"
+    title: "Free Take Home Pay Calculator 2025: Salary Tax Calculator by State with 401k | All 50 States", 
+    desc: "Free salary calculator 2025 to calculate your take-home pay after taxes instantly. Includes federal tax, state tax (all 50 states), FICA, 401(k) deductions, and pay frequency options. Get your exact net pay for weekly, bi-weekly, semi-monthly, or monthly paychecks. Calculate now - no registration needed.",
+    keywords: "salary calculator, take home pay calculator, free salary calculator, salary calculator 2025, net pay calculator, after tax salary, paycheck calculator, take home pay by state, 401k calculator, tax estimator, salary after taxes, biweekly paycheck calculator, weekly paycheck calculator, free take home pay calculator"
   },
   [ToolType.INVESTMENT_CALC]: { 
-    title: "Investment Calculator 2025 - SIP Calculator with Compound Interest & Goal-Based Investing", 
-    desc: "Free investment calculator to calculate investment growth with compound interest. Includes SIP investing, dividend reinvestment (DRIP), goal-based investing, and wealth projection. See how your investments grow over time with monthly contributions.",
-    keywords: "investment calculator, investment calculator 2025, sip calculator, compound interest calculator, investment growth calculator, wealth calculator, sip investing, compound interest, dividend reinvestment, drip calculator, goal based investing, investment projection, wealth growth calculator"
+    title: "Free Investment Calculator 2025: SIP Calculator with Compound Interest & Goal-Based Investing", 
+    desc: "Free investment calculator 2025 to calculate investment growth with compound interest instantly. Includes SIP investing, dividend reinvestment (DRIP), goal-based investing, and wealth projection. See how your investments grow over time with monthly contributions. Plan your financial future today.",
+    keywords: "investment calculator, investment calculator 2025, free investment calculator, sip calculator, compound interest calculator, investment growth calculator, wealth calculator, sip investing, compound interest, dividend reinvestment, drip calculator, goal based investing, investment projection, wealth growth calculator"
   },
   [ToolType.MARKET_INSIGHTS]: { 
     title: "AI Market Pulse - Institutional vs Retail App Ecosystem Analysis", 
@@ -138,14 +145,14 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "gst calculator, vat calculator, tax invoicing, business tax tool"
   },
   [ToolType.CREDIT_CARD_PAYOFF]: { 
-    title: "Credit Card Payoff Calculator 2025 - Avalanche vs Snowball Method with Balance Transfer", 
-    desc: "Free credit card payoff calculator to eliminate debt faster. Compare Avalanche vs Snowball methods, calculate payoff timeline, total interest paid, and balance transfer savings. Find the best strategy to become debt-free.",
-    keywords: "credit card payoff calculator, debt payoff calculator, avalanche method, snowball method, credit card debt calculator, balance transfer calculator, debt free calculator, credit card interest calculator, debt payoff strategy, avalanche vs snowball"
+    title: "Free Credit Card Payoff Calculator 2025: Avalanche vs Snowball Method with Balance Transfer", 
+    desc: "Free credit card payoff calculator 2025 to eliminate debt faster. Compare Avalanche vs Snowball methods instantly, calculate payoff timeline, total interest paid, and balance transfer savings. Find the best strategy to become debt-free. Start your debt-free journey today.",
+    keywords: "credit card payoff calculator, debt payoff calculator, free debt calculator, avalanche method, snowball method, credit card debt calculator, balance transfer calculator, debt free calculator, credit card interest calculator, debt payoff strategy, avalanche vs snowball"
   },
   [ToolType.FIRE_PLANNER]: { 
-    title: "FIRE Calculator 2025 - Early Retirement Planner with Coast FIRE, Barista FIRE & Geographic Arbitrage", 
-    desc: "Free FIRE calculator to calculate your early retirement number using the 4% rule. Includes Lean FIRE, Fat FIRE, Coast FIRE, Barista FIRE, and geographic arbitrage calculator. Plan your path to financial independence and early retirement.",
-    keywords: "fire calculator, fire planner, early retirement calculator, fire number calculator, coast fire calculator, barista fire calculator, geographic arbitrage, 4 percent rule, financial independence retire early, lean fire, fat fire, fire planning, early retirement planning"
+    title: "Free FIRE Calculator 2025: Early Retirement Planner with Coast FIRE, Barista FIRE & Geographic Arbitrage", 
+    desc: "Free FIRE calculator 2025 to calculate your early retirement number using the 4% rule instantly. Includes Lean FIRE, Fat FIRE, Coast FIRE, Barista FIRE, and geographic arbitrage calculator. Plan your path to financial independence and early retirement. Calculate your FIRE number now.",
+    keywords: "fire calculator, fire planner, free fire calculator, early retirement calculator, fire number calculator, coast fire calculator, barista fire calculator, geographic arbitrage, 4 percent rule, financial independence retire early, lean fire, fat fire, fire planning, early retirement planning"
   },
   [ToolType.FREELANCE_PROFIT]: { 
     title: "Freelance Hub - 1099 Net Profit & FTE Salary Equivalent Tool", 
@@ -163,9 +170,9 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "dcf calculator, business valuation, wacc matrix, enterprise value"
   },
   [ToolType.RETIREMENT_OPTIMIZER]: {
-    title: "Retirement Account Optimizer 2025 - 401k vs IRA vs Roth Calculator with Readiness Score",
-    desc: "Free retirement calculator to compare 401(k), Traditional IRA, and Roth IRA strategies. Calculate retirement readiness score, RMD estimates, Social Security, and maximize employer match. Optimize your retirement savings for 2025 contribution limits.",
-    keywords: "retirement optimizer, retirement calculator, 401k calculator, roth ira calculator, traditional ira calculator, retirement tax strategy, retirement readiness score, rmd calculator, social security calculator, 401k vs roth, retirement account comparison, 2025 contribution limits"
+    title: "Free Retirement Calculator 2025: 401k vs IRA vs Roth Optimizer with Readiness Score",
+    desc: "Free retirement calculator 2025 to compare 401(k), Traditional IRA, and Roth IRA strategies instantly. Calculate retirement readiness score, RMD estimates, Social Security projections, and maximize employer match. Optimize your retirement savings for 2025 contribution limits. Start planning today.",
+    keywords: "retirement optimizer, retirement calculator, free retirement calculator, 401k calculator, roth ira calculator, traditional ira calculator, retirement tax strategy, retirement readiness score, rmd calculator, social security calculator, 401k vs roth, retirement account comparison, 2025 contribution limits"
   },
   [ToolType.DRIP_CALCULATOR]: {
     title: "Dividend Reinvestment (DRIP) Calculator - Snowball Compounding Model",
@@ -178,19 +185,19 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     keywords: "crypto tax loss harvesting, tax loss harvester, crypto taxes, capital losses"
   },
   [ToolType.CHILD_TAX_CREDIT]: {
-    title: "Child Tax Credit Calculator 2025 - CTC & ACTC Estimator",
-    desc: "Calculate your 2025 Child Tax Credit (CTC) and Additional Child Tax Credit (ACTC). Estimate up to $2,000 per child with phase-out analysis, refundable credit calculations, and EITC eligibility check for single parents and families.",
-    keywords: "child tax credit calculator 2025, ctc calculator, child tax credit phase out, additional child tax credit, actc calculator, child tax credit single parent, eitc eligibility, tax credit for children"
+    title: "Free Child Tax Credit Calculator 2025: CTC & ACTC Estimator | Up to $2,000 Per Child",
+    desc: "Free child tax credit calculator 2025 to calculate your CTC and ACTC instantly. Estimate up to $2,000 per child with phase-out analysis, refundable credit calculations, and EITC eligibility check for single parents and families. Maximize your tax savings now.",
+    keywords: "child tax credit calculator 2025, free ctc calculator, ctc calculator, child tax credit phase out, additional child tax credit, actc calculator, child tax credit single parent, eitc eligibility, tax credit for children"
   },
   [ToolType.QUARTERLY_TAX]: {
-    title: "Quarterly Estimated Tax Calculator 2025 - IRS Form 1040-ES",
-    desc: "Calculate quarterly estimated tax payments for freelancers, self-employed, and 1099 contractors. Avoid IRS underpayment penalties with safe harbor rules (100%/110% prior year, 90% current year). Plan Q1-Q4 payments with self-employment tax calculations.",
-    keywords: "quarterly tax calculator, 1040-es calculator, estimated tax payments, quarterly taxes, self employment tax calculator, freelance tax calculator, how much to pay quarterly taxes, estimated tax due dates 2025, safe harbor tax rule"
+    title: "Free Quarterly Tax Calculator 2025: IRS Form 1040-ES for Freelancers & Self-Employed",
+    desc: "Free quarterly tax calculator 2025 for freelancers, self-employed, and 1099 contractors. Calculate quarterly estimated tax payments instantly. Avoid IRS underpayment penalties with safe harbor rules (100%/110% prior year, 90% current year). Plan Q1-Q4 payments with self-employment tax calculations.",
+    keywords: "quarterly tax calculator, free quarterly tax calculator, 1040-es calculator, estimated tax payments, quarterly taxes, self employment tax calculator, freelance tax calculator, how much to pay quarterly taxes, estimated tax due dates 2025, safe harbor tax rule"
   },
   [ToolType.ACA_SUBSIDY]: {
-    title: "ACA Health Insurance Subsidy Calculator 2025 - Obamacare Premium Tax Credit",
-    desc: "Calculate ACA marketplace subsidies and Premium Tax Credits for 2025. Determine Medicaid eligibility, cost-sharing reductions, and monthly healthcare costs for freelancers, self-employed, and families. Check coverage gap status and Federal Poverty Level percentage.",
-    keywords: "aca subsidy calculator, obamacare subsidy calculator, premium tax credit calculator, healthcare subsidy calculator, aca marketplace calculator, health insurance subsidy, medicaid eligibility calculator, federal poverty level calculator, cost sharing reduction, healthcare.gov calculator"
+    title: "Free ACA Subsidy Calculator 2025: Obamacare Premium Tax Credit & Medicaid Eligibility",
+    desc: "Free ACA subsidy calculator 2025 to calculate marketplace subsidies and Premium Tax Credits instantly. Determine Medicaid eligibility, cost-sharing reductions, and monthly healthcare costs for freelancers, self-employed, and families. Check coverage gap status and Federal Poverty Level percentage. Save on healthcare now.",
+    keywords: "aca subsidy calculator, free aca calculator, obamacare subsidy calculator, premium tax credit calculator, healthcare subsidy calculator, aca marketplace calculator, health insurance subsidy, medicaid eligibility calculator, federal poverty level calculator, cost sharing reduction, healthcare.gov calculator"
   },
   [ToolType.BLOG_CTC_2025]: {
     title: "Child Tax Credit 2025: Complete Guide to CTC, ACTC, and Tax Savings",
@@ -317,6 +324,31 @@ const METADATA: Record<ToolType, { title: string; desc: string; keywords: string
     desc: "Comprehensive financial guides, calculators, and expert insights for mortgages, taxes, retirement planning, and wealth management. Learn how to make smarter financial decisions with institutional-grade tools.",
     keywords: "financial blog, finance guides, mortgage calculator guide, tax planning guide, retirement planning guide, financial education, personal finance blog, wealth management guides"
   },
+  [ToolType.TAX_CALCULATORS_HUB]: {
+    title: "Free Tax Calculators Hub 2025: Child Tax Credit, Quarterly Taxes, ACA Subsidies & More",
+    desc: "Complete collection of free tax calculators for 2025. Calculate child tax credit, quarterly taxes, ACA subsidies, take-home pay, and self-employment taxes. All tools are free and include comprehensive guides.",
+    keywords: "tax calculators, free tax calculator, child tax credit calculator, quarterly tax calculator, aca subsidy calculator, salary calculator, freelance tax calculator, tax tools 2025"
+  },
+  [ToolType.RETIREMENT_CALCULATORS_HUB]: {
+    title: "Free Retirement Calculators Hub 2025: 401k, IRA, Roth, FIRE & Investment Tools",
+    desc: "Complete collection of free retirement calculators for 2025. Compare 401(k) vs IRA vs Roth, calculate retirement readiness, FIRE number, and optimize your retirement savings. All tools are free and include comprehensive guides.",
+    keywords: "retirement calculators, free retirement calculator, 401k calculator, ira calculator, roth calculator, fire calculator, retirement planning tools, retirement calculator 2025"
+  },
+  [ToolType.MORTGAGE_CALCULATORS_HUB]: {
+    title: "Free Mortgage Calculators Hub 2025: PITI, PMI, Property Tax & Loan Comparison Tools",
+    desc: "Complete collection of free mortgage calculators for 2025. Calculate PITI payments, PMI, property taxes, loan comparisons, and affordability. All tools are free and include comprehensive guides.",
+    keywords: "mortgage calculators, free mortgage calculator, piti calculator, pmi calculator, property tax calculator, loan comparison, mortgage calculator 2025, home loan calculator"
+  },
+  [ToolType.INVESTMENT_CALCULATORS_HUB]: {
+    title: "Free Investment Calculators Hub 2025: Compound Interest, SIP, DRIP & Wealth Projection",
+    desc: "Complete collection of free investment calculators for 2025. Calculate compound interest, SIP investing, dividend reinvestment, and wealth projection. All tools are free and include comprehensive guides.",
+    keywords: "investment calculators, free investment calculator, compound interest calculator, sip calculator, drip calculator, investment growth calculator, wealth calculator, investment calculator 2025"
+  },
+  [ToolType.MORTGAGE_CALCULATOR_COMPARISON]: {
+    title: "Best Mortgage Calculator 2025: Complete Comparison - QuantCurb vs Bankrate vs Zillow",
+    desc: "Compare the best mortgage calculators in 2025. Review QuantCurb, Bankrate, Zillow, NerdWallet, and other top tools. Find the perfect mortgage calculator with PITI, PMI, and property tax calculations.",
+    keywords: "best mortgage calculator, mortgage calculator comparison, best mortgage calculator 2025, quantcurb vs bankrate, mortgage calculator review, piti calculator comparison, free mortgage calculator"
+  },
   [ToolType.FAQ]: {
     title: "Financial Knowledge Base - Expert Logic & Strategy FAQ",
     desc: "Deep technical documentation on the mathematical frameworks and strategies powering QuantCurb's institutional finance suite.",
@@ -390,6 +422,55 @@ const AppShell: React.FC = () => {
         document.head.appendChild(keywordsTag);
       }
       keywordsTag.setAttribute('content', meta.keywords);
+
+      // DYNAMIC OPEN GRAPH TAGS
+      const updateOrCreateMeta = (property: string, content: string, isProperty = true) => {
+        const selector = isProperty ? `meta[property="${property}"]` : `meta[name="${property}"]`;
+        let metaTag = document.querySelector(selector) as HTMLMetaElement;
+        if (!metaTag) {
+          metaTag = document.createElement('meta');
+          if (isProperty) {
+            metaTag.setAttribute('property', property);
+          } else {
+            metaTag.setAttribute('name', property);
+          }
+          document.head.appendChild(metaTag);
+        }
+        metaTag.setAttribute('content', content);
+      };
+
+      const pageUrl = `https://quantcurb.com/${activeTool === ToolType.DASHBOARD ? '' : activeTool}`;
+      const ogImage = `https://quantcurb.com/og-image-${activeTool.replace(/\//g, '-')}.png` || 'https://quantcurb.com/og-image.png';
+
+      // Open Graph tags
+      updateOrCreateMeta('og:type', 'website');
+      updateOrCreateMeta('og:url', pageUrl);
+      updateOrCreateMeta('og:title', meta.title);
+      updateOrCreateMeta('og:description', meta.desc);
+      updateOrCreateMeta('og:image', ogImage);
+      updateOrCreateMeta('og:image:width', '1200');
+      updateOrCreateMeta('og:image:height', '630');
+      updateOrCreateMeta('og:image:alt', `${meta.title} - QuantCurb Financial Calculator`);
+      updateOrCreateMeta('og:site_name', 'QuantCurb');
+      updateOrCreateMeta('og:locale', 'en_US');
+
+      // Twitter Card tags
+      updateOrCreateMeta('twitter:card', 'summary_large_image', false);
+      updateOrCreateMeta('twitter:site', '@quantcurb', false);
+      updateOrCreateMeta('twitter:creator', '@quantcurb', false);
+      updateOrCreateMeta('twitter:title', meta.title, false);
+      updateOrCreateMeta('twitter:description', meta.desc, false);
+      updateOrCreateMeta('twitter:image', ogImage, false);
+      updateOrCreateMeta('twitter:image:alt', `${meta.title} - QuantCurb Financial Calculator`, false);
+
+      // Canonical URL
+      let canonicalTag = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+      if (!canonicalTag) {
+        canonicalTag = document.createElement('link');
+        canonicalTag.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonicalTag);
+      }
+      canonicalTag.setAttribute('href', pageUrl);
 
       // DYNAMIC SCHEMA INJECTION
       const scriptId = 'quantcurb-json-ld';
@@ -532,6 +613,11 @@ const AppShell: React.FC = () => {
         case ToolType.BLOG_401K_VS_IRA: return <FourZeroOneKVsIRAComparison2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_BUDGETING: return <BudgetingGuide2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_INDEX: return <BlogIndex onNavigate={setActiveTool} />;
+        case ToolType.TAX_CALCULATORS_HUB: return <TaxCalculatorsHub onNavigate={setActiveTool} />;
+        case ToolType.RETIREMENT_CALCULATORS_HUB: return <RetirementCalculatorsHub onNavigate={setActiveTool} />;
+        case ToolType.MORTGAGE_CALCULATORS_HUB: return <MortgageCalculatorsHub onNavigate={setActiveTool} />;
+        case ToolType.INVESTMENT_CALCULATORS_HUB: return <InvestmentCalculatorsHub onNavigate={setActiveTool} />;
+        case ToolType.MORTGAGE_CALCULATOR_COMPARISON: return <MortgageCalculatorComparison onNavigate={setActiveTool} />;
         case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
         case ToolType.METHODOLOGY: return <Methodology />;
         case ToolType.PRIVACY: return <PrivacyPolicy />;

@@ -49,5 +49,10 @@ export default defineConfig({
   // Optimize dependencies
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', 'recharts']
+  },
+  // Performance optimizations
+  esbuild: {
+    legalComments: 'none', // Remove comments for smaller bundles
+    treeShaking: true
   }
 });

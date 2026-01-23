@@ -197,6 +197,45 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
         </div>
       </section>
 
+      {/* Calculator Hub Links - SEO Internal Linking */}
+      <section className="mt-20 pt-16 border-t border-slate-200">
+        <h2 className="text-3xl font-black text-slate-900 mb-8 text-center">Explore Calculator Categories</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <button
+            onClick={() => onSelectTool(ToolType.TAX_CALCULATORS_HUB)}
+            className="bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-3xl border border-indigo-200 hover:shadow-xl hover:-translate-y-1 transition-all text-left group"
+          >
+            <div className="text-4xl mb-4">📊</div>
+            <h3 className="text-xl font-black text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">Tax Calculators</h3>
+            <p className="text-sm text-slate-600">Child tax credit, quarterly taxes, ACA subsidies, and more</p>
+          </button>
+          <button
+            onClick={() => onSelectTool(ToolType.RETIREMENT_CALCULATORS_HUB)}
+            className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border border-purple-200 hover:shadow-xl hover:-translate-y-1 transition-all text-left group"
+          >
+            <div className="text-4xl mb-4">🎯</div>
+            <h3 className="text-xl font-black text-slate-900 mb-2 group-hover:text-purple-600 transition-colors">Retirement Calculators</h3>
+            <p className="text-sm text-slate-600">401k, IRA, Roth, FIRE planning, and retirement readiness</p>
+          </button>
+          <button
+            onClick={() => onSelectTool(ToolType.MORTGAGE_CALCULATORS_HUB)}
+            className="bg-gradient-to-br from-emerald-50 to-teal-50 p-8 rounded-3xl border border-emerald-200 hover:shadow-xl hover:-translate-y-1 transition-all text-left group"
+          >
+            <div className="text-4xl mb-4">🏡</div>
+            <h3 className="text-xl font-black text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">Mortgage Calculators</h3>
+            <p className="text-sm text-slate-600">PITI, PMI, property taxes, loan comparison, and affordability</p>
+          </button>
+          <button
+            onClick={() => onSelectTool(ToolType.INVESTMENT_CALCULATORS_HUB)}
+            className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-3xl border border-blue-200 hover:shadow-xl hover:-translate-y-1 transition-all text-left group"
+          >
+            <div className="text-4xl mb-4">📈</div>
+            <h3 className="text-xl font-black text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Investment Calculators</h3>
+            <p className="text-sm text-slate-600">Compound interest, SIP, DRIP, and wealth projection</p>
+          </button>
+        </div>
+      </section>
+
       {/* SEO Footer Links Summary */}
       <section className="text-center pt-20 border-t border-slate-100">
          <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.5em] mb-12">High-Intent Financial Taxonomy</p>

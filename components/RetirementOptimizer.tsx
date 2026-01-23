@@ -234,6 +234,48 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
 
   return (
     <article className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-500 pb-24">
+      {/* Featured Snippet Optimization - Definition Box */}
+      <section className="bg-purple-50 rounded-3xl p-8 border border-purple-200 mb-8">
+        <h2 className="text-2xl font-black text-slate-900 mb-4">401(k) vs IRA vs Roth IRA: Which is Better?</h2>
+        <div className="prose prose-slate max-w-none">
+          <p className="text-slate-700 leading-relaxed font-medium mb-4">
+            Choosing the right retirement account depends on your income, employer benefits, and tax situation. Here's a quick comparison:
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 mt-6">
+            <div className="bg-white p-6 rounded-2xl border border-purple-100">
+              <h3 className="font-black text-slate-900 mb-2">401(k)</h3>
+              <ul className="text-sm text-slate-600 space-y-1">
+                <li>• Highest limits: $23,500 ($31,000 with catch-up)</li>
+                <li>• Employer match available</li>
+                <li>• Pre-tax contributions</li>
+                <li>• Taxed on withdrawal</li>
+              </ul>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border border-purple-100">
+              <h3 className="font-black text-slate-900 mb-2">Traditional IRA</h3>
+              <ul className="text-sm text-slate-600 space-y-1">
+                <li>• Lower limits: $7,000 ($8,000 with catch-up)</li>
+                <li>• Immediate tax deduction</li>
+                <li>• Taxed on withdrawal</li>
+                <li>• No employer match</li>
+              </ul>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border border-purple-100">
+              <h3 className="font-black text-slate-900 mb-2">Roth IRA</h3>
+              <ul className="text-sm text-slate-600 space-y-1">
+                <li>• Same limits: $7,000 ($8,000 with catch-up)</li>
+                <li>• No upfront tax deduction</li>
+                <li>• Tax-free withdrawals</li>
+                <li>• No RMDs (Required Minimum Distributions)</li>
+              </ul>
+            </div>
+          </div>
+          <p className="text-slate-600 text-sm mt-6">
+            Use our calculator above to see which retirement account strategy maximizes your after-tax wealth at retirement age.
+          </p>
+        </div>
+      </section>
+
       {/* Header */}
       <header className="bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 p-10 md:p-16 rounded-[4rem] text-white shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] -mr-32"></div>

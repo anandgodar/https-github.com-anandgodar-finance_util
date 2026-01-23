@@ -352,6 +352,29 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate }) => {
         </div>
       </header>
 
+      {/* Featured Snippet Optimization - Definition Box */}
+      <section className="bg-indigo-50 rounded-3xl p-8 border border-indigo-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-4">What is Take-Home Pay?</h2>
+        <div className="prose prose-slate max-w-none">
+          <p className="text-slate-700 leading-relaxed font-medium mb-4">
+            <strong>Take-home pay</strong> (also called net pay) is the amount of money you actually receive in your paycheck after all deductions are subtracted from your gross salary.
+          </p>
+          <p className="text-slate-700 leading-relaxed font-medium mb-4">
+            <strong>Deductions include:</strong>
+          </p>
+          <ol className="list-decimal list-inside space-y-2 text-slate-700 ml-4">
+            <li><strong>Federal Income Tax:</strong> Based on your tax bracket (10% to 37% in 2025)</li>
+            <li><strong>State Income Tax:</strong> Varies by state (0% to 13.3% in California)</li>
+            <li><strong>FICA Taxes:</strong> Social Security (6.2% up to $168,600) + Medicare (1.45%)</li>
+            <li><strong>401(k) Contributions:</strong> Pre-tax retirement savings (reduces taxable income)</li>
+            <li><strong>Health Insurance:</strong> Pre-tax premiums (also reduces taxable income)</li>
+          </ol>
+          <p className="text-slate-600 text-sm mt-4">
+            Our calculator automatically calculates all deductions for all 50 US states and shows your exact take-home pay for weekly, bi-weekly, semi-monthly, or monthly paychecks.
+          </p>
+        </div>
+      </section>
+
       <div className="grid lg:grid-cols-12 gap-10">
         <div className="lg:col-span-5 space-y-8">
           <section className="bg-white p-10 rounded-[3.5rem] border border-slate-100 shadow-sm space-y-10">
