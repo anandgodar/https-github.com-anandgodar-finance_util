@@ -10,7 +10,7 @@
 
   <!-- Blog Index -->
   <url>
-    <loc>https://quantcurb.com/blog</loc>
+    <loc>https://quantcurb.com/blog/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -18,31 +18,31 @@
 
   <!-- Hub Pages -->
   <url>
-    <loc>https://quantcurb.com/tax-calculators</loc>
+    <loc>https://quantcurb.com/tax-calculators/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/retirement-calculators</loc>
+    <loc>https://quantcurb.com/retirement-calculators/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/mortgage-calculators</loc>
+    <loc>https://quantcurb.com/mortgage-calculators/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/investment-calculators</loc>
+    <loc>https://quantcurb.com/investment-calculators/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/best-mortgage-calculator-2025</loc>
+    <loc>https://quantcurb.com/best-mortgage-calculator-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -50,313 +50,313 @@
 
   <!-- 50 State-Specific Salary Calculator Pages (Legacy - All States) -->
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/alabama</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/alabama/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/alaska</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/alaska/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/arizona</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/arizona/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/arkansas</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/arkansas/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/california</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/california/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/colorado</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/colorado/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/connecticut</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/connecticut/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/delaware</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/delaware/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/florida</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/florida/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/georgia</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/georgia/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/hawaii</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/hawaii/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/idaho</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/idaho/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/illinois</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/illinois/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/indiana</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/indiana/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/iowa</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/iowa/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/kansas</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/kansas/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/kentucky</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/kentucky/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/louisiana</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/louisiana/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/maine</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/maine/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/maryland</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/maryland/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/massachusetts</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/massachusetts/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/michigan</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/michigan/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/minnesota</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/minnesota/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/mississippi</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/mississippi/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/missouri</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/missouri/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/montana</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/montana/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/nebraska</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/nebraska/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/nevada</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/nevada/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/new-hampshire</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/new-hampshire/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/new-jersey</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/new-jersey/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/new-mexico</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/new-mexico/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/new-york</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/new-york/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/north-carolina</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/north-carolina/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/north-dakota</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/north-dakota/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/ohio</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/ohio/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/oklahoma</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/oklahoma/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/oregon</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/oregon/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/pennsylvania</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/pennsylvania/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/rhode-island</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/rhode-island/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/south-carolina</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/south-carolina/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/south-dakota</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/south-dakota/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/tennessee</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/tennessee/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/texas</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/texas/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/utah</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/utah/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/vermont</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/vermont/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/virginia</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/virginia/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/washington</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/washington/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/west-virginia</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/west-virginia/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/wisconsin</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/wisconsin/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/wyoming</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/wyoming/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/district-of-columbia</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/district-of-columbia/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator/dc</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/dc/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -364,145 +364,145 @@
 
   <!-- State-Specific Tool Pages (6 Configured States × 4 Tools = 24 Pages) -->
   <url>
-    <loc>https://quantcurb.com/early-retirement-fire-planner/texas</loc>
+    <loc>https://quantcurb.com/early-retirement-fire-planner/texas/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/early-retirement-fire-planner/california</loc>
+    <loc>https://quantcurb.com/early-retirement-fire-planner/california/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/early-retirement-fire-planner/florida</loc>
+    <loc>https://quantcurb.com/early-retirement-fire-planner/florida/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/early-retirement-fire-planner/new-york</loc>
+    <loc>https://quantcurb.com/early-retirement-fire-planner/new-york/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/early-retirement-fire-planner/washington</loc>
+    <loc>https://quantcurb.com/early-retirement-fire-planner/washington/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/early-retirement-fire-planner/nevada</loc>
+    <loc>https://quantcurb.com/early-retirement-fire-planner/nevada/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/mortgage-calculator/texas</loc>
+    <loc>https://quantcurb.com/mortgage-calculator/texas/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/mortgage-calculator/california</loc>
+    <loc>https://quantcurb.com/mortgage-calculator/california/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/mortgage-calculator/florida</loc>
+    <loc>https://quantcurb.com/mortgage-calculator/florida/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/mortgage-calculator/new-york</loc>
+    <loc>https://quantcurb.com/mortgage-calculator/new-york/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/mortgage-calculator/washington</loc>
+    <loc>https://quantcurb.com/mortgage-calculator/washington/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/mortgage-calculator/nevada</loc>
+    <loc>https://quantcurb.com/mortgage-calculator/nevada/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/freelance-profit-hub/texas</loc>
+    <loc>https://quantcurb.com/freelance-profit-hub/texas/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/freelance-profit-hub/california</loc>
+    <loc>https://quantcurb.com/freelance-profit-hub/california/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/freelance-profit-hub/florida</loc>
+    <loc>https://quantcurb.com/freelance-profit-hub/florida/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/freelance-profit-hub/new-york</loc>
+    <loc>https://quantcurb.com/freelance-profit-hub/new-york/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/freelance-profit-hub/washington</loc>
+    <loc>https://quantcurb.com/freelance-profit-hub/washington/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/freelance-profit-hub/nevada</loc>
+    <loc>https://quantcurb.com/freelance-profit-hub/nevada/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/quarterly-tax-calculator/texas</loc>
+    <loc>https://quantcurb.com/quarterly-tax-calculator/texas/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/quarterly-tax-calculator/california</loc>
+    <loc>https://quantcurb.com/quarterly-tax-calculator/california/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/quarterly-tax-calculator/florida</loc>
+    <loc>https://quantcurb.com/quarterly-tax-calculator/florida/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/quarterly-tax-calculator/new-york</loc>
+    <loc>https://quantcurb.com/quarterly-tax-calculator/new-york/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/quarterly-tax-calculator/washington</loc>
+    <loc>https://quantcurb.com/quarterly-tax-calculator/washington/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/quarterly-tax-calculator/nevada</loc>
+    <loc>https://quantcurb.com/quarterly-tax-calculator/nevada/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -510,409 +510,409 @@
 
   <!-- All Blog Posts -->
   <url>
-    <loc>https://quantcurb.com/blog/article-one</loc>
+    <loc>https://quantcurb.com/blog/article-one/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/article-two</loc>
+    <loc>https://quantcurb.com/blog/article-two/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/mortgage-calculator-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/mortgage-calculator-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/how-much-house-can-i-afford-2025</loc>
+    <loc>https://quantcurb.com/blog/how-much-house-can-i-afford-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/should-i-pay-off-debt-or-invest-2025</loc>
+    <loc>https://quantcurb.com/blog/should-i-pay-off-debt-or-invest-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/how-to-calculate-take-home-pay-2025</loc>
+    <loc>https://quantcurb.com/blog/how-to-calculate-take-home-pay-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/100k-california-vs-texas-take-home-pay</loc>
+    <loc>https://quantcurb.com/blog/100k-california-vs-texas-take-home-pay/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/bonus-tax-myth-withholding-vs-liability</loc>
+    <loc>https://quantcurb.com/blog/bonus-tax-myth-withholding-vs-liability/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/raise-vs-relocation-cost-of-living</loc>
+    <loc>https://quantcurb.com/blog/raise-vs-relocation-cost-of-living/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/max-out-401k-take-home-pay</loc>
+    <loc>https://quantcurb.com/blog/max-out-401k-take-home-pay/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/gross-vs-net-pay-paycheck-breakdown</loc>
+    <loc>https://quantcurb.com/blog/gross-vs-net-pay-paycheck-breakdown/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/freelancer-estimated-taxes-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/freelancer-estimated-taxes-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/moving-to-florida-sunshine-tax-savings</loc>
+    <loc>https://quantcurb.com/blog/moving-to-florida-sunshine-tax-savings/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/piti-explained-mortgage-payment-breakdown</loc>
+    <loc>https://quantcurb.com/blog/piti-explained-mortgage-payment-breakdown/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/mortgage-points-break-even-2026</loc>
+    <loc>https://quantcurb.com/blog/mortgage-points-break-even-2026/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/pmi-math-how-to-remove-faster</loc>
+    <loc>https://quantcurb.com/blog/pmi-math-how-to-remove-faster/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/rent-vs-buy-5-percent-rule-2026</loc>
+    <loc>https://quantcurb.com/blog/rent-vs-buy-5-percent-rule-2026/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/500k-house-monthly-cost-rate-sensitivity</loc>
+    <loc>https://quantcurb.com/blog/500k-house-monthly-cost-rate-sensitivity/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/biweekly-mortgage-payments-interest-savings</loc>
+    <loc>https://quantcurb.com/blog/biweekly-mortgage-payments-interest-savings/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/fi-number-math-financial-independence</loc>
+    <loc>https://quantcurb.com/blog/fi-number-math-financial-independence/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/leanfire-vs-fatfire-lifestyle-budget</loc>
+    <loc>https://quantcurb.com/blog/leanfire-vs-fatfire-lifestyle-budget/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/4-percent-rule-dead-safe-withdrawal-rates</loc>
+    <loc>https://quantcurb.com/blog/4-percent-rule-dead-safe-withdrawal-rates/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/coast-fire-how-to-retire-early</loc>
+    <loc>https://quantcurb.com/blog/coast-fire-how-to-retire-early/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/cost-of-waiting-compound-interest</loc>
+    <loc>https://quantcurb.com/blog/cost-of-waiting-compound-interest/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/roth-vs-traditional-401k-tax-bracket-bet</loc>
+    <loc>https://quantcurb.com/blog/roth-vs-traditional-401k-tax-bracket-bet/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/snowball-vs-avalanche-debt-payoff</loc>
+    <loc>https://quantcurb.com/blog/snowball-vs-avalanche-debt-payoff/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/72-month-car-loan-true-cost</loc>
+    <loc>https://quantcurb.com/blog/72-month-car-loan-true-cost/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/student-loan-refinance-math</loc>
+    <loc>https://quantcurb.com/blog/student-loan-refinance-math/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/credit-card-minimum-payments-20-years</loc>
+    <loc>https://quantcurb.com/blog/credit-card-minimum-payments-20-years/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/assets-vs-liabilities-true-net-worth</loc>
+    <loc>https://quantcurb.com/blog/assets-vs-liabilities-true-net-worth/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/financial-order-of-operations</loc>
+    <loc>https://quantcurb.com/blog/financial-order-of-operations/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/inflation-calculator-million-worth-retirement</loc>
+    <loc>https://quantcurb.com/blog/inflation-calculator-million-worth-retirement/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/6-month-emergency-fund-rule</loc>
+    <loc>https://quantcurb.com/blog/6-month-emergency-fund-rule/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/latte-factor-vs-big-wins-wealth</loc>
+    <loc>https://quantcurb.com/blog/latte-factor-vs-big-wins-wealth/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/dcf-modeling-retail-investors</loc>
+    <loc>https://quantcurb.com/blog/dcf-modeling-retail-investors/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/lump-sum-vs-dollar-cost-averaging</loc>
+    <loc>https://quantcurb.com/blog/lump-sum-vs-dollar-cost-averaging/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/roth-ira-vs-traditional-ira-2025</loc>
+    <loc>https://quantcurb.com/blog/roth-ira-vs-traditional-ira-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/how-much-emergency-fund-do-i-need-2025</loc>
+    <loc>https://quantcurb.com/blog/how-much-emergency-fund-do-i-need-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/fire-calculator-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/fire-calculator-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/best-retirement-calculator-2025</loc>
+    <loc>https://quantcurb.com/blog/best-retirement-calculator-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/investment-calculator-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/investment-calculator-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/best-mortgage-calculator-2025</loc>
+    <loc>https://quantcurb.com/blog/best-mortgage-calculator-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/student-loan-repayment-strategies-2025</loc>
+    <loc>https://quantcurb.com/blog/student-loan-repayment-strategies-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/tax-brackets-explained-2025</loc>
+    <loc>https://quantcurb.com/blog/tax-brackets-explained-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/401k-vs-ira-comparison-2025</loc>
+    <loc>https://quantcurb.com/blog/401k-vs-ira-comparison-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/budgeting-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/budgeting-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/net-worth-tracker-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/net-worth-tracker-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/loan-emi-calculator-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/loan-emi-calculator-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/loan-comparison-refinance-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/loan-comparison-refinance-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/cost-of-living-calculator-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/cost-of-living-calculator-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/currency-converter-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/currency-converter-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/gst-tax-calculator-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/gst-tax-calculator-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/credit-card-payoff-strategy-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/credit-card-payoff-strategy-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/ai-market-insights-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/ai-market-insights-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/index-funds-etf-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/index-funds-etf-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/dcf-valuation-modeling-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/dcf-valuation-modeling-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/dividend-reinvestment-calculator-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/dividend-reinvestment-calculator-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/dti-calculator-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/dti-calculator-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/no-wash-sale-rule-crypto-tax-loss-harvesting</loc>
+    <loc>https://quantcurb.com/blog/no-wash-sale-rule-crypto-tax-loss-harvesting/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/child-tax-credit-2025-guide</loc>
+    <loc>https://quantcurb.com/blog/child-tax-credit-2025-guide/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/quarterly-estimated-taxes-complete-guide</loc>
+    <loc>https://quantcurb.com/blog/quarterly-estimated-taxes-complete-guide/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/self-employment-tax-guide-2025</loc>
+    <loc>https://quantcurb.com/blog/self-employment-tax-guide-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/tax-deductions-freelancers-2025</loc>
+    <loc>https://quantcurb.com/blog/tax-deductions-freelancers-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/1099-vs-w2-comparison-2025</loc>
+    <loc>https://quantcurb.com/blog/1099-vs-w2-comparison-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/llc-vs-sole-proprietor-2025</loc>
+    <loc>https://quantcurb.com/blog/llc-vs-sole-proprietor-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/sep-ira-vs-solo-401k-2025</loc>
+    <loc>https://quantcurb.com/blog/sep-ira-vs-solo-401k-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/home-office-deduction-2025</loc>
+    <loc>https://quantcurb.com/blog/home-office-deduction-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/blog/aca-health-insurance-freelancers-2025</loc>
+    <loc>https://quantcurb.com/blog/aca-health-insurance-freelancers-2025/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -920,153 +920,153 @@
 
   <!-- Core Quantitative Utilities -->
   <url>
-    <loc>https://quantcurb.com/net-worth-command-center</loc>
+    <loc>https://quantcurb.com/net-worth-command-center/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/emergency-fund-guard</loc>
+    <loc>https://quantcurb.com/emergency-fund-guard/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/loan-emi-calculator</loc>
+    <loc>https://quantcurb.com/loan-emi-calculator/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/mortgage-payment-calculator</loc>
+    <loc>https://quantcurb.com/mortgage-payment-calculator/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/salary-tax-estimator</loc>
+    <loc>https://quantcurb.com/salary-tax-estimator/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/wealth-investment-projector</loc>
+    <loc>https://quantcurb.com/wealth-investment-projector/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/early-retirement-fire-planner</loc>
+    <loc>https://quantcurb.com/early-retirement-fire-planner/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/excel-power-modeler</loc>
+    <loc>https://quantcurb.com/excel-power-modeler/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/retirement-account-optimizer</loc>
+    <loc>https://quantcurb.com/retirement-account-optimizer/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/dividend-reinvestment-calculator</loc>
+    <loc>https://quantcurb.com/dividend-reinvestment-calculator/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/crypto-tax-loss-harvester</loc>
+    <loc>https://quantcurb.com/crypto-tax-loss-harvester/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/child-tax-credit-calculator</loc>
+    <loc>https://quantcurb.com/child-tax-credit-calculator/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/quarterly-estimated-tax-calculator</loc>
+    <loc>https://quantcurb.com/quarterly-estimated-tax-calculator/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/aca-health-insurance-subsidy-calculator</loc>
+    <loc>https://quantcurb.com/aca-health-insurance-subsidy-calculator/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/freelance-profit-hub</loc>
+    <loc>https://quantcurb.com/freelance-profit-hub/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.7</priority>
   </url>
 
   <!-- Intelligence & Insights -->
   <url>
-    <loc>https://quantcurb.com/market-intelligence-pulse</loc>
+    <loc>https://quantcurb.com/market-intelligence-pulse/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/investment-funds-academy</loc>
+    <loc>https://quantcurb.com/investment-funds-academy/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/financial-knowledge-base</loc>
+    <loc>https://quantcurb.com/financial-knowledge-base/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/methodology-assumptions</loc>
+    <loc>https://quantcurb.com/methodology-assumptions/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.8</priority>
   </url>
 
   <!-- Daily Utilities -->
   <url>
-    <loc>https://quantcurb.com/loan-comparison-tool</loc>
+    <loc>https://quantcurb.com/loan-comparison-tool/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/cost-of-living-calculator</loc>
+    <loc>https://quantcurb.com/cost-of-living-calculator/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/currency-exchange-intel</loc>
+    <loc>https://quantcurb.com/currency-exchange-intel/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/gst-tax-calculator</loc>
+    <loc>https://quantcurb.com/gst-tax-calculator/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/credit-card-debt-strategist</loc>
+    <loc>https://quantcurb.com/credit-card-debt-strategist/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.8</priority>
   </url>
 
   <!-- Company & Legal -->
   <url>
-    <loc>https://quantcurb.com/about-quantcurb</loc>
+    <loc>https://quantcurb.com/about-quantcurb/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/privacy-policy</loc>
+    <loc>https://quantcurb.com/privacy-policy/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/legal-disclaimer</loc>
+    <loc>https://quantcurb.com/legal-disclaimer/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/contact-us</loc>
+    <loc>https://quantcurb.com/contact-us/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://quantcurb.com/sitemap</loc>
+    <loc>https://quantcurb.com/sitemap/</loc>
     <lastmod>2026-01-19</lastmod>
     <priority>0.3</priority>
   </url>
