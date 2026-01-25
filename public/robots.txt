@@ -1,5 +1,38 @@
+# QuantCurb.com - Financial Intelligence Platform
+# Last updated: 2026-01-25
+
+# Allow all crawlers
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
 
-# Sitemaps
+# Crawl delay to be polite (optional, some crawlers respect this)
+Crawl-delay: 1
+
+# Google-specific directives
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+# Bing-specific directives
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+# GPTBot (OpenAI crawler) - allow for AI training/discovery
+User-agent: GPTBot
+Allow: /
+
+# ClaudeBot (Anthropic crawler) - allow for AI training/discovery
+User-agent: ClaudeBot
+Allow: /
+
+# Sitemaps - Multiple formats for different search engines
 Sitemap: https://quantcurb.com/sitemap.xml
+
+# Host declaration (canonical domain)
+Host: https://quantcurb.com

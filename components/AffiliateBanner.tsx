@@ -1,14 +1,29 @@
 import React from 'react';
 
+export type AffiliateCategory =
+  | 'credit_card'
+  | 'mortgage'
+  | 'investment'
+  | 'tax'
+  | 'insurance'
+  | 'trading_platform'  // Forex, stocks, crypto trading platforms
+  | 'prop_trading'      // Proprietary trading firms (FTMO, TopStep, etc.)
+  | 'brokerage'         // Stock/options brokers
+  | 'robo_advisor'      // Betterment, Wealthfront, etc.
+  | 'education'         // Trading courses, certifications
+  | 'other';
+
 export interface AffiliateLink {
   id: string;
   title: string;
   description: string;
   url: string;
-  category: 'credit_card' | 'mortgage' | 'investment' | 'tax' | 'insurance' | 'other';
+  category: AffiliateCategory;
   commission?: string;
   icon?: string;
   badge?: string;
+  cpa?: string;        // Cost per acquisition for high-value trading affiliates
+  revShare?: string;   // Revenue share percentage
 }
 
 interface AffiliateBannerProps {
@@ -51,12 +66,17 @@ const AffiliateBanner: React.FC<AffiliateBannerProps> = ({
   };
 
   const getCategoryColor = (category: AffiliateLink['category']) => {
-    const colors = {
+    const colors: Record<AffiliateCategory, string> = {
       credit_card: 'bg-red-50 border-red-200 text-red-800',
       mortgage: 'bg-blue-50 border-blue-200 text-blue-800',
       investment: 'bg-emerald-50 border-emerald-200 text-emerald-800',
       tax: 'bg-purple-50 border-purple-200 text-purple-800',
       insurance: 'bg-indigo-50 border-indigo-200 text-indigo-800',
+      trading_platform: 'bg-amber-50 border-amber-200 text-amber-800',
+      prop_trading: 'bg-orange-50 border-orange-200 text-orange-800',
+      brokerage: 'bg-cyan-50 border-cyan-200 text-cyan-800',
+      robo_advisor: 'bg-teal-50 border-teal-200 text-teal-800',
+      education: 'bg-pink-50 border-pink-200 text-pink-800',
       other: 'bg-slate-50 border-slate-200 text-slate-800'
     };
     return colors[category] || colors.other;
