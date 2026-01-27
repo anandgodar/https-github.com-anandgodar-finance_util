@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
+import CrawlerNav from '../components/CrawlerNav';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -74,10 +75,11 @@ export const metadata: Metadata = {
     }
   },
   verification: {
-    // Add your Google Search Console verification code here
-    // google: 'YOUR_GOOGLE_VERIFICATION_CODE',
-    // Add your Bing Webmaster verification code here
-    // other: { 'msvalidate.01': 'YOUR_BING_VERIFICATION_CODE' }
+    google: 'google-site-verification-placeholder',
+    other: {
+      'msvalidate.01': 'bing-site-verification-placeholder',
+      'yandex-verification': 'yandex-verification-placeholder'
+    }
   },
   category: 'finance',
   creator: 'QuantCurb',
@@ -168,6 +170,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'G-WSKZ5JNETS');
           `}
         </Script>
+        <CrawlerNav />
         {children}
       </body>
     </html>
