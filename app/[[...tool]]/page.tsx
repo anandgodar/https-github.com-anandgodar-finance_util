@@ -11,7 +11,17 @@ import {
   fireCalculatorFAQs,
   taxCalculatorFAQs,
   investmentCalculatorFAQs,
+  emiCalculatorFAQs,
+  netWorthFAQs,
+  emergencyFundFAQs,
+  loanCompareFAQs,
+  costOfLivingFAQs,
+  creditCardPayoffFAQs,
+  dtiFAQs,
+  cryptoTaxFAQs,
+  acaSubsidyFAQs,
 } from '../../components/FAQSchema';
+import { generateHowToSchemaForTool } from '../../components/HowToSchema';
 
 type PageProps = {
   params?: {
@@ -37,6 +47,15 @@ const toolFAQMap: Record<string, Array<{ question: string; answer: string }>> = 
   [ToolType.FREELANCE_PROFIT]: taxCalculatorFAQs,
   [ToolType.RETIREMENT_OPTIMIZER]: fireCalculatorFAQs,
   [ToolType.DRIP_CALCULATOR]: investmentCalculatorFAQs,
+  [ToolType.EMI_CALC]: emiCalculatorFAQs,
+  [ToolType.NET_WORTH]: netWorthFAQs,
+  [ToolType.EMERGENCY_FUND]: emergencyFundFAQs,
+  [ToolType.LOAN_COMPARE]: loanCompareFAQs,
+  [ToolType.LIVING_COST]: costOfLivingFAQs,
+  [ToolType.CREDIT_CARD_PAYOFF]: creditCardPayoffFAQs,
+  [ToolType.DTI_CALCULATOR]: dtiFAQs,
+  [ToolType.CRYPTO_TAX_LOSS]: cryptoTaxFAQs,
+  [ToolType.ACA_SUBSIDY]: acaSubsidyFAQs,
 };
 
 export function generateStaticParams() {
@@ -174,6 +193,7 @@ export default function ToolPage({ params }: PageProps) {
   const breadcrumbSchema = generateBreadcrumbSchema(slug, metadata.title);
   const faqs = toolFAQMap[slug];
   const faqSchema = faqs ? generateFAQSchema(faqs) : null;
+  const howToSchema = generateHowToSchemaForTool(slug);
 
   return (
     <>
@@ -191,6 +211,12 @@ export default function ToolPage({ params }: PageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {howToSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
         />
       )}
       <AppShell initialTool={slug as ToolType} />
