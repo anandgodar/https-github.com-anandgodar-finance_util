@@ -1,38 +1,93 @@
 # QuantCurb.com - Financial Intelligence Platform
-# Last updated: 2026-01-25
+# Last updated: 2026-02-01
+# Contact: support@quantcurb.com
 
-# Allow all crawlers
+# =============================================================
+# Default rules for all crawlers
+# =============================================================
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /private/
+Disallow: /404/
+Disallow: /*.json$
+Disallow: /*?*
 
-# Crawl delay to be polite (optional, some crawlers respect this)
+# Crawl delay to be polite
 Crawl-delay: 1
 
+# =============================================================
 # Google-specific directives
+# =============================================================
 User-agent: Googlebot
 Allow: /
 Disallow: /api/
 Disallow: /_next/
+Disallow: /404/
 
+User-agent: Googlebot-Image
+Allow: /og-image.png
+Allow: /images/
+Disallow: /_next/
+
+User-agent: Googlebot-News
+Allow: /blog/
+
+# =============================================================
 # Bing-specific directives
+# =============================================================
 User-agent: Bingbot
 Allow: /
 Disallow: /api/
 Disallow: /_next/
+Disallow: /404/
 
-# GPTBot (OpenAI crawler) - allow for AI training/discovery
+# =============================================================
+# AI Crawlers - Allow for discovery and training
+# =============================================================
 User-agent: GPTBot
 Allow: /
 
-# ClaudeBot (Anthropic crawler) - allow for AI training/discovery
 User-agent: ClaudeBot
 Allow: /
 
-# Sitemaps - Multiple formats for different search engines
-Sitemap: https://quantcurb.com/sitemap.xml
+User-agent: Claude-Web
+Allow: /
 
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Anthropic-ai
+Allow: /
+
+# =============================================================
+# Block bad bots and scrapers
+# =============================================================
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# =============================================================
+# Sitemaps
+# =============================================================
+Sitemap: https://quantcurb.com/sitemap.xml
+Sitemap: https://quantcurb.com/sitemap-blog.xml
+Sitemap: https://quantcurb.com/sitemap-calculators.xml
+Sitemap: https://quantcurb.com/sitemap-states.xml
+
+# =============================================================
 # Host declaration (canonical domain)
+# =============================================================
 Host: https://quantcurb.com
