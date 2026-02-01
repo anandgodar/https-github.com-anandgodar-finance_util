@@ -143,6 +143,32 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
           </div>
         </article>
 
+        {/* Visible FAQ Section - helps Google understand content quality */}
+        <section className="mt-12 bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12">
+          <h2 className="text-3xl font-black text-slate-900 mb-8">
+            Frequently Asked Questions: Quarterly Taxes in {stateConfig.name}
+          </h2>
+          <div className="space-y-6">
+            {getStateQuarterlyTaxFAQs(stateConfig).map((faq, idx) => (
+              <details
+                key={idx}
+                className="group bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden"
+                open={idx === 0}
+              >
+                <summary className="cursor-pointer p-6 font-bold text-lg text-slate-800 group-open:text-indigo-600 transition-colors list-none flex justify-between items-center">
+                  {faq.question}
+                  <span className="text-slate-400 group-open:rotate-180 transition-transform text-xl">
+                    ▼
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-slate-600 leading-relaxed">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
         {/* Related State Tools */}
         <div className="mt-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-white rounded-3xl p-8 md:p-12">
           <h2 className="text-3xl font-black mb-6">
@@ -228,4 +254,43 @@ function getRelatedTools(currentToolSlug: string, stateSlug: string) {
   ];
 
   return allTools.filter(t => t.slug !== currentToolSlug).slice(0, 4);
+}
+
+// Helper: State-specific Quarterly Tax FAQs for visible content
+function getStateQuarterlyTaxFAQs(state: StateConfig): Array<{question: string, answer: string}> {
+  const noIncomeTax = state.stateTaxRate === 0;
+
+  // Calculate example quarterly payment for $100k self-employment income
+  const annualIncome = 100000;
+  const netProfit = annualIncome * 0.8; // After expenses
+  const selfEmploymentTax = Math.round(netProfit * 0.9235 * 0.153);
+  const federalTax = Math.round((netProfit - selfEmploymentTax * 0.5) * 0.22);
+  const stateTax = noIncomeTax ? 0 : Math.round(netProfit * state.stateTaxRate);
+  const totalAnnualTax = selfEmploymentTax + federalTax + stateTax;
+  const quarterlyPayment = Math.round(totalAnnualTax / 4);
+
+  return [
+    {
+      question: `When are quarterly tax payments due in ${state.name} for 2026?`,
+      answer: `For 2026, ${state.name} quarterly estimated tax deadlines are: Q1 (Jan-Mar): April 15, 2026, Q2 (Apr-May): June 15, 2026, Q3 (Jun-Aug): September 15, 2026, Q4 (Sep-Dec): January 15, 2027. ${noIncomeTax ? `Since ${state.name} has no state income tax, you only need to pay federal quarterly taxes to the IRS using Form 1040-ES.` : `You'll need to pay both federal (IRS Form 1040-ES) and ${state.name} state estimated taxes on these dates.`} Missing deadlines can result in underpayment penalties.`
+    },
+    {
+      question: `How much should my quarterly payment be in ${state.name}?`,
+      answer: `For a ${state.name} self-employed individual with $100,000 annual income and $20,000 in expenses ($80,000 net profit), quarterly payments would be approximately: Self-employment tax: $${Math.round(selfEmploymentTax / 4).toLocaleString()}/quarter, Federal income tax: ~$${Math.round(federalTax / 4).toLocaleString()}/quarter${noIncomeTax ? '' : `, ${state.name} state tax: ~$${Math.round(stateTax / 4).toLocaleString()}/quarter`}. Total quarterly payment: ~$${quarterlyPayment.toLocaleString()}. Use our calculator above for your exact amount based on your income.`
+    },
+    {
+      question: `How do I avoid quarterly tax penalties in ${state.name}?`,
+      answer: `To avoid underpayment penalties in ${state.name}, meet the IRS safe harbor rules: Pay at least 90% of your current year's tax liability, OR pay 100% of last year's tax liability (110% if AGI exceeded $150,000). ${noIncomeTax ? `${state.name} doesn't have state income tax, so you only need to worry about federal safe harbor rules.` : `For ${state.name} state taxes, similar safe harbor rules typically apply - check ${state.name}'s tax authority for specific requirements.`} Making equal quarterly payments based on projected annual income is the safest approach.`
+    },
+    {
+      question: `Do I need to pay quarterly taxes if I have a W-2 job in ${state.name}?`,
+      answer: `If you have a W-2 job with adequate withholding, you may not need quarterly payments${noIncomeTax ? '' : ` for ${state.name} state taxes`}. However, if you have significant side income (freelancing, investments, rental income), you should make quarterly payments on that additional income. You can also ask your employer to increase W-2 withholding to cover extra income, simplifying your tax payments. Use our calculator to determine if your W-2 withholding covers your total tax liability.`
+    },
+    {
+      question: `What forms do I need for ${state.name} quarterly taxes?`,
+      answer: `For federal quarterly taxes, use IRS Form 1040-ES with payment vouchers or pay online at irs.gov/payments. ${noIncomeTax
+        ? `Great news for ${state.name} residents: with no state income tax, you only need to file federal quarterly payments!`
+        : `For ${state.name} state estimated taxes, you'll need the state's equivalent estimated tax form and payment voucher. Check the ${state.name} Department of Revenue website for specific forms and online payment options.`} Keep records of all payments for your annual tax return. You can also use IRS Direct Pay or EFTPS for federal payments.`
+    }
+  ];
 }

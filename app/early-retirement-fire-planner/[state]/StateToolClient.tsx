@@ -143,6 +143,32 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
           </div>
         </article>
 
+        {/* Visible FAQ Section - helps Google understand content quality */}
+        <section className="mt-12 bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12">
+          <h2 className="text-3xl font-black text-slate-900 mb-8">
+            Frequently Asked Questions: FIRE in {stateConfig.name}
+          </h2>
+          <div className="space-y-6">
+            {getStateFIREFAQs(stateConfig).map((faq, idx) => (
+              <details
+                key={idx}
+                className="group bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden"
+                open={idx === 0}
+              >
+                <summary className="cursor-pointer p-6 font-bold text-lg text-slate-800 group-open:text-indigo-600 transition-colors list-none flex justify-between items-center">
+                  {faq.question}
+                  <span className="text-slate-400 group-open:rotate-180 transition-transform text-xl">
+                    ▼
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-slate-600 leading-relaxed">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
         {/* Related State Tools */}
         <div className="mt-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-white rounded-3xl p-8 md:p-12">
           <h2 className="text-3xl font-black mb-6">
@@ -228,4 +254,42 @@ function getRelatedTools(currentToolSlug: string, stateSlug: string) {
   ];
 
   return allTools.filter(t => t.slug !== currentToolSlug).slice(0, 4);
+}
+
+// Helper: State-specific FIRE FAQs for visible content
+function getStateFIREFAQs(state: StateConfig): Array<{question: string, answer: string}> {
+  const noIncomeTax = state.stateTaxRate === 0;
+
+  // Calculate example FIRE numbers
+  const annualExpenses = 60000 * (state.costOfLivingIndex / 100);
+  const fireNumber25x = Math.round(annualExpenses * 25);
+  const fireNumber33x = Math.round(annualExpenses * 33.3);
+  const monthlyExpenses = Math.round(annualExpenses / 12);
+
+  return [
+    {
+      question: `What is a good FIRE number for ${state.name} in 2026?`,
+      answer: `Your FIRE number in ${state.name} depends on your desired annual spending. With ${state.name}'s cost of living index at ${state.costOfLivingIndex} (100 = US average), typical annual expenses of $60,000 nationally would be approximately $${annualExpenses.toLocaleString()} in ${state.name}. Using the 4% rule (25x expenses), your FIRE number would be $${fireNumber25x.toLocaleString()}. For a more conservative 3% withdrawal rate (33x expenses), you'd need $${fireNumber33x.toLocaleString()}.${noIncomeTax ? ` ${state.name}'s zero state income tax means you keep more of your investment withdrawals.` : ''}`
+    },
+    {
+      question: `Is ${state.name} a good state for early retirement?`,
+      answer: noIncomeTax
+        ? `${state.name} is excellent for early retirement due to its zero state income tax. This means your 401(k) withdrawals, IRA distributions, Social Security benefits, and investment gains are only taxed federally. Combined with a cost of living index of ${state.costOfLivingIndex}, ${state.retirementFriendly ? `and retirement-friendly policies, ${state.name} ranks among the best states for FIRE.` : `${state.name} offers significant advantages for FIRE pursuers.`}`
+        : `${state.name} has a ${state.stateTaxRate.toFixed(2)}% state income tax which affects retirement income. However, with a cost of living index of ${state.costOfLivingIndex}, ${state.retirementFriendly ? `and retirement-friendly policies, it can still be a viable FIRE destination.` : 'you should factor this into your FIRE calculations.'} Use our calculator to see how ${state.name} taxes impact your retirement timeline.`
+    },
+    {
+      question: `How much do I need to save monthly to FIRE in ${state.name}?`,
+      answer: `To reach a $${fireNumber25x.toLocaleString()} FIRE number in ${state.name} in 15 years (assuming 7% annual returns), you'd need to save approximately $${Math.round(fireNumber25x / 300).toLocaleString()} per month. For a 20-year timeline, that drops to around $${Math.round(fireNumber25x / 500).toLocaleString()} per month. These calculations assume you're starting from zero; if you already have savings, use our calculator above for a personalized number. ${noIncomeTax ? `Remember, ${state.name}'s lack of state income tax means more of your paycheck can go toward savings.` : ''}`
+    },
+    {
+      question: `Does ${state.name} tax retirement account withdrawals?`,
+      answer: noIncomeTax
+        ? `No! ${state.name} has no state income tax, which means all retirement account withdrawals are state tax-free. This includes: Traditional IRA distributions, 401(k) withdrawals, Roth conversions (federal tax only), pension income, and Social Security benefits. This makes ${state.name} one of the most tax-advantaged states for FIRE retirees.`
+        : `Yes, ${state.name} taxes most retirement account withdrawals at the ${state.stateTaxRate.toFixed(2)}% state income tax rate. This includes Traditional IRA distributions and 401(k) withdrawals. Social Security benefits may be partially exempt. Roth IRA qualified distributions are tax-free at both federal and state levels. Factor these taxes into your FIRE calculations.`
+    },
+    {
+      question: `What are typical monthly expenses for FIRE in ${state.name}?`,
+      answer: `With ${state.name}'s cost of living index of ${state.costOfLivingIndex}, expect monthly expenses around $${monthlyExpenses.toLocaleString()} for a moderate lifestyle. Key expenses include: Housing (${state.propertyTaxRate.toFixed(2)}% property tax rate), Healthcare (varies by age/plan), Utilities, Food, Transportation, and Insurance. ${noIncomeTax ? `The lack of state income tax means your gross withdrawal needs are lower.` : `Factor in ${state.stateTaxRate.toFixed(2)}% state income tax on investment withdrawals.`} Our calculator above can give you a personalized breakdown.`
+    }
+  ];
 }

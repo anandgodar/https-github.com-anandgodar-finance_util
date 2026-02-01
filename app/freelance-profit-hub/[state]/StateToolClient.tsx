@@ -143,6 +143,32 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
           </div>
         </article>
 
+        {/* Visible FAQ Section - helps Google understand content quality */}
+        <section className="mt-12 bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12">
+          <h2 className="text-3xl font-black text-slate-900 mb-8">
+            Frequently Asked Questions: Freelancing in {stateConfig.name}
+          </h2>
+          <div className="space-y-6">
+            {getStateFreelanceFAQs(stateConfig).map((faq, idx) => (
+              <details
+                key={idx}
+                className="group bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden"
+                open={idx === 0}
+              >
+                <summary className="cursor-pointer p-6 font-bold text-lg text-slate-800 group-open:text-indigo-600 transition-colors list-none flex justify-between items-center">
+                  {faq.question}
+                  <span className="text-slate-400 group-open:rotate-180 transition-transform text-xl">
+                    ▼
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-slate-600 leading-relaxed">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
         {/* Related State Tools */}
         <div className="mt-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-white rounded-3xl p-8 md:p-12">
           <h2 className="text-3xl font-black mb-6">
@@ -228,4 +254,44 @@ function getRelatedTools(currentToolSlug: string, stateSlug: string) {
   ];
 
   return allTools.filter(t => t.slug !== currentToolSlug).slice(0, 4);
+}
+
+// Helper: State-specific Freelance FAQs for visible content
+function getStateFreelanceFAQs(state: StateConfig): Array<{question: string, answer: string}> {
+  const noIncomeTax = state.stateTaxRate === 0;
+
+  // Calculate example tax scenarios for $100k freelance income
+  const grossIncome = 100000;
+  const expenses = 20000; // Typical 20% expenses
+  const netProfit = grossIncome - expenses;
+  const selfEmploymentTax = Math.round(netProfit * 0.9235 * 0.153);
+  const federalTax = Math.round((netProfit - selfEmploymentTax * 0.5) * 0.22);
+  const stateTax = noIncomeTax ? 0 : Math.round(netProfit * state.stateTaxRate);
+  const totalTax = selfEmploymentTax + federalTax + stateTax;
+  const takeHome = netProfit - totalTax;
+
+  return [
+    {
+      question: `How much tax will I pay as a freelancer in ${state.name}?`,
+      answer: `As a freelancer in ${state.name}, you'll pay self-employment tax (15.3% on net profits for Social Security and Medicare), federal income tax (10-37% based on income bracket)${noIncomeTax ? `, and no state income tax - ${state.name} is one of the tax-friendliest states for freelancers!` : `, and ${state.stateTaxRate.toFixed(2)}% state income tax.`} For example, on $100,000 gross income with $20,000 in expenses ($80,000 net profit), you'd pay approximately: Self-employment tax: $${selfEmploymentTax.toLocaleString()}, Federal income tax: ~$${federalTax.toLocaleString()}${noIncomeTax ? '' : `, State tax: ~$${stateTax.toLocaleString()}`}. Total: ~$${totalTax.toLocaleString()}, leaving about $${takeHome.toLocaleString()} take-home.`
+    },
+    {
+      question: `Do I need to form an LLC to freelance in ${state.name}?`,
+      answer: `An LLC isn't required to freelance in ${state.name}, but it offers liability protection and potential tax benefits. ${state.name}'s LLC filing fee is $${state.llcFilingFee}, and the annual franchise tax is $${state.annualFranchiseTax}. Benefits of an LLC include: personal asset protection, professional credibility, potential S-Corp election for tax savings (on income over ~$60k), and easier business banking. Consider forming an LLC once your freelance income becomes consistent.`
+    },
+    {
+      question: `What business expenses can I deduct as a ${state.name} freelancer?`,
+      answer: `Common deductible expenses for ${state.name} freelancers include: Home office (dedicated space, percentage of rent/mortgage), Equipment (computer, software, phone), Health insurance premiums (100% deductible), Retirement contributions (SEP-IRA up to $66,000 in 2026), Professional development and courses, Business travel and mileage ($0.67/mile in 2026), Marketing and advertising, and Professional services (accounting, legal). These deductions reduce your taxable income for both federal${noIncomeTax ? '' : ` and ${state.name} state`} taxes.`
+    },
+    {
+      question: `When are quarterly taxes due for ${state.name} freelancers?`,
+      answer: `${state.name} freelancers must pay quarterly estimated taxes to the IRS${noIncomeTax ? '' : ` and ${state.name}`} on: April 15 (Q1), June 15 (Q2), September 15 (Q3), and January 15 (Q4 of prior year). ${noIncomeTax ? `Since ${state.name} has no state income tax, you only need to pay federal estimated taxes.` : `You'll file separate payments for federal (IRS Form 1040-ES) and ${state.name} state estimated taxes.`} To avoid penalties, pay at least 90% of your current year tax or 100% of last year's tax (110% if AGI > $150k).`
+    },
+    {
+      question: `Is ${state.name} a good state for freelancers compared to others?`,
+      answer: noIncomeTax
+        ? `${state.name} is one of the best states for freelancers due to zero state income tax. A freelancer earning $100,000 in ${state.name} saves approximately $${Math.round(100000 * 0.05).toLocaleString()}-$${Math.round(100000 * 0.10).toLocaleString()} annually compared to states like California (13.3%) or New York (10.9%). With LLC filing fees of $${state.llcFilingFee} and annual franchise taxes of $${state.annualFranchiseTax}, ${state.name}'s cost of living index of ${state.costOfLivingIndex} makes it highly attractive for location-independent freelancers.`
+        : `${state.name} has a ${state.stateTaxRate.toFixed(2)}% state income tax, which is ${state.stateTaxRate > 0.05 ? 'higher than' : 'lower than'} the national average. LLC filing costs $${state.llcFilingFee} with $${state.annualFranchiseTax} annual franchise tax. For freelancers, states like Texas, Florida, Nevada, and Wyoming offer zero state income tax. However, ${state.name}'s cost of living index of ${state.costOfLivingIndex} and quality of life factors may offset tax considerations.`
+    }
+  ];
 }
