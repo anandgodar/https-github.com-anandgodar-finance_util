@@ -74,10 +74,14 @@ export const metadata: Metadata = {
       'max-snippet': -1
     }
   },
+  // IMPORTANT: Replace these placeholder values with actual verification codes from:
+  // - Google Search Console: https://search.google.com/search-console
+  // - Bing Webmaster Tools: https://www.bing.com/webmasters
+  // See SEO-DEPLOYMENT-CHECKLIST.md for detailed instructions
   verification: {
-    google: 'google-site-verification-placeholder',
+    google: 'REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
     other: {
-      'msvalidate.01': 'bing-site-verification-placeholder',
+      'msvalidate.01': 'REPLACE_WITH_BING_WEBMASTER_VERIFICATION_CODE',
       'yandex-verification': 'yandex-verification-placeholder'
     }
   },
