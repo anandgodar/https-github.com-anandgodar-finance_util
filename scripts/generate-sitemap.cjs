@@ -1,9 +1,15 @@
 #!/usr/bin/env node
 /**
  * Dynamic Sitemap Generator
- * Generates a comprehensive sitemap.xml from all static paths
+ * Generates multiple sitemaps for better SEO organization
  *
- * Usage: node scripts/generate-sitemap.js
+ * Output files:
+ * - sitemap.xml (sitemap index)
+ * - sitemap-calculators.xml (core calculators + hub pages)
+ * - sitemap-blog.xml (blog posts + academy articles)
+ * - sitemap-states.xml (all state-specific calculator pages)
+ *
+ * Usage: node scripts/generate-sitemap.cjs
  */
 
 const fs = require('fs');
@@ -70,12 +76,22 @@ const HUB_PAGES = [
   { path: '/best-mortgage-calculator-2025/', priority: '0.9', changefreq: 'monthly' },
 ];
 
-// Academy/Education pages
+// Academy/Education pages (indexes)
 const ACADEMY_PAGES = [
   { path: '/valuation-academy/', priority: '0.85', changefreq: 'monthly' },
   { path: '/investment-funds-academy/', priority: '0.85', changefreq: 'monthly' },
   { path: '/market-intelligence-pulse/', priority: '0.8', changefreq: 'weekly' },
   { path: '/financial-knowledge-base/', priority: '0.8', changefreq: 'monthly' },
+];
+
+// Academy articles (specific educational content)
+const ACADEMY_ARTICLES = [
+  'california-texas-take-home-comparison',
+  'dcf-valuation-complete-guide',
+  'iron-condor-strategy-guide',
+  'options-greeks-delta-theta-vega-gamma',
+  'safe-harbor-estimated-taxes',
+  'wacc-cost-of-capital-explained',
 ];
 
 // Company pages
@@ -126,111 +142,208 @@ const BLOG_POSTS = [
   'capital-gains-tax-guide-2025', 'pay-off-debt-or-invest-2025',
 ];
 
-function generateUrlEntry(path, priority, changefreq) {
+// State calculator types for state pages
+const STATE_CALCULATOR_TYPES = [
+  { prefix: '/salary-tax-estimator/', priority: '0.85' },
+  { prefix: '/mortgage-calculator/', priority: '0.85' },
+  { prefix: '/early-retirement-fire-planner/', priority: '0.85' },
+  { prefix: '/freelance-profit-hub/', priority: '0.85' },
+  { prefix: '/quarterly-tax-calculator/', priority: '0.85' },
+];
+
+function generateUrlEntry(urlPath, priority, changefreq) {
   return '  <url>\n' +
-         '    <loc>' + SITE_URL + path + '</loc>\n' +
+         '    <loc>' + SITE_URL + urlPath + '</loc>\n' +
          '    <lastmod>' + TODAY + '</lastmod>\n' +
          '    <changefreq>' + changefreq + '</changefreq>\n' +
          '    <priority>' + priority + '</priority>\n' +
          '  </url>';
 }
 
-function generateSitemap() {
-  const urls = [];
+function wrapSitemap(urls) {
+  return '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    urls.join('\n') + '\n' +
+    '</urlset>';
+}
 
-  // Add core tools
-  console.log('Adding ' + CORE_TOOLS.length + ' core tools...');
+function generateSitemapIndex(sitemaps) {
+  var entries = sitemaps.map(function(sitemap) {
+    return '  <sitemap>\n' +
+           '    <loc>' + SITE_URL + '/' + sitemap + '</loc>\n' +
+           '    <lastmod>' + TODAY + '</lastmod>\n' +
+           '  </sitemap>';
+  });
+
+  return '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    entries.join('\n') + '\n' +
+    '</sitemapindex>';
+}
+
+function generateCalculatorsSitemap() {
+  var urls = [];
+
+  // Core tools
   CORE_TOOLS.forEach(function(tool) {
     urls.push(generateUrlEntry(tool.path, tool.priority, tool.changefreq));
   });
 
-  // Add hub pages
-  console.log('Adding ' + HUB_PAGES.length + ' hub pages...');
+  // Hub pages
   HUB_PAGES.forEach(function(page) {
     urls.push(generateUrlEntry(page.path, page.priority, page.changefreq));
   });
 
-  // Add academy pages
-  console.log('Adding ' + ACADEMY_PAGES.length + ' academy pages...');
+  // Academy pages
   ACADEMY_PAGES.forEach(function(page) {
     urls.push(generateUrlEntry(page.path, page.priority, page.changefreq));
   });
 
-  // Add company pages
-  console.log('Adding ' + COMPANY_PAGES.length + ' company pages...');
+  // Company pages
   COMPANY_PAGES.forEach(function(page) {
     urls.push(generateUrlEntry(page.path, page.priority, page.changefreq));
   });
 
-  // Add blog index
-  urls.push(generateUrlEntry('/blog/', '0.9', 'weekly'));
-
-  // Add blog posts
-  console.log('Adding ' + BLOG_POSTS.length + ' blog posts...');
-  BLOG_POSTS.forEach(function(post) {
-    urls.push(generateUrlEntry('/blog/' + post + '/', '0.8', 'monthly'));
-  });
-
-  // Add salary calculator state pages (all 51)
-  console.log('Adding ' + ALL_STATES.length + ' salary calculator state pages...');
-  ALL_STATES.forEach(function(state) {
-    urls.push(generateUrlEntry('/salary-tax-estimator/' + state + '/', '0.85', 'monthly'));
-  });
-
-  // Add mortgage calculator state pages (all 51)
-  console.log('Adding ' + ALL_STATES.length + ' mortgage calculator state pages...');
-  ALL_STATES.forEach(function(state) {
-    urls.push(generateUrlEntry('/mortgage-calculator/' + state + '/', '0.85', 'monthly'));
-  });
-
-  // Add FIRE calculator state pages (all 51)
-  console.log('Adding ' + ALL_STATES.length + ' FIRE calculator state pages...');
-  ALL_STATES.forEach(function(state) {
-    urls.push(generateUrlEntry('/early-retirement-fire-planner/' + state + '/', '0.85', 'monthly'));
-  });
-
-  // Add freelance calculator state pages (all 51)
-  console.log('Adding ' + ALL_STATES.length + ' freelance calculator state pages...');
-  ALL_STATES.forEach(function(state) {
-    urls.push(generateUrlEntry('/freelance-profit-hub/' + state + '/', '0.85', 'monthly'));
-  });
-
-  // Add quarterly tax calculator state pages (all 51)
-  console.log('Adding ' + ALL_STATES.length + ' quarterly tax state pages...');
-  ALL_STATES.forEach(function(state) {
-    urls.push(generateUrlEntry('/quarterly-tax-calculator/' + state + '/', '0.85', 'monthly'));
-  });
-
-  // Add dividend calculator ticker pages
-  console.log('Adding ' + DIVIDEND_TICKERS.length + ' dividend ticker pages...');
+  // Dividend calculator pages
   DIVIDEND_TICKERS.forEach(function(ticker) {
     urls.push(generateUrlEntry('/dividend-calculator/' + ticker + '/', '0.75', 'weekly'));
   });
 
-  var sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n' +
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    urls.join('\n') + '\n' +
-    '</urlset>';
+  return wrapSitemap(urls);
+}
 
-  return sitemap;
+function generateBlogSitemap() {
+  var urls = [];
+
+  // Blog index
+  urls.push(generateUrlEntry('/blog/', '0.9', 'weekly'));
+
+  // Blog posts
+  BLOG_POSTS.forEach(function(post) {
+    urls.push(generateUrlEntry('/blog/' + post + '/', '0.8', 'monthly'));
+  });
+
+  // Academy articles
+  ACADEMY_ARTICLES.forEach(function(article) {
+    urls.push(generateUrlEntry('/academy/' + article + '/', '0.8', 'monthly'));
+  });
+
+  return wrapSitemap(urls);
+}
+
+function generateStatesSitemap() {
+  var urls = [];
+
+  // All state calculator pages
+  STATE_CALCULATOR_TYPES.forEach(function(calcType) {
+    ALL_STATES.forEach(function(state) {
+      urls.push(generateUrlEntry(calcType.prefix + state + '/', calcType.priority, 'monthly'));
+    });
+  });
+
+  return wrapSitemap(urls);
+}
+
+function generateComprehensiveSitemap() {
+  var urls = [];
+
+  // Core tools
+  CORE_TOOLS.forEach(function(tool) {
+    urls.push(generateUrlEntry(tool.path, tool.priority, tool.changefreq));
+  });
+
+  // Hub pages
+  HUB_PAGES.forEach(function(page) {
+    urls.push(generateUrlEntry(page.path, page.priority, page.changefreq));
+  });
+
+  // Academy pages
+  ACADEMY_PAGES.forEach(function(page) {
+    urls.push(generateUrlEntry(page.path, page.priority, page.changefreq));
+  });
+
+  // Academy articles
+  ACADEMY_ARTICLES.forEach(function(article) {
+    urls.push(generateUrlEntry('/academy/' + article + '/', '0.8', 'monthly'));
+  });
+
+  // Company pages
+  COMPANY_PAGES.forEach(function(page) {
+    urls.push(generateUrlEntry(page.path, page.priority, page.changefreq));
+  });
+
+  // Blog index and posts
+  urls.push(generateUrlEntry('/blog/', '0.9', 'weekly'));
+  BLOG_POSTS.forEach(function(post) {
+    urls.push(generateUrlEntry('/blog/' + post + '/', '0.8', 'monthly'));
+  });
+
+  // State calculator pages
+  STATE_CALCULATOR_TYPES.forEach(function(calcType) {
+    ALL_STATES.forEach(function(state) {
+      urls.push(generateUrlEntry(calcType.prefix + state + '/', calcType.priority, 'monthly'));
+    });
+  });
+
+  // Dividend calculator pages
+  DIVIDEND_TICKERS.forEach(function(ticker) {
+    urls.push(generateUrlEntry('/dividend-calculator/' + ticker + '/', '0.75', 'weekly'));
+  });
+
+  return wrapSitemap(urls);
 }
 
 function main() {
   console.log('============================================================');
-  console.log('QuantCurb Sitemap Generator');
+  console.log('QuantCurb Sitemap Generator - Multi-Sitemap Edition');
   console.log('============================================================');
   console.log('');
 
-  var sitemap = generateSitemap();
-  var outputPath = path.join(__dirname, '../public/sitemap.xml');
+  var publicDir = path.join(__dirname, '../public');
 
-  fs.writeFileSync(outputPath, sitemap);
+  // Generate individual sitemaps
+  console.log('Generating sitemap-calculators.xml...');
+  var calcSitemap = generateCalculatorsSitemap();
+  fs.writeFileSync(path.join(publicDir, 'sitemap-calculators.xml'), calcSitemap);
+  var calcCount = (calcSitemap.match(/<url>/g) || []).length;
+  console.log('  - ' + calcCount + ' URLs');
 
-  var urlCount = (sitemap.match(/<url>/g) || []).length;
+  console.log('Generating sitemap-blog.xml...');
+  var blogSitemap = generateBlogSitemap();
+  fs.writeFileSync(path.join(publicDir, 'sitemap-blog.xml'), blogSitemap);
+  var blogCount = (blogSitemap.match(/<url>/g) || []).length;
+  console.log('  - ' + blogCount + ' URLs');
+
+  console.log('Generating sitemap-states.xml...');
+  var statesSitemap = generateStatesSitemap();
+  fs.writeFileSync(path.join(publicDir, 'sitemap-states.xml'), statesSitemap);
+  var statesCount = (statesSitemap.match(/<url>/g) || []).length;
+  console.log('  - ' + statesCount + ' URLs');
+
+  // Generate comprehensive sitemap (for backwards compatibility)
+  console.log('Generating sitemap.xml (comprehensive)...');
+  var mainSitemap = generateComprehensiveSitemap();
+  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), mainSitemap);
+  var mainCount = (mainSitemap.match(/<url>/g) || []).length;
+  console.log('  - ' + mainCount + ' URLs');
+
+  // Generate sitemap index
+  console.log('Generating sitemap-index.xml...');
+  var sitemapIndex = generateSitemapIndex([
+    'sitemap-calculators.xml',
+    'sitemap-blog.xml',
+    'sitemap-states.xml'
+  ]);
+  fs.writeFileSync(path.join(publicDir, 'sitemap-index.xml'), sitemapIndex);
+
   console.log('');
   console.log('============================================================');
-  console.log('SUCCESS: Generated sitemap with ' + urlCount + ' URLs');
-  console.log('Output: ' + outputPath);
+  console.log('SUCCESS: Generated sitemaps');
+  console.log('  - sitemap.xml: ' + mainCount + ' URLs (comprehensive)');
+  console.log('  - sitemap-calculators.xml: ' + calcCount + ' URLs');
+  console.log('  - sitemap-blog.xml: ' + blogCount + ' URLs');
+  console.log('  - sitemap-states.xml: ' + statesCount + ' URLs');
+  console.log('  - sitemap-index.xml: 3 sitemaps');
   console.log('============================================================');
 }
 
