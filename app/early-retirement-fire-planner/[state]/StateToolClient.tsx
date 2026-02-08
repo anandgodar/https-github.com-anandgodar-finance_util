@@ -3,6 +3,7 @@
 import React from 'react';
 import FIREPlanner from '../../../components/FIREPlanner';
 import SiteShell from '../../../components/SiteShell';
+import AuthorCredentials from '../../../components/AuthorCredentials';
 import { ToolType } from '../../../types';
 import { StateConfig } from '../../../lib/state-configs';
 
@@ -188,6 +189,9 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
             ))}
           </div>
         </div>
+
+        {/* E-E-A-T: Author Credentials for Trust Signals */}
+        <AuthorCredentials variant="full" />
       </div>
     </SiteShell>
   );

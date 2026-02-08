@@ -3,6 +3,7 @@
 import React from 'react';
 import SalaryCalculator from '../../../components/SalaryCalculator';
 import SiteShell from '../../../components/SiteShell';
+import AuthorCredentials from '../../../components/AuthorCredentials';
 import { ToolType } from '../../../types';
 
 type StateSalaryCalculatorClientProps = {
@@ -179,6 +180,9 @@ export default function StateSalaryCalculatorClient({
             </a>
           </div>
         </div>
+
+        {/* E-E-A-T: Author Credentials for Trust Signals */}
+        <AuthorCredentials variant="full" />
       </div>
     </SiteShell>
   );
