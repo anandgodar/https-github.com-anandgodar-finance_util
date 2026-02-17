@@ -30,7 +30,29 @@ export function generateMetadata({ params }: PageProps) {
 
   return {
     title: entry.title,
-    description: entry.description
+    description: entry.description,
+    alternates: {
+      canonical: `https://quantcurb.com/blog/${params.slug}/`
+    },
+    openGraph: {
+      title: entry.title,
+      description: entry.description,
+      url: `https://quantcurb.com/blog/${params.slug}/`,
+      siteName: 'QuantCurb',
+      type: 'article',
+      images: [{
+        url: 'https://quantcurb.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: entry.title
+      }]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: entry.title,
+      description: entry.description,
+      images: ['https://quantcurb.com/og-image.png']
+    }
   };
 }
 

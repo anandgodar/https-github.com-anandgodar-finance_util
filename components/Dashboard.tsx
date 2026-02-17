@@ -258,16 +258,107 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
         </div>
       </section>
 
-      {/* SEO Footer Links Summary */}
-      <section className="text-center pt-20 border-t border-slate-100">
-         <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.5em] mb-12">High-Intent Financial Taxonomy</p>
-         <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+      {/* Educational Content Section - SEO Rich Text */}
+      <section className="pt-20 border-t border-slate-100 max-w-4xl mx-auto">
+        <h2 className="text-3xl font-black text-slate-900 mb-8">Free Financial Calculators for Every Money Decision</h2>
+        <div className="space-y-6 text-slate-600 text-base leading-relaxed">
+          <p>
+            QuantCurb provides over 40 free financial calculators to help you make smarter money decisions.
+            Whether you're calculating your take-home pay, planning for retirement, figuring out how much house you can afford,
+            or comparing loan offers, our tools give you accurate, personalized results in seconds.
+          </p>
+
+          <h3 className="text-xl font-bold text-slate-800 pt-4">Salary & Tax Calculators</h3>
+          <p>
+            Our <strong>salary calculator</strong> shows your exact take-home pay after federal tax, state tax, FICA, and
+            401(k) deductions for all 50 US states. See your paycheck breakdown for weekly, biweekly, semi-monthly, or
+            monthly pay periods. Freelancers can use our <strong>1099 tax calculator</strong> to estimate self-employment tax,
+            quarterly estimated payments, and compare contractor income to W-2 salary equivalents.
+          </p>
+
+          <h3 className="text-xl font-bold text-slate-800 pt-4">Mortgage & Home Buying Tools</h3>
+          <p>
+            The <strong>mortgage payment calculator</strong> gives you a complete PITI breakdown: principal, interest,
+            property taxes, and homeowners insurance. See when PMI drops off based on your loan-to-value ratio, compare
+            15-year vs 30-year mortgages, and calculate how biweekly payments save you thousands in interest. Our
+            <strong> debt-to-income calculator</strong> tells you if you'll qualify for a mortgage based on lender DTI requirements.
+          </p>
+
+          <h3 className="text-xl font-bold text-slate-800 pt-4">Retirement & FIRE Planning</h3>
+          <p>
+            Calculate your <strong>FIRE number</strong> (Financial Independence, Retire Early) using the 4% rule, 3% rule,
+            or custom withdrawal rates. Compare Lean FIRE, Fat FIRE, Coast FIRE, and Barista FIRE scenarios. Our
+            <strong> 401(k) and IRA calculator</strong> helps you optimize contributions, compare Roth vs Traditional accounts,
+            and project your retirement balance with employer matching and compound growth.
+          </p>
+
+          <h3 className="text-xl font-bold text-slate-800 pt-4">Investment & Wealth Building</h3>
+          <p>
+            See how your investments grow over time with our <strong>compound interest calculator</strong>. Model monthly SIP
+            contributions, lump sum investments, and dividend reinvestment (DRIP) scenarios. For advanced investors, the
+            <strong> DCF calculator</strong> lets you value stocks using discounted cash flow analysis with WACC, and the
+            <strong> options strategy visualizer</strong> helps you build multi-leg strategies with real-time Greeks.
+          </p>
+
+          <h3 className="text-xl font-bold text-slate-800 pt-4">Debt Payoff Strategies</h3>
+          <p>
+            Find the fastest way to become debt-free with our <strong>credit card payoff calculator</strong>. Compare the
+            avalanche method (highest interest first) vs the snowball method (smallest balance first) and see exactly how
+            much interest you'll save. Our <strong>loan comparison tool</strong> lets you evaluate refinancing offers
+            side by side with break-even analysis.
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ Section for SEO */}
+      <section className="pt-16 border-t border-slate-100 max-w-4xl mx-auto">
+        <h2 className="text-2xl font-black text-slate-900 mb-8">Frequently Asked Questions</h2>
+        <div className="space-y-6">
+          {[
+            {
+              q: "Are these financial calculators really free?",
+              a: "Yes, all 40+ calculators on QuantCurb are completely free with no account required. There are no hidden fees, no premium tiers, and no usage limits. We cover salary, mortgage, retirement, investment, tax, and debt calculators."
+            },
+            {
+              q: "How accurate are the tax calculations?",
+              a: "Our calculators use 2025 federal tax brackets, FICA rates, and state tax data for all 50 US states plus DC. They account for standard deductions, 401(k) contributions, and common pre-tax benefits. For complex tax situations, consult a CPA."
+            },
+            {
+              q: "What is the 4% rule for retirement?",
+              a: "The 4% rule suggests you can safely withdraw 4% of your retirement portfolio each year without running out of money over a 30-year retirement. To find your FIRE number, divide your annual expenses by 0.04. For example, if you spend $40,000/year, your FIRE number is $1,000,000."
+            },
+            {
+              q: "How much emergency fund should I have?",
+              a: "Most financial experts recommend 3-6 months of essential living expenses. If you have variable income (freelance, commission-based), unstable employment, or dependents, aim for 6-12 months. Our emergency fund calculator gives you a personalized recommendation."
+            },
+            {
+              q: "How do I calculate my debt-to-income ratio?",
+              a: "Divide your total monthly debt payments (mortgage, car loan, credit cards, student loans) by your gross monthly income. Multiply by 100 for a percentage. Most mortgage lenders require a DTI below 43%, with ideal ratios under 36%."
+            }
+          ].map((faq, i) => (
+            <details key={i} className="group border border-slate-200 rounded-2xl overflow-hidden">
+              <summary className="p-6 cursor-pointer font-bold text-slate-800 hover:bg-slate-50 transition-colors flex justify-between items-center">
+                {faq.q}
+                <span className="text-slate-400 group-open:rotate-180 transition-transform ml-4 flex-shrink-0">&#9660;</span>
+              </summary>
+              <div className="px-6 pb-6 text-slate-600 leading-relaxed">
+                {faq.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {/* Internal Linking Footer */}
+      <section className="text-center pt-16 border-t border-slate-100">
+         <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.5em] mb-8">Popular Financial Tools</p>
+         <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
             {[
-              "Mortgage APR Calculator", "DCF Financial Modeling", "Debt Payoff Strategy", "SIP Wealth Projector",
-              "Compound Interest Formula", "Net Pay Estimator", "Refinance Break-even Analysis", "FIRE Freedom Number",
-              "Loan Amortization Table", "Self-Employment Tax Hub", "Asset Allocation Academy", "Market Sentiment Analysis"
+              "Mortgage Calculator", "Salary Calculator", "Take Home Pay", "FIRE Calculator",
+              "Compound Interest", "Credit Card Payoff", "Loan Comparison", "Net Worth Tracker",
+              "1099 Tax Calculator", "401k Calculator", "DTI Calculator", "Options Calculator"
             ].map(tag => (
-              <span key={tag} className="px-6 py-3 bg-white text-slate-500 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-slate-100 hover:text-indigo-600 hover:border-indigo-200 transition-all cursor-default shadow-sm">
+              <span key={tag} className="px-5 py-2.5 bg-white text-slate-500 rounded-xl text-xs font-bold border border-slate-100 hover:text-indigo-600 hover:border-indigo-200 transition-all cursor-default shadow-sm">
                 {tag}
               </span>
             ))}

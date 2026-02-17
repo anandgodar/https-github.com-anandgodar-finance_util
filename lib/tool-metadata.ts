@@ -2,19 +2,19 @@ import { ToolType } from '../types';
 
 export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keywords: string }> = {
   [ToolType.DASHBOARD]: {
-    title: "QuantCurb | Professional Financial Intelligence & AI Wealth Insights",
-    desc: "Maximize your net worth with QuantCurb. Institutional-grade financial modeling, real-time market insights, and precision calculators for EMI, tax, and wealth growth.",
-    keywords: "financial intelligence, wealth management, mortgage calculator, tax estimator"
+    title: "Free Financial Calculators 2025 - Mortgage, Salary, Tax & Investment Tools | QuantCurb",
+    desc: "40+ free financial calculators: mortgage payment, take-home pay, FIRE retirement, investment growth, tax estimator, net worth tracker, and more. Accurate calculations for all 50 US states.",
+    keywords: "financial calculators, free calculators, mortgage calculator, salary calculator, tax calculator, investment calculator, retirement calculator, net worth calculator, take home pay calculator, emi calculator, fire calculator, compound interest calculator"
   },
   [ToolType.NET_WORTH]: {
-    title: "Net Worth Tracker - Professional Asset & Liability Balance Sheet",
-    desc: "Track your private balance sheet with QuantCurb. Mark-to-market asset analysis, debt triage, and solvency grading for institutional-grade wealth tracking.",
-    keywords: "net worth tracker, balance sheet, asset liability, wealth tracking"
+    title: "Free Net Worth Calculator 2025 - Track Assets, Liabilities & Total Wealth",
+    desc: "Calculate your net worth by adding up all assets (home, investments, savings) and liabilities (mortgage, loans, credit cards). Track your financial progress over time with our free net worth tracker.",
+    keywords: "net worth calculator, net worth tracker, how to calculate net worth, assets vs liabilities, personal balance sheet, net worth by age, total wealth calculator, what is my net worth"
   },
   [ToolType.EMERGENCY_FUND]: {
-    title: "Emergency Fund Calculator - Survival Runway & Inflation Stress Test",
-    desc: "Calculate your liquid safety net. Stress-test your survival runway against inflation and audit your term life insurance needs with Emergency Guard.",
-    keywords: "emergency fund calculator, financial safety net, survival runway, inflation stress"
+    title: "Emergency Fund Calculator 2025 - How Much Do You Really Need?",
+    desc: "Calculate how much emergency fund you need based on your monthly expenses, income stability, and dependents. Includes 3-month vs 6-month savings rules, inflation adjustment, and personalized recommendations.",
+    keywords: "emergency fund calculator, how much emergency fund do i need, 3 month emergency fund, 6 month emergency fund, emergency savings calculator, financial safety net calculator, emergency fund by income"
   },
   [ToolType.EMI_CALC]: {
     title: "How to Calculate EMI? Loan EMI Calculator 2025 with Extra Payment Savings",
@@ -37,29 +37,29 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "how to calculate investment growth, investment calculator, sip calculator, compound interest calculator, what is compound interest, wealth calculator, drip calculator, goal based investing, compound interest calculator monthly, investment return calculator, portfolio growth calculator, retirement investment calculator, monthly investment calculator, lump sum investment calculator, investment calculator with inflation, stock market return calculator, mutual fund calculator, index fund calculator, dividend reinvestment calculator, 401k growth calculator, roth ira growth calculator, investment doubling calculator, rule of 72 calculator, how much will my investment grow, how to calculate compound interest, how long to double investment, compound interest formula, how much should i invest monthly, what is a good investment return, lump sum vs dollar cost averaging, monthly vs annual investing, compound interest vs simple interest"
   },
   [ToolType.MARKET_INSIGHTS]: {
-    title: "AI Market Pulse - Institutional vs Retail App Ecosystem Analysis",
-    desc: "Compare Bloomberg and FactSet against Robinhood and Wise. Deep AI-driven analysis of the digital financial stack for professional workflows.",
-    keywords: "market insights, fintech analysis, bloomberg vs robinhood, financial apps"
+    title: "AI Market Insights 2025 - Stock Market Analysis & Sentiment Dashboard",
+    desc: "Get AI-powered market analysis with real-time sentiment tracking, sector trends, and institutional vs retail flow comparison. Free market intelligence dashboard for informed investing decisions.",
+    keywords: "ai market analysis, stock market insights, market sentiment, fintech analysis, stock market trends 2025, market outlook, investment analysis tool"
   },
   [ToolType.LOAN_COMPARE]: {
-    title: "Loan Comparison Pro - Refinance Break-even & APR Matrix",
-    desc: "Audit loan offers side-by-side. Calculate refinancing ROI, break-even periods, and the total interest delta between different debt structures.",
-    keywords: "loan comparison, refinance calculator, apr comparison, debt audit"
+    title: "Loan Comparison Calculator - Compare Rates, APR & Total Interest Side by Side",
+    desc: "Compare up to 4 loan offers side by side. See total interest paid, monthly payments, and refinancing break-even points to find the best deal on mortgages, auto loans, and personal loans.",
+    keywords: "loan comparison calculator, compare loan rates, refinance calculator, apr comparison, loan interest comparison, should i refinance, refinance break even calculator, best loan rates"
   },
   [ToolType.LIVING_COST]: {
-    title: "Cost of Living Calculator - Regional Budget & Efficiency Audit",
-    desc: "Benchmark your monthly spend against regional COL indices. Audit your 50/30/20 budget efficiency for major US cities and states.",
-    keywords: "cost of living, budget audit, 50 30 20 rule, regional cost"
+    title: "Cost of Living Calculator 2025 - Compare Cities & States Across the US",
+    desc: "Compare cost of living between US cities and states. See how far your salary goes in different locations with housing, food, transportation, and tax breakdowns using the 50/30/20 budget rule.",
+    keywords: "cost of living calculator, cost of living comparison, cost of living by city, cost of living by state, 50 30 20 budget, how much to live in, cheapest states to live, most expensive cities"
   },
   [ToolType.CURRENCY_CONV]: {
-    title: "Live Currency Converter - Interbank Rates & Forex Sentiment AI",
-    desc: "Real-time interbank forex conversion. AI-powered market sentiment, 12-month volatility heatmaps, and zero-markup spread auditing.",
-    keywords: "currency converter, forex rates, interbank rate, usd to inr, eur to usd"
+    title: "Free Currency Converter 2025 - Live Exchange Rates for 150+ Currencies",
+    desc: "Convert currencies instantly with live exchange rates. Supports USD, EUR, GBP, INR, and 150+ currencies. See historical rate trends and AI-powered forex market sentiment analysis.",
+    keywords: "currency converter, exchange rate calculator, usd to inr, eur to usd, live forex rates, currency exchange calculator, money converter, foreign exchange calculator"
   },
   [ToolType.GST_CALC]: {
-    title: "GST Calculator - Professional Tax Invoicing & Compliance Hub",
-    desc: "Accurate GST and VAT splitting for businesses. Handle inclusive and exclusive pricing with automated CGST, SGST, and IGST breakdowns.",
-    keywords: "gst calculator, vat calculator, tax invoicing, business tax tool"
+    title: "GST Calculator - Calculate Goods and Services Tax Online (Free)",
+    desc: "Calculate GST/VAT instantly for inclusive and exclusive pricing. Get automatic CGST, SGST, and IGST breakdown with support for multiple tax slabs. Free for businesses and individuals.",
+    keywords: "gst calculator, gst calculator online, vat calculator, goods and services tax calculator, cgst sgst calculator, gst inclusive calculator, gst exclusive calculator, tax invoice calculator"
   },
   [ToolType.CREDIT_CARD_PAYOFF]: {
     title: "How Long to Pay Off Credit Card Debt? Avalanche vs Snowball Calculator 2025",
@@ -72,34 +72,34 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "what is my fire number, fire calculator, early retirement calculator, 4 percent rule calculator, 3 percent rule calculator, coast fire calculator, barista fire calculator, lean fire calculator, fat fire calculator, financial independence calculator, how much money do i need to fire, when can i retire early, how to calculate fire number, safe withdrawal rate calculator, retire at 40, retire at 45, retire at 50, retire at 55, early retirement with 1 million, early retirement with 500k, passive income retirement calculator, fire number by age, retirement age calculator, financial independence retire early, monte carlo retirement simulator, sequence of returns risk, how long until i can retire, retirement savings calculator by age, fire calculator with inflation, fire calculator with social security, early retirement calculator with pension, how much to retire comfortably, what age can i retire calculator, path to financial independence"
   },
   [ToolType.FREELANCE_PROFIT]: {
-    title: "Freelance Hub - 1099 Net Profit & FTE Salary Equivalent Tool",
-    desc: "Analyze your true hourly rate as a contractor. Factor in self-employment taxes, health insurance, and OpEx to find your salary equivalent.",
+    title: "1099 Tax Calculator 2025 - Freelance Income, Self-Employment Tax & Take-Home Pay",
+    desc: "Calculate your freelance take-home pay after self-employment tax, federal tax, and state tax. Compare 1099 contractor income to W-2 salary equivalent. Covers all 50 states with SE tax, QBI deduction, and business expense modeling.",
     keywords: "freelance calculator, 1099 taxes, self employment tax, contractor rate, how to calculate self employment tax, 1099 tax calculator, freelance income tax calculator, self employed tax calculator 2026, freelance hourly rate calculator, freelance pricing calculator, contractor tax calculator, gig worker tax calculator, uber tax calculator, doordash tax calculator, self employment tax rate calculator, freelance business expense calculator, home office deduction calculator, qbi deduction calculator, s corp tax savings calculator, llc vs sole proprietor calculator, how much tax do freelancers pay, how to calculate 1099 taxes, what is self employment tax rate, how much should i charge as a freelancer, what can freelancers deduct, should i form an llc as a freelancer, how to reduce self employment tax, 1099 vs w2 calculator, llc vs s corp for freelancers, sole proprietor vs llc, freelance vs employee taxes, freelance tax calculator by state"
   },
   [ToolType.INVESTMENT_ACADEMY]: {
-    title: "Fund Academy - Mastering Index Funds, ETFs & REITs Strategy",
-    desc: "Institutional grade ETF investing curriculum with market cycle insights and allocation backtesting.",
-    keywords: "investment academy, index funds, etfs, reits strategy"
+    title: "Index Fund & ETF Guide 2025 - How to Start Investing for Beginners",
+    desc: "Learn how to invest in index funds, ETFs, and REITs. Beginner-friendly guide covering asset allocation, expense ratios, tax efficiency, and portfolio construction strategies for long-term wealth building.",
+    keywords: "index fund guide, how to invest in etfs, index funds for beginners, etf investing guide, best index funds, vanguard vs fidelity, asset allocation guide, reits investing, passive investing guide"
   },
   [ToolType.EXCEL_MODELER]: {
-    title: "Excel Power Modeler - DCF & Financial Model Templates",
-    desc: "Build discounted cash flow models with professional Excel templates and valuation logic.",
+    title: "DCF Calculator - Free Discounted Cash Flow & Stock Valuation Tool 2025",
+    desc: "Calculate the intrinsic value of any stock using our free DCF calculator. Includes WACC calculation, free cash flow projection, terminal value, and sensitivity analysis. Professional-grade valuation methodology.",
     keywords: "excel modeler, dcf model, financial modeling templates, dcf calculator, stock valuation calculator, discounted cash flow calculator, wacc calculator, terminal value calculator, free cash flow calculator, dcf valuation calculator, stock intrinsic value calculator, enterprise value calculator, equity value calculator, fcf projection calculator, how to calculate dcf, how to value a stock dcf, wacc calculator with beta, cost of equity calculator, cost of debt calculator, capm calculator, perpetuity growth method calculator, exit multiple calculator, fcff calculator, fcfe calculator, how to calculate dcf valuation, what is wacc formula, how to calculate terminal value, how to value a company using dcf, what is a good wacc, how to calculate free cash flow, how to calculate intrinsic value, what is enterprise value vs equity value, how to calculate cost of equity, dcf vs comparable companies, fcff vs fcfe, enterprise value vs equity value, wacc vs capm"
   },
   [ToolType.RETIREMENT_OPTIMIZER]: {
-    title: "Retirement Optimizer - 401(k) and IRA Contribution Strategy",
-    desc: "Optimize retirement contributions with tax-aware modeling and retirement readiness checkpoints.",
+    title: "401(k) & IRA Calculator 2025 - Retirement Savings & Contribution Optimizer",
+    desc: "Calculate how much to save for retirement with our 401(k) and IRA optimizer. Compare Roth vs Traditional, model employer matching, and see your projected retirement balance with tax-efficient contribution strategies.",
     keywords: "retirement optimizer, 401k contribution strategy, ira planning, retirement calculator, 401k calculator, roth ira calculator, how much to save for retirement, retirement savings calculator by age, 401k contribution calculator, roth vs traditional calculator, backdoor roth calculator, mega backdoor roth calculator, roth conversion calculator, retirement account optimizer, tax efficient retirement calculator, retirement withdrawal calculator, required minimum distribution calculator, rmd calculator, retirement tax calculator, social security retirement calculator, pension vs 401k calculator, how much should i contribute to 401k, should i do roth or traditional 401k, how much to retire comfortably, what is backdoor roth ira, how does mega backdoor roth work, when can i withdraw from 401k, what is roth conversion, roth vs traditional 401k, roth ira vs traditional ira, 401k vs ira, sep ira vs solo 401k"
   },
   [ToolType.DRIP_CALCULATOR]: {
-    title: "Dividend Reinvestment Calculator - DRIP Growth Modeling",
-    desc: "Model dividend reinvestment (DRIP) growth with dividend yield and stock appreciation assumptions.",
-    keywords: "dividend reinvestment calculator, drip calculator, dividend growth"
+    title: "Dividend Reinvestment Calculator (DRIP) 2025 - See How Dividends Compound",
+    desc: "Calculate how reinvesting dividends grows your portfolio over time. Model DRIP returns with adjustable dividend yield, share price growth, and reinvestment frequency. See the power of compound dividends.",
+    keywords: "dividend reinvestment calculator, drip calculator, dividend growth calculator, dividend compound calculator, how much dividends will i earn, drip investing calculator, dividend yield calculator, dividend income calculator"
   },
   [ToolType.CRYPTO_TAX_LOSS]: {
-    title: "Crypto Tax Loss Harvester - No Wash Sale Strategy",
-    desc: "Analyze crypto positions for loss harvesting and tax alpha opportunities.",
-    keywords: "crypto tax loss harvesting, crypto wash sale, tax alpha"
+    title: "Crypto Tax Loss Harvesting Calculator 2025 - Save on Taxes (No Wash Sale Rule)",
+    desc: "Find tax-loss harvesting opportunities in your crypto portfolio. Unlike stocks, crypto has no wash sale rule in 2025, so you can immediately rebuy after harvesting losses. Calculate potential tax savings.",
+    keywords: "crypto tax loss harvesting, crypto tax calculator, cryptocurrency tax, crypto wash sale rule, bitcoin tax calculator, crypto capital gains, tax loss harvesting strategy, crypto tax savings"
   },
   [ToolType.CHILD_TAX_CREDIT]: {
     title: "Child Tax Credit Calculator - 2025 Eligibility & Refund Estimate",
@@ -117,9 +117,9 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "aca subsidy calculator, premium tax credit, marketplace insurance, health insurance subsidy calculator, obamacare calculator, marketplace subsidy calculator, premium tax credit calculator, aca affordability calculator, health insurance marketplace calculator, obamacare subsidy calculator 2026, how much is aca subsidy, health insurance tax credit calculator, cobra vs aca calculator, early retirement health insurance calculator, how much is aca subsidy, who qualifies for aca subsidy, how to calculate aca subsidy, what income qualifies for obamacare subsidy, how does aca subsidy work, is aca subsidy based on gross income, aca vs cobra, marketplace vs employer insurance, silver plan vs gold plan, aca subsidy by state, health insurance marketplace by state, obamacare by state"
   },
   [ToolType.DTI_CALCULATOR]: {
-    title: "Debt-to-Income Ratio Calculator - Mortgage Underwriting Benchmarks",
-    desc: "Compute your DTI ratio to understand mortgage and loan qualification thresholds.",
-    keywords: "dti calculator, debt to income ratio"
+    title: "Debt-to-Income Ratio Calculator 2025 - Will You Qualify for a Mortgage?",
+    desc: "Calculate your debt-to-income (DTI) ratio to see if you qualify for a mortgage. Lenders typically require front-end DTI under 28% and back-end DTI under 36-43%. Enter your income and debts for instant results.",
+    keywords: "dti calculator, debt to income ratio calculator, mortgage qualification calculator, how to calculate dti, what is a good dti ratio, dti for mortgage, front end dti, back end dti, debt ratio calculator, mortgage approval calculator"
   },
   [ToolType.OPTIONS_STRATEGY_VISUALIZER]: {
     title: "Options Strategy Visualizer - Multi-Leg P&L Calculator with Greeks",
@@ -127,9 +127,9 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "options strategy calculator, options visualizer, iron condor calculator, bull call spread, options greeks calculator, delta theta vega, options profit calculator, multi-leg options, options trading simulator, implied volatility"
   },
   [ToolType.VALUATION_ACADEMY]: {
-    title: "Valuation Academy - Learn DCF, WACC, Options Greeks, and Tax Strategy",
-    desc: "Master institutional-grade financial analysis with in-depth guides on DCF valuation, WACC calculation, options Greeks, iron condor strategies, safe harbor tax rules, and state tax comparisons. Educational content hub with 2,000+ words per guide.",
-    keywords: "valuation academy, dcf guide, wacc explained, options greeks tutorial, financial education, stock valuation course, tax strategy guide"
+    title: "Financial Education Hub - Free Guides on DCF, WACC, Options Greeks & Tax Strategy",
+    desc: "Learn stock valuation, options trading, and tax planning with comprehensive free guides. Covers DCF modeling, WACC calculation, options Greeks (Delta, Theta, Vega, Gamma), iron condor strategy, and estimated tax safe harbor rules.",
+    keywords: "financial education, dcf guide, wacc explained, options greeks tutorial, stock valuation guide, options trading guide, tax strategy guide, learn investing free"
   },
   [ToolType.ACADEMY_DCF_GUIDE]: {
     title: "DCF Valuation Complete Guide - How to Value Stocks Like Wall Street",

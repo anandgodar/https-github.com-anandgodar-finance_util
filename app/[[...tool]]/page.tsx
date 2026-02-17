@@ -38,10 +38,34 @@ export function generateMetadata({ params }: PageProps) {
     };
   }
 
+  const canonicalPath = slug === ToolType.DASHBOARD ? '' : `${slug}/`;
+
   return {
     title: metadata.title,
     description: metadata.desc,
-    keywords: metadata.keywords
+    keywords: metadata.keywords,
+    alternates: {
+      canonical: `https://quantcurb.com/${canonicalPath}`
+    },
+    openGraph: {
+      title: metadata.title,
+      description: metadata.desc,
+      url: `https://quantcurb.com/${canonicalPath}`,
+      siteName: 'QuantCurb',
+      type: slug === ToolType.DASHBOARD ? 'website' : 'article',
+      images: [{
+        url: 'https://quantcurb.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: metadata.title
+      }]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: metadata.title,
+      description: metadata.desc,
+      images: ['https://quantcurb.com/og-image.png']
+    }
   };
 }
 
@@ -53,6 +77,7 @@ export default function ToolPage({ params }: PageProps) {
   }
 
   const metadata = TOOL_METADATA[slug];
+  const canonicalUrl = `https://quantcurb.com/${slug === ToolType.DASHBOARD ? '' : slug + '/'}`;
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -60,16 +85,19 @@ export default function ToolPage({ params }: PageProps) {
     "description": metadata.desc,
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "All",
-    "url": `https://quantcurb.com/${slug === ToolType.DASHBOARD ? '' : slug}`,
+    "url": canonicalUrl,
     "author": {
       "@type": "Organization",
-      "name": "QuantCurb Intelligence"
+      "name": "QuantCurb",
+      "url": "https://quantcurb.com"
     },
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
-    }
+    },
+    "isAccessibleForFree": true,
+    "browserRequirements": "Requires JavaScript"
   };
 
   return (
