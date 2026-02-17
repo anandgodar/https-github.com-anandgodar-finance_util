@@ -1,9 +1,27 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
 import AppShell from '../../components/AppShell';
 import { TOOL_METADATA, toolSlugs } from '../../lib/tool-metadata';
 import { ToolType } from '../../types';
+import {
+  mortgageCalculatorFAQs,
+  salaryCalculatorFAQs,
+  fireCalculatorFAQs,
+  taxCalculatorFAQs,
+  investmentCalculatorFAQs,
+  emiCalculatorFAQs,
+  netWorthFAQs,
+  emergencyFundFAQs,
+  loanCompareFAQs,
+  costOfLivingFAQs,
+  creditCardPayoffFAQs,
+  dtiFAQs,
+  cryptoTaxFAQs,
+  acaSubsidyFAQs,
+} from '../../components/FAQSchema';
+import { generateHowToSchemaForTool } from '../../components/HowToSchema';
 
 type PageProps = {
   params?: {
@@ -18,6 +36,28 @@ const toolSlugSet = new Set<ToolType>(toolSlugs as ToolType[]);
 
 const isToolType = (slug: string): slug is ToolType => toolSlugSet.has(slug as ToolType);
 
+// Map tools to their FAQ sets
+const toolFAQMap: Record<string, Array<{ question: string; answer: string }>> = {
+  [ToolType.MORTGAGE_CALC]: mortgageCalculatorFAQs,
+  [ToolType.SALARY_CALC]: salaryCalculatorFAQs,
+  [ToolType.FIRE_PLANNER]: fireCalculatorFAQs,
+  [ToolType.INVESTMENT_CALC]: investmentCalculatorFAQs,
+  [ToolType.QUARTERLY_TAX]: taxCalculatorFAQs,
+  [ToolType.CHILD_TAX_CREDIT]: taxCalculatorFAQs,
+  [ToolType.FREELANCE_PROFIT]: taxCalculatorFAQs,
+  [ToolType.RETIREMENT_OPTIMIZER]: fireCalculatorFAQs,
+  [ToolType.DRIP_CALCULATOR]: investmentCalculatorFAQs,
+  [ToolType.EMI_CALC]: emiCalculatorFAQs,
+  [ToolType.NET_WORTH]: netWorthFAQs,
+  [ToolType.EMERGENCY_FUND]: emergencyFundFAQs,
+  [ToolType.LOAN_COMPARE]: loanCompareFAQs,
+  [ToolType.LIVING_COST]: costOfLivingFAQs,
+  [ToolType.CREDIT_CARD_PAYOFF]: creditCardPayoffFAQs,
+  [ToolType.DTI_CALCULATOR]: dtiFAQs,
+  [ToolType.CRYPTO_TAX_LOSS]: cryptoTaxFAQs,
+  [ToolType.ACA_SUBSIDY]: acaSubsidyFAQs,
+};
+
 export function generateStaticParams() {
   return [
     { tool: [] },
@@ -27,7 +67,7 @@ export function generateStaticParams() {
   ];
 }
 
-export function generateMetadata({ params }: PageProps) {
+export function generateMetadata({ params }: PageProps): Metadata {
   const slug = params?.tool?.join('/') || ToolType.DASHBOARD;
   const metadata = TOOL_METADATA[slug as ToolType];
 
@@ -104,8 +144,26 @@ export default function ToolPage({ params }: PageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
       />
+      {breadcrumbSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+      )}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {howToSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        />
+      )}
       <AppShell initialTool={slug as ToolType} />
     </>
   );

@@ -1,10 +1,10 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
 import { blogSlugs } from '../../../lib/blog-metadata';
 import { blogMetadata } from '../../../lib/blog-metadata';
 import BlogPostClient from './BlogPostClient';
-import { ToolType } from '../../../types';
 
 type PageProps = {
   params: {
@@ -18,7 +18,7 @@ export function generateStaticParams() {
   return blogSlugs.map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: PageProps) {
+export function generateMetadata({ params }: PageProps): Metadata {
   const entry = blogMetadata[params.slug];
 
   if (!entry) {
@@ -63,5 +63,20 @@ export default function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  return <BlogPostClient slug={params.slug} />;
+  const blogPostSchema = generateBlogPostSchema(params.slug, entry.title, entry.description);
+  const breadcrumbSchema = generateBreadcrumbSchema(params.slug, entry.title);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <BlogPostClient slug={params.slug} />
+    </>
+  );
 }

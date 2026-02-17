@@ -3,6 +3,7 @@
 import React from 'react';
 import MortgageCalculator from '../../../components/MortgageCalculator';
 import SiteShell from '../../../components/SiteShell';
+import AuthorCredentials from '../../../components/AuthorCredentials';
 import { ToolType } from '../../../types';
 import { StateConfig } from '../../../lib/state-configs';
 
@@ -143,6 +144,32 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
           </div>
         </article>
 
+        {/* Visible FAQ Section - helps Google understand content quality */}
+        <section className="mt-12 bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12">
+          <h2 className="text-3xl font-black text-slate-900 mb-8">
+            Frequently Asked Questions: {stateConfig.name} Mortgages
+          </h2>
+          <div className="space-y-6">
+            {getStateMortgageFAQs(stateConfig).map((faq, idx) => (
+              <details
+                key={idx}
+                className="group bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden"
+                open={idx === 0}
+              >
+                <summary className="cursor-pointer p-6 font-bold text-lg text-slate-800 group-open:text-indigo-600 transition-colors list-none flex justify-between items-center">
+                  {faq.question}
+                  <span className="text-slate-400 group-open:rotate-180 transition-transform text-xl">
+                    ▼
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-slate-600 leading-relaxed">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
         {/* Related State Tools */}
         <div className="mt-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-white rounded-3xl p-8 md:p-12">
           <h2 className="text-3xl font-black mb-6">
@@ -162,6 +189,9 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
             ))}
           </div>
         </div>
+
+        {/* E-E-A-T: Author Credentials for Trust Signals */}
+        <AuthorCredentials variant="full" />
       </div>
     </SiteShell>
   );
@@ -228,4 +258,32 @@ function getRelatedTools(currentToolSlug: string, stateSlug: string) {
   ];
 
   return allTools.filter(t => t.slug !== currentToolSlug).slice(0, 4);
+}
+
+// Helper: State-specific mortgage FAQs for visible content
+function getStateMortgageFAQs(state: StateConfig): Array<{question: string, answer: string}> {
+  const noIncomeTax = state.stateTaxRate === 0;
+
+  return [
+    {
+      question: `What is the average property tax rate in ${state.name}?`,
+      answer: `The average property tax rate in ${state.name} is approximately ${state.propertyTaxRate.toFixed(2)}% of the assessed home value annually. However, rates can vary significantly by county and municipality. For a $${state.avgHomePrice.toLocaleString()} home at this rate, you would pay roughly $${Math.round(state.avgHomePrice * state.propertyTaxRate / 100).toLocaleString()} per year in property taxes, or $${Math.round(state.avgHomePrice * state.propertyTaxRate / 100 / 12).toLocaleString()} per month added to your mortgage payment.`
+    },
+    {
+      question: `How much house can I afford in ${state.name} with my income?`,
+      answer: `In ${state.name}, you should follow the 28/36 rule: housing costs (PITI - Principal, Interest, Taxes, Insurance) should not exceed 28% of your gross monthly income, and total debt payments should stay under 36%. ${noIncomeTax ? `Since ${state.name} has no state income tax, you may have more disposable income for housing compared to high-tax states.` : `Factor in ${state.name}'s ${state.stateTaxRate.toFixed(2)}% state income tax when calculating your true affordability.`} With the average ${state.name} home price at $${state.avgHomePrice.toLocaleString()}, you would need approximately $${Math.round(state.avgHomePrice * 0.2).toLocaleString()} for a 20% down payment.`
+    },
+    {
+      question: `What are ${state.name}'s first-time homebuyer programs?`,
+      answer: `${state.name} offers several first-time homebuyer assistance programs including: ${state.firstTimeBuyerPrograms.length > 0 ? state.firstTimeBuyerPrograms.join(', ') : 'down payment assistance, reduced interest rate loans, and closing cost assistance through the state housing finance agency'}. These programs often have income limits and require homebuyer education courses. Check with your state housing finance agency for current program availability and eligibility requirements.`
+    },
+    {
+      question: `What closing costs should I expect when buying in ${state.name}?`,
+      answer: `Typical closing costs in ${state.name} average around $${state.avgClosingCosts.toLocaleString()}, which represents approximately ${((state.avgClosingCosts / state.avgHomePrice) * 100).toFixed(1)}% of the average home price. Closing costs include: lender fees, title insurance, appraisal fees, inspection costs, recording fees, and prepaid property taxes and insurance. Some ${state.name}-specific fees may also apply. Ask your lender for a detailed Loan Estimate within 3 days of applying.`
+    },
+    {
+      question: `Is ${state.name} a good state for buying a home in 2026?`,
+      answer: `${state.name} has a cost of living index of ${state.costOfLivingIndex} (100 = US average), meaning living expenses are ${state.costOfLivingIndex > 100 ? `${state.costOfLivingIndex - 100}% above` : state.costOfLivingIndex < 100 ? `${100 - state.costOfLivingIndex}% below` : 'at'} the national average. ${noIncomeTax ? `A major advantage is ${state.name}'s zero state income tax, which can save thousands annually.` : `${state.name}'s ${state.stateTaxRate.toFixed(2)}% state income tax should be factored into your overall housing budget.`} ${state.retirementFriendly ? `${state.name} is also considered retirement-friendly with favorable policies for retirees.` : ''} The average home costs $${state.avgHomePrice.toLocaleString()}, which combined with ${state.propertyTaxRate.toFixed(2)}% property taxes should be considered in your decision.`
+    }
+  ];
 }

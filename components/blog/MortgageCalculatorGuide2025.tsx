@@ -6,7 +6,6 @@ import { ToolType } from '../../types';
 import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 import RecommendedTools from '../RecommendedTools';
-import AuthorBio from '../AuthorBio';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -599,9 +598,6 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             buttonText="Subscribe Free"
           />
         </section>
-
-        {/* Author Bio */}
-        <AuthorBio variant="compact" />
       </article>
     </div>
   );
