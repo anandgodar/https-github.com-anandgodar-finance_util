@@ -63,8 +63,63 @@ export default function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const blogPostSchema = generateBlogPostSchema(params.slug, entry.title, entry.description);
-  const breadcrumbSchema = generateBreadcrumbSchema(params.slug, entry.title);
+  const canonicalUrl = `https://quantcurb.com/blog/${params.slug}/`;
+
+  // Article schema for blog posts
+  const blogPostSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": entry.title,
+    "description": entry.description,
+    "url": canonicalUrl,
+    "datePublished": new Date().toISOString().split('T')[0],
+    "dateModified": new Date().toISOString().split('T')[0],
+    "author": {
+      "@type": "Organization",
+      "name": "QuantCurb",
+      "url": "https://quantcurb.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "QuantCurb",
+      "url": "https://quantcurb.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://quantcurb.com/og-image.png"
+      }
+    },
+    "image": "https://quantcurb.com/og-image.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": canonicalUrl
+    }
+  };
+
+  // Breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://quantcurb.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://quantcurb.com/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": entry.title.split(' | ')[0].split(' - ')[0],
+        "item": canonicalUrl
+      }
+    ]
+  };
 
   return (
     <>

@@ -118,7 +118,9 @@ export default function ToolPage({ params }: PageProps) {
 
   const metadata = TOOL_METADATA[slug];
   const canonicalUrl = `https://quantcurb.com/${slug === ToolType.DASHBOARD ? '' : slug + '/'}`;
-  const schemaData = {
+
+  // WebApplication schema
+  const webAppSchema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": metadata.title,
@@ -139,6 +141,43 @@ export default function ToolPage({ params }: PageProps) {
     "isAccessibleForFree": true,
     "browserRequirements": "Requires JavaScript"
   };
+
+  // Breadcrumb schema
+  const breadcrumbItems = slug === ToolType.DASHBOARD
+    ? null
+    : [
+        { name: 'Home', url: 'https://quantcurb.com/' },
+        { name: metadata.title.split(' | ')[0].split(' - ')[0], url: canonicalUrl }
+      ];
+
+  const breadcrumbSchema = breadcrumbItems ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbItems.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": item.url
+    }))
+  } : null;
+
+  // FAQ schema (if tool has FAQs)
+  const faqs = toolFAQMap[slug];
+  const faqSchema = faqs && faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
+
+  // HowTo schema (for calculator tools)
+  const howToSchema = generateHowToSchemaForTool(slug as ToolType);
 
   return (
     <>
