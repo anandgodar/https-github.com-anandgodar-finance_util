@@ -78,30 +78,27 @@ export function generateMetadata({ params }: PageProps): Metadata {
     };
   }
 
-  const canonicalPath = slug === ToolType.DASHBOARD ? '/' : `/${slug}/`;
+  const canonicalPath = slug === ToolType.DASHBOARD ? '' : `${slug}/`;
 
   return {
     title: metadata.title,
     description: metadata.desc,
     keywords: metadata.keywords,
     alternates: {
-      canonical: canonicalPath
+      canonical: `https://quantcurb.com/${canonicalPath}`
     },
     openGraph: {
       title: metadata.title,
       description: metadata.desc,
-      type: 'website',
-      url: `https://quantcurb.com${canonicalPath}`,
+      url: `https://quantcurb.com/${canonicalPath}`,
       siteName: 'QuantCurb',
-      locale: 'en_US',
-      images: [
-        {
-          url: 'https://quantcurb.com/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: metadata.title
-        }
-      ]
+      type: slug === ToolType.DASHBOARD ? 'website' : 'article',
+      images: [{
+        url: 'https://quantcurb.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: metadata.title
+      }]
     },
     twitter: {
       card: 'summary_large_image',
@@ -109,75 +106,6 @@ export function generateMetadata({ params }: PageProps): Metadata {
       description: metadata.desc,
       images: ['https://quantcurb.com/og-image.png']
     }
-  };
-}
-
-function generateWebApplicationSchema(slug: string, metadata: { title: string; desc: string }) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: metadata.title,
-    description: metadata.desc,
-    applicationCategory: 'FinanceApplication',
-    operatingSystem: 'All',
-    url: `https://quantcurb.com/${slug === ToolType.DASHBOARD ? '' : slug + '/'}`,
-    author: {
-      '@type': 'Organization',
-      name: 'QuantCurb Intelligence',
-      url: 'https://quantcurb.com'
-    },
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD'
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      ratingCount: '1250',
-      bestRating: '5',
-      worstRating: '1'
-    }
-  };
-}
-
-function generateFAQSchema(faqs: Array<{ question: string; answer: string }>) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
-}
-
-function generateBreadcrumbSchema(slug: string, title: string) {
-  if (slug === ToolType.DASHBOARD) {
-    return null;
-  }
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://quantcurb.com/'
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: title,
-        item: `https://quantcurb.com/${slug}/`
-      }
-    ]
   };
 }
 
@@ -189,11 +117,28 @@ export default function ToolPage({ params }: PageProps) {
   }
 
   const metadata = TOOL_METADATA[slug];
-  const webAppSchema = generateWebApplicationSchema(slug, metadata);
-  const breadcrumbSchema = generateBreadcrumbSchema(slug, metadata.title);
-  const faqs = toolFAQMap[slug];
-  const faqSchema = faqs ? generateFAQSchema(faqs) : null;
-  const howToSchema = generateHowToSchemaForTool(slug);
+  const canonicalUrl = `https://quantcurb.com/${slug === ToolType.DASHBOARD ? '' : slug + '/'}`;
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": metadata.title,
+    "description": metadata.desc,
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "url": canonicalUrl,
+    "author": {
+      "@type": "Organization",
+      "name": "QuantCurb",
+      "url": "https://quantcurb.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isAccessibleForFree": true,
+    "browserRequirements": "Requires JavaScript"
+  };
 
   return (
     <>

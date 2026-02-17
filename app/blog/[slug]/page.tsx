@@ -32,23 +32,20 @@ export function generateMetadata({ params }: PageProps): Metadata {
     title: entry.title,
     description: entry.description,
     alternates: {
-      canonical: `/blog/${params.slug}/`
+      canonical: `https://quantcurb.com/blog/${params.slug}/`
     },
     openGraph: {
       title: entry.title,
       description: entry.description,
-      type: 'article',
       url: `https://quantcurb.com/blog/${params.slug}/`,
       siteName: 'QuantCurb',
-      locale: 'en_US',
-      images: [
-        {
-          url: 'https://quantcurb.com/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: entry.title
-        }
-      ]
+      type: 'article',
+      images: [{
+        url: 'https://quantcurb.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: entry.title
+      }]
     },
     twitter: {
       card: 'summary_large_image',
@@ -56,77 +53,6 @@ export function generateMetadata({ params }: PageProps): Metadata {
       description: entry.description,
       images: ['https://quantcurb.com/og-image.png']
     }
-  };
-}
-
-function generateBlogPostSchema(slug: string, title: string, description: string) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: title,
-    description: description,
-    url: `https://quantcurb.com/blog/${slug}/`,
-    datePublished: '2025-01-15T08:00:00+00:00',
-    dateModified: '2025-01-26T08:00:00+00:00',
-    author: {
-      '@type': 'Organization',
-      name: 'QuantCurb',
-      url: 'https://quantcurb.com'
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'QuantCurb',
-      url: 'https://quantcurb.com',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://quantcurb.com/og-image.png',
-        width: 1200,
-        height: 630
-      }
-    },
-    image: {
-      '@type': 'ImageObject',
-      url: 'https://quantcurb.com/og-image.png',
-      width: 1200,
-      height: 630
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://quantcurb.com/blog/${slug}/`
-    },
-    inLanguage: 'en-US',
-    isPartOf: {
-      '@type': 'Blog',
-      name: 'QuantCurb Financial Planning Blog',
-      url: 'https://quantcurb.com/blog/'
-    }
-  };
-}
-
-function generateBreadcrumbSchema(slug: string, title: string) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://quantcurb.com/'
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Blog',
-        item: 'https://quantcurb.com/blog/'
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: title,
-        item: `https://quantcurb.com/blog/${slug}/`
-      }
-    ]
   };
 }
 
