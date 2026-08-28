@@ -48,7 +48,7 @@ const AuthorBio: React.FC<AuthorBioProps> = ({ variant = 'full' }) => {
           </p>
           <p className="text-slate-700 text-lg leading-relaxed mb-4">
             QuantCurb was born from a simple premise: <em>why should sophisticated financial modeling be locked behind a Wall Street login?</em>
-            Every calculator on this site runs on exact formulas — precise amortization, marginal tax brackets, compound interest — sourced
+            Our tax and lending calculators run on exact formulas — precise amortization, marginal tax brackets, compound interest — sourced
             directly from the IRS, Federal Reserve, and state tax tables, designed for your daily
             financial decisions—mortgages, taxes, retirement planning, and wealth optimization.
           </p>

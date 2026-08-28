@@ -58,7 +58,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
           Institutional <span className="text-indigo-600">Financial Modeling</span> <br/>for Daily Wealth.
         </h1>
         <p className="mt-6 md:mt-8 text-base sm:text-lg md:text-2xl text-slate-500 leading-relaxed font-medium max-w-3xl">
-          QuantCurb runs the exact formulas — precise amortization, marginal tax brackets, compound interest — sourced from the IRS, Federal Reserve, and state tax authorities. Compare mortgage payments, track net worth,
+          Our tax and lending calculators run on the exact formulas — precise amortization, marginal tax brackets, compound interest — sourced from the IRS, Federal Reserve, and state tax authorities. Compare mortgage payments, track net worth,
           calculate take-home pay, and project investment growth with professional-grade financial calculators.
         </p>
         <div className="flex gap-4 mt-10">

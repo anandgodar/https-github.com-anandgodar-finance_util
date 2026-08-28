@@ -11,7 +11,7 @@ const AboutUs: React.FC = () => {
           <span className="px-4 py-1.5 bg-indigo-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest">Our DNA</span>
           <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-tight">Institutional Logic, <br/><span className="text-indigo-600">Daily Wealth.</span></h1>
           <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed max-w-3xl">
-            QuantCurb was founded on a simple premise: Retail investors shouldn't be limited by simple math. We build our calculators on the same IRS tax tables, Federal Reserve data, and exact amortization formulas that power professional financial tools.
+            QuantCurb was founded on a simple premise: Retail investors shouldn't be limited by simple math. We build our tax and lending calculators on the same IRS tax tables, Federal Reserve data, and exact amortization formulas that power professional financial tools.
           </p>
         </div>
       </header>
@@ -63,7 +63,7 @@ const AboutUs: React.FC = () => {
             </p>
             <p className="text-slate-700 text-lg leading-relaxed mb-4">
               QuantCurb was born from a simple premise: <em>why should sophisticated financial modeling be locked behind a Wall Street login?</em>
-              Every calculator on this site runs on exact formulas — precise amortization, marginal tax brackets, compound interest — sourced
+              Our tax and lending calculators run on exact formulas — precise amortization, marginal tax brackets, compound interest — sourced
               directly from the IRS, Federal Reserve, and state tax tables, designed for your daily
               financial decisions—mortgages, taxes, retirement planning, and wealth optimization.
             </p>

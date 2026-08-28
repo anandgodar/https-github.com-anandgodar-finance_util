@@ -468,7 +468,7 @@ const LoanComparison: React.FC<LoanComparisonProps> = ({ onNavigate }) => {
           <h3 className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em] mb-4">Underwriting Verification</h3>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tight">The Quantitative <span className="text-indigo-600">Decision Matrix</span></h2>
           <p className="text-slate-500 mt-6 text-xl font-medium leading-relaxed max-w-3xl">
-            Our Prequalification engine utilizes **Reverse Amortization** and **DTI (Debt-to-Income)** limits to estimate your purchasing power using the same exact formulas professional underwriters rely on.
+            Our Prequalification engine utilizes **Reverse Amortization** and **DTI (Debt-to-Income)** limits to estimate your maximum loan amount from principal and interest alone — a starting point, not a full underwriting decision, which also weighs property tax, insurance, PMI, and HOA costs.
           </p>
         </header>
 
