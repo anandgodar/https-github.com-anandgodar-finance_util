@@ -47,8 +47,9 @@ const AuthorBio: React.FC<AuthorBioProps> = ({ variant = 'full' }) => {
             for institutional investors before realizing that retail investors deserve the same sophisticated tools.
           </p>
           <p className="text-slate-700 text-lg leading-relaxed mb-4">
-            QuantCurb was born from a simple premise: <em>why should only Wall Street have access to banking-grade financial models?</em> 
-            Every calculator on this site uses the same mathematical rigor you'd find at a Tier-1 bank, but designed for your daily 
+            QuantCurb was born from a simple premise: <em>why should sophisticated financial modeling be locked behind a Wall Street login?</em>
+            Our tax and lending calculators run on exact formulas — precise amortization, marginal tax brackets, compound interest — sourced
+            directly from the IRS, Federal Reserve, and state tax tables, designed for your daily
             financial decisions—mortgages, taxes, retirement planning, and wealth optimization.
           </p>
           <div className="flex flex-wrap gap-4 mt-6">
