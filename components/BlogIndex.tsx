@@ -669,6 +669,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "12 min",
       date: "January 2026",
       icon: "🏠"
+    },
+    {
+      id: ToolType.BLOG_W4_MULTIPLE_JOBS,
+      title: "The W-4 Multiple Jobs Worksheet, Decoded: Checkbox vs. Worksheet vs. IRS Estimator",
+      description: "Three IRS-sanctioned ways to fill out a W-4 for two incomes: checkbox, worksheet, or estimator. A decision tree with worked examples from the 2026 IRS tables.",
+      category: "Salary & Taxes",
+      readTime: "12 min",
+      date: "August 2026",
+      icon: "📝"
     }
   ];
 

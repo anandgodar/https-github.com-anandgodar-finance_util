@@ -496,6 +496,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Overview of capital gains taxes and planning.",
     keywords: "capital gains tax guide"
   },
+  [ToolType.BLOG_W4_MULTIPLE_JOBS]: {
+    title: "The W-4 Multiple Jobs Worksheet, Decoded: Checkbox vs. Worksheet vs. IRS Estimator",
+    desc: "Three IRS-sanctioned ways to fill out a W-4 for two incomes: checkbox, worksheet, or estimator. A decision tree with worked examples from the 2026 IRS tables.",
+    keywords: "w4 multiple jobs worksheet, how to fill out w4 two income household, w4 checkbox two jobs, multiple jobs worksheet w4 2026"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",

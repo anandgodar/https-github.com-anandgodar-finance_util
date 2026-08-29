@@ -348,6 +348,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_CRYPTO_WASH_SALE].title,
     description: TOOL_METADATA[ToolType.BLOG_CRYPTO_WASH_SALE].desc,
     slug: 'no-wash-sale-rule-crypto-tax-loss-harvesting'
+  },
+  'w4-multiple-jobs-worksheet-decoded': {
+    title: TOOL_METADATA[ToolType.BLOG_W4_MULTIPLE_JOBS].title,
+    description: TOOL_METADATA[ToolType.BLOG_W4_MULTIPLE_JOBS].desc,
+    slug: 'w4-multiple-jobs-worksheet-decoded'
   }
 };
 
