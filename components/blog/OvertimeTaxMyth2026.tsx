@@ -77,9 +77,9 @@ const OvertimeTaxMyth2026: React.FC<BlogProps> = ({ onNavigate }) => {
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
-              <h3 className="font-bold text-slate-900 text-lg mb-2">See your real take-home pay</h3>
+              <h3 className="font-bold text-slate-900 text-lg mb-2">See your real effective tax rate</h3>
               <p className="text-sm text-slate-600">
-                Model a paycheck with overtime hours against your actual annual income and filing status.
+                Add your overtime earnings to your annual gross and see your true effective tax rate — separate from what any one paycheck withholds.
               </p>
             </div>
             <button
@@ -98,9 +98,10 @@ const OvertimeTaxMyth2026: React.FC<BlogProps> = ({ onNavigate }) => {
           <li><button onClick={() => scrollToSection('the-myth')} className="text-indigo-600 hover:underline">1. The myth: overtime has its own tax rate</button></li>
           <li><button onClick={() => scrollToSection('annualizing')} className="text-indigo-600 hover:underline">2. Why withholding spikes: the annualizing effect</button></li>
           <li><button onClick={() => scrollToSection('worked-example')} className="text-indigo-600 hover:underline">3. Worked example: $26/hr with 12 hours of overtime</button></li>
-          <li><button onClick={() => scrollToSection('bonus-vs-overtime')} className="text-indigo-600 hover:underline">4. How this differs from bonus withholding</button></li>
-          <li><button onClick={() => scrollToSection('reconciliation')} className="text-indigo-600 hover:underline">5. How it reconciles at tax time</button></li>
-          <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">6. FAQ</button></li>
+          <li><button onClick={() => scrollToSection('qualified-deduction')} className="text-indigo-600 hover:underline">4. The 2025-2028 &quot;no tax on overtime&quot; deduction</button></li>
+          <li><button onClick={() => scrollToSection('bonus-vs-overtime')} className="text-indigo-600 hover:underline">5. How this differs from bonus withholding</button></li>
+          <li><button onClick={() => scrollToSection('reconciliation')} className="text-indigo-600 hover:underline">6. How it reconciles at tax time</button></li>
+          <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">7. FAQ</button></li>
         </ol>
       </nav>
 
@@ -119,13 +120,16 @@ const OvertimeTaxMyth2026: React.FC<BlogProps> = ({ onNavigate }) => {
         <section id="annualizing" className="space-y-6">
           <h2 className="text-3xl font-black text-slate-900">Why withholding spikes: the annualizing effect</h2>
           <p className="text-lg text-slate-700 leading-relaxed">
-            Unlike a bonus (which employers can withhold using a flat 22% supplemental rate), overtime pay is
-            regular wages — it runs through the same payroll withholding formula as your normal paycheck. That
-            formula works by taking whatever you were paid <em>this period</em> and annualizing it: multiplying
-            a biweekly check by 26, a weekly check by 52, and so on, to estimate what you&apos;d earn for the
-            full year <strong>if every paycheck looked like this one</strong>. When overtime inflates a single
-            check, the formula temporarily assumes you make that much every pay period — pushing more of that
-            paycheck into higher withholding brackets than your actual annual income will end up in.
+            The IRS technically classifies overtime pay as a form of <strong>supplemental wages</strong> — the
+            same category as bonuses — so employers are allowed to withhold it at a flat 22% if they pay and
+            identify it separately. In practice, most hourly workers never see that: their overtime hours are
+            baked into the same regular paycheck at time-and-a-half, and employers run the whole check through
+            the regular percentage-method withholding tables instead of splitting it out. That formula works by
+            taking whatever you were paid <em>this period</em> and annualizing it: multiplying a biweekly check
+            by 26, a weekly check by 52, and so on, to estimate what you&apos;d earn for the full year
+            <strong> if every paycheck looked like this one</strong>. When overtime inflates a single check
+            processed this way, the formula temporarily assumes you make that much every pay period — pushing
+            more of that paycheck into higher withholding brackets than your actual annual income will end up in.
           </p>
         </section>
 
@@ -178,15 +182,58 @@ const OvertimeTaxMyth2026: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
         </section>
 
+        <section id="qualified-deduction" className="space-y-6">
+          <h2 className="text-3xl font-black text-slate-900">The 2025-2028 &quot;no tax on overtime&quot; deduction</h2>
+          <p className="text-lg text-slate-700 leading-relaxed">
+            Separately from the withholding mechanics above, federal law now lets many workers deduct part of
+            their overtime pay when they file. For tax years 2025 through 2028, you can deduct the
+            <strong> overtime premium</strong> — just the extra &quot;half&quot; on top of your regular rate
+            that the Fair Labor Standards Act requires for overtime hours, not your entire overtime paycheck.
+            The deduction is capped at <strong>$12,500</strong> ($25,000 if married filing jointly) and phases
+            out above <strong>$150,000</strong> of modified adjusted gross income ($300,000 if married filing
+            jointly).
+          </p>
+          <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+            <table className="w-full">
+              <thead className="bg-slate-50">
+                <tr>
+                  <th className="text-left p-4 font-black text-slate-900">What it does</th>
+                  <th className="text-left p-4 font-black text-slate-900">What it doesn&apos;t do</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-t border-slate-100">
+                  <td className="p-4 text-slate-700">Deducts the overtime <em>premium</em> from federal taxable income, above-the-line, whether or not you itemize</td>
+                  <td className="p-4 text-slate-700">Doesn&apos;t exempt overtime from Social Security or Medicare (FICA) taxes, or from state income tax</td>
+                </tr>
+                <tr className="border-t border-slate-100">
+                  <td className="p-4 text-slate-700">Lowers what you owe when you file, claimed on Schedule 1-A</td>
+                  <td className="p-4 text-slate-700">Doesn&apos;t change how much your employer withholds from each paycheck during the year</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-lg text-slate-700 leading-relaxed">
+            That last row matters for this whole article: your paycheck&apos;s withholding still runs on the
+            annualizing logic above, with no adjustment for this deduction built in. A heavy-overtime year can
+            now mean <em>two</em> gaps between what got withheld and what you actually owe — the temporary
+            over-withholding from annualizing, and this deduction lowering your real liability further — both
+            of which only resolve when you file.
+          </p>
+        </section>
+
         <section id="bonus-vs-overtime" className="space-y-6">
           <h2 className="text-3xl font-black text-slate-900">How this differs from bonus withholding</h2>
           <p className="text-lg text-slate-700 leading-relaxed">
-            It&apos;s easy to conflate this with the &quot;bonus tax&quot; myth, but the mechanism is different.
-            Bonuses are <strong>supplemental wages</strong>, and employers may withhold a flat 22% on them
-            regardless of your bracket. Overtime is <strong>regular wages</strong> paid at a higher rate for
-            certain hours — it goes through the same percentage-method withholding as the rest of your check,
-            which is what causes the annualizing distortion above. Same underlying confusion (&quot;this got
-            taxed more&quot;), different plumbing.
+            It&apos;s easy to conflate this with the &quot;bonus tax&quot; myth, and the two really are close
+            cousins — the IRS groups both under supplemental wages. The practical difference is how they
+            usually get paid: a bonus is typically a separate, one-off payment, so employers often take the
+            simpler path and withhold a flat 22% on it regardless of your bracket. Overtime is almost always
+            folded into your regular paycheck alongside your normal hours, so employers typically withhold on
+            the combined total using the regular percentage-method tables — which is what causes the
+            annualizing distortion above, rather than a flat rate. Same underlying confusion (&quot;this got
+            taxed more&quot;), different plumbing — and if your employer does pay and identify overtime
+            separately, it can be withheld at the flat 22% rate too.
           </p>
         </section>
 
@@ -216,6 +263,10 @@ const OvertimeTaxMyth2026: React.FC<BlogProps> = ({ onNavigate }) => {
             <div>
               <h3 className="text-xl font-black text-slate-900">Will working overtime regularly push me into a higher tax bracket?</h3>
               <p className="text-lg text-slate-700">Only the income that actually falls in a higher bracket is taxed at that rate — see how marginal brackets work. Regular overtime does raise your real income and real tax bill, but through ordinary progressive taxation, not a penalty rate.</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-black text-slate-900">Is overtime pay really tax-free now?</h3>
+              <p className="text-lg text-slate-700">Not entirely. For 2025 through 2028, you can deduct the overtime premium (the extra &quot;half&quot; of time-and-a-half) up to $12,500 ($25,000 married filing jointly), subject to income phaseouts — but it&apos;s a federal income tax deduction claimed when you file, not an exemption from FICA, state tax, or paycheck withholding.</p>
             </div>
           </div>
         </section>
