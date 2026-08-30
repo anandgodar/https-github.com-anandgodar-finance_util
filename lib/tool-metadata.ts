@@ -236,6 +236,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Understand bonus withholding and actual tax owed.",
     keywords: "bonus tax, withholding vs liability"
   },
+  [ToolType.BLOG_OVERTIME_TAX]: {
+    title: "Overtime Tax Myth: Why Your Check Got Hit Harder",
+    desc: "Overtime isn't taxed higher, it's withheld higher. See why the paycheck shrinks and how it evens out at tax time.",
+    keywords: "overtime tax myth, is overtime taxed more, overtime withholding, why is overtime taxed so much"
+  },
   [ToolType.BLOG_RAISE_MOVE]: {
     title: "Raise vs Relocation: Cost of Living Comparison",
     desc: "See when a raise outweighs relocation costs.",

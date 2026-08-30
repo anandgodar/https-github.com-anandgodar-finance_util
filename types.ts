@@ -47,6 +47,7 @@ export enum ToolType {
   BLOG_TAKE_HOME_PAY = 'blog/how-to-calculate-take-home-pay-2025',
   BLOG_CA_TX_TAKE_HOME = 'blog/100k-california-vs-texas-take-home-pay',
   BLOG_BONUS_TAX = 'blog/bonus-tax-myth-withholding-vs-liability',
+  BLOG_OVERTIME_TAX = 'blog/overtime-tax-myth-withholding-vs-tax-rate',
   BLOG_RAISE_MOVE = 'blog/raise-vs-relocation-cost-of-living',
   BLOG_MAX_401K = 'blog/max-out-401k-take-home-pay',
   BLOG_GROSS_NET = 'blog/gross-vs-net-pay-paycheck-breakdown',

@@ -19,6 +19,7 @@ import ShouldIPayOffDebtOrInvest2025 from '../components/blog/ShouldIPayOffDebtO
 import HowToCalculateTakeHomePay2025 from '../components/blog/HowToCalculateTakeHomePay2025';
 import CaliforniaVsTexasTakeHome2025 from '../components/blog/CaliforniaVsTexasTakeHome2025';
 import BonusTaxMyth2025 from '../components/blog/BonusTaxMyth2025';
+import OvertimeTaxMyth2026 from '../components/blog/OvertimeTaxMyth2026';
 import RaiseWorthMoving2025 from '../components/blog/RaiseWorthMoving2025';
 import MaxOut401kTakeHome2025 from '../components/blog/MaxOut401kTakeHome2025';
 import GrossVsNetPay2025 from '../components/blog/GrossVsNetPay2025';
@@ -164,6 +165,11 @@ export const blogContent: Record<string, BlogContentEntry> = {
     title: TOOL_METADATA[ToolType.BLOG_BONUS_TAX].title,
     description: TOOL_METADATA[ToolType.BLOG_BONUS_TAX].desc,
     component: BonusTaxMyth2025
+  },
+  'overtime-tax-myth-withholding-vs-tax-rate': {
+    title: TOOL_METADATA[ToolType.BLOG_OVERTIME_TAX].title,
+    description: TOOL_METADATA[ToolType.BLOG_OVERTIME_TAX].desc,
+    component: OvertimeTaxMyth2026
   },
   'raise-vs-relocation-cost-of-living': {
     title: TOOL_METADATA[ToolType.BLOG_RAISE_MOVE].title,

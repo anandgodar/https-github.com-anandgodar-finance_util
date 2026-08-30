@@ -94,6 +94,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     description: TOOL_METADATA[ToolType.BLOG_BONUS_TAX].desc,
     slug: 'bonus-tax-myth-withholding-vs-liability'
   },
+  'overtime-tax-myth-withholding-vs-tax-rate': {
+    title: TOOL_METADATA[ToolType.BLOG_OVERTIME_TAX].title,
+    description: TOOL_METADATA[ToolType.BLOG_OVERTIME_TAX].desc,
+    slug: 'overtime-tax-myth-withholding-vs-tax-rate'
+  },
   'raise-vs-relocation-cost-of-living': {
     title: TOOL_METADATA[ToolType.BLOG_RAISE_MOVE].title,
     description: TOOL_METADATA[ToolType.BLOG_RAISE_MOVE].desc,

@@ -58,6 +58,7 @@ const ShouldIPayOffDebtOrInvest2025 = lazy(() => import('./blog/ShouldIPayOffDeb
 const HowToCalculateTakeHomePay2025 = lazy(() => import('./blog/HowToCalculateTakeHomePay2025'));
 const CaliforniaVsTexasTakeHome2025 = lazy(() => import('./blog/CaliforniaVsTexasTakeHome2025'));
 const BonusTaxMyth2025 = lazy(() => import('./blog/BonusTaxMyth2025'));
+const OvertimeTaxMyth2026 = lazy(() => import('./blog/OvertimeTaxMyth2026'));
 const RaiseWorthMoving2025 = lazy(() => import('./blog/RaiseWorthMoving2025'));
 const MaxOut401kTakeHome2025 = lazy(() => import('./blog/MaxOut401kTakeHome2025'));
 const GrossVsNetPay2025 = lazy(() => import('./blog/GrossVsNetPay2025'));
@@ -233,6 +234,7 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
         case ToolType.BLOG_TAKE_HOME_PAY: return <HowToCalculateTakeHomePay2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_CA_TX_TAKE_HOME: return <CaliforniaVsTexasTakeHome2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_BONUS_TAX: return <BonusTaxMyth2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_OVERTIME_TAX: return <OvertimeTaxMyth2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_RAISE_MOVE: return <RaiseWorthMoving2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_MAX_401K: return <MaxOut401kTakeHome2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_GROSS_NET: return <GrossVsNetPay2025 onNavigate={setActiveTool} />;
