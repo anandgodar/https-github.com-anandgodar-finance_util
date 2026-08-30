@@ -3,7 +3,7 @@ import { ToolType } from '../types';
 export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keywords: string }> = {
   [ToolType.DASHBOARD]: {
     title: "Free Financial Calculators 2025 - Mortgage, Salary, Tax & Investment Tools | QuantCurb",
-    desc: "40+ free financial calculators: mortgage payment, take-home pay, FIRE retirement, investment growth, tax estimator, net worth tracker, and more. Accurate calculations for all 50 US states.",
+    desc: "40+ free financial calculators: mortgage, take-home pay, FIRE retirement, investment growth, and tax tools. Accurate for all 50 US states.",
     keywords: "financial calculators, free calculators, mortgage calculator, salary calculator, tax calculator, investment calculator, retirement calculator, net worth calculator, take home pay calculator, emi calculator, fire calculator, compound interest calculator"
   },
   [ToolType.NET_WORTH]: {
