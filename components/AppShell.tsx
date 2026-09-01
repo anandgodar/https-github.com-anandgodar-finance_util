@@ -109,6 +109,7 @@ const ExcelModelerGuide2025 = lazy(() => import('./blog/ExcelModelerGuide2025'))
 const DividendReinvestmentGuide2025 = lazy(() => import('./blog/DividendReinvestmentGuide2025'));
 const DtiCalculatorGuide2025 = lazy(() => import('./blog/DtiCalculatorGuide2025'));
 const CryptoTaxLossHarvestingNoWashSale2025 = lazy(() => import('./blog/CryptoTaxLossHarvestingNoWashSale2025'));
+const W4MultipleJobsWorksheet2026 = lazy(() => import('./blog/W4MultipleJobsWorksheet2026'));
 const BlogIndex = lazy(() => import('./BlogIndex'));
 
 // Lazy load static pages
@@ -284,6 +285,7 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
         case ToolType.BLOG_DRIP_GUIDE: return <DividendReinvestmentGuide2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_DTI_GUIDE: return <DtiCalculatorGuide2025 onNavigate={setActiveTool} />;
         case ToolType.BLOG_CRYPTO_WASH_SALE: return <CryptoTaxLossHarvestingNoWashSale2025 onNavigate={setActiveTool} />;
+        case ToolType.BLOG_W4_MULTIPLE_JOBS: return <W4MultipleJobsWorksheet2026 onNavigate={setActiveTool} />;
         case ToolType.BLOG_INDEX: return <BlogIndex onNavigate={setActiveTool} />;
         case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
         case ToolType.METHODOLOGY: return <Methodology />;

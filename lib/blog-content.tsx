@@ -70,6 +70,7 @@ import ExcelModelerGuide2025 from '../components/blog/ExcelModelerGuide2025';
 import DividendReinvestmentGuide2025 from '../components/blog/DividendReinvestmentGuide2025';
 import DtiCalculatorGuide2025 from '../components/blog/DtiCalculatorGuide2025';
 import CryptoTaxLossHarvestingNoWashSale2025 from '../components/blog/CryptoTaxLossHarvestingNoWashSale2025';
+import W4MultipleJobsWorksheet2026 from '../components/blog/W4MultipleJobsWorksheet2026';
 import { TOOL_METADATA } from './tool-metadata';
 import { ToolType } from '../types';
 
@@ -419,6 +420,11 @@ export const blogContent: Record<string, BlogContentEntry> = {
     title: TOOL_METADATA[ToolType.BLOG_CRYPTO_WASH_SALE].title,
     description: TOOL_METADATA[ToolType.BLOG_CRYPTO_WASH_SALE].desc,
     component: CryptoTaxLossHarvestingNoWashSale2025
+  },
+  'w4-multiple-jobs-worksheet-decoded': {
+    title: TOOL_METADATA[ToolType.BLOG_W4_MULTIPLE_JOBS].title,
+    description: TOOL_METADATA[ToolType.BLOG_W4_MULTIPLE_JOBS].desc,
+    component: W4MultipleJobsWorksheet2026
   }
 };
 

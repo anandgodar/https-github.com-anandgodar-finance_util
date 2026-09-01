@@ -669,6 +669,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "12 min",
       date: "January 2026",
       icon: "🏠"
+    },
+    {
+      id: ToolType.BLOG_W4_MULTIPLE_JOBS,
+      title: "The W-4 Multiple Jobs Worksheet, Decoded: Checkbox vs. Worksheet vs. IRS Estimator",
+      description: "Decision tree for the three IRS multiple-jobs withholding methods, with worked two-income examples showing why the wrong one under- or over-withholds.",
+      category: "Salary & Taxes",
+      readTime: "11 min",
+      date: "September 2026",
+      icon: "📝"
     }
   ];
 
