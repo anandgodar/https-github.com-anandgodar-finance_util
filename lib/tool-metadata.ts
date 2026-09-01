@@ -2,8 +2,8 @@ import { ToolType } from '../types';
 
 export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keywords: string }> = {
   [ToolType.DASHBOARD]: {
-    title: "Free Financial Calculators 2025 - Mortgage, Salary, Tax & Investment Tools | QuantCurb",
-    desc: "40+ free financial calculators: mortgage payment, take-home pay, FIRE retirement, investment growth, tax estimator, net worth tracker, and more. Accurate calculations for all 50 US states.",
+    title: "Free Financial Calculators 2025 - Mortgage, Salary, Tax & Investment Tools",
+    desc: "40+ free financial calculators: mortgage payment, take-home pay, FIRE retirement, investment growth, tax estimator, net worth tracker, and more.",
     keywords: "financial calculators, free calculators, mortgage calculator, salary calculator, tax calculator, investment calculator, retirement calculator, net worth calculator, take home pay calculator, emi calculator, fire calculator, compound interest calculator"
   },
   [ToolType.NET_WORTH]: {
@@ -512,12 +512,12 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "financial faq, knowledge base"
   },
   [ToolType.METHODOLOGY]: {
-    title: "Methodology & Assumptions - QuantCurb",
+    title: "Methodology & Assumptions",
     desc: "Learn about the assumptions and data sources behind QuantCurb models.",
     keywords: "methodology, assumptions"
   },
   [ToolType.PRIVACY]: {
-    title: "Privacy Policy - QuantCurb",
+    title: "Privacy Policy",
     desc: "Read the QuantCurb privacy policy and data handling practices.",
     keywords: "privacy policy"
   },
