@@ -78,10 +78,11 @@ const W4MultipleJobsWorksheet2026: React.FC<BlogProps> = ({ onNavigate }) => {
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
-              <h3 className="font-bold text-slate-900 text-lg mb-2">See the extra withholding on your own paycheck</h3>
+              <h3 className="font-bold text-slate-900 text-lg mb-2">Model your own paycheck</h3>
               <p className="text-sm text-slate-600">
-                Run your actual combined household income through the Salary Tax Estimator to check whether
-                your current W-4 setup is under- or over-withholding.
+                The Salary Tax Estimator models one income at a time, so use it to see your own take-home pay
+                after picking the withholding option above — for the multi-job worksheet or IRS Estimator
+                numbers themselves, use the actual W-4 and irs.gov/individuals/tax-withholding-estimator.
               </p>
             </div>
             <button
