@@ -178,14 +178,25 @@ const W4MultipleJobsWorksheetDecoded2026: React.FC<BlogProps> = ({ onNavigate })
             <div className="flex gap-4 items-start">
               <span className="text-2xl font-black text-indigo-400 flex-none">2</span>
               <p className="text-slate-200">
-                <strong className="text-white">Does either job pay more than $120,000/year, or does your
-                situation change mid-year</strong> (new job, new baby, dividends, bonuses, self-employment
-                income)? If yes, the IRS itself recommends option (a), the online estimator — the lookup tables
-                used by the worksheet stop at $120,000 and don&apos;t account for outside income at all.
+                <strong className="text-white">Do two or more of your jobs each pay over $120,000/year?</strong> The
+                printed tables only support one job above that line — the &quot;Lower Paying Job&quot; column tops out
+                at $120,000, while the &quot;Higher Paying Job&quot; row goes up to $525,000+. Two jobs both over
+                $120,000 (or more than three jobs total) means the IRS routes you to Pub. 505&apos;s additional
+                tables or the online estimator instead — the printed worksheet has no cell for that combination.
+                A single job over $120,000, like the example below, is still covered.
               </p>
             </div>
             <div className="flex gap-4 items-start">
               <span className="text-2xl font-black text-indigo-400 flex-none">3</span>
+              <p className="text-slate-200">
+                <strong className="text-white">Does your situation change mid-year</strong> (new job partway
+                through the year, a new baby, dividends, bonuses, self-employment income)? The IRS&apos;s own list of
+                reasons to prefer the estimator covers exactly this — a printed table is a one-time snapshot; the
+                estimator adapts using your actual pay stubs.
+              </p>
+            </div>
+            <div className="flex gap-4 items-start">
+              <span className="text-2xl font-black text-indigo-400 flex-none">4</span>
               <p className="text-slate-200">
                 <strong className="text-white">Otherwise, compare the two salaries.</strong> A commonly used rule
                 of thumb — not the IRS&apos;s own wording, but consistent with its &quot;similar pay&quot; standard — is
@@ -263,8 +274,12 @@ const W4MultipleJobsWorksheetDecoded2026: React.FC<BlogProps> = ({ onNavigate })
           </div>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            If either paycheck comes weekly instead of biweekly, use 52 in row 4 instead of 26; monthly is 12.
-            The $8,270 figure itself doesn&apos;t change — only how it&apos;s split across paychecks.
+            Row 4 always uses the higher-paying job&apos;s own pay schedule — that&apos;s whose W-4 gets the Step 4(c)
+            entry. If the <em>higher</em>-paying job runs weekly instead of biweekly, use 52 there instead of 26;
+            monthly is 12. Using the <em>lower</em>-paying job&apos;s schedule instead — say, dividing by its 52
+            weekly paychecks when it&apos;s the $150,000 job that actually gets the entry — would spread the same
+            $8,270 across the wrong number of paychecks and under-withhold for the year. The $8,270 figure itself
+            doesn&apos;t change; only which paycheck count divides it does.
           </p>
         </section>
 
