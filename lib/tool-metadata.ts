@@ -2,7 +2,7 @@ import { ToolType } from '../types';
 
 export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keywords: string }> = {
   [ToolType.DASHBOARD]: {
-    title: "Free Financial Calculators 2025 - Mortgage, Salary, Tax & Investment Tools | QuantCurb",
+    title: "Free Financial Calculators 2025 - Mortgage, Salary, Tax & Investment Tools",
     desc: "40+ free financial calculators: mortgage, take-home pay, FIRE retirement, investment growth, and tax tools. Accurate for all 50 US states.",
     keywords: "financial calculators, free calculators, mortgage calculator, salary calculator, tax calculator, investment calculator, retirement calculator, net worth calculator, take home pay calculator, emi calculator, fire calculator, compound interest calculator"
   },
@@ -501,6 +501,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Overview of capital gains taxes and planning.",
     keywords: "capital gains tax guide"
   },
+  [ToolType.BLOG_W4_MULTIPLE_JOBS]: {
+    title: "The W-4 Multiple Jobs Worksheet, Decoded: Checkbox vs. Worksheet vs. IRS Estimator",
+    desc: "Three IRS-sanctioned ways to fill out a W-4 for two incomes: checkbox, worksheet, or estimator. A decision tree with worked examples from the 2026 IRS tables.",
+    keywords: "w4 multiple jobs worksheet, how to fill out w4 two income household, w4 checkbox two jobs, multiple jobs worksheet w4 2026"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",
@@ -512,12 +517,12 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "financial faq, knowledge base"
   },
   [ToolType.METHODOLOGY]: {
-    title: "Methodology & Assumptions - QuantCurb",
+    title: "Methodology & Assumptions",
     desc: "Learn about the assumptions and data sources behind QuantCurb models.",
     keywords: "methodology, assumptions"
   },
   [ToolType.PRIVACY]: {
-    title: "Privacy Policy - QuantCurb",
+    title: "Privacy Policy",
     desc: "Read the QuantCurb privacy policy and data handling practices.",
     keywords: "privacy policy"
   },

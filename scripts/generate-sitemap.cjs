@@ -141,6 +141,7 @@ const BLOG_POSTS = [
   'dcf-valuation-modeling-guide-2025', 'dividend-reinvestment-guide-2025',
   'dti-calculator-guide-2025', 'crypto-wash-sale-rule-tax-loss-harvesting',
   'capital-gains-tax-guide-2025', 'pay-off-debt-or-invest-2025',
+  'w4-multiple-jobs-worksheet-decoded',
 ];
 
 // State calculator types for state pages

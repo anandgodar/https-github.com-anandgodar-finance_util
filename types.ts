@@ -100,6 +100,7 @@ export enum ToolType {
   BLOG_DTI_GUIDE = 'blog/dti-calculator-guide-2025',
   BLOG_CRYPTO_WASH_SALE = 'blog/no-wash-sale-rule-crypto-tax-loss-harvesting',
   BLOG_CAPITAL_GAINS = 'blog/capital-gains-tax-guide-2025',
+  BLOG_W4_MULTIPLE_JOBS = 'blog/w4-multiple-jobs-worksheet-decoded',
   BLOG_INDEX = 'blog',
   TAX_CALCULATORS_HUB = 'tax-calculators',
   RETIREMENT_CALCULATORS_HUB = 'retirement-calculators',

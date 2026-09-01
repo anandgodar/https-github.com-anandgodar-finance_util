@@ -75,6 +75,7 @@ export const blogToCalculatorMap: Record<string, ToolType> = {
   // Default fallback for unmapped blogs
   'article-one': ToolType.DASHBOARD,
   'article-two': ToolType.DASHBOARD,
+  'w4-multiple-jobs-worksheet-decoded': ToolType.SALARY_CALC,
 };
 
 /**
