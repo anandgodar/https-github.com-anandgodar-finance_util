@@ -512,12 +512,12 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "financial faq, knowledge base"
   },
   [ToolType.METHODOLOGY]: {
-    title: "Methodology & Assumptions - QuantCurb",
+    title: "Methodology & Assumptions",
     desc: "Learn about the assumptions and data sources behind QuantCurb models.",
     keywords: "methodology, assumptions"
   },
   [ToolType.PRIVACY]: {
-    title: "Privacy Policy - QuantCurb",
+    title: "Privacy Policy",
     desc: "Read the QuantCurb privacy policy and data handling practices.",
     keywords: "privacy policy"
   },
