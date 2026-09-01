@@ -130,6 +130,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       icon: "🎁"
     },
     {
+      id: ToolType.BLOG_OVERTIME_TAX,
+      title: "Why Your Overtime Paycheck Got Hit So Hard (It's Not a Higher Tax Rate)",
+      description: "Overtime isn't taxed higher, it's withheld higher for that one paycheck. See the mechanism, a worked example, and how it reconciles at tax time.",
+      category: "Salary & Taxes",
+      readTime: "9 min",
+      date: "August 2026",
+      icon: "⏱️"
+    },
+    {
       id: ToolType.BLOG_RAISE_MOVE,
       title: "Is a $10,000 Raise Worth Moving For? The Real Cost of Relocation",
       description: "Compare taxes, relocation expenses, and cost of living to see if a $10k raise is actually a net win.",

@@ -11,6 +11,7 @@ export const blogToCalculatorMap: Record<string, ToolType> = {
   'how-to-calculate-take-home-pay-2025': ToolType.SALARY_CALC,
   '100k-california-vs-texas-take-home-pay': ToolType.SALARY_CALC,
   'bonus-tax-myth-withholding-vs-liability': ToolType.SALARY_CALC,
+  'overtime-tax-myth-withholding-vs-tax-rate': ToolType.SALARY_CALC,
   'raise-vs-relocation-cost-of-living': ToolType.SALARY_CALC,
   'max-out-401k-take-home-pay': ToolType.SALARY_CALC,
   'gross-vs-net-pay-paycheck-breakdown': ToolType.SALARY_CALC,
