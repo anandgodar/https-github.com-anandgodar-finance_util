@@ -687,6 +687,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "12 min",
       date: "August 2026",
       icon: "📝"
+    },
+    {
+      id: ToolType.BLOG_REMOTE_WORK_TAXES,
+      title: "Remote, But Taxed Where? Reciprocity, the Convenience Rule, and Double Withholding",
+      description: "Working remotely for an out-of-state employer without moving can mean two states taxing the same paycheck. Reciprocity, the convenience-of-the-employer rule, and worked examples of each.",
+      category: "Salary & Taxes",
+      readTime: "11 min",
+      date: "September 2026",
+      icon: "🗺️"
     }
   ];
 

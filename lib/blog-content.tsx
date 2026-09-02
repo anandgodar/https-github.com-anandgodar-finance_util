@@ -72,6 +72,7 @@ import DividendReinvestmentGuide2025 from '../components/blog/DividendReinvestme
 import DtiCalculatorGuide2025 from '../components/blog/DtiCalculatorGuide2025';
 import CryptoTaxLossHarvestingNoWashSale2025 from '../components/blog/CryptoTaxLossHarvestingNoWashSale2025';
 import W4MultipleJobsWorksheetDecoded2026 from '../components/blog/W4MultipleJobsWorksheetDecoded2026';
+import RemoteWorkTaxesReciprocity2026 from '../components/blog/RemoteWorkTaxesReciprocity2026';
 import { TOOL_METADATA } from './tool-metadata';
 import { ToolType } from '../types';
 
@@ -431,6 +432,11 @@ export const blogContent: Record<string, BlogContentEntry> = {
     title: TOOL_METADATA[ToolType.BLOG_W4_MULTIPLE_JOBS].title,
     description: TOOL_METADATA[ToolType.BLOG_W4_MULTIPLE_JOBS].desc,
     component: W4MultipleJobsWorksheetDecoded2026
+  },
+  'remote-work-taxes-reciprocity-convenience-rule': {
+    title: TOOL_METADATA[ToolType.BLOG_REMOTE_WORK_TAXES].title,
+    description: TOOL_METADATA[ToolType.BLOG_REMOTE_WORK_TAXES].desc,
+    component: RemoteWorkTaxesReciprocity2026
   }
 };
 
