@@ -358,6 +358,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_W4_MULTIPLE_JOBS].title,
     description: TOOL_METADATA[ToolType.BLOG_W4_MULTIPLE_JOBS].desc,
     slug: 'w4-multiple-jobs-worksheet-decoded'
+  },
+  'remote-work-taxes-reciprocity-convenience-rule': {
+    title: TOOL_METADATA[ToolType.BLOG_REMOTE_WORK_TAXES].title,
+    description: TOOL_METADATA[ToolType.BLOG_REMOTE_WORK_TAXES].desc,
+    slug: 'remote-work-taxes-reciprocity-convenience-rule'
   }
 };
 

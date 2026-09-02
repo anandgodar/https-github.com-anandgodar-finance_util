@@ -506,6 +506,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Three IRS-sanctioned ways to fill out a W-4 for two incomes: checkbox, worksheet, or estimator. A decision tree with worked examples from the 2026 IRS tables.",
     keywords: "w4 multiple jobs worksheet, how to fill out w4 two income household, w4 checkbox two jobs, multiple jobs worksheet w4 2026"
   },
+  [ToolType.BLOG_REMOTE_WORK_TAXES]: {
+    title: "Remote, But Taxed Where? Reciprocity, the Convenience Rule, and Double Withholding",
+    desc: "Working remotely for an out-of-state employer without moving can mean two states taxing the same paycheck. Reciprocity, the convenience-of-the-employer rule, and worked examples of each.",
+    keywords: "remote work state taxes reciprocity, convenience of the employer rule, double state tax withholding remote work, working remotely different state than employer taxes"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",

@@ -76,6 +76,7 @@ export const blogToCalculatorMap: Record<string, ToolType> = {
   'article-one': ToolType.DASHBOARD,
   'article-two': ToolType.DASHBOARD,
   'w4-multiple-jobs-worksheet-decoded': ToolType.SALARY_CALC,
+  'remote-work-taxes-reciprocity-convenience-rule': ToolType.SALARY_CALC,
 };
 
 /**
