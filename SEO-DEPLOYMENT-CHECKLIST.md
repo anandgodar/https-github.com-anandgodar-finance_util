@@ -29,16 +29,11 @@ This checklist ensures proper Google/Bing indexing for the 411+ pages on quantcu
 - [ ] Submit sitemap in Bing Webmaster Tools
 
 ### 3. Convert og-image.svg to og-image.png
-Social media platforms require PNG/JPG for Open Graph images.
-```bash
-# Using Inkscape (install first)
-inkscape public/og-image.svg --export-type=png --export-filename=public/og-image.png --export-width=1200 --export-height=630
-
-# Or using ImageMagick
-convert public/og-image.svg public/og-image.png
-
-# Or use online converter: https://svgtopng.com
-```
+- [x] Done — `public/og-image.png` generated via `next/og`'s `ImageResponse` (no external
+  converter needed) at 1200x630, matching the dimensions declared in the OG meta tags.
+  Every `og:image`/`twitter:image` reference across the site pointed at this file while
+  it never existed, so every social share rendered as a bare text link (confirmed via a
+  live 404 on `/og-image.png`, 2 Sep 2026).
 
 ## Post-Deployment Verification
 
