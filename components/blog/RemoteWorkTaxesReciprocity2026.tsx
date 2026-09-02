@@ -78,10 +78,11 @@ const RemoteWorkTaxesReciprocity2026: React.FC<BlogProps> = ({ onNavigate }) => 
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
-              <h3 className="font-bold text-slate-900 text-lg mb-2">Check what&apos;s actually being withheld</h3>
+              <h3 className="font-bold text-slate-900 text-lg mb-2">See your estimated liability, state by state</h3>
               <p className="text-sm text-slate-600">
-                Run your numbers through the calculator to see your state withholding before you file a form with
-                either employer or state.
+                The calculator estimates your annual state tax liability one state at a time — run it for your
+                resident state and, separately, for your employer&apos;s state to see which side of a reciprocity
+                or convenience-rule question actually has the bigger number before you file anything.
               </p>
             </div>
             <button
@@ -183,11 +184,17 @@ const RemoteWorkTaxesReciprocity2026: React.FC<BlogProps> = ({ onNavigate }) => 
             or Connecticut resident in the reverse situation, which in practice means it mainly targets New York.
           </p>
           <p className="text-lg text-slate-700 leading-relaxed">
-            &quot;Employer necessity&quot; is a real, narrow carve-out, not a technicality most remote workers can
-            claim: it generally requires the employer&apos;s own specialized equipment or facilities that don&apos;t
-            exist at the employee&apos;s home, not just a preference to skip the commute or a manager&apos;s general
-            work-from-home policy. For most people who chose to work from home in a state their employer isn&apos;t
-            in, the convenience rule treats the wages as sourced to the employer&apos;s state regardless.
+            The carve-out is a real one, but a narrow and stringent one — not a technicality most remote workers
+            can claim. New York&apos;s own &quot;bona fide employer office&quot; test, the most fully documented
+            version of it, runs the logic in the opposite direction from what people expect: the primary factor
+            asks whether the <em>home</em> office contains or sits near specialized facilities that
+            <em>can&apos;t</em> be made available at the employer&apos;s own office — not whether the employer has
+            something the home lacks. Failing that primary factor, it takes at least four secondary factors (the
+            employer requiring a home office, a genuine business purpose for it, core duties performed there, no
+            assigned desk at the employer&apos;s office, and more) plus three &quot;other&quot; factors just to
+            qualify. In practice, most people who simply chose to work from home in a state their employer isn&apos;t
+            in don&apos;t clear that bar, and the convenience rule sources their wages to the employer&apos;s state
+            regardless.
           </p>
           <p className="text-lg text-slate-700 leading-relaxed">
             That doesn&apos;t automatically mean double taxation — your resident state generally grants a{' '}
