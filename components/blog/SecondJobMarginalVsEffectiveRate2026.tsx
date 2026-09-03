@@ -126,8 +126,8 @@ const SecondJobMarginalVsEffectiveRate2026: React.FC<BlogProps> = ({ onNavigate 
         <section id="how-brackets-work" className="space-y-6">
           <h2 className="text-3xl font-black text-slate-900">Brackets tax slices of income, not all of it</h2>
           <p className="text-lg text-slate-700 leading-relaxed">
-            Using the 2025 federal brackets for a single filer (the most recently finalized IRS figures; the
-            thresholds shift a little each year for inflation, but the mechanism below doesn&apos;t change):
+            Using the 2026 federal brackets for a single filer (finalized by the IRS in Revenue Procedure 2025-32;
+            the thresholds shift a little each year for inflation, but the mechanism below doesn&apos;t change):
           </p>
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
             <table className="w-full">
@@ -138,18 +138,18 @@ const SecondJobMarginalVsEffectiveRate2026: React.FC<BlogProps> = ({ onNavigate 
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">10%</td><td className="p-4 text-slate-700">$0 – $11,925</td></tr>
-                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">12%</td><td className="p-4 text-slate-700">$11,925 – $48,475</td></tr>
-                <tr className="border-t border-slate-100"><td className="p-4 font-bold text-indigo-600">22%</td><td className="p-4 font-bold text-indigo-600">$48,475 – $103,350</td></tr>
-                <tr className="border-t border-slate-100"><td className="p-4 font-bold text-emerald-700">24%</td><td className="p-4 font-bold text-emerald-700">$103,350 – $197,300</td></tr>
-                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">32% – 37%</td><td className="p-4 text-slate-700">$197,300 and up</td></tr>
+                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">10%</td><td className="p-4 text-slate-700">$0 – $12,400</td></tr>
+                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">12%</td><td className="p-4 text-slate-700">$12,400 – $50,400</td></tr>
+                <tr className="border-t border-slate-100"><td className="p-4 font-bold text-indigo-600">22%</td><td className="p-4 font-bold text-indigo-600">$50,400 – $105,700</td></tr>
+                <tr className="border-t border-slate-100"><td className="p-4 font-bold text-emerald-700">24%</td><td className="p-4 font-bold text-emerald-700">$105,700 – $201,775</td></tr>
+                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">32% – 37%</td><td className="p-4 text-slate-700">$201,775 and up</td></tr>
               </tbody>
             </table>
           </div>
           <p className="text-lg text-slate-700 leading-relaxed">
             A single filer with $80,000 of taxable income (after the standard deduction) sits in the 22% bracket —
-            but only the portion of their income above $48,475 is actually taxed at 22%. Everything from $0 to
-            $11,925 is still taxed at 10%, and everything from $11,925 to $48,475 is still taxed at 12%, exactly
+            but only the portion of their income above $50,400 is actually taxed at 22%. Everything from $0 to
+            $12,400 is still taxed at 10%, and everything from $12,400 to $50,400 is still taxed at 12%, exactly
             as it always was. Their <strong>marginal rate</strong> (the rate on their next dollar) is 22%. Their{' '}
             <strong>effective rate</strong> (total tax ÷ total income) is much lower, because most of their income
             was taxed at the cheaper rates below it.
@@ -160,14 +160,15 @@ const SecondJobMarginalVsEffectiveRate2026: React.FC<BlogProps> = ({ onNavigate 
           <h2 className="text-3xl font-black text-slate-900">Worked example: myth vs. reality on a real second job</h2>
           <p className="text-lg text-slate-700 leading-relaxed">
             Take the scenario from the intro: a single filer earning <strong>$95,000</strong> from a primary job,
-            considering a second job paying <strong>$50,000</strong>. Standard deduction of $15,000 applies once,
-            against the combined income. Alone, the $95,000 job produces $80,000 of taxable income — squarely in
-            the 22% bracket, with a federal tax bill of <strong>$12,514</strong> (an effective rate of 13.2% on the
-            $95,000 gross).
+            considering a second job paying <strong>$50,000</strong>. The 2026 standard deduction of $16,100
+            applies once, against the combined income. Alone, the $95,000 job produces $78,900 of taxable income —
+            squarely in the 22% bracket, with a federal tax bill of <strong>$12,070</strong> (an effective rate of
+            12.7% on the $95,000 gross).
           </p>
           <p className="text-lg text-slate-700 leading-relaxed">
-            Add the $50,000 second job: combined gross is $145,000, taxable income is $130,000 — which does cross
-            into the 24% bracket, by $26,650. Here&apos;s the myth against the real number:
+            Add the $50,000 second job: combined gross is $145,000, taxable income is $128,900 — which does cross
+            into the 24% bracket, by $23,200. Here&apos;s the myth against the real number, with the standard
+            deduction applied the same way in both rows so the comparison isn&apos;t stacking two separate errors:
           </p>
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
             <table className="w-full">
@@ -180,23 +181,24 @@ const SecondJobMarginalVsEffectiveRate2026: React.FC<BlogProps> = ({ onNavigate 
               </thead>
               <tbody>
                 <tr className="border-t border-slate-100 bg-red-50">
-                  <td className="p-4 text-slate-900 font-semibold">Myth: crossing into 24% means the whole $145,000 is taxed at 24%</td>
-                  <td className="p-4 font-mono text-red-800 text-right font-bold">$34,800</td>
-                  <td className="p-4 font-mono text-red-800 text-right font-bold">$110,200</td>
+                  <td className="p-4 text-slate-900 font-semibold">Myth: crossing into 24% means all $128,900 of taxable income is taxed at 24%</td>
+                  <td className="p-4 font-mono text-red-800 text-right font-bold">$30,936</td>
+                  <td className="p-4 font-mono text-red-800 text-right font-bold">$114,064</td>
                 </tr>
                 <tr className="border-t border-slate-100 bg-emerald-50">
-                  <td className="p-4 text-slate-900 font-semibold">Reality: only the $26,650 above $103,350 is taxed at 24%; every dollar below keeps its own bracket&apos;s rate</td>
-                  <td className="p-4 font-mono text-emerald-800 text-right font-bold">$24,047</td>
-                  <td className="p-4 font-mono text-emerald-800 text-right font-bold">$120,953</td>
+                  <td className="p-4 text-slate-900 font-semibold">Reality: only the $23,200 above $105,700 is taxed at 24%; every dollar below keeps its own bracket&apos;s rate</td>
+                  <td className="p-4 font-mono text-emerald-800 text-right font-bold">$23,534</td>
+                  <td className="p-4 font-mono text-emerald-800 text-right font-bold">$121,466</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-xl">
             <p className="text-amber-900 font-semibold">
-              ⚠️ The myth overstates the tax bill by <strong>$10,753</strong> — treating the entire $145,000 as
-              though it were retroactively re-taxed at the new top rate, when in fact the original $95,000&apos;s
-              tax treatment doesn&apos;t change at all. This is the same &quot;the new rate applies to everything&quot;
+              ⚠️ The myth overstates the tax bill by <strong>$7,402</strong> — even with the standard deduction
+              applied the same way on both sides, it treats the entire $128,900 of taxable income as though it
+              were retroactively re-taxed at the new top rate, when in fact the original $78,900 of it keeps the
+              exact tax treatment it always had. This is the same &quot;the new rate applies to everything&quot;
               confusion behind the withholding myths around bonuses and overtime pay — crossing a bracket boundary
               only ever taxes the slice of income above the boundary, never the income already below it.
             </p>
@@ -214,32 +216,31 @@ const SecondJobMarginalVsEffectiveRate2026: React.FC<BlogProps> = ({ onNavigate 
               <tbody>
                 <tr className="border-b border-slate-100">
                   <td className="p-4 font-bold text-indigo-600 w-12">1</td>
-                  <td className="p-4 text-slate-700">Federal tax with just the primary job ($80,000 taxable)</td>
-                  <td className="p-4 font-mono text-slate-900 text-right">$12,514</td>
+                  <td className="p-4 text-slate-700">Federal tax with just the primary job ($78,900 taxable)</td>
+                  <td className="p-4 font-mono text-slate-900 text-right">$12,070</td>
                 </tr>
                 <tr className="border-b border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">2</td>
-                  <td className="p-4 text-slate-700">Federal tax with both jobs combined ($130,000 taxable)</td>
-                  <td className="p-4 font-mono text-slate-900 text-right">$24,047</td>
+                  <td className="p-4 text-slate-700">Federal tax with both jobs combined ($128,900 taxable)</td>
+                  <td className="p-4 font-mono text-slate-900 text-right">$23,534</td>
                 </tr>
                 <tr className="border-b border-slate-100 bg-indigo-50">
                   <td className="p-4 font-bold text-indigo-600">3</td>
                   <td className="p-4 text-slate-700">Federal tax actually caused by the second job (row 2 − row 1)</td>
-                  <td className="p-4 font-mono text-slate-900 text-right font-bold">$11,533</td>
+                  <td className="p-4 font-mono text-slate-900 text-right font-bold">$11,464</td>
                 </tr>
                 <tr className="bg-emerald-50">
                   <td className="p-4 font-bold text-emerald-700">4</td>
-                  <td className="p-4 text-slate-900 font-semibold">Take-home from the $50,000 second job ($50,000 − $11,533)</td>
-                  <td className="p-4 font-mono text-emerald-800 text-right font-bold">$38,467</td>
+                  <td className="p-4 text-slate-900 font-semibold">Take-home from the $50,000 second job ($50,000 − $11,464)</td>
+                  <td className="p-4 font-mono text-emerald-800 text-right font-bold">$38,536</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p className="text-lg text-slate-700 leading-relaxed">
-            The second job&apos;s <strong>blended federal rate</strong> comes out to 23.1% — a mix of the 22% that
-            still applies to $23,350 of it and the 24% that applies to the remaining $26,650 above the bracket
-            line — not a flat 24% on the whole $50,000, and nowhere near the myth&apos;s implied 40%+ bite on
-            &quot;everything now taxed at the new rate.&quot; This is federal income tax only: state tax, and FICA
+            The second job&apos;s <strong>blended federal rate</strong> comes out to 22.9% — a mix of the 22% that
+            still applies to $26,800 of it and the 24% that applies to the remaining $23,200 above the bracket
+            line — not a flat 24% on the whole $50,000. This is federal income tax only: state tax, and FICA
             or self-employment tax if the second job is 1099 work, are separate costs on top of this and belong in
             the full comparison before deciding.
           </p>
