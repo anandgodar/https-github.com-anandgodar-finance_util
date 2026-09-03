@@ -511,6 +511,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Working remotely for an out-of-state employer without moving can mean two states taxing the same paycheck. Reciprocity, the convenience-of-the-employer rule, and worked examples of each.",
     keywords: "remote work state taxes reciprocity, convenience of the employer rule, double state tax withholding remote work, working remotely different state than employer taxes"
   },
+  [ToolType.BLOG_SECOND_JOB_BRACKET]: {
+    title: "Second Job, Same Bracket Fear: Why Crossing a Tax Bracket Doesn't Cost What You Think",
+    desc: "Taking a second job can push your combined income into a higher tax bracket, but that doesn't mean your first job's pay gets retaxed at the new rate. A worked example and a decision framework.",
+    keywords: "marginal tax rate vs effective tax rate second job, is a second job worth it after taxes, tax bracket second job calculator, does a second job push you into a higher tax bracket"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",

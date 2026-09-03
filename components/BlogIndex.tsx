@@ -696,6 +696,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "11 min",
       date: "September 2026",
       icon: "🗺️"
+    },
+    {
+      id: ToolType.BLOG_SECOND_JOB_BRACKET,
+      title: "Second Job, Same Bracket Fear: Why Crossing a Tax Bracket Doesn't Cost What You Think",
+      description: "Taking a second job can push your combined income into a higher tax bracket, but that doesn't mean your first job's pay gets retaxed at the new rate. A worked example and a decision framework.",
+      category: "Salary & Taxes",
+      readTime: "10 min",
+      date: "September 2026",
+      icon: "⚖️"
     }
   ];
 
