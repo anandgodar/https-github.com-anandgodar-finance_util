@@ -142,6 +142,7 @@ const BLOG_POSTS = [
   'dti-calculator-guide-2025', 'no-wash-sale-rule-crypto-tax-loss-harvesting',
   'should-i-pay-off-debt-or-invest-2025',
   'w4-multiple-jobs-worksheet-decoded', 'remote-work-taxes-reciprocity-convenience-rule',
+  'second-job-marginal-vs-effective-rate',
 ];
 
 // State calculator types for state pages

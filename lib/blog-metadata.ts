@@ -363,6 +363,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_REMOTE_WORK_TAXES].title,
     description: TOOL_METADATA[ToolType.BLOG_REMOTE_WORK_TAXES].desc,
     slug: 'remote-work-taxes-reciprocity-convenience-rule'
+  },
+  'second-job-marginal-vs-effective-rate': {
+    title: TOOL_METADATA[ToolType.BLOG_SECOND_JOB_BRACKET].title,
+    description: TOOL_METADATA[ToolType.BLOG_SECOND_JOB_BRACKET].desc,
+    slug: 'second-job-marginal-vs-effective-rate'
   }
 };
 
