@@ -14,9 +14,64 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const SITE_URL = 'https://quantcurb.com';
 const TODAY = new Date().toISOString().split('T')[0];
+
+// Per-file lastmod: blog posts and academy guides each live in their own
+// component file, so we can derive a real "last changed" date from git
+// history instead of stamping every URL with today's build date (the same
+// blanket-lastmod bug already fixed on other properties in this portfolio).
+// Falls back to TODAY for anything git has no history for (e.g. a file
+// added in the same commit as this build, before it's been committed).
+const REPO_ROOT = path.join(__dirname, '..');
+const lastmodCache = {};
+function getFileLastmod(relativeFilePath) {
+  if (!relativeFilePath) return TODAY;
+  if (lastmodCache[relativeFilePath]) return lastmodCache[relativeFilePath];
+  try {
+    const date = execSync(
+      'git log -1 --format=%cd --date=short -- ' + JSON.stringify(relativeFilePath),
+      { cwd: REPO_ROOT, encoding: 'utf8' }
+    ).trim();
+    lastmodCache[relativeFilePath] = date || TODAY;
+  } catch (e) {
+    lastmodCache[relativeFilePath] = TODAY;
+  }
+  return lastmodCache[relativeFilePath];
+}
+
+// Map each blog slug -> its component source file, parsed straight out of
+// lib/blog-content.tsx so this never drifts out of sync with the real
+// slug -> component wiring.
+function buildBlogFileMap() {
+  const src = fs.readFileSync(path.join(REPO_ROOT, 'lib/blog-content.tsx'), 'utf8');
+  const compToFile = {};
+  const importRe = /import (\w+) from '\.\.\/components\/blog\/([^']+)';/g;
+  let m;
+  while ((m = importRe.exec(src))) {
+    compToFile[m[1]] = 'components/blog/' + m[2] + '.tsx';
+  }
+  const slugToFile = {};
+  const entryRe = /'([\w-]+)':\s*\{[^}]*?component:\s*(\w+)/gs;
+  while ((m = entryRe.exec(src))) {
+    const file = compToFile[m[2]];
+    if (file) slugToFile[m[1]] = file;
+  }
+  return slugToFile;
+}
+const BLOG_FILE_MAP = buildBlogFileMap();
+
+// Academy guides are one file each too, under components/academy/.
+const ACADEMY_FILE_MAP = {
+  'california-texas-take-home-comparison': 'components/academy/StateTaxComparison.tsx',
+  'dcf-valuation-complete-guide': 'components/academy/DCFGuide.tsx',
+  'iron-condor-strategy-guide': 'components/academy/IronCondorGuide.tsx',
+  'options-greeks-delta-theta-vega-gamma': 'components/academy/GreeksGuide.tsx',
+  'safe-harbor-estimated-taxes': 'components/academy/SafeHarborGuide.tsx',
+  'wacc-cost-of-capital-explained': 'components/academy/WACCGuide.tsx',
+};
 
 // All 50 US states + DC for programmatic SEO
 const ALL_STATES = [
@@ -154,10 +209,10 @@ const STATE_CALCULATOR_TYPES = [
   { prefix: '/quarterly-tax-calculator/', priority: '0.85' },
 ];
 
-function generateUrlEntry(urlPath, priority, changefreq) {
+function generateUrlEntry(urlPath, priority, changefreq, lastmod) {
   return '  <url>\n' +
          '    <loc>' + SITE_URL + urlPath + '</loc>\n' +
-         '    <lastmod>' + TODAY + '</lastmod>\n' +
+         '    <lastmod>' + (lastmod || TODAY) + '</lastmod>\n' +
          '    <changefreq>' + changefreq + '</changefreq>\n' +
          '    <priority>' + priority + '</priority>\n' +
          '  </url>';
@@ -221,14 +276,14 @@ function generateBlogSitemap() {
   // Blog index
   urls.push(generateUrlEntry('/blog/', '0.9', 'weekly'));
 
-  // Blog posts
+  // Blog posts — real per-post lastmod from the post's own file history
   BLOG_POSTS.forEach(function(post) {
-    urls.push(generateUrlEntry('/blog/' + post + '/', '0.8', 'monthly'));
+    urls.push(generateUrlEntry('/blog/' + post + '/', '0.8', 'monthly', getFileLastmod(BLOG_FILE_MAP[post])));
   });
 
-  // Academy articles
+  // Academy articles — same per-file treatment
   ACADEMY_ARTICLES.forEach(function(article) {
-    urls.push(generateUrlEntry('/academy/' + article + '/', '0.8', 'monthly'));
+    urls.push(generateUrlEntry('/academy/' + article + '/', '0.8', 'monthly', getFileLastmod(ACADEMY_FILE_MAP[article])));
   });
 
   return wrapSitemap(urls);
@@ -267,7 +322,7 @@ function generateComprehensiveSitemap() {
 
   // Academy articles
   ACADEMY_ARTICLES.forEach(function(article) {
-    urls.push(generateUrlEntry('/academy/' + article + '/', '0.8', 'monthly'));
+    urls.push(generateUrlEntry('/academy/' + article + '/', '0.8', 'monthly', getFileLastmod(ACADEMY_FILE_MAP[article])));
   });
 
   // Company pages
@@ -278,7 +333,7 @@ function generateComprehensiveSitemap() {
   // Blog index and posts
   urls.push(generateUrlEntry('/blog/', '0.9', 'weekly'));
   BLOG_POSTS.forEach(function(post) {
-    urls.push(generateUrlEntry('/blog/' + post + '/', '0.8', 'monthly'));
+    urls.push(generateUrlEntry('/blog/' + post + '/', '0.8', 'monthly', getFileLastmod(BLOG_FILE_MAP[post])));
   });
 
   // State calculator pages
