@@ -27,9 +27,28 @@ const TODAY = new Date().toISOString().split('T')[0];
 // added in the same commit as this build, before it's been committed).
 const REPO_ROOT = path.join(__dirname, '..');
 const lastmodCache = {};
+function hasUncommittedChanges(relativeFilePath) {
+  try {
+    const status = execSync(
+      'git status --porcelain -- ' + JSON.stringify(relativeFilePath),
+      { cwd: REPO_ROOT, encoding: 'utf8' }
+    ).trim();
+    return status.length > 0;
+  } catch (e) {
+    return false;
+  }
+}
 function getFileLastmod(relativeFilePath) {
   if (!relativeFilePath) return TODAY;
   if (lastmodCache[relativeFilePath]) return lastmodCache[relativeFilePath];
+  // An existing file with uncommitted changes right now (edited but not yet
+  // committed, then the sitemap regenerated) would otherwise get stamped
+  // with its *previous* commit's date, silently lagging by one cycle until
+  // the next build after the edit lands. Treat "dirty" as "changed today".
+  if (hasUncommittedChanges(relativeFilePath)) {
+    lastmodCache[relativeFilePath] = TODAY;
+    return TODAY;
+  }
   try {
     const date = execSync(
       'git log -1 --format=%cd --date=short -- ' + JSON.stringify(relativeFilePath),
