@@ -208,12 +208,16 @@ const LocalIncomeTaxByCity2026: React.FC<BlogProps> = ({ onNavigate }) => {
         </section>
 
         <section id="philadelphia" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Philadelphia's Wage Tax — it taxes where you work, not where you live</h2>
+          <h2 className="text-3xl font-black text-slate-900">Philadelphia's Wage Tax — residents owe it everywhere, nonresidents owe it where they work</h2>
           <p className="text-lg text-slate-700 leading-relaxed">
-            Philadelphia's Wage Tax is a flat percentage of gross wages, and — unlike NYC's tax — it applies to{' '}
-            <strong>both residents and nonresidents who physically work in the city</strong>, at two different rates.
-            As of 2026 the city is partway through a scheduled five-year reduction, so the rate itself changes
-            mid-year:
+            Philadelphia's Wage Tax is a flat percentage of wages, but the two rates below apply on <strong>different
+            tests</strong>, not the same one. <strong>Residents owe the resident rate on all their wages no matter
+            where they physically work</strong> — a Philadelphia resident who commutes to a New Jersey office, or
+            works fully remote for an out-of-state employer, still owes the full resident rate. <strong>Nonresidents
+            owe the lower rate only on wages from work physically performed inside city limits</strong> — a suburban
+            commuter who works in the city owes it; the same commuter working from home on a given day generally
+            doesn't, for that day's wages. As of 2026 the city is partway through a scheduled five-year reduction, so
+            the rate itself steps down mid-year:
           </p>
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
             <table className="w-full">
@@ -225,18 +229,20 @@ const LocalIncomeTaxByCity2026: React.FC<BlogProps> = ({ onNavigate }) => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">Resident</td><td className="p-4 font-mono text-slate-900">3.74%</td><td className="p-4 font-mono text-slate-900">3.735%</td></tr>
-                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">Nonresident (works in Philly, lives elsewhere)</td><td className="p-4 font-mono text-slate-900">3.43%</td><td className="p-4 font-mono text-slate-900">3.425%</td></tr>
+                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">Resident (all wages, any work location)</td><td className="p-4 font-mono text-slate-900">3.74%</td><td className="p-4 font-mono text-slate-900">3.735%</td></tr>
+                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">Nonresident (only wages from work physically performed in Philadelphia)</td><td className="p-4 font-mono text-slate-900">3.43%</td><td className="p-4 font-mono text-slate-900">3.425%</td></tr>
               </tbody>
             </table>
           </div>
           <p className="text-lg text-slate-700 leading-relaxed">
             On a <strong>$60,000</strong> salary, the gap is small in percentage terms but real in dollars: a
-            Philadelphia resident owes about <strong>$2,244/year</strong> (3.74%) in Wage Tax, while a commuter living
-            in the New Jersey or Pennsylvania suburbs but working in the city still owes about{' '}
-            <strong>$2,058/year</strong> (3.43%) — a common surprise for people who assume a city tax can&apos;t apply
-            to them because they don&apos;t live there. Both figures are on top of Pennsylvania&apos;s flat 3.07%
-            state tax and federal tax, and neither shows up in a calculator that only asks for state of residence.
+            Philadelphia <strong>resident</strong> owes about <strong>$2,244/year</strong> (3.74%) in Wage Tax on the
+            full amount regardless of where they work, while a <strong>nonresident</strong> commuter living in the
+            New Jersey or Pennsylvania suburbs who physically works in the city owes about{' '}
+            <strong>$2,058/year</strong> (3.43%) on that in-city work — a common surprise for people who assume a city
+            tax can&apos;t apply to them because they don&apos;t live there. Both figures are on top of
+            Pennsylvania&apos;s flat 3.07% state tax and federal tax, and neither shows up in a calculator that only
+            asks for state of residence.
           </p>
         </section>
 
@@ -279,32 +285,46 @@ const LocalIncomeTaxByCity2026: React.FC<BlogProps> = ({ onNavigate }) => {
             Kentucky runs local tax entirely differently again: there's no state involvement at all — each county
             sets its own <strong>occupational license fee</strong> on payroll earned within it, and 87 of Kentucky&apos;s
             120 counties currently levy one, at rates from 0.5% to 2.5% (median around 1%). Cities can layer their
-            own fee on top of the county's. Louisville/Jefferson County is a good example of how that stacks: a{' '}
-            <strong>2.2%</strong> combined rate made up of a 1.25% city/county operations fee, a 0.75% school board
-            levy, and a 0.20% transit fee. Lexington/Fayette County runs a single combined <strong>2.25%</strong> rate.
-            This is separate from — and stacks on top of — Kentucky's own state income tax, a flat rate that is
-            itself scheduled to keep declining (3.5% as of January 1, 2026, down from 4.0% the year before).
+            own fee on top of the county's, and — like Ohio's workplace/residence split above — the combined rate
+            often depends on residency, not just location. Louisville/Jefferson County is a good example: the
+            commonly-quoted <strong>2.2%</strong> rate (a 1.25% city/county operations fee, a 0.75% school board
+            levy, and a 0.20% transit fee) applies to <strong>residents</strong>; the school board component is
+            resident-only, so someone who works in Louisville Metro but lives elsewhere pays just{' '}
+            <strong>1.45%</strong>. Lexington/Fayette County runs a single combined <strong>2.25%</strong> rate that
+            doesn't carry the same resident/nonresident split. This is separate from — and stacks on top of —
+            Kentucky's own state income tax, a flat rate that is itself scheduled to keep declining (3.5% as of
+            January 1, 2026, down from 4.0% the year before).
           </p>
         </section>
 
         <section id="how-to-adjust" className="space-y-6">
           <h2 className="text-3xl font-black text-slate-900">How to adjust the calculator's output by hand</h2>
+          <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl p-6">
+            <p className="text-amber-900 font-semibold">
+              ⚠️ One more honest limitation before you subtract anything: the Salary Tax Estimator's federal
+              calculation is itself an approximation — it applies a single 2024 single-filer bracket table regardless
+              of the filing status you select, and doesn't subtract the federal standard deduction before computing
+              tax. That means the federal (and therefore net pay) figure runs especially high for married or
+              head-of-household filers, independent of local tax entirely. Treat the calculator's net pay as a
+              rough starting point, not an exact baseline, before layering the local-tax adjustment below on top of
+              it — the two are separate gaps, and closing one doesn't close the other.
+            </p>
+          </div>
           <p className="text-lg text-slate-700 leading-relaxed">
-            Until quantcurb's Salary Tax Estimator has a dedicated local-tax field, the accurate way to use it if
-            you're in one of these places is a three-step manual layer, not a guess:
+            With that caveat in mind, the local-tax layer itself is a three-step manual adjustment, not a guess:
           </p>
           <div className="space-y-4">
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-5">
               <h3 className="font-bold text-slate-900 mb-1">1. Run your federal + state number as normal</h3>
-              <p className="text-slate-700">The calculator's federal and state tax logic doesn't change based on local tax — treat that output as correct and complete for those two layers only.</p>
+              <p className="text-slate-700">Use the calculator's output as a starting estimate, not an exact figure — see the filing-status caveat above.</p>
             </div>
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-5">
               <h3 className="font-bold text-slate-900 mb-1">2. Compute the local tax separately, using your specific jurisdiction's rule</h3>
-              <p className="text-slate-700">A graduated bracket (NYC), a surcharge on state tax owed (Yonkers residents), a flat percentage of gross wages (Philadelphia, most Ohio cities, Kentucky counties), or a flat dollar fee (Denver) — match the method to the place, not a generic percentage.</p>
+              <p className="text-slate-700">A graduated bracket (NYC), a surcharge on state tax owed (Yonkers residents), a flat percentage of wages that depends on residency (Philadelphia, most Ohio cities, Kentucky counties), or a flat dollar fee (Denver) — match the method and the residency rule to the place, not a generic percentage.</p>
             </div>
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-5">
               <h3 className="font-bold text-slate-900 mb-1">3. Subtract the local amount from the calculator's take-home figure</h3>
-              <p className="text-slate-700">The calculator's net pay minus your local tax (converted to the same pay period) is your real take-home — not the calculator's number on its own, and not the local tax alone.</p>
+              <p className="text-slate-700">The calculator's net pay minus your local tax (converted to the same pay period) gets you closer to real take-home — treat the result as an estimate, not an exact number, given the federal caveat above.</p>
             </div>
           </div>
           <p className="text-lg text-slate-700 leading-relaxed">
@@ -327,7 +347,7 @@ const LocalIncomeTaxByCity2026: React.FC<BlogProps> = ({ onNavigate }) => {
             </div>
             <div>
               <h3 className="text-xl font-black text-slate-900">If I work remotely for a company based in one of these cities but never set foot there, do I owe the local tax?</h3>
-              <p className="text-lg text-slate-700">Generally no for most of these — Philadelphia's Wage Tax, Ohio's municipal taxes and Denver's OPT are tied to where the work is physically performed, not where the employer is headquartered. NYC and Yonkers residency-based taxes depend on where you live, not your employer's location. Always confirm with the specific city or agency if your situation is genuinely remote.</p>
+              <p className="text-lg text-slate-700">It depends on whether the tax is location-based or residency-based, and those are different things. Nonresident rates — Philadelphia's, most Ohio cities', Denver's OPT, Kentucky's nonresident occupational rate — are tied to where the work is physically performed, so working remotely for an out-of-state employer generally doesn't trigger them. But every resident-based tax in this piece — NYC, Yonkers' resident surcharge, Philadelphia's own resident Wage Tax, Kentucky's resident-inclusive county rate — is based on where you live, not where you or your employer are physically located, so it applies to a remote worker exactly the same as an in-office one. Always confirm with the specific city or agency for your situation.</p>
             </div>
             <div>
               <h3 className="text-xl font-black text-slate-900">Is my employer already withholding this correctly?</h3>
