@@ -516,6 +516,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Taking a second job can push your combined income into a higher tax bracket, but that doesn't mean your first job's pay gets retaxed at the new rate. A worked example and a decision framework.",
     keywords: "marginal tax rate vs effective tax rate second job, is a second job worth it after taxes, tax bracket second job calculator, does a second job push you into a higher tax bracket"
   },
+  [ToolType.BLOG_LOCAL_TAX_GAP]: {
+    title: "The Local Tax Your Paycheck Calculator Might Be Missing",
+    desc: "NYC, Yonkers, Philadelphia, Ohio's RITA cities, Denver and Kentucky's counties all tax paychecks on top of state and federal — and most calculators, including ours, only model state and federal. Real 2026 rates and the manual adjustment.",
+    keywords: "local income tax by city, nyc paycheck local tax, does my paycheck calculator include city tax, philadelphia wage tax paycheck, ohio RITA municipal tax paycheck"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",
