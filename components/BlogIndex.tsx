@@ -705,6 +705,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "10 min",
       date: "September 2026",
       icon: "⚖️"
+    },
+    {
+      id: ToolType.BLOG_LOCAL_TAX_GAP,
+      title: "The Local Tax Your Paycheck Calculator Might Be Missing",
+      description: "NYC, Yonkers, Philadelphia, Ohio's RITA/CCA cities, Denver and Kentucky's counties all tax paychecks on top of state and federal — and most calculators, including ours, only model state and federal. Real 2026 rates and the manual adjustment.",
+      category: "Salary & Taxes",
+      readTime: "11 min",
+      date: "September 2026",
+      icon: "🏙️"
     }
   ];
 
