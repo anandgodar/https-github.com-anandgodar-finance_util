@@ -516,6 +516,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Taking a second job can push your combined income into a higher tax bracket, but that doesn't mean your first job's pay gets retaxed at the new rate. A worked example and a decision framework.",
     keywords: "marginal tax rate vs effective tax rate second job, is a second job worth it after taxes, tax bracket second job calculator, does a second job push you into a higher tax bracket"
   },
+  [ToolType.BLOG_NO_TAX_ON_TIPS]: {
+    title: "No Tax on Tips, Explained With a Real Server's Paycheck",
+    desc: "The 2025-2028 federal deduction on tip income, worked through a real server's W-2 wages plus reported tips, including what it doesn't shield from FICA.",
+    keywords: "no tax on tips 2025, tip income tax deduction explained, is tip income taxed, OBBBA tips deduction"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",

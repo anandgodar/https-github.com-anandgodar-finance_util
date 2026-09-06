@@ -2,8 +2,6 @@
 
 import React from 'react';
 
-import ArticleOne from '../components/blog/ArticleOne';
-import ArticleTwo from '../components/blog/ArticleTwo';
 import MortgageCalculatorGuide2025 from '../components/blog/MortgageCalculatorGuide2025';
 import ChildTaxCreditGuide2025 from '../components/blog/ChildTaxCreditGuide2025';
 import ACAHealthInsuranceFreelancers2025 from '../components/blog/ACAHealthInsuranceFreelancers2025';
@@ -74,6 +72,7 @@ import CryptoTaxLossHarvestingNoWashSale2025 from '../components/blog/CryptoTaxL
 import W4MultipleJobsWorksheetDecoded2026 from '../components/blog/W4MultipleJobsWorksheetDecoded2026';
 import RemoteWorkTaxesReciprocity2026 from '../components/blog/RemoteWorkTaxesReciprocity2026';
 import SecondJobMarginalVsEffectiveRate2026 from '../components/blog/SecondJobMarginalVsEffectiveRate2026';
+import NoTaxOnTipsExplained2025 from '../components/blog/NoTaxOnTipsExplained2025';
 import { TOOL_METADATA } from './tool-metadata';
 import { ToolType } from '../types';
 
@@ -84,16 +83,6 @@ export type BlogContentEntry = {
 };
 
 export const blogContent: Record<string, BlogContentEntry> = {
-  'article-one': {
-    title: 'Article One: Building a Simple Budget Plan',
-    description: 'Learn the budgeting fundamentals with a simple, repeatable framework.',
-    component: ArticleOne
-  },
-  'article-two': {
-    title: 'Article Two: Smarter Savings With Automated Goals',
-    description: 'Set up automatic savings routines that help you hit your goals faster.',
-    component: ArticleTwo
-  },
   'mortgage-calculator-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_MORTGAGE_GUIDE].title,
     description: TOOL_METADATA[ToolType.BLOG_MORTGAGE_GUIDE].desc,
@@ -443,6 +432,11 @@ export const blogContent: Record<string, BlogContentEntry> = {
     title: TOOL_METADATA[ToolType.BLOG_SECOND_JOB_BRACKET].title,
     description: TOOL_METADATA[ToolType.BLOG_SECOND_JOB_BRACKET].desc,
     component: SecondJobMarginalVsEffectiveRate2026
+  },
+  'no-tax-on-tips-explained-2025': {
+    title: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].title,
+    description: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].desc,
+    component: NoTaxOnTipsExplained2025
   }
 };
 
