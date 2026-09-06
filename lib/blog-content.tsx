@@ -73,6 +73,7 @@ import W4MultipleJobsWorksheetDecoded2026 from '../components/blog/W4MultipleJob
 import RemoteWorkTaxesReciprocity2026 from '../components/blog/RemoteWorkTaxesReciprocity2026';
 import SecondJobMarginalVsEffectiveRate2026 from '../components/blog/SecondJobMarginalVsEffectiveRate2026';
 import LocalIncomeTaxByCity2026 from '../components/blog/LocalIncomeTaxByCity2026';
+import NoTaxOnTipsExplained2025 from '../components/blog/NoTaxOnTipsExplained2025';
 import { TOOL_METADATA } from './tool-metadata';
 import { ToolType } from '../types';
 
@@ -437,6 +438,11 @@ export const blogContent: Record<string, BlogContentEntry> = {
     title: TOOL_METADATA[ToolType.BLOG_LOCAL_TAX_GAP].title,
     description: TOOL_METADATA[ToolType.BLOG_LOCAL_TAX_GAP].desc,
     component: LocalIncomeTaxByCity2026
+  },
+  'no-tax-on-tips-explained-2025': {
+    title: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].title,
+    description: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].desc,
+    component: NoTaxOnTipsExplained2025
   }
 };
 

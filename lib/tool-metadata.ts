@@ -521,6 +521,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "NYC, Yonkers, Philadelphia, Ohio's RITA cities, Denver and Kentucky's counties all tax paychecks on top of state and federal — and most calculators, including ours, only model state and federal. Real 2026 rates and the manual adjustment.",
     keywords: "local income tax by city, nyc paycheck local tax, does my paycheck calculator include city tax, philadelphia wage tax paycheck, ohio RITA municipal tax paycheck"
   },
+  [ToolType.BLOG_NO_TAX_ON_TIPS]: {
+    title: "No Tax on Tips, Explained With a Real Server's Paycheck",
+    desc: "The 2025-2028 federal deduction on tip income, worked through a real server's W-2 wages plus reported tips, including what it doesn't shield from FICA.",
+    keywords: "no tax on tips 2025, tip income tax deduction explained, is tip income taxed, OBBBA tips deduction"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",
