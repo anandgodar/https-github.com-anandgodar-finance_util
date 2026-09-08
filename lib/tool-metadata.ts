@@ -516,6 +516,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Taking a second job can push your combined income into a higher tax bracket, but that doesn't mean your first job's pay gets retaxed at the new rate. A worked example and a decision framework.",
     keywords: "marginal tax rate vs effective tax rate second job, is a second job worth it after taxes, tax bracket second job calculator, does a second job push you into a higher tax bracket"
   },
+  [ToolType.BLOG_SS_REFUND]: {
+    title: "Excess Social Security Refund When You Have Two Employers",
+    desc: "Two employers can each withhold Social Security tax up to the same cap. Switch jobs mid-year and the combined excess is a real, missable refund on Schedule 3.",
+    keywords: "excess social security tax withheld, social security tax refund multiple employers, schedule 3 line 11 social security, changed jobs social security overpayment, 2026 social security wage base"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",
