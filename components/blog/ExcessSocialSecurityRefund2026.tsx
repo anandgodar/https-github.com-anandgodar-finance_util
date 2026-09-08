@@ -78,10 +78,11 @@ const ExcessSocialSecurityRefund2026: React.FC<BlogProps> = ({ onNavigate }) => 
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
-              <h3 className="font-bold text-slate-900 text-lg mb-2">Check your combined withholding</h3>
+              <h3 className="font-bold text-slate-900 text-lg mb-2">See your take-home from either job on its own</h3>
               <p className="text-sm text-slate-600">
-                Add up your total take-home across every job this year and see where you land against the 2026
-                Social Security wage base before you file.
+                The Salary Tax Calculator estimates one job&apos;s take-home pay at a time — useful for sizing up
+                each offer, but it doesn&apos;t combine multiple W-2s or apply the excess-Social-Security check
+                below. For that, add up Box 4 across your actual W-2s as this article walks through.
               </p>
             </div>
             <button
@@ -98,7 +99,7 @@ const ExcessSocialSecurityRefund2026: React.FC<BlogProps> = ({ onNavigate }) => 
         <h2 className="text-lg font-black text-slate-900 mb-4">📋 Table of Contents</h2>
         <ol className="space-y-2 text-sm">
           <li><button onClick={() => scrollToSection('the-mechanism')} className="text-indigo-600 hover:underline">1. Why this happens: employers can&apos;t see each other</button></li>
-          <li><button onClick={() => scrollToSection('worked-example')} className="text-indigo-600 hover:underline">2. Worked example: two $130,000 jobs in one year</button></li>
+          <li><button onClick={() => scrollToSection('worked-example')} className="text-indigo-600 hover:underline">2. Worked example: two $130,000 half-year stints</button></li>
           <li><button onClick={() => scrollToSection('how-to-check')} className="text-indigo-600 hover:underline">3. How to check if this happened to you</button></li>
           <li><button onClick={() => scrollToSection('how-to-claim')} className="text-indigo-600 hover:underline">4. How to claim it: Schedule 3, Line 11</button></li>
           <li><button onClick={() => scrollToSection('employer-error')} className="text-indigo-600 hover:underline">5. The one case this doesn&apos;t cover: a single employer&apos;s mistake</button></li>
@@ -116,40 +117,43 @@ const ExcessSocialSecurityRefund2026: React.FC<BlogProps> = ({ onNavigate }) => 
             the year. Medicare tax has no such cap and keeps applying to every dollar.
           </p>
           <p className="text-lg text-slate-700 leading-relaxed">
-            The catch: the cap applies <em>per employer</em>, not per person, because no employer has visibility
-            into what you earned somewhere else. If you earn $184,500 or more at a single job, that employer
-            correctly stops withholding once you hit the cap. But if you split that same income — or more —
-            across two employers in one calendar year, each one tracks its own wages against the cap
-            independently and neither stops early. The government still only owes Social Security benefits on
-            wages up to the cap, so the extra withholding across employers is a genuine overpayment, not tax
-            legitimately owed.
+            The catch: the annual cap is a per-<em>taxpayer</em> limit, but <em>withholding</em> is computed
+            independently by each employer, because no employer has visibility into what you earned somewhere
+            else. If you earn $184,500 or more at a single job, that employer correctly stops withholding once
+            you hit the cap. But if you split that same income — or more — across two employers in one calendar
+            year, each one tracks only its own wages against the cap and neither stops early on your behalf. The
+            single cap you&apos;re actually entitled to still applies to your combined wages; it&apos;s just that
+            nothing forces the two independent withholdings to add up to it, so the extra withholding across
+            employers is a genuine overpayment, not tax legitimately owed.
           </p>
         </section>
 
         <section id="worked-example" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Worked example: two $130,000 jobs in one year</h2>
+          <h2 className="text-3xl font-black text-slate-900">Worked example: two $130,000 half-year stints</h2>
           <p className="text-lg text-slate-700 leading-relaxed">
-            Say you left a job paying $130,000 a year in June and started a new one in July, also paying
-            $130,000 a year — a common mid-year move, not an edge case. Each employer withholds Social Security
-            tax on every dollar it pays you, because neither one crosses the $184,500 cap on its own:
+            Say you left a job paying $260,000 a year in June — six months in, so $130,000 actually paid — and
+            started a new one in July at the same $260,000 annual rate, also paid for six months. A common
+            mid-year move, at a high-enough salary that it actually crosses the cap. Each employer withholds
+            Social Security tax on every dollar it pays you, because neither one&apos;s own wages to you cross
+            the $184,500 cap on their own:
           </p>
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
             <table className="w-full">
               <thead className="bg-slate-50">
                 <tr>
                   <th className="text-left p-4 font-black text-slate-900">Employer</th>
-                  <th className="text-left p-4 font-black text-slate-900">Wages paid</th>
+                  <th className="text-left p-4 font-black text-slate-900">Wages actually paid</th>
                   <th className="text-left p-4 font-black text-slate-900">Social Security withheld (6.2%)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 text-slate-700 font-semibold">Employer A (Jan–Jun)</td>
+                  <td className="p-4 text-slate-700 font-semibold">Employer A ($260k/yr rate, Jan–Jun)</td>
                   <td className="p-4 text-slate-700">$130,000</td>
                   <td className="p-4 font-mono text-slate-900 text-right">$8,060</td>
                 </tr>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 text-slate-700 font-semibold">Employer B (Jul–Dec)</td>
+                  <td className="p-4 text-slate-700 font-semibold">Employer B ($260k/yr rate, Jul–Dec)</td>
                   <td className="p-4 text-slate-700">$130,000</td>
                   <td className="p-4 font-mono text-slate-900 text-right">$8,060</td>
                 </tr>
