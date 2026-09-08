@@ -74,6 +74,7 @@ import CryptoTaxLossHarvestingNoWashSale2025 from '../components/blog/CryptoTaxL
 import W4MultipleJobsWorksheetDecoded2026 from '../components/blog/W4MultipleJobsWorksheetDecoded2026';
 import RemoteWorkTaxesReciprocity2026 from '../components/blog/RemoteWorkTaxesReciprocity2026';
 import SecondJobMarginalVsEffectiveRate2026 from '../components/blog/SecondJobMarginalVsEffectiveRate2026';
+import ExcessSocialSecurityRefund2026 from '../components/blog/ExcessSocialSecurityRefund2026';
 import { TOOL_METADATA } from './tool-metadata';
 import { ToolType } from '../types';
 
@@ -443,6 +444,11 @@ export const blogContent: Record<string, BlogContentEntry> = {
     title: TOOL_METADATA[ToolType.BLOG_SECOND_JOB_BRACKET].title,
     description: TOOL_METADATA[ToolType.BLOG_SECOND_JOB_BRACKET].desc,
     component: SecondJobMarginalVsEffectiveRate2026
+  },
+  'excess-social-security-tax-refund-multiple-employers': {
+    title: TOOL_METADATA[ToolType.BLOG_SS_REFUND].title,
+    description: TOOL_METADATA[ToolType.BLOG_SS_REFUND].desc,
+    component: ExcessSocialSecurityRefund2026
   }
 };
 

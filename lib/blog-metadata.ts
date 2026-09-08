@@ -368,6 +368,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_SECOND_JOB_BRACKET].title,
     description: TOOL_METADATA[ToolType.BLOG_SECOND_JOB_BRACKET].desc,
     slug: 'second-job-marginal-vs-effective-rate'
+  },
+  'excess-social-security-tax-refund-multiple-employers': {
+    title: TOOL_METADATA[ToolType.BLOG_SS_REFUND].title,
+    description: TOOL_METADATA[ToolType.BLOG_SS_REFUND].desc,
+    slug: 'excess-social-security-tax-refund-multiple-employers'
   }
 };
 
