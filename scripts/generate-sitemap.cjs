@@ -217,6 +217,7 @@ const BLOG_POSTS = [
   'should-i-pay-off-debt-or-invest-2025',
   'w4-multiple-jobs-worksheet-decoded', 'remote-work-taxes-reciprocity-convenience-rule',
   'second-job-marginal-vs-effective-rate',
+  'local-income-tax-your-calculator-doesnt-show',
 ];
 
 // State calculator types for state pages

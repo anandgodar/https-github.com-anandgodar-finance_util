@@ -74,6 +74,8 @@ export const blogToCalculatorMap: Record<string, ToolType> = {
   'aca-health-insurance-freelancers-2025': ToolType.ACA_SUBSIDY,
   'w4-multiple-jobs-worksheet-decoded': ToolType.SALARY_CALC,
   'remote-work-taxes-reciprocity-convenience-rule': ToolType.SALARY_CALC,
+  'second-job-marginal-vs-effective-rate': ToolType.SALARY_CALC,
+  'local-income-tax-your-calculator-doesnt-show': ToolType.SALARY_CALC,
 };
 
 /**
