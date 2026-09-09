@@ -368,6 +368,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_SECOND_JOB_BRACKET].title,
     description: TOOL_METADATA[ToolType.BLOG_SECOND_JOB_BRACKET].desc,
     slug: 'second-job-marginal-vs-effective-rate'
+  },
+  'local-income-tax-by-city-2026': {
+    title: TOOL_METADATA[ToolType.BLOG_LOCAL_TAX_GAP].title,
+    description: TOOL_METADATA[ToolType.BLOG_LOCAL_TAX_GAP].desc,
+    slug: 'local-income-tax-by-city-2026'
   }
 };
 

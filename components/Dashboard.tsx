@@ -199,12 +199,12 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
            </div>
         </div>
         <div className="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-sm space-y-10 relative overflow-hidden">
-           <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-center mb-6">QuantCurb Verification Framework</h4>
+           <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-center mb-6">How We Source Our Math</h4>
            <div className="space-y-4 relative z-10">
               {[
-                { label: 'Reducing Balance Algorithm', status: 'VERIFIED', color: 'text-emerald-500' },
-                { label: 'US Tax Code 2024 Compliance', status: 'AUDITED', color: 'text-indigo-500' },
-                { label: 'Compounding Logic Precision', status: '100% ACCURATE', color: 'text-sky-500' },
+                { label: 'Reducing Balance Algorithm', status: 'STANDARD FORMULA', color: 'text-emerald-500' },
+                { label: 'US Tax Code 2024 Compliance', status: 'IRS-SOURCED', color: 'text-indigo-500' },
+                { label: 'Compounding Logic Precision', status: 'SELF-TESTED', color: 'text-sky-500' },
                 { label: 'Real-time Sentiment Engine', status: 'STABLE', color: 'text-indigo-600' }
               ].map((item, i) => (
                 <div key={i} className="flex justify-between items-center p-6 bg-slate-50 rounded-3xl group hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-slate-100">
@@ -213,6 +213,12 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
                 </div>
               ))}
            </div>
+           <button
+             onClick={() => onSelectTool(ToolType.METHODOLOGY)}
+             className="relative z-10 w-full text-center text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-indigo-600 transition-colors underline decoration-dotted underline-offset-4"
+           >
+             See our full data sources &amp; assumptions
+           </button>
            <div className="absolute -right-10 -top-10 text-[180px] font-black text-slate-50/50 pointer-events-none select-none -rotate-12">
              TRUST
            </div>
