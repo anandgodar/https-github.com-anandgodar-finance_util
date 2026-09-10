@@ -368,6 +368,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].title,
     description: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].desc,
     slug: 'no-tax-on-tips-explained-2025'
+  },
+  'excess-social-security-tax-refund-multiple-employers': {
+    title: TOOL_METADATA[ToolType.BLOG_SS_REFUND].title,
+    description: TOOL_METADATA[ToolType.BLOG_SS_REFUND].desc,
+    slug: 'excess-social-security-tax-refund-multiple-employers'
   }
 };
 

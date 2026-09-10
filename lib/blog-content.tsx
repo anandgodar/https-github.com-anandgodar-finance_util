@@ -74,6 +74,7 @@ import RemoteWorkTaxesReciprocity2026 from '../components/blog/RemoteWorkTaxesRe
 import SecondJobMarginalVsEffectiveRate2026 from '../components/blog/SecondJobMarginalVsEffectiveRate2026';
 import LocalIncomeTaxByCity2026 from '../components/blog/LocalIncomeTaxByCity2026';
 import NoTaxOnTipsExplained2025 from '../components/blog/NoTaxOnTipsExplained2025';
+import ExcessSocialSecurityRefund2026 from '../components/blog/ExcessSocialSecurityRefund2026';
 import { TOOL_METADATA } from './tool-metadata';
 import { ToolType } from '../types';
 
@@ -443,6 +444,11 @@ export const blogContent: Record<string, BlogContentEntry> = {
     title: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].title,
     description: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].desc,
     component: NoTaxOnTipsExplained2025
+  },
+  'excess-social-security-tax-refund-multiple-employers': {
+    title: TOOL_METADATA[ToolType.BLOG_SS_REFUND].title,
+    description: TOOL_METADATA[ToolType.BLOG_SS_REFUND].desc,
+    component: ExcessSocialSecurityRefund2026
   }
 };
 

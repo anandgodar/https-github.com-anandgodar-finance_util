@@ -723,6 +723,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "8 min",
       date: "September 2026",
       icon: "💵"
+    },
+    {
+      id: ToolType.BLOG_SS_REFUND,
+      title: "Changed Jobs Mid-Year? You Might Be Owed a Social Security Refund",
+      description: "Each employer withholds Social Security tax up to the same annual cap, independently of each other. Switch jobs mid-year and the combined excess is a real, missable refund on Schedule 3.",
+      category: "Salary & Taxes",
+      readTime: "8 min",
+      date: "September 2026",
+      icon: "💰"
     }
   ];
 

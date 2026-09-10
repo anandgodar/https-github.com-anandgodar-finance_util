@@ -2,7 +2,7 @@ import { ToolType } from '../types';
 
 export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keywords: string }> = {
   [ToolType.DASHBOARD]: {
-    title: "Free Financial Calculators 2025 - Mortgage, Salary, Tax & Investment Tools",
+    title: "Free Financial Calculators 2026 - Mortgage & Tax",
     desc: "40+ free financial calculators: mortgage, take-home pay, FIRE retirement, investment growth, and tax tools. Accurate for all 50 US states.",
     keywords: "financial calculators, free calculators, mortgage calculator, salary calculator, tax calculator, investment calculator, retirement calculator, net worth calculator, take home pay calculator, emi calculator, fire calculator, compound interest calculator"
   },
@@ -525,6 +525,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     title: "No Tax on Tips, Explained With a Real Server's Paycheck",
     desc: "The 2025-2028 federal deduction on tip income, worked through a real server's W-2 wages plus reported tips, including what it doesn't shield from FICA.",
     keywords: "no tax on tips 2025, tip income tax deduction explained, is tip income taxed, OBBBA tips deduction"
+  },
+  [ToolType.BLOG_SS_REFUND]: {
+    title: "Excess Social Security Refund When You Have Two Employers",
+    desc: "Two employers can each withhold Social Security tax up to the same cap. Switch jobs mid-year and the combined excess is a real, missable refund on Schedule 3.",
+    keywords: "excess social security tax withheld, social security tax refund multiple employers, schedule 3 line 11 social security, changed jobs social security overpayment, 2026 social security wage base"
   },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",

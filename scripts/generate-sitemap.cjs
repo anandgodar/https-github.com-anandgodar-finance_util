@@ -218,6 +218,7 @@ const BLOG_POSTS = [
   'w4-multiple-jobs-worksheet-decoded', 'remote-work-taxes-reciprocity-convenience-rule',
   'second-job-marginal-vs-effective-rate', 'local-income-tax-by-city-2026',
   'no-tax-on-tips-explained-2025',
+  'excess-social-security-tax-refund-multiple-employers',
 ];
 
 // State calculator types for state pages
