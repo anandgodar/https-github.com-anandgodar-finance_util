@@ -216,7 +216,8 @@ const BLOG_POSTS = [
   'dti-calculator-guide-2025', 'no-wash-sale-rule-crypto-tax-loss-harvesting',
   'should-i-pay-off-debt-or-invest-2025',
   'w4-multiple-jobs-worksheet-decoded', 'remote-work-taxes-reciprocity-convenience-rule',
-  'second-job-marginal-vs-effective-rate',
+  'second-job-marginal-vs-effective-rate', 'local-income-tax-by-city-2026',
+  'no-tax-on-tips-explained-2025',
   'excess-social-security-tax-refund-multiple-employers',
 ];
 

@@ -516,6 +516,16 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Taking a second job can push your combined income into a higher tax bracket, but that doesn't mean your first job's pay gets retaxed at the new rate. A worked example and a decision framework.",
     keywords: "marginal tax rate vs effective tax rate second job, is a second job worth it after taxes, tax bracket second job calculator, does a second job push you into a higher tax bracket"
   },
+  [ToolType.BLOG_LOCAL_TAX_GAP]: {
+    title: "The Local Tax Your Paycheck Calculator Might Be Missing",
+    desc: "NYC, Yonkers, Philadelphia, Ohio's RITA cities, Denver and Kentucky's counties all tax paychecks on top of state and federal — and most calculators, including ours, only model state and federal. Real 2026 rates and the manual adjustment.",
+    keywords: "local income tax by city, nyc paycheck local tax, does my paycheck calculator include city tax, philadelphia wage tax paycheck, ohio RITA municipal tax paycheck"
+  },
+  [ToolType.BLOG_NO_TAX_ON_TIPS]: {
+    title: "No Tax on Tips, Explained With a Real Server's Paycheck",
+    desc: "The 2025-2028 federal deduction on tip income, worked through a real server's W-2 wages plus reported tips, including what it doesn't shield from FICA.",
+    keywords: "no tax on tips 2025, tip income tax deduction explained, is tip income taxed, OBBBA tips deduction"
+  },
   [ToolType.BLOG_SS_REFUND]: {
     title: "Excess Social Security Refund When You Have Two Employers",
     desc: "Two employers can each withhold Social Security tax up to the same cap. Switch jobs mid-year and the combined excess is a real, missable refund on Schedule 3.",

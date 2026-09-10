@@ -224,7 +224,7 @@ const FAQ: React.FC<FAQProps> = ({ onSelectTool }) => {
         <div className="flex-1 space-y-6 relative z-10">
           <h4 className="text-3xl font-black tracking-tight">Mathematical Trust Standards</h4>
           <p className="text-slate-400 text-lg leading-relaxed font-medium">
-            QuantCurb operates on high-precision arithmetic standards. Every tool includes a "Mathematical Foundation" section explaining the code-level logic. We utilize the <strong>Reducing Balance Amortization</strong> standard verified for banking accuracy.
+            QuantCurb operates on high-precision arithmetic standards. Every tool includes a "Mathematical Foundation" section explaining the code-level logic. We use the <strong>Reducing Balance Amortization</strong> standard — the same formula mortgage lenders use — sourced against IRS Revenue Procedure tax tables and Federal Reserve data, documented in full on our Methodology page.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
             {["APR Logic", "PITI Audit", "DTI Verification", "SWR Matrix", "FICA Tax Triage"].map(tag => (

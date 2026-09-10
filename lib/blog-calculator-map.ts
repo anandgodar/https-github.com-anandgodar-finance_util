@@ -73,11 +73,9 @@ export const blogToCalculatorMap: Record<string, ToolType> = {
   'sep-ira-vs-solo-401k-2025': ToolType.RETIREMENT_OPTIMIZER,
   'home-office-deduction-2025': ToolType.QUARTERLY_TAX,
   'aca-health-insurance-freelancers-2025': ToolType.ACA_SUBSIDY,
-  // Default fallback for unmapped blogs
-  'article-one': ToolType.DASHBOARD,
-  'article-two': ToolType.DASHBOARD,
   'w4-multiple-jobs-worksheet-decoded': ToolType.SALARY_CALC,
   'remote-work-taxes-reciprocity-convenience-rule': ToolType.SALARY_CALC,
+  'no-tax-on-tips-explained-2025': ToolType.SALARY_CALC,
 };
 
 /**
