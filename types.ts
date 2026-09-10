@@ -104,6 +104,7 @@ export enum ToolType {
   BLOG_REMOTE_WORK_TAXES = 'blog/remote-work-taxes-reciprocity-convenience-rule',
   BLOG_SECOND_JOB_BRACKET = 'blog/second-job-marginal-vs-effective-rate',
   BLOG_LOCAL_TAX_GAP = 'blog/local-income-tax-by-city-2026',
+  BLOG_NO_TAX_ON_TIPS = 'blog/no-tax-on-tips-explained-2025',
   BLOG_INDEX = 'blog',
   TAX_CALCULATORS_HUB = 'tax-calculators',
   RETIREMENT_CALCULATORS_HUB = 'retirement-calculators',

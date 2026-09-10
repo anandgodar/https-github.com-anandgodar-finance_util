@@ -714,6 +714,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "11 min",
       date: "September 2026",
       icon: "🏙️"
+    },
+    {
+      id: ToolType.BLOG_NO_TAX_ON_TIPS,
+      title: "No Tax on Tips, Explained With a Real Server's Paycheck",
+      description: "The 2025-2028 federal deduction on tip income, worked through a real server's W-2 wages plus reported tips, including what it doesn't shield from FICA.",
+      category: "Salary & Taxes",
+      readTime: "8 min",
+      date: "September 2026",
+      icon: "💵"
     }
   ];
 

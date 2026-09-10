@@ -9,16 +9,6 @@ export type BlogMetadata = {
 
 // Server-safe metadata for generateStaticParams and generateMetadata
 export const blogMetadata: Record<string, BlogMetadata> = {
-  'article-one': {
-    title: 'Article One: Building a Simple Budget Plan',
-    description: 'Learn the budgeting fundamentals with a simple, repeatable framework.',
-    slug: 'article-one'
-  },
-  'article-two': {
-    title: 'Article Two: Smarter Savings With Automated Goals',
-    description: 'Set up automatic savings routines that help you hit your goals faster.',
-    slug: 'article-two'
-  },
   'mortgage-calculator-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_MORTGAGE_GUIDE].title,
     description: TOOL_METADATA[ToolType.BLOG_MORTGAGE_GUIDE].desc,
@@ -373,6 +363,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_LOCAL_TAX_GAP].title,
     description: TOOL_METADATA[ToolType.BLOG_LOCAL_TAX_GAP].desc,
     slug: 'local-income-tax-by-city-2026'
+  },
+  'no-tax-on-tips-explained-2025': {
+    title: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].title,
+    description: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].desc,
+    slug: 'no-tax-on-tips-explained-2025'
   }
 };
 
