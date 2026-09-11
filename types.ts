@@ -106,6 +106,7 @@ export enum ToolType {
   BLOG_LOCAL_TAX_GAP = 'blog/local-income-tax-by-city-2026',
   BLOG_NO_TAX_ON_TIPS = 'blog/no-tax-on-tips-explained-2025',
   BLOG_SS_REFUND = 'blog/excess-social-security-tax-refund-multiple-employers',
+  BLOG_PAYROLL_GAP = 'blog/state-disability-paid-leave-payroll-tax-2026',
   BLOG_INDEX = 'blog',
   TAX_CALCULATORS_HUB = 'tax-calculators',
   RETIREMENT_CALCULATORS_HUB = 'retirement-calculators',

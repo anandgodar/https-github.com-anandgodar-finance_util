@@ -75,6 +75,7 @@ import SecondJobMarginalVsEffectiveRate2026 from '../components/blog/SecondJobMa
 import LocalIncomeTaxByCity2026 from '../components/blog/LocalIncomeTaxByCity2026';
 import NoTaxOnTipsExplained2025 from '../components/blog/NoTaxOnTipsExplained2025';
 import ExcessSocialSecurityRefund2026 from '../components/blog/ExcessSocialSecurityRefund2026';
+import StatePayrollTaxGap2026 from '../components/blog/StatePayrollTaxGap2026';
 import { TOOL_METADATA } from './tool-metadata';
 import { ToolType } from '../types';
 
@@ -449,6 +450,11 @@ export const blogContent: Record<string, BlogContentEntry> = {
     title: TOOL_METADATA[ToolType.BLOG_SS_REFUND].title,
     description: TOOL_METADATA[ToolType.BLOG_SS_REFUND].desc,
     component: ExcessSocialSecurityRefund2026
+  },
+  'state-disability-paid-leave-payroll-tax-2026': {
+    title: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].title,
+    description: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].desc,
+    component: StatePayrollTaxGap2026
   }
 };
 

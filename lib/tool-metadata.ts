@@ -531,6 +531,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "Two employers can each withhold Social Security tax up to the same cap. Switch jobs mid-year and the combined excess is a real, missable refund on Schedule 3.",
     keywords: "excess social security tax withheld, social security tax refund multiple employers, schedule 3 line 11 social security, changed jobs social security overpayment, 2026 social security wage base"
   },
+  [ToolType.BLOG_PAYROLL_GAP]: {
+    title: "The Payroll Tax Your Calculator Doesn't Model: State Disability & Paid Family Leave",
+    desc: "Six states withhold a separate payroll tax for disability and paid family leave insurance, on top of federal, state income tax and FICA. Real 2026 rates and wage caps for CA, NY, NJ, WA, CO and MA, with worked examples.",
+    keywords: "state disability insurance payroll tax, CASDI 2026, NY PFL rate 2026, NJ TDI FLI rate, WA Cares Fund rate, colorado FAMLI rate, massachusetts PFML rate, paycheck calculator missing state disability tax"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",
