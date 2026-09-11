@@ -11,7 +11,7 @@ const StatePayrollTaxGap2026: React.FC<BlogProps> = ({ onNavigate }) => {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "The Payroll Tax Your Calculator Doesn't Model: State Disability & Paid Family Leave",
-      "description": "Six states withhold a separate payroll tax for disability and paid family leave insurance, on top of federal, state income tax and FICA — and most paycheck calculators, including ours, don't model it. Real 2026 rates, wage caps, and worked examples for CA, NY, NJ, WA, CO and MA.",
+      "description": "At least ten states withhold a separate payroll tax for disability and paid family leave insurance, on top of federal, state income tax and FICA — and most paycheck calculators, including ours, don't model it. Real 2026 rates and wage caps for all ten, with worked examples for CA, NY, NJ, WA, CO and MA.",
       "author": {
         "@type": "Organization",
         "name": "QuantCurb"
@@ -69,19 +69,20 @@ const StatePayrollTaxGap2026: React.FC<BlogProps> = ({ onNavigate }) => {
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
-          Federal tax, state income tax and FICA are the three line items every paycheck calculator shows. In
-          six states, there&apos;s a fourth: a payroll deduction that funds state disability insurance and paid
-          family leave. It&apos;s not FICA, it&apos;s not state income tax, and most calculators — including the
-          one on this site — don&apos;t ask about it at all. If you work in California, New York, New Jersey,
-          Washington, Colorado or Massachusetts, your real take-home pay is lower than a federal-plus-state-plus-FICA
-          number suggests. Here&apos;s exactly how much, per state, with real 2026 rates.
+          Federal tax, state income tax and FICA are the three line items every paycheck calculator shows. In at
+          least ten states, there&apos;s a fourth: a payroll deduction that funds state disability insurance and
+          paid family leave. It&apos;s not FICA, it&apos;s not state income tax, and most calculators — including
+          the one on this site — don&apos;t ask about it at all. If you work in California, New York, New Jersey,
+          Washington, Colorado, Massachusetts, Connecticut, Oregon, Minnesota or Maine, your real take-home pay is
+          lower than a federal-plus-state-plus-FICA number suggests. Here&apos;s exactly how much, per state, with
+          real 2026 rates — with worked examples for the six longest-running, highest-population programs.
         </p>
 
         <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl p-6">
           <p className="text-amber-900 font-semibold">
             ⚠️ Full disclosure: quantcurb&apos;s own Salary Tax Estimator computes federal tax, state income tax
             and FICA — it does not have a field for state disability or paid-leave withholding. If you work in
-            one of the six states below, you&apos;ll need to subtract the amount yourself using the numbers in
+            one of the ten states below, you&apos;ll need to subtract the amount yourself using the numbers in
             this piece. We&apos;d rather say that plainly than let the calculator&apos;s silence read as
             &quot;nothing else is owed.&quot;
           </p>
@@ -93,7 +94,7 @@ const StatePayrollTaxGap2026: React.FC<BlogProps> = ({ onNavigate }) => {
               <h3 className="font-bold text-slate-900 text-lg mb-2">Get your federal + state + FICA number first</h3>
               <p className="text-sm text-slate-600">
                 Run your salary through the estimator for that baseline, then come back here to subtract the
-                disability/paid-leave withholding if you work in one of these six states.
+                disability/paid-leave withholding if you work in one of these ten states.
               </p>
             </div>
             <button
@@ -109,7 +110,7 @@ const StatePayrollTaxGap2026: React.FC<BlogProps> = ({ onNavigate }) => {
       <nav className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
         <h2 className="text-lg font-black text-slate-900 mb-4">📋 Table of Contents</h2>
         <ol className="space-y-2 text-sm">
-          <li><button onClick={() => scrollToSection('the-six-states')} className="text-indigo-600 hover:underline">1. The six states, and what each program is called</button></li>
+          <li><button onClick={() => scrollToSection('the-six-states')} className="text-indigo-600 hover:underline">1. Ten states, and what each program is called</button></li>
           <li><button onClick={() => scrollToSection('worked-example')} className="text-indigo-600 hover:underline">2. Worked example: the same salary in all six states</button></li>
           <li><button onClick={() => scrollToSection('wage-caps')} className="text-indigo-600 hover:underline">3. Why the gap widens at higher income — wage caps, and California's lack of one</button></li>
           <li><button onClick={() => scrollToSection('washington-two-deductions')} className="text-indigo-600 hover:underline">4. Washington is two separate deductions, not one</button></li>
@@ -120,14 +121,14 @@ const StatePayrollTaxGap2026: React.FC<BlogProps> = ({ onNavigate }) => {
 
       <article className="prose prose-lg max-w-none space-y-12">
         <section id="the-six-states" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">The six states, and what each program is called</h2>
+          <h2 className="text-3xl font-black text-slate-900">Ten states, and what each program is called</h2>
           <p className="text-lg text-slate-700 leading-relaxed">
             Most states fund disability and paid-family-leave benefits through employer-only payroll taxes, or
             don&apos;t run a state program at all — in either case, nothing comes out of your paycheck for it and
-            a calculator that skips it isn&apos;t missing anything. Six states are different: they fund some or
-            all of the program through a deduction from <strong>your</strong> wages, on top of whatever federal
-            and state income tax you already owe. All figures below are 2026 rates, sourced directly from each
-            state&apos;s own labor or tax agency.
+            a calculator that skips it isn&apos;t missing anything. At least ten states are different: they fund
+            some or all of the program through a deduction from <strong>your</strong> wages, on top of whatever
+            federal and state income tax you already owe. All figures below are 2026 rates, sourced directly from
+            each state&apos;s own labor or tax agency.
           </p>
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden overflow-x-auto">
             <table className="w-full">
@@ -146,14 +147,22 @@ const StatePayrollTaxGap2026: React.FC<BlogProps> = ({ onNavigate }) => {
                 <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">Washington</td><td className="p-4 text-slate-700">PFML + WA Cares (two separate programs)</td><td className="p-4 font-mono text-slate-900">≈0.808% + 0.58%</td><td className="p-4 font-mono text-slate-900">$184,500 / None</td></tr>
                 <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">Colorado</td><td className="p-4 text-slate-700">FAMLI</td><td className="p-4 font-mono text-slate-900">0.44%</td><td className="p-4 font-mono text-slate-900">$184,500 wages</td></tr>
                 <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">Massachusetts</td><td className="p-4 text-slate-700">PFML</td><td className="p-4 font-mono text-slate-900">up to 0.46%</td><td className="p-4 font-mono text-slate-900">$184,500 wages</td></tr>
+                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">Connecticut</td><td className="p-4 text-slate-700">CT Paid Leave (CTPL)</td><td className="p-4 font-mono text-slate-900">0.5%</td><td className="p-4 font-mono text-slate-900">$184,500 wages</td></tr>
+                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">Oregon</td><td className="p-4 text-slate-700">Paid Leave Oregon</td><td className="p-4 font-mono text-slate-900">0.6%</td><td className="p-4 font-mono text-slate-900">$184,500 wages</td></tr>
+                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">Minnesota</td><td className="p-4 text-slate-700">Minnesota Paid Leave</td><td className="p-4 font-mono text-slate-900">up to 0.44%</td><td className="p-4 font-mono text-slate-900">$185,000 wages</td></tr>
+                <tr className="border-t border-slate-100"><td className="p-4 text-slate-700">Maine</td><td className="p-4 text-slate-700">Paid Family &amp; Medical Leave</td><td className="p-4 font-mono text-slate-900">0.5%*</td><td className="p-4 font-mono text-slate-900">no published cap</td></tr>
               </tbody>
             </table>
           </div>
           <p className="text-slate-500 text-sm">
-            Rhode Island and Hawaii also run employee-funded disability programs but hadn&apos;t published final
-            2026 rates as of this writing — check ri.gov and the Hawaii DLIR directly before assuming last year&apos;s
-            number still applies. This isn&apos;t a state-by-state list of every payroll tax; it&apos;s specifically
-            the disability/paid-leave category most calculators silently skip.
+            *Maine&apos;s employee share applies at employers with 15+ workers; smaller employers may pass through
+            the full 0.5% (no employer share required there). Maine has been withholding since January 2025 even
+            though its benefits don&apos;t start paying out until May 2026 — a real deduction on paychecks now,
+            not a future one. Rhode Island and Hawaii also run employee-funded disability programs but hadn&apos;t
+            published final 2026 rates as of this writing — check ri.gov and the Hawaii DLIR directly rather than
+            assuming last year&apos;s number still applies. This isn&apos;t a state-by-state list of every payroll
+            tax; it&apos;s specifically the disability/paid-leave category most calculators silently skip, and the
+            worked examples below focus on the six longest-running, highest-population programs rather than all ten.
           </p>
         </section>
 
@@ -273,15 +282,15 @@ const StatePayrollTaxGap2026: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="space-y-4">
             <div>
               <h3 className="text-xl font-black text-slate-900">Is this the same thing as FICA?</h3>
-              <p className="text-lg text-slate-700">No. FICA (Social Security and Medicare) is a federal payroll tax that applies in every state. State disability/paid-leave withholding is a separate, state-run program that exists in only these six states (plus Rhode Island and Hawaii), and it's withheld and reported separately from FICA on your pay stub.</p>
+              <p className="text-lg text-slate-700">No. FICA (Social Security and Medicare) is a federal payroll tax that applies in every state. State disability/paid-leave withholding is a separate, state-run program that exists in at least these ten states (plus Rhode Island and Hawaii, which hadn't published final 2026 rates as of this writing), and it's withheld and reported separately from FICA on your pay stub.</p>
             </div>
             <div>
               <h3 className="text-xl font-black text-slate-900">Do I get this money back, like a tax?</h3>
-              <p className="text-lg text-slate-700">No — unlike income tax withholding, this isn't reconciled on your tax return. It's an insurance premium: you pay it whether or not you ever file a disability or paid-leave claim, the same way you don't get auto insurance premiums back for a year you didn't crash.</p>
+              <p className="text-lg text-slate-700">Usually no — it's an insurance premium, paid whether or not you ever file a claim, the same way you don't get auto insurance premiums back for a year you didn't crash. <strong>The one real exception is over-withholding across multiple employers</strong>: each employer withholds independently up to that state's cap, with no way to know what another employer already withheld you this year — the same mechanic that creates the excess-Social-Security refund covered elsewhere on this site. California's FTB lets you claim excess SDI (over 0.90% of wages from a single employer isn't eligible — that's a payroll error, not this credit) via the Excess SDI Worksheet on Form 540. New Jersey's Form NJ-2450 does the same for excess UI/WF/SWF, DI and FLI combined. A single employer simply over-withholding past the cap isn't reconciled this way — that's a payroll mistake to take up with that employer directly, not a tax-return credit.</p>
             </div>
             <div>
               <h3 className="text-xl font-black text-slate-900">Why doesn't quantcurb's calculator just add this in?</h3>
-              <p className="text-lg text-slate-700">Six different states, six different rate structures (a combined rate, two separate deductions, capped dollar amounts, capped wage bases, or no cap at all) is real scope of work to model and keep current every year as rates change — which is why this piece exists as an honest interim answer instead of the calculator silently treating "not modeled" as "zero."</p>
+              <p className="text-lg text-slate-700">Ten different states, ten different rate structures (a combined rate, two separate deductions, capped dollar amounts, capped wage bases, or no cap at all) is real scope of work to model and keep current every year as rates change — which is why this piece exists as an honest interim answer instead of the calculator silently treating "not modeled" as "zero."</p>
             </div>
             <div>
               <h3 className="text-xl font-black text-slate-900">I work in one of these states but my pay stub doesn't show a separate line for it — am I missing something?</h3>
