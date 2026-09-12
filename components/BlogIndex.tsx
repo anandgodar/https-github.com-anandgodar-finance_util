@@ -732,6 +732,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "8 min",
       date: "September 2026",
       icon: "💰"
+    },
+    {
+      id: ToolType.BLOG_PAYROLL_GAP,
+      title: "The Payroll Tax Your Calculator Doesn't Model: State Disability & Paid Family Leave",
+      description: "At least ten states withhold a separate payroll tax for disability and paid family leave insurance, on top of federal, state income tax and FICA. Real 2026 rates and wage caps for all ten, with worked examples for CA, NY, NJ, WA, CO and MA.",
+      category: "Salary & Taxes",
+      readTime: "10 min",
+      date: "September 2026",
+      icon: "🩺"
     }
   ];
 

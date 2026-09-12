@@ -373,6 +373,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_SS_REFUND].title,
     description: TOOL_METADATA[ToolType.BLOG_SS_REFUND].desc,
     slug: 'excess-social-security-tax-refund-multiple-employers'
+  },
+  'state-disability-paid-leave-payroll-tax-2026': {
+    title: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].title,
+    description: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].desc,
+    slug: 'state-disability-paid-leave-payroll-tax-2026'
   }
 };
 
