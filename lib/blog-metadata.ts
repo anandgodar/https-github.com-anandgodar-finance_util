@@ -378,6 +378,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].title,
     description: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].desc,
     slug: 'state-disability-paid-leave-payroll-tax-2026'
+  },
+  'net-worth-percentile-by-age-2026': {
+    title: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].title,
+    description: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].desc,
+    slug: 'net-worth-percentile-by-age-2026'
   }
 };
 
