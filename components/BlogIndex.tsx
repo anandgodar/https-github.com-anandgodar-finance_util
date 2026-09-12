@@ -741,6 +741,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "10 min",
       date: "September 2026",
       icon: "🩺"
+    },
+    {
+      id: ToolType.BLOG_NET_WORTH_PERCENTILE,
+      title: "Net Worth Percentile by Age: The Homeownership Gap Behind the Table",
+      description: "The Federal Reserve's own 2022 data shows homeowners had a median net worth 38x higher than renters. What the age-only percentile tables miss, and how to read your own number correctly.",
+      category: "Financial Planning",
+      readTime: "10 min",
+      date: "September 2026",
+      icon: "💎"
     }
   ];
 

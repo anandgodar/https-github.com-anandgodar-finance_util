@@ -162,20 +162,20 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
     const contrib401kAmount = (annualGross * contrib401kPercent) / 100;
     const taxableGross = Math.max(0, totalGross - contrib401kAmount - healthInsurance);
     
-    // 2024 Federal Tax Approximation (Single Filer)
+    // 2026 Federal Tax Approximation (Single Filer, Tax Foundation projected brackets)
     const fedBrackets = [
-      { limit: 11600, rate: 0.10 },
-      { limit: 47150, rate: 0.12 },
-      { limit: 100525, rate: 0.22 },
-      { limit: 191950, rate: 0.24 },
-      { limit: 243725, rate: 0.32 },
-      { limit: 609350, rate: 0.35 },
+      { limit: 12400, rate: 0.10 },
+      { limit: 50400, rate: 0.12 },
+      { limit: 105700, rate: 0.22 },
+      { limit: 201775, rate: 0.24 },
+      { limit: 256225, rate: 0.32 },
+      { limit: 640600, rate: 0.35 },
       { limit: null, rate: 0.37 }
     ];
     const fedTax = calculateProgressiveTax(taxableGross, fedBrackets);
 
-    // FICA: SS (6.2% up to $168,600) + Medicare (1.45%)
-    const fica = Math.min(totalGross, 168600) * 0.062 + totalGross * 0.0145;
+    // FICA: SS (6.2% up to $184,500) + Medicare (1.45%)
+    const fica = Math.min(totalGross, 184500) * 0.062 + totalGross * 0.0145;
     
     // State Calculation
     const stateTaxable = Math.max(0, taxableGross - stateInfo.stdDeduction);
@@ -374,7 +374,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
           "name": "What is FICA tax?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "FICA (Federal Insurance Contributions Act) includes Social Security tax (6.2% on income up to $168,600 in 2025) and Medicare tax (1.45% on all income). High earners pay an additional 0.9% Medicare tax on income above $200,000. FICA is automatically deducted from your paycheck."
+            "text": "FICA (Federal Insurance Contributions Act) includes Social Security tax (6.2% on income up to $184,500 in 2026) and Medicare tax (1.45% on all income). High earners pay an additional 0.9% Medicare tax on income above $200,000. FICA is automatically deducted from your paycheck."
           }
         },
         {
@@ -425,7 +425,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
         <div className="relative z-10 flex-1">
           <div className="flex items-center gap-3 mb-4">
              <span className="px-4 py-1.5 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg shadow-indigo-100">Tax Intelligence</span>
-             <span className="text-slate-400 font-bold text-[10px] uppercase tracking-widest">2024-2025 Filer Standard</span>
+             <span className="text-slate-400 font-bold text-[10px] uppercase tracking-widest">2026 Filer Standard</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight">
             {customTitle ? (
@@ -475,9 +475,9 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
             <strong>Deductions include:</strong>
           </p>
           <ol className="list-decimal list-inside space-y-2 text-slate-700 ml-4">
-            <li><strong>Federal Income Tax:</strong> Based on your tax bracket (10% to 37% in 2025)</li>
+            <li><strong>Federal Income Tax:</strong> Based on your tax bracket (10% to 37% in 2026)</li>
             <li><strong>State Income Tax:</strong> Varies by state (0% to 13.3% in California)</li>
-            <li><strong>FICA Taxes:</strong> Social Security (6.2% up to $168,600) + Medicare (1.45%)</li>
+            <li><strong>FICA Taxes:</strong> Social Security (6.2% up to $184,500) + Medicare (1.45%)</li>
             <li><strong>401(k) Contributions:</strong> Pre-tax retirement savings (reduces taxable income)</li>
             <li><strong>Health Insurance:</strong> Pre-tax premiums (also reduces taxable income)</li>
           </ol>
@@ -789,7 +789,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
           <h3 className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em] mb-4">Compensation Optimization Framework</h3>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tighter">The QuantCurb <span className="text-indigo-600">Net Pay Protocol</span></h2>
           <p className="text-slate-500 mt-6 text-xl font-medium leading-relaxed max-w-3xl">
-            Our multi-stage tax cascade models every dollar from gross receipt to net deposit. Accurate across all 50 states for the 2024 tax year.
+            Our multi-stage tax cascade models every dollar from gross receipt to net deposit. Accurate across all 50 states for the 2026 tax year.
           </p>
         </header>
 
@@ -824,7 +824,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
            {[
              'FICA Audit', 'Federal Bracket Triage', '401k Tax Shield', 'Effective Yield Modeling',
              'Nexus Optimization', 'Marginal Rate Analysis', 'Deduction Cascade', 'State Nexus Standard',
-             'Paycheck Calculator', 'Net Pay Estimator', '2024-2025 Tax Brackets'
+             'Paycheck Calculator', 'Net Pay Estimator', '2026 Tax Brackets'
            ].map(tag => (
              <span key={tag} className="text-[8px] font-black text-slate-400 bg-slate-50 px-3 py-1 rounded-full border border-slate-100 uppercase tracking-widest">{tag}</span>
            ))}
@@ -889,7 +889,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
           },
           {
             question: "What is FICA tax?",
-            answer: "FICA (Federal Insurance Contributions Act) includes Social Security tax (6.2% on income up to $168,600 in 2025) and Medicare tax (1.45% on all income). High earners pay an additional 0.9% Medicare tax on income above $200,000. FICA is automatically deducted from your paycheck."
+            answer: "FICA (Federal Insurance Contributions Act) includes Social Security tax (6.2% on income up to $184,500 in 2026) and Medicare tax (1.45% on all income). High earners pay an additional 0.9% Medicare tax on income above $200,000. FICA is automatically deducted from your paycheck."
           },
           {
             question: "How do state taxes affect my take-home pay?",
