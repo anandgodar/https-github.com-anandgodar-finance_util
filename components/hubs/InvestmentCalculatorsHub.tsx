@@ -10,8 +10,8 @@ const InvestmentCalculatorsHub: React.FC<InvestmentCalculatorsHubProps> = ({ onN
     const schema = {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Investment Calculators Hub - Free Investment Tools 2025",
-      "description": "Complete collection of free investment calculators for 2025. Calculate compound interest, SIP investing, dividend reinvestment, and wealth projection. All tools are free and include detailed guides.",
+      "name": "Investment Calculators Hub - Free Investment Tools 2026",
+      "description": "Complete collection of free investment calculators for 2026. Calculate compound interest, SIP investing, dividend reinvestment, and wealth projection. All tools are free and include detailed guides.",
       "url": "https://quantcurb.com/investment-calculators",
       "mainEntity": {
         "@type": "ItemList",
@@ -20,7 +20,7 @@ const InvestmentCalculatorsHub: React.FC<InvestmentCalculatorsHubProps> = ({ onN
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Investment Calculator 2025",
+            "name": "Investment Calculator 2026",
             "url": "https://quantcurb.com/wealth-investment-projector"
           },
           {
@@ -56,7 +56,7 @@ const InvestmentCalculatorsHub: React.FC<InvestmentCalculatorsHubProps> = ({ onN
   const investmentCalculators = [
     {
       id: ToolType.INVESTMENT_CALC,
-      title: 'Investment Calculator 2025',
+      title: 'Investment Calculator 2026',
       description: 'Calculate investment growth with compound interest. Includes SIP investing, dividend reinvestment (DRIP), and goal-based investing.',
       icon: '📈',
       keywords: ['Compound interest', 'SIP', 'Wealth projection', 'Goal-based']
@@ -100,10 +100,10 @@ const InvestmentCalculatorsHub: React.FC<InvestmentCalculatorsHubProps> = ({ onN
       <header className="space-y-4">
         <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Investment Tools Hub</p>
         <h1 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-          Free Investment Calculators <span className="text-indigo-600">2025</span>
+          Free Investment Calculators <span className="text-indigo-600">2026</span>
         </h1>
         <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
-          Complete collection of free investment calculators for 2025. Calculate compound interest, SIP investing, dividend reinvestment, and wealth projection. All tools are free, accurate, and include comprehensive guides.
+          Complete collection of free investment calculators for 2026. Calculate compound interest, SIP investing, dividend reinvestment, and wealth projection. All tools are free, accurate, and include comprehensive guides.
         </p>
       </header>
 
@@ -158,10 +158,10 @@ const InvestmentCalculatorsHub: React.FC<InvestmentCalculatorsHubProps> = ({ onN
         <h2 className="text-2xl font-black text-slate-900 mb-6">About Our Investment Calculators</h2>
         <div className="prose prose-slate max-w-none space-y-4 text-slate-700">
           <p>
-            QuantCurb provides free, accurate investment calculators for 2025. Our investment tools help you project wealth growth, understand compound interest, plan SIP investments, and calculate your path to financial independence.
+            QuantCurb provides free, accurate investment calculators for 2026. Our investment tools help you project wealth growth, understand compound interest, plan SIP investments, and calculate your path to financial independence.
           </p>
           <p>
-            All calculators use institutional-grade compound interest formulas and support various investment strategies including SIP (Systematic Investment Plans), dividend reinvestment (DRIP), and goal-based investing.
+            All calculators use exact compound interest formulas and support various investment strategies including SIP (Systematic Investment Plans), dividend reinvestment (DRIP), and goal-based investing.
           </p>
           <p>
             <strong>Key Features:</strong>
