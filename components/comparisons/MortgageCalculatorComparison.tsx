@@ -11,8 +11,8 @@ const MortgageCalculatorComparison: React.FC<MortgageCalculatorComparisonProps> 
     const schema = {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "Best Mortgage Calculator 2025: Complete Comparison Guide",
-      "description": "Compare the best mortgage calculators in 2025. Review QuantCurb, Bankrate, Zillow, and other top tools with PITI, PMI, and property tax calculations.",
+      "headline": "Best Mortgage Calculator 2026: Complete Comparison Guide",
+      "description": "Compare the best mortgage calculators in 2026. Review QuantCurb, Bankrate, Zillow, and other top tools with PITI, PMI, and property tax calculations.",
       "author": {
         "@type": "Organization",
         "name": "QuantCurb"
@@ -57,7 +57,7 @@ const MortgageCalculatorComparison: React.FC<MortgageCalculatorComparisonProps> 
         'Free, no sign-up required',
         'Mobile-friendly'
       ],
-      pros: ['Most comprehensive', 'All 50 states', 'No registration', 'Institutional-grade accuracy'],
+      pros: ['Most comprehensive', 'All 50 states', 'No registration', 'Exact reducing-balance amortization'],
       cons: ['Newer platform'],
       bestFor: 'First-time homebuyers, refinancers, all 50 states'
     },
@@ -108,10 +108,10 @@ const MortgageCalculatorComparison: React.FC<MortgageCalculatorComparisonProps> 
       <header className="space-y-4">
         <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Calculator Comparison</p>
         <h1 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-          Best Mortgage Calculator <span className="text-indigo-600">2025</span>: Complete Comparison
+          Best Mortgage Calculator <span className="text-indigo-600">2026</span>: Complete Comparison
         </h1>
         <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
-          Compare the best mortgage calculators in 2025. We've tested QuantCurb, Bankrate, Zillow, NerdWallet, and other top tools to help you find the perfect mortgage calculator for your needs.
+          Compare the best mortgage calculators in 2026. We've tested QuantCurb, Bankrate, Zillow, NerdWallet, and other top tools to help you find the perfect mortgage calculator for your needs.
         </p>
       </header>
 
@@ -260,7 +260,7 @@ const MortgageCalculatorComparison: React.FC<MortgageCalculatorComparisonProps> 
       <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-12 text-white">
         <h2 className="text-3xl font-black mb-4">🏆 Our Top Pick: QuantCurb</h2>
         <p className="text-lg text-indigo-100 mb-6 leading-relaxed">
-          QuantCurb stands out as the best mortgage calculator for 2025 because it offers the most comprehensive features: 
+          QuantCurb stands out as the best mortgage calculator for 2026 because it offers the most comprehensive features: 
           complete PITI breakdown, PMI calculations with automatic drop detection, property tax rates for all 50 US states, 
           HOA fees, detailed amortization schedules, and it's completely free with no sign-up required.
         </p>
