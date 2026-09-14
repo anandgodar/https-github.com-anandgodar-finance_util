@@ -755,7 +755,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
         </h1>
         <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
           Expert financial guides, calculators, and insights for mortgages, taxes, retirement planning,
-          and wealth management. Learn how to make smarter financial decisions with institutional-grade tools.
+          and wealth management. Learn how to make smarter financial decisions with source-cited, formula-transparent tools.
         </p>
         <div className="flex items-center justify-center gap-4 text-sm text-slate-500">
           <span>📚 {blogPosts.length} Comprehensive Guides</span>
