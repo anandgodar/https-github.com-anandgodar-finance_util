@@ -13,7 +13,7 @@ const Methodology: React.FC = () => {
             Methodology & <span className="text-indigo-400">Assumptions</span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-300 leading-relaxed font-medium max-w-4xl">
-            Full disclosure of all data sources, tax logic, calculation methodologies, and update frequencies powering QuantCurb's institutional-grade financial modeling.
+            Full disclosure of all data sources, tax logic, calculation methodologies, and update frequencies powering QuantCurb's financial modeling.
           </p>
           <div className="mt-8 inline-block px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
             <p className="text-sm font-bold text-white">Last Updated: <span className="text-indigo-400">January 3, 2026</span></p>

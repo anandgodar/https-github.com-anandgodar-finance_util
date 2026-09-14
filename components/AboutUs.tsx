@@ -68,7 +68,7 @@ const AboutUs: React.FC = () => {
               financial decisions—mortgages, taxes, retirement planning, and wealth optimization.
             </p>
             <p className="text-slate-600 text-base leading-relaxed">
-              <strong className="font-semibold text-slate-900">Financial engineer and founder of QuantCurb.</strong> Former fintech data scientist building institutional-grade calculators for everyday wealth decisions.
+              <strong className="font-semibold text-slate-900">Financial engineer and founder of QuantCurb.</strong> Former fintech data scientist building source-cited financial calculators for everyday wealth decisions.
             </p>
           </div>
         </div>
