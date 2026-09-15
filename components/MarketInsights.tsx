@@ -138,7 +138,7 @@ const MarketInsights: React.FC = () => {
         <div className="flex-1 space-y-6 relative z-10">
           <h2 className="text-3xl font-black tracking-tighter">Algorithmic Sovereignty</h2>
           <p className="text-slate-400 text-lg leading-relaxed font-medium">
-            While professional tools provide raw data, and retail tools provide convenience, **QuantCurb** provides the intelligence bridge. We use rigorous, formula-driven math — fully documented on our Methodology page — so your retail decisions are backed by numbers you can check yourself.
+            While professional tools provide raw data, and retail tools provide convenience, **QuantCurb** provides the intelligence bridge. Your calculators run on formula-driven math, fully documented on our Methodology page. The market commentary on this page is different: it's AI-generated analysis, not a computed calculation — we're telling you that plainly rather than dressing it up as institutional-grade math.
           </p>
         </div>
         <div className="absolute -right-20 -bottom-20 text-[280px] font-black text-white/5 pointer-events-none select-none">ORACLE</div>

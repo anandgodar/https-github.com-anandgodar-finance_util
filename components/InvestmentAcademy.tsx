@@ -156,7 +156,7 @@ const InvestmentAcademy: React.FC = () => {
         <div>
           <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight">Fund <span className="text-indigo-600">Academy</span></h1>
           <p className="text-slate-500 font-medium text-lg mt-2 max-w-xl leading-relaxed">
-            Plain-English, source-cited knowledge on asset classes, risk-reward logic, and strategic allocation frameworks.
+            Plain-English, practical knowledge on asset classes, risk-reward logic, and strategic allocation frameworks.
           </p>
         </div>
         <div className="flex bg-slate-50 p-1.5 rounded-2xl border border-slate-200 shadow-inner">
