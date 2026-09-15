@@ -536,6 +536,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "At least ten states withhold a separate payroll tax for disability and paid family leave insurance, on top of federal, state income tax and FICA. Real 2026 rates and wage caps for all ten, with worked examples for CA, NY, NJ, WA, CO and MA.",
     keywords: "state disability insurance payroll tax, CASDI 2026, NY PFL rate 2026, NJ TDI FLI rate, WA Cares Fund rate, colorado FAMLI rate, massachusetts PFML rate, connecticut paid leave rate, oregon paid leave rate, minnesota paid leave rate, paycheck calculator missing state disability tax"
   },
+  [ToolType.BLOG_RSU_WITHHOLDING]: {
+    title: "The 22% RSU Withholding Trap: Why Your Vesting-Day Paycheck Feels Wrong",
+    desc: "Employers withhold a flat 22% federal rate on RSU vests, but your real marginal rate can be 24%, 32% or 35%. Two worked examples show the gap, plus how to close it before it becomes a Q4 underpayment penalty.",
+    keywords: "rsu tax withholding 22%, why is my rsu paycheck taxed so much, rsu withholding shortfall, supplemental wage withholding rate, rsu underpayment penalty"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",

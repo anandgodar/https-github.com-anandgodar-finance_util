@@ -378,6 +378,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].title,
     description: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].desc,
     slug: 'state-disability-paid-leave-payroll-tax-2026'
+  },
+  'rsu-22-percent-withholding-trap': {
+    title: TOOL_METADATA[ToolType.BLOG_RSU_WITHHOLDING].title,
+    description: TOOL_METADATA[ToolType.BLOG_RSU_WITHHOLDING].desc,
+    slug: 'rsu-22-percent-withholding-trap'
   }
 };
 

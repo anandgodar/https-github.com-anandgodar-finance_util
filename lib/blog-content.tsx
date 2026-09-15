@@ -76,6 +76,7 @@ import LocalIncomeTaxByCity2026 from '../components/blog/LocalIncomeTaxByCity202
 import NoTaxOnTipsExplained2025 from '../components/blog/NoTaxOnTipsExplained2025';
 import ExcessSocialSecurityRefund2026 from '../components/blog/ExcessSocialSecurityRefund2026';
 import StatePayrollTaxGap2026 from '../components/blog/StatePayrollTaxGap2026';
+import RSUWithholdingTrap2026 from '../components/blog/RSUWithholdingTrap2026';
 import { TOOL_METADATA } from './tool-metadata';
 import { ToolType } from '../types';
 
@@ -455,6 +456,11 @@ export const blogContent: Record<string, BlogContentEntry> = {
     title: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].title,
     description: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].desc,
     component: StatePayrollTaxGap2026
+  },
+  'rsu-22-percent-withholding-trap': {
+    title: TOOL_METADATA[ToolType.BLOG_RSU_WITHHOLDING].title,
+    description: TOOL_METADATA[ToolType.BLOG_RSU_WITHHOLDING].desc,
+    component: RSUWithholdingTrap2026
   }
 };
 

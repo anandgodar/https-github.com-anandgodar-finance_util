@@ -741,6 +741,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "10 min",
       date: "September 2026",
       icon: "🩺"
+    },
+    {
+      id: ToolType.BLOG_RSU_WITHHOLDING,
+      title: "The 22% RSU Withholding Trap: Why Your Vesting-Day Paycheck Feels Wrong",
+      description: "Employers withhold a flat 22% federal rate on RSU vests, but your real marginal rate can be 24%, 32% or 35%. Two worked examples show the gap, plus how to close it before it becomes a Q4 underpayment penalty.",
+      category: "Salary & Taxes",
+      readTime: "9 min",
+      date: "September 2026",
+      icon: "📈"
     }
   ];
 
