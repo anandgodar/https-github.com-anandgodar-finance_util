@@ -161,7 +161,7 @@ const InvestmentCalculatorsHub: React.FC<InvestmentCalculatorsHubProps> = ({ onN
             QuantCurb provides free, accurate investment calculators for 2026. Our investment tools help you project wealth growth, understand compound interest, plan SIP investments, and calculate your path to financial independence.
           </p>
           <p>
-            All calculators use exact compound interest formulas and support various investment strategies including SIP (Systematic Investment Plans), dividend reinvestment (DRIP), and goal-based investing.
+            All calculators use standard compound interest formulas and support various investment strategies including SIP (Systematic Investment Plans), dividend reinvestment (DRIP), and goal-based investing.
           </p>
           <p>
             <strong>Key Features:</strong>
