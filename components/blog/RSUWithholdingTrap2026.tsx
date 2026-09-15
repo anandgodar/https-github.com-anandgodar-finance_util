@@ -78,10 +78,12 @@ const RSUWithholdingTrap2026: React.FC<BlogProps> = ({ onNavigate }) => {
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
-              <h3 className="font-bold text-slate-900 text-lg mb-2">See your real marginal rate, not the withheld one</h3>
+              <h3 className="font-bold text-slate-900 text-lg mb-2">Estimate your take-home, then check the bracket table below</h3>
               <p className="text-sm text-slate-600">
-                The Salary Tax Estimator shows your actual bracket once base salary and vested RSU income are
-                stacked together — the number that matters for this gap, not the 22% your pay stub shows.
+                The Salary Tax Estimator projects your take-home pay from base salary and vested RSU income
+                combined. Compare that combined taxable income against the 2026 bracket table below to find
+                the marginal rate that actually applies — the number that matters for this gap, not the 22%
+                your pay stub shows.
               </p>
             </div>
             <button
@@ -239,8 +241,10 @@ const RSUWithholdingTrap2026: React.FC<BlogProps> = ({ onNavigate }) => {
             withholding rate on the amount above that threshold, instead of 22%. That's the top federal
             bracket rate, so it closes most of the gap for very large vests, though it can still run slightly
             high or low depending on your exact blended rate that year. Below $1,000,000 in cumulative
-            supplemental wages, every dollar is withheld at the flat 22% regardless of how high your salary
-            already is — which is exactly the range where the gap in the two examples above shows up.
+            supplemental wages, an employer using the flat percentage method withholds every dollar at 22%
+            regardless of how high your salary already is — which is exactly the range where the gap in the
+            two examples above shows up. (An employer using the aggregate method instead — see below — isn't
+            bound by that flat rate even under $1 million.)
           </p>
         </section>
 
