@@ -177,7 +177,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
              <h3 className="text-4xl font-black text-slate-900 tracking-tight leading-tight">Professional-Grade <br/>Mathematical Standards</h3>
            </div>
            <p className="text-slate-500 text-lg leading-relaxed font-medium">
-             Our platform doesn't just calculate; it audits. Every tool in the QuantCurb suite is built using standardized financial accounting principles used by global banks and private equity firms.
+             Our platform doesn't just calculate; it audits. Every tool in the QuantCurb suite is built on standard, published financial formulas — reducing balance amortization, IRS-sourced tax brackets, and compound interest math — not a proprietary black box.
            </p>
            <div className="grid grid-cols-2 gap-8 pt-4">
               <div className="space-y-2">
@@ -203,7 +203,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
            <div className="space-y-4 relative z-10">
               {[
                 { label: 'Reducing Balance Algorithm', status: 'STANDARD FORMULA', color: 'text-emerald-500' },
-                { label: 'US Tax Code 2024 Compliance', status: 'IRS-SOURCED', color: 'text-indigo-500' },
+                { label: 'US Tax Code Compliance', status: 'IRS-SOURCED', color: 'text-indigo-500' },
                 { label: 'Compounding Logic Precision', status: 'SELF-TESTED', color: 'text-sky-500' },
                 { label: 'Real-time Sentiment Engine', status: 'STABLE', color: 'text-indigo-600' }
               ].map((item, i) => (
@@ -327,7 +327,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
             },
             {
               q: "How accurate are the tax calculations?",
-              a: "Our calculators use 2025 federal tax brackets, FICA rates, and state tax data for all 50 US states plus DC. They account for standard deductions, 401(k) contributions, and common pre-tax benefits. For complex tax situations, consult a CPA."
+              a: "Our calculators use IRS-published federal tax brackets, FICA rates, and state tax data for all 50 US states plus DC, updated as new figures are released each year. They account for standard deductions, 401(k) contributions, and common pre-tax benefits. For complex tax situations, consult a CPA."
             },
             {
               q: "What is the 4% rule for retirement?",
