@@ -22,14 +22,14 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
 
-  // 2025 Contribution Limits
-  const limits2025 = {
-    k401: 23500,
-    k401CatchUp: 7500, // Age 50+
-    ira: 7000,
-    iraCatchUp: 1000, // Age 50+
-    rothIra: 7000,
-    rothCatchUpTotal: 8000
+  // 2026 Contribution Limits (IRS Notice 2025-67)
+  const limits2026 = {
+    k401: 24500,
+    k401CatchUp: 8000, // Age 50+
+    ira: 7500,
+    iraCatchUp: 1100, // Age 50+
+    rothIra: 7500,
+    rothCatchUpTotal: 8600
   };
 
   const isCatchUpEligible = age >= 50;
@@ -38,10 +38,10 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
   // Calculate projections
   const calculations = useMemo(() => {
     const annualContribution = monthlyContribution * 12;
-    const employerMatchAmount = Math.min((income * employerMatch) / 100, limits2025.k401);
+    const employerMatchAmount = Math.min((income * employerMatch) / 100, limits2026.k401);
     const total401kContribution = Math.min(
       annualContribution + employerMatchAmount,
-      isCatchUpEligible ? limits2025.k401 + limits2025.k401CatchUp : limits2025.k401
+      isCatchUpEligible ? limits2026.k401 + limits2026.k401CatchUp : limits2026.k401
     );
 
     // Traditional 401k (Pre-tax)
@@ -55,7 +55,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
       (total401kContribution / 12) * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
 
     // Traditional IRA (Pre-tax)
-    const maxIRA = isCatchUpEligible ? limits2025.ira + limits2025.iraCatchUp : limits2025.ira;
+    const maxIRA = isCatchUpEligible ? limits2026.ira + limits2026.iraCatchUp : limits2026.ira;
     const iraContribution = Math.min(annualContribution, maxIRA);
     const taxSavingsIRA = iraContribution * (taxBracket / 100);
     const netCostIRA = iraContribution - taxSavingsIRA;
@@ -63,7 +63,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
       (iraContribution / 12) * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
 
     // Roth IRA (Post-tax, tax-free growth)
-    const maxRothIRA = isCatchUpEligible ? limits2025.rothCatchUpTotal : limits2025.rothIra;
+    const maxRothIRA = isCatchUpEligible ? limits2026.rothCatchUpTotal : limits2026.rothIra;
     const rothContribution = Math.min(annualContribution, maxRothIRA);
     const taxSavingsRoth = 0; // No upfront tax savings
     const netCostRoth = rothContribution;
@@ -243,7 +243,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
           "name": "What's the difference between 401(k), Traditional IRA, and Roth IRA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "401(k) has the highest contribution limits ($23,500 in 2025, $31,000 with catch-up) and often includes employer match. Traditional IRA offers immediate tax deductions but lower limits ($7,000 in 2025). Roth IRA has no upfront tax deduction but offers tax-free withdrawals and no RMDs. Use our calculator to see which is best for your situation."
+            "text": "401(k) has the highest contribution limits ($24,500 in 2026, $32,500 with catch-up) and often includes employer match. Traditional IRA offers immediate tax deductions but lower limits ($7,500 in 2026). Roth IRA has no upfront tax deduction but offers tax-free withdrawals and no RMDs. Use our calculator to see which is best for your situation."
           }
         },
         {
@@ -256,10 +256,10 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
         },
         {
           "@type": "Question",
-          "name": "What are 2025 retirement contribution limits?",
+          "name": "What are 2026 retirement contribution limits?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "2025 limits: 401(k) = $23,500 ($31,000 with catch-up age 50+), Traditional IRA = $7,000 ($8,000 with catch-up), Roth IRA = $7,000 ($8,000 with catch-up). Income limits apply for Roth IRA contributions (phases out at $161,000-$176,000 for single filers, $240,000-$254,000 for married filing jointly)."
+            "text": "2026 limits: 401(k) = $24,500 ($32,500 with catch-up age 50+), Traditional IRA = $7,500 ($8,600 with catch-up), Roth IRA = $7,500 ($8,600 with catch-up). Income limits apply for Roth IRA contributions (phases out at $153,000-$168,000 for single filers, $242,000-$252,000 for married filing jointly)."
           }
         },
         {
@@ -332,7 +332,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
             <div className="bg-white p-6 rounded-2xl border border-purple-100">
               <h3 className="font-black text-slate-900 mb-2">401(k)</h3>
               <ul className="text-sm text-slate-600 space-y-1">
-                <li>• Highest limits: $23,500 ($31,000 with catch-up)</li>
+                <li>• Highest limits: $24,500 ($32,500 with catch-up)</li>
                 <li>• Employer match available</li>
                 <li>• Pre-tax contributions</li>
                 <li>• Taxed on withdrawal</li>
@@ -341,7 +341,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
             <div className="bg-white p-6 rounded-2xl border border-purple-100">
               <h3 className="font-black text-slate-900 mb-2">Traditional IRA</h3>
               <ul className="text-sm text-slate-600 space-y-1">
-                <li>• Lower limits: $7,000 ($8,000 with catch-up)</li>
+                <li>• Lower limits: $7,500 ($8,600 with catch-up)</li>
                 <li>• Immediate tax deduction</li>
                 <li>• Taxed on withdrawal</li>
                 <li>• No employer match</li>
@@ -350,7 +350,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
             <div className="bg-white p-6 rounded-2xl border border-purple-100">
               <h3 className="font-black text-slate-900 mb-2">Roth IRA</h3>
               <ul className="text-sm text-slate-600 space-y-1">
-                <li>• Same limits: $7,000 ($8,000 with catch-up)</li>
+                <li>• Same limits: $7,500 ($8,600 with catch-up)</li>
                 <li>• No upfront tax deduction</li>
                 <li>• Tax-free withdrawals</li>
                 <li>• No RMDs (Required Minimum Distributions)</li>
@@ -490,7 +490,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
 
           {isCatchUpEligible && (
             <div className="bg-emerald-50 p-6 rounded-3xl border border-emerald-100">
-              <p className="text-emerald-800 font-bold text-sm">✅ <strong>Catch-Up Eligible:</strong> You qualify for additional $7,500 (401k) and $1,000 (IRA) contributions!</p>
+              <p className="text-emerald-800 font-bold text-sm">✅ <strong>Catch-Up Eligible:</strong> You qualify for additional $8,000 (401k) and $1,100 (IRA) contributions!</p>
             </div>
           )}
         </section>
@@ -679,7 +679,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
           <div className="w-16 h-16 bg-purple-100 rounded-3xl flex items-center justify-center text-4xl mb-6">🏢</div>
           <h3 className="text-2xl font-black text-slate-900 mb-4">401(k) Power</h3>
           <p className="text-slate-600 leading-relaxed font-medium">
-            Higher contribution limits (${isCatchUpEligible ? '31,000' : '23,500'}) plus employer match create unbeatable wealth velocity. Always maximize match before other accounts.
+            Higher contribution limits (${isCatchUpEligible ? '32,500' : '24,500'}) plus employer match create unbeatable wealth velocity. Always maximize match before other accounts.
           </p>
         </div>
 
@@ -687,7 +687,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
           <div className="w-16 h-16 bg-indigo-100 rounded-3xl flex items-center justify-center text-4xl mb-6">🏦</div>
           <h3 className="text-2xl font-black text-slate-900 mb-4">Traditional IRA</h3>
           <p className="text-slate-600 leading-relaxed font-medium">
-            Immediate tax deduction lowers current taxable income. Best for high earners expecting lower tax brackets in retirement. Contribution limit: ${isCatchUpEligible ? '8,000' : '7,000'}.
+            Immediate tax deduction lowers current taxable income. Best for high earners expecting lower tax brackets in retirement. Contribution limit: ${isCatchUpEligible ? '8,600' : '7,500'}.
           </p>
         </div>
 
@@ -714,7 +714,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
           </p>
           <p className="flex items-start gap-4">
             <span className="text-3xl">3️⃣</span>
-            <span><strong className="text-white">Return to 401(k) for remaining capacity</strong> — Scale up to the ${isCatchUpEligible ? '$31,000' : '$23,500'} limit for maximum tax deferral.</span>
+            <span><strong className="text-white">Return to 401(k) for remaining capacity</strong> — Scale up to the ${isCatchUpEligible ? '$32,500' : '$24,500'} limit for maximum tax deferral.</span>
           </p>
           <p className="flex items-start gap-4">
             <span className="text-3xl">4️⃣</span>
@@ -765,15 +765,15 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
         faqs={[
           {
             question: "What's the difference between 401(k), Traditional IRA, and Roth IRA?",
-            answer: "401(k) has the highest contribution limits ($23,500 in 2025, $31,000 with catch-up) and often includes employer match. Traditional IRA offers immediate tax deductions but lower limits ($7,000 in 2025). Roth IRA has no upfront tax deduction but offers tax-free withdrawals and no RMDs. Use our calculator to see which is best for your situation."
+            answer: "401(k) has the highest contribution limits ($24,500 in 2026, $32,500 with catch-up) and often includes employer match. Traditional IRA offers immediate tax deductions but lower limits ($7,500 in 2026). Roth IRA has no upfront tax deduction but offers tax-free withdrawals and no RMDs. Use our calculator to see which is best for your situation."
           },
           {
             question: "Should I contribute to 401(k) or Roth IRA first?",
             answer: "The optimal strategy: 1) Always maximize employer 401(k) match first (it's free money), 2) Then max out Roth IRA for tax-free growth, 3) Return to 401(k) to maximize contributions up to the limit. This balances immediate tax savings with long-term tax-free growth."
           },
           {
-            question: "What are 2025 retirement contribution limits?",
-            answer: "2025 limits: 401(k) = $23,500 ($31,000 with catch-up age 50+), Traditional IRA = $7,000 ($8,000 with catch-up), Roth IRA = $7,000 ($8,000 with catch-up). Income limits apply for Roth IRA contributions (phases out at $161,000-$176,000 for single filers, $240,000-$254,000 for married filing jointly)."
+            question: "What are 2026 retirement contribution limits?",
+            answer: "2026 limits: 401(k) = $24,500 ($32,500 with catch-up age 50+), Traditional IRA = $7,500 ($8,600 with catch-up), Roth IRA = $7,500 ($8,600 with catch-up). Income limits apply for Roth IRA contributions (phases out at $153,000-$168,000 for single filers, $242,000-$252,000 for married filing jointly)."
           },
           {
             question: "What is RMD (Required Minimum Distribution)?",

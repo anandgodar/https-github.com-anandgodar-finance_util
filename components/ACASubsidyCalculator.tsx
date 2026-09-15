@@ -7,9 +7,9 @@ import { ToolType } from '../types';
 
 type FilingStatus = 'single' | 'married' | 'hoh';
 
-// 2025 Federal Poverty Level (FPL) - Contiguous 48 states
-const FPL_2025_BASE = 15060; // Individual
-const FPL_2025_PER_ADDITIONAL = 5380; // Per additional person
+// 2026 Federal Poverty Level (FPL) - Contiguous 48 states + DC (HHS/ASPE, effective Jan 2026)
+const FPL_2026_BASE = 15960; // Individual
+const FPL_2026_PER_ADDITIONAL = 5680; // Per additional person
 
 // State Medicaid Expansion Status (as of 2025)
 const MEDICAID_EXPANSION_STATES: Record<string, { expanded: boolean; name: string }> = {
@@ -32,13 +32,17 @@ const MEDICAID_EXPANSION_STATES: Record<string, { expanded: boolean; name: strin
   WI: { expanded: false, name: 'Wisconsin' }, WY: { expanded: false, name: 'Wyoming' },
 };
 
-// Simplified state benchmark premiums (Silver plan, age 40, 2025 estimates)
+// Simplified state benchmark premiums (Silver plan, age 40, 2026 estimates).
+// Baselined off each state's 2025 estimate and scaled by the ~26% national
+// average benchmark-premium increase KFF/Peterson-KFF Health System Tracker
+// reported for 2026 ($497/mo -> $625/mo nationally) -- still a simplified,
+// illustrative figure, not per-county marketplace data.
 const STATE_BENCHMARK_PREMIUMS: Record<string, number> = {
-  AL: 520, AK: 890, AZ: 480, AR: 510, CA: 540, CO: 520, CT: 650, DE: 620, FL: 550, GA: 530,
-  HI: 610, ID: 470, IL: 590, IN: 520, IA: 580, KS: 530, KY: 540, LA: 570, ME: 610, MD: 630,
-  MA: 680, MI: 560, MN: 540, MS: 530, MO: 550, MT: 580, NE: 560, NV: 520, NH: 620, NJ: 690,
-  NM: 510, NY: 720, NC: 560, ND: 570, OH: 570, OK: 540, OR: 590, PA: 600, RI: 630, SC: 560,
-  SD: 620, TN: 540, TX: 560, UT: 490, VT: 670, VA: 590, WA: 570, WV: 640, WI: 590, WY: 780
+  AL: 660, AK: 1120, AZ: 600, AR: 640, CA: 680, CO: 660, CT: 820, DE: 780, FL: 690, GA: 670,
+  HI: 770, ID: 590, IL: 740, IN: 660, IA: 730, KS: 670, KY: 680, LA: 720, ME: 770, MD: 790,
+  MA: 860, MI: 710, MN: 680, MS: 670, MO: 690, MT: 730, NE: 710, NV: 660, NH: 780, NJ: 870,
+  NM: 640, NY: 910, NC: 710, ND: 720, OH: 720, OK: 680, OR: 740, PA: 760, RI: 790, SC: 710,
+  SD: 780, TN: 680, TX: 710, UT: 620, VT: 840, VA: 740, WA: 720, WV: 810, WI: 740, WY: 980
 };
 
 interface ACASubsidyCalculatorProps {
@@ -56,7 +60,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
 
   const calculations = useMemo(() => {
     // Calculate Federal Poverty Level for household
-    const fpl = FPL_2025_BASE + (householdSize - 1) * FPL_2025_PER_ADDITIONAL;
+    const fpl = FPL_2026_BASE + (householdSize - 1) * FPL_2026_PER_ADDITIONAL;
     const fplPercentage = (householdIncome / fpl) * 100;
 
     // Get state info
@@ -179,7 +183,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
       "@context": "https://schema.org",
       "@type": "HowTo",
       "name": "How to Calculate ACA Health Insurance Subsidy and Premium Tax Credit",
-      "description": "Step-by-step guide to calculating your ACA marketplace subsidy, Premium Tax Credit, Medicaid eligibility, and monthly healthcare costs for 2025.",
+      "description": "Step-by-step guide to calculating your ACA marketplace subsidy, Premium Tax Credit, Medicaid eligibility, and monthly healthcare costs for 2026.",
       "step": [
         {
           "@type": "HowToStep",
@@ -259,7 +263,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
           "name": "What income qualifies for ACA subsidy?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You qualify for ACA subsidies if your income is between 100% and 400% of the Federal Poverty Level (FPL). For 2025, that's roughly $15,060-$60,240 for a single person, $30,120-$120,480 for a family of 4. Below 100% FPL, you may qualify for Medicaid (in expanded states). Above 400% FPL, subsidies are capped at 8.5% of income."
+            "text": "You qualify for ACA subsidies if your income is between 100% and 400% of the Federal Poverty Level (FPL). For 2026, that's roughly $15,960-$63,840 for a single person, $33,000-$132,000 for a family of 4. Below 100% FPL, you may qualify for Medicaid (in expanded states). Above 400% FPL, subsidies are capped at 8.5% of income."
           }
         },
         {
@@ -331,7 +335,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header>
         <h2 className="text-3xl font-black text-slate-900">
-          ACA Health Insurance <span className="text-indigo-600">Subsidy Calculator 2025</span>
+          ACA Health Insurance <span className="text-indigo-600">Subsidy Calculator 2026</span>
         </h2>
         <p className="text-slate-500 mt-2 max-w-3xl font-medium">
           Calculate your Affordable Care Act (ACA) Premium Tax Credit and monthly subsidy on Healthcare.gov marketplace.
@@ -661,7 +665,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
             <div className="text-slate-600 text-sm leading-relaxed font-medium space-y-3">
               <p><strong>Expanded States:</strong> Medicaid up to 138% FPL (FREE healthcare)</p>
               <p><strong>Non-Expanded States:</strong> Coverage gap between Medicaid limit (~41% FPL) and marketplace minimum (100% FPL)</p>
-              <p><strong>40 states + DC</strong> have expanded Medicaid as of 2025.</p>
+              <p><strong>40 states + DC</strong> have expanded Medicaid as of 2026.</p>
             </div>
           </div>
         </div>
@@ -772,7 +776,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
           },
           {
             question: "What income qualifies for ACA subsidy?",
-            answer: "You qualify for ACA subsidies if your income is between 100% and 400% of the Federal Poverty Level (FPL). For 2025, that's roughly $15,060-$60,240 for a single person, $30,120-$120,480 for a family of 4. Below 100% FPL, you may qualify for Medicaid (in expanded states). Above 400% FPL, subsidies are capped at 8.5% of income."
+            answer: "You qualify for ACA subsidies if your income is between 100% and 400% of the Federal Poverty Level (FPL). For 2026, that's roughly $15,960-$63,840 for a single person, $33,000-$132,000 for a family of 4. Below 100% FPL, you may qualify for Medicaid (in expanded states). Above 400% FPL, subsidies are capped at 8.5% of income."
           },
           {
             question: "What is Modified Adjusted Gross Income (MAGI)?",

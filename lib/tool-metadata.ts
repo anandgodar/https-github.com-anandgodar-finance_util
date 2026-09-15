@@ -27,7 +27,7 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "how to calculate mortgage payment, mortgage calculator, piti calculator, what is piti, pmi calculator, property tax calculator, monthly mortgage payment, home loan calculator, mortgage calculator with pmi, mortgage calculator with property tax, mortgage calculator with hoa, mortgage calculator with extra payments, biweekly mortgage calculator, mortgage amortization calculator, fha loan calculator with pmi, va loan calculator, jumbo mortgage calculator, 15 year vs 30 year mortgage calculator, mortgage payoff calculator, how much house can i afford calculator, mortgage affordability calculator, mortgage points calculator, mortgage closing costs calculator, mortgage refinance calculator, first time home buyer mortgage calculator, when does pmi drop off calculator, mortgage payment breakdown, mortgage interest calculator, mortgage principal calculator, what is included in mortgage payment, how to calculate property tax on house, should i pay points on mortgage, is fha loan worth it, mortgage calculator by state, home loan payment calculator"
   },
   [ToolType.SALARY_CALC]: {
-    title: "How Much Will I Take Home? Salary Calculator 2025 - Calculate Net Pay by State",
+    title: "How Much Will I Take Home? Salary Calculator 2026 - Calculate Net Pay by State",
     desc: "Calculate your take-home pay after taxes with our salary calculator. Includes federal tax, state tax (all 50 states), FICA, 401(k) deductions, and pay frequency options for accurate net pay calculation.",
     keywords: "salary calculator, take home pay calculator, how much will i take home, salary calculator 2025, net pay calculator, after tax salary, paycheck calculator, take home pay by state, 401k calculator, tax estimator, salary after taxes, biweekly paycheck calculator, weekly paycheck calculator, how to calculate take home pay, salary after tax calculator, net pay calculator after taxes, hourly to salary calculator after tax, salary calculator with 401k, gross to net salary calculator, salary tax calculator by state, paycheck calculator with pre tax deductions, annual salary to monthly take home, 100k salary take home, 150k salary after taxes, 200k salary take home, how much is 80k after taxes, 75k salary take home, paycheck calculator california, paycheck calculator texas, paycheck calculator new york, paycheck calculator florida, how much tax on 100k salary, what is my take home pay, gross pay vs net pay, fica tax calculator, federal tax calculator, state tax calculator, california vs texas salary, new york vs florida take home pay"
   },
@@ -87,7 +87,7 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "excel modeler, dcf model, financial modeling templates, dcf calculator, stock valuation calculator, discounted cash flow calculator, wacc calculator, terminal value calculator, free cash flow calculator, dcf valuation calculator, stock intrinsic value calculator, enterprise value calculator, equity value calculator, fcf projection calculator, how to calculate dcf, how to value a stock dcf, wacc calculator with beta, cost of equity calculator, cost of debt calculator, capm calculator, perpetuity growth method calculator, exit multiple calculator, fcff calculator, fcfe calculator, how to calculate dcf valuation, what is wacc formula, how to calculate terminal value, how to value a company using dcf, what is a good wacc, how to calculate free cash flow, how to calculate intrinsic value, what is enterprise value vs equity value, how to calculate cost of equity, dcf vs comparable companies, fcff vs fcfe, enterprise value vs equity value, wacc vs capm"
   },
   [ToolType.RETIREMENT_OPTIMIZER]: {
-    title: "401(k) & IRA Calculator 2025 - Retirement Savings & Contribution Optimizer",
+    title: "401(k) & IRA Calculator 2026 - Retirement Savings & Contribution Optimizer",
     desc: "Calculate how much to save for retirement with our 401(k) and IRA optimizer. Compare Roth vs Traditional, model employer matching, and see your projected retirement balance with tax-efficient contribution strategies.",
     keywords: "retirement optimizer, 401k contribution strategy, ira planning, retirement calculator, 401k calculator, roth ira calculator, how much to save for retirement, retirement savings calculator by age, 401k contribution calculator, roth vs traditional calculator, backdoor roth calculator, mega backdoor roth calculator, roth conversion calculator, retirement account optimizer, tax efficient retirement calculator, retirement withdrawal calculator, required minimum distribution calculator, rmd calculator, retirement tax calculator, social security retirement calculator, pension vs 401k calculator, how much should i contribute to 401k, should i do roth or traditional 401k, how much to retire comfortably, what is backdoor roth ira, how does mega backdoor roth work, when can i withdraw from 401k, what is roth conversion, roth vs traditional 401k, roth ira vs traditional ira, 401k vs ira, sep ira vs solo 401k"
   },
@@ -97,22 +97,22 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "dividend reinvestment calculator, drip calculator, dividend growth calculator, dividend compound calculator, how much dividends will i earn, drip investing calculator, dividend yield calculator, dividend income calculator"
   },
   [ToolType.CRYPTO_TAX_LOSS]: {
-    title: "Crypto Tax Loss Harvesting Calculator 2025 - Save on Taxes (No Wash Sale Rule)",
+    title: "Crypto Tax Loss Harvesting Calculator 2026 - Save on Taxes (No Wash Sale Rule)",
     desc: "Find tax-loss harvesting opportunities in your crypto portfolio. Unlike stocks, crypto has no wash sale rule in 2025, so you can immediately rebuy after harvesting losses. Calculate potential tax savings.",
     keywords: "crypto tax loss harvesting, crypto tax calculator, cryptocurrency tax, crypto wash sale rule, bitcoin tax calculator, crypto capital gains, tax loss harvesting strategy, crypto tax savings"
   },
   [ToolType.CHILD_TAX_CREDIT]: {
-    title: "Child Tax Credit Calculator - 2025 Eligibility & Refund Estimate",
+    title: "Child Tax Credit Calculator - 2026 Eligibility & Refund Estimate",
     desc: "Estimate child tax credit eligibility and refunds with income and dependent inputs.",
     keywords: "child tax credit calculator, 2025 child tax credit, ctc calculator, child tax credit 2026, how much is child tax credit 2026, child tax credit eligibility calculator, child tax credit income limit, child tax credit phaseout calculator, additional child tax credit calculator, child tax credit per child, refundable child tax credit, child tax credit age limit, how to calculate child tax credit, will i get child tax credit, child tax credit modified agi calculator, how much is child tax credit, who qualifies for child tax credit, what is the income limit for child tax credit, at what income does child tax credit phase out, how many children qualify for ctc, is child tax credit refundable, how to claim child tax credit, child tax credit vs earned income credit, ctc vs eitc, child tax credit vs dependent care credit"
   },
   [ToolType.QUARTERLY_TAX]: {
-    title: "Quarterly Estimated Tax Calculator - 2025 Safe Harbor",
+    title: "Quarterly Estimated Tax Calculator - 2026 Safe Harbor",
     desc: "Plan quarterly tax payments with safe harbor rules and self-employment assumptions.",
     keywords: "quarterly tax calculator, estimated tax calculator, quarterly taxes calculator, how to calculate quarterly taxes, freelance quarterly tax calculator, self employed quarterly tax calculator, 1099 quarterly tax calculator, safe harbor quarterly tax calculator, quarterly estimated tax calculator irs, quarterly tax payment calculator, how much to pay quarterly taxes, quarterly tax deadline calculator, self employment tax quarterly calculator, estimated quarterly tax worksheet, how to avoid underpayment penalty, 110 percent safe harbor calculator, 100 percent prior year tax calculator, how to calculate quarterly taxes for self employed, do i need to pay quarterly taxes, when are quarterly taxes due, how much should i pay in quarterly taxes, what is safe harbor for taxes, how to avoid quarterly tax penalty, what happens if i miss quarterly taxes, how to pay quarterly estimated taxes, who needs to pay quarterly taxes, safe harbor vs 90 percent method, prior year method vs current year method, quarterly taxes by state, freelancer estimated taxes"
   },
   [ToolType.ACA_SUBSIDY]: {
-    title: "ACA Health Insurance Subsidy Calculator - 2025 Marketplace Credits",
+    title: "ACA Health Insurance Subsidy Calculator - 2026 Marketplace Credits",
     desc: "Estimate ACA premium tax credits based on income and household size.",
     keywords: "aca subsidy calculator, premium tax credit, marketplace insurance, health insurance subsidy calculator, obamacare calculator, marketplace subsidy calculator, premium tax credit calculator, aca affordability calculator, health insurance marketplace calculator, obamacare subsidy calculator 2026, how much is aca subsidy, health insurance tax credit calculator, cobra vs aca calculator, early retirement health insurance calculator, how much is aca subsidy, who qualifies for aca subsidy, how to calculate aca subsidy, what income qualifies for obamacare subsidy, how does aca subsidy work, is aca subsidy based on gross income, aca vs cobra, marketplace vs employer insurance, silver plan vs gold plan, aca subsidy by state, health insurance marketplace by state, obamacare by state"
   },
@@ -536,6 +536,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "At least ten states withhold a separate payroll tax for disability and paid family leave insurance, on top of federal, state income tax and FICA. Real 2026 rates and wage caps for all ten, with worked examples for CA, NY, NJ, WA, CO and MA.",
     keywords: "state disability insurance payroll tax, CASDI 2026, NY PFL rate 2026, NJ TDI FLI rate, WA Cares Fund rate, colorado FAMLI rate, massachusetts PFML rate, connecticut paid leave rate, oregon paid leave rate, minnesota paid leave rate, paycheck calculator missing state disability tax"
   },
+  [ToolType.BLOG_NET_WORTH_PERCENTILE]: {
+    title: "Net Worth Percentile by Age: The Homeownership Gap Behind the Table",
+    desc: "The Federal Reserve's own 2022 data shows homeowners had a median net worth 38x higher than renters. What the age-only percentile tables miss, and how to read your own number correctly.",
+    keywords: "net worth percentile by age, net worth by age calculator, average net worth by age 2026, median net worth by age, homeowner vs renter net worth, am i rich for my age, net worth percentile calculator"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",
@@ -577,12 +582,12 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "legal disclaimer, financial compliance, terms of use"
   },
   [ToolType.TAX_CALCULATORS_HUB]: {
-    title: "Free Tax Calculators 2025 - Income, Quarterly, Child Tax Credit & More",
+    title: "Free Tax Calculators 2026 - Income, Quarterly, Child Tax Credit & More",
     desc: "Calculate your 2025 taxes with QuantCurb's free tax calculators. Estimate income tax, quarterly payments, child tax credit, self-employment tax, and ACA subsidies. Simplify your tax planning now!",
     keywords: "free tax calculators, income tax calculator, quarterly tax calculator, child tax credit, self employment tax, aca subsidy calculator, 2025 tax tools, tax planning"
   },
   [ToolType.RETIREMENT_CALCULATORS_HUB]: {
-    title: "Free Retirement Calculators 2025 - 401k, IRA, FIRE & Early Retirement Planning",
+    title: "Free Retirement Calculators 2026 - 401k, IRA, FIRE & Early Retirement Planning",
     desc: "Plan your financial independence and early retirement with our suite of high-fidelity retirement planning tools. Compare 401(k), IRA, Roth strategies, and calculate your FIRE number.",
     keywords: "free retirement calculators, 401k calculator, ira calculator, roth ira calculator, fire calculator, early retirement calculator, retirement planning tools 2025"
   },

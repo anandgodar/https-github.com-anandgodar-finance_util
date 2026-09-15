@@ -220,6 +220,7 @@ const BLOG_POSTS = [
   'no-tax-on-tips-explained-2025',
   'excess-social-security-tax-refund-multiple-employers',
   'state-disability-paid-leave-payroll-tax-2026',
+  'net-worth-percentile-by-age-2026',
 ];
 
 // State calculator types for state pages
