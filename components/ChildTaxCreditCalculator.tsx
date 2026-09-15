@@ -19,8 +19,8 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
   const [advice, setAdvice] = useState<string>('');
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
 
-  // 2025 Tax Credit Constants
-  const CTC_PER_CHILD = 2000;
+  // 2026 Tax Credit Constants (OBBBA: $2,200/child, permanent, phase-out thresholds fixed by statute)
+  const CTC_PER_CHILD = 2200;
   const ODC_PER_DEPENDENT = 500; // Other Dependent Credit
   const REFUNDABLE_MAX = 1700; // Additional Child Tax Credit (ACTC)
   const PHASE_OUT_THRESHOLDS: Record<FilingStatus, number> = {
@@ -122,13 +122,13 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
       "@context": "https://schema.org",
       "@type": "HowTo",
       "name": "How to Calculate Child Tax Credit (CTC) and Additional Child Tax Credit (ACTC)",
-      "description": "Step-by-step guide to calculating your Child Tax Credit for 2025, including phase-out rules, refundable credits, and eligibility requirements.",
+      "description": "Step-by-step guide to calculating your Child Tax Credit for 2026, including phase-out rules, refundable credits, and eligibility requirements.",
       "step": [
         {
           "@type": "HowToStep",
           "position": 1,
           "name": "Count Your Dependents",
-          "text": "Enter the number of children under 17 (eligible for $2,000 credit each) and other dependents (eligible for $500 credit each)."
+          "text": "Enter the number of children under 17 (eligible for $2,200 credit each) and other dependents (eligible for $500 credit each)."
         },
         {
           "@type": "HowToStep",
@@ -146,7 +146,7 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
           "@type": "HowToStep",
           "position": 4,
           "name": "Calculate Base Credit",
-          "text": "Base credit is $2,000 per child under 17 plus $500 per other dependent. This is your starting credit amount."
+          "text": "Base credit is $2,200 per child under 17 plus $500 per other dependent. This is your starting credit amount."
         },
         {
           "@type": "HowToStep",
@@ -185,10 +185,10 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How much is the Child Tax Credit for 2025?",
+          "name": "How much is the Child Tax Credit for 2026?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Child Tax Credit is $2,000 per child under 17 for 2025. Up to $1,700 per child can be refundable through the Additional Child Tax Credit (ACTC) if you have earned income over $2,500. Other dependents (17+) qualify for a $500 credit."
+            "text": "The Child Tax Credit is $2,200 per child under 17 for 2026. Up to $1,700 per child can be refundable through the Additional Child Tax Credit (ACTC) if you have earned income over $2,500. Other dependents (17+) qualify for a $500 credit."
           }
         },
         {
@@ -228,7 +228,7 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
           "name": "What age do children qualify for Child Tax Credit?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Children must be under 17 at the end of the tax year to qualify for the $2,000 Child Tax Credit. Children 17 and older qualify for the $500 Other Dependent Credit. The child must be your dependent, related to you, and live with you for more than half the year."
+            "text": "Children must be under 17 at the end of the tax year to qualify for the $2,200 Child Tax Credit. Children 17 and older qualify for the $500 Other Dependent Credit. The child must be your dependent, related to you, and live with you for more than half the year."
           }
         },
         {
@@ -244,7 +244,7 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
           "name": "How does Child Tax Credit affect my tax return?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Child Tax Credit directly reduces your tax liability dollar-for-dollar. If your credit exceeds your tax, the refundable portion (ACTC) is refunded to you. For example, if you owe $1,000 in tax and have a $2,000 CTC, you pay $0 tax and receive $1,000 as a refund (up to the ACTC limit)."
+            "text": "The Child Tax Credit directly reduces your tax liability dollar-for-dollar. If your credit exceeds your tax, the refundable portion (ACTC) is refunded to you. For example, if you owe $1,000 in tax and have a $2,200 CTC, you pay $0 tax and receive $1,200 as a refund (up to the ACTC limit)."
           }
         }
       ]
@@ -268,10 +268,10 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header>
         <h2 className="text-3xl font-black text-slate-900">
-          Child Tax Credit <span className="text-indigo-600">Calculator 2025</span>
+          Child Tax Credit <span className="text-indigo-600">Calculator 2026</span>
         </h2>
         <p className="text-slate-500 mt-2 max-w-3xl font-medium">
-          Calculate your Child Tax Credit (CTC), Additional Child Tax Credit (ACTC), and check EITC eligibility for tax year 2025.
+          Calculate your Child Tax Credit (CTC), Additional Child Tax Credit (ACTC), and check EITC eligibility for tax year 2026.
           Plan for up to <strong>${calculations.finalCredit.toLocaleString()}</strong> in tax savings.
         </p>
       </header>
@@ -296,7 +296,7 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
                 onChange={(e) => setChildrenUnder17(Number(e.target.value))}
                 className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold text-2xl text-slate-700 focus:ring-2 focus:ring-indigo-500"
               />
-              <p className="text-xs text-slate-400 mt-2">$2,000 credit per child</p>
+              <p className="text-xs text-slate-400 mt-2">$2,200 credit per child</p>
             </div>
 
             <div>
@@ -356,7 +356,7 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
           {/* Main Credit Display */}
           <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-[2.5rem] p-10 text-white relative shadow-2xl overflow-hidden">
             <p className="text-indigo-200 text-xs font-bold uppercase tracking-widest mb-2">
-              Total Tax Credit 2025
+              Total Tax Credit 2026
             </p>
             <h3 className="text-6xl font-black tracking-tighter mb-4">
               ${calculations.finalCredit.toLocaleString()}
@@ -453,23 +453,23 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
       <section className="mt-16 pt-12 border-t border-slate-200 space-y-12">
         <header className="max-w-3xl">
           <h3 className="text-xs font-black text-indigo-500 uppercase tracking-widest mb-4">
-            Understanding 2025 Tax Credits
+            Understanding 2026 Tax Credits
           </h3>
           <h2 className="text-4xl font-black text-slate-900 leading-tight">
             Maximize Your <span className="text-indigo-600">Family Tax Benefits</span>
           </h2>
           <p className="text-slate-500 mt-4 text-lg font-medium leading-relaxed">
-            The Child Tax Credit (CTC) is one of the most valuable tax benefits for families, potentially worth up to $2,000 per qualifying child. Understanding how it works can save you thousands.
+            The Child Tax Credit (CTC) is one of the most valuable tax benefits for families, potentially worth up to $2,200 per qualifying child. Understanding how it works can save you thousands.
           </p>
         </header>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           <div className="space-y-4">
             <h4 className="text-xl font-black text-slate-900 border-l-4 border-indigo-600 pl-6">
-              2025 Credit Amounts
+              2026 Credit Amounts
             </h4>
             <div className="text-slate-600 text-sm leading-relaxed font-medium space-y-3">
-              <p><strong>$2,000 per child under 17</strong> - The standard Child Tax Credit for qualifying children.</p>
+              <p><strong>$2,200 per child under 17</strong> - The standard Child Tax Credit for qualifying children.</p>
               <p><strong>$500 per other dependent</strong> - For dependents 17+ or non-child dependents.</p>
               <p><strong>Up to $1,700 refundable</strong> - Additional Child Tax Credit (ACTC) if credit exceeds tax liability.</p>
             </div>
@@ -546,7 +546,7 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
         <div className="space-y-4">
           <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">How it works</h4>
           <p className="text-sm text-slate-500 leading-relaxed font-medium">
-            We calculate your base credit ($2,000 per child under 17, $500 per other dependent), then apply income-based phase-outs. The <strong>Additional Child Tax Credit (ACTC)</strong> is calculated based on your earned income, allowing up to $1,700 per child to be refundable.
+            We calculate your base credit ($2,200 per child under 17, $500 per other dependent), then apply income-based phase-outs. The <strong>Additional Child Tax Credit (ACTC)</strong> is calculated based on your earned income, allowing up to $1,700 per child to be refundable.
           </p>
         </div>
         <div className="space-y-4">
@@ -600,8 +600,8 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
         calculatorUrl="https://quantcurb.com/child-tax-credit-calculator"
         faqs={[
           {
-            question: "How much is the Child Tax Credit for 2025?",
-            answer: "The Child Tax Credit is $2,000 per child under 17 for 2025. Up to $1,700 per child can be refundable through the Additional Child Tax Credit (ACTC) if you have earned income over $2,500. Other dependents (17+) qualify for a $500 credit."
+            question: "How much is the Child Tax Credit for 2026?",
+            answer: "The Child Tax Credit is $2,200 per child under 17 for 2026. Up to $1,700 per child can be refundable through the Additional Child Tax Credit (ACTC) if you have earned income over $2,500. Other dependents (17+) qualify for a $500 credit."
           },
           {
             question: "What is the income limit for Child Tax Credit?",
@@ -621,7 +621,7 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
           },
           {
             question: "What age do children qualify for Child Tax Credit?",
-            answer: "Children must be under 17 at the end of the tax year to qualify for the $2,000 Child Tax Credit. Children 17 and older qualify for the $500 Other Dependent Credit. The child must be your dependent, related to you, and live with you for more than half the year."
+            answer: "Children must be under 17 at the end of the tax year to qualify for the $2,200 Child Tax Credit. Children 17 and older qualify for the $500 Other Dependent Credit. The child must be your dependent, related to you, and live with you for more than half the year."
           },
           {
             question: "Is Child Tax Credit refundable?",
@@ -629,7 +629,7 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
           },
           {
             question: "How does Child Tax Credit affect my tax return?",
-            answer: "The Child Tax Credit directly reduces your tax liability dollar-for-dollar. If your credit exceeds your tax, the refundable portion (ACTC) is refunded to you. For example, if you owe $1,000 in tax and have a $2,000 CTC, you pay $0 tax and receive $1,000 as a refund (up to the ACTC limit)."
+            answer: "The Child Tax Credit directly reduces your tax liability dollar-for-dollar. If your credit exceeds your tax, the refundable portion (ACTC) is refunded to you. For example, if you owe $1,000 in tax and have a $2,200 CTC, you pay $0 tax and receive $1,200 as a refund (up to the ACTC limit)."
           }
         ]}
       />

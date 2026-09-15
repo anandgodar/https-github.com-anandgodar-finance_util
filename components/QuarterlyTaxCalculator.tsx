@@ -9,33 +9,33 @@ import { ToolType } from '../types';
 type FilingStatus = 'single' | 'married' | 'hoh';
 type SafeHarborMethod = 'prior_year' | 'current_year';
 
-// 2025 Federal Tax Brackets
+// 2026 Federal Tax Brackets (Tax Foundation projected brackets)
 const FEDERAL_TAX_BRACKETS = {
   single: [
-    { limit: 11600, rate: 0.10 },
-    { limit: 47150, rate: 0.12 },
-    { limit: 100525, rate: 0.22 },
-    { limit: 191950, rate: 0.24 },
-    { limit: 243725, rate: 0.32 },
-    { limit: 609350, rate: 0.35 },
+    { limit: 12400, rate: 0.10 },
+    { limit: 50400, rate: 0.12 },
+    { limit: 105700, rate: 0.22 },
+    { limit: 201775, rate: 0.24 },
+    { limit: 256225, rate: 0.32 },
+    { limit: 640600, rate: 0.35 },
     { limit: Infinity, rate: 0.37 }
   ],
   married: [
-    { limit: 23200, rate: 0.10 },
-    { limit: 94300, rate: 0.12 },
-    { limit: 201050, rate: 0.22 },
-    { limit: 383900, rate: 0.24 },
-    { limit: 487450, rate: 0.32 },
-    { limit: 731200, rate: 0.35 },
+    { limit: 24800, rate: 0.10 },
+    { limit: 100800, rate: 0.12 },
+    { limit: 211400, rate: 0.22 },
+    { limit: 403550, rate: 0.24 },
+    { limit: 512450, rate: 0.32 },
+    { limit: 768700, rate: 0.35 },
     { limit: Infinity, rate: 0.37 }
   ],
   hoh: [
-    { limit: 16550, rate: 0.10 },
-    { limit: 63100, rate: 0.12 },
-    { limit: 100500, rate: 0.22 },
-    { limit: 191950, rate: 0.24 },
-    { limit: 243700, rate: 0.32 },
-    { limit: 609350, rate: 0.35 },
+    { limit: 17700, rate: 0.10 },
+    { limit: 67450, rate: 0.12 },
+    { limit: 105700, rate: 0.22 },
+    { limit: 201775, rate: 0.24 },
+    { limit: 256200, rate: 0.32 },
+    { limit: 640600, rate: 0.35 },
     { limit: Infinity, rate: 0.37 }
   ]
 };
@@ -61,10 +61,10 @@ const STATE_TAX_RATES: Record<string, { name: string; rate: number }> = {
 };
 
 const QUARTERLY_DEADLINES = [
-  { quarter: 'Q1', period: 'Jan 1 - Mar 31', deadline: 'April 15, 2025' },
-  { quarter: 'Q2', period: 'Apr 1 - May 31', deadline: 'June 16, 2025' },
-  { quarter: 'Q3', period: 'Jun 1 - Aug 31', deadline: 'September 15, 2025' },
-  { quarter: 'Q4', period: 'Sep 1 - Dec 31', deadline: 'January 15, 2026' }
+  { quarter: 'Q1', period: 'Jan 1 - Mar 31', deadline: 'April 15, 2026' },
+  { quarter: 'Q2', period: 'Apr 1 - May 31', deadline: 'June 15, 2026' },
+  { quarter: 'Q3', period: 'Jun 1 - Aug 31', deadline: 'September 15, 2026' },
+  { quarter: 'Q4', period: 'Sep 1 - Dec 31', deadline: 'January 15, 2027' }
 ];
 
 interface QuarterlyTaxCalculatorProps {
@@ -195,10 +195,11 @@ const QuarterlyTaxCalculator: React.FC<QuarterlyTaxCalculatorProps> = ({ onNavig
   const downloadCalendar = () => {
     const events = QUARTERLY_DEADLINES.map((q, idx) => {
       const amount = calculations.quarterlyPayment;
-      const deadlineDate = q.deadline.replace(/,\s*\d{4}/, ', 2025'); // Normalize year
 
-      // Parse deadline date (e.g., "April 15, 2025")
-      const date = new Date(deadlineDate);
+      // Parse deadline date directly -- each quarter already carries its own
+      // correct year (Q4's deadline falls in the following calendar year),
+      // so it must not be overwritten to match Q1-Q3's year.
+      const date = new Date(q.deadline);
       const year = date.getFullYear();
       const month = String(date.getMonth() + 1).padStart(2, '0');
       const day = String(date.getDate()).padStart(2, '0');
@@ -227,7 +228,7 @@ VERSION:2.0
 PRODID:-//QuantCurb//Quarterly Tax Calculator//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Quarterly Estimated Taxes 2025
+X-WR-CALNAME:Quarterly Estimated Taxes 2026
 X-WR-TIMEZONE:America/New_York
 X-WR-CALDESC:Quarterly estimated tax payment schedule with safe harbor amounts
 ${events}
@@ -236,7 +237,7 @@ END:VCALENDAR`;
     const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = `quarterly-taxes-2025-${safeHarborMethod}.ics`;
+    link.download = `quarterly-taxes-2026-${safeHarborMethod}.ics`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -400,7 +401,7 @@ END:VCALENDAR`;
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header>
         <h2 className="text-3xl font-black text-slate-900">
-          Quarterly Tax <span className="text-indigo-600">Calculator 2025</span>
+          Quarterly Tax <span className="text-indigo-600">Calculator 2026</span>
         </h2>
         <p className="text-slate-500 mt-2 max-w-3xl font-medium">
           Calculate your IRS Form 1040-ES estimated tax payments. Avoid underpayment penalties with safe harbor rules
@@ -523,7 +524,7 @@ END:VCALENDAR`;
                   className="w-full pl-10 p-4 bg-white border-none rounded-2xl font-black text-xl text-slate-700 focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
-              <p className="text-xs text-indigo-500 mt-2">From 2024 tax return (Line 24)</p>
+              <p className="text-xs text-indigo-500 mt-2">From 2025 tax return (Line 24)</p>
             </div>
 
             <div>
@@ -560,7 +561,7 @@ END:VCALENDAR`;
                   <div>
                     <p className="text-sm font-bold text-slate-700">Prior Year Safe Harbor</p>
                     <p className="text-xs text-slate-500">
-                      {calculations.isHighEarner ? '110%' : '100%'} of 2024 tax
+                      {calculations.isHighEarner ? '110%' : '100%'} of 2025 tax
                     </p>
                   </div>
                 </label>
@@ -574,7 +575,7 @@ END:VCALENDAR`;
                   />
                   <div>
                     <p className="text-sm font-bold text-slate-700">Current Year Safe Harbor</p>
-                    <p className="text-xs text-slate-500">90% of 2025 estimated tax</p>
+                    <p className="text-xs text-slate-500">90% of 2026 estimated tax</p>
                   </div>
                 </label>
               </div>
@@ -609,7 +610,7 @@ END:VCALENDAR`;
           <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
             <div className="flex justify-between items-center mb-6">
               <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest">
-                2025 Payment Schedule
+                2026 Payment Schedule
               </h4>
               <button
                 onClick={downloadCalendar}
@@ -713,7 +714,7 @@ END:VCALENDAR`;
                   ${calculations.priorYearSafeHarbor.toLocaleString()}
                 </p>
                 <p className="text-xs text-indigo-200 mt-2">
-                  {calculations.isHighEarner ? '110%' : '100%'} of 2024 tax
+                  {calculations.isHighEarner ? '110%' : '100%'} of 2025 tax
                 </p>
                 <p className="text-[10px] text-indigo-300 mt-1">
                   {calculations.isHighEarner && '✓ High earner threshold (AGI > $150k)'}
@@ -727,7 +728,7 @@ END:VCALENDAR`;
                 <p className="text-3xl font-black text-white">
                   ${calculations.currentYearSafeHarbor.toLocaleString()}
                 </p>
-                <p className="text-xs text-purple-200 mt-2">90% of 2025 estimated</p>
+                <p className="text-xs text-purple-200 mt-2">90% of 2026 estimated</p>
                 <p className="text-[10px] text-purple-300 mt-1">Requires accurate income forecast</p>
               </div>
 
@@ -822,12 +823,12 @@ END:VCALENDAR`;
 
           <div className="space-y-4">
             <h4 className="text-xl font-black text-slate-900 border-l-4 border-purple-600 pl-6">
-              Payment Deadlines 2025
+              Payment Deadlines 2026
             </h4>
             <div className="text-slate-600 text-sm leading-relaxed font-medium space-y-3">
-              <p><strong>Q1:</strong> April 15, 2025 (Jan-Mar income)</p>
-              <p><strong>Q2:</strong> June 16, 2025 (Apr-May income)</p>
-              <p><strong>Q3:</strong> September 15, 2025 (Jun-Aug income)</p>
+              <p><strong>Q1:</strong> April 15, 2026 (Jan-Mar income)</p>
+              <p><strong>Q2:</strong> June 15, 2026 (Apr-May income)</p>
+              <p><strong>Q3:</strong> September 15, 2026 (Jun-Aug income)</p>
               <p><strong>Q4:</strong> January 15, 2026 (Sep-Dec income)</p>
             </div>
           </div>
@@ -906,10 +907,10 @@ END:VCALENDAR`;
       {/* Email Capture Section */}
       <section className="mt-12">
         <EmailCapture
-          title="Get Your Free Freelancer Tax Checklist 2025"
+          title="Get Your Free Freelancer Tax Checklist 2026"
           description="Download our comprehensive quarterly tax checklist with safe harbor rules, payment deadlines, and penalty avoidance strategies."
           leadMagnet={{
-            title: "Quarterly Tax Checklist 2025",
+            title: "Quarterly Tax Checklist 2026",
             description: "Complete guide to quarterly estimated taxes including safe harbor rules, payment deadlines, and penalty avoidance.",
             type: "quarterly_tax"
           }}
