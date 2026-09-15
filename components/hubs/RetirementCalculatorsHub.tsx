@@ -10,8 +10,8 @@ const RetirementCalculatorsHub: React.FC<RetirementCalculatorsHubProps> = ({ onN
     const schema = {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Retirement Calculators Hub - Free Retirement Planning Tools 2025",
-      "description": "Complete collection of free retirement calculators for 2025. Compare 401(k) vs IRA vs Roth, calculate retirement readiness, FIRE number, and optimize your retirement savings. All tools are free and include detailed guides.",
+      "name": "Retirement Calculators Hub - Free Retirement Planning Tools 2026",
+      "description": "Complete collection of free retirement calculators for 2026. Compare 401(k) vs IRA vs Roth, calculate retirement readiness, FIRE number, and optimize your retirement savings. All tools are free and include detailed guides.",
       "url": "https://quantcurb.com/retirement-calculators",
       "mainEntity": {
         "@type": "ItemList",
@@ -20,19 +20,19 @@ const RetirementCalculatorsHub: React.FC<RetirementCalculatorsHubProps> = ({ onN
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Retirement Account Optimizer 2025",
+            "name": "Retirement Account Optimizer 2026",
             "url": "https://quantcurb.com/retirement-account-optimizer"
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "FIRE Calculator 2025",
+            "name": "FIRE Calculator 2026",
             "url": "https://quantcurb.com/early-retirement-fire-planner"
           },
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "Investment Calculator 2025",
+            "name": "Investment Calculator 2026",
             "url": "https://quantcurb.com/wealth-investment-projector"
           },
           {
@@ -62,21 +62,21 @@ const RetirementCalculatorsHub: React.FC<RetirementCalculatorsHubProps> = ({ onN
   const retirementCalculators = [
     {
       id: ToolType.RETIREMENT_OPTIMIZER,
-      title: 'Retirement Account Optimizer 2025',
+      title: 'Retirement Account Optimizer 2026',
       description: 'Compare 401(k), Traditional IRA, and Roth IRA strategies. Calculate retirement readiness score, RMD estimates, and maximize employer match.',
       icon: '🎯',
       keywords: ['401k', 'IRA', 'Roth', 'Retirement readiness']
     },
     {
       id: ToolType.FIRE_PLANNER,
-      title: 'FIRE Calculator 2025',
+      title: 'FIRE Calculator 2026',
       description: 'Calculate your early retirement number using the 4% rule. Includes Lean FIRE, Fat FIRE, Coast FIRE, and Barista FIRE.',
       icon: '🔥',
       keywords: ['FIRE', 'Early retirement', '4% rule', 'Financial independence']
     },
     {
       id: ToolType.INVESTMENT_CALC,
-      title: 'Investment Calculator 2025',
+      title: 'Investment Calculator 2026',
       description: 'Project investment growth with compound interest. Includes SIP investing, dividend reinvestment, and goal-based investing.',
       icon: '📈',
       keywords: ['Compound interest', 'SIP', 'Investment growth', 'Wealth projection']
@@ -118,10 +118,10 @@ const RetirementCalculatorsHub: React.FC<RetirementCalculatorsHubProps> = ({ onN
       <header className="space-y-4">
         <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Retirement Tools Hub</p>
         <h1 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-          Free Retirement Calculators <span className="text-indigo-600">2025</span>
+          Free Retirement Calculators <span className="text-indigo-600">2026</span>
         </h1>
         <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
-          Complete collection of free retirement calculators for 2025. Compare 401(k) vs IRA vs Roth, calculate retirement readiness, FIRE number, and optimize your retirement savings. All tools are free, accurate, and include comprehensive guides.
+          Complete collection of free retirement calculators for 2026. Compare 401(k) vs IRA vs Roth, calculate retirement readiness, FIRE number, and optimize your retirement savings. All tools are free, accurate, and include comprehensive guides.
         </p>
       </header>
 
@@ -176,16 +176,16 @@ const RetirementCalculatorsHub: React.FC<RetirementCalculatorsHubProps> = ({ onN
         <h2 className="text-2xl font-black text-slate-900 mb-6">About Our Retirement Calculators</h2>
         <div className="prose prose-slate max-w-none space-y-4 text-slate-700">
           <p>
-            QuantCurb provides free, accurate retirement calculators for 2025. Our retirement tools help you plan for traditional retirement, early retirement (FIRE), and optimize your retirement account contributions.
+            QuantCurb provides free, accurate retirement calculators for 2026. Our retirement tools help you plan for traditional retirement, early retirement (FIRE), and optimize your retirement account contributions.
           </p>
           <p>
-            All calculators use the latest 2025 contribution limits, tax brackets, and retirement planning strategies. Whether you're comparing 401(k) vs IRA, calculating your FIRE number, or projecting investment growth, our tools provide instant, accurate results.
+            All calculators use the latest 2026 contribution limits, tax brackets, and retirement planning strategies. Whether you're comparing 401(k) vs IRA, calculating your FIRE number, or projecting investment growth, our tools provide instant, accurate results.
           </p>
           <p>
             <strong>Key Features:</strong>
           </p>
           <ul className="list-disc list-inside space-y-2 ml-4">
-            <li>2025 contribution limits updated (401k: $23,500, IRA: $7,000)</li>
+            <li>2026 contribution limits updated (401k: $24,500, IRA: $7,500)</li>
             <li>Retirement readiness scoring</li>
             <li>RMD (Required Minimum Distribution) calculations</li>
             <li>Social Security estimates</li>

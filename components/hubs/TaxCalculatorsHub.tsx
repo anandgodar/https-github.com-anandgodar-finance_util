@@ -11,8 +11,8 @@ const TaxCalculatorsHub: React.FC<TaxCalculatorsHubProps> = ({ onNavigate }) => 
     const schema = {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Tax Calculators Hub - Free Tax Tools 2025",
-      "description": "Complete collection of free tax calculators for 2025. Calculate child tax credit, quarterly taxes, ACA subsidies, self-employment taxes, and more. All tools are free and include detailed guides.",
+      "name": "Tax Calculators Hub - Free Tax Tools 2026",
+      "description": "Complete collection of free tax calculators for 2026. Calculate child tax credit, quarterly taxes, ACA subsidies, self-employment taxes, and more. All tools are free and include detailed guides.",
       "url": "https://quantcurb.com/tax-calculators",
       "mainEntity": {
         "@type": "ItemList",
@@ -21,25 +21,25 @@ const TaxCalculatorsHub: React.FC<TaxCalculatorsHubProps> = ({ onNavigate }) => 
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Child Tax Credit Calculator 2025",
+            "name": "Child Tax Credit Calculator 2026",
             "url": "https://quantcurb.com/child-tax-credit-calculator"
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Quarterly Estimated Tax Calculator 2025",
+            "name": "Quarterly Estimated Tax Calculator 2026",
             "url": "https://quantcurb.com/quarterly-estimated-tax-calculator"
           },
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "ACA Health Insurance Subsidy Calculator 2025",
+            "name": "ACA Health Insurance Subsidy Calculator 2026",
             "url": "https://quantcurb.com/aca-health-insurance-subsidy-calculator"
           },
           {
             "@type": "ListItem",
             "position": 4,
-            "name": "Salary Tax Calculator 2025",
+            "name": "Salary Tax Calculator 2026",
             "url": "https://quantcurb.com/salary-tax-estimator"
           },
           {
@@ -69,28 +69,28 @@ const TaxCalculatorsHub: React.FC<TaxCalculatorsHubProps> = ({ onNavigate }) => 
   const taxCalculators = [
     {
       id: ToolType.CHILD_TAX_CREDIT,
-      title: 'Child Tax Credit Calculator 2025',
-      description: 'Calculate your 2025 Child Tax Credit (CTC) and Additional Child Tax Credit (ACTC). Estimate up to $2,000 per child with phase-out analysis.',
+      title: 'Child Tax Credit Calculator 2026',
+      description: 'Calculate your 2026 Child Tax Credit (CTC) and Additional Child Tax Credit (ACTC). Estimate up to $2,200 per child with phase-out analysis.',
       icon: '👶',
       keywords: ['CTC', 'ACTC', '$2,000 per child', 'Tax credit']
     },
     {
       id: ToolType.QUARTERLY_TAX,
-      title: 'Quarterly Estimated Tax Calculator 2025',
+      title: 'Quarterly Estimated Tax Calculator 2026',
       description: 'Calculate quarterly estimated tax payments for freelancers and self-employed. Avoid IRS penalties with safe harbor rules.',
       icon: '📅',
       keywords: ['1040-ES', 'Quarterly taxes', 'Freelance taxes', 'Self-employment']
     },
     {
       id: ToolType.ACA_SUBSIDY,
-      title: 'ACA Health Insurance Subsidy Calculator 2025',
+      title: 'ACA Health Insurance Subsidy Calculator 2026',
       description: 'Calculate ACA marketplace subsidies and Premium Tax Credits. Determine Medicaid eligibility and healthcare costs.',
       icon: '🏥',
       keywords: ['ACA', 'Obamacare', 'Health insurance', 'Premium tax credit']
     },
     {
       id: ToolType.SALARY_CALC,
-      title: 'Take Home Pay Calculator 2025',
+      title: 'Take Home Pay Calculator 2026',
       description: 'Calculate your take-home pay after federal tax, state tax, FICA, and 401(k) deductions. All 50 states supported.',
       icon: '💰',
       keywords: ['Take home pay', 'Net pay', 'Salary after taxes', 'Paycheck calculator']
@@ -142,10 +142,10 @@ const TaxCalculatorsHub: React.FC<TaxCalculatorsHubProps> = ({ onNavigate }) => 
       <header className="space-y-4">
         <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Tax Tools Hub</p>
         <h1 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-          Free Tax Calculators <span className="text-indigo-600">2025</span>
+          Free Tax Calculators <span className="text-indigo-600">2026</span>
         </h1>
         <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
-          Complete collection of free tax calculators for 2025. Calculate child tax credits, quarterly taxes, ACA subsidies, take-home pay, and self-employment taxes. All tools are free, accurate, and include comprehensive guides.
+          Complete collection of free tax calculators for 2026. Calculate child tax credits, quarterly taxes, ACA subsidies, take-home pay, and self-employment taxes. All tools are free, accurate, and include comprehensive guides.
         </p>
       </header>
 
@@ -203,17 +203,17 @@ const TaxCalculatorsHub: React.FC<TaxCalculatorsHubProps> = ({ onNavigate }) => 
         <h2 className="text-2xl font-black text-slate-900 mb-6">About Our Tax Calculators</h2>
         <div className="prose prose-slate max-w-none space-y-4 text-slate-700">
           <p>
-            QuantCurb provides free, accurate tax calculators for 2025. Our tax tools are designed for individuals, families, freelancers, and self-employed professionals who need to understand their tax obligations and maximize their tax savings.
+            QuantCurb provides free, accurate tax calculators for 2026. Our tax tools are designed for individuals, families, freelancers, and self-employed professionals who need to understand their tax obligations and maximize their tax savings.
           </p>
           <p>
-            All calculators use the latest 2025 tax brackets, rates, and regulations from the IRS. Whether you're calculating your child tax credit, planning quarterly tax payments, or estimating your take-home pay, our tools provide instant, accurate results.
+            All calculators use the latest 2026 tax brackets, rates, and regulations from the IRS. Whether you're calculating your child tax credit, planning quarterly tax payments, or estimating your take-home pay, our tools provide instant, accurate results.
           </p>
           <p>
             <strong>Key Features:</strong>
           </p>
           <ul className="list-disc list-inside space-y-2 ml-4">
             <li>All 50 US states supported for state tax calculations</li>
-            <li>2025 tax brackets and rates updated</li>
+            <li>2026 tax brackets and rates updated</li>
             <li>Free to use - no registration required</li>
             <li>Comprehensive guides and FAQs included</li>
             <li>Mobile-friendly and accessible</li>
