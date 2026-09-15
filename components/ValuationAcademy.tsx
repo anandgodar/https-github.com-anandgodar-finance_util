@@ -102,7 +102,7 @@ const ValuationAcademy: React.FC<ValuationAcademyProps> = ({ setActiveTool }) =>
             <h1 className="text-5xl font-black tracking-tight">Valuation Academy</h1>
           </div>
           <p className="text-xl text-indigo-200 leading-relaxed max-w-3xl">
-            Master rigorous, source-cited financial analysis with our comprehensive guides.
+            Master rigorous, plain-English financial analysis with our comprehensive guides.
             Learn DCF valuation, options strategies, and tax optimization from real-world practitioners.
           </p>
           <div className="flex gap-6 mt-8 text-sm">
