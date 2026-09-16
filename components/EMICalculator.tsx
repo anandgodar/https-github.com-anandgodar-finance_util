@@ -335,7 +335,7 @@ const EMICalculator: React.FC<EMICalculatorProps> = ({ onNavigate }) => {
                   <h3 className="text-xl font-black text-slate-900">Prepayment Sensitivity Analysis</h3>
                   <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Impact of monthly extra payment on total cost & time</p>
                 </div>
-                <span className="text-[9px] font-black text-indigo-400 bg-indigo-50 px-3 py-1 rounded-full">Institutional Grade Model</span>
+                <span className="text-[9px] font-black text-indigo-400 bg-indigo-50 px-3 py-1 rounded-full">Reducing-Balance Amortization</span>
              </div>
              <div className="h-80 w-full">
                 <ResponsiveContainer width="100%" height="100%">

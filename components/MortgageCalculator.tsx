@@ -332,7 +332,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
         <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Institutional Mortgage Desk</p>
         <h1 className="text-4xl font-black text-slate-900">Mortgage PITI Analyzer</h1>
         <p className="text-slate-500 text-sm max-w-2xl">
-          Institutional-grade amortization with explicit PITI breakdowns, PMI auto-removal at 78% LTV, and a
+          Exact reducing-balance amortization with explicit PITI breakdowns, PMI auto-removal at 78% LTV, and a
           break-even equity timeline.
         </p>
       </header>

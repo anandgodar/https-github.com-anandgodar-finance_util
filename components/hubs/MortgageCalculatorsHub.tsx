@@ -10,8 +10,8 @@ const MortgageCalculatorsHub: React.FC<MortgageCalculatorsHubProps> = ({ onNavig
     const schema = {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Mortgage Calculators Hub - Free Mortgage Tools 2025",
-      "description": "Complete collection of free mortgage calculators for 2025. Calculate PITI payments, PMI, property taxes, loan comparisons, and affordability. All tools are free and include detailed guides.",
+      "name": "Mortgage Calculators Hub - Free Mortgage Tools 2026",
+      "description": "Complete collection of free mortgage calculators for 2026. Calculate PITI payments, PMI, property taxes, loan comparisons, and affordability. All tools are free and include detailed guides.",
       "url": "https://quantcurb.com/mortgage-calculators",
       "mainEntity": {
         "@type": "ItemList",
@@ -20,7 +20,7 @@ const MortgageCalculatorsHub: React.FC<MortgageCalculatorsHubProps> = ({ onNavig
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Mortgage Calculator 2025",
+            "name": "Mortgage Calculator 2026",
             "url": "https://quantcurb.com/mortgage-payment-calculator"
           },
           {
@@ -32,7 +32,7 @@ const MortgageCalculatorsHub: React.FC<MortgageCalculatorsHubProps> = ({ onNavig
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "EMI Calculator 2025",
+            "name": "EMI Calculator 2026",
             "url": "https://quantcurb.com/loan-emi-calculator"
           }
         ]
@@ -56,7 +56,7 @@ const MortgageCalculatorsHub: React.FC<MortgageCalculatorsHubProps> = ({ onNavig
   const mortgageCalculators = [
     {
       id: ToolType.MORTGAGE_CALC,
-      title: 'Mortgage Calculator 2025',
+      title: 'Mortgage Calculator 2026',
       description: 'Calculate PITI payments with PMI, property taxes, HOA fees, and all 50 US states. See when PMI drops and plan your home purchase.',
       icon: '🏡',
       keywords: ['PITI', 'PMI', 'Property tax', 'All 50 states']
@@ -70,7 +70,7 @@ const MortgageCalculatorsHub: React.FC<MortgageCalculatorsHubProps> = ({ onNavig
     },
     {
       id: ToolType.EMI_CALC,
-      title: 'EMI Calculator 2025',
+      title: 'EMI Calculator 2026',
       description: 'Calculate loan EMI with reducing balance method. Model principal prepayments and see interest savings.',
       icon: '💳',
       keywords: ['EMI', 'Loan repayment', 'Prepayment', 'Interest savings']
@@ -100,10 +100,10 @@ const MortgageCalculatorsHub: React.FC<MortgageCalculatorsHubProps> = ({ onNavig
       <header className="space-y-4">
         <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">Mortgage Tools Hub</p>
         <h1 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-          Free Mortgage Calculators <span className="text-indigo-600">2025</span>
+          Free Mortgage Calculators <span className="text-indigo-600">2026</span>
         </h1>
         <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-medium">
-          Complete collection of free mortgage calculators for 2025. Calculate PITI payments, PMI, property taxes, loan comparisons, and affordability. All tools are free, accurate, and include comprehensive guides.
+          Complete collection of free mortgage calculators for 2026. Calculate PITI payments, PMI, property taxes, loan comparisons, and affordability. All tools are free, accurate, and include comprehensive guides.
         </p>
       </header>
 
@@ -158,7 +158,7 @@ const MortgageCalculatorsHub: React.FC<MortgageCalculatorsHubProps> = ({ onNavig
         <h2 className="text-2xl font-black text-slate-900 mb-6">About Our Mortgage Calculators</h2>
         <div className="prose prose-slate max-w-none space-y-4 text-slate-700">
           <p>
-            QuantCurb provides free, accurate mortgage calculators for 2025. Our mortgage tools help you calculate PITI payments, understand PMI, compare loan offers, and plan your home purchase.
+            QuantCurb provides free, accurate mortgage calculators for 2026. Our mortgage tools help you calculate PITI payments, understand PMI, compare loan offers, and plan your home purchase.
           </p>
           <p>
             All calculators include property tax rates for all 50 US states, PMI calculations, HOA fees, and comprehensive amortization schedules. Whether you're a first-time homebuyer or refinancing, our tools provide instant, accurate results.
