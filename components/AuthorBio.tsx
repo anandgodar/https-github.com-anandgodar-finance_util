@@ -17,7 +17,7 @@ const AuthorBio: React.FC<AuthorBioProps> = ({ variant = 'full' }) => {
           <div className="flex-1">
             <h4 className="font-black text-slate-900 mb-1">Anand Godar</h4>
             <p className="text-sm text-slate-600 mb-2">
-              Financial engineer and founder of QuantCurb. Former fintech data scientist building institutional-grade calculators for everyday wealth decisions.
+              Financial engineer and founder of QuantCurb. Former fintech data scientist building source-cited financial calculators for everyday wealth decisions.
             </p>
             <a 
               href="/about-quantcurb" 

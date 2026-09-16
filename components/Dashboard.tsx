@@ -177,7 +177,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
              <h3 className="text-4xl font-black text-slate-900 tracking-tight leading-tight">Professional-Grade <br/>Mathematical Standards</h3>
            </div>
            <p className="text-slate-500 text-lg leading-relaxed font-medium">
-             Our platform doesn't just calculate; it audits. Every tool in the QuantCurb suite is built using standardized financial accounting principles used by global banks and private equity firms.
+             Every tool in the QuantCurb suite is built on the standard formulas taught in corporate finance coursework — reducing-balance amortization, marginal tax-bracket math, or compound interest, depending on what it calculates. Full breakdown, including rounding behavior, on our Methodology page.
            </p>
            <div className="grid grid-cols-2 gap-8 pt-4">
               <div className="space-y-2">
