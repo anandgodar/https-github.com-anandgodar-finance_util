@@ -81,7 +81,7 @@ const AboutUs: React.FC = () => {
          <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.5em] text-center">Core Pillars</h3>
          <div className="grid md:grid-cols-3 gap-10">
             {[
-              { title: 'Algorithmic Integrity', desc: 'Every calculator uses the reducing balance standard used by Tier-1 global banks.', icon: '📉' },
+              { title: 'Algorithmic Integrity', desc: 'Every loan calculator uses the reducing-balance amortization standard, documented on our Methodology page.', icon: '📉' },
               { title: 'Data Sovereignty', desc: 'Your private balance sheet stays on your device. We prioritize logic over surveillance.', icon: '🔐' },
               { title: 'AI Synthesis', desc: 'We bridge raw data with AI sentiment to give you context, not just digits.', icon: '🤖' }
             ].map(pillar => (
