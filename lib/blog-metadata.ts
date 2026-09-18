@@ -383,6 +383,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].title,
     description: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].desc,
     slug: 'net-worth-percentile-by-age-2026'
+  },
+  'hsa-vs-401k-fica-tax-savings-2026': {
+    title: TOOL_METADATA[ToolType.BLOG_HSA_VS_401K].title,
+    description: TOOL_METADATA[ToolType.BLOG_HSA_VS_401K].desc,
+    slug: 'hsa-vs-401k-fica-tax-savings-2026'
   }
 };
 
