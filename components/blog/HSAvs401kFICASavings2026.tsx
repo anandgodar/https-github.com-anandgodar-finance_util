@@ -277,16 +277,16 @@ const HSAvs401kFICASavings2026: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
           <div className="space-y-4">
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-5">
-              <h3 className="font-bold text-slate-900 mb-1">1. Run your baseline through the calculator as normal</h3>
-              <p className="text-slate-700">Enter your salary and 401(k) percentage to see your bracket and current FICA line.</p>
+              <h3 className="font-bold text-slate-900 mb-1">1. Enter your payroll HSA contribution in the Health Insurance field</h3>
+              <p className="text-slate-700">Along with your salary and 401(k) percentage. The calculator already treats that field as a federal/state pre-tax deduction, so this step gets the income-tax half of the savings right — it&apos;s the FICA half that still needs a manual correction below.</p>
             </div>
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-5">
-              <h3 className="font-bold text-slate-900 mb-1">2. Multiply your payroll HSA contribution by 7.65% (or 1.45–2.35% if you're above the $184,500 Social Security wage base)</h3>
-              <p className="text-slate-700">That&apos;s the extra FICA savings the calculator&apos;s current Health Insurance field doesn&apos;t capture, on top of whatever federal/state savings it already shows.</p>
+              <h3 className="font-bold text-slate-900 mb-1">2. Add 7.65% of whichever part of the contribution is still under the $184,500 Social Security wage base (1.45–2.35% for the rest)</h3>
+              <p className="text-slate-700">If your wages plus the contribution straddle $184,500 — say wages of $184,700 with a $500 contribution — split it: the $300 that&apos;s still under the cap saves the full 7.65%, the remaining $200 only saves the uncapped 1.45% (2.35% if you&apos;re also already past the $200,000 Additional Medicare Tax threshold). That&apos;s the FICA savings the calculator&apos;s Health Insurance field doesn&apos;t capture on its own.</p>
             </div>
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-5">
-              <h3 className="font-bold text-slate-900 mb-1">3. Add that amount to the calculator&apos;s take-home figure</h3>
-              <p className="text-slate-700">Your real net pay, with a payroll HSA contribution, is slightly higher than the raw calculator output because it doesn&apos;t currently reduce the FICA line for this deduction type.</p>
+              <h3 className="font-bold text-slate-900 mb-1">3. Add that FICA amount to the calculator&apos;s take-home figure</h3>
+              <p className="text-slate-700">Your real net pay, with a payroll HSA contribution, is slightly higher than step 1&apos;s output because the calculator&apos;s FICA line doesn&apos;t currently reduce for this deduction type. <strong>California and New Jersey filers:</strong> both states tax HSA contributions — they don&apos;t conform to the federal exclusion — so subtract back the state-tax portion of step 1&apos;s savings before adding the FICA correction; only the federal and FICA savings are real for those two states.</p>
             </div>
           </div>
         </section>
