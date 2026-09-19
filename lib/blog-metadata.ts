@@ -383,6 +383,11 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     title: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].title,
     description: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].desc,
     slug: 'net-worth-percentile-by-age-2026'
+  },
+  'mid-year-move-part-year-resident-tax-guide-2026': {
+    title: TOOL_METADATA[ToolType.BLOG_MIDYEAR_MOVE].title,
+    description: TOOL_METADATA[ToolType.BLOG_MIDYEAR_MOVE].desc,
+    slug: 'mid-year-move-part-year-resident-tax-guide-2026'
   }
 };
 

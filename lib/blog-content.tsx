@@ -77,6 +77,7 @@ import NoTaxOnTipsExplained2025 from '../components/blog/NoTaxOnTipsExplained202
 import ExcessSocialSecurityRefund2026 from '../components/blog/ExcessSocialSecurityRefund2026';
 import StatePayrollTaxGap2026 from '../components/blog/StatePayrollTaxGap2026';
 import NetWorthPercentileByAge2026 from '../components/blog/NetWorthPercentileByAge2026';
+import MidYearMovePartYearResident2026 from '../components/blog/MidYearMovePartYearResident2026';
 import { TOOL_METADATA } from './tool-metadata';
 import { ToolType } from '../types';
 
@@ -461,6 +462,11 @@ export const blogContent: Record<string, BlogContentEntry> = {
     title: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].title,
     description: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].desc,
     component: NetWorthPercentileByAge2026
+  },
+  'mid-year-move-part-year-resident-tax-guide-2026': {
+    title: TOOL_METADATA[ToolType.BLOG_MIDYEAR_MOVE].title,
+    description: TOOL_METADATA[ToolType.BLOG_MIDYEAR_MOVE].desc,
+    component: MidYearMovePartYearResident2026
   }
 };
 

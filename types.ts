@@ -108,6 +108,7 @@ export enum ToolType {
   BLOG_SS_REFUND = 'blog/excess-social-security-tax-refund-multiple-employers',
   BLOG_PAYROLL_GAP = 'blog/state-disability-paid-leave-payroll-tax-2026',
   BLOG_NET_WORTH_PERCENTILE = 'blog/net-worth-percentile-by-age-2026',
+  BLOG_MIDYEAR_MOVE = 'blog/mid-year-move-part-year-resident-tax-guide-2026',
   BLOG_INDEX = 'blog',
   TAX_CALCULATORS_HUB = 'tax-calculators',
   RETIREMENT_CALCULATORS_HUB = 'retirement-calculators',
