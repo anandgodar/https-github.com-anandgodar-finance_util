@@ -221,6 +221,7 @@ const BLOG_POSTS = [
   'excess-social-security-tax-refund-multiple-employers',
   'state-disability-paid-leave-payroll-tax-2026',
   'net-worth-percentile-by-age-2026',
+  'mid-year-move-part-year-resident-tax-guide-2026',
 ];
 
 // State calculator types for state pages

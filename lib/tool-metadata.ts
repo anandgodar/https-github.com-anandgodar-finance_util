@@ -541,6 +541,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "The Federal Reserve's own 2022 data shows homeowners had a median net worth 38x higher than renters. What the age-only percentile tables miss, and how to read your own number correctly.",
     keywords: "net worth percentile by age, net worth by age calculator, average net worth by age 2026, median net worth by age, homeowner vs renter net worth, am i rich for my age, net worth percentile calculator"
   },
+  [ToolType.BLOG_MIDYEAR_MOVE]: {
+    title: "Moved Mid-Year? The Part-Year-Resident Withholding Problem No Calculator Warns You About",
+    desc: "Working in two states in the same year isn't just 'file two returns.' Many states tax your new-state income at a rate set by your full-year income, not just what you earned there. A worked example and a moving-week checklist.",
+    keywords: "moved to new state mid year taxes, part year resident withholding two states, part year resident tax calculation, moving states mid year tax, part year resident California New York"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",
