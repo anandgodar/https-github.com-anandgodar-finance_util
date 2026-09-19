@@ -170,7 +170,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
       </div>
 
       <div className="max-w-7xl mx-auto border-t mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">&copy; 2025 QUANTCURB.COM - CALCULATED WITH PRECISION</p>
+        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">&copy; {new Date().getFullYear()} QUANTCURB.COM - CALCULATED WITH PRECISION</p>
         <div className="flex gap-6">
           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">SSL SECURED</span>
           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">GDPR COMPLIANT</span>
