@@ -74,8 +74,8 @@ const MidYearMovePartYearResident2026: React.FC<BlogProps> = ({ onNavigate }) =>
           states with graduated tax brackets don&apos;t look at your new-state income in isolation. They look at
           your <em>whole year&apos;s</em> income to decide what rate applies, then tax only the slice you earned as
           a resident. That can mean a higher effective rate on the new state&apos;s income than a standalone
-          calculation would suggest — and it&apos;s different from anything covered by reciprocity or a
-          remote-work sourcing rule.
+          calculation would suggest — and it&apos;s a separate question from reciprocity or a remote-work sourcing
+          rule, which can still apply on top of it if you keep working for an out-of-state employer after the move.
         </p>
 
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
@@ -102,8 +102,8 @@ const MidYearMovePartYearResident2026: React.FC<BlogProps> = ({ onNavigate }) =>
         <h2 className="text-lg font-black text-slate-900 mb-4">📋 Table of Contents</h2>
         <ol className="space-y-2 text-sm">
           <li><button onClick={() => scrollToSection('not-the-same')} className="text-indigo-600 hover:underline">1. Why this isn&apos;t the reciprocity or remote-work question</button></li>
-          <li><button onClick={() => scrollToSection('two-methods')} className="text-indigo-600 hover:underline">2. Two ways states tax a part-year resident, and why the difference matters</button></li>
-          <li><button onClick={() => scrollToSection('worked-example')} className="text-indigo-600 hover:underline">3. Worked example: the same $90,000 taxed two different ways</button></li>
+          <li><button onClick={() => scrollToSection('two-methods')} className="text-indigo-600 hover:underline">2. The rate-setting mechanic that catches people off guard</button></li>
+          <li><button onClick={() => scrollToSection('worked-example')} className="text-indigo-600 hover:underline">3. Worked example: what the same $90,000 actually owes</button></li>
           <li><button onClick={() => scrollToSection('checklist')} className="text-indigo-600 hover:underline">4. The first-paycheck-after-a-move checklist</button></li>
           <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">5. FAQ</button></li>
         </ol>
@@ -141,45 +141,45 @@ const MidYearMovePartYearResident2026: React.FC<BlogProps> = ({ onNavigate }) =>
             </table>
           </div>
           <p className="text-lg text-slate-700 leading-relaxed">
-            That third row is this piece. Nothing here changes if you also work remotely part of the time — this is
-            about residency status changing mid-year, not about where the work was physically performed.
+            That third row is this piece. If you also keep working remotely for an out-of-state employer after the
+            move — say, your old employer, once you&apos;ve relocated — the top row&apos;s sourcing questions can
+            still apply on top of the part-year mechanics below, for the wages earned during whichever period you&apos;re
+            a nonresident. The two checks are independent, not mutually exclusive.
           </p>
         </section>
 
         <section id="two-methods" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Two ways states tax a part-year resident, and why the difference matters</h2>
+          <h2 className="text-3xl font-black text-slate-900">The rate-setting mechanic that catches people off guard</h2>
           <p className="text-lg text-slate-700 leading-relaxed">
             Every state with a part-year resident category taxes you as a full resident on income earned while you
             lived there, and (if it has an income tax at all) on its own in-state-source income for the rest of the
             year. That part is universal and not the trap. The trap is <em>which tax rate</em> gets applied to the
-            income earned during the resident period, and here the mechanics genuinely differ:
+            income earned during the resident period — and the two biggest states by population, checked directly
+            against their own instructions, both use the mechanic people don&apos;t expect:
           </p>
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
             <table className="w-full">
               <thead className="bg-slate-50">
                 <tr>
-                  <th className="text-left p-4 font-black text-slate-900">Method</th>
-                  <th className="text-left p-4 font-black text-slate-900">How the rate is set</th>
-                  <th className="text-left p-4 font-black text-slate-900">Documented example</th>
+                  <th className="text-left p-4 font-black text-slate-900">State</th>
+                  <th className="text-left p-4 font-black text-slate-900">How the rate is actually set</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 font-bold text-indigo-600">Full-year-rate method</td>
-                  <td className="p-4 text-slate-700">Compute the tax on your <em>entire year&apos;s income from everywhere</em>, as if you&apos;d lived there all year, to find which brackets that income touches — then apply only the share of that tax equal to (income earned there ÷ total income for the year).</td>
-                  <td className="p-4 text-slate-700">California&apos;s Schedule CA (540NR): total income sets the bracket exposure, then a ratio applies it to the California-source share.</td>
+                  <td className="p-4 font-bold text-indigo-600">California</td>
+                  <td className="p-4 text-slate-700">Schedule CA (540NR) computes a hypothetical tax on your <em>entire year&apos;s income from everywhere</em>, as if you&apos;d been a full-year resident, to find which brackets that income touches — then applies only the share of that tax equal to (California-source income ÷ total income).</td>
                 </tr>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 font-bold text-indigo-600">Direct-allocation method</td>
-                  <td className="p-4 text-slate-700">Tax only the income actually earned/sourced there, run through that state&apos;s brackets on its own, with no reference to what you earned elsewhere in the year.</td>
-                  <td className="p-4 text-slate-700">New York&apos;s IT-203-B allocates wages by where the work was physically performed for the resident vs. nonresident period.</td>
+                  <td className="p-4 font-bold text-indigo-600">New York</td>
+                  <td className="p-4 text-slate-700">Form IT-203 does the same base-then-ratio computation (lines 44-47 of the instructions): a base tax on full-year income, multiplied by an &quot;income percentage&quot; equal to the New York-source amount over the federal total. IT-203-B&apos;s own job is narrower than it looks — it only decides which wages count as New York-source in that ratio&apos;s numerator (allocating by where the work was physically performed), not whether the rate itself is exposed to your total income. It is.</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-xl">
             <p className="text-amber-900 font-semibold">
-              ⚠️ Under the full-year-rate method, a raise or a new, higher-paying job that came with the move can
+              ⚠️ Under this base-then-ratio mechanic, a raise or a new, higher-paying job that came with the move can
               push the tax rate on your new state&apos;s income higher than the same dollar amount would face if it
               were your only income for the year. This isn&apos;t a penalty for moving — it&apos;s the same logic
               graduated brackets use for anyone: your marginal rate is set by your total income, and a part-year
@@ -188,22 +188,24 @@ const MidYearMovePartYearResident2026: React.FC<BlogProps> = ({ onNavigate }) =>
             </p>
           </div>
           <p className="text-lg text-slate-700 leading-relaxed">
-            Which method your specific old and new state each use is exactly the kind of detail that&apos;s easy to
-            get wrong from memory — check the part-year resident instructions for each state&apos;s own return
-            (usually a form named something like &quot;Nonresident and Part-Year Resident,&quot; e.g. Form 540NR or
-            IT-203) rather than assuming either mechanic applies.
+            Don&apos;t assume every state works this way, and don&apos;t assume none do — check the part-year
+            resident instructions for each state&apos;s own return (usually a form named something like
+            &quot;Nonresident and Part-Year Resident,&quot; e.g. Form 540NR or IT-203) rather than guessing from
+            either example above. What can genuinely vary state to state is which income counts toward the
+            in-state numerator (physical work location, days present, or something else) — not necessarily
+            whether the rate itself gets set off your full-year income.
           </p>
         </section>
 
         <section id="worked-example" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Worked example: the same $90,000 taxed two different ways</h2>
+          <h2 className="text-3xl font-black text-slate-900">Worked example: what the same $90,000 actually owes</h2>
           <p className="text-lg text-slate-700 leading-relaxed">
             A single filer earns <strong>$60,000</strong> in a flat-tax state for the first half of the year, then
             relocates and takes a new job paying <strong>$90,000</strong> for the second half — a raise that came
             with the move, common enough that it&apos;s worth modeling rather than assuming income stays flat.
             Total income for the year: <strong>$150,000</strong>. Using California&apos;s published 2026 bracket
             structure (approximate — the Franchise Tax Board finalizes exact inflation-indexed thresholds closer to
-            the tax year) and its standard deduction, here&apos;s what the full-year-rate method actually does to
+            the tax year) and its standard deduction, here&apos;s what the base-then-ratio mechanic actually does to
             the $90,000 earned there:
           </p>
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
@@ -240,12 +242,15 @@ const MidYearMovePartYearResident2026: React.FC<BlogProps> = ({ onNavigate }) =>
           <p className="text-lg text-slate-700 leading-relaxed">
             That $1,551 isn&apos;t double taxation and it isn&apos;t a fee for moving — it&apos;s the direct result
             of the $60,000 earned before the move pushing the household into higher brackets that the ratio method
-            then applies to the California share. Someone who assumed each state simply taxes &quot;its own&quot;
-            income on its own terms, at the rate a same-size paycheck would face on its own, would under-withhold
-            for California by exactly this amount and owe it as a balance at filing instead. A state using the
-            direct-allocation method instead (New York-style) would land closer to line 4 for its wage income,
-            because it never runs the full-year total through its bracket schedule in the first place — which is
-            the whole reason checking each state&apos;s actual method matters more than assuming either one.
+            then applies to the California share. It&apos;s a gap between two <em>liability</em> estimates, not a
+            withholding shortfall by itself: what actually gets withheld from each paycheck follows its own separate
+            payroll formula (an annualized wage rate against the state withholding form on file with that employer),
+            which doesn&apos;t automatically track this year-end liability math one way or the other. Treat the
+            $1,551 as a reason to check your actual withholding and, if you have other income or deductions, run an
+            estimated payment — not as a guaranteed dollar amount you&apos;ll owe. And this isn&apos;t a
+            California-specific quirk: New York&apos;s IT-203 runs the identical base-then-ratio computation (see
+            above), so a New York mover in the same situation would face the same kind of gap, not the isolated,
+            line-4-style result many people assume.
           </p>
           <p className="text-lg text-slate-700 leading-relaxed">
             The old flat-tax state in this example doesn&apos;t have this problem at all — a single flat rate
@@ -297,7 +302,7 @@ const MidYearMovePartYearResident2026: React.FC<BlogProps> = ({ onNavigate }) =>
             </div>
             <div>
               <h3 className="text-xl font-black text-slate-900">Is this the same as the reciprocity or convenience-of-the-employer situation?</h3>
-              <p className="text-lg text-slate-700">No. Those apply when you never changed residency at all — you live in one state and simply work for an employer based in another. This is about your residency itself changing partway through the year, which triggers each state&apos;s part-year rules regardless of where the work was performed.</p>
+              <p className="text-lg text-slate-700">Not the same question, but they can stack. Reciprocity and the convenience rule are about sourcing — whether an employer&apos;s state can tax income earned for it — and that question doesn&apos;t disappear just because you moved. Keep working remotely for your old-state employer after relocating, and that employer&apos;s state can still apply its own sourcing rules (including a convenience-of-the-employer test) to the wages you earn during your new, nonresident period there — on top of, not instead of, the part-year mechanics this piece covers. Treat the two as separate checks to run, not alternatives.</p>
             </div>
             <div>
               <h3 className="text-xl font-black text-slate-900">Does moving to a no-income-tax state mid-year at least cut my tax bill for those months?</h3>
