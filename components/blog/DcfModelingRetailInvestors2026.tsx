@@ -11,7 +11,7 @@ const DcfModelingRetailInvestors2026: React.FC<BlogProps> = ({ onNavigate }) => 
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "Why Two \"Reasonable\" DCF Models Can Disagree by 2.4x (And What to Do About It)",
-      "description": "The same five-year forecast, run with four defensible WACC and growth assumptions, can swing a DCF valuation from $12M to $29M. A worked sensitivity grid, why terminal value drives most of the gap, and a framework for reading a range instead of trusting one number.",
+      "description": "The same company, modeled with four defensible WACC and growth assumptions, can swing a DCF valuation from $12M to $29M. A worked sensitivity grid, why terminal value drives most of the gap, and a framework for reading a range instead of trusting one number.",
       "author": {
         "@type": "Organization",
         "name": "QuantCurb"
@@ -69,7 +69,7 @@ const DcfModelingRetailInvestors2026: React.FC<BlogProps> = ({ onNavigate }) => 
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
-          Run the exact same five-year forecast twice — once with a slightly more optimistic growth rate and a
+          Model the exact same company twice — once with a slightly more optimistic growth rate and a
           slightly lower discount rate, once with the opposite — and the resulting valuation can move from $12
           million to $29 million. Neither run used an extreme assumption. That is not a flaw in the model. It is
           what a DCF actually is: a range dressed up as a single number, unless you read it that way.
@@ -98,7 +98,7 @@ const DcfModelingRetailInvestors2026: React.FC<BlogProps> = ({ onNavigate }) => 
         <h2 className="text-lg font-black text-slate-900 mb-4">📋 Table of Contents</h2>
         <ol className="space-y-2 text-sm">
           <li><button onClick={() => scrollToSection('one-number-trap')} className="text-indigo-600 hover:underline">1. The one-number trap</button></li>
-          <li><button onClick={() => scrollToSection('the-grid')} className="text-indigo-600 hover:underline">2. Same forecast, 25 assumption pairs, 25 answers</button></li>
+          <li><button onClick={() => scrollToSection('the-grid')} className="text-indigo-600 hover:underline">2. Same company, 25 assumption pairs, 25 answers</button></li>
           <li><button onClick={() => scrollToSection('terminal-value')} className="text-indigo-600 hover:underline">3. Why terminal value drives most of the swing</button></li>
           <li><button onClick={() => scrollToSection('picking-wacc')} className="text-indigo-600 hover:underline">4. Picking a WACC without guessing</button></li>
           <li><button onClick={() => scrollToSection('reading-the-grid')} className="text-indigo-600 hover:underline">5. What to actually do with the range</button></li>
@@ -127,7 +127,7 @@ const DcfModelingRetailInvestors2026: React.FC<BlogProps> = ({ onNavigate }) => 
         </section>
 
         <section id="the-grid" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Same forecast, 25 assumption pairs, 25 answers</h2>
+          <h2 className="text-3xl font-black text-slate-900">Same company, 25 assumption pairs, 25 answers</h2>
           <p className="text-lg text-slate-700 leading-relaxed">
             Start from one company: $5,000,000 in current revenue, a 20% EBITDA margin, a 21% tax rate, growing at
             a center-case <strong>15%</strong> a year with a <strong>10%</strong> discount rate (WACC) and a 2.5%
@@ -199,7 +199,7 @@ const DcfModelingRetailInvestors2026: React.FC<BlogProps> = ({ onNavigate }) => 
             <p className="text-amber-900 font-semibold">
               ⚠️ The bottom-left cell (19% growth, 8% WACC) and the top-right cell (11% growth, 12% WACC) are both
               inside a band most analysts would call defensible — yet they land at <strong>$29.2M</strong> and{' '}
-              <strong>$12.0M</strong>. That&apos;s a <strong>2.4x spread</strong> from the same five-year forecast,
+              <strong>$12.0M</strong>. That&apos;s a <strong>2.4x spread</strong> from the same starting revenue,
               the same margin, the same tax rate — nothing changed except two inputs nobody can pin down exactly.
               A single &quot;Intrinsic Value: $18.0M&quot; heading hides that entire range.
             </p>

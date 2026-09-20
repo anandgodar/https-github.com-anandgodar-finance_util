@@ -373,7 +373,7 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
   },
   [ToolType.BLOG_DCF_RETAIL]: {
     title: "DCF Sensitivity Grid: Why One DCF Number Isn't Enough",
-    desc: "See why the same 5-year forecast can value a company from $12M to $29M, and how to read a WACC vs. growth sensitivity grid instead.",
+    desc: "See why the same company can be valued from $12M to $29M depending on WACC and growth, and how to read a sensitivity grid instead.",
     keywords: "dcf sensitivity analysis, dcf terminal value, how to pick wacc discount rate, dcf modeling for retail investors, dcf valuation range"
   },
   [ToolType.BLOG_LUMP_SUM_DCA]: {
