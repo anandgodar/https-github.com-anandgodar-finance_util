@@ -372,9 +372,9 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "latte factor vs big wins"
   },
   [ToolType.BLOG_DCF_RETAIL]: {
-    title: "DCF Modeling for Retail Investors",
-    desc: "Learn discounted cash flow modeling basics.",
-    keywords: "dcf modeling for retail investors"
+    title: "DCF Sensitivity Grid: Why One DCF Number Isn't Enough",
+    desc: "See why the same 5-year forecast can value a company from $12M to $29M, and how to read a WACC vs. growth sensitivity grid instead.",
+    keywords: "dcf sensitivity analysis, dcf terminal value, how to pick wacc discount rate, dcf modeling for retail investors, dcf valuation range"
   },
   [ToolType.BLOG_LUMP_SUM_DCA]: {
     title: "Lump Sum vs Dollar Cost Averaging",
