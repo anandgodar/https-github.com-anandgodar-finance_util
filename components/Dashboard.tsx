@@ -140,7 +140,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
                   </h2>
                 </div>
                 <p className="text-slate-400 text-base md:text-xl leading-relaxed font-medium max-w-xl">
-                  QuantCurb's proprietary AI engine audits the global financial stack. We bridge the gap between low-latency institutional platforms (FactSet, Aladdin) and modern retail convenience (Robinhood, Wise).
+                  QuantCurb's calculators are built on the same primary-source data — IRS tax tables, Federal Reserve rates, and exact amortization formulas — that professional financial tools rely on, wrapped in the simplicity retail apps like Robinhood and Wise are known for.
                 </p>
                 <div className="flex gap-4 md:gap-6 pt-2 md:pt-4">
                   <button
