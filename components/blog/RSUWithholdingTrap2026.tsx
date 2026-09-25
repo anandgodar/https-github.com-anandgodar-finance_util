@@ -270,16 +270,23 @@ const RSUWithholdingTrap2026: React.FC<BlogProps> = ({ onNavigate }) => {
               deadline. The Quarterly Tax Calculator walks through the payment schedule and the underpayment-
               penalty safe harbor: you generally avoid a penalty by paying at least 90% of the current year's
               tax, or 100% of last year's tax (110% if last year's AGI was over $150,000), through the year via
-              withholding and estimated payments combined.
+              withholding and estimated payments combined. Each due date's installment it shows is an even
+              quarter-slice of that full-year target, not the RSU-specific gap — to find what's actually still
+              owed, compare your <em>cumulative</em> withholding and payments so far this year (including the
+              22% taken at vest) against the <em>cumulative</em> safe-harbor amount through that same due date,
+              not against a single installment figure on its own.
             </li>
           </ul>
           <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
-                <h3 className="font-bold text-slate-900 text-lg mb-2">Cover the gap with a timely estimated payment</h3>
+                <h3 className="font-bold text-slate-900 text-lg mb-2">Size your next estimated payment</h3>
                 <p className="text-sm text-slate-600">
-                  The Quarterly Tax Calculator estimates what you owe and by when, so a large vest doesn't
-                  turn into a Q4 underpayment penalty on top of the tax itself.
+                  The Quarterly Tax Calculator shows each due date's installment as one quarter of your
+                  full-year safe-harbor target — it doesn't know what you've already paid. Compare your total
+                  withholding and payments so far this year (including the 22% RSU withholding above) against
+                  the cumulative safe-harbor target through that same date, not against a single installment
+                  number, to find what's actually left to pay.
                 </p>
               </div>
               <button
