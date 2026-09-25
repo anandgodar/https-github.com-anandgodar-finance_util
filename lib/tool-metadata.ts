@@ -551,6 +551,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "401(k) contributions only reduce your income-tax wages. HSA contributions made through payroll also reduce your FICA wages, because they run through a Section 125 cafeteria plan. Worked examples at two income levels show the exact gap.",
     keywords: "hsa vs 401k tax savings, does hsa reduce fica tax, hsa fica exemption, section 125 cafeteria plan fica, hsa contribution limits 2026, pretax deduction order 401k hsa"
   },
+  [ToolType.BLOG_MIDYEAR_MOVE]: {
+    title: "Moved Mid-Year? The Part-Year-Resident Withholding Problem No Calculator Warns You About",
+    desc: "Working in two states in the same year isn't just 'file two returns.' Many states tax your new-state income at a rate set by your full-year income, not just what you earned there. A worked example and a moving-week checklist.",
+    keywords: "moved to new state mid year taxes, part year resident withholding two states, part year resident tax calculation, moving states mid year tax, part year resident California New York"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",

@@ -728,7 +728,13 @@
   </url>
   <url>
     <loc>https://quantcurb.com/blog/hsa-vs-401k-fica-tax-savings-2026/</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quantcurb.com/blog/mid-year-move-part-year-resident-tax-guide-2026/</loc>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

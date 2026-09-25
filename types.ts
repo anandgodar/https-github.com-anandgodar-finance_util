@@ -110,6 +110,7 @@ export enum ToolType {
   BLOG_RSU_WITHHOLDING = 'blog/rsu-22-percent-withholding-trap',
   BLOG_NET_WORTH_PERCENTILE = 'blog/net-worth-percentile-by-age-2026',
   BLOG_HSA_VS_401K = 'blog/hsa-vs-401k-fica-tax-savings-2026',
+  BLOG_MIDYEAR_MOVE = 'blog/mid-year-move-part-year-resident-tax-guide-2026',
   BLOG_INDEX = 'blog',
   TAX_CALCULATORS_HUB = 'tax-calculators',
   RETIREMENT_CALCULATORS_HUB = 'retirement-calculators',

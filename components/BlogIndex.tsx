@@ -768,6 +768,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "8 min",
       date: "September 2026",
       icon: "🩹"
+    },
+    {
+      id: ToolType.BLOG_MIDYEAR_MOVE,
+      title: "Moved Mid-Year? The Part-Year-Resident Withholding Problem No Calculator Warns You About",
+      description: "Working in two states in the same year isn't just 'file two returns.' Many states tax your new-state income at a rate set by your full-year income, not just what you earned there. A worked example and a moving-week checklist.",
+      category: "Salary & Taxes",
+      readTime: "11 min",
+      date: "September 2026",
+      icon: "📦"
     }
   ];
 

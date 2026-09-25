@@ -17,6 +17,7 @@ export const blogToCalculatorMap: Record<string, ToolType> = {
   'rsu-22-percent-withholding-trap': ToolType.SALARY_CALC,
   'net-worth-percentile-by-age-2026': ToolType.NET_WORTH,
   'hsa-vs-401k-fica-tax-savings-2026': ToolType.SALARY_CALC,
+  'mid-year-move-part-year-resident-tax-guide-2026': ToolType.SALARY_CALC,
   'raise-vs-relocation-cost-of-living': ToolType.SALARY_CALC,
   'max-out-401k-take-home-pay': ToolType.SALARY_CALC,
   'gross-vs-net-pay-paycheck-breakdown': ToolType.SALARY_CALC,
