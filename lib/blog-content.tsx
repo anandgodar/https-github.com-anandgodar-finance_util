@@ -78,6 +78,7 @@ import ExcessSocialSecurityRefund2026 from '../components/blog/ExcessSocialSecur
 import StatePayrollTaxGap2026 from '../components/blog/StatePayrollTaxGap2026';
 import RSUWithholdingTrap2026 from '../components/blog/RSUWithholdingTrap2026';
 import NetWorthPercentileByAge2026 from '../components/blog/NetWorthPercentileByAge2026';
+import HSAvs401kFICASavings2026 from '../components/blog/HSAvs401kFICASavings2026';
 import { TOOL_METADATA } from './tool-metadata';
 import { ToolType } from '../types';
 
@@ -467,6 +468,11 @@ export const blogContent: Record<string, BlogContentEntry> = {
     title: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].title,
     description: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].desc,
     component: NetWorthPercentileByAge2026
+  },
+  'hsa-vs-401k-fica-tax-savings-2026': {
+    title: TOOL_METADATA[ToolType.BLOG_HSA_VS_401K].title,
+    description: TOOL_METADATA[ToolType.BLOG_HSA_VS_401K].desc,
+    component: HSAvs401kFICASavings2026
   }
 };
 

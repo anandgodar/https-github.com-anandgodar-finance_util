@@ -546,6 +546,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "The Federal Reserve's own 2022 data shows homeowners had a median net worth 38x higher than renters. What the age-only percentile tables miss, and how to read your own number correctly.",
     keywords: "net worth percentile by age, net worth by age calculator, average net worth by age 2026, median net worth by age, homeowner vs renter net worth, am i rich for my age, net worth percentile calculator"
   },
+  [ToolType.BLOG_HSA_VS_401K]: {
+    title: "401(k) vs. HSA: Why the Same $500 Doesn't Save You the Same Amount of Tax",
+    desc: "401(k) contributions only reduce your income-tax wages. HSA contributions made through payroll also reduce your FICA wages, because they run through a Section 125 cafeteria plan. Worked examples at two income levels show the exact gap.",
+    keywords: "hsa vs 401k tax savings, does hsa reduce fica tax, hsa fica exemption, section 125 cafeteria plan fica, hsa contribution limits 2026, pretax deduction order 401k hsa"
+  },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
     desc: "Browse the QuantCurb financial planning and investing guides.",

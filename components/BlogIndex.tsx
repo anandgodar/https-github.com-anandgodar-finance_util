@@ -759,6 +759,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "10 min",
       date: "September 2026",
       icon: "💎"
+    },
+    {
+      id: ToolType.BLOG_HSA_VS_401K,
+      title: "401(k) vs. HSA: Why the Same $500 Doesn't Save You the Same Amount of Tax",
+      description: "401(k) contributions only reduce your income-tax wages. HSA contributions made through payroll also reduce your FICA wages, because they run through a Section 125 cafeteria plan. Worked examples show the exact dollar gap.",
+      category: "Salary & Taxes",
+      readTime: "8 min",
+      date: "September 2026",
+      icon: "🩹"
     }
   ];
 

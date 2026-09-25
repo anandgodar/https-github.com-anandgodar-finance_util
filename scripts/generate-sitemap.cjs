@@ -222,6 +222,7 @@ const BLOG_POSTS = [
   'state-disability-paid-leave-payroll-tax-2026',
   'rsu-22-percent-withholding-trap',
   'net-worth-percentile-by-age-2026',
+  'hsa-vs-401k-fica-tax-savings-2026',
 ];
 
 // State calculator types for state pages
