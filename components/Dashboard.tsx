@@ -19,7 +19,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
     {
       id: ToolType.EXCEL_MODELER,
       title: 'DCF + WACC Wizard',
-      desc: 'Institutional DCF valuation with CAPM-based WACC calculator and sensitivity matrices for equity analysis.',
+      desc: 'DCF valuation with a CAPM-based WACC calculator and sensitivity matrices for equity analysis.',
       icon: '📁',
       color: 'bg-green-50 text-green-600',
       keywords: 'DCF, WACC Calculator, CAPM'
@@ -55,7 +55,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
       {/* Hero Section */}
       <header className="max-w-4xl animate-in fade-in slide-in-from-top-8 duration-700">
         <h1 className="text-3xl sm:text-4xl md:text-7xl font-black text-slate-900 tracking-tighter leading-tight">
-          Institutional <span className="text-indigo-600">Financial Modeling</span> <br/>for Daily Wealth.
+          Precise <span className="text-indigo-600">Financial Modeling</span> <br/>for Daily Wealth.
         </h1>
         <p className="mt-6 md:mt-8 text-base sm:text-lg md:text-2xl text-slate-500 leading-relaxed font-medium max-w-3xl">
           Our tax and lending calculators run on the exact formulas — precise amortization, marginal tax brackets, compound interest — sourced from the IRS, Federal Reserve, and state tax authorities. Compare mortgage payments, track net worth,

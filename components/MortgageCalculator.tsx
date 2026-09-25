@@ -521,6 +521,30 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
         </div>
       </section>
 
+      {/* Reassessment Gap - SEO Rich Content, honest calculator limitation */}
+      <section className="bg-white border border-slate-200 rounded-3xl p-8">
+        <h2 className="text-2xl font-black text-slate-900 mb-4">Why Your First Real Payment May Be Higher Than This Estimate</h2>
+        <div className="prose prose-slate max-w-none space-y-4">
+          <p className="text-slate-700 leading-relaxed font-medium">
+            The <strong>Property Tax Rate</strong> field above computes your estimate off whatever taxable value you enter — usually the home's <em>current</em> assessed value, which is what a listing or a seller's most recent tax bill shows. That number is often stale the moment you buy: most counties reassess a property at or near its new sale price once a transfer closes, so a home that last sold (or was reassessed) years ago can carry an assessed value well below what you just paid.
+          </p>
+          <p className="text-slate-700 leading-relaxed font-medium">
+            <strong>Illustrative example</strong> (not a real jurisdiction's rates): a home last assessed at <strong>$310,000</strong> sells for <strong>$450,000</strong>, in a county with a 1.35% property tax rate.
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-slate-700 ml-4">
+            <li><strong>Pre-purchase estimate</strong> (seller's assessed value): $310,000 × 1.35% = $4,185/year → $349/month</li>
+            <li><strong>Post-purchase reassessment</strong> (new sale price): $450,000 × 1.35% = $6,075/year → $506/month</li>
+            <li><strong>Gap: $157/month, or $1,890/year — about 45% higher</strong> than the pre-purchase figure, with nothing about the loan itself changing</li>
+          </ul>
+          <p className="text-slate-700 leading-relaxed font-medium">
+            This isn't a fringe case in <strong>California</strong>: under Proposition 13, a property's assessed value resets to the sale price at every change of ownership, then is capped at roughly 2% annual growth until the next sale — so a long-held home can be assessed far below market value right up until it sells, and the buyer's tax bill jumps to reflect the real price the day escrow closes. Many other states also treat a sale as a reassessment trigger, though the exact rules (frequency, caps, exemptions) are set county by county — check your county assessor's site for the actual mechanic before you close, rather than assuming your pre-purchase estimate is the final number.
+          </p>
+          <p className="text-slate-600 text-sm mt-2">
+            Practical fix: keep <strong>Home Price</strong> above set to your actual purchase price — it also drives your loan amount, PMI and interest, so swapping in the seller's assessed value there would distort those too, not just the tax line. Instead, estimate the gap by hand: multiply the seller's current assessed value by the Property Tax Rate you entered and divide by 12, then compare that figure to the Taxes line this calculator already shows you.
+          </p>
+        </div>
+      </section>
+
       {/* Recommended Tools - Affiliate Section */}
       <section className="mt-12">
         <RecommendedTools calculatorType="mortgage" />
@@ -590,6 +614,10 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
           {
             question: "What are property tax rates by state?",
             answer: "Property tax rates vary significantly by state. New Jersey has the highest average rate at 2.49%, while Hawaii has the lowest at 0.28%. Our calculator includes state-specific property tax rates for all 50 US states. Property taxes are typically 1-2% of your home's assessed value annually, paid monthly through escrow."
+          },
+          {
+            question: "Why is my actual mortgage payment higher than this calculator's estimate?",
+            answer: "The most common reason is a property tax reassessment triggered by the sale itself. This calculator's Taxes line uses whatever assessed value and rate you enter, which is usually the seller's current assessment — but most counties reassess a home at or near its new sale price once the purchase closes, especially if the seller owned it for years. Example: a home assessed at $310,000 that sells for $450,000, at a 1.35% tax rate, goes from an estimated $349/month to $506/month once reassessed — a $157/month jump with no change to the loan itself. California's Proposition 13 makes this most visible: assessed value resets to the sale price at every change of ownership, then is capped at roughly 2% growth per year until the next sale. Don't swap Home Price in this calculator to test the two values — it also drives your loan amount, PMI and interest. Instead, multiply the seller's assessed value by the Property Tax Rate you entered and divide by 12, then compare that to the Taxes line above to see the realistic range before you close."
           },
           {
             question: "Should I pay extra on my mortgage?",
