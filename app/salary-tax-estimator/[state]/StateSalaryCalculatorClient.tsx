@@ -104,7 +104,7 @@ export default function StateSalaryCalculatorClient({
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-indigo-600 font-black">•</span>
-                <span><strong>FICA Taxes:</strong> 7.65% total (6.2% Social Security on income up to $168,600, 1.45% Medicare on all income)</span>
+                <span><strong>FICA Taxes:</strong> 7.65% total (6.2% Social Security on income up to $184,500, 1.45% Medicare on all income)</span>
               </li>
               {stateTaxRate > 0 && (
                 <li className="flex items-start gap-3">

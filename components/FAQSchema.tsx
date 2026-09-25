@@ -133,7 +133,7 @@ export const taxCalculatorFAQs: FAQItem[] = [
   },
   {
     question: 'What is the self-employment tax rate?',
-    answer: 'Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on 92.35% of net self-employment income. You can deduct half of SE tax from your income. The Social Security portion caps at $168,600 (2024).',
+    answer: 'Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on 92.35% of net self-employment income. You can deduct half of SE tax from your income. The Social Security portion caps at $184,500 (2026).',
   },
   {
     question: 'What is the safe harbor rule for estimated taxes?',
@@ -141,11 +141,11 @@ export const taxCalculatorFAQs: FAQItem[] = [
   },
   {
     question: 'How much is the Child Tax Credit worth?',
-    answer: 'For 2025, the Child Tax Credit is up to $2,000 per qualifying child under 17. Up to $1,700 is refundable (Additional Child Tax Credit). The credit phases out starting at $200,000 AGI ($400,000 for married filing jointly).',
+    answer: 'The Child Tax Credit is $2,200 per qualifying child under 17, made permanent by the One Big Beautiful Bill Act. Up to $1,700 is refundable (Additional Child Tax Credit). The credit phases out starting at $200,000 AGI ($400,000 for married filing jointly).',
   },
   {
     question: 'Should I use the standard deduction or itemize?',
-    answer: 'Take whichever is larger. For 2025, the standard deduction is $15,000 (single) or $30,000 (married filing jointly). Itemize only if your mortgage interest, state/local taxes (capped at $10,000), and charitable donations exceed these amounts.',
+    answer: 'Take whichever is larger. For 2026, the standard deduction is $16,100 (single) or $32,200 (married filing jointly). Itemize only if your mortgage interest, state/local taxes (SALT cap raised to $40,400 for 2026 by the One Big Beautiful Bill Act, phasing down for MAGI over $505,000), and charitable donations exceed these amounts.',
   },
 ];
 

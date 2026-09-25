@@ -379,10 +379,20 @@ export const blogMetadata: Record<string, BlogMetadata> = {
     description: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].desc,
     slug: 'state-disability-paid-leave-payroll-tax-2026'
   },
+  'rsu-22-percent-withholding-trap': {
+    title: TOOL_METADATA[ToolType.BLOG_RSU_WITHHOLDING].title,
+    description: TOOL_METADATA[ToolType.BLOG_RSU_WITHHOLDING].desc,
+    slug: 'rsu-22-percent-withholding-trap'
+  },
   'net-worth-percentile-by-age-2026': {
     title: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].title,
     description: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].desc,
     slug: 'net-worth-percentile-by-age-2026'
+  },
+  'hsa-vs-401k-fica-tax-savings-2026': {
+    title: TOOL_METADATA[ToolType.BLOG_HSA_VS_401K].title,
+    description: TOOL_METADATA[ToolType.BLOG_HSA_VS_401K].desc,
+    slug: 'hsa-vs-401k-fica-tax-savings-2026'
   },
   'mid-year-move-part-year-resident-tax-guide-2026': {
     title: TOOL_METADATA[ToolType.BLOG_MIDYEAR_MOVE].title,

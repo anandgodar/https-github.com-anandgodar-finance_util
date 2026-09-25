@@ -536,10 +536,20 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "At least ten states withhold a separate payroll tax for disability and paid family leave insurance, on top of federal, state income tax and FICA. Real 2026 rates and wage caps for all ten, with worked examples for CA, NY, NJ, WA, CO and MA.",
     keywords: "state disability insurance payroll tax, CASDI 2026, NY PFL rate 2026, NJ TDI FLI rate, WA Cares Fund rate, colorado FAMLI rate, massachusetts PFML rate, connecticut paid leave rate, oregon paid leave rate, minnesota paid leave rate, paycheck calculator missing state disability tax"
   },
+  [ToolType.BLOG_RSU_WITHHOLDING]: {
+    title: "The 22% RSU Withholding Trap: Why Your Vesting-Day Paycheck Feels Wrong",
+    desc: "Employers withhold a flat 22% federal rate on RSU vests, but your real marginal rate can be 24%, 32% or 35%. Two worked examples show the gap, plus how to close it before it becomes a Q4 underpayment penalty.",
+    keywords: "rsu tax withholding 22%, why is my rsu paycheck taxed so much, rsu withholding shortfall, supplemental wage withholding rate, rsu underpayment penalty"
+  },
   [ToolType.BLOG_NET_WORTH_PERCENTILE]: {
     title: "Net Worth Percentile by Age: The Homeownership Gap Behind the Table",
     desc: "The Federal Reserve's own 2022 data shows homeowners had a median net worth 38x higher than renters. What the age-only percentile tables miss, and how to read your own number correctly.",
     keywords: "net worth percentile by age, net worth by age calculator, average net worth by age 2026, median net worth by age, homeowner vs renter net worth, am i rich for my age, net worth percentile calculator"
+  },
+  [ToolType.BLOG_HSA_VS_401K]: {
+    title: "401(k) vs. HSA: Why the Same $500 Doesn't Save You the Same Amount of Tax",
+    desc: "401(k) contributions only reduce your income-tax wages. HSA contributions made through payroll also reduce your FICA wages, because they run through a Section 125 cafeteria plan. Worked examples at two income levels show the exact gap.",
+    keywords: "hsa vs 401k tax savings, does hsa reduce fica tax, hsa fica exemption, section 125 cafeteria plan fica, hsa contribution limits 2026, pretax deduction order 401k hsa"
   },
   [ToolType.BLOG_MIDYEAR_MOVE]: {
     title: "Moved Mid-Year? The Part-Year-Resident Withholding Problem No Calculator Warns You About",
