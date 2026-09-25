@@ -270,10 +270,11 @@ const RSUWithholdingTrap2026: React.FC<BlogProps> = ({ onNavigate }) => {
               deadline. The Quarterly Tax Calculator walks through the payment schedule and the underpayment-
               penalty safe harbor: you generally avoid a penalty by paying at least 90% of the current year's
               tax, or 100% of last year's tax (110% if last year's AGI was over $150,000), through the year via
-              withholding and estimated payments combined. It computes that full-year safe-harbor number from
-              your total income, not from the RSU shortfall specifically — subtract what's already been
-              withheld year-to-date (including the 22% taken at vest) before treating its installment amount as
-              what you still owe.
+              withholding and estimated payments combined. Each due date's installment it shows is an even
+              quarter-slice of that full-year target, not the RSU-specific gap — to find what's actually still
+              owed, compare your <em>cumulative</em> withholding and payments so far this year (including the
+              22% taken at vest) against the <em>cumulative</em> safe-harbor amount through that same due date,
+              not against a single installment figure on its own.
             </li>
           </ul>
           <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
@@ -281,10 +282,11 @@ const RSUWithholdingTrap2026: React.FC<BlogProps> = ({ onNavigate }) => {
               <div>
                 <h3 className="font-bold text-slate-900 text-lg mb-2">Size your next estimated payment</h3>
                 <p className="text-sm text-slate-600">
-                  The Quarterly Tax Calculator computes the full-year safe-harbor installment from your total
-                  income and prior-year tax. It doesn't net out withholding already taken from your paycheck,
-                  so use its number as a ceiling and subtract what you've already had withheld — including the
-                  22% RSU withholding above — to find what's actually left to pay.
+                  The Quarterly Tax Calculator shows each due date's installment as one quarter of your
+                  full-year safe-harbor target — it doesn't know what you've already paid. Compare your total
+                  withholding and payments so far this year (including the 22% RSU withholding above) against
+                  the cumulative safe-harbor target through that same date, not against a single installment
+                  number, to find what's actually left to pay.
                 </p>
               </div>
               <button
