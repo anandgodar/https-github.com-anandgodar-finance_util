@@ -107,6 +107,7 @@ export enum ToolType {
   BLOG_NO_TAX_ON_TIPS = 'blog/no-tax-on-tips-explained-2025',
   BLOG_SS_REFUND = 'blog/excess-social-security-tax-refund-multiple-employers',
   BLOG_PAYROLL_GAP = 'blog/state-disability-paid-leave-payroll-tax-2026',
+  BLOG_RSU_WITHHOLDING = 'blog/rsu-22-percent-withholding-trap',
   BLOG_NET_WORTH_PERCENTILE = 'blog/net-worth-percentile-by-age-2026',
   BLOG_HSA_VS_401K = 'blog/hsa-vs-401k-fica-tax-savings-2026',
   BLOG_INDEX = 'blog',

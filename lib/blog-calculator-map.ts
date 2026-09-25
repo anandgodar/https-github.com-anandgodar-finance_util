@@ -14,6 +14,7 @@ export const blogToCalculatorMap: Record<string, ToolType> = {
   'overtime-tax-myth-withholding-vs-tax-rate': ToolType.SALARY_CALC,
   'excess-social-security-tax-refund-multiple-employers': ToolType.SALARY_CALC,
   'state-disability-paid-leave-payroll-tax-2026': ToolType.SALARY_CALC,
+  'rsu-22-percent-withholding-trap': ToolType.SALARY_CALC,
   'net-worth-percentile-by-age-2026': ToolType.NET_WORTH,
   'hsa-vs-401k-fica-tax-savings-2026': ToolType.SALARY_CALC,
   'raise-vs-relocation-cost-of-living': ToolType.SALARY_CALC,
