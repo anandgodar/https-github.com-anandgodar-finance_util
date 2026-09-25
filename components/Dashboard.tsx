@@ -158,10 +158,6 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
                     <div className="h-40 w-40 bg-slate-800 rounded-[3rem] flex items-center justify-center text-5xl text-indigo-400 border border-white/5">📊</div>
                     <div className="h-40 w-40 bg-indigo-900/40 rounded-[3rem] border border-indigo-500/20 translate-y-12 flex items-center justify-center text-5xl text-indigo-200 backdrop-blur-xl">🔍</div>
                 </div>
-                {/* Decorative Elements for SEO flavor */}
-                <div className="absolute top-0 right-0 p-4 font-mono text-[8px] text-green-500/30 opacity-40 leading-none">
-                  RUNNING_ANALYSIS: MARKET_CAP_2025<br/>LATENCY: 0.2ms<br/>DATA_DEPTH: UNLIMITED
-                </div>
             </div>
         </div>
         <div className="absolute -left-20 -bottom-20 text-[300px] font-black text-white/[0.03] pointer-events-none select-none tracking-tighter uppercase">
