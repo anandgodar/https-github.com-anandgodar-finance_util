@@ -743,6 +743,15 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       icon: "🩺"
     },
     {
+      id: ToolType.BLOG_RSU_WITHHOLDING,
+      title: "The 22% RSU Withholding Trap: Why Your Vesting-Day Paycheck Feels Wrong",
+      description: "Employers withhold a flat 22% federal rate on RSU vests, but your real marginal rate can be 24%, 32% or 35%. Two worked examples show the gap, plus how to close it before it becomes a Q4 underpayment penalty.",
+      category: "Salary & Taxes",
+      readTime: "9 min",
+      date: "September 2026",
+      icon: "📈"
+    },
+    {
       id: ToolType.BLOG_NET_WORTH_PERCENTILE,
       title: "Net Worth Percentile by Age: The Homeownership Gap Behind the Table",
       description: "The Federal Reserve's own 2022 data shows homeowners had a median net worth 38x higher than renters. What the age-only percentile tables miss, and how to read your own number correctly.",
@@ -750,6 +759,24 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       readTime: "10 min",
       date: "September 2026",
       icon: "💎"
+    },
+    {
+      id: ToolType.BLOG_HSA_VS_401K,
+      title: "401(k) vs. HSA: Why the Same $500 Doesn't Save You the Same Amount of Tax",
+      description: "401(k) contributions only reduce your income-tax wages. HSA contributions made through payroll also reduce your FICA wages, because they run through a Section 125 cafeteria plan. Worked examples show the exact dollar gap.",
+      category: "Salary & Taxes",
+      readTime: "8 min",
+      date: "September 2026",
+      icon: "🩹"
+    },
+    {
+      id: ToolType.BLOG_MIDYEAR_MOVE,
+      title: "Moved Mid-Year? The Part-Year-Resident Withholding Problem No Calculator Warns You About",
+      description: "Working in two states in the same year isn't just 'file two returns.' Many states tax your new-state income at a rate set by your full-year income, not just what you earned there. A worked example and a moving-week checklist.",
+      category: "Salary & Taxes",
+      readTime: "11 min",
+      date: "September 2026",
+      icon: "📦"
     }
   ];
 

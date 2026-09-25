@@ -16,7 +16,7 @@ const Methodology: React.FC = () => {
             Full disclosure of all data sources, tax logic, calculation methodologies, and update frequencies powering QuantCurb's financial modeling.
           </p>
           <div className="mt-8 inline-block px-6 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
-            <p className="text-sm font-bold text-white">Last Updated: <span className="text-indigo-400">January 3, 2026</span></p>
+            <p className="text-sm font-bold text-white">Last Updated: <span className="text-indigo-400">September 18, 2026</span></p>
           </div>
         </div>
       </header>
@@ -59,22 +59,22 @@ const Methodology: React.FC = () => {
       <section className="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-sm space-y-8">
         <header className="border-b border-slate-50 pb-6">
           <h2 className="text-3xl font-black text-slate-900">Tax & Salary Calculations</h2>
-          <p className="text-slate-500 mt-2 font-medium">2025-2026 tax year specifications</p>
+          <p className="text-slate-500 mt-2 font-medium">2026 tax year specifications</p>
         </header>
 
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
-            <h3 className="text-xl font-black text-slate-900">Federal Tax Brackets (2025)</h3>
+            <h3 className="text-xl font-black text-slate-900">Federal Tax Brackets (2026)</h3>
             <div className="bg-slate-50 p-6 rounded-3xl space-y-2 font-mono text-sm">
-              <p>10%: $0 - $11,600</p>
-              <p>12%: $11,601 - $47,150</p>
-              <p>22%: $47,151 - $100,525</p>
-              <p>24%: $100,526 - $191,950</p>
-              <p>32%: $191,951 - $243,725</p>
-              <p>35%: $243,726 - $609,350</p>
-              <p>37%: $609,351+</p>
+              <p>10%: $0 - $12,400</p>
+              <p>12%: $12,401 - $50,400</p>
+              <p>22%: $50,401 - $105,700</p>
+              <p>24%: $105,701 - $201,775</p>
+              <p>32%: $201,776 - $256,225</p>
+              <p>35%: $256,226 - $640,600</p>
+              <p>37%: $640,601+</p>
             </div>
-            <p className="text-xs text-slate-500 italic">Source: IRS Revenue Procedure 2024-40 (Single Filer)</p>
+            <p className="text-xs text-slate-500 italic">Source: IRS Revenue Procedure 2025-32 (Single Filer)</p>
           </div>
 
           <div className="space-y-4">
@@ -82,7 +82,7 @@ const Methodology: React.FC = () => {
             <div className="bg-slate-50 p-6 rounded-3xl space-y-3">
               <div>
                 <p className="font-bold text-slate-900">Social Security: 6.2%</p>
-                <p className="text-sm text-slate-600">Wage base limit: $168,600 (2025)</p>
+                <p className="text-sm text-slate-600">Wage base limit: $184,500 (2026)</p>
               </div>
               <div>
                 <p className="font-bold text-slate-900">Medicare: 1.45%</p>
@@ -171,25 +171,25 @@ const Methodology: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-black text-slate-900 mb-3">2025 Retirement Contribution Limits</h3>
+            <h3 className="text-xl font-black text-slate-900 mb-3">2026 Retirement Contribution Limits</h3>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="bg-emerald-50 p-6 rounded-3xl text-center">
-                <p className="text-4xl font-black text-emerald-600 mb-2">$23,500</p>
+                <p className="text-4xl font-black text-emerald-600 mb-2">$24,500</p>
                 <p className="text-sm font-bold text-emerald-900">401(k) Limit</p>
-                <p className="text-xs text-emerald-700 mt-1">+$7,500 catch-up (50+)</p>
+                <p className="text-xs text-emerald-700 mt-1">+$8,000 catch-up (50+)</p>
               </div>
               <div className="bg-emerald-50 p-6 rounded-3xl text-center">
-                <p className="text-4xl font-black text-emerald-600 mb-2">$7,000</p>
+                <p className="text-4xl font-black text-emerald-600 mb-2">$7,500</p>
                 <p className="text-sm font-bold text-emerald-900">IRA Limit</p>
-                <p className="text-xs text-emerald-700 mt-1">+$1,000 catch-up (50+)</p>
+                <p className="text-xs text-emerald-700 mt-1">+$1,100 catch-up (50+)</p>
               </div>
               <div className="bg-emerald-50 p-6 rounded-3xl text-center">
-                <p className="text-4xl font-black text-emerald-600 mb-2">$7,000</p>
+                <p className="text-4xl font-black text-emerald-600 mb-2">$7,500</p>
                 <p className="text-sm font-bold text-emerald-900">Roth IRA Limit</p>
                 <p className="text-xs text-emerald-700 mt-1">Income phase-outs apply</p>
               </div>
             </div>
-            <p className="text-xs text-slate-500 italic mt-4">Source: IRS Notice 2024-80</p>
+            <p className="text-xs text-slate-500 italic mt-4">Source: IRS Notice 2025-67</p>
           </div>
 
           <div>

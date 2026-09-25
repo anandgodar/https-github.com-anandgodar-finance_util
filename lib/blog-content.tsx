@@ -76,7 +76,10 @@ import LocalIncomeTaxByCity2026 from '../components/blog/LocalIncomeTaxByCity202
 import NoTaxOnTipsExplained2025 from '../components/blog/NoTaxOnTipsExplained2025';
 import ExcessSocialSecurityRefund2026 from '../components/blog/ExcessSocialSecurityRefund2026';
 import StatePayrollTaxGap2026 from '../components/blog/StatePayrollTaxGap2026';
+import RSUWithholdingTrap2026 from '../components/blog/RSUWithholdingTrap2026';
 import NetWorthPercentileByAge2026 from '../components/blog/NetWorthPercentileByAge2026';
+import HSAvs401kFICASavings2026 from '../components/blog/HSAvs401kFICASavings2026';
+import MidYearMovePartYearResident2026 from '../components/blog/MidYearMovePartYearResident2026';
 import { TOOL_METADATA } from './tool-metadata';
 import { ToolType } from '../types';
 
@@ -457,10 +460,25 @@ export const blogContent: Record<string, BlogContentEntry> = {
     description: TOOL_METADATA[ToolType.BLOG_PAYROLL_GAP].desc,
     component: StatePayrollTaxGap2026
   },
+  'rsu-22-percent-withholding-trap': {
+    title: TOOL_METADATA[ToolType.BLOG_RSU_WITHHOLDING].title,
+    description: TOOL_METADATA[ToolType.BLOG_RSU_WITHHOLDING].desc,
+    component: RSUWithholdingTrap2026
+  },
   'net-worth-percentile-by-age-2026': {
     title: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].title,
     description: TOOL_METADATA[ToolType.BLOG_NET_WORTH_PERCENTILE].desc,
     component: NetWorthPercentileByAge2026
+  },
+  'hsa-vs-401k-fica-tax-savings-2026': {
+    title: TOOL_METADATA[ToolType.BLOG_HSA_VS_401K].title,
+    description: TOOL_METADATA[ToolType.BLOG_HSA_VS_401K].desc,
+    component: HSAvs401kFICASavings2026
+  },
+  'mid-year-move-part-year-resident-tax-guide-2026': {
+    title: TOOL_METADATA[ToolType.BLOG_MIDYEAR_MOVE].title,
+    description: TOOL_METADATA[ToolType.BLOG_MIDYEAR_MOVE].desc,
+    component: MidYearMovePartYearResident2026
   }
 };
 

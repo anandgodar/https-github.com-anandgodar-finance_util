@@ -220,7 +220,10 @@ const BLOG_POSTS = [
   'no-tax-on-tips-explained-2025',
   'excess-social-security-tax-refund-multiple-employers',
   'state-disability-paid-leave-payroll-tax-2026',
+  'rsu-22-percent-withholding-trap',
   'net-worth-percentile-by-age-2026',
+  'hsa-vs-401k-fica-tax-savings-2026',
+  'mid-year-move-part-year-resident-tax-guide-2026',
 ];
 
 // State calculator types for state pages
