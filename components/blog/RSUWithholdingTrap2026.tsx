@@ -270,16 +270,21 @@ const RSUWithholdingTrap2026: React.FC<BlogProps> = ({ onNavigate }) => {
               deadline. The Quarterly Tax Calculator walks through the payment schedule and the underpayment-
               penalty safe harbor: you generally avoid a penalty by paying at least 90% of the current year's
               tax, or 100% of last year's tax (110% if last year's AGI was over $150,000), through the year via
-              withholding and estimated payments combined.
+              withholding and estimated payments combined. It computes that full-year safe-harbor number from
+              your total income, not from the RSU shortfall specifically — subtract what's already been
+              withheld year-to-date (including the 22% taken at vest) before treating its installment amount as
+              what you still owe.
             </li>
           </ul>
           <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
-                <h3 className="font-bold text-slate-900 text-lg mb-2">Cover the gap with a timely estimated payment</h3>
+                <h3 className="font-bold text-slate-900 text-lg mb-2">Size your next estimated payment</h3>
                 <p className="text-sm text-slate-600">
-                  The Quarterly Tax Calculator estimates what you owe and by when, so a large vest doesn't
-                  turn into a Q4 underpayment penalty on top of the tax itself.
+                  The Quarterly Tax Calculator computes the full-year safe-harbor installment from your total
+                  income and prior-year tax. It doesn't net out withholding already taken from your paycheck,
+                  so use its number as a ceiling and subtract what you've already had withheld — including the
+                  22% RSU withholding above — to find what's actually left to pay.
                 </p>
               </div>
               <button
