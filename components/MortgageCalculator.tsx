@@ -545,6 +545,30 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
         </div>
       </section>
 
+      {/* Year-Two Escrow Shortage - SEO Rich Content, honest calculator limitation */}
+      <section className="bg-white border border-slate-200 rounded-3xl p-8">
+        <h2 className="text-2xl font-black text-slate-900 mb-4">Why Your Payment Can Jump Again in Year Two (The Escrow Shortage)</h2>
+        <div className="prose prose-slate max-w-none space-y-4">
+          <p className="text-slate-700 leading-relaxed font-medium">
+            The reassessment gap above explains why your <em>first</em> payment can run higher than this estimate. A second, separate jump often follows about a year later, and it catches even buyers who braced for the reassessment: your loan servicer performs an annual <strong>escrow analysis</strong>, comparing what it actually paid out in property tax and homeowners insurance over the past 12 months against what it collected from you each month. If the real bills came in higher than the estimate your escrow account was funded on, you owe the difference.
+          </p>
+          <p className="text-slate-700 leading-relaxed font-medium">
+            <strong>Illustrative example</strong> (not a real servicer's numbers): your escrow account was funded at closing using the seller's pre-reassessment tax bill and a first-year insurance quote. By the time the servicer runs its year-one analysis, the county has finished reassessing at the new sale price and your insurer's renewal premium has risen too.
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-slate-700 ml-4">
+            <li><strong>Escrow collected in year one:</strong> based on the original, pre-reassessment tax estimate and the first insurance quote</li>
+            <li><strong>Escrow actually owed:</strong> the reassessed tax bill plus the renewal insurance premium, both higher than what funded the account</li>
+            <li><strong>Result:</strong> a shortage the servicer typically recovers two ways at once — a lump-sum bill (or the option to spread it over 12 months) for the past shortfall, <em>and</em> a higher ongoing monthly payment going forward, sized to fully fund the new, higher estimate plus a legally permitted cushion</li>
+          </ul>
+          <p className="text-slate-700 leading-relaxed font-medium">
+            This is separate from, and additive to, the reassessment gap above: the reassessment explains why the <em>tax</em> line was underestimated in the first place; the escrow shortage is your servicer catching up the account to reflect that (plus any insurance increase) roughly a year after closing, once a real annual analysis has actual bills to compare against instead of closing-time estimates. Federal rules (Regulation X) require an annual escrow account statement showing the analysis, and cap the cushion a servicer can hold at one-sixth of your yearly escrow disbursements — so a shortage notice should show its math, not just a new number.
+          </p>
+          <p className="text-slate-600 text-sm mt-2">
+            Practical fix: this calculator's Taxes and Insurance lines are a snapshot at the rate and premium you enter today — they can't predict next year's reassessed bill or renewal quote. Re-run this calculator with updated property tax and insurance figures once your first annual escrow statement arrives, and budget for the possibility of a one-time catch-up payment in year two even if you did nothing wrong.
+          </p>
+        </div>
+      </section>
+
       {/* Recommended Tools - Affiliate Section */}
       <section className="mt-12">
         <RecommendedTools calculatorType="mortgage" />
@@ -618,6 +642,10 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
           {
             question: "Why is my actual mortgage payment higher than this calculator's estimate?",
             answer: "The most common reason is a property tax reassessment triggered by the sale itself. This calculator's Taxes line uses whatever assessed value and rate you enter, which is usually the seller's current assessment — but most counties reassess a home at or near its new sale price once the purchase closes, especially if the seller owned it for years. Example: a home assessed at $310,000 that sells for $450,000, at a 1.35% tax rate, goes from an estimated $349/month to $506/month once reassessed — a $157/month jump with no change to the loan itself. California's Proposition 13 makes this most visible: assessed value resets to the sale price at every change of ownership, then is capped at roughly 2% growth per year until the next sale. Don't swap Home Price in this calculator to test the two values — it also drives your loan amount, PMI and interest. Instead, multiply the seller's assessed value by the Property Tax Rate you entered and divide by 12, then compare that to the Taxes line above to see the realistic range before you close."
+          },
+          {
+            question: "Why did my escrow payment jump again in year two, after the reassessment already caught up?",
+            answer: "Your servicer runs an annual escrow analysis comparing what it actually paid out in property tax and insurance over the past year against what it collected from you. If your first year's escrow was funded on a pre-reassessment tax estimate and an initial insurance quote, and the real reassessed tax bill plus a renewal insurance premium both came in higher, you'll owe the shortfall — usually recovered as a lump-sum or 12-month catch-up payment, plus a higher ongoing monthly amount sized to the new, higher estimate. This is separate from the reassessment gap itself: the reassessment explains why the tax estimate was too low; the escrow shortage is your servicer catching the account up once it has real bills to compare, about a year after closing. Federal Regulation X requires an annual escrow statement showing this math and caps the cushion a servicer can hold at one-sixth of your yearly disbursements."
           },
           {
             question: "Should I pay extra on my mortgage?",
