@@ -450,7 +450,7 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
         <div className="p-6 border-t mt-6">
           <div className="bg-slate-50 p-4 rounded-xl">
             <p className="text-xs font-black text-slate-400 uppercase tracking-wider mb-1">NETWORK STATUS</p>
-            <p className="text-sm font-bold text-slate-700">Live: QuantCurb Oracle v3.1</p>
+            <p className="text-sm font-bold text-slate-700">Live: All calculators online</p>
           </div>
         </div>
       </div>
