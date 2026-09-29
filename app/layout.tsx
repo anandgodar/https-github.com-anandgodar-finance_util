@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://quantcurb.com/',
     title: 'QuantCurb - High-Fidelity Financial Intelligence',
-    description: 'Free calculators for take-home pay, mortgages, taxes, and investments, built on IRS and Federal Reserve data.',
+    description: 'Free calculators for take-home pay, mortgages, taxes, and investments.',
     siteName: 'QuantCurb',
     locale: 'en_US',
     images: [
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     site: '@quantcurb',
     creator: '@quantcurb',
     title: 'QuantCurb - Free Financial Calculators',
-    description: 'Free calculators for take-home pay, mortgages, taxes, and investments, built on IRS and Federal Reserve data.',
+    description: 'Free calculators for take-home pay, mortgages, taxes, and investments.',
     images: ['https://quantcurb.com/og-image.png']
   },
   robots: {
