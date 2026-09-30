@@ -436,15 +436,6 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
       icon: "📈"
     },
     {
-      id: ToolType.BLOG_BEST_MORTGAGE,
-      title: "Best Mortgage Calculator 2025: Compare Top Tools & Features",
-      description: "Compare the best mortgage calculators in 2025. Review top tools including QuantCurb, Bankrate, Zillow, and find the perfect calculator with PITI, PMI, and property tax calculations.",
-      category: "Home Buying",
-      readTime: "12 min",
-      date: "January 2026",
-      icon: "🏠"
-    },
-    {
       id: ToolType.BLOG_STUDENT_LOANS,
       title: "Student Loan Repayment Strategies 2025: Complete Guide to Paying Off Student Debt",
       description: "Master student loan repayment in 2025. Learn about income-driven repayment plans (SAVE, PAYE, IBR), loan forgiveness programs (PSLF), refinancing strategies, and how to pay off student debt faster.",

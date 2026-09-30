@@ -2,6 +2,9 @@
   "version": 2,
   "outputDirectory": "out",
   "redirects": [
+    { "source": "/blog/best-mortgage-calculator-2025", "destination": "/best-mortgage-calculator-2025/", "permanent": true },
+    { "source": "/blog/best-mortgage-calculator-2025/", "destination": "/best-mortgage-calculator-2025/", "permanent": true },
+
     {
       "source": "/salary-tax-estimator-dc",
       "destination": "/salary-tax-estimator/district-of-columbia",

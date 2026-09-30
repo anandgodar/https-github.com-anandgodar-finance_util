@@ -205,7 +205,7 @@ const BLOG_POSTS = [
   'latte-factor-vs-big-wins-wealth', 'dcf-modeling-retail-investors',
   'lump-sum-vs-dollar-cost-averaging', 'roth-ira-vs-traditional-ira-2025',
   'how-much-emergency-fund-do-i-need-2025', 'investment-calculator-guide-2025',
-  'best-mortgage-calculator-2025', 'student-loan-repayment-strategies-2025',
+  'student-loan-repayment-strategies-2025',
   'tax-brackets-explained-2025', '401k-vs-ira-comparison-2025',
   'budgeting-guide-2025', 'net-worth-tracker-guide-2025',
   'loan-emi-calculator-guide-2025', 'loan-comparison-refinance-guide-2025',
