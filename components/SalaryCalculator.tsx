@@ -639,7 +639,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
              <header className="flex justify-between items-end border-b border-slate-50 pb-6">
                <div>
                   <h3 className="text-xl font-black text-slate-900 tracking-tight">Allocation Analysis</h3>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Institutional Revenue Triage</p>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Where Your Paycheck Goes</p>
                </div>
                <div className="flex gap-4">
                   <div className="flex items-center gap-2"><div className="w-2.5 h-2.5 rounded-full bg-indigo-600"></div><span className="text-[9px] font-black text-slate-400 uppercase">Yield</span></div>
@@ -766,7 +766,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
              <div className="absolute top-0 right-0 p-10 text-8xl opacity-10 group-hover:scale-125 transition-transform pointer-events-none select-none">🏦</div>
              <div className="relative z-10 space-y-6 w-full text-left">
                 <div className="flex items-center gap-3">
-                  <h4 className="text-indigo-400 font-black uppercase text-[10px] tracking-[0.3em]">Tax Strategy Oracle</h4>
+                  <h4 className="text-indigo-400 font-black uppercase text-[10px] tracking-[0.3em]">Tax Strategy Notes</h4>
                   <div className="h-px flex-1 bg-white/10"></div>
                 </div>
                 {loadingAdvice ? (

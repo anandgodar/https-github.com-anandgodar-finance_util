@@ -78,7 +78,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
           "@type": "HowToStep",
           "position": 3,
           "name": "Enter Interest Rate",
-          "text": "Enter your mortgage interest rate (current rates are typically 6-7% in 2025)."
+          "text": "Enter the interest rate from your lender quote. Rates change weekly, so use a current quote rather than a rule of thumb."
         },
         {
           "@type": "HowToStep",
@@ -329,7 +329,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
   return (
     <article className="max-w-6xl mx-auto space-y-10 pb-24">
       <header className="space-y-2">
-        <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Institutional Mortgage Desk</p>
+        <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">PITI Mortgage Calculator</p>
         <h1 className="text-4xl font-black text-slate-900">Mortgage PITI Analyzer</h1>
         <p className="text-slate-500 text-sm max-w-2xl">
           Exact reducing-balance amortization with explicit PITI breakdowns, PMI auto-removal at 78% LTV, and a
