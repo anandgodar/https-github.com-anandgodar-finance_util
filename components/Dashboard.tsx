@@ -136,7 +136,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
                 <div className="space-y-4">
                   <span className="inline-block px-4 py-2 md:px-5 md:py-2 bg-indigo-600 rounded-xl md:rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] shadow-xl">Market Ecosystem Triage</span>
                   <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tighter">
-                    Institutional <span className="text-indigo-400">vs</span> <br/>Retail Paradigms
+                    Primary-Source Data, <br/><span className="text-indigo-400">Plain-English</span> Results
                   </h2>
                 </div>
                 <p className="text-slate-400 text-base md:text-xl leading-relaxed font-medium max-w-xl">

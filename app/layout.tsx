@@ -14,10 +14,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://quantcurb.com'),
   title: {
-    default: 'QuantCurb - Institutional Financial Intelligence & Wealth Modeling',
+    default: 'QuantCurb - Free Financial Calculators for Pay, Mortgage & Tax',
     template: '%s | QuantCurb'
   },
-  description: 'QuantCurb: Professional-grade financial calculators, mortgage audits, investment projectors, and AI-driven market sentiment. Free calculators for salary, mortgage, FIRE, retirement, and tax planning.',
+  description: 'QuantCurb: Free financial calculators, mortgage audits, investment projectors, and AI-driven market sentiment. Free calculators for salary, mortgage, FIRE, retirement, and tax planning.',
   keywords: [
     'financial intelligence',
     'mortgage calculator',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://quantcurb.com/',
     title: 'QuantCurb - High-Fidelity Financial Intelligence',
-    description: 'Professional-grade wealth management with AI-driven calculators for EMI, Mortgages, and Investments.',
+    description: 'Free calculators for take-home pay, mortgages, taxes, and investments.',
     siteName: 'QuantCurb',
     locale: 'en_US',
     images: [
@@ -59,8 +59,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@quantcurb',
     creator: '@quantcurb',
-    title: 'QuantCurb - Institutional Financial Intelligence',
-    description: 'Professional-grade wealth management with AI-driven calculators for EMI, Mortgages, and Investments.',
+    title: 'QuantCurb - Free Financial Calculators',
+    description: 'Free calculators for take-home pay, mortgages, taxes, and investments.',
     images: ['https://quantcurb.com/og-image.png']
   },
   robots: {
@@ -103,7 +103,7 @@ const organizationSchema = {
   name: 'QuantCurb',
   url: 'https://quantcurb.com',
   logo: 'https://quantcurb.com/og-image.png',
-  description: 'Professional-grade financial calculators and AI-driven market intelligence for wealth management.',
+  description: 'Free financial calculators for take-home pay, mortgages, taxes, and investments.',
   foundingDate: '2024',
   sameAs: [
     'https://twitter.com/quantcurb',
@@ -123,7 +123,7 @@ const websiteSchema = {
   '@type': 'WebSite',
   name: 'QuantCurb',
   url: 'https://quantcurb.com',
-  description: 'Professional-grade financial calculators, mortgage audits, investment projectors, and AI-driven market sentiment.',
+  description: 'Free financial calculators, mortgage audits, investment projectors, and AI-driven market sentiment.',
   potentialAction: {
     '@type': 'SearchAction',
     target: {

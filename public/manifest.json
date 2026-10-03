@@ -1,7 +1,7 @@
 {
-  "name": "QuantCurb - Institutional Financial Intelligence",
+  "name": "QuantCurb - Free Financial Calculators",
   "short_name": "QuantCurb",
-  "description": "Professional-grade financial calculators, DCF valuation tools, options visualizers, and retirement planning. Your personal CFO terminal.",
+  "description": "Free financial calculators for take-home pay, mortgages, taxes, DCF valuation, options and retirement planning.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

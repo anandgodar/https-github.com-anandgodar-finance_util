@@ -130,7 +130,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool }) => {
       <div className="p-6 border-t space-y-4">
         <div className="bg-slate-50 p-4 rounded-2xl">
           <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">NETWORK STATUS</p>
-          <p className="text-[11px] font-bold text-slate-700 leading-tight">Live: QuantCurb Oracle v3.1</p>
+          <p className="text-[11px] font-bold text-slate-700 leading-tight">Live: All calculators online</p>
         </div>
         <p className="text-[10px] text-slate-400 font-bold">&copy; {new Date().getFullYear()} QuantCurb Intelligence</p>
       </div>
