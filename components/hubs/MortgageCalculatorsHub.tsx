@@ -87,11 +87,6 @@ const MortgageCalculatorsHub: React.FC<MortgageCalculatorsHubProps> = ({ onNavig
       id: ToolType.BLOG_HOW_MUCH_HOUSE,
       title: 'How Much House Can I Afford? 2025',
       description: 'Calculate how much house you can afford using the 28/36 rule, debt-to-income ratios, and down payment requirements.'
-    },
-    {
-      id: ToolType.BLOG_BEST_MORTGAGE,
-      title: 'Best Mortgage Calculator 2025',
-      description: 'Compare top mortgage calculators including QuantCurb, Bankrate, Zillow, and find the perfect tool.'
     }
   ];
 
