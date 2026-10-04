@@ -384,8 +384,8 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
               If you started freelancing mid-year, you only pay for quarters <strong>after</strong> you started:
             </p>
             <ul className="list-disc list-inside space-y-2 text-gray-700">
-              <li><strong>Started January-March?</strong> Pay all 4 quarters (Apr 15, Jun 16, Sep 15, Jan 15)</li>
-              <li><strong>Started April-May?</strong> Skip Q1, pay Q2-Q4 (Jun 16, Sep 15, Jan 15)</li>
+              <li><strong>Started January-March?</strong> Pay all 4 quarters (Apr 15, Jun 15, Sep 15, Jan 15)</li>
+              <li><strong>Started April-May?</strong> Skip Q1, pay Q2-Q4 (Jun 15, Sep 15, Jan 15)</li>
               <li><strong>Started June-August?</strong> Skip Q1-Q2, pay Q3-Q4 (Sep 15, Jan 15)</li>
               <li><strong>Started September-December?</strong> Skip Q1-Q3, pay Q4 only (Jan 15)</li>
             </ul>
@@ -817,7 +817,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                 <li>• <strong>Not deductible:</strong> Commute from home to regular workplace</li>
                 <li>• <strong>Best apps:</strong> MileIQ, Everlance, QuickBooks Self-Employed</li>
               </ul>
-              <p className="text-sm text-gray-600 mt-3">Example: 15,000 business miles × the IRS standard rate (about 72 cents) = roughly $10,800 deduction (saves ~$4,000 in taxes at a 37% combined rate)</p>
+              <p className="text-sm text-gray-600 mt-3">Example: 15,000 business miles driven January–June at the 72.5-cent rate = $10,875 deduction (saves ~$4,000 in taxes at a 37% combined rate). The IRS raised the rate to 76 cents for miles from July 1, so split your log by period</p>
             </div>
 
             <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
@@ -919,7 +919,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                   Yes, you <strong>can</strong> pay all 4 quarters upfront, but <strong>it doesn't eliminate penalties</strong> for the later quarters. The IRS calculates penalties based on when each payment was <em>due</em>, not when it was made.
                 </p>
                 <p className="text-gray-700">
-                  <strong>Example:</strong> If you pay $12,000 on April 15 to cover all 4 quarters ($3,000 each), the IRS will still assess penalties for Q2, Q3, and Q4 underpayments because those amounts weren't paid by their respective deadlines (June 16, Sep 15, Jan 15). <strong>Best practice:</strong> Pay each quarter on time or use EFTPS to schedule future payments.
+                  <strong>Example:</strong> If you pay $12,000 on April 15 to cover all 4 quarters ($3,000 each), the IRS will still assess penalties for Q2, Q3, and Q4 underpayments because those amounts weren't paid by their respective deadlines (June 15, Sep 15, Jan 15). <strong>Best practice:</strong> Pay each quarter on time or use EFTPS to schedule future payments.
                 </p>
               </div>
             )}
@@ -939,7 +939,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                   <strong>Yes, in most states.</strong> If your state has income tax (43 states + DC do), you typically need to make quarterly estimated payments to your state tax agency in addition to the IRS.
                 </p>
                 <ul className="text-gray-700 space-y-2">
-                  <li>• <strong>State deadlines:</strong> Usually match federal deadlines (Apr 15, Jun 16, Sep 15, Jan 15)</li>
+                  <li>• <strong>State deadlines:</strong> Usually match federal deadlines (Apr 15, Jun 15, Sep 15, Jan 15)</li>
                   <li>• <strong>Calculation:</strong> Similar to federal—typically 90% of current year or 100%/110% of prior year</li>
                   <li>• <strong>Payment methods:</strong> Most states offer online payment portals</li>
                   <li>• <strong>No state income tax:</strong> AK, FL, NV, NH, SD, TN, TX, WA, WY (no quarterly payments needed)</li>
