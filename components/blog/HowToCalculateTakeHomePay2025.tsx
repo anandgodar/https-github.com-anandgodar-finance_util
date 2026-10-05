@@ -237,13 +237,13 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl mt-6">
             <p className="text-indigo-900 font-semibold">
-              💡 <strong>How It Works:</strong> If you earn $100,000 as a single filer:
+              💡 <strong>How It Works:</strong> If you earn $100,000 as a single filer, your 2026 standard deduction of $16,100 leaves $83,900 taxable:
               <ul className="mt-2 space-y-1 text-sm">
                 <li>• First $12,400: 10% = $1,240</li>
                 <li>• Next $38,000 ($12,400-$50,400): 12% = $4,560</li>
-                <li>• Next $49,600 ($50,400-$100,000): 22% = $10,912</li>
-                <li>• <strong>Total Federal Tax: $16,712</strong></li>
-                <li>• <strong>Effective Rate: 16.7%</strong> (not 22%!)</li>
+                <li>• Next $33,500 ($50,400-$83,900): 22% = $7,370</li>
+                <li>• <strong>Total Federal Tax: $13,170</strong></li>
+                <li>• <strong>Effective Rate: 13.2%</strong> of gross pay (not 22%!)</li>
               </ul>
             </p>
           </div>
@@ -358,7 +358,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <p className="text-lg text-slate-700 leading-relaxed">
             <strong>401(k) contributions are pre-tax</strong>, meaning they reduce your taxable income. In 2026, you can
-            contribute up to <strong>$24,500</strong> ($32,500 if 50+ with the $8,000 catch-up).
+            contribute up to <strong>$24,500</strong> ($32,500 if 50+ with the $8,000 catch-up; $35,750 if you are 60-63 and your plan allows the $11,250 higher catch-up).
           </p>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl">
