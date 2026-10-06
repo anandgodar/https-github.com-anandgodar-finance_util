@@ -170,10 +170,10 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
         <div className="space-y-8">
            <div className="space-y-4">
              <h2 className="text-[11px] font-black text-indigo-600 uppercase tracking-[0.4em]">How the Math Works</h2>
-             <h3 className="text-4xl font-black text-slate-900 tracking-tight leading-tight">Standard Formulas, <br/>Documented in Full</h3>
+             <h3 className="text-4xl font-black text-slate-900 tracking-tight leading-tight">Standard Formulas, <br/>Used Across the Suite</h3>
            </div>
            <p className="text-slate-500 text-lg leading-relaxed font-medium">
-             Every tool in the QuantCurb suite is built on the standard formulas taught in corporate finance coursework — reducing-balance amortization, marginal tax-bracket math, or compound interest, depending on what it calculates. Full breakdown, including rounding behavior, on our Methodology page.
+             Every tool in the QuantCurb suite is built on the standard formulas taught in corporate finance coursework — reducing-balance amortization, marginal tax-bracket math, or compound interest, depending on what it calculates. The formulas for loans and future value are written out on our Methodology page.
            </p>
            <div className="grid grid-cols-2 gap-8 pt-4">
               <div className="space-y-2">
