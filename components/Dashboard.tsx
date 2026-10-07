@@ -165,15 +165,15 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
         </div>
       </div>
 
-      {/* Institutional Accuracy Section - SEO Rich Content */}
+      {/* Methodology summary section */}
       <section className="grid md:grid-cols-2 gap-16 items-start py-10">
         <div className="space-y-8">
            <div className="space-y-4">
-             <h2 className="text-[11px] font-black text-indigo-600 uppercase tracking-[0.4em]">Algorithmic Integrity</h2>
-             <h3 className="text-4xl font-black text-slate-900 tracking-tight leading-tight">Professional-Grade <br/>Mathematical Standards</h3>
+             <h2 className="text-[11px] font-black text-indigo-600 uppercase tracking-[0.4em]">How the Math Works</h2>
+             <h3 className="text-4xl font-black text-slate-900 tracking-tight leading-tight">Standard Formulas, <br/>Used Across the Suite</h3>
            </div>
            <p className="text-slate-500 text-lg leading-relaxed font-medium">
-             Every tool in the QuantCurb suite is built on the standard formulas taught in corporate finance coursework — reducing-balance amortization, marginal tax-bracket math, or compound interest, depending on what it calculates. Full breakdown, including rounding behavior, on our Methodology page.
+             Every tool in the QuantCurb suite is built on the standard formulas taught in corporate finance coursework — reducing-balance amortization, marginal tax-bracket math, or compound interest, depending on what it calculates. The formulas for loans and future value are written out on our Methodology page.
            </p>
            <div className="grid grid-cols-2 gap-8 pt-4">
               <div className="space-y-2">
@@ -186,7 +186,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
               </div>
               <div className="space-y-2">
                 <h4 className="font-black text-slate-800 text-sm">Tax Shield Analysis</h4>
-                <p className="text-xs text-slate-400 font-medium">Sophisticated 401k and IRA deduction modeling for net pay.</p>
+                <p className="text-xs text-slate-400 font-medium">401(k) and IRA deduction modeling for net pay.</p>
               </div>
               <div className="space-y-2">
                 <h4 className="font-black text-slate-800 text-sm">Sensitivity Matrices</h4>
