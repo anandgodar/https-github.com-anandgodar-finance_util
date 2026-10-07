@@ -222,7 +222,7 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "pay off debt or invest, debt vs investing"
   },
   [ToolType.BLOG_TAKE_HOME_PAY]: {
-    title: "How to Calculate Take Home Pay 2025 - Payroll Taxes",
+    title: "How to Calculate Take Home Pay 2026 - Payroll Taxes",
     desc: "Guide to calculating net pay after taxes and deductions.",
     keywords: "take home pay, net pay calculation"
   },

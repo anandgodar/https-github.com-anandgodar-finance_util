@@ -13,8 +13,8 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
     const articleSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "How to Calculate Take-Home Pay After Taxes: Complete 2025 Guide",
-      "description": "Learn how to calculate your take-home pay after taxes in 2025. Understand federal tax, state tax, FICA, 401k deductions, and use our salary calculator to get your exact net pay.",
+      "headline": "How to Calculate Take-Home Pay After Taxes: Complete 2026 Guide",
+      "description": "Learn how to calculate your take-home pay after taxes in 2026. Understand federal tax, state tax, FICA, 401k deductions, and use our salary calculator to get your exact net pay.",
       "author": {
         "@type": "Organization",
         "name": "QuantCurb"
@@ -28,7 +28,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
         }
       },
       "datePublished": "2026-01-08",
-      "dateModified": "2026-01-08",
+      "dateModified": "2026-10-05",
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://quantcurb.com/blog/how-to-calculate-take-home-pay-2025"
@@ -60,7 +60,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header className="space-y-6">
         <div className="flex items-center gap-3 text-sm text-slate-500">
-          <span>📅 Updated January 2026</span>
+          <span>📅 Updated October 2026</span>
           <span>•</span>
           <span>⏱️ 13 min read</span>
           <span>•</span>
@@ -68,13 +68,13 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="text-5xl font-black text-slate-900 leading-tight">
-          How to Calculate Take-Home Pay After Taxes: Complete 2025 Guide
+          How to Calculate Take-Home Pay After Taxes: Complete 2026 Guide
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
           Your gross salary and your take-home pay are very different numbers. This comprehensive guide explains
           <strong> federal taxes, state taxes, FICA, 401(k) deductions</strong>, and how to calculate your exact
-          net pay in 2025.
+          net pay in 2026.
         </p>
 
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
@@ -101,7 +101,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
         <h2 className="text-lg font-black text-slate-900 mb-4">📋 Table of Contents</h2>
         <ol className="space-y-2 text-sm">
           <li><button onClick={() => scrollToSection('gross-vs-net')} className="text-indigo-600 hover:underline">1. Gross Salary vs. Take-Home Pay</button></li>
-          <li><button onClick={() => scrollToSection('federal-tax')} className="text-indigo-600 hover:underline">2. Federal Income Tax (2025 Brackets)</button></li>
+          <li><button onClick={() => scrollToSection('federal-tax')} className="text-indigo-600 hover:underline">2. Federal Income Tax (2026 Brackets)</button></li>
           <li><button onClick={() => scrollToSection('state-tax')} className="text-indigo-600 hover:underline">3. State Income Tax by State</button></li>
           <li><button onClick={() => scrollToSection('fica')} className="text-indigo-600 hover:underline">4. FICA Taxes (Social Security & Medicare)</button></li>
           <li><button onClick={() => scrollToSection('401k')} className="text-indigo-600 hover:underline">5. 401(k) Contributions & Tax Benefits</button></li>
@@ -138,12 +138,12 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">State Income Tax</td>
                   <td className="p-4 text-slate-700">Varies by state (0-13.3%)</td>
-                  <td className="p-4 font-bold text-slate-900">0-13.3% (7 states have none)</td>
+                  <td className="p-4 font-bold text-slate-900">0-13.3% (9 states have none)</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">FICA (Social Security)</td>
-                  <td className="p-4 text-slate-700">6.2% on income up to $168,600</td>
-                  <td className="p-4 font-bold text-slate-900">6.2% (capped at $10,453)</td>
+                  <td className="p-4 text-slate-700">6.2% on income up to $184,500</td>
+                  <td className="p-4 font-bold text-slate-900">6.2% (capped at $11,439)</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">FICA (Medicare)</td>
@@ -153,7 +153,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">401(k) Contributions</td>
                   <td className="p-4 text-slate-700">Pre-tax retirement savings (optional)</td>
-                  <td className="p-4 font-bold text-slate-900">0-15% (up to $23,000 in 2025)</td>
+                  <td className="p-4 font-bold text-slate-900">0-15% (up to $24,500 in 2026)</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">Health Insurance</td>
@@ -179,11 +179,11 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </section>
 
         <section id="federal-tax" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Federal Income Tax: 2025 Tax Brackets</h2>
+          <h2 className="text-3xl font-black text-slate-900">Federal Income Tax: 2026 Tax Brackets</h2>
 
           <p className="text-lg text-slate-700 leading-relaxed">
             Federal income tax uses a <strong>progressive bracket system</strong>. You pay different rates on different
-            portions of your income. The 2025 tax brackets are:
+            portions of your income. The 2026 tax brackets are:
           </p>
 
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden mt-6">
@@ -198,38 +198,38 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <tbody>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-emerald-600">10%</td>
-                  <td className="p-4 text-slate-700">$0 - $11,600</td>
-                  <td className="p-4 text-slate-700">$0 - $23,200</td>
+                  <td className="p-4 text-slate-700">$0 - $12,400</td>
+                  <td className="p-4 text-slate-700">$0 - $24,800</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">12%</td>
-                  <td className="p-4 text-slate-700">$11,600 - $47,150</td>
-                  <td className="p-4 text-slate-700">$23,200 - $94,300</td>
+                  <td className="p-4 text-slate-700">$12,400 - $50,400</td>
+                  <td className="p-4 text-slate-700">$24,800 - $100,800</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">22%</td>
-                  <td className="p-4 text-slate-700">$47,150 - $100,525</td>
-                  <td className="p-4 text-slate-700">$94,300 - $201,050</td>
+                  <td className="p-4 text-slate-700">$50,400 - $105,700</td>
+                  <td className="p-4 text-slate-700">$100,800 - $211,400</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-purple-600">24%</td>
-                  <td className="p-4 text-slate-700">$100,525 - $191,950</td>
-                  <td className="p-4 text-slate-700">$201,050 - $383,900</td>
+                  <td className="p-4 text-slate-700">$105,700 - $201,775</td>
+                  <td className="p-4 text-slate-700">$211,400 - $403,550</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-purple-600">32%</td>
-                  <td className="p-4 text-slate-700">$191,950 - $243,725</td>
-                  <td className="p-4 text-slate-700">$383,900 - $487,450</td>
+                  <td className="p-4 text-slate-700">$201,775 - $256,225</td>
+                  <td className="p-4 text-slate-700">$403,550 - $512,450</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-red-600">35%</td>
-                  <td className="p-4 text-slate-700">$243,725 - $609,350</td>
-                  <td className="p-4 text-slate-700">$487,450 - $731,200</td>
+                  <td className="p-4 text-slate-700">$256,225 - $640,600</td>
+                  <td className="p-4 text-slate-700">$512,450 - $768,700</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-red-600">37%</td>
-                  <td className="p-4 text-slate-700">$609,350+</td>
-                  <td className="p-4 text-slate-700">$731,200+</td>
+                  <td className="p-4 text-slate-700">$640,600+</td>
+                  <td className="p-4 text-slate-700">$768,700+</td>
                 </tr>
               </tbody>
             </table>
@@ -237,24 +237,24 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl mt-6">
             <p className="text-indigo-900 font-semibold">
-              💡 <strong>How It Works:</strong> If you earn $100,000 as a single filer:
+              💡 <strong>How It Works:</strong> If you earn $100,000 as a single filer, your 2026 standard deduction of $16,100 leaves $83,900 taxable:
               <ul className="mt-2 space-y-1 text-sm">
-                <li>• First $11,600: 10% = $1,160</li>
-                <li>• Next $35,550 ($11,600-$47,150): 12% = $4,266</li>
-                <li>• Next $53,375 ($47,150-$100,525): 22% = $11,743</li>
-                <li>• <strong>Total Federal Tax: $17,169</strong></li>
-                <li>• <strong>Effective Rate: 17.2%</strong> (not 22%!)</li>
+                <li>• First $12,400: 10% = $1,240</li>
+                <li>• Next $38,000 ($12,400-$50,400): 12% = $4,560</li>
+                <li>• Next $33,500 ($50,400-$83,900): 22% = $7,370</li>
+                <li>• <strong>Total Federal Tax: $13,170</strong></li>
+                <li>• <strong>Effective Rate: 13.2%</strong> of gross pay (not 22%!)</li>
               </ul>
             </p>
           </div>
         </section>
 
         <section id="state-tax" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">State Income Tax by State (2025)</h2>
+          <h2 className="text-3xl font-black text-slate-900">State Income Tax by State (2026)</h2>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            State income tax varies significantly. <strong>Seven states have no state income tax:</strong> Alaska, Florida,
-            Nevada, New Hampshire, South Dakota, Tennessee, and Wyoming. Texas and Washington also have no state income tax.
+            State income tax varies significantly. <strong>Nine states have no tax on wages:</strong> Alaska, Florida,
+            Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, and Wyoming.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mt-6">
@@ -308,7 +308,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <tr>
                   <th className="text-left p-4 font-black text-slate-900">Tax Type</th>
                   <th className="text-left p-4 font-black text-slate-900">Rate</th>
-                  <th className="text-left p-4 font-black text-slate-900">Wage Base Limit (2025)</th>
+                  <th className="text-left p-4 font-black text-slate-900">Wage Base Limit (2026)</th>
                   <th className="text-left p-4 font-black text-slate-900">Max Annual Contribution</th>
                 </tr>
               </thead>
@@ -316,8 +316,8 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">Social Security</td>
                   <td className="p-4 font-bold text-slate-900">6.2%</td>
-                  <td className="p-4 text-slate-700">$168,600</td>
-                  <td className="p-4 font-bold text-slate-900">$10,453</td>
+                  <td className="p-4 text-slate-700">$184,500</td>
+                  <td className="p-4 font-bold text-slate-900">$11,439</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">Medicare</td>
@@ -357,8 +357,8 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <h2 className="text-3xl font-black text-slate-900">401(k) Contributions & Tax Benefits</h2>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            <strong>401(k) contributions are pre-tax</strong>, meaning they reduce your taxable income. In 2025, you can
-            contribute up to <strong>$23,000</strong> ($30,500 if 50+ with catch-up contributions).
+            <strong>401(k) contributions are pre-tax</strong>, meaning they reduce your taxable income. In 2026, you can
+            contribute up to <strong>$24,500</strong> ($32,500 if 50+ with the $8,000 catch-up; $35,750 if you are 60-63 and your plan allows the $11,250 higher catch-up).
           </p>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl">
@@ -394,10 +394,10 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   <td className="p-4 font-bold text-slate-900">$7,800</td>
                 </tr>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 font-bold text-slate-900">$23,000 (max)</td>
-                  <td className="p-4 text-slate-700">$23,000</td>
-                  <td className="p-4 font-bold text-emerald-600">$5,060</td>
-                  <td className="p-4 font-bold text-slate-900">$17,940</td>
+                  <td className="p-4 font-bold text-slate-900">$24,500 (max)</td>
+                  <td className="p-4 text-slate-700">$24,500</td>
+                  <td className="p-4 font-bold text-emerald-600">$5,390</td>
+                  <td className="p-4 font-bold text-slate-900">$19,110</td>
                 </tr>
               </tbody>
             </table>
@@ -434,7 +434,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <div className="flex-shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-lg">3</div>
                 <div>
                   <h3 className="font-bold text-slate-900 text-lg mb-2">Calculate Federal Tax</h3>
-                  <p className="text-slate-700 mb-3">Using 2025 brackets: ~$12,000</p>
+                  <p className="text-slate-700 mb-3">Using 2026 brackets and the $16,100 standard deduction: ~$10,200</p>
                 </div>
               </div>
             </div>
@@ -464,8 +464,8 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <div className="flex-shrink-0 w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold text-lg">6</div>
                 <div>
                   <h3 className="font-bold text-emerald-900 text-lg mb-2">Calculate Take-Home Pay</h3>
-                  <p className="text-emerald-800 mb-3">$100,000 - $10,000 (401k) - $3,600 (health) - $12,000 (federal) - $4,000 (state) - $7,650 (FICA)</p>
-                  <p className="font-bold text-emerald-900 text-xl">= $62,750/year ($5,229/month)</p>
+                  <p className="text-emerald-800 mb-3">$100,000 - $10,000 (401k) - $3,600 (health) - $10,200 (federal) - $4,000 (state) - $7,650 (FICA)</p>
+                  <p className="font-bold text-emerald-900 text-xl">= $64,550/year ($5,379/month)</p>
                 </div>
               </div>
             </div>
@@ -480,10 +480,10 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <h3 className="font-bold text-indigo-900 text-xl mb-4">Example 1: $75,000 Salary in Texas (No State Tax)</h3>
               <div className="space-y-2 text-indigo-800">
                 <p>Gross Salary: $75,000</p>
-                <p>Federal Tax (22% bracket): ~$9,000</p>
+                <p>Federal Tax (22% bracket, after 401(k) and $16,100 standard deduction): ~$6,000</p>
                 <p>FICA (7.65%): $5,738</p>
                 <p>401(k) 10%: $7,500</p>
-                <p className="font-bold text-lg mt-2">Take-Home: ~$52,762/year ($4,397/month)</p>
+                <p className="font-bold text-lg mt-2">Take-Home: ~$55,762/year ($4,647/month)</p>
               </div>
             </div>
 
@@ -491,11 +491,11 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <h3 className="font-bold text-purple-900 text-xl mb-4">Example 2: $150,000 Salary in California</h3>
               <div className="space-y-2 text-purple-800">
                 <p>Gross Salary: $150,000</p>
-                <p>Federal Tax (24% bracket): ~$24,000</p>
+                <p>Federal Tax (24% bracket, after 401(k) and $16,100 standard deduction): ~$19,300</p>
                 <p>State Tax (CA): ~$9,000</p>
                 <p>FICA (7.65%): $11,475</p>
                 <p>401(k) 15%: $22,500</p>
-                <p className="font-bold text-lg mt-2">Take-Home: ~$83,025/year ($6,919/month)</p>
+                <p className="font-bold text-lg mt-2">Take-Home: ~$87,725/year ($7,310/month)</p>
               </div>
             </div>
           </div>
@@ -509,7 +509,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <h3 className="font-bold text-slate-900 text-lg mb-2">How much will I take home from a $100,000 salary?</h3>
               <p className="text-slate-700">
                 It depends on your state, 401(k) contributions, and other deductions. In a state with no income tax
-                (like Texas), you'd take home approximately $70,000-75,000. In California, it's closer to $65,000-70,000.
+                (like Texas), you'd take home approximately $79,000 with no 401(k) contribution. In California, it's closer to $73,000.
                 Use our <button onClick={() => onNavigate?.(ToolType.SALARY_CALC)} className="text-indigo-600 hover:underline font-semibold">salary calculator</button> for your exact situation.
               </p>
             </div>
@@ -537,7 +537,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
         <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">
           <h2 className="text-3xl font-black mb-4">Calculate Your Exact Take-Home Pay</h2>
           <p className="text-xl mb-6 text-indigo-100">
-            Use our professional salary calculator with 2025 tax brackets for all 50 states to get your precise net pay.
+            Use our professional salary calculator with 2026 tax brackets for all 50 states to get your precise net pay.
           </p>
           <button
             onClick={() => onNavigate?.(ToolType.SALARY_CALC)}
