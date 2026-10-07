@@ -14,8 +14,8 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
     const articleSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "Quarterly Estimated Taxes 2025: Complete Guide for Freelancers & Self-Employed",
-      "description": "Master quarterly estimated taxes with our comprehensive 2025 guide. Learn safe harbor rules, payment deadlines, penalty avoidance, and exact calculations for freelancers, contractors, and gig workers.",
+      "headline": "Quarterly Estimated Taxes 2026: Complete Guide for Freelancers & Self-Employed",
+      "description": "Master quarterly estimated taxes with our comprehensive 2026 guide. Learn safe harbor rules, payment deadlines, penalty avoidance, and exact calculations for freelancers, contractors, and gig workers.",
       "author": {
         "@type": "Organization",
         "name": "QuantCurb",
@@ -30,13 +30,13 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
         }
       },
       "datePublished": "2026-01-05",
-      "dateModified": "2026-01-05",
+      "dateModified": "2026-10-04",
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://quantcurb.com/blog/quarterly-estimated-taxes-complete-guide"
       },
       "keywords": "quarterly estimated taxes, self-employed taxes, freelance taxes, IRS Form 1040-ES, safe harbor rules, quarterly tax deadlines, estimated tax penalties, tax calculator",
-      "articleBody": "Complete guide to quarterly estimated taxes for freelancers and self-employed individuals in 2025. Learn who must pay, safe harbor rules, deadlines, and strategies to avoid penalties."
+      "articleBody": "Complete guide to quarterly estimated taxes for freelancers and self-employed individuals in 2026. Learn who must pay, safe harbor rules, deadlines, and strategies to avoid penalties."
     };
 
     const script = document.createElement('script');
@@ -69,10 +69,10 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 shadow-xl">
         <h1 className="text-4xl font-bold mb-4">
-          Quarterly Estimated Taxes 2025: Complete Guide for Freelancers & Self-Employed
+          Quarterly Estimated Taxes 2026: Complete Guide for Freelancers & Self-Employed
         </h1>
         <p className="text-xl mb-6 text-blue-50">
-          Master IRS Form 1040-ES, safe harbor rules, and payment deadlines to avoid penalties. Your essential guide to quarterly tax compliance in 2025.
+          Master IRS Form 1040-ES, safe harbor rules, and payment deadlines to avoid penalties. Your essential guide to quarterly tax compliance in 2026.
         </p>
         <div className="flex flex-wrap gap-4">
           <button
@@ -85,7 +85,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
             onClick={() => scrollToSection('deadlines')}
             className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
           >
-            View 2025 Deadlines
+            View 2026 Deadlines
           </button>
         </div>
       </div>
@@ -102,7 +102,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
         </div>
         <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
           <div className="text-3xl font-bold text-blue-600 mb-2">4 Deadlines</div>
-          <div className="text-gray-700 font-medium">Quarterly Payment Dates in 2025</div>
+          <div className="text-gray-700 font-medium">Quarterly Payment Dates in 2026</div>
         </div>
       </div>
 
@@ -120,7 +120,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
             3. Safe Harbor Rules Explained
           </button>
           <button onClick={() => scrollToSection('deadlines')} className="text-left text-blue-600 hover:text-blue-800 hover:underline font-medium">
-            4. 2025 Payment Deadlines
+            4. 2026 Payment Deadlines
           </button>
           <button onClick={() => scrollToSection('how-to-calculate')} className="text-left text-blue-600 hover:text-blue-800 hover:underline font-medium">
             5. How to Calculate Your Payments
@@ -165,7 +165,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             <div className="bg-blue-50 p-4 rounded-lg">
               <h4 className="font-bold text-blue-900 mb-2">1. Income Tax</h4>
-              <p className="text-gray-700 text-sm">Federal income tax based on your tax bracket (10% to 37% in 2025)</p>
+              <p className="text-gray-700 text-sm">Federal income tax based on your tax bracket (10% to 37% in 2026)</p>
             </div>
             <div className="bg-green-50 p-4 rounded-lg">
               <h4 className="font-bold text-green-900 mb-2">2. Self-Employment Tax</h4>
@@ -207,7 +207,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
               <div className="flex items-start">
                 <span className="text-2xl mr-3">1️⃣</span>
                 <div>
-                  <p className="font-semibold text-gray-900">You expect to owe at least $1,000 in taxes for 2025</p>
+                  <p className="font-semibold text-gray-900">You expect to owe at least $1,000 in taxes for 2026</p>
                   <p className="text-sm text-gray-600">(After subtracting withholding and refundable credits)</p>
                 </div>
               </div>
@@ -216,8 +216,8 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                 <div>
                   <p className="font-semibold text-gray-900">Your withholding and refundable credits will be less than the smaller of:</p>
                   <ul className="text-sm text-gray-600 ml-6 mt-2 list-disc">
-                    <li>90% of the tax shown on your 2025 tax return, OR</li>
-                    <li>100% of the tax shown on your 2024 tax return (110% if AGI &gt; $150k)</li>
+                    <li>90% of the tax shown on your 2026 tax return, OR</li>
+                    <li>100% of the tax shown on your 2025 tax return (110% if AGI &gt; $150k)</li>
                   </ul>
                 </div>
               </div>
@@ -276,19 +276,19 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
             <div className="space-y-4">
               <div className="bg-white p-4 rounded-lg shadow">
                 <h4 className="font-bold text-blue-900 mb-2">Option 1: 90% of Current Year Tax</h4>
-                <p className="text-gray-700 text-sm mb-2">Pay at least <strong>90%</strong> of what you'll owe for 2025</p>
+                <p className="text-gray-700 text-sm mb-2">Pay at least <strong>90%</strong> of what you'll owe for 2026</p>
                 <p className="text-gray-600 text-xs italic">⚠️ Requires accurate income projections (difficult if income varies)</p>
               </div>
 
               <div className="bg-white p-4 rounded-lg shadow">
                 <h4 className="font-bold text-blue-900 mb-2">Option 2: 100% of Prior Year Tax</h4>
-                <p className="text-gray-700 text-sm mb-2">Pay <strong>100%</strong> of what you owed for 2024 (if AGI ≤ $150k)</p>
+                <p className="text-gray-700 text-sm mb-2">Pay <strong>100%</strong> of what you owed for 2025 (if AGI ≤ $150k)</p>
                 <p className="text-green-600 text-xs italic">✅ Easiest! Just divide last year's tax by 4</p>
               </div>
 
               <div className="bg-white p-4 rounded-lg shadow">
                 <h4 className="font-bold text-blue-900 mb-2">Option 3: 110% of Prior Year Tax (High Earners)</h4>
-                <p className="text-gray-700 text-sm mb-2">Pay <strong>110%</strong> of 2024 tax if AGI &gt; $150k ($75k if married filing separately)</p>
+                <p className="text-gray-700 text-sm mb-2">Pay <strong>110%</strong> of 2025 tax if AGI &gt; $150k ($75k if married filing separately)</p>
                 <p className="text-gray-600 text-xs italic">📊 10% buffer for high-income taxpayers</p>
               </div>
             </div>
@@ -302,7 +302,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
               For most freelancers, the <strong>100% prior year safe harbor</strong> is the simplest and most reliable strategy:
             </p>
             <ol className="list-decimal list-inside space-y-2 text-gray-700">
-              <li>Look at Line 24 of your 2024 Form 1040 (total tax)</li>
+              <li>Look at Line 24 of your 2025 Form 1040 (total tax)</li>
               <li>Divide that number by 4</li>
               <li>Pay that amount each quarter</li>
               <li><strong>Guaranteed no penalties</strong>, even if you make 10x more this year!</li>
@@ -314,8 +314,8 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
           <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
             <h4 className="font-semibold text-gray-900 mb-3">Scenario: Freelance Web Developer</h4>
             <div className="space-y-2 text-gray-700">
-              <p><strong>2024 Tax Liability:</strong> $12,000 (from Line 24 of 2024 Form 1040)</p>
-              <p><strong>2025 Projected Income:</strong> Significantly higher than 2024</p>
+              <p><strong>2025 Tax Liability:</strong> $12,000 (from Line 24 of 2025 Form 1040)</p>
+              <p><strong>2026 Projected Income:</strong> Significantly higher than 2025</p>
               <p><strong>AGI:</strong> $95,000 (below $150k threshold)</p>
 
               <div className="mt-4 p-4 bg-green-100 rounded">
@@ -325,44 +325,44 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
 
               <div className="mt-4 p-4 bg-blue-100 rounded">
                 <p className="font-bold text-blue-900">Result:</p>
-                <p className="text-gray-800">By paying $3,000/quarter, you're <strong>guaranteed no penalties</strong>—even if your 2025 tax bill ends up being $25,000! You'll just owe the difference ($13,000) on April 15, 2026, with no penalty.</p>
+                <p className="text-gray-800">By paying $3,000/quarter, you're <strong>guaranteed no penalties</strong>—even if your 2026 tax bill ends up being $25,000! You'll just owe the difference ($13,000) on April 15, 2027, with no penalty.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 4: 2025 Deadlines */}
+      {/* Section 4: 2026 Deadlines */}
       <section id="deadlines" className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-900">2025 Quarterly Tax Payment Deadlines</h2>
+        <h2 className="text-3xl font-bold mb-6 text-gray-900">2026 Quarterly Tax Payment Deadlines</h2>
 
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-700 mb-6">
-            Mark these dates on your calendar! Missing a deadline triggers immediate penalty interest (currently around 8% annually).
+            Mark these dates on your calendar! Missing a deadline triggers immediate penalty interest (the IRS underpayment interest rate, reset every quarter).
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="bg-gradient-to-br from-red-500 to-red-600 text-white p-6 rounded-lg shadow-lg">
-              <div className="text-sm font-semibold opacity-90 mb-1">Q1 2025 (Jan 1 - Mar 31)</div>
-              <div className="text-3xl font-bold mb-2">April 15, 2025</div>
+              <div className="text-sm font-semibold opacity-90 mb-1">Q1 2026 (Jan 1 - Mar 31)</div>
+              <div className="text-3xl font-bold mb-2">April 15, 2026</div>
               <div className="text-sm opacity-90">Covers: January, February, March income</div>
             </div>
 
             <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-6 rounded-lg shadow-lg">
-              <div className="text-sm font-semibold opacity-90 mb-1">Q2 2025 (Apr 1 - May 31)</div>
-              <div className="text-3xl font-bold mb-2">June 16, 2025</div>
+              <div className="text-sm font-semibold opacity-90 mb-1">Q2 2026 (Apr 1 - May 31)</div>
+              <div className="text-3xl font-bold mb-2">June 15, 2026</div>
               <div className="text-sm opacity-90">Covers: April, May income (only 2 months!)</div>
             </div>
 
             <div className="bg-gradient-to-br from-yellow-500 to-yellow-600 text-white p-6 rounded-lg shadow-lg">
-              <div className="text-sm font-semibold opacity-90 mb-1">Q3 2025 (Jun 1 - Aug 31)</div>
-              <div className="text-3xl font-bold mb-2">September 15, 2025</div>
+              <div className="text-sm font-semibold opacity-90 mb-1">Q3 2026 (Jun 1 - Aug 31)</div>
+              <div className="text-3xl font-bold mb-2">September 15, 2026</div>
               <div className="text-sm opacity-90">Covers: June, July, August income</div>
             </div>
 
             <div className="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-lg shadow-lg">
-              <div className="text-sm font-semibold opacity-90 mb-1">Q4 2025 (Sep 1 - Dec 31)</div>
-              <div className="text-3xl font-bold mb-2">January 15, 2026</div>
+              <div className="text-sm font-semibold opacity-90 mb-1">Q4 2026 (Sep 1 - Dec 31)</div>
+              <div className="text-3xl font-bold mb-2">January 15, 2027</div>
               <div className="text-sm opacity-90">Covers: September, October, November, December</div>
             </div>
           </div>
@@ -384,8 +384,8 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
               If you started freelancing mid-year, you only pay for quarters <strong>after</strong> you started:
             </p>
             <ul className="list-disc list-inside space-y-2 text-gray-700">
-              <li><strong>Started January-March?</strong> Pay all 4 quarters (Apr 15, Jun 16, Sep 15, Jan 15)</li>
-              <li><strong>Started April-May?</strong> Skip Q1, pay Q2-Q4 (Jun 16, Sep 15, Jan 15)</li>
+              <li><strong>Started January-March?</strong> Pay all 4 quarters (Apr 15, Jun 15, Sep 15, Jan 15)</li>
+              <li><strong>Started April-May?</strong> Skip Q1, pay Q2-Q4 (Jun 15, Sep 15, Jan 15)</li>
               <li><strong>Started June-August?</strong> Skip Q1-Q2, pay Q3-Q4 (Sep 15, Jan 15)</li>
               <li><strong>Started September-December?</strong> Skip Q1-Q3, pay Q4 only (Jan 15)</li>
             </ul>
@@ -419,8 +419,8 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
           <div className="bg-green-50 border-2 border-green-500 p-6 rounded-lg mb-8">
             <h3 className="text-xl font-bold text-green-900 mb-4">✅ Method 1: Simple Safe Harbor (Easiest)</h3>
             <ol className="list-decimal list-inside space-y-3 text-gray-700">
-              <li className="font-semibold">Find your 2024 total tax
-                <p className="text-sm font-normal ml-6 mt-1">Look at Line 24 of your 2024 Form 1040</p>
+              <li className="font-semibold">Find your 2025 total tax
+                <p className="text-sm font-normal ml-6 mt-1">Look at Line 24 of your 2025 Form 1040</p>
               </li>
               <li className="font-semibold">Apply the safe harbor rule
                 <p className="text-sm font-normal ml-6 mt-1">Use 100% if AGI ≤ $150k, or 110% if AGI &gt; $150k</p>
@@ -436,7 +436,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
             <div className="mt-6 p-4 bg-white rounded-lg">
               <h4 className="font-bold text-gray-900 mb-2">Example Calculation:</h4>
               <div className="space-y-1 text-gray-700">
-                <p>2024 Total Tax (Line 24): <strong>$15,600</strong></p>
+                <p>2025 Total Tax (Line 24): <strong>$15,600</strong></p>
                 <p>AGI: <strong>$82,000</strong> (below $150k threshold)</p>
                 <p>Safe Harbor: <strong>100%</strong> of prior year = $15,600</p>
                 <p className="text-green-700 font-bold">Quarterly Payment: $15,600 ÷ 4 = <strong>$3,900</strong></p>
@@ -446,11 +446,11 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
 
           <div className="bg-blue-50 border-2 border-blue-500 p-6 rounded-lg mb-8">
             <h3 className="text-xl font-bold text-blue-900 mb-4">📊 Method 2: Detailed Projection (More Accurate)</h3>
-            <p className="text-gray-700 mb-4">Use this if you want to pay based on actual 2025 income (requires estimation):</p>
+            <p className="text-gray-700 mb-4">Use this if you want to pay based on actual 2026 income (requires estimation):</p>
 
             <div className="space-y-4">
               <div className="bg-white p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-900 mb-2">Step 1: Estimate Your 2025 Gross Income</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">Step 1: Estimate Your 2026 Gross Income</h4>
                 <p className="text-sm text-gray-700">Add up all expected income sources: freelance earnings, side gigs, investment income, etc.</p>
               </div>
 
@@ -462,7 +462,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                   <li>Business expenses (software, supplies, equipment)</li>
                   <li>Health insurance premiums (self-employed deduction)</li>
                   <li>Retirement contributions (SEP-IRA, Solo 401k)</li>
-                  <li>Vehicle expenses (standard mileage: $0.67/mile in 2025)</li>
+                  <li>Vehicle expenses (IRS standard business mileage rate; use the current rate published on IRS.gov)</li>
                 </ul>
               </div>
 
@@ -473,12 +473,12 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
 
               <div className="bg-white p-4 rounded-lg">
                 <h4 className="font-semibold text-gray-900 mb-2">Step 4: Subtract Standard/Itemized Deduction</h4>
-                <p className="text-sm text-gray-700">2025 standard deduction: $15,000 (single), $30,000 (married filing jointly)</p>
+                <p className="text-sm text-gray-700">2026 standard deduction: $16,100 (single), $32,200 (married filing jointly)</p>
               </div>
 
               <div className="bg-white p-4 rounded-lg">
                 <h4 className="font-semibold text-gray-900 mb-2">Step 5: Apply Tax Brackets</h4>
-                <p className="text-sm text-gray-700">Calculate income tax using 2025 tax brackets</p>
+                <p className="text-sm text-gray-700">Calculate income tax using 2026 tax brackets</p>
               </div>
 
               <div className="bg-white p-4 rounded-lg">
@@ -519,7 +519,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
               If you don't pay enough quarterly taxes and don't meet safe harbor, the IRS charges an <strong>underpayment penalty</strong>:
             </p>
             <ul className="text-gray-700 space-y-2">
-              <li>• <strong>Penalty rate:</strong> Federal short-term rate + 3% (currently ~8% annual rate)</li>
+              <li>• <strong>Penalty rate:</strong> Federal short-term rate + 3%, reset every quarter (check the current rate on IRS.gov)</li>
               <li>• <strong>Calculated quarterly:</strong> Penalty accrues for each quarter you underpaid</li>
               <li>• <strong>Not deductible:</strong> You can't deduct this penalty on your tax return</li>
             </ul>
@@ -615,7 +615,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
               <ul className="text-gray-700 space-y-2">
                 <li>• <strong>Form:</strong> Use Form 1040-ES payment voucher</li>
                 <li>• <strong>Payable to:</strong> "United States Treasury"</li>
-                <li>• <strong>Memo:</strong> Write your SSN and "2025 Form 1040-ES"</li>
+                <li>• <strong>Memo:</strong> Write your SSN and "2026 Form 1040-ES"</li>
                 <li>• <strong>Mail to:</strong> Address listed in Form 1040-ES instructions (varies by state)</li>
                 <li>• <strong>Postmark:</strong> Must be postmarked by deadline</li>
               </ul>
@@ -647,8 +647,8 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                   <p className="text-sm font-semibold text-gray-700">Profile:</p>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Single, no dependents</li>
-                    <li>• 2024 total tax: $8,500</li>
-                    <li>• 2025 projected income: $65,000</li>
+                    <li>• 2025 total tax: $8,500</li>
+                    <li>• 2026 projected income: $65,000</li>
                     <li>• Business expenses: $8,000</li>
                   </ul>
                 </div>
@@ -658,7 +658,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                     <li>• Net income: $57,000</li>
                     <li>• Self-employment tax: ~$8,050</li>
                     <li>• Income tax: ~$4,200</li>
-                    <li>• <strong>Total 2025 tax: ~$12,250</strong></li>
+                    <li>• <strong>Total 2026 tax: ~$12,250</strong></li>
                   </ul>
                 </div>
               </div>
@@ -666,7 +666,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-bold text-gray-900 mb-2">Safe Harbor Strategy:</p>
                 <p className="text-gray-700 text-sm mb-2">Use <strong>100% prior year method</strong>: $8,500 ÷ 4 = <strong className="text-green-600">$2,125/quarter</strong></p>
-                <p className="text-xs text-gray-600">Even though 2025 tax will be $12,250, paying $8,500 total meets safe harbor (100% of prior year). The $3,750 difference is due April 15, 2026, with no penalty.</p>
+                <p className="text-xs text-gray-600">Even though 2026 tax will be $12,250, paying $8,500 total meets safe harbor (100% of prior year). The $3,750 difference is due April 15, 2027, with no penalty.</p>
               </div>
             </div>
 
@@ -709,9 +709,9 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                   <p className="text-sm font-semibold text-gray-700">Profile:</p>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Single parent, 1 child</li>
-                    <li>• 2024 total tax: $2,800</li>
-                    <li>• 2025 gross income: $48,000</li>
-                    <li>• Mileage deduction: $18,000 (27,000 mi × $0.67)</li>
+                    <li>• 2025 total tax: $2,800</li>
+                    <li>• 2026 gross income: $48,000</li>
+                    <li>• Mileage deduction: ~$18,000 (about 25,000 business miles at the IRS standard rate)</li>
                   </ul>
                 </div>
                 <div>
@@ -720,7 +720,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                     <li>• Net income: $30,000</li>
                     <li>• Self-employment tax: ~$4,239</li>
                     <li>• Income tax: ~$800 (after standard deduction & CTC)</li>
-                    <li>• <strong>Total 2025 tax: ~$5,039</strong></li>
+                    <li>• <strong>Total 2026 tax: ~$5,039</strong></li>
                   </ul>
                 </div>
               </div>
@@ -728,7 +728,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-bold text-gray-900 mb-2">Safe Harbor Strategy:</p>
                 <p className="text-gray-700 text-sm mb-2">Use <strong>100% prior year method</strong>: $2,800 ÷ 4 = <strong className="text-green-600">$700/quarter</strong></p>
-                <p className="text-xs text-gray-600">Safe harbor protects from penalties. Owe the $2,239 difference on April 15, 2026.</p>
+                <p className="text-xs text-gray-600">Safe harbor protects from penalties. Owe the $2,239 difference on April 15, 2027.</p>
               </div>
             </div>
 
@@ -740,15 +740,15 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                   <p className="text-sm font-semibold text-gray-700">Profile:</p>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Married filing jointly</li>
-                    <li>• 2024 AGI: $180,000</li>
-                    <li>• 2024 total tax: $32,000</li>
-                    <li>• 2025 projected income: $220,000</li>
+                    <li>• 2025 AGI: $180,000</li>
+                    <li>• 2025 total tax: $32,000</li>
+                    <li>• 2026 projected income: $220,000</li>
                   </ul>
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-700">Tax Calculation:</p>
                   <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• 2025 estimated tax: ~$42,000</li>
+                    <li>• 2026 estimated tax: ~$42,000</li>
                     <li>• AGI &gt; $150k → <strong>110% rule applies</strong></li>
                     <li>• Safe harbor: 110% × $32,000 = $35,200</li>
                   </ul>
@@ -758,7 +758,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
               <div className="bg-white p-4 rounded-lg">
                 <p className="font-bold text-gray-900 mb-2">Payment Strategy:</p>
                 <p className="text-gray-700 text-sm mb-2">Pay quarterly: $35,200 ÷ 4 = <strong className="text-green-600">$8,800/quarter</strong></p>
-                <p className="text-xs text-gray-600">110% safe harbor ensures no penalties. Owe the $6,800 difference ($42,000 - $35,200) on April 15, 2026.</p>
+                <p className="text-xs text-gray-600">110% safe harbor ensures no penalties. Owe the $6,800 difference ($42,000 - $35,200) on April 15, 2027.</p>
               </div>
             </div>
           </div>
@@ -780,7 +780,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
               <p className="text-gray-700 mb-3">Every dollar of deductions reduces both income tax <strong>and</strong> self-employment tax (saving ~37% total).</p>
               <ul className="text-gray-700 space-y-2">
                 <li>• <strong>Home office:</strong> $5/sq ft (max $1,500) or actual expense method</li>
-                <li>• <strong>Equipment:</strong> Section 179 deduction (up to $1,220,000 in 2025)</li>
+                <li>• <strong>Equipment:</strong> Section 179 deduction (annual cap set by the IRS; see Publication 946)</li>
                 <li>• <strong>Software & subscriptions:</strong> Adobe, Microsoft 365, project management tools</li>
                 <li>• <strong>Marketing:</strong> Website hosting, ads, business cards</li>
                 <li>• <strong>Education:</strong> Courses, conferences, books related to your business</li>
@@ -791,9 +791,9 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
               <h3 className="text-xl font-bold text-blue-900 mb-3">2. Fund a Retirement Account</h3>
               <p className="text-gray-700 mb-3">Retirement contributions are deductible <strong>above-the-line</strong> (reduce AGI):</p>
               <ul className="text-gray-700 space-y-2">
-                <li>• <strong>SEP-IRA:</strong> Contribute up to 25% of net self-employment income (max $69,000 in 2025)</li>
-                <li>• <strong>Solo 401(k):</strong> $23,500 employee deferral + 25% employer contribution (max $69,000)</li>
-                <li>• <strong>Traditional IRA:</strong> $7,000 ($8,000 if age 50+)</li>
+                <li>• <strong>SEP-IRA:</strong> Contribute up to 25% of net self-employment income (max $72,000 in 2026)</li>
+                <li>• <strong>Solo 401(k):</strong> $24,500 employee deferral + 25% employer contribution (max $72,000)</li>
+                <li>• <strong>Traditional IRA:</strong> $7,500 ($8,600 if age 50+)</li>
               </ul>
               <p className="text-sm text-gray-600 mt-3">Example: $20,000 SEP-IRA contribution saves ~$7,400 in taxes (37% rate)</p>
             </div>
@@ -811,13 +811,13 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
 
             <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg">
               <h3 className="text-xl font-bold text-yellow-900 mb-3">4. Track Mileage Religiously</h3>
-              <p className="text-gray-700 mb-3">Business mileage deduction: <strong>$0.67/mile in 2025</strong></p>
+              <p className="text-gray-700 mb-3">Business mileage deduction: <strong>the IRS standard rate, which can change during the year (check IRS.gov)</strong></p>
               <ul className="text-gray-700 space-y-2">
                 <li>• <strong>Deductible trips:</strong> Client meetings, co-working spaces, supply runs, networking events</li>
                 <li>• <strong>Not deductible:</strong> Commute from home to regular workplace</li>
                 <li>• <strong>Best apps:</strong> MileIQ, Everlance, QuickBooks Self-Employed</li>
               </ul>
-              <p className="text-sm text-gray-600 mt-3">Example: 15,000 business miles × $0.67 = $10,050 deduction (saves ~$3,719 in taxes)</p>
+              <p className="text-sm text-gray-600 mt-3">Example: 15,000 business miles driven January–June at the 72.5-cent rate = $10,875 deduction (saves ~$4,000 in taxes at a 37% combined rate). The IRS raised the rate to 76 cents for miles from July 1, so split your log by period</p>
             </div>
 
             <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
@@ -899,7 +899,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
             {openFAQ === 0 && (
               <div className="p-6 bg-white border-t border-gray-200">
                 <p className="text-gray-700">
-                  If you don't pay quarterly taxes and owe more than $1,000 at tax time, you'll face an <strong>underpayment penalty</strong> (currently ~8% annual interest rate). The penalty accrues for each quarter you underpaid. You'll also owe the full tax amount on April 15, which can be a large, unexpected expense. Additionally, if you consistently don't pay quarterly taxes, the IRS may send warnings or initiate collection actions.
+                  If you don't pay quarterly taxes and owe more than $1,000 at tax time, you'll face an <strong>underpayment penalty</strong> (the IRS rate is the federal short-term rate + 3%, reset quarterly). The penalty accrues for each quarter you underpaid. You'll also owe the full tax amount on April 15, which can be a large, unexpected expense. Additionally, if you consistently don't pay quarterly taxes, the IRS may send warnings or initiate collection actions.
                 </p>
               </div>
             )}
@@ -919,7 +919,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                   Yes, you <strong>can</strong> pay all 4 quarters upfront, but <strong>it doesn't eliminate penalties</strong> for the later quarters. The IRS calculates penalties based on when each payment was <em>due</em>, not when it was made.
                 </p>
                 <p className="text-gray-700">
-                  <strong>Example:</strong> If you pay $12,000 on April 15 to cover all 4 quarters ($3,000 each), the IRS will still assess penalties for Q2, Q3, and Q4 underpayments because those amounts weren't paid by their respective deadlines (June 16, Sep 15, Jan 15). <strong>Best practice:</strong> Pay each quarter on time or use EFTPS to schedule future payments.
+                  <strong>Example:</strong> If you pay $12,000 on April 15 to cover all 4 quarters ($3,000 each), the IRS will still assess penalties for Q2, Q3, and Q4 underpayments because those amounts weren't paid by their respective deadlines (June 15, Sep 15, Jan 15). <strong>Best practice:</strong> Pay each quarter on time or use EFTPS to schedule future payments.
                 </p>
               </div>
             )}
@@ -939,7 +939,7 @@ const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) =
                   <strong>Yes, in most states.</strong> If your state has income tax (43 states + DC do), you typically need to make quarterly estimated payments to your state tax agency in addition to the IRS.
                 </p>
                 <ul className="text-gray-700 space-y-2">
-                  <li>• <strong>State deadlines:</strong> Usually match federal deadlines (Apr 15, Jun 16, Sep 15, Jan 15)</li>
+                  <li>• <strong>State deadlines:</strong> Usually match federal deadlines (Apr 15, Jun 15, Sep 15, Jan 15)</li>
                   <li>• <strong>Calculation:</strong> Similar to federal—typically 90% of current year or 100%/110% of prior year</li>
                   <li>• <strong>Payment methods:</strong> Most states offer online payment portals</li>
                   <li>• <strong>No state income tax:</strong> AK, FL, NV, NH, SD, TN, TX, WA, WY (no quarterly payments needed)</li>

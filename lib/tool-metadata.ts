@@ -172,9 +172,9 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "aca freelancers, health insurance subsidy, marketplace plan"
   },
   [ToolType.BLOG_QUARTERLY_TAX]: {
-    title: "Quarterly Estimated Taxes Guide 2025 - Deadlines & Payments",
+    title: "Quarterly Estimated Taxes Guide 2026 - Deadlines & Payments",
     desc: "Complete guide to quarterly estimated taxes with deadlines and penalty avoidance.",
-    keywords: "quarterly estimated taxes, tax deadlines 2025"
+    keywords: "quarterly estimated taxes, tax deadlines 2026"
   },
   [ToolType.BLOG_SE_TAX]: {
     title: "Self-Employment Tax Guide 2025 - Rates, Deductions, and Planning",
