@@ -1152,7 +1152,7 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <div className="text-4xl">💼</div>
               <div className="flex-1">
                 <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">
-                  Self-Employment Tax Guide 2025
+                  Self-Employment Tax Guide 2026
                 </h3>
                 <p className="text-sm text-gray-600 mb-3">
                   Understand the 15.3% SE tax that 1099 contractors pay and strategies to minimize it.

@@ -122,7 +122,7 @@ const TaxCalculatorsHub: React.FC<TaxCalculatorsHubProps> = ({ onNavigate }) => 
     },
     {
       id: ToolType.BLOG_SE_TAX,
-      title: 'Self-Employment Tax Guide 2025',
+      title: 'Self-Employment Tax Guide 2026',
       description: 'Understand the 15.3% SE tax rate, Schedule SE, and deduction strategies.'
     },
     {

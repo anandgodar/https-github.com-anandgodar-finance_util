@@ -618,8 +618,8 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
     },
     {
       id: ToolType.BLOG_SE_TAX,
-      title: "Self-Employment Tax Guide 2025: Complete Schedule SE & Tax Calculation Guide",
-      description: "Master self-employment tax in 2025. Understand the 15.3% SE tax rate, Schedule SE calculations, 92.35% rule, and how to minimize your tax burden.",
+      title: "Self-Employment Tax Guide 2026: Complete Schedule SE & Tax Calculation Guide",
+      description: "Master self-employment tax in 2026. Understand the 15.3% SE tax rate, Schedule SE calculations, 92.35% rule, and how to minimize your tax burden.",
       category: "Tax Planning",
       readTime: "13 min",
       date: "January 2026",
