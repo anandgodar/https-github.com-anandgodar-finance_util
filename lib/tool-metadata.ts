@@ -212,7 +212,7 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "mortgage calculator guide, piti, pmi"
   },
   [ToolType.BLOG_HOW_MUCH_HOUSE]: {
-    title: "How Much House Can I Afford 2025 - Budget Rules",
+    title: "How Much House Can I Afford 2026 - Budget Rules",
     desc: "Learn affordability ratios and down payment considerations.",
     keywords: "how much house can i afford, affordability rule"
   },

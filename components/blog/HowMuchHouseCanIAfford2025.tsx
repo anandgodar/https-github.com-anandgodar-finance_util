@@ -13,8 +13,8 @@ const HowMuchHouseCanIAfford2025: React.FC<BlogProps> = ({ onNavigate }) => {
     const articleSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "How Much House Can I Afford? Complete 2025 Guide with Calculator",
-      "description": "Calculate how much house you can afford in 2025. Learn the 28/36 rule, debt-to-income ratios, down payment requirements, and use our mortgage calculator to find your perfect home price range.",
+      "headline": "How Much House Can I Afford? Complete 2026 Guide with Calculator",
+      "description": "Calculate how much house you can afford in 2026. Learn the 28/36 rule, debt-to-income ratios, down payment requirements, and use our mortgage calculator to find your perfect home price range.",
       "author": {
         "@type": "Organization",
         "name": "QuantCurb"
@@ -28,7 +28,7 @@ const HowMuchHouseCanIAfford2025: React.FC<BlogProps> = ({ onNavigate }) => {
         }
       },
       "datePublished": "2026-01-08",
-      "dateModified": "2026-01-08",
+      "dateModified": "2026-10-08",
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://quantcurb.com/blog/how-much-house-can-i-afford-2025"
@@ -60,7 +60,7 @@ const HowMuchHouseCanIAfford2025: React.FC<BlogProps> = ({ onNavigate }) => {
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header className="space-y-6">
         <div className="flex items-center gap-3 text-sm text-slate-500">
-          <span>📅 Updated January 2026</span>
+          <span>📅 Updated October 2026</span>
           <span>•</span>
           <span>⏱️ 12 min read</span>
           <span>•</span>
@@ -68,13 +68,13 @@ const HowMuchHouseCanIAfford2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </div>
 
         <h1 className="text-5xl font-black text-slate-900 leading-tight">
-          How Much House Can I Afford? Complete 2025 Guide with Calculator
+          How Much House Can I Afford? Complete 2026 Guide with Calculator
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
           One of the most important questions when buying a home: <strong>"How much house can I afford?"</strong>
           This comprehensive guide explains the 28/36 rule, debt-to-income ratios, down payment strategies, and
-          how to calculate your maximum home price in 2025.
+          how to calculate your maximum home price in 2026.
         </p>
 
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
@@ -255,21 +255,21 @@ const HowMuchHouseCanIAfford2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   <td className="p-4 text-slate-700">$400,000</td>
                   <td className="p-4 text-slate-700">5% ($20,000)</td>
                   <td className="p-4 font-bold text-slate-900">$380,000</td>
-                  <td className="p-4 font-bold text-slate-900">$2,296</td>
+                  <td className="p-4 font-bold text-slate-900">$2,402</td>
                   <td className="p-4 font-bold text-red-600">$317</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700">$400,000</td>
                   <td className="p-4 text-slate-700">10% ($40,000)</td>
                   <td className="p-4 font-bold text-slate-900">$360,000</td>
-                  <td className="p-4 font-bold text-slate-900">$2,175</td>
+                  <td className="p-4 font-bold text-slate-900">$2,275</td>
                   <td className="p-4 font-bold text-red-600">$250</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700">$400,000</td>
                   <td className="p-4 text-slate-700">20% ($80,000)</td>
                   <td className="p-4 font-bold text-slate-900">$320,000</td>
-                  <td className="p-4 font-bold text-slate-900">$1,933</td>
+                  <td className="p-4 font-bold text-slate-900">$2,023</td>
                   <td className="p-4 font-bold text-emerald-600">$0</td>
                 </tr>
               </tbody>
@@ -279,7 +279,7 @@ const HowMuchHouseCanIAfford2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl mt-4">
             <p className="text-indigo-900 font-semibold">
-              💡 <strong>Key Insight:</strong> Putting down 20% saves you $363/month in PMI and reduces your monthly payment by $363.
+              💡 <strong>Key Insight:</strong> Compared with 5% down on the same $400,000 home, putting down 20% cuts the monthly payment by about $696 ($379 less principal &amp; interest plus $317 less PMI).
               However, don't drain your emergency fund—keep 3-6 months of expenses saved.
             </p>
           </div>
@@ -330,7 +330,7 @@ const HowMuchHouseCanIAfford2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 </tr>
               </tbody>
             </table>
-            <p className="text-xs text-slate-500 p-4 italic">*Rates as of early 2025. **Based on $2,000/month max P&I payment</p>
+            <p className="text-xs text-slate-500 p-4 italic">*Illustrative rates for comparison, not a current quote; check today's rate with a lender. **Based on $2,000/month max P&I payment</p>
           </div>
 
           <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl mt-4">
@@ -392,7 +392,7 @@ const HowMuchHouseCanIAfford2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   <p className="text-sm">Max Total Debt = $6,250 × 0.36 = $2,250</p>
                   <p className="text-sm">Max Housing = $2,250 - $300 = $1,950</p>
                   <p className="text-sm">After taxes/insurance/PMI: ~$1,400 available for P&I</p>
-                  <p className="font-bold text-lg mt-2">Max Home Price: ~$240,000</p>
+                  <p className="font-bold text-lg mt-2">Max Home Price: ~$245,000</p>
                 </div>
               </div>
             </div>
@@ -402,14 +402,14 @@ const HowMuchHouseCanIAfford2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <div className="space-y-2 text-purple-800">
                 <p><strong>Annual Income:</strong> $150,000 ($12,500/month)</p>
                 <p><strong>Other Debts:</strong> $800/month (car loans, student loans)</p>
-                <p><strong>Down Payment:</strong> $80,000 (20% down)</p>
+                <p><strong>Down Payment:</strong> $110,000 (20% down)</p>
                 <p><strong>Credit Score:</strong> 780</p>
                 <div className="bg-white rounded-lg p-4 mt-4">
                   <p className="font-bold text-purple-900 mb-2">Calculation:</p>
                   <p className="text-sm">Max Total Debt = $12,500 × 0.36 = $4,500</p>
                   <p className="text-sm">Max Housing = $4,500 - $800 = $3,700</p>
                   <p className="text-sm">After taxes/insurance (no PMI): ~$2,800 available for P&I</p>
-                  <p className="font-bold text-lg mt-2">Max Home Price: ~$450,000</p>
+                  <p className="font-bold text-lg mt-2">Max Home Price: ~$550,000</p>
                 </div>
               </div>
             </div>
