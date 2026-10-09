@@ -257,7 +257,7 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "gross vs net pay, paycheck breakdown"
   },
   [ToolType.BLOG_FREELANCE_ESTIMATED]: {
-    title: "Freelancer Estimated Taxes Guide 2025",
+    title: "Freelancer Estimated Taxes Guide 2026",
     desc: "Plan quarterly estimated taxes as a freelancer.",
     keywords: "freelancer estimated taxes, quarterly taxes"
   },

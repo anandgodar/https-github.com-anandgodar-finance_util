@@ -11,7 +11,7 @@ const FreelancerEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) 
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "The Freelancer’s Guide to Estimated Taxes: How Much Should You Set Aside?",
-      "description": "A 1099-friendly guide to estimated taxes. Learn safe harbor rules, how much to save, and how to calculate quarterly payments in 2025.",
+      "description": "A 1099-friendly guide to estimated taxes. Learn safe harbor rules, how much to save, and how to calculate quarterly payments for tax year 2026.",
       "author": {
         "@type": "Organization",
         "name": "QuantCurb"
@@ -25,7 +25,7 @@ const FreelancerEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) 
         }
       },
       "datePublished": "2026-02-10",
-      "dateModified": "2026-02-10",
+      "dateModified": "2026-10-09",
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://quantcurb.com/blog/freelancer-estimated-taxes-guide-2025"
@@ -57,7 +57,7 @@ const FreelancerEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) 
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header className="space-y-6">
         <div className="flex items-center gap-3 text-sm text-slate-500">
-          <span>📅 Updated February 2026</span>
+          <span>📅 Updated October 2026</span>
           <span>•</span>
           <span>⏱️ 12 min read</span>
           <span>•</span>
@@ -140,7 +140,7 @@ const FreelancerEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) 
           <ul className="space-y-2 text-lg text-slate-700">
             <li>• Set aside a tax percentage after each payment.</li>
             <li>• Track net profit monthly to update your estimate.</li>
-            <li>• Make quarterly payments in April, June, September, and January.</li>
+            <li>• Make quarterly payments by the 2026 due dates: April 15, June 15, September 15, and January 15, 2027 (the Q4 payment falls in the following calendar year).</li>
           </ul>
         </section>
       </article>
