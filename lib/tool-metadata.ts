@@ -177,9 +177,9 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "quarterly estimated taxes, tax deadlines 2026"
   },
   [ToolType.BLOG_SE_TAX]: {
-    title: "Self-Employment Tax Guide 2025 - Rates, Deductions, and Planning",
+    title: "Self-Employment Tax Guide 2026 - Rates, Deductions, and Planning",
     desc: "Break down self-employment tax rates and strategies to reduce liability.",
-    keywords: "self employment tax guide, se tax 2025"
+    keywords: "self employment tax guide, se tax 2026"
   },
   [ToolType.BLOG_TAX_DEDUCTIONS]: {
     title: "Tax Deductions for Freelancers 2025 - Maximize Write-Offs",

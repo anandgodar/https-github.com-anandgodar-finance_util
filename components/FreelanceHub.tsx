@@ -386,7 +386,7 @@ const FreelanceHub: React.FC<FreelanceHubProps> = ({ onNavigate, initialState })
             onClick={() => onNavigate?.(ToolType.BLOG_SE_TAX)}
             className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
           >
-            <h3 className="font-bold text-slate-900 mb-2">📖 Self-Employment Tax Guide 2025</h3>
+            <h3 className="font-bold text-slate-900 mb-2">📖 Self-Employment Tax Guide 2026</h3>
             <p className="text-sm text-slate-600">Learn about the 15.3% self-employment tax, deductions, and how to minimize your tax burden.</p>
           </button>
           <button

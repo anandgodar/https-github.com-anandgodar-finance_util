@@ -14,8 +14,8 @@ const SelfEmploymentTaxGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
     const articleSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "Self-Employment Tax Guide 2025: Complete Guide to Schedule SE & Tax Calculations",
-      "description": "Master self-employment tax in 2025. Learn the 15.3% rate breakdown, Schedule SE calculations, deduction strategies, and how to minimize your tax burden as a freelancer, contractor, or small business owner.",
+      "headline": "Self-Employment Tax Guide 2026: Complete Guide to Schedule SE & Tax Calculations",
+      "description": "Master self-employment tax in 2026. Learn the 15.3% rate breakdown, Schedule SE calculations, deduction strategies, and how to minimize your tax burden as a freelancer, contractor, or small business owner.",
       "author": {
         "@type": "Organization",
         "name": "QuantCurb",
@@ -30,13 +30,13 @@ const SelfEmploymentTaxGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         }
       },
       "datePublished": "2026-01-06",
-      "dateModified": "2026-01-06",
+      "dateModified": "2026-10-07",
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://quantcurb.com/blog/self-employment-tax-guide-2025"
       },
-      "keywords": "self employment tax, schedule SE, self employment tax rate 2025, how to calculate self employment tax, self employment tax deduction, freelance taxes, independent contractor taxes, medicare tax, social security tax",
-      "articleBody": "Complete guide to self-employment tax for freelancers and independent contractors in 2025. Learn how to calculate the 15.3% SE tax, file Schedule SE, claim deductions, and minimize your tax burden."
+      "keywords": "self employment tax, schedule SE, self employment tax rate 2026, how to calculate self employment tax, self employment tax deduction, freelance taxes, independent contractor taxes, medicare tax, social security tax",
+      "articleBody": "Complete guide to self-employment tax for freelancers and independent contractors in 2026. Learn how to calculate the 15.3% SE tax, file Schedule SE, claim deductions, and minimize your tax burden."
     };
 
     const script = document.createElement('script');
@@ -69,7 +69,7 @@ const SelfEmploymentTaxGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg p-8 shadow-xl">
         <h1 className="text-4xl font-bold mb-4">
-          Self-Employment Tax 2025: Complete Guide to Schedule SE & Tax Calculations
+          Self-Employment Tax 2026: Complete Guide to Schedule SE & Tax Calculations
         </h1>
         <p className="text-xl mb-6 text-orange-50">
           Master the 15.3% self-employment tax: Learn Schedule SE calculations, deduction strategies, and how to minimize your tax burden as a freelancer or contractor.
@@ -165,10 +165,10 @@ const SelfEmploymentTaxGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-blue-50 border-2 border-blue-300 p-6 rounded-lg">
               <h4 className="font-bold text-blue-900 mb-3 text-lg">Social Security Tax: 12.4%</h4>
               <ul className="text-gray-700 space-y-2 text-sm">
-                <li>• <strong>2025 wage base limit:</strong> $168,600</li>
-                <li>• You pay 12.4% on first $168,600 of net SE income</li>
-                <li>• <strong>Maximum Social Security tax:</strong> $20,906</li>
-                <li>• Income above $168,600 is exempt from this portion</li>
+                <li>• <strong>2026 wage base limit:</strong> $184,500</li>
+                <li>• You pay 12.4% on first $184,500 of net SE income</li>
+                <li>• <strong>Maximum Social Security tax:</strong> $22,878</li>
+                <li>• Income above $184,500 is exempt from this portion</li>
               </ul>
             </div>
 
@@ -328,7 +328,7 @@ const SelfEmploymentTaxGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   <strong>Taxable SE Income × 15.3% = Self-Employment Tax</strong>
                 </p>
                 <p className="text-sm text-gray-600 ml-10">
-                  This is your total SE tax (12.4% Social Security + 2.9% Medicare), subject to the $168,600 wage base limit for Social Security.
+                  This is your total SE tax (12.4% Social Security + 2.9% Medicare), subject to the $184,500 wage base limit for Social Security.
                 </p>
               </div>
             </div>
@@ -341,7 +341,7 @@ const SelfEmploymentTaxGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
             <div className="space-y-3 text-gray-700">
               <div className="flex justify-between items-center bg-white p-3 rounded">
-                <span>Gross freelance income (2025):</span>
+                <span>Gross freelance income (2026):</span>
                 <span className="font-bold">$85,000</span>
               </div>
               <div className="flex justify-between items-center bg-white p-3 rounded">
@@ -511,7 +511,7 @@ const SelfEmploymentTaxGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <div className="text-4xl">📅</div>
               <div className="flex-1">
                 <h3 className="font-bold text-lg text-gray-900 group-hover:text-orange-700 mb-2">
-                  Quarterly Estimated Taxes 2025: Complete Guide
+                  Quarterly Estimated Taxes 2026: Complete Guide
                 </h3>
                 <p className="text-sm text-gray-600 mb-3">
                   Master safe harbor rules and payment deadlines to avoid IRS penalties on your SE tax.

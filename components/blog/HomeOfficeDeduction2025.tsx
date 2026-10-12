@@ -832,7 +832,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg mb-2 text-gray-900 group-hover:text-indigo-600 transition-colors">
-                    Self-Employment Tax Guide 2025 →
+                    Self-Employment Tax Guide 2026 →
                   </h3>
                   <p className="text-sm text-gray-600">Understand how deductions like home office reduce your 15.3% SE tax</p>
                 </div>
