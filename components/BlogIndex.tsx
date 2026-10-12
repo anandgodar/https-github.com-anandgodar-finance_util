@@ -86,11 +86,11 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
     },
     {
       id: ToolType.BLOG_HOW_MUCH_HOUSE,
-      title: "How Much House Can I Afford? Complete 2025 Guide with Calculator",
-      description: "Calculate how much house you can afford in 2025. Learn the 28/36 rule, debt-to-income ratios, down payment requirements, and find your perfect home price range.",
+      title: "How Much House Can I Afford? Complete 2026 Guide with Calculator",
+      description: "Calculate how much house you can afford in 2026. Learn the 28/36 rule, debt-to-income ratios, down payment requirements, and find your perfect home price range.",
       category: "Home Buying",
       readTime: "12 min",
-      date: "January 2026",
+      date: "October 2026",
       icon: "💰"
     },
     {
