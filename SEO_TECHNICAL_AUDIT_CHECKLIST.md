@@ -30,9 +30,10 @@ Re-audit of the build after the fix pass: 429 pages, each with a self-referencin
 3. **Social profiles:** keep the X, LinkedIn and GitHub links in the footer and Organization schema only if those accounts exist and are yours.
 4. **Mailboxes:** make sure `privacy@quantcurb.com` and the contact-page address receive mail.
 5. **Named author / E-E-A-T:** add a real author or reviewer page if you have one.
-6. **State standard deductions** in the salary calculator still use the 2024 federal-conforming $14,600 for some states; review them per state.
-7. **Ticker pages:** the 50 `/dividend-calculator/<ticker>/` pages stay `noindex` until each has substantial server-rendered content.
-8. **Measure:** run PageSpeed Insights on production after deploy, then apply for AdSense review once Search Console shows the pages indexed.
+6. **State taxes:** standard deductions for the federal-conforming states and the 2026 flat-rate changes (ID, IN, IA, KY, LA, MS, NC, NE, OH, UT) are updated. Rates for other states, for example Georgia, Montana, South Carolina and West Virginia, change often; recheck them each January.
+7. **Measure:** run PageSpeed Insights on production after deploy, then apply for AdSense review once Search Console shows the pages indexed.
+
+**Dividend stock pages (round 3):** the 47 `/dividend-calculator/<ticker>/` pages are now indexable. Each has about 1,400 words of server-rendered, stock-specific content (projections, sector peers, 2026 dividend tax, FAQ). There is a hub at `/dividend-calculator/`, and the pages are listed in the sitemap. To refresh yields or growth rates, edit `public/data/stocks.csv` and update `DIVIDEND_DATA_AS_OF` in `lib/dividend-stocks.ts`.
 
 **Maintenance scripts:** after editing a post, run `node scripts/generate-content-dates.cjs <slug>` to update its modified date (other posts keep theirs). Then run `npm run build && node scripts/generate-sitemap.cjs` to regenerate the sitemaps; it also checks that every URL exists.
 

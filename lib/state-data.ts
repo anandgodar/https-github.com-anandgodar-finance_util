@@ -94,7 +94,7 @@ export const usStates: StateData[] = [
     slug: 'idaho',
     abbreviation: 'ID',
     taxStatus: 'flat',
-    description: 'Idaho has a flat 5.8% state income tax rate, making tax calculations straightforward. Use our Idaho paycheck calculator to see your exact net pay.'
+    description: 'Idaho has a flat 5.3% state income tax rate, making tax calculations straightforward. Use our Idaho paycheck calculator to see your exact net pay.'
   },
   {
     name: 'Illinois',
@@ -108,14 +108,14 @@ export const usStates: StateData[] = [
     slug: 'indiana',
     abbreviation: 'IN',
     taxStatus: 'flat',
-    description: 'Indiana has a flat 3.05% state income tax rate, one of the lowest flat rates in the country. Calculate your Indiana take-home pay to see how this low rate benefits your net income.'
+    description: 'Indiana has a flat 2.95% state income tax rate for 2026, one of the lowest flat rates in the country. Calculate your Indiana take-home pay to see how this low rate benefits your net income.'
   },
   {
     name: 'Iowa',
     slug: 'iowa',
     abbreviation: 'IA',
     taxStatus: 'progressive',
-    description: 'Iowa is transitioning to a flat tax system, currently with progressive rates from 4.4% to 5.7%. Use our Iowa paycheck calculator to see your exact take-home pay.'
+    description: 'Iowa moved to a flat 3.8% state income tax rate in 2025. Use our Iowa paycheck calculator to see your exact take-home pay.'
   },
   {
     name: 'Kansas',
@@ -129,14 +129,14 @@ export const usStates: StateData[] = [
     slug: 'kentucky',
     abbreviation: 'KY',
     taxStatus: 'flat',
-    description: 'Kentucky has a flat 4% state income tax rate. This flat rate simplifies tax calculations and makes it easy to estimate your Kentucky take-home pay.'
+    description: 'Kentucky has a flat 3.5% state income tax rate for 2026. This flat rate simplifies tax calculations and makes it easy to estimate your Kentucky take-home pay.'
   },
   {
     name: 'Louisiana',
     slug: 'louisiana',
     abbreviation: 'LA',
     taxStatus: 'progressive',
-    description: 'Louisiana has a progressive state income tax with rates from 1.85% to 4.25%. Use our Louisiana paycheck calculator to see your exact take-home pay after all deductions.'
+    description: 'Louisiana switched to a flat 3% state income tax in 2025, with a $12,500 standard deduction for single filers. Use our Louisiana paycheck calculator to see your exact take-home pay after all deductions.'
   },
   {
     name: 'Maine',
@@ -178,7 +178,7 @@ export const usStates: StateData[] = [
     slug: 'mississippi',
     abbreviation: 'MS',
     taxStatus: 'flat',
-    description: 'Mississippi has a flat 5% state income tax rate (for income above $10,000). This flat rate makes it easy to calculate your Mississippi take-home pay.'
+    description: 'Mississippi has a flat 4% state income tax rate for 2026 on income above $10,000. This flat rate makes it easy to calculate your Mississippi take-home pay.'
   },
   {
     name: 'Missouri',
@@ -199,7 +199,7 @@ export const usStates: StateData[] = [
     slug: 'nebraska',
     abbreviation: 'NE',
     taxStatus: 'progressive',
-    description: 'Nebraska has a progressive state income tax with rates from 2.46% to 5.84%. Use our Nebraska paycheck calculator to see your exact take-home pay.'
+    description: 'Nebraska has a progressive state income tax; the top rate drops to 4.55% for 2026. Use our Nebraska paycheck calculator to see your exact take-home pay.'
   },
   {
     name: 'Nevada',
@@ -241,7 +241,7 @@ export const usStates: StateData[] = [
     slug: 'north-carolina',
     abbreviation: 'NC',
     taxStatus: 'flat',
-    description: 'North Carolina has a flat 4.5% state income tax rate. This flat rate makes it easy to calculate your North Carolina take-home pay compared to progressive tax states.'
+    description: 'North Carolina has a flat 3.99% state income tax rate for 2026. This flat rate makes it easy to calculate your North Carolina take-home pay compared to progressive tax states.'
   },
   {
     name: 'North Dakota',
@@ -255,7 +255,7 @@ export const usStates: StateData[] = [
     slug: 'ohio',
     abbreviation: 'OH',
     taxStatus: 'progressive',
-    description: 'Ohio has a progressive state income tax with rates from 0% to 3.99%. Calculate your Ohio take-home pay to see how the state\'s tax brackets impact your net income.'
+    description: 'Ohio taxes income above $26,050 at a flat 2.75% for 2026. Calculate your Ohio take-home pay to see how the state\'s tax brackets impact your net income.'
   },
   {
     name: 'Oklahoma',
@@ -318,7 +318,7 @@ export const usStates: StateData[] = [
     slug: 'utah',
     abbreviation: 'UT',
     taxStatus: 'flat',
-    description: 'Utah has a flat 4.85% state income tax rate. This flat rate makes it easy to calculate your Utah take-home pay compared to progressive tax states.'
+    description: 'Utah has a flat 4.5% state income tax rate. This flat rate makes it easy to calculate your Utah take-home pay compared to progressive tax states.'
   },
   {
     name: 'Vermont',

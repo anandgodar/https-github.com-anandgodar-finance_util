@@ -19,13 +19,16 @@ interface StateData {
 }
 
 /**
- * HIGH-FIDELITY 2024-2025 US STATE TAX DATABASE
- * Data reflects current legislation, including flat-tax transitions.
+ * US state income tax estimates (single filer), reviewed for tax year 2026.
+ * Simplified: one standard deduction/exemption amount and a flat rate or
+ * bracket schedule per state. States marked "federal std deduction" start
+ * from the federal standard deduction ($16,100 for 2026); state conformity
+ * can lag, so treat results as estimates and check the state revenue site.
  */
 const STATE_TAX_DATA: Record<string, StateData> = {
   AL: { name: 'Alabama', rate: 0.05, stdDeduction: 2500, brackets: [{ limit: 500, rate: 0.02 }, { limit: 3000, rate: 0.04 }, { limit: null, rate: 0.05 }] },
   AK: { name: 'Alaska', rate: 0.00, stdDeduction: 0 },
-  AZ: { name: 'Arizona', rate: 0.025, stdDeduction: 14600 }, // Flat since 2023
+  AZ: { name: 'Arizona', rate: 0.025, stdDeduction: 16100 }, // Flat 2.5%; federal std deduction
   AR: { name: 'Arkansas', rate: 0.044, stdDeduction: 2320, brackets: [{ limit: 5000, rate: 0.02 }, { limit: 10000, rate: 0.03 }, { limit: null, rate: 0.044 }] },
   CA: { 
     name: 'California', 
@@ -43,28 +46,28 @@ const STATE_TAX_DATA: Record<string, StateData> = {
       { limit: null, rate: 0.123 }
     ]
   },
-  CO: { name: 'Colorado', rate: 0.044, stdDeduction: 14600 }, // Flat
+  CO: { name: 'Colorado', rate: 0.044, stdDeduction: 16100 }, // Flat; starts from federal taxable income
   CT: { name: 'Connecticut', rate: 0.05, stdDeduction: 15000, brackets: [{ limit: 10000, rate: 0.03 }, { limit: 50000, rate: 0.05 }, { limit: 100000, rate: 0.055 }, { limit: 200000, rate: 0.06 }, { limit: 250000, rate: 0.065 }, { limit: 500000, rate: 0.069 }, { limit: null, rate: 0.0699 }] },
   DE: { name: 'Delaware', rate: 0.066, stdDeduction: 3250, brackets: [{ limit: 2000, rate: 0.00 }, { limit: 5000, rate: 0.022 }, { limit: 10000, rate: 0.039 }, { limit: 20000, rate: 0.048 }, { limit: 25000, rate: 0.052 }, { limit: 60000, rate: 0.0555 }, { limit: null, rate: 0.066 }] },
   FL: { name: 'Florida', rate: 0.00, stdDeduction: 0 },
   GA: { name: 'Georgia', rate: 0.0549, stdDeduction: 12000 }, // Flat as of Jan 2024
   HI: { name: 'Hawaii', rate: 0.0825, stdDeduction: 2200, brackets: [{ limit: 2400, rate: 0.014 }, { limit: 4800, rate: 0.032 }, { limit: 9600, rate: 0.044 }, { limit: 14400, rate: 0.055 }, { limit: 19200, rate: 0.064 }, { limit: 24000, rate: 0.068 }, { limit: 36000, rate: 0.072 }, { limit: 48000, rate: 0.076 }, { limit: 150000, rate: 0.079 }, { limit: 175000, rate: 0.0825 }, { limit: 200000, rate: 0.09 }, { limit: null, rate: 0.11 }] },
-  ID: { name: 'Idaho', rate: 0.058, stdDeduction: 14600 }, // Flat
+  ID: { name: 'Idaho', rate: 0.053, stdDeduction: 16100 }, // Flat 5.3% from 2025 (HB 40); federal std deduction
   IL: { name: 'Illinois', rate: 0.0495, stdDeduction: 2775 }, // Flat
-  IN: { name: 'Indiana', rate: 0.0305, stdDeduction: 1000 }, // Flat
-  IA: { name: 'Iowa', rate: 0.057, stdDeduction: 0, brackets: [{ limit: 6000, rate: 0.044 }, { limit: 30000, rate: 0.0482 }, { limit: null, rate: 0.057 }] }, // Transitioning to flat
+  IN: { name: 'Indiana', rate: 0.0295, stdDeduction: 1000 }, // Flat 2.95% for 2026; $1,000 personal exemption
+  IA: { name: 'Iowa', rate: 0.038, stdDeduction: 16100 }, // Flat 3.8% from 2025; starts from federal taxable income
   KS: { name: 'Kansas', rate: 0.057, stdDeduction: 3500, brackets: [{ limit: 15000, rate: 0.031 }, { limit: 30000, rate: 0.0525 }, { limit: null, rate: 0.057 }] },
-  KY: { name: 'Kentucky', rate: 0.04, stdDeduction: 3160 }, // Flat
-  LA: { name: 'Louisiana', rate: 0.0425, stdDeduction: 4500, brackets: [{ limit: 12500, rate: 0.0185 }, { limit: 50000, rate: 0.035 }, { limit: null, rate: 0.0425 }] },
-  ME: { name: 'Maine', rate: 0.0715, stdDeduction: 14600, brackets: [{ limit: 26050, rate: 0.058 }, { limit: 61600, rate: 0.0675 }, { limit: null, rate: 0.0715 }] },
+  KY: { name: 'Kentucky', rate: 0.035, stdDeduction: 3160 }, // Flat 3.5% for 2026 (HB 1, 2025)
+  LA: { name: 'Louisiana', rate: 0.03, stdDeduction: 12500 }, // Flat 3% with $12,500 std deduction from 2025
+  ME: { name: 'Maine', rate: 0.0715, stdDeduction: 16100, brackets: [{ limit: 26050, rate: 0.058 }, { limit: 61600, rate: 0.0675 }, { limit: null, rate: 0.0715 }] },
   MD: { name: 'Maryland', rate: 0.0475, stdDeduction: 2550, brackets: [{ limit: 1000, rate: 0.02 }, { limit: 2000, rate: 0.03 }, { limit: 3000, rate: 0.04 }, { limit: 100000, rate: 0.0475 }, { limit: 125000, rate: 0.05 }, { limit: 150000, rate: 0.0525 }, { limit: 250000, rate: 0.055 }, { limit: null, rate: 0.0575 }] },
   MA: { name: 'Massachusetts', rate: 0.05, stdDeduction: 4400 }, // Flat (additional 4% for income > $1M)
   MI: { name: 'Michigan', rate: 0.0425, stdDeduction: 5600 }, // Flat
   MN: { name: 'Minnesota', rate: 0.0705, stdDeduction: 14575, brackets: [{ limit: 30070, rate: 0.0535 }, { limit: 98760, rate: 0.068 }, { limit: 193240, rate: 0.0785 }, { limit: null, rate: 0.0985 }] },
-  MS: { name: 'Mississippi', rate: 0.05, stdDeduction: 0 }, // Flat above $10k
-  MO: { name: 'Missouri', rate: 0.048, stdDeduction: 14600, brackets: [{ limit: 1207, rate: 0.00 }, { limit: 2414, rate: 0.02 }, { limit: 3621, rate: 0.025 }, { limit: 4828, rate: 0.03 }, { limit: 6035, rate: 0.035 }, { limit: 7242, rate: 0.04 }, { limit: 8449, rate: 0.045 }, { limit: null, rate: 0.048 }] },
+  MS: { name: 'Mississippi', rate: 0.04, stdDeduction: 18300 }, // 4% for 2026 on income above $10k, after $2,300 std deduction + $6,000 exemption
+  MO: { name: 'Missouri', rate: 0.048, stdDeduction: 16100, brackets: [{ limit: 1207, rate: 0.00 }, { limit: 2414, rate: 0.02 }, { limit: 3621, rate: 0.025 }, { limit: 4828, rate: 0.03 }, { limit: 6035, rate: 0.035 }, { limit: 7242, rate: 0.04 }, { limit: 8449, rate: 0.045 }, { limit: null, rate: 0.048 }] },
   MT: { name: 'Montana', rate: 0.059, stdDeduction: 0, brackets: [{ limit: 20500, rate: 0.047 }, { limit: null, rate: 0.059 }] },
-  NE: { name: 'Nebraska', rate: 0.0584, stdDeduction: 7900, brackets: [{ limit: 3820, rate: 0.0246 }, { limit: 22130, rate: 0.0351 }, { limit: 35000, rate: 0.0501 }, { limit: null, rate: 0.0584 }] },
+  NE: { name: 'Nebraska', rate: 0.0455, stdDeduction: 7900, brackets: [{ limit: 3820, rate: 0.0246 }, { limit: 22130, rate: 0.0351 }, { limit: 35000, rate: 0.0455 }, { limit: null, rate: 0.0455 }] }, // Top rate 4.55% for 2026 (LB 754)
   NV: { name: 'Nevada', rate: 0.00, stdDeduction: 0 },
   NH: { name: 'New Hampshire', rate: 0.00, stdDeduction: 0 }, // No tax on earned income
   NJ: { 
@@ -81,7 +84,7 @@ const STATE_TAX_DATA: Record<string, StateData> = {
       { limit: null, rate: 0.1075 }
     ]
   },
-  NM: { name: 'New Mexico', rate: 0.059, stdDeduction: 14600, brackets: [{ limit: 5500, rate: 0.017 }, { limit: 11000, rate: 0.032 }, { limit: 16000, rate: 0.047 }, { limit: null, rate: 0.059 }] },
+  NM: { name: 'New Mexico', rate: 0.059, stdDeduction: 16100, brackets: [{ limit: 5500, rate: 0.017 }, { limit: 11000, rate: 0.032 }, { limit: 16000, rate: 0.047 }, { limit: null, rate: 0.059 }] },
   NY: { 
     name: 'New York', 
     rate: 0.065, 
@@ -98,9 +101,9 @@ const STATE_TAX_DATA: Record<string, StateData> = {
       { limit: null, rate: 0.109 }
     ]
   },
-  NC: { name: 'North Carolina', rate: 0.045, stdDeduction: 14250 }, // Flat
+  NC: { name: 'North Carolina', rate: 0.0399, stdDeduction: 12750 }, // Flat 3.99% for 2026; $12,750 std deduction
   ND: { name: 'North Dakota', rate: 0.025, stdDeduction: 0, brackets: [{ limit: 44725, rate: 0.00 }, { limit: 225975, rate: 0.0195 }, { limit: null, rate: 0.025 }] },
-  OH: { name: 'Ohio', rate: 0.035, stdDeduction: 0, brackets: [{ limit: 26050, rate: 0.00 }, { limit: 100000, rate: 0.0275 }, { limit: null, rate: 0.035 }] },
+  OH: { name: 'Ohio', rate: 0.0275, stdDeduction: 0, brackets: [{ limit: 26050, rate: 0.00 }, { limit: null, rate: 0.0275 }] }, // Flat 2.75% above $26,050 for 2026 (HB 96)
   OK: { name: 'Oklahoma', rate: 0.0475, stdDeduction: 6350, brackets: [{ limit: 1000, rate: 0.0025 }, { limit: 2500, rate: 0.0075 }, { limit: 3750, rate: 0.0175 }, { limit: 4900, rate: 0.0275 }, { limit: 7200, rate: 0.0375 }, { limit: null, rate: 0.0475 }] },
   OR: { name: 'Oregon', rate: 0.0875, stdDeduction: 2745, brackets: [{ limit: 4050, rate: 0.0475 }, { limit: 10200, rate: 0.0675 }, { limit: 125000, rate: 0.0875 }, { limit: null, rate: 0.099 }] },
   PA: { name: 'Pennsylvania', rate: 0.0307, stdDeduction: 0 }, // Flat
@@ -109,14 +112,14 @@ const STATE_TAX_DATA: Record<string, StateData> = {
   SD: { name: 'South Dakota', rate: 0.00, stdDeduction: 0 },
   TN: { name: 'Tennessee', rate: 0.00, stdDeduction: 0 },
   TX: { name: 'Texas', rate: 0.00, stdDeduction: 0 },
-  UT: { name: 'Utah', rate: 0.0465, stdDeduction: 14600 }, // Flat
+  UT: { name: 'Utah', rate: 0.045, stdDeduction: 16100 }, // Flat 4.5%; taxpayer credit approximated as federal std deduction
   VT: { name: 'Vermont', rate: 0.0875, stdDeduction: 0, brackets: [{ limit: 45400, rate: 0.0335 }, { limit: 110000, rate: 0.066 }, { limit: 229550, rate: 0.076 }, { limit: null, rate: 0.0875 }] },
   VA: { name: 'Virginia', rate: 0.0575, stdDeduction: 8500, brackets: [{ limit: 3000, rate: 0.02 }, { limit: 5000, rate: 0.03 }, { limit: 17000, rate: 0.05 }, { limit: null, rate: 0.0575 }] },
   WA: { name: 'Washington', rate: 0.00, stdDeduction: 0 },
   WV: { name: 'West Virginia', rate: 0.0512, stdDeduction: 0, brackets: [{ limit: 10000, rate: 0.0236 }, { limit: 25000, rate: 0.0315 }, { limit: 40000, rate: 0.0354 }, { limit: 60000, rate: 0.0472 }, { limit: null, rate: 0.0512 }] },
   WI: { name: 'Wisconsin', rate: 0.053, stdDeduction: 12760, brackets: [{ limit: 14320, rate: 0.035 }, { limit: 28640, rate: 0.044 }, { limit: 315310, rate: 0.053 }, { limit: null, rate: 0.0765 }] },
   WY: { name: 'Wyoming', rate: 0.00, stdDeduction: 0 },
-  DC: { name: 'Dist. of Columbia', rate: 0.085, stdDeduction: 14600, brackets: [{ limit: 10000, rate: 0.04 }, { limit: 40000, rate: 0.06 }, { limit: 60000, rate: 0.065 }, { limit: 250000, rate: 0.085 }, { limit: 500000, rate: 0.0925 }, { limit: 1000000, rate: 0.095 }, { limit: null, rate: 0.1075 }] },
+  DC: { name: 'Dist. of Columbia', rate: 0.085, stdDeduction: 16100, brackets: [{ limit: 10000, rate: 0.04 }, { limit: 40000, rate: 0.06 }, { limit: 60000, rate: 0.065 }, { limit: 250000, rate: 0.085 }, { limit: 500000, rate: 0.0925 }, { limit: 1000000, rate: 0.095 }, { limit: null, rate: 0.1075 }] },
 };
 
 const calculateProgressiveTax = (taxableIncome: number, brackets: TaxBracket[]): number => {

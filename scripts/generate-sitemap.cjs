@@ -119,9 +119,14 @@ const ALL_STATES = [
   'west-virginia', 'wisconsin', 'wyoming', 'district-of-columbia'
 ];
 
-// Dividend ticker pages (/dividend-calculator/<ticker>/) are noindexed until
-// they carry substantial server-rendered content, so they are not listed.
-// Top dividend stocks for DRIP calculator (kept for reference)
+// Dividend ticker pages: one per row of public/data/stocks.csv, plus the hub.
+function readDividendTickers() {
+  var csv = fs.readFileSync(path.join(REPO_ROOT, 'public/data/stocks.csv'), 'utf8');
+  return csv.trim().split(/\r?\n/).slice(1).map(function(line) {
+    return line.split(',')[0].trim().toLowerCase();
+  }).filter(Boolean);
+}
+// (legacy list, no longer used; tickers now come from stocks.csv)
 const DIVIDEND_TICKERS = [
   'vz', 't', 'xom', 'cvx', 'jnj', 'pg', 'ko', 'pep', 'abbv', 'mo',
   'ibm', 'mmm', 'cat', 'hd', 'wmt', 'cost', 'tgt', 'low', 'mcd', 'sbux',
@@ -304,6 +309,12 @@ function generateCalculatorsSitemap() {
     urls.push(generateUrlEntry(page.path, page.priority, page.changefreq));
   });
 
+  // Dividend stock hub + ticker pages
+  var dividendLastmod = getFileLastmod('app/dividend-calculator/[ticker]/page.tsx');
+  urls.push(generateUrlEntry('/dividend-calculator/', '0.8', 'monthly', dividendLastmod));
+  readDividendTickers().forEach(function(ticker) {
+    urls.push(generateUrlEntry('/dividend-calculator/' + ticker + '/', '0.6', 'monthly', dividendLastmod));
+  });
 
   return wrapSitemap(urls);
 }

@@ -101,6 +101,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
                 { href: '/mortgage-calculators/', label: 'Mortgage Calculators' },
                 { href: '/retirement-calculators/', label: 'Retirement Calculators' },
                 { href: '/investment-calculators/', label: 'Investment Calculators' },
+                { href: '/dividend-calculator/', label: 'Dividend Stock Calculators' },
                 { href: '/valuation-academy/', label: 'Valuation Academy' },
                 { href: '/financial-knowledge-base/', label: 'Knowledge Base' }
               ].map((item) => (

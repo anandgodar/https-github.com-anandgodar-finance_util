@@ -80,8 +80,6 @@
     { "source": "/options-profit-calculator", "destination": "/options-strategy-visualizer/", "permanent": true },
     { "source": "/options-profit-calculator/", "destination": "/options-strategy-visualizer/", "permanent": true },
 
-    { "source": "/dividend-calculator", "destination": "/dividend-reinvestment-calculator/", "permanent": true },
-    { "source": "/dividend-calculator/", "destination": "/dividend-reinvestment-calculator/", "permanent": true },
     { "source": "/dashboard", "destination": "/", "permanent": true },
     { "source": "/dashboard/", "destination": "/", "permanent": true },
     { "source": "/retirement-calculator", "destination": "/retirement-account-optimizer/", "permanent": true },
