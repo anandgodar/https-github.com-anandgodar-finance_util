@@ -22,19 +22,19 @@ const BudgetingGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header className="space-y-6">
         <div className="flex items-center gap-3 text-sm text-slate-500">
-          <span>📅 Updated January 2026</span>
+          <span>📅 Updated October 2026</span>
           <span>•</span>
-          <span>⏱️ 19 min read</span>
+          <span>⏱️ 7 min read</span>
           <span>•</span>
           <span>💰 Financial Planning</span>
         </div>
 
         <h1 className="text-5xl font-black text-slate-900 leading-tight">
-          Complete Budgeting Guide 2025: 50/30/20 Rule, Zero-Based Budgeting & More
+          Complete Budgeting Guide 2026: 50/30/20 Rule, Zero-Based Budgeting & More
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
-          Budgeting is the foundation of financial success. This comprehensive 2025 guide covers the
+          Budgeting is the foundation of financial success. This comprehensive 2026 guide covers the
           <strong> 50/30/20 rule</strong>, zero-based budgeting, envelope method, and proven strategies to take control
           of your finances and achieve your financial goals.
         </p>
@@ -70,6 +70,7 @@ const BudgetingGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <li><button onClick={() => scrollToSection('track-expenses')} className="text-indigo-600 hover:underline">6. How to Track Expenses: Tools & Strategies</button></li>
           <li><button onClick={() => scrollToSection('sticking-to-budget')} className="text-indigo-600 hover:underline">7. Sticking to Your Budget: Common Challenges & Solutions</button></li>
           <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">8. Frequently Asked Questions</button></li>
+          <li><button onClick={() => scrollToSection('sources')} className="text-indigo-600 hover:underline">9. Sources</button></li>
         </ol>
       </nav>
 
@@ -216,7 +217,7 @@ const BudgetingGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <div className="bg-white border border-slate-200 rounded-xl p-6">
             <p className="text-slate-700 mb-4">
-              Monthly take-home pay: $5,000
+              Monthly take-home pay: $5,000 (any 401(k) contributions are already taken out of the paycheck before this amount)
             </p>
             <div className="space-y-2 text-slate-700">
               <p>• Rent: $1,500</p>
@@ -226,7 +227,8 @@ const BudgetingGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <p>• Insurance: $250</p>
               <p>• Debt payments: $500</p>
               <p>• Emergency fund: $500</p>
-              <p>• 401(k): $800</p>
+              <p>• Roth IRA: $625</p>
+              <p>• Sinking funds (car repairs, gifts, travel): $175</p>
               <p>• Entertainment: $200</p>
               <p>• Miscellaneous: $350</p>
               <p className="mt-4 font-bold text-indigo-600 text-lg">Total: $5,000 (Income - Expenses = $0)</p>
@@ -320,6 +322,12 @@ const BudgetingGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <li>• Retirement savings (401(k), IRA)</li>
                 <li>• Other financial goals (house down payment, vacation, etc.)</li>
               </ul>
+              <p className="text-slate-700 mt-3">
+                2026 contribution limits to keep in mind: $24,500 for a 401(k), 403(b) or 457 plan (plus an $8,000 catch-up
+                at 50+, or $11,250 at ages 60–63), $7,500 for an IRA ($1,100 catch-up at 50+), and $4,400 self-only or $8,750
+                family for an HSA. For the order in which to fund these goals, see the <a href="/blog/financial-order-of-operations/" className="text-indigo-600 font-semibold hover:underline">financial order of operations</a>,
+                and size your safety net with our guide to <a href="/blog/how-much-emergency-fund-do-i-need-2025/" className="text-indigo-600 font-semibold hover:underline">how much emergency fund you need</a>.
+              </p>
             </div>
 
             <div className="bg-white border border-slate-200 rounded-xl p-6">
@@ -343,8 +351,8 @@ const BudgetingGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h4 className="font-bold text-slate-900 text-lg mb-3">Budgeting Apps</h4>
               <ul className="space-y-2 text-slate-700">
-                <li>• <strong>YNAB (You Need A Budget):</strong> Zero-based budgeting, $14.99/month</li>
-                <li>• <strong>Mint:</strong> Free, automatic transaction tracking</li>
+                <li>• <strong>YNAB (You Need A Budget):</strong> Zero-based budgeting (paid subscription)</li>
+                <li>• <strong>Your bank or card app:</strong> Many show spending by category at no extra cost</li>
                 <li>• <strong>PocketGuard:</strong> Shows how much you can spend</li>
                 <li>• <strong>Goodbudget:</strong> Digital envelope method</li>
               </ul>
@@ -408,6 +416,16 @@ const BudgetingGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 improvements. This prevents lifestyle inflation from eating up all your extra income.
               </p>
             </div>
+
+            <div className="bg-white border border-slate-200 rounded-xl p-6">
+              <h4 className="font-bold text-slate-900 text-lg mb-3">Challenge: Debt Payments Crowd Out Everything Else</h4>
+              <p className="text-slate-700 mb-3">
+                <strong>Solution:</strong> List every balance and rate, keep paying minimums on all of them, and direct any
+                extra to one target at a time. The <a href="/credit-card-debt-strategist/" className="text-indigo-600 font-semibold hover:underline">credit card debt strategist</a> shows
+                how much faster extra payments clear a balance. Small daily cuts help, but housing, transportation and debt
+                usually matter more; see <a href="/blog/latte-factor-vs-big-wins-wealth/" className="text-indigo-600 font-semibold hover:underline">the latte factor vs. big wins</a>.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -450,6 +468,16 @@ const BudgetingGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               </p>
             </div>
           </div>
+          <p className="text-sm text-slate-500">This guide is educational and is not individualized financial advice.</p>
+        </section>
+
+        <section id="sources" className="space-y-6">
+          <h2 className="text-3xl font-black text-slate-900">Sources</h2>
+          <ul className="space-y-2 text-slate-700">
+            <li>• Consumer Financial Protection Bureau, budgeting and money management tools: <a href="https://www.consumerfinance.gov/" className="text-indigo-600 font-semibold hover:underline">consumerfinance.gov</a></li>
+            <li>• IRS Notice 2025-67, 2026 retirement plan limits; see <a href="https://www.irs.gov/publications/p590a" className="text-indigo-600 font-semibold hover:underline">IRS Publication 590-A</a> for IRA contributions</li>
+            <li>• IRS Publication 969, HSA contribution rules: <a href="https://www.irs.gov/publications/p969" className="text-indigo-600 font-semibold hover:underline">irs.gov/publications/p969</a></li>
+          </ul>
         </section>
       </article>
 
