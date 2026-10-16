@@ -123,7 +123,7 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </p>
 
           <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl">
-            <p className="text-emerald-900 font-semibold text-lg">
+            <div className="text-emerald-900 font-semibold text-lg">
               📊 <strong>Example:</strong> If you have $1,000,000 invested:
               <ul className="mt-2 space-y-1 text-base">
                 <li>• 4% withdrawal = $40,000/year ($3,333/month)</li>
@@ -131,7 +131,7 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <li>• Based on historical U.S. returns, not a guarantee about future returns</li>
                 <li>• <strong>FIRE Number = Annual Expenses × 25</strong></li>
               </ul>
-            </p>
+            </div>
           </div>
 
           <h3 className="text-2xl font-black text-slate-900 mt-8">Is the 4% Rule Still Valid in 2026?</h3>

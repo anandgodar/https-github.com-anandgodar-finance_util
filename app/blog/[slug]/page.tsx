@@ -11,6 +11,13 @@ import { fitTitle, clampDescription } from '../../../lib/seo';
 // Real dates from git history (scripts/generate-content-dates.cjs), not the build date.
 const postDates = contentDates as Record<string, { published: string; modified: string }>;
 
+// Posts whose URL 301s elsewhere (vercel.json): point the canonical at the
+// live page too, in case the static file is ever served directly.
+const canonicalOverrides: Record<string, string> = {
+  'best-mortgage-calculator-2025': 'https://quantcurb.com/best-mortgage-calculator-2025/'
+};
+const canonicalFor = (slug: string) => canonicalOverrides[slug] ?? `https://quantcurb.com/blog/${slug}/`;
+
 type PageProps = {
   params: {
     slug: string;
@@ -37,12 +44,12 @@ export function generateMetadata({ params }: PageProps): Metadata {
     title: fitTitle(entry.title),
     description: clampDescription(entry.description),
     alternates: {
-      canonical: `https://quantcurb.com/blog/${params.slug}/`
+      canonical: canonicalFor(params.slug)
     },
     openGraph: {
       title: entry.title,
       description: entry.description,
-      url: `https://quantcurb.com/blog/${params.slug}/`,
+      url: canonicalFor(params.slug),
       siteName: 'QuantCurb',
       type: 'article',
       ...(postDates[params.slug] && {
@@ -72,7 +79,7 @@ export default function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const canonicalUrl = `https://quantcurb.com/blog/${params.slug}/`;
+  const canonicalUrl = canonicalFor(params.slug);
 
   // Article schema for blog posts
   const blogPostSchema = {

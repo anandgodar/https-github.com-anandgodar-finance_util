@@ -83,7 +83,7 @@ const InvestmentCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </p>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl">
-            <p className="text-indigo-900 font-semibold text-lg">
+            <div className="text-indigo-900 font-semibold text-lg">
               💡 <strong>Key Use Cases:</strong>
               <ul className="mt-2 space-y-1 text-base">
                 <li>• Project retirement savings growth</li>
@@ -91,7 +91,7 @@ const InvestmentCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <li>• Compare different investment strategies</li>
                 <li>• Plan for major financial goals (house, education)</li>
               </ul>
-            </p>
+            </div>
           </div>
 
           <p className="text-lg text-slate-700 leading-relaxed">
@@ -215,14 +215,14 @@ const InvestmentCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </ul>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl mt-6">
-            <p className="text-indigo-900 font-semibold">
+            <div className="text-indigo-900 font-semibold">
               💡 <strong>Hypothetical example:</strong> Investing $500/month for 30 years at a 7% annual return, compounded monthly:
               <ul className="mt-2 space-y-1 text-sm">
                 <li>• Total invested: $180,000</li>
                 <li>• Final value: ~$610,000</li>
                 <li>• Earnings: ~$430,000 (from compound growth)</li>
               </ul>
-            </p>
+            </div>
           </div>
 
           <p className="text-lg text-slate-700 leading-relaxed">

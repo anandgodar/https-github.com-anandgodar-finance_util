@@ -81,7 +81,7 @@ const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) =>
           </p>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl">
-            <p className="text-indigo-900 font-semibold text-lg">
+            <div className="text-indigo-900 font-semibold text-lg">
               💡 <strong>Purpose:</strong> An emergency fund protects you from:
               <ul className="mt-2 space-y-1 text-base">
                 <li>• Job loss or reduced income</li>
@@ -91,7 +91,7 @@ const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) =>
                 <li>• Unexpected travel (family emergency)</li>
                 <li>• Major appliance replacement</li>
               </ul>
-            </p>
+            </div>
           </div>
         </section>
 

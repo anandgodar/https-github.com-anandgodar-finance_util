@@ -12,23 +12,29 @@
 
 ---
 
-## Fix status (updated 2026-10-16)
+## Fix status (updated 2026-10-16, round 2)
 
 Re-audit of the build after the fix pass: 429 pages, each with a self-referencing canonical and exactly 1 H1 (the 50 noindexed ticker pages excepted). No hreflang, no Tailwind CDN, no hidden links, no FAQ/HowTo markup. All titles ≤ 60 characters, all descriptions 70–160, every sitemap URL builds, average HTML 77 KB → 58 KB.
 
 **Fixed in code:** 1.1–1.7 · 2.1–2.6 · 3.1, 3.2, 3.4, 3.5 · 4.2 (ad banner), 4.4 · 5.1–5.4, 5.6, 5.9 (calculator H1 names) · 6.1–6.3, 6.5 (real dates) · 7.1–7.3, 7.5 (thin/AI pages noindexed), 7.6 (ad/affiliate disclosure + terms). Also: empty "Ad space reserved" boxes removed, unverifiable "CFA/CPA reviewed" claims replaced with verifiable sourcing statements, and the AI Market Insights page noindexed.
 
-**Still on you (cannot be done from code):**
-1. **Search Console / Bing:** verify the domain with a DNS TXT record, submit `https://quantcurb.com/sitemap.xml`, and request indexing for the top 10 pages (2.6, 2.7).
-2. **AdSense → Privacy & messaging:** turn on the European regulations (GDPR) consent message before or right after approval (7.4).
-3. **Social profiles:** keep the X, LinkedIn and GitHub links in the footer and Organization schema only if those accounts exist and are yours (6.4).
-4. **Mailboxes:** make sure `privacy@quantcurb.com` (privacy policy) and the contact-page address receive mail.
-5. **Content refresh:** 31 titles and 37 URLs still say 2025. Refresh each post's figures to 2026 one at a time, as in the recent commits (5.5). Don't mass-rename them without updating the numbers.
-6. **Named author / E-E-A-T:** add a real author or reviewer page if you have one (5.7).
-7. **Measure:** run PageSpeed Insights on production after deploy (3.7), and test redirects and www/http consolidation live (1.8, 2.8).
-8. **Ticker pages:** the 50 `/dividend-calculator/<ticker>/` pages are `noindex` until each gets substantial server-rendered content (2.3).
+**Round 2 (content + remaining code items):**
+- **Thin content fixed:** 44 of 84 guides were under 400 words. 66 guides were expanded or refreshed, and all 85 guides are now over 800 words (54 are over 1,200), with worked examples (arithmetic verified), visible FAQs and official sources. No fabricated stats, credentials or testimonials.
+- **2026 refresh:** no page title says 2025 anymore. Figures were updated to 2026 (brackets, $16,100 standard deduction, $184,500 wage base, $24,500 401(k), $7,500 IRA, $2,200 CTC, OBBBA rules, the 2026 ACA cliff). Several wrong worked examples in the old posts were corrected. URLs are unchanged.
+- **Tools made honest and current:** the ACA calculator uses the 2026 rules (the 400% FPL cliff is back). The currency converter no longer claims live rates. The GST calculator has India's post-September 2025 slabs. The AI panels no longer show a fake "high volume" message. The mortgage-calculator comparison page with self-awarded star ratings now renders the corrected guide.
+- **Also done:** Consent Mode v2 defaults for the EEA, UK and Switzerland; favicon, app icons and a square `logo.png`; `inputMode` for mobile keypads; a 16px mobile gutter; the Gemini SDK is loaded only on demand; and optional `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION` environment variables.
 
-**Maintenance scripts:** after adding or editing a post, run `node scripts/generate-content-dates.cjs` (real published/modified dates), then `npm run build && node scripts/generate-sitemap.cjs` (sitemaps, with a check that every URL exists).
+**Still on you (cannot be done from code):**
+1. **Search Console / Bing:** verify the domain with a DNS TXT record (or set the env vars above in Vercel), submit `https://quantcurb.com/sitemap.xml`, and request indexing for your top pages.
+2. **AdSense → Privacy & messaging:** turn on the European regulations (GDPR) consent message. The code already sends Consent Mode defaults.
+3. **Social profiles:** keep the X, LinkedIn and GitHub links in the footer and Organization schema only if those accounts exist and are yours.
+4. **Mailboxes:** make sure `privacy@quantcurb.com` and the contact-page address receive mail.
+5. **Named author / E-E-A-T:** add a real author or reviewer page if you have one.
+6. **State standard deductions** in the salary calculator still use the 2024 federal-conforming $14,600 for some states; review them per state.
+7. **Ticker pages:** the 50 `/dividend-calculator/<ticker>/` pages stay `noindex` until each has substantial server-rendered content.
+8. **Measure:** run PageSpeed Insights on production after deploy, then apply for AdSense review once Search Console shows the pages indexed.
+
+**Maintenance scripts:** after editing a post, run `node scripts/generate-content-dates.cjs <slug>` to update its modified date (other posts keep theirs). Then run `npm run build && node scripts/generate-sitemap.cjs` to regenerate the sitemaps; it also checks that every URL exists.
 
 ---
 

@@ -125,7 +125,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl mt-6">
-            <p className="text-emerald-900 font-semibold text-lg">
+            <div className="text-emerald-900 font-semibold text-lg">
               📊 <strong>Example:</strong> $100,000 gross salary in California:
               <ul className="mt-2 space-y-1 text-base">
                 <li>• After federal tax: ~$78,000</li>
@@ -134,7 +134,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <li>• After 401(k) (10%): ~$55,000</li>
                 <li>• <strong>Take-home pay: ~$55,000/year ($4,583/month)</strong></li>
               </ul>
-            </p>
+            </div>
           </div>
         </section>
 
@@ -196,7 +196,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl mt-6">
-            <p className="text-indigo-900 font-semibold">
+            <div className="text-indigo-900 font-semibold">
               💡 <strong>How It Works:</strong> If you earn $100,000 as a single filer, your 2026 standard deduction of $16,100 leaves $83,900 taxable:
               <ul className="mt-2 space-y-1 text-sm">
                 <li>• First $12,400: 10% = $1,240</li>
@@ -205,7 +205,7 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <li>• <strong>Total Federal Tax: $13,170</strong></li>
                 <li>• <strong>Effective Rate: 13.2%</strong> of gross pay (not 22%!)</li>
               </ul>
-            </p>
+            </div>
           </div>
         </section>
 
@@ -302,14 +302,14 @@ const HowToCalculateTakeHomePay2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl mt-6">
-            <p className="text-emerald-900 font-semibold">
+            <div className="text-emerald-900 font-semibold">
               📊 <strong>Example:</strong> On a $100,000 salary:
               <ul className="mt-2 space-y-1 text-base">
                 <li>• Social Security: $100,000 × 6.2% = $6,200</li>
                 <li>• Medicare: $100,000 × 1.45% = $1,450</li>
                 <li>• <strong>Total FICA: $7,650 (7.65%)</strong></li>
               </ul>
-            </p>
+            </div>
           </div>
         </section>
 

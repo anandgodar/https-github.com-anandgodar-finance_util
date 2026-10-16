@@ -126,7 +126,7 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl">
-            <p className="text-indigo-900 font-semibold text-lg">
+            <div className="text-indigo-900 font-semibold text-lg">
               💡 <strong>Example (hypothetical):</strong> A $500,000 home with 20% down ($400,000 loan) at an illustrative 6.5% for 30 years:
               <ul className="mt-2 space-y-1 text-base">
                 <li>• $2,528 Principal & Interest</li>
@@ -134,7 +134,7 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <li>• $167 Homeowners Insurance ($2,000 per year)</li>
                 <li>• <strong>≈ $3,112 total PITI per month</strong></li>
               </ul>
-            </p>
+            </div>
           </div>
         </section>
 
@@ -155,7 +155,7 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </p>
 
           <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl">
-            <p className="text-emerald-900 font-semibold">
+            <div className="text-emerald-900 font-semibold">
               📊 <strong>Amortization Example:</strong> On a $400,000 loan at 6.5% for 30 years:
               <ul className="mt-2 space-y-1 text-base">
                 <li>• <strong>Month 1:</strong> $2,528/month payment → $2,167 interest, $361 principal</li>
@@ -163,7 +163,7 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <li>• <strong>Month 360 (final payment):</strong> $2,528/month payment → $14 interest, $2,515 principal</li>
                 <li>• <strong>Total interest over 30 years:</strong> about $510,178</li>
               </ul>
-            </p>
+            </div>
           </div>
 
           <h3 className="text-2xl font-black text-slate-900 mt-8">How Interest Rates Change Your Payment</h3>
@@ -369,14 +369,14 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl mt-6">
-            <p className="text-emerald-900 font-semibold text-lg">
+            <div className="text-emerald-900 font-semibold text-lg">
               📊 <strong>Example Calculation:</strong> If you earn $100,000/year ($8,333/month):
               <ul className="mt-2 space-y-1 text-base">
                 <li>• <strong>28% Rule:</strong> Max housing payment = $2,333/month</li>
                 <li>• <strong>36% Rule:</strong> Max total debt = $3,000/month</li>
                 <li>• If you have $500/month in other debts, max housing = $2,500/month</li>
               </ul>
-            </p>
+            </div>
           </div>
 
           <h3 className="text-2xl font-black text-slate-900 mt-8">Other Factors to Consider</h3>
