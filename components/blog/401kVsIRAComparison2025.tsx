@@ -22,20 +22,20 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header className="space-y-6">
         <div className="flex items-center gap-3 text-sm text-slate-500">
-          <span>📅 Updated January 2026</span>
+          <span>📅 Updated October 2026</span>
           <span>•</span>
-          <span>⏱️ 17 min read</span>
+          <span>⏱️ 9 min read</span>
           <span>•</span>
           <span>🎯 Retirement Planning</span>
         </div>
 
         <h1 className="text-5xl font-black text-slate-900 leading-tight">
-          401(k) vs IRA 2025: Complete Comparison Guide - Which Retirement Account is Better?
+          401(k) vs IRA 2026: Complete Comparison Guide - Which Retirement Account is Better?
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
           Choosing between a 401(k) and IRA is one of the most important retirement planning decisions. This comprehensive
-          2025 guide compares <strong>contribution limits</strong>, employer match, tax benefits, withdrawal rules, and helps
+          2026 guide compares <strong>contribution limits</strong>, employer match, tax benefits, withdrawal rules, and helps
           you decide which retirement account is better for your situation.
         </p>
 
@@ -63,13 +63,14 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
         <h2 className="text-lg font-black text-slate-900 mb-4">📋 Table of Contents</h2>
         <ol className="space-y-2 text-sm">
           <li><button onClick={() => scrollToSection('overview')} className="text-indigo-600 hover:underline">1. 401(k) vs IRA: Quick Comparison Overview</button></li>
-          <li><button onClick={() => scrollToSection('contribution-limits')} className="text-indigo-600 hover:underline">2. Contribution Limits 2025: 401(k) vs IRA</button></li>
+          <li><button onClick={() => scrollToSection('contribution-limits')} className="text-indigo-600 hover:underline">2. Contribution Limits 2026: 401(k) vs IRA</button></li>
           <li><button onClick={() => scrollToSection('employer-match')} className="text-indigo-600 hover:underline">3. Employer Match: The 401(k) Advantage</button></li>
           <li><button onClick={() => scrollToSection('tax-benefits')} className="text-indigo-600 hover:underline">4. Tax Benefits: Traditional vs Roth</button></li>
           <li><button onClick={() => scrollToSection('withdrawal-rules')} className="text-indigo-600 hover:underline">5. Withdrawal Rules: 401(k) vs IRA</button></li>
           <li><button onClick={() => scrollToSection('which-better')} className="text-indigo-600 hover:underline">6. Which is Better? 401(k) vs IRA Decision Guide</button></li>
           <li><button onClick={() => scrollToSection('can-have-both')} className="text-indigo-600 hover:underline">7. Can You Have Both? Using 401(k) and IRA Together</button></li>
           <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">8. Frequently Asked Questions</button></li>
+          <li><button onClick={() => scrollToSection('sources')} className="text-indigo-600 hover:underline">9. Sources</button></li>
         </ol>
       </nav>
 
@@ -93,9 +94,9 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
               </thead>
               <tbody>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 font-bold text-slate-900">2025 Contribution Limit</td>
-                  <td className="p-4 text-slate-700">$23,000 ($30,500 if 50+)</td>
-                  <td className="p-4 text-slate-700">$7,000 ($8,000 if 50+)</td>
+                  <td className="p-4 font-bold text-slate-900">2026 Contribution Limit</td>
+                  <td className="p-4 text-slate-700">$24,500 ($32,500 if 50+; $35,750 at ages 60–63)</td>
+                  <td className="p-4 text-slate-700">$7,500 ($8,600 if 50+)</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-slate-900">Employer Match</td>
@@ -110,17 +111,17 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-slate-900">Investment Options</td>
                   <td className="p-4 text-slate-700">Limited (employer chooses)</td>
-                  <td className="p-4 text-slate-700">Unlimited (you choose)</td>
+                  <td className="p-4 text-slate-700">Broad (most stocks, bonds, and funds at your chosen provider)</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-slate-900">Early Withdrawal Penalty</td>
-                  <td className="p-4 text-slate-700">10% (before 59½)</td>
-                  <td className="p-4 text-slate-700">10% (before 59½)</td>
+                  <td className="p-4 text-slate-700">10% (before 59½; age 55 exception after leaving your job)</td>
+                  <td className="p-4 text-slate-700">10% (before 59½, with some IRA-only exceptions)</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-slate-900">Required Minimum Distributions</td>
-                  <td className="p-4 text-slate-700">Yes (age 73)</td>
-                  <td className="p-4 text-slate-700">Traditional: Yes, Roth: No</td>
+                  <td className="p-4 text-slate-700">Traditional: Yes (generally age 73); Roth 401(k): No (since 2024)</td>
+                  <td className="p-4 text-slate-700">Traditional: Yes (generally age 73); Roth: No</td>
                 </tr>
               </tbody>
             </table>
@@ -128,7 +129,7 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
         </section>
 
         <section id="contribution-limits" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Contribution Limits 2025: 401(k) vs IRA</h2>
+          <h2 className="text-3xl font-black text-slate-900">Contribution Limits 2026: 401(k) vs IRA</h2>
 
           <p className="text-lg text-slate-700 leading-relaxed">
             Contribution limits are one of the biggest differences between 401(k)s and IRAs. Understanding these limits
@@ -136,10 +137,11 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
           </p>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl">
-            <p className="text-indigo-900 font-semibold text-lg mb-2">💡 2025 Contribution Limits</p>
+            <p className="text-indigo-900 font-semibold text-lg mb-2">💡 2026 Contribution Limits</p>
             <ul className="space-y-2 text-indigo-800">
-              <li>• <strong>401(k):</strong> $23,000 ($30,500 if age 50+)</li>
-              <li>• <strong>IRA:</strong> $7,000 ($8,000 if age 50+)</li>
+              <li>• <strong>401(k):</strong> $24,500 ($32,500 if age 50+; $35,750 if age 60–63)</li>
+              <li>• <strong>IRA:</strong> $7,500 ($8,600 if age 50+)</li>
+              <li>• <strong>401(k) total from all sources (you + employer):</strong> $72,000, not counting catch-up</li>
               <li>• <strong>Total:</strong> You can contribute to both, but IRA limits apply regardless of 401(k) contributions</li>
             </ul>
           </div>
@@ -147,38 +149,44 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
           <h3 className="text-2xl font-black text-slate-900 mt-8">401(k) Contribution Limits</h3>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            In 2025, you can contribute up to <strong>$23,000</strong> to a 401(k) (or $30,500 if you're 50 or older).
-            This limit applies to your contributions only—employer matches don't count toward this limit.
+            In 2026, you can contribute up to <strong>$24,500</strong> to a 401(k) (or $32,500 if you're 50 or older,
+            and $35,750 if you're 60 to 63 thanks to the SECURE 2.0 &quot;super catch-up&quot;). This limit applies to your
+            own deferrals only—employer matches don't count toward it, although employee plus employer contributions
+            together are capped at $72,000. If you participate in more than one 401(k) or 403(b) in a year, the $24,500
+            limit is shared across all of them. Starting in 2026, higher earners (based on prior-year FICA wages above an
+            inflation-indexed threshold) must make any catch-up contributions as Roth.
           </p>
 
           <div className="bg-white border border-slate-200 rounded-xl p-6">
             <h4 className="font-bold text-slate-900 text-lg mb-3">401(k) Contribution Example</h4>
             <p className="text-slate-700 mb-3">
-              If you earn $100,000 and contribute $23,000 to your 401(k), plus your employer matches $5,000:
+              Hypothetical example: if you earn $100,000 and contribute $24,500 to your 401(k), plus your employer matches $5,000:
             </p>
             <ul className="space-y-1 text-slate-700">
-              <li>• Your contribution: $23,000 (counts toward limit)</li>
-              <li>• Employer match: $5,000 (doesn't count toward limit)</li>
-              <li>• Total in account: $28,000</li>
+              <li>• Your contribution: $24,500 (counts toward the employee limit)</li>
+              <li>• Employer match: $5,000 (doesn't count toward the employee limit)</li>
+              <li>• Total added this year: $29,500</li>
             </ul>
           </div>
 
           <h3 className="text-2xl font-black text-slate-900 mt-8">IRA Contribution Limits</h3>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            In 2025, you can contribute up to <strong>$7,000</strong> to an IRA (or $8,000 if you're 50 or older).
-            This limit applies to all IRAs combined—you can't contribute $7,000 to a Traditional IRA and $7,000 to a
-            Roth IRA in the same year.
+            In 2026, you can contribute up to <strong>$7,500</strong> to an IRA (or $8,600 if you're 50 or older).
+            This limit applies to all IRAs combined—you can't contribute $7,500 to a Traditional IRA and $7,500 to a
+            Roth IRA in the same year. Your contribution also can't exceed your taxable compensation for the year,
+            although a working spouse's income can support a spousal IRA. You have until the tax filing deadline
+            (April 15, 2027, for 2026 contributions) to make the contribution.
           </p>
 
           <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-xl">
             <p className="text-yellow-900 font-semibold text-lg mb-2">⚠️ Roth IRA Income Limits</p>
             <p className="text-yellow-800">
-              Roth IRA contributions phase out based on income. In 2025, full contributions allowed up to:
+              Roth IRA contributions phase out based on modified AGI. In 2026, full contributions are allowed up to:
             </p>
             <ul className="mt-2 space-y-1 text-yellow-800">
-              <li>• Single: $146,000 (phases out up to $161,000)</li>
-              <li>• Married filing jointly: $230,000 (phases out up to $240,000)</li>
+              <li>• Single: $153,000 (phases out up to $168,000)</li>
+              <li>• Married filing jointly: $242,000 (phases out up to $252,000)</li>
             </ul>
             <p className="mt-3 text-yellow-800">
               If you exceed these limits, you can still contribute to a Traditional IRA (though deductions may phase out
@@ -198,8 +206,9 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
           <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl">
             <p className="text-emerald-900 font-semibold text-lg mb-2">✅ Always Get the Full Match</p>
             <p className="text-emerald-800">
-              If your employer offers a match, contribute at least enough to get the full match. This is typically a
-              100% return on your investment—the best guaranteed return you'll ever get.
+              If your employer offers a match, contribute at least enough to get the full match. With a dollar-for-dollar
+              match, that's an immediate 100% return on the matched dollars before any market growth. Check your
+              plan's vesting schedule: you may need to stay a certain number of years to keep all of the employer money.
             </p>
           </div>
 
@@ -300,18 +309,20 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
           <div className="bg-white border border-slate-200 rounded-xl p-6">
             <h4 className="font-bold text-slate-900 text-lg mb-3">Exceptions to Early Withdrawal Penalty</h4>
             <ul className="space-y-2 text-slate-700">
-              <li>• <strong>401(k):</strong> Age 55+ if you leave your job (Rule of 55)</li>
-              <li>• <strong>IRA:</strong> Age 59½+ (no exceptions for early retirement)</li>
-              <li>• <strong>Both:</strong> Disability, first-time home purchase ($10,000), medical expenses, higher education</li>
-              <li>• <strong>Roth:</strong> Contributions can be withdrawn tax-free and penalty-free at any time</li>
+              <li>• <strong>401(k) only:</strong> Leaving your job in or after the year you turn 55 (the &quot;Rule of 55&quot;) for that employer's plan</li>
+              <li>• <strong>IRA only:</strong> First-time home purchase (up to $10,000 lifetime), qualified higher education expenses, and health insurance premiums while unemployed</li>
+              <li>• <strong>Both:</strong> Disability, a series of substantially equal periodic payments (72(t)), and unreimbursed medical expenses above 7.5% of AGI</li>
+              <li>• <strong>Roth IRA:</strong> Your contributions (not earnings) can be withdrawn tax-free and penalty-free at any time</li>
             </ul>
           </div>
 
           <h3 className="text-2xl font-black text-slate-900 mt-8">Required Minimum Distributions (RMDs)</h3>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            Traditional 401(k)s and Traditional IRAs require you to start taking distributions at age 73 (2025). Roth
-            401(k)s also have RMDs, but Roth IRAs do not.
+            Traditional 401(k)s and Traditional IRAs generally require you to start taking distributions at age 73 (rising
+            to 75 for people born in 1960 or later). Since 2024, Roth 401(k)s no longer have lifetime RMDs, matching Roth
+            IRAs. If you're still working, many 401(k) plans let you delay RMDs from that employer's plan until you
+            retire, unless you own more than 5% of the company.
           </p>
         </section>
 
@@ -330,12 +341,12 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
                 return on your investment.
               </li>
               <li>
-                <strong>2. IRA up to limit</strong> - Better investment options and lower fees than most 401(k)s.
-                Contribute $7,000 to a Roth or Traditional IRA.
+                <strong>2. IRA up to limit</strong> - Often wider investment choices and potentially lower fees than
+                a 401(k) menu. Contribute up to $7,500 to a Roth or Traditional IRA.
               </li>
               <li>
                 <strong>3. 401(k) up to limit</strong> - After maxing IRA, go back to 401(k) and contribute up to
-                $23,000 total.
+                $24,500 total.
               </li>
               <li>
                 <strong>4. Taxable brokerage</strong> - After maxing retirement accounts, invest in taxable accounts.
@@ -343,12 +354,37 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
             </ol>
           </div>
 
+          <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl">
+            <p className="text-emerald-900 font-semibold text-lg mb-2">📊 Hypothetical Example: Putting the Order to Work</p>
+            <p className="text-emerald-800 mb-3">
+              A single filer earning $90,000 wants to save $15,000 of their own money in 2026. The employer matches 100%
+              of contributions up to 4% of pay.
+            </p>
+            <ul className="space-y-1 text-emerald-800">
+              <li>• Step 1: $3,600 to the 401(k) (4% of pay) → employer adds $3,600</li>
+              <li>• Step 2: $7,500 to an IRA (the 2026 maximum)</li>
+              <li>• Step 3: the remaining $3,900 back into the 401(k)</li>
+              <li>• <strong>Result: $15,000 saved by the employee + $3,600 match = $18,600 added for the year</strong></li>
+            </ul>
+          </div>
+
+          <p className="text-lg text-slate-700 leading-relaxed">
+            This order is a starting point, not a rule. If your 401(k) offers low-cost index funds, simply raising your
+            401(k) contribution can be simpler than opening an IRA. If you have a high-deductible health plan, an HSA
+            may deserve a spot near the top — see{' '}
+            <a href="/blog/hsa-vs-401k-fica-tax-savings-2026/" className="text-indigo-600 font-semibold hover:underline">HSA vs 401(k) and the FICA advantage</a>.
+            For the bigger picture, including emergency savings and high-interest debt, read our{' '}
+            <a href="/blog/financial-order-of-operations/" className="text-indigo-600 font-semibold hover:underline">financial order of operations</a>,
+            and to see what a larger deferral does to your paycheck, read{' '}
+            <a href="/blog/max-out-401k-take-home-pay/" className="text-indigo-600 font-semibold hover:underline">how maxing out your 401(k) affects take-home pay</a>.
+          </p>
+
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6">
               <h4 className="font-bold text-emerald-700 text-lg mb-3">✅ Choose 401(k) If:</h4>
               <ul className="space-y-2 text-slate-700">
                 <li>• Your employer offers a match</li>
-                <li>• You want to save more than $7,000/year</li>
+                <li>• You want to save more than $7,500/year</li>
                 <li>• You have good investment options in your 401(k)</li>
                 <li>• You want automatic payroll deductions</li>
               </ul>
@@ -377,12 +413,12 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl">
             <p className="text-indigo-900 font-semibold text-lg mb-2">💡 Maximum Retirement Savings Strategy</p>
             <p className="text-indigo-800 mb-3">
-              In 2025, you can contribute:
+              In 2026, if you're under 50, you can contribute:
             </p>
             <ul className="space-y-1 text-indigo-800">
-              <li>• $23,000 to 401(k) (plus employer match)</li>
-              <li>• $7,000 to IRA</li>
-              <li>• <strong>Total: $30,000+ in tax-advantaged accounts</strong></li>
+              <li>• $24,500 to 401(k) (plus employer match)</li>
+              <li>• $7,500 to IRA</li>
+              <li>• <strong>Total: $32,000+ in tax-advantaged accounts</strong> ($41,100 with both catch-ups at 50+)</li>
             </ul>
             <p className="mt-3 text-indigo-800">
               This strategy maximizes your tax benefits and retirement savings potential.
@@ -397,15 +433,17 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
           </p>
 
           <div className="bg-white border border-slate-200 rounded-xl p-6">
-            <h4 className="font-bold text-slate-900 text-lg mb-3">2025 Traditional IRA Deduction Limits (with 401(k))</h4>
+            <h4 className="font-bold text-slate-900 text-lg mb-3">How the Traditional IRA Deduction Works (with a 401(k))</h4>
             <ul className="space-y-2 text-slate-700">
-              <li>• <strong>Single:</strong> Full deduction up to $77,000 (phases out up to $87,000)</li>
-              <li>• <strong>Married filing jointly:</strong> Full deduction up to $123,000 (phases out up to $143,000)</li>
-              <li>• <strong>Above limits:</strong> No deduction, but you can still contribute (non-deductible Traditional IRA)</li>
+              <li>• <strong>Not covered by a workplace plan (and spouse not covered):</strong> Full deduction at any income</li>
+              <li>• <strong>Covered by a workplace plan:</strong> Deduction phases out at moderate incomes; the exact MAGI ranges are indexed each year and listed in IRS Publication 590-A</li>
+              <li>• <strong>Your spouse is covered but you aren't:</strong> A separate, higher phase-out range applies</li>
+              <li>• <strong>Above the limits:</strong> No deduction, but you can still contribute (non-deductible Traditional IRA, reported on Form 8606)</li>
             </ul>
             <p className="mt-4 text-sm text-slate-600 italic">
               If you can't deduct Traditional IRA contributions, consider a Roth IRA instead (if eligible) or a
-              non-deductible Traditional IRA (which can be converted to Roth via backdoor Roth IRA).
+              non-deductible Traditional IRA (which can be converted to Roth via backdoor Roth IRA). Beware the pro-rata
+              rule: if you hold other pre-tax IRA money, part of any conversion is taxable.
             </p>
           </div>
         </section>
@@ -417,8 +455,8 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h4 className="font-bold text-slate-900 text-lg mb-2">Should I contribute to 401(k) or IRA first?</h4>
               <p className="text-slate-700">
-                Contribute to your 401(k) up to the employer match first (free money), then max out your IRA ($7,000),
-                then go back to your 401(k) and contribute up to the $23,000 limit. This maximizes your tax benefits
+                Contribute to your 401(k) up to the employer match first (free money), then max out your IRA ($7,500 in 2026),
+                then go back to your 401(k) and contribute up to the $24,500 limit. This maximizes your tax benefits
                 and investment flexibility.
               </p>
             </div>
@@ -426,18 +464,18 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h4 className="font-bold text-slate-900 text-lg mb-2">Can I have both a 401(k) and IRA?</h4>
               <p className="text-slate-700">
-                Yes! You can contribute to both in the same year. In 2025, you can contribute $23,000 to a 401(k) and
-                $7,000 to an IRA (total $30,000 in tax-advantaged accounts). This is the best strategy for maximizing
-                retirement savings.
+                Yes! You can contribute to both in the same year. In 2026, you can contribute $24,500 to a 401(k) and
+                $7,500 to an IRA (total $32,000 in tax-advantaged accounts if you're under 50). Using both is a common
+                way to maximize retirement savings.
               </p>
             </div>
 
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h4 className="font-bold text-slate-900 text-lg mb-2">What's the difference between 401(k) and IRA?</h4>
               <p className="text-slate-700">
-                <strong>401(k):</strong> Employer-sponsored, higher contribution limits ($23,000), employer match possible,
-                limited investment options. <strong>IRA:</strong> Individual account, lower contribution limits ($7,000),
-                no employer match, unlimited investment options. Both offer tax advantages.
+                <strong>401(k):</strong> Employer-sponsored, higher contribution limits ($24,500 in 2026), employer match possible,
+                investment menu chosen by the plan. <strong>IRA:</strong> Individual account, lower contribution limits ($7,500),
+                no employer match, broad investment choice. Both offer tax advantages.
               </p>
             </div>
 
@@ -445,11 +483,24 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
               <h4 className="font-bold text-slate-900 text-lg mb-2">Is a 401(k) or IRA better for retirement?</h4>
               <p className="text-slate-700">
                 Both are excellent for retirement. Use a 401(k) if you have an employer match or want to save more than
-                $7,000/year. Use an IRA if you want better investment options or have already maxed your employer match.
+                $7,500/year. Use an IRA if you want better investment options or have already maxed your employer match.
                 The best strategy is to use both.
               </p>
             </div>
           </div>
+        </section>
+
+        <section id="sources" className="space-y-6">
+          <h2 className="text-3xl font-black text-slate-900">Sources</h2>
+          <ul className="space-y-2 text-slate-700">
+            <li>• IRS Notice 2025-67 (2026 401(k) and IRA limits) — <a href="https://www.irs.gov/retirement-plans" className="text-indigo-600 font-semibold hover:underline">IRS Retirement Plans</a></li>
+            <li>• <a href="https://www.irs.gov/publications/p590a" className="text-indigo-600 font-semibold hover:underline">IRS Publication 590-A, Contributions to IRAs</a> (deduction phase-outs, Roth income limits)</li>
+            <li>• <a href="https://www.irs.gov/publications/p590b" className="text-indigo-600 font-semibold hover:underline">IRS Publication 590-B, Distributions from IRAs</a> (RMDs, early-withdrawal exceptions)</li>
+            <li>• <a href="https://www.irs.gov/publications/p575" className="text-indigo-600 font-semibold hover:underline">IRS Publication 575, Pension and Annuity Income</a> (401(k) distributions)</li>
+          </ul>
+          <p className="text-sm text-slate-600 italic">
+            This article is educational and is not individualized tax or investment advice. Examples are hypothetical.
+          </p>
         </section>
       </article>
 
