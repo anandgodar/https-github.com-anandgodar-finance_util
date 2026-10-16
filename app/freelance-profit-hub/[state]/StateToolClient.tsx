@@ -289,7 +289,7 @@ function getStateFreelanceFAQs(state: StateConfig): Array<{question: string, ans
     },
     {
       question: `What business expenses can I deduct as a ${state.name} freelancer?`,
-      answer: `Common deductible expenses for ${state.name} freelancers include: Home office (dedicated space, percentage of rent/mortgage), Equipment (computer, software, phone), Health insurance premiums (100% deductible), Retirement contributions (SEP-IRA up to $66,000 in 2026), Professional development and courses, Business travel and mileage ($0.67/mile in 2026), Marketing and advertising, and Professional services (accounting, legal). These deductions reduce your taxable income for both federal${noIncomeTax ? '' : ` and ${state.name} state`} taxes.`
+      answer: `Common deductible expenses for ${state.name} freelancers include: Home office (dedicated space, percentage of rent/mortgage), Equipment (computer, software, phone), Health insurance premiums (100% deductible), Retirement contributions (SEP-IRA up to $66,000 in 2026), Professional development and courses, Business travel and mileage ($0.725/mile in 2026), Marketing and advertising, and Professional services (accounting, legal). These deductions reduce your taxable income for both federal${noIncomeTax ? '' : ` and ${state.name} state`} taxes.`
     },
     {
       question: `When are quarterly taxes due for ${state.name} freelancers?`,
