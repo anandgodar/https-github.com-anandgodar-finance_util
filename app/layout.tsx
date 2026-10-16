@@ -151,6 +151,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="alternate" hrefLang="en" href="https://quantcurb.com/" />
         <link rel="alternate" hrefLang="x-default" href="https://quantcurb.com/" />
 
+        {/* Google AdSense - plain <script> in <head> so it is present in the static HTML for site verification */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3959097578570952"
+          crossOrigin="anonymous"
+        />
+
         {/* Organization Schema */}
         <script
           type="application/ld+json"
