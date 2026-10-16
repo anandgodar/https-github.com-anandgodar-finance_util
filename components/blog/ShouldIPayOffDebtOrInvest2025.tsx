@@ -20,21 +20,21 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header className="space-y-6">
         <div className="flex items-center gap-3 text-sm text-slate-500">
-          <span>📅 Updated January 2026</span>
+          <span>📅 Updated October 2026</span>
           <span>•</span>
-          <span>⏱️ 14 min read</span>
+          <span>⏱️ 8 min read</span>
           <span>•</span>
           <span>💰 Financial Strategy</span>
         </div>
 
         <h1 className="text-5xl font-black text-slate-900 leading-tight">
-          Should I Pay Off Debt or Invest? Complete 2025 Guide with Calculator
+          Should I Pay Off Debt or Invest? Complete 2026 Guide with Calculator
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
           One of the most common financial questions: <strong>"Should I pay off debt or invest?"</strong>
-          This comprehensive guide explains the math, interest rate comparisons, and strategies to maximize your wealth
-          in 2025.
+          This comprehensive guide explains the math, interest rate comparisons, 2026 account limits, and strategies to
+          build wealth while you pay down debt.
         </p>
 
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
@@ -67,6 +67,7 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <li><button onClick={() => scrollToSection('debt-types')} className="text-indigo-600 hover:underline">5. Different Types of Debt</button></li>
           <li><button onClick={() => scrollToSection('examples')} className="text-indigo-600 hover:underline">6. Real-World Examples</button></li>
           <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">7. Frequently Asked Questions</button></li>
+          <li><button onClick={() => scrollToSection('sources')} className="text-indigo-600 hover:underline">8. Sources</button></li>
         </ol>
       </nav>
 
@@ -86,7 +87,21 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
             </p>
           </div>
 
-          <h3 className="text-2xl font-black text-slate-900 mt-8">Expected Investment Returns (2025)</h3>
+          <p className="text-lg text-slate-700 leading-relaxed">
+            The rule needs three adjustments. First, paying off debt is a <strong>guaranteed</strong> return, while market
+            returns are an average with real ups and downs, so a debt rate that is only slightly below your expected return
+            is closer to a tie than it looks. Second, <strong>taxes</strong> matter: a 401(k) match or a deductible
+            contribution can tilt the math toward investing, while a deduction you don&apos;t actually use (for example,
+            mortgage interest when you take the standard deduction) adds nothing. Third, <strong>liquidity</strong>: money
+            sent to a loan is hard to get back in an emergency, while savings and taxable investments can be tapped.
+          </p>
+
+          <h3 className="text-2xl font-black text-slate-900 mt-8">Long-Run Return Assumptions (Not Guarantees)</h3>
+
+          <p className="text-slate-700">
+            Stock ranges below reflect long-run historical averages (the S&amp;P 500 has returned roughly 10% a year nominal
+            over long periods, closer to 7% after inflation). Any single year can be far higher or lower.
+          </p>
 
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden mt-4">
             <table className="w-full">
@@ -115,12 +130,12 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700">High-Yield Savings Account</td>
-                  <td className="p-4 font-bold text-slate-600">4-5%</td>
+                  <td className="p-4 font-bold text-slate-600">Varies with Fed rates (check current APY)</td>
                   <td className="p-4 text-slate-700">Low</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700">Bonds</td>
-                  <td className="p-4 font-bold text-slate-600">3-5%</td>
+                  <td className="p-4 font-bold text-slate-600">Varies; usually below stocks over long periods</td>
                   <td className="p-4 text-slate-700">Low</td>
                 </tr>
               </tbody>
@@ -128,6 +143,11 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <h3 className="text-2xl font-black text-slate-900 mt-8">Common Debt Interest Rates</h3>
+
+          <p className="text-slate-700">
+            Illustrative ranges only. Rates depend on your credit, the lender, and when you borrowed; your actual rate is
+            on your statement.
+          </p>
 
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden mt-4">
             <table className="w-full">
@@ -161,7 +181,7 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700">Mortgage</td>
-                  <td className="p-4 font-bold text-emerald-600">6-7%</td>
+                  <td className="p-4 font-bold text-emerald-600">Varies widely by year borrowed</td>
                   <td className="p-4 text-slate-700">Usually invest</td>
                 </tr>
               </tbody>
@@ -197,7 +217,10 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <h3 className="font-bold text-orange-900 text-lg mb-2">3. No Emergency Fund</h3>
               <p className="text-orange-800">
                 If you don't have 3-6 months of expenses saved, focus on building an emergency fund
-                before aggressive investing. Debt payoff can wait if you have high-interest debt.
+                before aggressive investing. With high-interest debt, many people build a small starter fund first,
+                attack the debt, then finish the full fund. Our{' '}
+                <a href="/emergency-fund-guard/" className="text-indigo-600 font-semibold hover:underline">emergency fund calculator</a>{' '}
+                can help size it.
               </p>
             </div>
 
@@ -211,14 +234,14 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl mt-6">
-            <p className="text-emerald-900 font-semibold text-lg">
-              📊 <strong>Example:</strong> You have $10,000 in credit card debt at 24% APR.
+            <div className="text-emerald-900 font-semibold text-lg">
+              📊 <strong>Example (hypothetical):</strong> You have $10,000 in credit card debt at 24% APR and $10,000 in cash beyond your emergency fund.
               <ul className="mt-2 space-y-1 text-base">
-                <li>• Paying it off = Guaranteed 24% return (saving $2,400/year in interest)</li>
-                <li>• Investing instead = Uncertain 7-10% return (maybe $700-1,000/year)</li>
-                <li>• <strong>Verdict:</strong> Pay off debt first!</li>
+                <li>• Paying it off = Guaranteed 24% return (saving about $2,400/year in interest)</li>
+                <li>• Investing instead = Uncertain 7-10% average return (maybe $700-1,000/year)</li>
+                <li>• <strong>Verdict:</strong> Pay off debt first! Plan your payoff with the <a href="/credit-card-debt-strategist/" className="underline">credit card payoff calculator</a>.</li>
               </ul>
-            </p>
+            </div>
           </div>
         </section>
 
@@ -250,7 +273,10 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <h3 className="font-bold text-blue-900 text-lg mb-2">3. Tax-Advantaged Accounts</h3>
               <p className="text-blue-800">
                 Contributing to 401(k)s, IRAs, and HSAs provides tax benefits that can outweigh
-                the benefits of paying off low-rate debt.
+                the benefits of paying off low-rate debt. For 2026, the limits are $24,500 for a 401(k) (plus an $8,000
+                catch-up at 50+, or $11,250 at ages 60-63), $7,500 for an IRA (plus $1,100 at 50+), and $4,400 self-only
+                or $8,750 family for an HSA. Compare account types with the{' '}
+                <a href="/retirement-account-optimizer/" className="text-indigo-600 font-semibold hover:underline">retirement account optimizer</a>.
               </p>
             </div>
 
@@ -264,14 +290,14 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl mt-6">
-            <p className="text-indigo-900 font-semibold text-lg">
-              📊 <strong>Example:</strong> You have a $20,000 student loan at 4% APR and $20,000 to invest.
+            <div className="text-indigo-900 font-semibold text-lg">
+              📊 <strong>Example (hypothetical):</strong> You have a $20,000 student loan at 4% APR and $20,000 to invest.
               <ul className="mt-2 space-y-1 text-base">
                 <li>• Paying off loan = Guaranteed 4% return (saving $800/year)</li>
-                <li>• Investing in S&P 500 = Expected 7-10% return ($1,400-2,000/year)</li>
-                <li>• <strong>Verdict:</strong> Invest! The expected return exceeds the debt rate.</li>
+                <li>• Investing in S&P 500 = Expected 7-10% average return ($1,400-2,000/year), with no guarantee in any given year</li>
+                <li>• <strong>Verdict:</strong> Investing has the higher expected value. Keep the loan if you are comfortable with market risk.</li>
               </ul>
-            </p>
+            </div>
           </div>
         </section>
 
@@ -333,7 +359,7 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-red-50 border-l-4 border-red-500 rounded-r-xl p-6">
               <h3 className="font-bold text-red-900 text-xl mb-2">Priority 1: Credit Card Debt</h3>
               <p className="text-red-800">
-                <strong>ALWAYS pay off first.</strong> Rates of 18-28% are financial emergencies.
+                <strong>Pay off first</strong> (after any employer match). Rates of 18-28% are financial emergencies.
                 Stop using credit cards and pay these off aggressively.
               </p>
             </div>
@@ -355,16 +381,20 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-xl p-6">
               <h3 className="font-bold text-indigo-900 text-xl mb-2">Priority 4: Student Loans (3-7%)</h3>
               <p className="text-indigo-800">
-                Usually better to invest. Student loans often have tax benefits and low rates.
-                Make minimum payments and invest the rest.
+                Usually better to invest if your rate is low. Student loan interest may be deductible (up to $2,500 a year,
+                subject to income limits). Federal loans also come with income-driven repayment and possible forgiveness,
+                which changed under the 2025 law; see our{' '}
+                <a href="/blog/student-loan-repayment-strategies-2025/" className="text-indigo-600 font-semibold hover:underline">student loan repayment guide</a>{' '}
+                before prepaying federal loans.
               </p>
             </div>
 
             <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl p-6">
-              <h3 className="font-bold text-emerald-900 text-xl mb-2">Priority 5: Mortgages (6-7%)</h3>
+              <h3 className="font-bold text-emerald-900 text-xl mb-2">Priority 5: Mortgages (Usually Lowest Rate)</h3>
               <p className="text-emerald-800">
-                Generally invest instead. Mortgage rates are often close to investment returns, but
-                investing provides liquidity and tax benefits. Make regular payments, invest extra.
+                Generally invest instead, especially with a low fixed rate. If your rate is high, extra principal payments
+                become more competitive. Note that mortgage interest only lowers your taxes if you itemize; with the 2026
+                standard deduction at $16,100 (single) or $32,200 (married filing jointly), many homeowners don&apos;t.
               </p>
             </div>
           </div>
@@ -377,9 +407,9 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-indigo-50 border-2 border-indigo-200 rounded-xl p-6">
               <h3 className="font-bold text-indigo-900 text-xl mb-4">Example 1: Credit Card Debt</h3>
               <div className="space-y-2 text-indigo-800">
-                <p><strong>Situation:</strong> $15,000 credit card debt at 24% APR, $500/month extra to allocate</p>
-                <p><strong>Option A:</strong> Pay off debt → Saves $3,600/year in interest</p>
-                <p><strong>Option B:</strong> Invest $500/month → Might earn $350-500/year (7-10% return)</p>
+                <p><strong>Situation (hypothetical):</strong> $15,000 credit card debt at 24% APR, $500/month extra to allocate</p>
+                <p><strong>Option A:</strong> Each $500 sent to the card avoids about $120/year of interest (24%), guaranteed. Clearing the whole balance stops about $3,600/year</p>
+                <p><strong>Option B:</strong> Each $500 invested might earn about $35-50/year on average (7-10%), not guaranteed</p>
                 <p className="font-bold text-lg mt-2">✅ Verdict: Pay off debt first (guaranteed 24% return)</p>
               </div>
             </div>
@@ -387,17 +417,17 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-6">
               <h3 className="font-bold text-purple-900 text-xl mb-4">Example 2: Student Loan</h3>
               <div className="space-y-2 text-purple-800">
-                <p><strong>Situation:</strong> $30,000 student loan at 4.5% APR, $500/month extra to allocate</p>
-                <p><strong>Option A:</strong> Pay off loan → Saves $1,350/year in interest</p>
-                <p><strong>Option B:</strong> Invest $500/month → Expected $2,100-3,000/year (7-10% return)</p>
-                <p className="font-bold text-lg mt-2">✅ Verdict: Invest (expected return exceeds debt rate)</p>
+                <p><strong>Situation (hypothetical):</strong> $30,000 student loan at 4.5% APR, $500/month extra to allocate</p>
+                <p><strong>Option A:</strong> Each $500 sent to the loan avoids about $22.50/year of interest (4.5%), guaranteed</p>
+                <p><strong>Option B:</strong> Each $500 invested might earn about $35-50/year on average (7-10%), not guaranteed</p>
+                <p className="font-bold text-lg mt-2">✅ Verdict: Investing has the higher expected return, but the gap is modest; splitting the $500 is reasonable if you value certainty</p>
               </div>
             </div>
 
             <div className="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-6">
               <h3 className="font-bold text-emerald-900 text-xl mb-4">Example 3: Mixed Debt</h3>
               <div className="space-y-2 text-emerald-800">
-                <p><strong>Situation:</strong> $5,000 credit card (24%), $20,000 student loan (4%), $1,000/month extra</p>
+                <p><strong>Situation (hypothetical):</strong> $5,000 credit card (24%), $20,000 student loan (4%), $1,000/month extra</p>
                 <p><strong>Strategy:</strong> Hybrid approach</p>
                 <ul className="list-disc list-inside space-y-1 mt-2">
                   <li>$600/month → Pay off credit card (high priority)</li>
@@ -417,18 +447,20 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h3 className="font-bold text-slate-900 text-lg mb-2">Should I pay off my mortgage or invest?</h3>
               <p className="text-slate-700">
-                Generally, invest. Mortgage rates (6-7%) are often close to expected investment returns (7-10%),
-                but investing provides liquidity and tax benefits. However, if you're close to retirement or
-                value peace of mind, paying off your mortgage can be worthwhile.
+                Generally, invest if your mortgage rate is well below long-run expected returns (historically about 7-10% for
+                stocks). The closer your rate gets to that range, the closer the decision is to a toss-up, and paying extra
+                becomes a reasonable guaranteed return. If you're close to retirement or value peace of mind, paying off
+                your mortgage can be worthwhile.
               </p>
             </div>
 
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h3 className="font-bold text-slate-900 text-lg mb-2">What about student loan debt?</h3>
               <p className="text-slate-700">
-                Student loans typically have low rates (3-7%) and tax benefits. Make minimum payments and invest
-                the rest. However, if student loans cause stress or you're close to forgiveness programs, paying
-                them off may be worth it.
+                Student loans often have moderate rates and a possible interest deduction. If your rate is low, make
+                required payments and invest the rest. If you're pursuing PSLF or income-driven forgiveness, extra
+                payments may simply reduce the amount forgiven, so prepaying usually makes less sense. If the loans cause
+                stress and you aren't seeking forgiveness, paying them off may be worth it.
               </p>
             </div>
 
@@ -445,10 +477,25 @@ const ShouldIPayOffDebtOrInvest2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <h3 className="font-bold text-slate-900 text-lg mb-2">What if I can't decide?</h3>
               <p className="text-slate-700">
                 Use a hybrid approach: pay off high-interest debt aggressively, make minimum payments on low-interest
-                debt, and invest the rest. This balances risk reduction with wealth building.
+                debt, and invest the rest. This balances risk reduction with wealth building. The{' '}
+                <a href="/blog/financial-order-of-operations/" className="text-indigo-600 font-semibold hover:underline">financial order of operations</a>{' '}
+                lays out a full sequence.
               </p>
             </div>
           </div>
+          <p className="text-sm text-slate-500">This article is educational and not individualized financial advice.</p>
+        </section>
+
+        <section id="sources" className="space-y-6">
+          <h2 className="text-3xl font-black text-slate-900">Sources</h2>
+          <ul className="space-y-2 text-slate-700">
+            <li>• <a href="https://www.irs.gov/publications/p590a" className="text-indigo-600 hover:underline">IRS Publication 590-A</a>: IRA contributions</li>
+            <li>• <a href="https://www.irs.gov/publications/p969" className="text-indigo-600 hover:underline">IRS Publication 969</a>: Health Savings Accounts</li>
+            <li>• <a href="https://www.irs.gov/publications/p970" className="text-indigo-600 hover:underline">IRS Publication 970</a>: student loan interest deduction</li>
+            <li>• <a href="https://www.investor.gov/" className="text-indigo-600 hover:underline">Investor.gov (SEC)</a>: compound interest and investing basics</li>
+            <li>• <a href="https://www.consumerfinance.gov/" className="text-indigo-600 hover:underline">Consumer Financial Protection Bureau</a>: debt and credit card resources</li>
+            <li>• <a href="https://studentaid.gov/" className="text-indigo-600 hover:underline">Federal Student Aid</a>: federal student loan repayment and forgiveness</li>
+          </ul>
         </section>
 
         <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">

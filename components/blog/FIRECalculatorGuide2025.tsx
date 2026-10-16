@@ -21,15 +21,15 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header className="space-y-6">
         <div className="flex items-center gap-3 text-sm text-slate-500">
-          <span>📅 Updated January 2026</span>
+          <span>📅 Updated October 2026</span>
           <span>•</span>
-          <span>⏱️ 16 min read</span>
+          <span>⏱️ 8 min read</span>
           <span>•</span>
           <span>🔥 Early Retirement</span>
         </div>
 
         <h1 className="text-5xl font-black text-slate-900 leading-tight">
-          FIRE Calculator: Calculate Your Early Retirement Number - Complete 2025 Guide
+          FIRE Calculator: Calculate Your Early Retirement Number - Complete 2026 Guide
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
@@ -67,8 +67,11 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <li><button onClick={() => scrollToSection('fire-types')} className="text-indigo-600 hover:underline">4. Types of FIRE: Lean, Regular, Fat</button></li>
           <li><button onClick={() => scrollToSection('savings-rate')} className="text-indigo-600 hover:underline">5. Savings Rate & Time to FIRE</button></li>
           <li><button onClick={() => scrollToSection('strategies')} className="text-indigo-600 hover:underline">6. Strategies to Achieve FIRE</button></li>
-          <li><button onClick={() => scrollToSection('examples')} className="text-indigo-600 hover:underline">7. Real-World FIRE Examples</button></li>
-          <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">8. Frequently Asked Questions</button></li>
+          <li><button onClick={() => scrollToSection('examples')} className="text-indigo-600 hover:underline">7. Hypothetical FIRE Examples</button></li>
+          <li><button onClick={() => scrollToSection('health-insurance')} className="text-indigo-600 hover:underline">8. Health Insurance Before Medicare (2026)</button></li>
+          <li><button onClick={() => scrollToSection('mistakes')} className="text-indigo-600 hover:underline">9. Common FIRE Calculator Mistakes</button></li>
+          <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">10. Frequently Asked Questions</button></li>
+          <li><button onClick={() => scrollToSection('sources')} className="text-indigo-600 hover:underline">11. Sources</button></li>
         </ol>
       </nav>
 
@@ -93,8 +96,9 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <h3 className="text-2xl font-black text-slate-900 mt-8">The FIRE Philosophy</h3>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            FIRE practitioners typically save <strong>50-70% of their income</strong> and invest aggressively in low-cost
-            index funds. The movement emphasizes:
+            People pursuing FIRE often aim to save <strong>50% or more of their income</strong> and invest it in low-cost,
+            diversified index funds. That is a target, not a requirement — any savings-rate increase shortens the timeline.
+            The movement emphasizes:
           </p>
 
           <ul className="list-disc list-inside space-y-2 text-slate-700 mt-4">
@@ -111,8 +115,11 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <p className="text-lg text-slate-700 leading-relaxed">
             The <strong>4% rule</strong> is the foundation of FIRE calculations. It states that you can safely withdraw
-            4% of your portfolio in the first year of retirement, then adjust for inflation each subsequent year, and
-            your money should last 30+ years.
+            4% of your portfolio in the first year of retirement, then increase that dollar amount by inflation each
+            subsequent year, and your money has historically lasted at least 30 years in most periods. The idea comes from
+            William Bengen&apos;s 1994 research, and the 1998 &quot;Trinity study&quot; by Cooley, Hubbard and Walz found that a 4%
+            inflation-adjusted withdrawal from a 50/50 stock/bond portfolio survived about 95% of the historical 30-year
+            periods it tested.
           </p>
 
           <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl">
@@ -120,19 +127,22 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               📊 <strong>Example:</strong> If you have $1,000,000 invested:
               <ul className="mt-2 space-y-1 text-base">
                 <li>• 4% withdrawal = $40,000/year ($3,333/month)</li>
-                <li>• This assumes 7% average returns and 3% inflation</li>
-                <li>• Your portfolio should grow faster than you withdraw</li>
+                <li>• Year 2 at 3% inflation: $41,200; year 3: $42,436 — the dollar amount follows prices, not the market</li>
+                <li>• Based on historical U.S. returns, not a guarantee about future returns</li>
                 <li>• <strong>FIRE Number = Annual Expenses × 25</strong></li>
               </ul>
             </p>
           </div>
 
-          <h3 className="text-2xl font-black text-slate-900 mt-8">Is the 4% Rule Still Valid in 2025?</h3>
+          <h3 className="text-2xl font-black text-slate-900 mt-8">Is the 4% Rule Still Valid in 2026?</h3>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            The 4% rule was based on historical data from 1926-1995. Some experts suggest a <strong>3.5% or 3% rule</strong>
-            for early retirees (retiring before age 50) due to longer retirement periods. However, the 4% rule remains
-            a solid starting point for most FIRE calculations.
+            The Trinity study used U.S. market data from 1926–1995 and tested retirements of up to 30 years. Early retirees
+            may need their money to last 40–50 years, so many planners suggest a <strong>3.5% or 3% withdrawal rate</strong>
+            for people retiring before about age 50. The 4% rule remains a reasonable starting point, but treat it as an
+            estimate to stress test, not a promise. Our deeper look at{' '}
+            <a href="/blog/4-percent-rule-dead-safe-withdrawal-rates/" className="text-indigo-600 font-semibold hover:underline">whether the 4% rule still works</a>{' '}
+            walks through the trade-offs. The labels in the table below are general rules of thumb, not study results.
           </p>
 
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden mt-4">
@@ -237,6 +247,13 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
         <section id="fire-types" className="space-y-6">
           <h2 className="text-3xl font-black text-slate-900">Types of FIRE: Lean, Regular, Fat</h2>
+
+          <p className="text-lg text-slate-700 leading-relaxed">
+            These spending bands are informal conventions used in the FIRE community, not official definitions — people draw
+            the lines differently depending on household size and where they live. Use them as rough labels; for a fuller
+            comparison see{' '}
+            <a href="/blog/leanfire-vs-fatfire-lifestyle-budget/" className="text-indigo-600 font-semibold hover:underline">LeanFIRE vs. FatFIRE budgets</a>.
+          </p>
 
           <div className="grid md:grid-cols-3 gap-6 mt-6">
             <div className="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-6">
@@ -363,9 +380,9 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-white border-2 border-indigo-200 rounded-xl p-6">
               <h3 className="font-bold text-slate-900 text-xl mb-3">3. Optimize Taxes</h3>
               <ul className="space-y-2 text-slate-700">
-                <li>• <strong>Maximize 401(k) contributions:</strong> $23,000 in 2025 (plus employer match)</li>
-                <li>• <strong>Contribute to IRAs:</strong> $7,000 in 2025 (Traditional or Roth)</li>
-                <li>• <strong>Use HSA:</strong> Triple tax advantage for healthcare</li>
+                <li>• <strong>Maximize 401(k) contributions:</strong> $24,500 employee limit in 2026 (plus $8,000 catch-up at 50+, and employer match)</li>
+                <li>• <strong>Contribute to IRAs:</strong> $7,500 in 2026 (Traditional or Roth; $1,100 catch-up at 50+)</li>
+                <li>• <strong>Use HSA:</strong> $4,400 self-only / $8,750 family in 2026, with a triple tax advantage for healthcare</li>
                 <li>• <strong>Tax-loss harvesting:</strong> Offset gains with losses</li>
               </ul>
             </div>
@@ -383,7 +400,12 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </section>
 
         <section id="examples" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Real-World FIRE Examples</h2>
+          <h2 className="text-3xl font-black text-slate-900">Hypothetical FIRE Examples</h2>
+
+          <p className="text-lg text-slate-700 leading-relaxed">
+            These are illustrative households, not real people. Each assumes a <strong>5% real (after-inflation) return</strong>,
+            savings invested at the end of each year, and after-tax income — so the FIRE number stays in today&apos;s dollars.
+          </p>
 
           <div className="space-y-6 mt-6">
             <div className="bg-indigo-50 border-2 border-indigo-200 rounded-xl p-6">
@@ -392,8 +414,8 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <p><strong>Annual Expenses:</strong> $30,000</p>
                 <p><strong>FIRE Number:</strong> $750,000 (30k × 25)</p>
                 <p><strong>Current Savings:</strong> $150,000</p>
-                <p><strong>Monthly Savings:</strong> $3,000 (60% savings rate on $5,000/month income)</p>
-                <p><strong>Time to FIRE:</strong> ~15 years (assuming 7% returns)</p>
+                <p><strong>Monthly Savings:</strong> $3,000 (60% savings rate on $5,000/month after-tax income)</p>
+                <p><strong>Time to FIRE:</strong> ~11 years (assuming 5% real returns)</p>
                 <p className="font-bold text-lg mt-2">Strategy: High savings rate, low expenses, aggressive investing</p>
               </div>
             </div>
@@ -404,8 +426,8 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <p><strong>Annual Expenses:</strong> $60,000</p>
                 <p><strong>FIRE Number:</strong> $1,500,000 (60k × 25)</p>
                 <p><strong>Current Savings:</strong> $300,000</p>
-                <p><strong>Monthly Savings:</strong> $5,000 (50% savings rate on $10,000/month income)</p>
-                <p><strong>Time to FIRE:</strong> ~17 years (assuming 7% returns)</p>
+                <p><strong>Monthly Savings:</strong> $5,000 (50% savings rate on $10,000/month after-tax income)</p>
+                <p><strong>Time to FIRE:</strong> ~12 years (assuming 5% real returns)</p>
                 <p className="font-bold text-lg mt-2">Strategy: Balanced approach, comfortable lifestyle, steady investing</p>
               </div>
             </div>
@@ -416,12 +438,51 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <p><strong>Annual Expenses:</strong> $150,000</p>
                 <p><strong>FIRE Number:</strong> $3,750,000 (150k × 25)</p>
                 <p><strong>Current Savings:</strong> $750,000</p>
-                <p><strong>Monthly Savings:</strong> $12,500 (50% savings rate on $25,000/month income)</p>
-                <p><strong>Time to FIRE:</strong> ~17 years (assuming 7% returns)</p>
+                <p><strong>Monthly Savings:</strong> $12,500 (50% savings rate on $25,000/month after-tax income)</p>
+                <p><strong>Time to FIRE:</strong> ~12 years (assuming 5% real returns)</p>
                 <p className="font-bold text-lg mt-2">Strategy: High income, aggressive savings, luxury lifestyle maintained</p>
               </div>
             </div>
           </div>
+        </section>
+
+        <section id="health-insurance" className="space-y-6">
+          <h2 className="text-3xl font-black text-slate-900">Health Insurance Before Medicare (2026)</h2>
+
+          <p className="text-lg text-slate-700 leading-relaxed">
+            If you retire before 65, health insurance is often the biggest line item a FIRE calculator leaves out. Many early
+            retirees buy coverage on the ACA marketplace, where premium tax credits depend on household income. The enhanced
+            subsidies that removed the upper income limit expired after 2025, so for 2026 coverage the <strong>400% of the
+            federal poverty level cutoff is back</strong> unless Congress changes the law. For 2026 coverage that is about
+            <strong> $62,600 for a single person</strong> and <strong>$128,600 for a family of four</strong> (based on 2025
+            poverty guidelines). Earn even $1 over the line and you can lose the credit entirely.
+          </p>
+
+          <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl">
+            <p className="text-indigo-900 font-semibold">
+              💡 <strong>Why it matters for FIRE:</strong> In early retirement your &quot;income&quot; is largely what you choose to
+              realize — Roth conversions, capital gains and IRA withdrawals all count. Planning withdrawals to stay below the
+              cliff can be worth thousands per year. Check current rules at HealthCare.gov and estimate your credit with our{' '}
+              <a href="/aca-health-insurance-subsidy-calculator/" className="text-indigo-600 font-semibold hover:underline">ACA subsidy calculator</a>.
+            </p>
+          </div>
+        </section>
+
+        <section id="mistakes" className="space-y-6">
+          <h2 className="text-3xl font-black text-slate-900">Common FIRE Calculator Mistakes</h2>
+
+          <ul className="list-disc list-inside space-y-2 text-slate-700 mt-4">
+            <li><strong>Using today&apos;s budget instead of retirement spending:</strong> Commuting may drop, but healthcare, travel and home repairs often rise.</li>
+            <li><strong>Mixing nominal and real returns:</strong> If your FIRE number is in today&apos;s dollars, use an inflation-adjusted return (for example 5%), not a nominal 10%.</li>
+            <li><strong>Ignoring taxes on withdrawals:</strong> Traditional 401(k) and IRA withdrawals are taxed as ordinary income, so $40,000 of spending may need a larger gross withdrawal.</li>
+            <li><strong>Forgetting the early-withdrawal gap:</strong> Most retirement accounts charge a 10% penalty before 59½ unless an exception applies, so you may need taxable savings or a Roth conversion plan to bridge the years.</li>
+            <li><strong>Treating the result as exact:</strong> A few years of poor returns right after you retire can change the outcome. Re-run the numbers yearly.</li>
+          </ul>
+
+          <p className="text-lg text-slate-700 leading-relaxed">
+            To see how account types fit together, try the{' '}
+            <a href="/retirement-account-optimizer/" className="text-indigo-600 font-semibold hover:underline">retirement account optimizer</a>.
+          </p>
         </section>
 
         <section id="faq" className="space-y-6">
@@ -456,11 +517,28 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h3 className="font-bold text-slate-900 text-lg mb-2">Can I achieve FIRE with a normal salary?</h3>
               <p className="text-slate-700">
-                Yes! Many people achieve FIRE on median incomes by maximizing savings rates (50%+), living frugally,
-                and investing consistently. It's more about savings rate than absolute income.
+                It is possible, but slower. On a typical salary, the savings rate matters more than the income itself:
+                the table above shows that time to FIRE depends on the share of income you save. Lower housing and
+                transportation costs usually make the biggest difference. Some people on modest incomes aim for a partial
+                goal such as{' '}
+                <a href="/blog/coast-fire-how-to-retire-early/" className="text-indigo-600 font-semibold hover:underline">Coast FIRE</a> instead.
               </p>
             </div>
           </div>
+        </section>
+
+        <section id="sources" className="space-y-4">
+          <h2 className="text-3xl font-black text-slate-900">Sources</h2>
+          <ul className="list-disc list-inside space-y-2 text-slate-700">
+            <li>Bengen, W. P. (1994), &quot;Determining Withdrawal Rates Using Historical Data,&quot; <em>Journal of Financial Planning</em>.</li>
+            <li>Cooley, P. L., Hubbard, C. M., &amp; Walz, D. T. (1998), &quot;Retirement Savings: Choosing a Withdrawal Rate That Is Sustainable,&quot; <em>AAII Journal</em>.</li>
+            <li>IRS Notice 2025-67 (2026 401(k) and IRA limits) and Rev. Proc. 2025-19 (2026 HSA limits) — <a href="https://www.irs.gov/publications/p590a" className="text-indigo-600 hover:underline">IRS Publication 590-A</a>, <a href="https://www.irs.gov/publications/p969" className="text-indigo-600 hover:underline">IRS Publication 969</a></li>
+            <li><a href="https://www.irs.gov/publications/p590b" className="text-indigo-600 hover:underline">IRS Publication 590-B</a> (IRA distributions and early-withdrawal rules)</li>
+            <li><a href="https://www.healthcare.gov/" className="text-indigo-600 hover:underline">HealthCare.gov</a> (marketplace coverage and premium tax credits)</li>
+          </ul>
+          <p className="text-sm text-slate-500 italic">
+            This guide is educational and not individualized financial, tax, or investment advice.
+          </p>
         </section>
 
         <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">
@@ -487,7 +565,7 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             title="Get Your Free FIRE Planning Workbook"
             description="Download our comprehensive FIRE planning workbook with savings rate calculator, investment strategies, and early retirement checklist."
             leadMagnet={{
-              title: "FIRE Planning Workbook 2025",
+              title: "FIRE Planning Workbook 2026",
               description: "Complete guide to calculating your FIRE number, optimizing savings rate, and achieving early retirement.",
               type: "fire"
             }}
