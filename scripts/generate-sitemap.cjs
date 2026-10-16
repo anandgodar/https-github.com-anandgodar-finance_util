@@ -82,6 +82,20 @@ function buildBlogFileMap() {
 }
 const BLOG_FILE_MAP = buildBlogFileMap();
 
+// Prefer the curated dates in lib/content-dates.json (same source as the
+// Article schema's dateModified) so the sitemap and the page agree, and a
+// non-content commit (e.g. a markup cleanup) doesn't bump every lastmod.
+const CONTENT_DATES = (function() {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(REPO_ROOT, 'lib/content-dates.json'), 'utf8'));
+  } catch (e) {
+    return {};
+  }
+})();
+function contentLastmod(key, file) {
+  return CONTENT_DATES[key] ? CONTENT_DATES[key].modified : getFileLastmod(file);
+}
+
 // Academy guides are one file each too, under components/academy/.
 const ACADEMY_FILE_MAP = {
   'california-texas-take-home-comparison': 'components/academy/StateTaxComparison.tsx',
@@ -302,12 +316,12 @@ function generateBlogSitemap() {
 
   // Blog posts — real per-post lastmod from the post's own file history
   BLOG_POSTS.forEach(function(post) {
-    urls.push(generateUrlEntry('/blog/' + post + '/', '0.8', 'monthly', getFileLastmod(BLOG_FILE_MAP[post])));
+    urls.push(generateUrlEntry('/blog/' + post + '/', '0.8', 'monthly', contentLastmod(post, BLOG_FILE_MAP[post])));
   });
 
   // Academy articles — same per-file treatment
   ACADEMY_ARTICLES.forEach(function(article) {
-    urls.push(generateUrlEntry('/academy/' + article + '/', '0.8', 'monthly', getFileLastmod(ACADEMY_FILE_MAP[article])));
+    urls.push(generateUrlEntry('/academy/' + article + '/', '0.8', 'monthly', contentLastmod('academy/' + article, ACADEMY_FILE_MAP[article])));
   });
 
   return wrapSitemap(urls);
