@@ -26,10 +26,10 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg p-8 shadow-xl">
         <h1 className="text-4xl font-bold mb-4">
-          1099 vs W-2: Complete Tax & Benefits Comparison for 2025
+          1099 vs W-2: Complete Tax & Benefits Comparison for 2026
         </h1>
         <p className="text-xl mb-6 text-purple-50">
-          Understand the critical differences between independent contractor (1099) and employee (W-2) status. Compare taxes, benefits, take-home pay, and legal implications to make informed career decisions.
+          Understand the critical differences between independent contractor (1099) and employee (W-2) status. Compare taxes, benefits, take-home pay, and legal implications to make informed career decisions. Updated October 2026 with 2026 tax figures.
         </p>
         <div className="flex flex-wrap gap-4">
           <button
@@ -55,11 +55,11 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </div>
         <div className="bg-pink-50 border-l-4 border-pink-500 p-6 rounded-lg">
           <div className="text-3xl font-bold text-pink-600 mb-2">30-40%</div>
-          <div className="text-gray-700 font-medium">Higher 1099 Rate Needed for Salary Equivalence</div>
+          <div className="text-gray-700 font-medium">Common Rule of Thumb: Higher 1099 Rate Needed for Salary Equivalence</div>
         </div>
         <div className="bg-fuchsia-50 border-l-4 border-fuchsia-500 p-6 rounded-lg">
           <div className="text-3xl font-bold text-fuchsia-600 mb-2">$12-24k</div>
-          <div className="text-gray-700 font-medium">Average Annual Value of W-2 Benefits Package</div>
+          <div className="text-gray-700 font-medium">Illustrative Annual Value of a W-2 Benefits Package (varies widely)</div>
         </div>
       </div>
 
@@ -92,10 +92,13 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
             8. W-2 to 1099 Conversion
           </button>
           <button onClick={() => scrollToSection('scenarios')} className="text-left text-purple-600 hover:text-purple-800 hover:underline font-medium">
-            9. Real-World Scenarios
+            9. Worked Scenarios
           </button>
           <button onClick={() => scrollToSection('faq')} className="text-left text-purple-600 hover:text-purple-800 hover:underline font-medium">
             10. Frequently Asked Questions
+          </button>
+          <button onClick={() => scrollToSection('sources')} className="text-left text-purple-600 hover:text-purple-800 hover:underline font-medium">
+            11. Sources
           </button>
         </div>
       </nav>
@@ -187,7 +190,8 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <ul className="text-gray-700 space-y-2 text-sm">
                 <li>• <strong>Your share:</strong> 15.3% full amount (12.4% SS + 2.9% Medicare)</li>
                 <li>• <strong>Employer's share:</strong> You pay both halves</li>
-                <li>• <strong>Total:</strong> 15.3% on net profit after expenses</li>
+                <li>• <strong>Total:</strong> 15.3% on 92.35% of net profit after expenses</li>
+                <li>• <strong>2026 cap:</strong> the 12.4% Social Security part stops at $184,500; the 2.9% Medicare part has no cap</li>
                 <li>• <strong>Paid quarterly</strong> via estimated tax payments</li>
               </ul>
             </div>
@@ -233,6 +237,9 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   <span className="font-bold text-red-900">Extra tax burden as 1099:</span>
                   <span className="font-bold text-red-700">$5,184 more annually</span>
                 </div>
+                <p className="text-xs text-red-800 mt-2">
+                  $11,304 SE tax − $6,120 employee FICA. Deducting half of SE tax ($5,652) lowers federal income tax a little, which partly offsets this.
+                </p>
               </div>
             </div>
           </div>
@@ -240,7 +247,23 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-6 rounded-r-lg">
             <h3 className="text-xl font-bold text-blue-900 mb-2">The Silver Lining for 1099s</h3>
             <p className="text-gray-700">
-              While 1099 contractors pay more in SE tax, they can deduct <strong>business expenses</strong> (home office, equipment, mileage, etc.) on Schedule C, reducing their taxable income. W-2 employees cannot deduct unreimbursed work expenses after 2017 tax reform.
+              While 1099 contractors pay more in SE tax, they can deduct <strong>business expenses</strong> (home office, equipment, mileage, etc.) on Schedule C, reducing their taxable income. W-2 employees cannot deduct unreimbursed work expenses after 2017 tax reform, and the One Big Beautiful Bill Act made that rule permanent.
+            </p>
+          </div>
+
+          <div className="bg-purple-50 border-l-4 border-purple-500 p-6 my-6 rounded-r-lg">
+            <h3 className="text-xl font-bold text-purple-900 mb-2">2026 Numbers 1099 Workers Should Know</h3>
+            <ul className="text-gray-700 space-y-2">
+              <li>• Social Security wage base: <strong>$184,500</strong> (applies to W-2 wages and SE earnings combined)</li>
+              <li>• Qualified business income (QBI) deduction: up to <strong>20%</strong> of qualified business income, now permanent</li>
+              <li>• Business mileage rate: <strong>72.5 cents per mile</strong></li>
+              <li>• Estimated tax due dates for 2026: <strong>April 15, June 15, September 15, 2026 and January 15, 2027</strong></li>
+            </ul>
+            <p className="text-gray-700 mt-3">
+              For a full walkthrough, see the{' '}
+              <a href="/blog/self-employment-tax-guide-2025/" className="text-indigo-600 font-semibold hover:underline">self-employment tax guide</a>{' '}
+              and plan payments with the{' '}
+              <a href="/quarterly-estimated-tax-calculator/" className="text-indigo-600 font-semibold hover:underline">quarterly estimated tax calculator</a>.
             </p>
           </div>
         </div>
@@ -266,7 +289,7 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-700 mb-6">
-            The value of W-2 benefits often exceeds <strong>$12,000-$24,000 per year</strong>. This is the "hidden compensation" that 1099 contractors must account for.
+            Depending on the employer, W-2 benefits can be worth <strong>$12,000-$24,000 or more per year</strong> (illustrative range; your offer may differ). This is the "hidden compensation" that 1099 contractors must account for.
           </p>
 
           <div className="bg-white border-2 border-gray-200 rounded-xl overflow-hidden mb-6">
@@ -332,20 +355,18 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <span className="font-semibold">$3,200</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-700">PTO (20 days × $308/day):</span>
-                <span className="font-semibold">$6,160</span>
-              </div>
-              <div className="flex justify-between">
                 <span className="text-gray-700">Employer payroll tax (7.65%):</span>
                 <span className="font-semibold">$6,120</span>
               </div>
               <div className="flex justify-between border-t-2 border-green-300 pt-2 mt-2">
-                <span className="font-bold text-green-900">Total benefits value:</span>
-                <span className="font-bold text-green-700">$23,880</span>
+                <span className="font-bold text-green-900">Total benefits value (on top of salary):</span>
+                <span className="font-bold text-green-700">$17,720</span>
               </div>
             </div>
             <p className="text-sm text-gray-600 mt-4">
-              This means a $80,000 W-2 job has a <strong>total compensation of ~$103,880</strong> when benefits are included.
+              This means a hypothetical $80,000 W-2 job has a <strong>total compensation of ~$97,720</strong> when benefits are included.
+              Paid time off (20 days ≈ $6,160) is already part of the $80,000 salary, so it isn&apos;t added again; a contractor accounts
+              for it by billing fewer hours.
             </p>
           </div>
         </div>
@@ -371,11 +392,11 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs">2</span>
-                  <span className="text-gray-700">Add value of benefits (health, 401k, PTO, employer tax)</span>
+                  <span className="text-gray-700">Add value of benefits (health, 401k match, employer payroll tax)</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs">3</span>
-                  <span className="text-gray-700">Divide by billable hours (typically 1,800-2,000/year)</span>
+                  <span className="text-gray-700">Divide by realistic billable hours (often 1,800-2,000/year, which builds in unpaid time off)</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs">4</span>
@@ -404,16 +425,12 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                     <span>$3,200</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-700">PTO (20 days):</span>
-                    <span>$6,160</span>
-                  </div>
-                  <div className="flex justify-between">
                     <span className="text-gray-700">Employer payroll tax:</span>
                     <span>$6,120</span>
                   </div>
                   <div className="flex justify-between border-t-2 border-gray-300 pt-2 mt-2 font-semibold">
                     <span>Total compensation:</span>
-                    <span>$103,880</span>
+                    <span>$97,720</span>
                   </div>
                 </div>
               </div>
@@ -423,7 +440,7 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-700">Target compensation:</span>
-                    <span>$103,880</span>
+                    <span>$97,720</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-700">Billable hours (1,920/year):</span>
@@ -431,21 +448,21 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-700">Base hourly rate:</span>
-                    <span>$54.10/hr</span>
+                    <span>$50.90/hr</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-700">Add profit margin (15%):</span>
-                    <span>$8.12/hr</span>
+                    <span>$7.63/hr</span>
                   </div>
                   <div className="flex justify-between border-t-2 border-purple-300 pt-2 mt-2 font-bold text-purple-900">
                     <span>1099 Rate Needed:</span>
-                    <span className="text-purple-700">$62/hr or $124,800/yr</span>
+                    <span className="text-purple-700">~$58.53/hr or ~$112,380/yr</span>
                   </div>
                 </div>
               </div>
 
               <div className="bg-pink-600 text-white p-4 rounded font-bold text-center">
-                You need to charge 56% MORE as a 1099 to match this W-2 job!
+                In this example you&apos;d need to bill about 40% more as a 1099 to match this W-2 job.
               </div>
             </div>
           </div>
@@ -454,7 +471,7 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
       {/* Section 5: Legal Classification */}
       <section id="legal-classification" className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-900">5. Legal Classification Rules (IRS 20-Factor Test)</h2>
+        <h2 className="text-3xl font-bold mb-6 text-gray-900">5. Legal Classification Rules (IRS Common-Law Test)</h2>
 
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-700 mb-6">
@@ -468,7 +485,7 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
             </p>
             <ul className="text-gray-700 space-y-2">
               <li>• Back payroll taxes (employer's 7.65% share)</li>
-              <li>• IRS penalties ($50 per W-2 not filed)</li>
+              <li>• IRS penalties for unfiled or incorrect W-2s (amounts are inflation-adjusted each year)</li>
               <li>• State unemployment insurance penalties</li>
               <li>• Potential employee benefits owed retroactively</li>
             </ul>
@@ -606,7 +623,7 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   <li>✅ Full autonomy over schedule/methods</li>
                   <li>✅ Can work for multiple clients</li>
                   <li>✅ Business expense deductions (home office, etc.)</li>
-                  <li>✅ Higher hourly rates (30-40% more)</li>
+                  <li>✅ Typically higher hourly rates</li>
                   <li>✅ Control over work location</li>
                   <li>✅ Unlimited income potential</li>
                   <li>✅ Build own business</li>
@@ -737,7 +754,7 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
       {/* Section 9: Real-World Scenarios */}
       <section id="scenarios" className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-900">9. Real-World Scenarios</h2>
+        <h2 className="text-3xl font-bold mb-6 text-gray-900">9. Worked Scenarios (Hypothetical)</h2>
 
         <div className="prose prose-lg max-w-none">
           <div className="space-y-6">
@@ -774,18 +791,30 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                       <span>-$12,000</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>SEP-IRA contribution (15%):</span>
-                      <span>-$22,500</span>
+                      <span>Extra half of SE tax (7.65% × 92.35% × $142,000 profit):</span>
+                      <span>-$10,032</span>
                     </div>
                     <div className="flex justify-between font-semibold border-t pt-1">
-                      <span>Net after expenses:</span>
-                      <span>$107,500</span>
+                      <span>W-2-equivalent value:</span>
+                      <span>$119,968</span>
+                    </div>
+                  </div>
+
+                  <p className="font-semibold text-gray-900 mt-3">W-2 Value to You (Comparable Basis):</p>
+                  <div className="ml-4 space-y-1 text-gray-700">
+                    <div className="flex justify-between">
+                      <span>Salary + health + 401(k) match (PTO already in salary):</span>
+                      <span className="font-bold">$138,000</span>
                     </div>
                   </div>
 
                   <div className="bg-purple-100 p-3 rounded mt-4 border-2 border-purple-400">
-                    <p className="font-bold text-purple-900">Winner: W-2 offer by $46,580 in total compensation!</p>
-                    <p className="text-sm text-purple-800 mt-2">The 1099 rate would need to be ~$185,000 to match the W-2 package.</p>
+                    <p className="font-bold text-purple-900">Winner: W-2 offer by about $18,000 on a comparable basis</p>
+                    <p className="text-sm text-purple-800 mt-2">
+                      The 1099 rate would need to be roughly $169,000 to match, assuming the $150,000 is billed with no unpaid
+                      time off. Retirement contributions such as a SEP-IRA aren&apos;t subtracted because that money is still yours.
+                      This ignores income tax differences (the contractor deducts half of SE tax and may qualify for the 20% QBI deduction).
+                    </p>
                   </div>
                 </div>
               </div>
@@ -838,8 +867,13 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   </div>
 
                   <div className="bg-green-100 p-3 rounded mt-4 border-2 border-green-400">
-                    <p className="font-bold text-green-900">Winner: 1099 offers more total income ($96k vs $92k) + flexibility!</p>
-                    <p className="text-sm text-green-800 mt-2">Plus ability to work remotely and set own schedule adds lifestyle value.</p>
+                    <p className="font-bold text-green-900">On paper, 1099 looks higher ($96k vs $92k) — but adjust for taxes and benefits</p>
+                    <p className="text-sm text-green-800 mt-2">
+                      The contractor pays an extra ~$6,782 of SE tax (7.65% × 92.35% × $96,000) and must buy comparable health
+                      coverage (~$9,600), leaving a W-2-equivalent value of about $79,618 vs $92,000 — and that assumes a second
+                      client is actually found. The 1099 path wins only if the remote, flexible schedule is worth more than about
+                      $12,400 a year to you, or if you can raise rates or bill more hours.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -871,14 +905,30 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                       <span>$95,000</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>ACA family plan (self-purchased):</span>
+                      <span>ACA family plan (self-purchased, before any subsidy):</span>
                       <span className="text-red-600">-$20,000</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Extra half of SE tax (7.65% × 92.35% × $95,000):</span>
+                      <span className="text-red-600">-$6,712</span>
+                    </div>
+                    <div className="flex justify-between font-semibold border-t pt-1">
+                      <span>W-2-equivalent value:</span>
+                      <span>~$68,288 vs $84,000 for the W-2 ($70,000 + $14,000)</span>
                     </div>
                   </div>
 
                   <div className="bg-purple-100 p-3 rounded mt-4 border-2 border-purple-400">
                     <p className="font-bold text-purple-900">Winner: W-2 for this situation</p>
-                    <p className="text-sm text-purple-800 mt-2">Family health insurance is expensive ($20k+/year). Employer-sponsored coverage saves $14k, making W-2 far more valuable for families.</p>
+                    <p className="text-sm text-purple-800 mt-2">
+                      Family health insurance can be expensive. In this example employer-sponsored coverage saves $14k, making W-2
+                      more valuable. One caveat for 2026: with the enhanced ACA subsidies expired, premium tax credits are limited to
+                      households up to 400% of the poverty level — $106,600 for a family of three for 2026 coverage — so this family
+                      may still qualify for some help. Check{' '}
+                      <a href="https://www.healthcare.gov/" className="text-indigo-600 font-semibold hover:underline">HealthCare.gov</a>{' '}
+                      or our{' '}
+                      <a href="/aca-health-insurance-subsidy-calculator/" className="text-indigo-600 font-semibold hover:underline">ACA subsidy calculator</a>.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -964,12 +1014,13 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   <strong>Absolutely!</strong> As a 1099 contractor, you have access to <strong>self-employed retirement plans</strong> with higher contribution limits than traditional IRAs:
                 </p>
                 <ul className="text-gray-700 space-y-2">
-                  <li>• <strong>SEP-IRA:</strong> Contribute up to $69,000 or 25% of net income (whichever is less) in 2025</li>
-                  <li>• <strong>Solo 401(k):</strong> Contribute up to $69,000 ($76,500 if age 50+) in 2025</li>
-                  <li>• <strong>Traditional IRA:</strong> $7,000 ($8,000 if age 50+) as a backup option</li>
+                  <li>• <strong>SEP-IRA:</strong> Contribute up to roughly 20% of net self-employment earnings (25% of compensation), capped at $72,000 in 2026</li>
+                  <li>• <strong>Solo 401(k):</strong> $24,500 employee deferral plus an employer contribution of roughly 20% of net SE earnings, up to $72,000 total in 2026 ($80,000 if 50+, or $83,250 at ages 60–63 with the larger catch-up)</li>
+                  <li>• <strong>Traditional or Roth IRA:</strong> $7,500 ($8,600 if age 50+) in 2026</li>
                 </ul>
                 <p className="text-gray-700 mt-3">
-                  These contributions are <strong>tax-deductible</strong> and can significantly lower your self-employment tax burden.
+                  Pre-tax contributions are <strong>deductible for income tax</strong>, but they do <strong>not</strong> reduce self-employment tax. Compare the two plans in our{' '}
+                  <a href="/blog/sep-ira-vs-solo-401k-2025/" className="text-indigo-600 font-semibold hover:underline">SEP-IRA vs Solo 401(k) guide</a>.
                 </p>
               </div>
             )}
@@ -986,7 +1037,7 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
             {openFAQ === 2 && (
               <div className="p-6 bg-white border-t border-gray-200">
                 <p className="text-gray-700 mb-3">
-                  To match a <strong>$75,000 W-2 salary</strong>, you'd need approximately <strong>$100,000-$110,000</strong> in 1099 income, or <strong>$52-$57/hour</strong> assuming 1,920 billable hours per year.
+                  To match a <strong>$75,000 W-2 salary</strong>, you'd need approximately <strong>$100,000-$110,000</strong> in 1099 income, or <strong>$52-$57/hour</strong> assuming 1,920 billable hours per year (hypothetical benefit values below).
                 </p>
                 <p className="text-gray-700 mb-3">
                   <strong>Calculation breakdown:</strong>
@@ -995,10 +1046,9 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   <li>• Base salary: $75,000</li>
                   <li>• Health insurance (employer pays 70%): +$8,400</li>
                   <li>• 401(k) match (4%): +$3,000</li>
-                  <li>• PTO (15 days): +$4,300</li>
                   <li>• Employer payroll tax (7.65%): +$5,738</li>
-                  <li>• <strong>Total compensation: $96,438</strong></li>
-                  <li>• Add 15% profit margin: <strong>~$111,000 needed as 1099</strong></li>
+                  <li>• <strong>Total compensation: $92,138</strong> (PTO is already inside the salary)</li>
+                  <li>• Add 15% profit margin: <strong>~$106,000 needed as 1099</strong>, or about $55/hour over 1,920 billable hours</li>
                 </ul>
               </div>
             )}
@@ -1023,7 +1073,7 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <ul className="text-gray-700 space-y-2">
                   <li>1. <strong>Refuse if the work relationship hasn't changed</strong> (same schedule, location, control)</li>
                   <li>2. <strong>Consult an employment attorney</strong> immediately</li>
-                  <li>3. <strong>Report to the IRS</strong> using Form SS-8 if forced into misclassification</li>
+                  <li>3. <strong>Request an IRS determination</strong> with Form SS-8 if you believe you are misclassified</li>
                   <li>4. <strong>File for unemployment</strong> if terminated for refusing (you may qualify)</li>
                 </ul>
                 <p className="text-gray-700 mt-3">
@@ -1058,11 +1108,13 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   <strong>When to consider S-Corp election:</strong>
                 </p>
                 <ul className="text-gray-700 space-y-2">
-                  <li>• <strong>Income over $60k-$80k:</strong> S-Corp can save on self-employment tax</li>
+                  <li>• <strong>Higher, steady profit:</strong> an S-Corp can save on payroll taxes once profit is comfortably above a reasonable salary for your work (a commonly cited starting point is $60k-$80k of profit)</li>
                   <li>• <strong>Trade-off:</strong> Requires payroll processing, quarterly payroll taxes, more complex accounting</li>
                 </ul>
                 <p className="text-gray-700 mt-3">
-                  For most freelancers earning under $100k, <strong>sole proprietorship or single-member LLC is simplest</strong>.
+                  For many freelancers, a <strong>sole proprietorship or single-member LLC is simplest</strong>. See{' '}
+                  <a href="/blog/llc-vs-sole-proprietor-2025/" className="text-indigo-600 font-semibold hover:underline">LLC vs sole proprietor</a>{' '}
+                  for the trade-offs.
                 </p>
               </div>
             )}
@@ -1093,6 +1145,24 @@ const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
             )}
           </div>
         </div>
+      </section>
+
+      {/* Sources */}
+      <section id="sources" className="bg-white rounded-lg shadow-md p-8">
+        <h2 className="text-3xl font-bold mb-6 text-gray-900">Sources</h2>
+        <ul className="text-gray-700 space-y-2">
+          <li>• IRS Publication 15, Employer&apos;s Tax Guide (employee vs. contractor, payroll taxes): <a href="https://www.irs.gov/publications/p15" className="text-indigo-600 font-semibold hover:underline">irs.gov/publications/p15</a></li>
+          <li>• IRS Publication 334, Tax Guide for Small Business: <a href="https://www.irs.gov/publications/p334" className="text-indigo-600 font-semibold hover:underline">irs.gov/publications/p334</a></li>
+          <li>• IRS Publication 505, Tax Withholding and Estimated Tax: <a href="https://www.irs.gov/publications/p505" className="text-indigo-600 font-semibold hover:underline">irs.gov/publications/p505</a></li>
+          <li>• IRS Notice 2025-67 (2026 retirement plan limits): <a href="https://www.irs.gov/" className="text-indigo-600 font-semibold hover:underline">irs.gov</a></li>
+          <li>• Social Security Administration, 2026 contribution and benefit base: <a href="https://www.ssa.gov/oact/cola/cbb.html" className="text-indigo-600 font-semibold hover:underline">ssa.gov/oact/cola/cbb.html</a></li>
+          <li>• HealthCare.gov, marketplace coverage and savings: <a href="https://www.healthcare.gov/" className="text-indigo-600 font-semibold hover:underline">healthcare.gov</a></li>
+        </ul>
+        <p className="text-sm text-gray-600 mt-4 italic">
+          This comparison is educational and is not individualized tax, legal or career advice. All scenarios are hypothetical.
+          Model your own numbers in the{' '}
+          <a href="/freelance-profit-hub/" className="text-indigo-600 font-semibold hover:underline">Freelance Profit Hub</a>.
+        </p>
       </section>
 
       {/* Related Articles */}

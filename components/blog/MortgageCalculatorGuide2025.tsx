@@ -24,21 +24,21 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
       {/* Hero Section */}
       <header className="space-y-6">
         <div className="flex items-center gap-3 text-sm text-slate-500">
-          <span>📅 Updated January 2026</span>
+          <span>📅 Updated October 2026</span>
           <span>•</span>
-          <span>⏱️ 15 min read</span>
+          <span>⏱️ 8 min read</span>
           <span>•</span>
           <span>🏡 Home Buying</span>
         </div>
 
         <h1 className="text-5xl font-black text-slate-900 leading-tight">
-          Complete Guide to Mortgage Calculator 2025: PITI, PMI, Property Tax & More
+          Complete Guide to Mortgage Calculator 2026: PITI, PMI, Property Tax & More
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
           Buying a home is one of the biggest financial decisions you'll make. Our comprehensive mortgage calculator guide
           explains <strong>PITI (Principal, Interest, Taxes, Insurance)</strong>, PMI calculations, property tax rates by state,
-          and how to determine exactly how much house you can afford in 2025.
+          and how to determine how much house you can afford in 2026.
         </p>
 
         {/* Calculator CTA */}
@@ -68,13 +68,14 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         <ol className="space-y-2 text-sm">
           <li><button onClick={() => scrollToSection('what-is-piti')} className="text-indigo-600 hover:underline">1. What is PITI? Understanding Your Total Mortgage Payment</button></li>
           <li><button onClick={() => scrollToSection('principal-interest')} className="text-indigo-600 hover:underline">2. Principal & Interest: The Core of Your Payment</button></li>
-          <li><button onClick={() => scrollToSection('property-tax')} className="text-indigo-600 hover:underline">3. Property Taxes by State: Complete 2025 Guide</button></li>
+          <li><button onClick={() => scrollToSection('property-tax')} className="text-indigo-600 hover:underline">3. Property Taxes by State: What to Budget</button></li>
           <li><button onClick={() => scrollToSection('home-insurance')} className="text-indigo-600 hover:underline">4. Homeowners Insurance: What to Expect</button></li>
           <li><button onClick={() => scrollToSection('pmi')} className="text-indigo-600 hover:underline">5. PMI (Private Mortgage Insurance): When You Need It</button></li>
           <li><button onClick={() => scrollToSection('how-much-afford')} className="text-indigo-600 hover:underline">6. How Much House Can I Afford? The 28/36 Rule</button></li>
           <li><button onClick={() => scrollToSection('mortgage-types')} className="text-indigo-600 hover:underline">7. Types of Mortgages: Fixed vs ARM</button></li>
           <li><button onClick={() => scrollToSection('closing-costs')} className="text-indigo-600 hover:underline">8. Closing Costs: The Hidden Expenses</button></li>
           <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">9. Frequently Asked Questions</button></li>
+          <li><button onClick={() => scrollToSection('sources')} className="text-indigo-600 hover:underline">10. Sources</button></li>
         </ol>
       </nav>
 
@@ -113,12 +114,12 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">Taxes</td>
                   <td className="p-4 text-slate-700">Property taxes (collected monthly)</td>
-                  <td className="p-4 text-slate-700">15-25%</td>
+                  <td className="p-4 text-slate-700">Varies widely by location</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">Insurance</td>
                   <td className="p-4 text-slate-700">Homeowners insurance premium</td>
-                  <td className="p-4 text-slate-700">5-10%</td>
+                  <td className="p-4 text-slate-700">Varies by location and coverage</td>
                 </tr>
               </tbody>
             </table>
@@ -126,12 +127,12 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl">
             <p className="text-indigo-900 font-semibold text-lg">
-              💡 <strong>Example:</strong> If your monthly PITI is $2,500, that includes approximately:
+              💡 <strong>Example (hypothetical):</strong> A $500,000 home with 20% down ($400,000 loan) at an illustrative 6.5% for 30 years:
               <ul className="mt-2 space-y-1 text-base">
-                <li>• $1,200 Principal & Interest</li>
-                <li>• $500 Property Taxes</li>
-                <li>• $200 Homeowners Insurance</li>
-                <li>• $600 (remaining for principal/interest as loan matures)</li>
+                <li>• $2,528 Principal & Interest</li>
+                <li>• $417 Property Taxes (1% of value per year)</li>
+                <li>• $167 Homeowners Insurance ($2,000 per year)</li>
+                <li>• <strong>≈ $3,112 total PITI per month</strong></li>
               </ul>
             </p>
           </div>
@@ -157,75 +158,67 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <p className="text-emerald-900 font-semibold">
               📊 <strong>Amortization Example:</strong> On a $400,000 loan at 6.5% for 30 years:
               <ul className="mt-2 space-y-1 text-base">
-                <li>• <strong>Year 1:</strong> $2,528/month payment → $2,167 interest, $361 principal</li>
-                <li>• <strong>Year 15:</strong> $2,528/month payment → $1,200 interest, $1,328 principal</li>
-                <li>• <strong>Year 30:</strong> $2,528/month payment → $13 interest, $2,515 principal</li>
+                <li>• <strong>Month 1:</strong> $2,528/month payment → $2,167 interest, $361 principal</li>
+                <li>• <strong>Month 180 (end of year 15):</strong> $2,528/month payment → $1,577 interest, $951 principal</li>
+                <li>• <strong>Month 360 (final payment):</strong> $2,528/month payment → $14 interest, $2,515 principal</li>
+                <li>• <strong>Total interest over 30 years:</strong> about $510,178</li>
               </ul>
             </p>
           </div>
 
-          <h3 className="text-2xl font-black text-slate-900 mt-8">Interest Rates in 2025</h3>
+          <h3 className="text-2xl font-black text-slate-900 mt-8">How Interest Rates Change Your Payment</h3>
 
           <p className="text-lg text-slate-700 leading-relaxed">
             Mortgage interest rates fluctuate based on economic conditions, your credit score, loan type, and down payment.
-            As of early 2025, average rates are:
+            Rather than rely on a headline average, get same-day quotes from several lenders. To see why the rate matters, here
+            is the same $400,000 loan at illustrative rates (not current market quotes):
           </p>
 
           <div className="grid md:grid-cols-2 gap-4 mt-4">
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h4 className="font-bold text-slate-900 mb-2">30-Year Fixed</h4>
-              <p className="text-3xl font-black text-indigo-600">6.0% - 7.5%</p>
-              <p className="text-sm text-slate-600 mt-2">Most popular option</p>
+              <p className="text-3xl font-black text-indigo-600">$2,271 – $2,797</p>
+              <p className="text-sm text-slate-600 mt-2">P&amp;I at 5.5% to 7.5%; total interest about $417,600 to $606,900</p>
             </div>
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h4 className="font-bold text-slate-900 mb-2">15-Year Fixed</h4>
-              <p className="text-3xl font-black text-indigo-600">5.5% - 7.0%</p>
-              <p className="text-sm text-slate-600 mt-2">Lower rate, higher payment</p>
+              <p className="text-3xl font-black text-indigo-600">$3,322</p>
+              <p className="text-sm text-slate-600 mt-2">P&amp;I at 5.75%; total interest about $197,900</p>
             </div>
           </div>
+
+          <p className="text-lg text-slate-700 leading-relaxed">
+            See the full rate-by-rate table in{' '}
+            <a href="/blog/500k-house-monthly-cost-rate-sensitivity/" className="text-indigo-600 font-semibold hover:underline">what a $500,000 house costs per month at different rates</a>.
+          </p>
         </section>
 
         {/* Section 3 */}
         <section id="property-tax" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Property Taxes by State: Complete 2025 Guide</h2>
+          <h2 className="text-3xl font-black text-slate-900">Property Taxes by State: What to Budget</h2>
 
           <p className="text-lg text-slate-700 leading-relaxed">
             Property taxes vary significantly by state and can add hundreds or thousands of dollars to your monthly payment.
-            States with the <strong>highest property tax rates</strong> include New Jersey, Illinois, and New Hampshire.
-            States with the <strong>lowest rates</strong> include Hawaii, Alabama, and Louisiana.
+            Effective rates (annual tax paid ÷ home value) are commonly reported as highest in states such as New Jersey,
+            Illinois, Connecticut, New Hampshire and Vermont, and lowest in states such as Hawaii, Alabama, Louisiana, West Virginia
+            and Wyoming. Exact rates change every year and vary widely by county and city, so always use the local rate.
           </p>
 
           <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-            <h3 className="font-bold text-slate-900 text-lg mb-4">Top 5 States with Highest Property Tax Rates (2025)</h3>
+            <h3 className="font-bold text-slate-900 text-lg mb-4">What the tax rate does to a $400,000 home (hypothetical rates)</h3>
             <ol className="space-y-2">
-              <li className="flex justify-between"><span><strong>New Jersey:</strong></span> <span className="font-bold text-red-600">2.49%</span></li>
-              <li className="flex justify-between"><span><strong>Illinois:</strong></span> <span className="font-bold text-red-600">2.27%</span></li>
-              <li className="flex justify-between"><span><strong>New Hampshire:</strong></span> <span className="font-bold text-red-600">2.18%</span></li>
-              <li className="flex justify-between"><span><strong>Vermont:</strong></span> <span className="font-bold text-red-600">1.90%</span></li>
-              <li className="flex justify-between"><span><strong>Connecticut:</strong></span> <span className="font-bold text-red-600">1.96%</span></li>
-            </ol>
-          </div>
-
-          <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-            <h3 className="font-bold text-slate-900 text-lg mb-4">Top 5 States with Lowest Property Tax Rates (2025)</h3>
-            <ol className="space-y-2">
-              <li className="flex justify-between"><span><strong>Hawaii:</strong></span> <span className="font-bold text-emerald-600">0.28%</span></li>
-              <li className="flex justify-between"><span><strong>Alabama:</strong></span> <span className="font-bold text-emerald-600">0.41%</span></li>
-              <li className="flex justify-between"><span><strong>Louisiana:</strong></span> <span className="font-bold text-emerald-600">0.55%</span></li>
-              <li className="flex justify-between"><span><strong>Wyoming:</strong></span> <span className="font-bold text-emerald-600">0.61%</span></li>
-              <li className="flex justify-between"><span><strong>West Virginia:</strong></span> <span className="font-bold text-emerald-600">0.58%</span></li>
+              <li className="flex justify-between"><span><strong>High-tax area (~2.2%):</strong></span> <span className="font-bold text-red-600">$8,800/yr ($733/mo)</span></li>
+              <li className="flex justify-between"><span><strong>Middle (~1.0%):</strong></span> <span className="font-bold text-slate-900">$4,000/yr ($333/mo)</span></li>
+              <li className="flex justify-between"><span><strong>Low-tax area (~0.3%):</strong></span> <span className="font-bold text-emerald-600">$1,200/yr ($100/mo)</span></li>
             </ol>
           </div>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            <strong>Example:</strong> On a $400,000 home, annual property taxes would be:
+            That is a difference of more than $600 a month on the same house. Find the actual rate on the county assessor&apos;s
+            or treasurer&apos;s website, and remember that many counties reassess a home at or near its sale price after you buy.
+            QuantCurb also has state versions of the calculator, such as the{' '}
+            <a href="/mortgage-calculator/texas/" className="text-indigo-600 font-semibold hover:underline">Texas mortgage calculator</a>.
           </p>
-
-          <ul className="list-disc list-inside space-y-2 text-slate-700">
-            <li><strong>New Jersey:</strong> $9,960/year ($830/month)</li>
-            <li><strong>Hawaii:</strong> $1,120/year ($93/month)</li>
-            <li><strong>National Average:</strong> $3,785/year ($315/month)</li>
-          </ul>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl mt-4">
             <p className="text-indigo-900 font-semibold">
@@ -244,11 +237,12 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             and it's typically included in your monthly PITI payment through an escrow account.
           </p>
 
-          <h3 className="text-2xl font-black text-slate-900 mt-8">Average Homeowners Insurance Costs (2025)</h3>
+          <h3 className="text-2xl font-black text-slate-900 mt-8">What Drives Homeowners Insurance Costs</h3>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            The national average for homeowners insurance is approximately <strong>$1,428 per year</strong> ($119/month)
-            for a $250,000 dwelling coverage policy. However, costs vary significantly by:
+            Premiums vary so much by state and even by ZIP code that a national average is of little use — get real quotes
+            during your inspection period. Standard policies generally exclude flood damage, which needs separate coverage.
+            Costs vary significantly by:
           </p>
 
           <div className="space-y-4 mt-4">
@@ -291,7 +285,9 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <h3 className="text-2xl font-black text-slate-900 mt-8">PMI Costs</h3>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            PMI typically costs <strong>0.5% to 1.5% of your loan amount annually</strong>, divided into monthly payments.
+            PMI typically costs about <strong>0.3% to 1.5% of your loan amount annually</strong>, divided into monthly payments.
+            Your credit score and loan-to-value ratio drive where you fall in that range. The table uses illustrative rates on a
+            $400,000 home price.
           </p>
 
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden mt-4">
@@ -300,31 +296,31 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <tr>
                   <th className="text-left p-4 font-black text-slate-900">Loan Amount</th>
                   <th className="text-left p-4 font-black text-slate-900">Down Payment</th>
-                  <th className="text-left p-4 font-black text-slate-900">Annual PMI</th>
+                  <th className="text-left p-4 font-black text-slate-900">Annual PMI (illustrative rate)</th>
                   <th className="text-left p-4 font-black text-slate-900">Monthly PMI</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 text-slate-700">$400,000</td>
+                  <td className="p-4 text-slate-700">$380,000</td>
                   <td className="p-4 text-slate-700">5% ($20,000)</td>
-                  <td className="p-4 font-bold text-indigo-600">$4,000</td>
-                  <td className="p-4 font-bold text-indigo-600">$333</td>
+                  <td className="p-4 font-bold text-indigo-600">$3,800 (1.0%)</td>
+                  <td className="p-4 font-bold text-indigo-600">$317</td>
                 </tr>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 text-slate-700">$400,000</td>
+                  <td className="p-4 text-slate-700">$360,000</td>
                   <td className="p-4 text-slate-700">10% ($40,000)</td>
-                  <td className="p-4 font-bold text-indigo-600">$3,000</td>
-                  <td className="p-4 font-bold text-indigo-600">$250</td>
+                  <td className="p-4 font-bold text-indigo-600">$2,700 (0.75%)</td>
+                  <td className="p-4 font-bold text-indigo-600">$225</td>
                 </tr>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 text-slate-700">$400,000</td>
+                  <td className="p-4 text-slate-700">$340,000</td>
                   <td className="p-4 text-slate-700">15% ($60,000)</td>
-                  <td className="p-4 font-bold text-indigo-600">$2,000</td>
-                  <td className="p-4 font-bold text-indigo-600">$167</td>
+                  <td className="p-4 font-bold text-indigo-600">$1,700 (0.5%)</td>
+                  <td className="p-4 font-bold text-indigo-600">$142</td>
                 </tr>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 text-slate-700">$400,000</td>
+                  <td className="p-4 text-slate-700">$320,000 or less</td>
                   <td className="p-4 text-emerald-600 font-bold">20%+ ($80,000+)</td>
                   <td className="p-4 text-emerald-600 font-bold">$0</td>
                   <td className="p-4 text-emerald-600 font-bold">$0</td>
@@ -344,6 +340,13 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <li><strong>Your home's value increases</strong> (through an appraisal) bringing LTV below 80%</li>
             <li><strong>You make extra payments</strong> to reach 20% equity</li>
           </ol>
+
+          <p className="text-lg text-slate-700 leading-relaxed">
+            On most conventional loans you can request removal at 80% of the original value, and PMI must end automatically
+            when the balance is scheduled to reach 78%. FHA loans use a different system (MIP) that often lasts for the life of
+            the loan. The details are in our{' '}
+            <a href="/blog/pmi-math-how-to-remove-faster/" className="text-indigo-600 font-semibold hover:underline">guide to removing PMI faster</a>.
+          </p>
         </section>
 
         {/* Section 6 */}
@@ -379,12 +382,19 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <h3 className="text-2xl font-black text-slate-900 mt-8">Other Factors to Consider</h3>
 
           <ul className="list-disc list-inside space-y-2 text-slate-700">
-            <li><strong>Down Payment:</strong> 20% down avoids PMI, but 3-5% down is possible with FHA loans</li>
+            <li><strong>Down Payment:</strong> 20% down avoids PMI; FHA loans allow 3.5% down with a 580+ credit score, and some conventional programs allow as little as 3%</li>
+            <li><strong>Loan Limits:</strong> The 2026 conforming loan limit for a one-unit home is $832,750 in most counties; larger loans are jumbo loans with their own rules</li>
             <li><strong>Credit Score:</strong> Higher scores = lower interest rates = more buying power</li>
             <li><strong>Debt-to-Income Ratio:</strong> Lower existing debt = more mortgage you can afford</li>
             <li><strong>Emergency Fund:</strong> Don't drain savings for down payment—keep 3-6 months expenses</li>
             <li><strong>Closing Costs:</strong> Budget 2-5% of home price for closing costs</li>
+            <li><strong>Taxes:</strong> Mortgage interest on up to $750,000 of acquisition debt is deductible (a limit made permanent in 2025), but only if you itemize — and the 2026 standard deduction is $16,100 single / $32,200 married filing jointly</li>
           </ul>
+
+          <p className="text-lg text-slate-700 leading-relaxed">
+            Check your own ratios with the{' '}
+            <a href="/debt-to-income-ratio-calculator/" className="text-indigo-600 font-semibold hover:underline">debt-to-income ratio calculator</a>.
+          </p>
         </section>
 
         {/* Section 7 */}
@@ -504,7 +514,8 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h3 className="font-bold text-slate-900 text-lg mb-2">How much should I put down on a house?</h3>
               <p className="text-slate-700">
-                While 20% down avoids PMI, many buyers put down 3-5% (FHA loans) or 10-15% (conventional loans).
+                While 20% down avoids PMI, many buyers put down less — FHA loans allow 3.5% with a 580+ credit score, and some
+                conventional programs allow 3%.
                 The right amount depends on your financial situation, but avoid draining your emergency fund.
               </p>
             </div>
@@ -512,8 +523,9 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h3 className="font-bold text-slate-900 text-lg mb-2">Can I remove PMI early?</h3>
               <p className="text-slate-700">
-                Yes! Once your loan-to-value ratio reaches 80% (through payments or home appreciation), you can request
-                PMI removal. Some lenders require an appraisal to confirm the home's value.
+                Yes. On most conventional loans, once your balance reaches 80% of the original value you can request
+                PMI removal in writing. Removal based on a higher current value is up to your servicer&apos;s rules and usually
+                requires a new appraisal.
               </p>
             </div>
 
@@ -525,6 +537,19 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               </p>
             </div>
           </div>
+        </section>
+
+        <section id="sources" className="space-y-6">
+          <h2 className="text-3xl font-black text-slate-900">Sources</h2>
+          <ul className="list-disc list-inside space-y-2 text-slate-700">
+            <li>Consumer Financial Protection Bureau — homebuying, Loan Estimates and PMI cancellation: <a href="https://www.consumerfinance.gov/" className="text-indigo-600 font-semibold hover:underline">consumerfinance.gov</a></li>
+            <li>Federal Housing Finance Agency — 2026 conforming loan limits: <a href="https://www.fhfa.gov/" className="text-indigo-600 font-semibold hover:underline">fhfa.gov</a></li>
+            <li>IRS Publication 936, Home Mortgage Interest Deduction: <a href="https://www.irs.gov/publications/p936" className="text-indigo-600 font-semibold hover:underline">irs.gov/publications/p936</a></li>
+          </ul>
+          <p className="text-sm text-slate-500">
+            Examples are hypothetical with illustrative rates, computed with the standard amortization formula. This guide is
+            educational and is not individualized financial, tax, or lending advice.
+          </p>
         </section>
 
         {/* Recommended Tools - Affiliate Section */}

@@ -21,21 +21,22 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
       {/* Hero Section */}
       <header className="space-y-6">
         <div className="flex items-center gap-3 text-sm text-slate-500">
-          <span>📅 Updated January 2026</span>
+          <span>📅 Updated October 2026</span>
           <span>•</span>
-          <span>⏱️ 12 min read</span>
+          <span>⏱️ 9 min read</span>
           <span>•</span>
           <span>💰 Tax Planning</span>
         </div>
 
         <h1 className="text-5xl font-black text-slate-900 leading-tight">
-          Child Tax Credit 2025: Complete Guide to CTC, ACTC, and Tax Savings
+          Child Tax Credit 2026: Complete Guide to CTC, ACTC, and Tax Savings
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
-          The Child Tax Credit (CTC) is worth up to <strong>$2,000 per child</strong> for tax year 2025.
-          This comprehensive guide explains eligibility, income limits, refundable portions, and strategies
-          to maximize your tax savings.
+          The Child Tax Credit (CTC) is worth up to <strong>$2,200 per child</strong> for tax year 2026 — the same
+          amount that applies to 2025 returns after the One Big Beautiful Bill Act raised it from $2,000. This guide
+          explains eligibility, the new SSN rules, income limits, the refundable portion, and strategies to make sure
+          you receive the full credit.
         </p>
 
         {/* Calculator CTA */}
@@ -43,7 +44,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-bold text-slate-900 text-lg mb-2">
-                Calculate Your 2025 Child Tax Credit
+                Calculate Your 2026 Child Tax Credit
               </h3>
               <p className="text-sm text-slate-600">
                 Get an instant estimate with income phase-outs and ACTC calculations
@@ -64,7 +65,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         <h2 className="text-lg font-black text-slate-900 mb-4">📋 Table of Contents</h2>
         <ol className="space-y-2 text-sm">
           <li><button onClick={() => scrollToSection('what-is-ctc')} className="text-indigo-600 hover:underline">1. What is the Child Tax Credit?</button></li>
-          <li><button onClick={() => scrollToSection('2025-amounts')} className="text-indigo-600 hover:underline">2. 2025 Credit Amounts</button></li>
+          <li><button onClick={() => scrollToSection('2026-amounts')} className="text-indigo-600 hover:underline">2. 2026 Credit Amounts</button></li>
           <li><button onClick={() => scrollToSection('eligibility')} className="text-indigo-600 hover:underline">3. Eligibility Requirements</button></li>
           <li><button onClick={() => scrollToSection('income-limits')} className="text-indigo-600 hover:underline">4. Income Phase-Out Limits</button></li>
           <li><button onClick={() => scrollToSection('actc')} className="text-indigo-600 hover:underline">5. Additional Child Tax Credit (ACTC)</button></li>
@@ -72,6 +73,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <li><button onClick={() => scrollToSection('scenarios')} className="text-indigo-600 hover:underline">7. Common Scenarios & Examples</button></li>
           <li><button onClick={() => scrollToSection('maximize')} className="text-indigo-600 hover:underline">8. Strategies to Maximize Your Credit</button></li>
           <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">9. Frequently Asked Questions</button></li>
+          <li><button onClick={() => scrollToSection('sources')} className="text-indigo-600 hover:underline">10. Sources</button></li>
         </ol>
       </nav>
 
@@ -84,13 +86,18 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <p className="text-lg text-slate-700 leading-relaxed">
             The Child Tax Credit (CTC) is a federal tax benefit designed to help families offset the costs of raising children.
-            For tax year 2025, eligible families can receive <strong>up to $2,000 per qualifying child under age 17</strong>.
+            For tax years 2025 and 2026, eligible families can receive <strong>up to $2,200 per qualifying child under age 17</strong>.
+            The One Big Beautiful Bill Act (signed July 4, 2025) made the credit permanent and indexes the $2,200 amount
+            to inflation for years after 2026.
           </p>
 
           <p className="text-lg text-slate-700 leading-relaxed">
             Unlike a tax deduction (which reduces your taxable income), the Child Tax Credit is a <strong>tax credit</strong> that
-            directly reduces your tax bill dollar-for-dollar. If you owe $5,000 in federal taxes and qualify for a $4,000 credit
-            (2 children), your tax bill drops to just $1,000.
+            directly reduces your tax bill dollar-for-dollar. If you owe $5,000 in federal income tax and qualify for a $4,400 credit
+            (2 children), your tax bill drops to just $600. Compare that with a deduction: a $4,400 deduction for someone
+            in the 12% bracket would only save about $528. See our{' '}
+            <a href="/blog/tax-brackets-explained-2025/" className="text-indigo-600 font-semibold hover:underline">tax brackets explainer</a>{' '}
+            for how deductions and brackets interact.
           </p>
 
           <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl">
@@ -102,8 +109,8 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </section>
 
         {/* Section 2 */}
-        <section id="2025-amounts" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">2025 Child Tax Credit Amounts</h2>
+        <section id="2026-amounts" className="space-y-6">
+          <h2 className="text-3xl font-black text-slate-900">2026 Child Tax Credit Amounts</h2>
 
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
             <table className="w-full">
@@ -117,7 +124,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <tbody>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700">Child under 17 (qualifying)</td>
-                  <td className="p-4 font-bold text-indigo-600">$2,000</td>
+                  <td className="p-4 font-bold text-indigo-600">$2,200</td>
                   <td className="p-4 text-emerald-600">Up to $1,700</td>
                 </tr>
                 <tr className="border-t border-slate-100">
@@ -135,7 +142,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            The <strong>$2,000 credit for children under 17</strong> is the primary benefit. Once your child turns 17, they become
+            The <strong>$2,200 credit for children under 17</strong> is the primary benefit. Once your child turns 17, they become
             an "other dependent" eligible for only $500 (called the Credit for Other Dependents, or ODC).
           </p>
         </section>
@@ -145,7 +152,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <h2 className="text-3xl font-black text-slate-900">Eligibility Requirements for Qualifying Children</h2>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            To claim the full $2,000 Child Tax Credit, your child must meet ALL of these requirements:
+            To claim the full $2,200 Child Tax Credit, your child must meet ALL of these requirements:
           </p>
 
           <div className="space-y-4">
@@ -153,8 +160,8 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
               <div>
                 <h3 className="font-bold text-slate-900 text-lg">Age Requirement</h3>
-                <p className="text-slate-700">The child must be <strong>under age 17</strong> at the end of the tax year (December 31, 2025).
-                A child who turns 17 in 2025 does NOT qualify for the $2,000 credit.</p>
+                <p className="text-slate-700">The child must be <strong>under age 17</strong> at the end of the tax year (December 31, 2026 for a 2026 return).
+                A child who turns 17 during 2026 does NOT qualify for the $2,200 credit on the 2026 return.</p>
               </div>
             </div>
 
@@ -196,7 +203,11 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <div className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">6</div>
               <div>
                 <h3 className="font-bold text-slate-900 text-lg">Social Security Number</h3>
-                <p className="text-slate-700">The child must have a valid Social Security Number (SSN) issued before the tax return due date.</p>
+                <p className="text-slate-700">The child must have a valid Social Security Number (SSN), valid for employment, issued
+                before the tax return due date. An ITIN or ATIN does not qualify the child for the $2,200 credit (such a
+                child may still qualify for the $500 credit for other dependents). Starting with 2025 returns, the One Big
+                Beautiful Bill Act also requires <strong>at least one parent</strong> claiming the credit to have an SSN; on a joint
+                return, one spouse's SSN is enough.</p>
               </div>
             </div>
           </div>
@@ -204,7 +215,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
         {/* Section 4 */}
         <section id="income-limits" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Income Phase-Out Limits for 2025</h2>
+          <h2 className="text-3xl font-black text-slate-900">Income Phase-Out Limits for 2026</h2>
 
           <p className="text-lg text-slate-700 leading-relaxed">
             The Child Tax Credit begins to <strong>phase out</strong> (reduce) once your Modified Adjusted Gross Income (MAGI)
@@ -225,17 +236,17 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700 font-semibold">Single</td>
                   <td className="p-4 font-bold text-rose-600">$200,000</td>
-                  <td className="p-4 text-slate-600">$240,000+ (1 child)</td>
+                  <td className="p-4 text-slate-600">$244,000+ (1 child)</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700 font-semibold">Married Filing Jointly</td>
                   <td className="p-4 font-bold text-rose-600">$400,000</td>
-                  <td className="p-4 text-slate-600">$440,000+ (1 child)</td>
+                  <td className="p-4 text-slate-600">$444,000+ (1 child)</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700 font-semibold">Head of Household</td>
                   <td className="p-4 font-bold text-rose-600">$200,000</td>
-                  <td className="p-4 text-slate-600">$240,000+ (1 child)</td>
+                  <td className="p-4 text-slate-600">$244,000+ (1 child)</td>
                 </tr>
               </tbody>
             </table>
@@ -251,9 +262,15 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <br />
               • Reduction: 10 × $50 = $500
               <br />
-              • Final credit: $2,000 - $500 = <strong>$1,500</strong>
+              • Final credit: $2,200 - $500 = <strong>$1,700</strong>
             </p>
           </div>
+
+          <p className="text-lg text-slate-700 leading-relaxed">
+            The $200,000 and $400,000 thresholds are not indexed for inflation. Because the reduction applies to your
+            combined credit, a family with more children stays partly eligible further up the income scale: with two
+            children ($4,400), a joint filer's credit is not fully phased out until MAGI exceeds $488,000.
+          </p>
         </section>
 
         {/* Section 5 */}
@@ -262,7 +279,9 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <p className="text-lg text-slate-700 leading-relaxed">
             The <strong>Additional Child Tax Credit (ACTC)</strong> makes up to $1,700 per child <strong>refundable</strong>.
-            This means even if you owe $0 in federal income tax, you can still receive up to $1,700 per qualifying child as a tax refund.
+            This means even if you owe $0 in federal income tax, you can still receive up to $1,700 per qualifying child as a
+            tax refund, provided you have at least $2,500 of earned income. The $1,700 cap applies to both 2025 and 2026
+            returns.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900">How ACTC is Calculated</h3>
@@ -273,19 +292,27 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <ol className="list-decimal list-inside space-y-3 text-lg text-slate-700">
             <li>The amount of Child Tax Credit left after offsetting your federal income tax liability</li>
-            <li><strong>15% of your earned income</strong> above $2,500 (up to $1,700 per child maximum)</li>
+            <li><strong>$1,700 per qualifying child</strong></li>
+            <li><strong>15% of your earned income</strong> above $2,500</li>
           </ol>
+          <p className="text-sm text-slate-600 italic">
+            Families with three or more qualifying children may be able to use an alternative calculation based on Social
+            Security and Medicare taxes paid; Schedule 8812 and tax software handle this automatically.
+          </p>
 
           <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 space-y-4">
             <h4 className="font-bold text-emerald-900 text-lg">ACTC Calculation Example</h4>
             <div className="space-y-2 text-emerald-900">
-              <p><strong>Scenario:</strong> Single parent, 2 qualifying children, earned income $35,000, federal tax liability $800</p>
-              <p>• Total CTC: 2 × $2,000 = <strong>$4,000</strong></p>
-              <p>• Federal tax offset: -$800</p>
-              <p>• Remaining credit: $3,200</p>
-              <p>• ACTC calculation: ($35,000 - $2,500) × 15% = $4,875</p>
-              <p>• ACTC max per child: $1,700 × 2 = $3,400</p>
-              <p>• Refundable portion (lesser of $3,200 or $3,400): <strong>$3,200 refund</strong></p>
+              <p><strong>Hypothetical scenario (2026):</strong> Head-of-household parent, 2 qualifying children, $35,000 of wages, no other income</p>
+              <p>• Taxable income: $35,000 − $24,150 standard deduction = $10,850, all in the 10% bracket</p>
+              <p>• Federal income tax before credits: <strong>$1,085</strong></p>
+              <p>• Total CTC: 2 × $2,200 = <strong>$4,400</strong></p>
+              <p>• Used to wipe out income tax: -$1,085</p>
+              <p>• Remaining credit: $3,315</p>
+              <p>• Earned income test: ($35,000 - $2,500) × 15% = $4,875</p>
+              <p>• ACTC cap: $1,700 × 2 = $3,400</p>
+              <p>• Refundable portion (lesser of $3,315, $3,400 and $4,875): <strong>$3,315 refunded</strong></p>
+              <p>• Total benefit: $1,085 + $3,315 = <strong>$4,400</strong> — the full credit</p>
             </div>
           </div>
 
@@ -332,7 +359,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <span className="flex-shrink-0 text-2xl">✅</span>
               <div>
                 <h3 className="font-bold text-slate-900">Step 4: Transfer to Form 1040</h3>
-                <p className="text-slate-700">The credit amount from Schedule 8812 is transferred to Line 19 of Form 1040.</p>
+                <p className="text-slate-700">The nonrefundable credit and the refundable ACTC from Schedule 8812 carry to their lines on Form 1040.</p>
               </div>
             </div>
           </div>
@@ -342,15 +369,19 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               💻 <strong>Tax Software Makes It Easy</strong>
             </p>
             <p className="text-indigo-800">
-              If you use tax software (TurboTax, H&R Block, FreeTaxUSA), the software will automatically calculate your
-              Child Tax Credit and ACTC when you enter your children's information. You don't need to manually fill out Schedule 8812.
+              If you use tax software, it calculates the Child Tax Credit and ACTC from your children's information and
+              completes Schedule 8812 for you. Double-check that each child's name and SSN match their Social Security card
+              exactly — mismatches are a common reason the credit is delayed or denied. If you want the credit reflected in
+              your paychecks instead of your refund, claim it in Step 3 of Form W-4; our{' '}
+              <a href="/blog/w4-multiple-jobs-worksheet-decoded/" className="text-indigo-600 font-semibold hover:underline">W-4 worksheet guide</a>{' '}
+              explains how.
             </p>
           </div>
         </section>
 
         {/* Section 7 */}
         <section id="scenarios" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Common Scenarios & Real-World Examples</h2>
+          <h2 className="text-3xl font-black text-slate-900">Common Scenarios &amp; Worked Examples (Hypothetical, 2026)</h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-3">
@@ -359,9 +390,10 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <ul className="text-sm text-slate-700 space-y-1">
                 <li>• AGI: $80,000 (well below $400k threshold)</li>
                 <li>• Qualifying children: 2 (ages 5 and 8)</li>
-                <li>• Total CTC: $4,000</li>
+                <li>• Tax before credits: $5,240 (on $47,800 taxable)</li>
+                <li>• Total CTC: $4,400</li>
                 <li>• Phase-out: $0</li>
-                <li className="font-bold text-emerald-600">• Final credit: $4,000</li>
+                <li className="font-bold text-emerald-600">• Final credit: $4,400 (tax drops to $840)</li>
               </ul>
             </div>
 
@@ -369,12 +401,12 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <div className="text-3xl">👩‍👧</div>
               <h3 className="font-bold text-slate-900 text-lg">Single Parent, 1 Child, $35k Income</h3>
               <ul className="text-sm text-slate-700 space-y-1">
-                <li>• AGI: $35,000</li>
+                <li>• AGI: $35,000 (head of household)</li>
                 <li>• Qualifying children: 1 (age 6)</li>
-                <li>• Total CTC: $2,000</li>
-                <li>• Federal tax owed: $800</li>
-                <li>• ACTC refund: $1,200</li>
-                <li className="font-bold text-emerald-600">• Total benefit: $2,000 ($800 offset + $1,200 refund)</li>
+                <li>• Total CTC: $2,200</li>
+                <li>• Federal tax before credits: $1,085</li>
+                <li>• ACTC refund: $1,115</li>
+                <li className="font-bold text-emerald-600">• Total benefit: $2,200 ($1,085 offset + $1,115 refund)</li>
               </ul>
             </div>
 
@@ -384,10 +416,10 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <ul className="text-sm text-slate-700 space-y-1">
                 <li>• AGI: $450,000 (married filing jointly)</li>
                 <li>• Qualifying children: 2</li>
-                <li>• Base credit: $4,000</li>
+                <li>• Base credit: $4,400</li>
                 <li>• Income over $400k: $50,000</li>
                 <li>• Phase-out: $50,000 ÷ $1,000 = 50 × $50 = $2,500</li>
-                <li className="font-bold text-amber-600">• Final credit: $1,500</li>
+                <li className="font-bold text-amber-600">• Final credit: $1,900</li>
               </ul>
             </div>
 
@@ -397,9 +429,9 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <ul className="text-sm text-slate-700 space-y-1">
                 <li>• Qualifying children under 17: 3</li>
                 <li>• 17-year-old: 1 (other dependent)</li>
-                <li>• CTC: 3 × $2,000 = $6,000</li>
+                <li>• CTC: 3 × $2,200 = $6,600</li>
                 <li>• ODC: 1 × $500 = $500</li>
-                <li className="font-bold text-emerald-600">• Total credit: $6,500</li>
+                <li className="font-bold text-emerald-600">• Total credit: up to $7,100 (the $500 portion is nonrefundable)</li>
               </ul>
             </div>
           </div>
@@ -433,9 +465,9 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 The CTC eligibility is determined on <strong>December 31</strong> of the tax year:
               </p>
               <ul className="text-indigo-900 space-y-2 text-sm">
-                <li>• Child born on Dec 31, 2025? Full $2,000 credit for entire year!</li>
-                <li>• Child turns 17 on Jan 1, 2026? Still qualifies for $2,000 in 2025</li>
-                <li>• Adoption finalized before year-end? Immediate credit eligibility</li>
+                <li>• Child born on Dec 31, 2026? A child born during the year generally counts as living with you all year, so the full $2,200 can apply for 2026 (the SSN must be issued by the return due date)</li>
+                <li>• Child turns 17 on Jan 1, 2027? Still under 17 on Dec 31, 2026, so they qualify for $2,200 on the 2026 return</li>
+                <li>• Child placed for legal adoption with you? The child can count as your child for the relationship test</li>
               </ul>
             </div>
 
@@ -447,9 +479,10 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 Stack the CTC with other family-friendly tax benefits:
               </p>
               <ul className="text-amber-900 space-y-2 text-sm">
-                <li>• <strong>Child and Dependent Care Credit</strong> - Up to $2,100 for childcare expenses</li>
-                <li>• <strong>Earned Income Tax Credit (EITC)</strong> - Up to $7,830 for 3+ children</li>
-                <li>• <strong>Education Credits</strong> - American Opportunity Credit ($2,500) or Lifetime Learning Credit</li>
+                <li>• <strong>Child and Dependent Care Credit</strong> - A percentage of qualifying childcare costs so you can work (the One Big Beautiful Bill Act expanded it starting in 2026)</li>
+                <li>• <strong>Earned Income Tax Credit (EITC)</strong> - A refundable credit for low-to-moderate earners that grows with the number of children</li>
+                <li>• <strong>Dependent care FSA</strong> - Pre-tax payroll dollars for childcare, if your employer offers one</li>
+                <li>• <strong>Education Credits</strong> - American Opportunity Credit (up to $2,500 per student) or Lifetime Learning Credit</li>
               </ul>
             </div>
           </div>
@@ -477,7 +510,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <span className="text-indigo-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="text-slate-700 mt-4">
-                If your child turns 17 at any point during 2025, they do NOT qualify for the $2,000 CTC. However, they may still
+                If your child turns 17 at any point during 2026, they do NOT qualify for the $2,200 CTC on your 2026 return. However, they may still
                 qualify as an "other dependent" for the <strong>$500 Credit for Other Dependents</strong>.
               </p>
             </details>
@@ -489,7 +522,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               </summary>
               <p className="text-slate-700 mt-4">
                 No. Only the <strong>custodial parent</strong> (the parent the child lived with for more than half the year) can claim the CTC,
-                unless the custodial parent signs Form 8332 allowing the non-custodial parent to claim the exemption.
+                unless the custodial parent signs Form 8332 releasing the claim to the non-custodial parent. Only one parent can claim a given child in a given year.
               </p>
             </details>
 
@@ -500,7 +533,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
               </summary>
               <p className="text-slate-700 mt-4">
                 Yes, if the child is placed with you by an authorized placement agency and meets all other qualifying child tests
-                (age, residency, support). Foster children can qualify for the full $2,000 credit.
+                (age, residency, support). Foster children can qualify for the full $2,200 credit.
               </p>
             </details>
 
@@ -521,16 +554,32 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <span className="text-indigo-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="text-slate-700 mt-4">
-                For tax year 2025, there are <strong>no advance payments</strong>. The temporary advance CTC program from 2021 has ended.
-                You'll receive the full credit when you file your 2025 tax return in 2026.
+                There are <strong>no advance payments</strong> for 2025 or 2026. The temporary advance CTC program applied only to 2021.
+                You receive the credit when you file your return (your 2026 return is filed in early 2027), unless you
+                adjust your W-4 to reflect it in your paychecks.
               </p>
             </details>
           </div>
         </section>
 
+        <p className="text-sm text-slate-600 italic">
+          This guide is educational and is not individualized tax advice. You can also run your numbers in our{' '}
+          <a href="/child-tax-credit-calculator/" className="text-indigo-600 font-semibold hover:underline">Child Tax Credit calculator</a>.
+        </p>
+
+        <section id="sources" className="space-y-6">
+          <h2 className="text-3xl font-black text-slate-900">Sources</h2>
+          <ul className="space-y-2 text-slate-700">
+            <li>• IRS — Child Tax Credit and Schedule 8812 instructions: <a href="https://www.irs.gov/" className="text-indigo-600 font-semibold hover:underline">irs.gov</a></li>
+            <li>• IRS Publication 17, Your Federal Income Tax: <a href="https://www.irs.gov/publications/p17" className="text-indigo-600 font-semibold hover:underline">irs.gov/publications/p17</a></li>
+            <li>• IRS Publication 505, Tax Withholding and Estimated Tax: <a href="https://www.irs.gov/publications/p505" className="text-indigo-600 font-semibold hover:underline">irs.gov/publications/p505</a></li>
+            <li>• One Big Beautiful Bill Act, Public Law 119-21 (July 4, 2025)</li>
+          </ul>
+        </section>
+
         {/* Final CTA */}
         <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl p-8 text-white text-center space-y-4">
-          <h2 className="text-3xl font-black">Calculate Your 2025 Child Tax Credit Now</h2>
+          <h2 className="text-3xl font-black">Calculate Your 2026 Child Tax Credit Now</h2>
           <p className="text-xl text-indigo-100">
             Get an instant, personalized estimate with our free calculator
           </p>
@@ -541,7 +590,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             Use Child Tax Credit Calculator →
           </button>
           <p className="text-sm text-indigo-200">
-            Free • No signup required • Updated for 2025
+            Free • No signup required • Updated for 2026
           </p>
         </div>
 
@@ -558,7 +607,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 Quarterly Tax Calculator
               </h4>
               <p className="text-sm text-slate-600">
-                Plan your 1040-ES estimated tax payments for 2025
+                Plan your 1040-ES estimated tax payments for 2026
               </p>
             </button>
 
@@ -604,7 +653,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <div className="text-4xl">📅</div>
                 <div className="flex-1">
                   <h3 className="font-bold text-lg text-gray-900 group-hover:text-purple-700 mb-2">
-                    Quarterly Estimated Taxes 2025: Complete Guide
+                    Quarterly Estimated Taxes: Complete Guide
                   </h3>
                   <p className="text-sm text-gray-600 mb-3">
                     Master safe harbor rules, payment deadlines, and penalty avoidance strategies for self-employed individuals.
@@ -624,7 +673,7 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <div className="text-4xl">🏥</div>
                 <div className="flex-1">
                   <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 mb-2">
-                    ACA Health Insurance for Freelancers 2025
+                    ACA Health Insurance for Freelancers
                   </h3>
                   <p className="text-sm text-gray-600 mb-3">
                     Navigate Premium Tax Credits, Medicaid expansion, and save thousands on healthcare as a self-employed professional.
@@ -643,12 +692,12 @@ const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
       {/* Author/Updated Info */}
       <div className="border-t border-slate-200 pt-6 flex items-center justify-between text-sm text-slate-500">
         <div>
-          <p>📝 Written by QuantCurb Financial Research Team</p>
-          <p>🔄 Last updated: January 4, 2026</p>
+          <p>📝 Published by QuantCurb</p>
+          <p>🔄 Last updated: October 2026</p>
         </div>
         <div className="text-right">
-          <p>💡 Based on 2025 IRS guidelines</p>
-          <p>📊 Data verified with Form 1040 & Schedule 8812</p>
+          <p>💡 Based on IRS guidance for 2025–2026</p>
+          <p>📊 Reflects the One Big Beautiful Bill Act (P.L. 119-21)</p>
         </div>
       </div>
     </div>
