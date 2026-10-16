@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ToolType } from '../../types';
 
 interface BlogProps {
@@ -6,46 +6,6 @@ interface BlogProps {
 }
 
 const NoTaxOnTipsExplained2025: React.FC<BlogProps> = ({ onNavigate }) => {
-  useEffect(() => {
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "No Tax on Tips, Explained With a Real Server's Paycheck",
-      "description": "The 2025-2028 federal deduction on tip income, worked through a real server's W-2 wages plus reported tips, including what it doesn't shield from FICA.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-09-06",
-      "dateModified": "2026-09-06",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/no-tax-on-tips-explained-2025"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-no-tax-on-tips';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-no-tax-on-tips');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {

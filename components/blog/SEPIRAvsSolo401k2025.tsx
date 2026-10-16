@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ToolType } from '../../types';
 
 interface BlogProps {
@@ -9,48 +9,6 @@ interface BlogProps {
 
 const SEPIRAvsSolo401k2025: React.FC<BlogProps> = ({ onNavigate }) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "SEP-IRA vs Solo 401(k) 2025: Complete Contribution Limits & Comparison Guide",
-      "description": "Comprehensive comparison of SEP-IRA vs Solo 401(k) for self-employed individuals and freelancers. Understand 2025 contribution limits ($69k max), tax benefits, setup costs, deadlines, and which retirement plan saves you the most money.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-01-06",
-      "dateModified": "2026-01-06",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/sep-ira-vs-solo-401k-2025"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-sep-solo401k';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-sep-solo401k');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);

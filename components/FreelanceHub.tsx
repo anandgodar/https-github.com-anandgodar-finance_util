@@ -6,6 +6,7 @@ import EmailCapture from './EmailCapture';
 import CalculatorFAQ from './CalculatorFAQ';
 import { ToolType } from '../types';
 
+import ToolTitle from './ToolTitle';
 const STATE_TAX_DATA: Record<string, { name: string; rate: number }> = {
   AL: { name: 'Alabama', rate: 0.05 }, AK: { name: 'Alaska', rate: 0.00 }, AZ: { name: 'Arizona', rate: 0.025 },
   AR: { name: 'Arkansas', rate: 0.047 }, CA: { name: 'California', rate: 0.093 }, CO: { name: 'Colorado', rate: 0.044 },
@@ -85,78 +86,11 @@ const FreelanceHub: React.FC<FreelanceHubProps> = ({ onNavigate, initialState })
     return () => clearTimeout(timer);
   }, [grossIncome, hoursWorked, stateCode]);
 
-  useEffect(() => {
-    // Add HowTo schema for "How to calculate freelance net profit"
-    const howToSchema = {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Calculate Freelance Net Profit and Tax Obligations",
-      "description": "Step-by-step guide to calculating net profit, self-employment tax, and corporate salary equivalent for freelancers and independent contractors.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "Enter Your Gross Income",
-          "text": "Enter your monthly gross revenue from freelance work (before any deductions)."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "Enter Business Expenses",
-          "text": "Enter all deductible business expenses: software, marketing, hardware, office expenses. These reduce your taxable income."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Enter Personal Benefits",
-          "text": "Enter health insurance and retirement contributions. These are handled differently depending on your business structure."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 4,
-          "name": "Calculate Net Income",
-          "text": "Net income = Gross income - Business expenses - Taxes. The calculator shows your take-home pay after all deductions."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 5,
-          "name": "Calculate Self-Employment Tax",
-          "text": "Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on your net profit. This is in addition to income tax."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 6,
-          "name": "Calculate Real Hourly Rate",
-          "text": "Real hourly rate = Net income / Total hours worked (including non-billable hours). Compare this to your previous corporate wage."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 7,
-          "name": "Compare to Corporate Salary",
-          "text": "The calculator shows your FTE (Full-Time Employee) salary equivalent, helping you understand if freelancing is financially viable."
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(howToSchema);
-    script.id = 'howto-schema-freelance';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('howto-schema-freelance');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   return (
     <div className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-500 pb-24">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
-          <h2 className="text-3xl font-black text-slate-900 leading-tight">Freelance <span className="text-indigo-600">Profit Engine</span></h2>
+          <ToolTitle className="text-3xl font-black text-slate-900 leading-tight">Freelance Tax &amp; <span className="text-indigo-600">Profit Calculator</span></ToolTitle>
           <p className="text-slate-500 mt-2 max-w-lg font-medium">Analyze net earnings, self-employment taxes, and corporate salary equivalents for independent contractors.</p>
         </div>
         <div className="bg-slate-900 px-8 py-5 rounded-[2.5rem] shadow-2xl text-white border border-slate-800">

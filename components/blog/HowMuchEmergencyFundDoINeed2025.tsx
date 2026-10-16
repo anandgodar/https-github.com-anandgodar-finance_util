@@ -1,7 +1,7 @@
 'use client';
 
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ToolType } from '../../types';
 
 interface BlogProps {
@@ -9,46 +9,6 @@ interface BlogProps {
 }
 
 const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) => {
-  useEffect(() => {
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "How Much Emergency Fund Do I Need? Complete 2025 Guide with Calculator",
-      "description": "Calculate how much emergency fund you need in 2025. Learn the 3-6 month rule, how to build your emergency fund, where to keep it, and use our calculator to find your perfect safety net.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-01-08",
-      "dateModified": "2026-01-08",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/how-much-emergency-fund-do-i-need-2025"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-emergency-fund';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-emergency-fund');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {

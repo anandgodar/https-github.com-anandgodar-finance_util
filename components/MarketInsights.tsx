@@ -34,8 +34,8 @@ const MarketInsights: React.FC = () => {
           <div className="w-20 h-20 border-8 border-indigo-600 border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
         </div>
         <div className="text-center">
-          <p className="text-2xl font-black text-slate-900 tracking-tight">Syncing QuantCurb Oracle</p>
-          <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.2em] mt-2">Connecting to High-Fidelity Data Streams...</p>
+          <h1 className="text-2xl font-black text-slate-900 tracking-tight">AI Market Insights</h1>
+          <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.2em] mt-2">Loading today's analysis...</p>
         </div>
       </div>
     );

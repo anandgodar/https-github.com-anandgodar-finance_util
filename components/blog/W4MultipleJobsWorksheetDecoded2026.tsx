@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ToolType } from '../../types';
 
 interface BlogProps {
@@ -6,46 +6,6 @@ interface BlogProps {
 }
 
 const W4MultipleJobsWorksheetDecoded2026: React.FC<BlogProps> = ({ onNavigate }) => {
-  useEffect(() => {
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "The W-4 Multiple Jobs Worksheet, Decoded: Checkbox vs. Worksheet vs. IRS Estimator",
-      "description": "Three IRS-sanctioned ways to fill out a W-4 for two incomes: checkbox, worksheet, or estimator. A decision tree with worked examples from the 2026 IRS tables.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-08-29",
-      "dateModified": "2026-08-29",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/w4-multiple-jobs-worksheet-decoded"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-w4-multiple-jobs';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-w4-multiple-jobs');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {

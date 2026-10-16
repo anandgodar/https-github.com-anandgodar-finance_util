@@ -10,7 +10,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool }) => {
   const mainTools = [
-    { id: ToolType.DASHBOARD, label: 'Dashboard', icon: '📊', href: '/dashboard/' },
+    { id: ToolType.DASHBOARD, label: 'Dashboard', icon: '📊', href: '/' },
     { id: ToolType.NET_WORTH, label: 'Net Worth Center', icon: '💎', href: '/net-worth-command-center/' },
     { id: ToolType.EMERGENCY_FUND, label: 'Emergency Guard', icon: '🛡️', href: '/emergency-fund-guard/' },
     { id: ToolType.EXCEL_MODELER, label: 'Excel Power Modeler', icon: '📁', href: '/excel-power-modeler/' },
@@ -53,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool }) => {
     <div className="w-72 bg-white border-r h-screen sticky top-0 hidden md:flex flex-col z-50">
       <div className="p-8 border-b">
         <Link
-          href="/dashboard/"
+          href="/"
           onClick={(e) => handleClick(e, ToolType.DASHBOARD)}
           className="text-2xl font-black text-slate-900 flex items-center gap-3 group"
         >

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ToolType } from '../../types';
 
 interface BlogProps {
@@ -9,49 +9,6 @@ interface BlogProps {
 
 const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-
-  useEffect(() => {
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Tax Deductions for Freelancers 2025: Complete Guide to Maximize Your Write-Offs",
-      "description": "Discover every tax deduction available to freelancers in 2025. Learn about home office deduction ($5/sq ft simplified method), mileage ($0.67/mile), Section 179 equipment expensing, health insurance, retirement contributions, and business expense strategies to save thousands.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "url": "https://quantcurb.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-01-06",
-      "dateModified": "2026-01-06",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/tax-deductions-freelancers-2025"
-      },
-      "keywords": "freelancer tax deductions 2025, home office deduction, mileage deduction, Section 179, business expense deductions, self-employed tax write-offs, health insurance deduction, retirement deductions, freelance tax savings",
-      "articleBody": "Complete guide to tax deductions for freelancers in 2025. Maximize your write-offs with home office deduction, mileage tracking, equipment purchases, health insurance, retirement contributions, and strategic business expense planning."
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-tax-deductions-freelancers';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-tax-deductions-freelancers');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);

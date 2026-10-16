@@ -1,7 +1,7 @@
 'use client';
 
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ToolType } from '../../types';
 import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
@@ -11,47 +11,6 @@ interface BlogProps {
 }
 
 const StudentLoanRepaymentStrategies2025: React.FC<BlogProps> = ({ onNavigate }) => {
-  useEffect(() => {
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Student Loan Repayment Strategies 2025: Complete Guide to Paying Off Student Debt",
-      "description": "Master student loan repayment in 2025. Learn about income-driven repayment plans, loan forgiveness programs, refinancing strategies, and how to pay off student debt faster.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-01-15",
-      "dateModified": "2026-01-15",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/student-loan-repayment-strategies-2025"
-      },
-      "keywords": "student loan repayment, student loan forgiveness, income driven repayment, student loan refinancing, pay off student loans, student debt, PSLF, SAVE plan"
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-student-loans';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-student-loans');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {

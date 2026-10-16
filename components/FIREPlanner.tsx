@@ -5,6 +5,7 @@ import { getFinancialAdvice } from '../services/geminiService';
 import CalculatorFAQ from './CalculatorFAQ';
 import { ToolType } from '../types';
 
+import ToolTitle from './ToolTitle';
 interface FIREPlannerProps {
   onNavigate?: (tool: ToolType) => void;
 }
@@ -214,154 +215,6 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
     return () => clearTimeout(timer);
   }, [currentAge, currentSavings, monthlyContribution, expectedReturn, annualExpenses]);
 
-  useEffect(() => {
-    // Add HowTo schema for "How to calculate FIRE number"
-    const howToSchema = {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Calculate Your FIRE Number and Achieve Early Retirement",
-      "description": "Step-by-step guide to calculating your Financial Independence Retire Early (FIRE) number using the 4% rule and planning your path to early retirement.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "Calculate Your Annual Expenses",
-          "text": "Determine your annual living expenses. This is how much you need to cover all costs in retirement."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "Apply the 4% Rule",
-          "text": "Multiply your annual expenses by 25 (or divide by 4%) to get your FIRE number. This is the amount you need to retire."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Enter Your Current Situation",
-          "text": "Enter your current age, savings, monthly contribution, expected return, and withdrawal rate."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 4,
-          "name": "Review FIRE Milestones",
-          "text": "See when you'll reach Lean FIRE (70% of target), Barista FIRE (with part-time income), Coast FIRE (no more contributions needed), and full FIRE."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 5,
-          "name": "Consider Geographic Arbitrage",
-          "text": "Adjust your cost of living to see how moving to a lower-cost area can accelerate your FIRE timeline."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 6,
-          "name": "Optimize Your Strategy",
-          "text": "Increase savings rate, reduce expenses, or adjust withdrawal rate to reach FIRE faster."
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(howToSchema);
-    script.id = 'howto-schema-fire';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('howto-schema-fire');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    // Add FAQ schema for rich snippets
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is FIRE and how do I calculate my FIRE number?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "FIRE (Financial Independence Retire Early) is achieving financial independence to retire decades earlier than traditional retirement age. Your FIRE number = Annual Expenses × 25 (based on the 4% rule). For example, if you spend $60,000/year, you need $1,500,000 saved. Use our calculator above to find your exact FIRE number and timeline."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What's the difference between Lean FIRE, Regular FIRE, and Fat FIRE?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Lean FIRE = 70% of your target (minimalist lifestyle, $25k-$40k/year expenses). Regular FIRE = 100% of target (comfortable lifestyle, $40k-$100k/year). Fat FIRE = 150% of target (luxury lifestyle, $100k+/year expenses). Our calculator shows when you'll reach each milestone."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Coast FIRE?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Coast FIRE means you have enough saved that it will grow to your full FIRE number by traditional retirement age (65) without any more contributions. You can 'coast' - work less, take lower-paying but more enjoyable jobs, or take extended breaks. Our calculator shows if you've reached Coast FIRE."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Barista FIRE?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Barista FIRE is when your savings + part-time income (like working at a coffee shop) covers your expenses. You need less saved because part-time work fills the gap. For example, if you need $60k/year and earn $20k part-time, you only need $1,000,000 saved (25x the $40k gap). Our calculator shows your Barista FIRE age."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is the 4% rule safe for early retirement?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The 4% rule was designed for 30-year retirements. For early retirees (under 50), many experts recommend 3-3.5% for longer retirement periods. However, 4% remains a solid starting point. Our calculator lets you adjust the withdrawal rate to see the impact on your FIRE number."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does geographic arbitrage help with FIRE?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Geographic arbitrage means moving to a lower cost-of-living area to reduce expenses and your FIRE number. For example, moving from San Francisco (COL 150) to Austin (COL 100) can reduce your FIRE number by 33%. Our calculator shows how adjusting COL affects your FIRE timeline."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What savings rate do I need to reach FIRE?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Higher savings rates = faster FIRE. At 50% savings rate, you can reach FIRE in ~17 years. At 65%, it's ~10.5 years. At 75%, it's ~7 years. The key is maximizing income and minimizing expenses. Our calculator shows your timeline based on your current savings rate."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Should I pay off debt or invest for FIRE?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Generally, if your debt interest rate is higher than expected investment returns (7-8%), pay off debt first. If debt rate is lower, invest for FIRE while making minimum payments. High-interest credit card debt should always be paid off first."
-          }
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(faqSchema);
-    script.id = 'faq-schema-fire';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('faq-schema-fire');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   return (
     <div className="max-w-7xl mx-auto space-y-10 animate-in fade-in duration-500 pb-24">
       {/* Featured Snippet Optimization - Definition Box */}
@@ -393,7 +246,7 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
 
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
-          <h2 className="text-3xl font-black text-slate-900 leading-tight">FIRE <span className="text-orange-500">Intelligence</span></h2>
+          <ToolTitle className="text-3xl font-black text-slate-900 leading-tight">FIRE <span className="text-orange-500">Calculator</span></ToolTitle>
           <p className="text-slate-500 mt-2 max-w-lg font-medium">Early retirement modeling based on the 4% safe withdrawal rule.</p>
         </div>
         <div className="bg-orange-600 px-10 py-6 rounded-[2.5rem] shadow-2xl text-white relative overflow-hidden">

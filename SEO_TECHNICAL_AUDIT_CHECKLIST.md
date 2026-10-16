@@ -12,6 +12,26 @@
 
 ---
 
+## Fix status (updated 2026-10-16)
+
+Re-audit of the build after the fix pass: 429 pages, each with a self-referencing canonical and exactly 1 H1 (the 50 noindexed ticker pages excepted). No hreflang, no Tailwind CDN, no hidden links, no FAQ/HowTo markup. All titles ≤ 60 characters, all descriptions 70–160, every sitemap URL builds, average HTML 77 KB → 58 KB.
+
+**Fixed in code:** 1.1–1.7 · 2.1–2.6 · 3.1, 3.2, 3.4, 3.5 · 4.2 (ad banner), 4.4 · 5.1–5.4, 5.6, 5.9 (calculator H1 names) · 6.1–6.3, 6.5 (real dates) · 7.1–7.3, 7.5 (thin/AI pages noindexed), 7.6 (ad/affiliate disclosure + terms). Also: empty "Ad space reserved" boxes removed, unverifiable "CFA/CPA reviewed" claims replaced with verifiable sourcing statements, and the AI Market Insights page noindexed.
+
+**Still on you (cannot be done from code):**
+1. **Search Console / Bing:** verify the domain with a DNS TXT record, submit `https://quantcurb.com/sitemap.xml`, and request indexing for the top 10 pages (2.6, 2.7).
+2. **AdSense → Privacy & messaging:** turn on the European regulations (GDPR) consent message before or right after approval (7.4).
+3. **Social profiles:** keep the X, LinkedIn and GitHub links in the footer and Organization schema only if those accounts exist and are yours (6.4).
+4. **Mailboxes:** make sure `privacy@quantcurb.com` (privacy policy) and the contact-page address receive mail.
+5. **Content refresh:** 31 titles and 37 URLs still say 2025. Refresh each post's figures to 2026 one at a time, as in the recent commits (5.5). Don't mass-rename them without updating the numbers.
+6. **Named author / E-E-A-T:** add a real author or reviewer page if you have one (5.7).
+7. **Measure:** run PageSpeed Insights on production after deploy (3.7), and test redirects and www/http consolidation live (1.8, 2.8).
+8. **Ticker pages:** the 50 `/dividend-calculator/<ticker>/` pages are `noindex` until each gets substantial server-rendered content (2.3).
+
+**Maintenance scripts:** after adding or editing a post, run `node scripts/generate-content-dates.cjs` (real published/modified dates), then `npm run build && node scripts/generate-sitemap.cjs` (sitemaps, with a check that every URL exists).
+
+---
+
 ## Summary: the 10 things hurting traffic most
 
 | # | Issue | Pages affected |

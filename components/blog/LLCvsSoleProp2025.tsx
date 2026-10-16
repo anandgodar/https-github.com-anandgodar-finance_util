@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ToolType } from '../../types';
 
 interface BlogProps {
@@ -9,48 +9,6 @@ interface BlogProps {
 
 const LLCvsSoleProp2025: React.FC<BlogProps> = ({ onNavigate }) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "LLC vs Sole Proprietor 2025: Complete Tax & Legal Comparison Guide",
-      "description": "Comprehensive comparison of LLC vs Sole Proprietorship for freelancers and small business owners. Understand tax differences, liability protection, formation costs, S-Corp election benefits, and which structure saves you the most money in 2025.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-01-06",
-      "dateModified": "2026-01-06",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/llc-vs-sole-proprietor-2025"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-llc-sole-prop';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-llc-sole-prop');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);

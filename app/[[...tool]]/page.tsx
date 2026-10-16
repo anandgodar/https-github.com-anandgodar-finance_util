@@ -5,23 +5,8 @@ import { Metadata } from 'next';
 import AppShell from '../../components/AppShell';
 import { TOOL_METADATA, toolSlugs } from '../../lib/tool-metadata';
 import { ToolType } from '../../types';
-import {
-  mortgageCalculatorFAQs,
-  salaryCalculatorFAQs,
-  fireCalculatorFAQs,
-  taxCalculatorFAQs,
-  investmentCalculatorFAQs,
-  emiCalculatorFAQs,
-  netWorthFAQs,
-  emergencyFundFAQs,
-  loanCompareFAQs,
-  costOfLivingFAQs,
-  creditCardPayoffFAQs,
-  dtiFAQs,
-  cryptoTaxFAQs,
-  acaSubsidyFAQs,
-} from '../../components/FAQSchema';
-import { generateHowToSchemaForTool } from '../../components/HowToSchema';
+import contentDates from '../../lib/content-dates.json';
+import { fitTitle, clampDescription } from '../../lib/seo';
 
 type PageProps = {
   params?: {
@@ -36,27 +21,31 @@ const toolSlugSet = new Set<ToolType>(toolSlugs as ToolType[]);
 
 const isToolType = (slug: string): slug is ToolType => toolSlugSet.has(slug as ToolType);
 
-// Map tools to their FAQ sets
-const toolFAQMap: Record<string, Array<{ question: string; answer: string }>> = {
-  [ToolType.MORTGAGE_CALC]: mortgageCalculatorFAQs,
-  [ToolType.SALARY_CALC]: salaryCalculatorFAQs,
-  [ToolType.FIRE_PLANNER]: fireCalculatorFAQs,
-  [ToolType.INVESTMENT_CALC]: investmentCalculatorFAQs,
-  [ToolType.QUARTERLY_TAX]: taxCalculatorFAQs,
-  [ToolType.CHILD_TAX_CREDIT]: taxCalculatorFAQs,
-  [ToolType.FREELANCE_PROFIT]: taxCalculatorFAQs,
-  [ToolType.RETIREMENT_OPTIMIZER]: fireCalculatorFAQs,
-  [ToolType.DRIP_CALCULATOR]: investmentCalculatorFAQs,
-  [ToolType.EMI_CALC]: emiCalculatorFAQs,
-  [ToolType.NET_WORTH]: netWorthFAQs,
-  [ToolType.EMERGENCY_FUND]: emergencyFundFAQs,
-  [ToolType.LOAN_COMPARE]: loanCompareFAQs,
-  [ToolType.LIVING_COST]: costOfLivingFAQs,
-  [ToolType.CREDIT_CARD_PAYOFF]: creditCardPayoffFAQs,
-  [ToolType.DTI_CALCULATOR]: dtiFAQs,
-  [ToolType.CRYPTO_TAX_LOSS]: cryptoTaxFAQs,
-  [ToolType.ACA_SUBSIDY]: acaSubsidyFAQs,
+const postDates = contentDates as Record<string, { published: string; modified: string }>;
+
+// Pages served by this route that are articles, hubs or company pages rather
+// than interactive calculators. Only calculators get WebApplication markup.
+// 'none': the page component already emits its own CollectionPage + ItemList.
+const pageSchemaType: Partial<Record<ToolType, string>> = {
+  [ToolType.ABOUT]: 'AboutPage',
+  [ToolType.CONTACT]: 'ContactPage',
+  [ToolType.PRIVACY]: 'WebPage',
+  [ToolType.DISCLAIMER]: 'WebPage',
+  [ToolType.METHODOLOGY]: 'WebPage',
+  [ToolType.SITEMAP]: 'WebPage',
+  [ToolType.FAQ]: 'WebPage',
+  [ToolType.MARKET_INSIGHTS]: 'WebPage',
+  [ToolType.INVESTMENT_ACADEMY]: 'CollectionPage',
+  [ToolType.VALUATION_ACADEMY]: 'CollectionPage',
+  [ToolType.TAX_CALCULATORS_HUB]: 'none',
+  [ToolType.RETIREMENT_CALCULATORS_HUB]: 'none',
+  [ToolType.MORTGAGE_CALCULATORS_HUB]: 'none',
+  [ToolType.INVESTMENT_CALCULATORS_HUB]: 'none',
+  [ToolType.MORTGAGE_CALCULATOR_COMPARISON]: 'Article',
 };
+
+const getSchemaType = (slug: string) =>
+  slug.startsWith('academy/') ? 'Article' : pageSchemaType[slug as ToolType] ?? 'WebApplication';
 
 export function generateStaticParams() {
   return [
@@ -79,14 +68,18 @@ export function generateMetadata({ params }: PageProps): Metadata {
   }
 
   const canonicalPath = slug === ToolType.DASHBOARD ? '' : `${slug}/`;
+  // AI-generated, client-only content: keep it out of the index (thin /
+  // unreviewed auto-generated text is a common AdSense rejection reason).
+  const noIndex = slug === ToolType.MARKET_INSIGHTS;
 
   return {
-    title: metadata.title,
-    description: metadata.desc,
+    title: fitTitle(metadata.title),
+    description: clampDescription(metadata.desc),
     keywords: metadata.keywords,
     alternates: {
       canonical: `https://quantcurb.com/${canonicalPath}`
     },
+    ...(noIndex && { robots: { index: false, follow: true } }),
     openGraph: {
       title: metadata.title,
       description: metadata.desc,
@@ -119,28 +112,63 @@ export default function ToolPage({ params }: PageProps) {
   const metadata = TOOL_METADATA[slug];
   const canonicalUrl = `https://quantcurb.com/${slug === ToolType.DASHBOARD ? '' : slug + '/'}`;
 
-  // WebApplication schema
-  const webAppSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": metadata.title,
-    "description": metadata.desc,
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
-    "url": canonicalUrl,
-    "author": {
-      "@type": "Organization",
-      "name": "QuantCurb",
-      "url": "https://quantcurb.com"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "isAccessibleForFree": true,
-    "browserRequirements": "Requires JavaScript"
+  const schemaType = getSchemaType(slug);
+  const publisher = {
+    "@type": "Organization",
+    "name": "QuantCurb",
+    "url": "https://quantcurb.com",
+    "logo": { "@type": "ImageObject", "url": "https://quantcurb.com/og-image.png" }
   };
+
+  // The homepage is described by the WebSite/Organization schema in app/layout.tsx.
+  const pageSchema = slug === ToolType.DASHBOARD || schemaType === 'none'
+    ? null
+    : schemaType === 'WebApplication'
+      ? {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": metadata.title,
+          "description": metadata.desc,
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "All",
+          "url": canonicalUrl,
+          "author": {
+            "@type": "Organization",
+            "name": "QuantCurb",
+            "url": "https://quantcurb.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "isAccessibleForFree": true,
+          "browserRequirements": "Requires JavaScript"
+        }
+      : schemaType === 'Article'
+        ? {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": metadata.title,
+            "description": metadata.desc,
+            "url": canonicalUrl,
+            "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalUrl },
+            "image": "https://quantcurb.com/og-image.png",
+            "author": { "@type": "Organization", "name": "QuantCurb", "url": "https://quantcurb.com" },
+            "publisher": publisher,
+            ...(postDates[slug] && {
+              "datePublished": postDates[slug].published,
+              "dateModified": postDates[slug].modified
+            })
+          }
+        : {
+            "@context": "https://schema.org",
+            "@type": schemaType,
+            "name": metadata.title,
+            "description": metadata.desc,
+            "url": canonicalUrl,
+            "publisher": publisher
+          };
 
   // Breadcrumb schema
   const breadcrumbItems = slug === ToolType.DASHBOARD
@@ -161,46 +189,18 @@ export default function ToolPage({ params }: PageProps) {
     }))
   } : null;
 
-  // FAQ schema (if tool has FAQs)
-  const faqs = toolFAQMap[slug];
-  const faqSchema = faqs && faqs.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  } : null;
-
-  // HowTo schema (for calculator tools)
-  const howToSchema = generateHowToSchemaForTool(slug as ToolType);
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
-      />
+      {pageSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+        />
+      )}
       {breadcrumbSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
-      )}
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
-      {howToSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
         />
       )}
       <AppShell initialTool={slug as ToolType} />

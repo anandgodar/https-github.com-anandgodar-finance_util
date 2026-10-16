@@ -7,6 +7,7 @@ import LenderComparisonTable from './LenderComparisonTable';
 import RateTable from './RateTable';
 import { ToolType } from '../types';
 
+import ToolTitle from './ToolTitle';
 type Mode = 'compare' | 'refinance' | 'prequal';
 
 interface AmortizationRow {
@@ -118,67 +119,6 @@ const LoanComparison: React.FC<LoanComparisonProps> = ({ onNavigate }) => {
     return () => clearTimeout(timer);
   }, [mode, loan1, loan2, monthlyIncome, existingDebt, creditScore]);
 
-  useEffect(() => {
-    // Add HowTo schema for "How to compare loans"
-    const howToSchema = {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Compare Loans: Compare Offers, Refinance Analysis, and Prequalification",
-      "description": "Step-by-step guide to comparing loan offers, analyzing refinancing options, and calculating loan prequalification based on income, debt, and credit score.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "Choose Comparison Mode",
-          "text": "Select Compare (side-by-side loan offers), Refinance (analyze refinancing savings), or Prequal (calculate maximum loan amount)."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "Enter Loan Details",
-          "text": "For Compare/Refinance: Enter loan amount, interest rate, term (years), and closing costs. For Prequal: Enter monthly income, existing debt, credit score, and target debt-to-income ratio."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Review Monthly Payments",
-          "text": "Compare monthly payments (EMI) between loans. Lower payment means more cash flow, but may result in more total interest paid."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 4,
-          "name": "Calculate Total Interest",
-          "text": "See total interest paid over the life of each loan. Lower interest rate saves thousands over time."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 5,
-          "name": "Analyze Break-Even (Refinance)",
-          "text": "For refinancing, calculate break-even point: closing costs ÷ monthly savings = months to break even. If you plan to stay longer, refinancing makes sense."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 6,
-          "name": "Review Amortization Schedule",
-          "text": "View month-by-month payment breakdown showing principal vs interest. Early payments are mostly interest; later payments are mostly principal."
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(howToSchema);
-    script.id = 'howto-schema-loan-comparison';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('howto-schema-loan-comparison');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const activeAmortization = activeSchedule === 'loan1' ? results.schedule1 : results.schedule2;
 
   const comparisonChartData = [
@@ -204,7 +144,7 @@ const LoanComparison: React.FC<LoanComparisonProps> = ({ onNavigate }) => {
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 bg-white p-10 rounded-[4rem] border border-slate-100 shadow-sm relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-[80px] -mr-32 -mt-32"></div>
         <div className="relative z-10">
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tighter">Loan <span className="text-indigo-600">Intel</span></h2>
+          <ToolTitle className="text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tighter">Loan Comparison <span className="text-indigo-600">Calculator</span></ToolTitle>
           <p className="text-slate-500 mt-2 max-w-lg font-medium text-lg">Visual comparison of debt structures, refinancing ROI, and affordability limits.</p>
         </div>
         <div className="flex bg-slate-50 p-1.5 rounded-2xl border border-slate-200 shadow-inner relative z-10">

@@ -1,7 +1,7 @@
 'use client';
 
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ToolType } from '../../types';
 import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
@@ -11,47 +11,6 @@ interface BlogProps {
 }
 
 const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) => {
-  useEffect(() => {
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "401(k) vs IRA 2025: Complete Comparison Guide - Which Retirement Account is Better?",
-      "description": "Compare 401(k) vs IRA in 2025. Learn contribution limits, employer match, tax benefits, withdrawal rules, and which retirement account is better for your situation.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-01-15",
-      "dateModified": "2026-01-15",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/401k-vs-ira-comparison-2025"
-      },
-      "keywords": "401k vs ira, 401k vs roth ira, traditional 401k vs ira, which retirement account is better, 401k contribution limits 2025, ira contribution limits 2025, employer match, retirement planning"
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-401k-ira';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-401k-ira');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {

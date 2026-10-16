@@ -6,6 +6,7 @@ import EmailCapture from './EmailCapture';
 import CalculatorFAQ from './CalculatorFAQ';
 import { ToolType } from '../types';
 
+import ToolTitle from './ToolTitle';
 type FilingStatus = 'single' | 'married' | 'hoh';
 type SafeHarborMethod = 'prior_year' | 'current_year';
 
@@ -249,160 +250,12 @@ END:VCALENDAR`;
     return () => clearTimeout(timer);
   }, [estimatedIncome, selfEmploymentIncome, w2Income, priorYearTax, filingStatus, stateCode, safeHarborMethod]);
 
-  useEffect(() => {
-    // Add HowTo schema for "How to calculate quarterly estimated taxes"
-    const howToSchema = {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Calculate Quarterly Estimated Taxes for Self-Employed and Freelancers",
-      "description": "Step-by-step guide to calculating and paying quarterly estimated taxes (Form 1040-ES) to avoid IRS penalties. Learn safe harbor rules and payment deadlines.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "Estimate Your Annual Income",
-          "text": "Enter your expected self-employment income, W-2 income (if any), and business expenses for the year."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "Calculate Self-Employment Tax",
-          "text": "Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on net self-employment income after expenses."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Calculate Federal and State Income Tax",
-          "text": "Calculate federal income tax using progressive tax brackets and state tax based on your state's rate."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 4,
-          "name": "Determine Safe Harbor Method",
-          "text": "Choose Prior Year Safe Harbor (pay 100% of last year's tax) or Current Year Safe Harbor (pay 90% of this year's tax). Prior year is easier and safer."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 5,
-          "name": "Calculate Quarterly Payment",
-          "text": "Divide your total estimated tax by 4 to get your quarterly payment amount. Pay this amount by each quarterly deadline."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 6,
-          "name": "Pay by Deadlines",
-          "text": "Pay quarterly estimated taxes by: Q1 (April 15), Q2 (June 15), Q3 (September 15), Q4 (January 15). Missing deadlines results in penalties."
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(howToSchema);
-    script.id = 'howto-schema-quarterly-tax';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('howto-schema-quarterly-tax');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    // Add FAQ schema for rich snippets
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Who needs to pay quarterly estimated taxes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You need to pay quarterly estimated taxes if you're self-employed, a freelancer, or have income not subject to withholding (like rental income, dividends, or capital gains). Generally, if you expect to owe $1,000 or more in taxes for the year after subtracting withholding and credits, you must pay quarterly."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are quarterly tax payment deadlines?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Quarterly estimated tax deadlines are: Q1 (Jan-Mar): April 15, Q2 (Apr-May): June 15, Q3 (Jun-Aug): September 15, Q4 (Sep-Dec): January 15 of the following year. If a deadline falls on a weekend or holiday, it's moved to the next business day."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the safe harbor rule for quarterly taxes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Safe harbor rules let you avoid underpayment penalties if you pay either: 1) 100% of last year's tax (110% if AGI > $150,000), or 2) 90% of this year's tax. The prior year safe harbor is easier because you know the exact amount. Our calculator shows both methods."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I calculate quarterly estimated tax payments?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Calculate your total estimated tax (federal income tax + self-employment tax + state tax), then divide by 4. For example, if your total tax is $20,000, pay $5,000 per quarter. Our calculator does this automatically and accounts for safe harbor rules."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens if I miss a quarterly tax payment?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Missing quarterly payments results in underpayment penalties. The penalty is calculated based on how much you underpaid and for how long. The penalty rate is typically around 5-6% annually. Paying on time and using safe harbor rules avoids penalties."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need to pay quarterly taxes if I have a W-2 job?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "If you have a W-2 job with withholding, you may not need quarterly payments if your withholding covers your tax liability. However, if you also have self-employment income, you may need to pay quarterly on that income. Our calculator accounts for both W-2 and self-employment income."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is self-employment tax?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on net self-employment income. This is in addition to income tax. W-2 employees split this with their employer (7.65% each), but self-employed pay the full 15.3%. You can deduct 50% of SE tax on your income tax return."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I adjust my quarterly payments during the year?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! If your income changes during the year, you can adjust your quarterly payments. If you earn more, increase payments to avoid penalties. If you earn less, you can reduce payments, but be careful not to underpay too much. It's better to overpay slightly and get a refund."
-          }
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(faqSchema);
-    script.id = 'faq-schema-quarterly-tax';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('faq-schema-quarterly-tax');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header>
-        <h2 className="text-3xl font-black text-slate-900">
+        <ToolTitle className="text-3xl font-black text-slate-900">
           Quarterly Tax <span className="text-indigo-600">Calculator 2026</span>
-        </h2>
+        </ToolTitle>
         <p className="text-slate-500 mt-2 max-w-3xl font-medium">
           Calculate your IRS Form 1040-ES estimated tax payments. Avoid underpayment penalties with safe harbor rules
           for freelancers, self-employed, and gig workers. Plan for <strong>${calculations.quarterlyPayment.toLocaleString()}</strong> per quarter.

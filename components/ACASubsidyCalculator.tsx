@@ -5,6 +5,7 @@ import { getFinancialAdvice } from '../services/geminiService';
 import CalculatorFAQ from './CalculatorFAQ';
 import { ToolType } from '../types';
 
+import ToolTitle from './ToolTitle';
 type FilingStatus = 'single' | 'married' | 'hoh';
 
 // 2026 Federal Poverty Level (FPL) - Contiguous 48 states + DC (HHS/ASPE, effective Jan 2026)
@@ -177,166 +178,12 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
     return () => clearTimeout(timer);
   }, [householdIncome, householdSize, age, stateCode]);
 
-  useEffect(() => {
-    // Add HowTo schema for "How to calculate ACA subsidy"
-    const howToSchema = {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Calculate ACA Health Insurance Subsidy and Premium Tax Credit",
-      "description": "Step-by-step guide to calculating your ACA marketplace subsidy, Premium Tax Credit, Medicaid eligibility, and monthly healthcare costs for 2026.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "Enter Your Household Income",
-          "text": "Enter your Modified Adjusted Gross Income (MAGI) for the year. This includes wages, self-employment income, and other taxable income."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "Enter Household Size",
-          "text": "Enter the number of people in your household (yourself, spouse, dependents). This affects your Federal Poverty Level (FPL) calculation."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Enter Your Age",
-          "text": "Enter your age (18-64). Premiums increase with age, so older individuals pay more but receive larger subsidies if eligible."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 4,
-          "name": "Select Your State",
-          "text": "Select your state. Medicaid expansion status and benchmark premiums vary by state, affecting your subsidy eligibility."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 5,
-          "name": "Check Medicaid Eligibility",
-          "text": "The calculator shows if you're eligible for Medicaid (free coverage) based on your income and state's expansion status. In expanded states, eligibility is up to 138% of FPL."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 6,
-          "name": "Calculate Premium Tax Credit",
-          "text": "If eligible (100-400% FPL), the calculator shows your Premium Tax Credit (subsidy). This reduces your monthly premium. The subsidy is based on a percentage of your income (0-8.5%)."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 7,
-          "name": "Review Your Monthly Cost",
-          "text": "See your monthly premium after subsidy. For example, if benchmark premium is $600/month and your subsidy is $400/month, you pay $200/month."
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(howToSchema);
-    script.id = 'howto-schema-aca-subsidy';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('howto-schema-aca-subsidy');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    // Add FAQPage schema for ACA subsidy questions
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How do I calculate my ACA subsidy?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Your ACA subsidy (Premium Tax Credit) is based on your Modified Adjusted Gross Income (MAGI), household size, age, and state. The subsidy equals the difference between the benchmark premium (Silver plan) and your maximum premium payment (based on income percentage). Use our calculator by entering your income, household size, age, and state to see your estimated subsidy."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What income qualifies for ACA subsidy?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You qualify for ACA subsidies if your income is between 100% and 400% of the Federal Poverty Level (FPL). For 2026, that's roughly $15,960-$63,840 for a single person, $33,000-$132,000 for a family of 4. Below 100% FPL, you may qualify for Medicaid (in expanded states). Above 400% FPL, subsidies are capped at 8.5% of income."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Modified Adjusted Gross Income (MAGI)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "MAGI is your Adjusted Gross Income (AGI) plus tax-exempt interest, foreign earned income, and certain deductions. For most people, MAGI is close to their AGI. Include wages, self-employment income, interest, dividends, and other taxable income. Use our Freelance Hub to calculate your net income for MAGI estimation."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Am I eligible for Medicaid or ACA subsidy?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "In Medicaid expansion states (most states), you're eligible for Medicaid if income is up to 138% of FPL. Above 138% FPL, you qualify for ACA subsidies. In non-expansion states, Medicaid eligibility is very limited (often only for parents/caretakers at ~41% FPL), creating a 'coverage gap' for adults without children. Our calculator shows your eligibility based on your state."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much will I pay for health insurance with ACA subsidy?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Your monthly premium depends on your income. At 100-150% FPL, you pay 0% of income (free coverage). At 150-200% FPL, you pay 0-2% of income. At 200-250% FPL, you pay 2-4% of income. At 250-400% FPL, you pay 4-8.5% of income. Above 400% FPL, subsidies are capped at 8.5% of income. Our calculator shows your exact monthly cost."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the coverage gap?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The coverage gap exists in non-Medicaid expansion states (like Texas, Florida, Georgia) for adults without children. If your income is below 100% FPL, you don't qualify for Medicaid (unless you're a parent/caretaker) or ACA subsidies (which start at 100% FPL). This leaves you without affordable coverage options. Our calculator shows if you're in the coverage gap."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I qualify for Cost-Sharing Reductions (CSR)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Cost-Sharing Reductions (CSR) are available if your income is 100-250% of FPL and you choose a Silver plan. CSR reduces deductibles, copays, and out-of-pocket maximums. At 100-150% FPL, you get 'Platinum-level' benefits. At 150-200% FPL, you get 'Gold-level' benefits. At 200-250% FPL, you get 'Silver-level' benefits. Our calculator shows your CSR eligibility."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does age affect my ACA premium?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Older individuals pay higher premiums (up to 3x more than younger people). However, subsidies also increase with age because they're based on the benchmark premium. So while your premium is higher, your subsidy is also larger, keeping your out-of-pocket cost based on income percentage. Our calculator accounts for age adjustments."
-          }
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(faqSchema);
-    script.id = 'faq-schema-aca-subsidy';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('faq-schema-aca-subsidy');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header>
-        <h2 className="text-3xl font-black text-slate-900">
+        <ToolTitle className="text-3xl font-black text-slate-900">
           ACA Health Insurance <span className="text-indigo-600">Subsidy Calculator 2026</span>
-        </h2>
+        </ToolTitle>
         <p className="text-slate-500 mt-2 max-w-3xl font-medium">
           Calculate your Affordable Care Act (ACA) Premium Tax Credit and monthly subsidy on Healthcare.gov marketplace.
           Determine eligibility for Medicaid, cost-sharing reductions, and coverage gap status.

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ToolType } from '../../types';
 
 interface MortgageCalculatorComparisonProps {
@@ -6,43 +6,6 @@ interface MortgageCalculatorComparisonProps {
 }
 
 const MortgageCalculatorComparison: React.FC<MortgageCalculatorComparisonProps> = ({ onNavigate }) => {
-  useEffect(() => {
-    // Add Article schema for comparison page
-    const schema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Best Mortgage Calculator 2026: Complete Comparison Guide",
-      "description": "Compare the best mortgage calculators in 2026. Review QuantCurb, Bankrate, Zillow, and other top tools with PITI, PMI, and property tax calculations.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2025-01-15",
-      "dateModified": "2025-01-15"
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(schema);
-    script.id = 'mortgage-comparison-schema';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('mortgage-comparison-schema');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const calculators = [
     {
       name: 'QuantCurb',

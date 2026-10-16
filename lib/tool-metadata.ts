@@ -113,7 +113,7 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
   },
   [ToolType.ACA_SUBSIDY]: {
     title: "ACA Subsidy Calculator - 2026 Marketplace Credits",
-    desc: "Estimate ACA premium tax credits based on income and household size.",
+    desc: "Free 2026 ACA subsidy calculator: estimate your premium tax credit and net Marketplace health insurance cost from household income and size.",
     keywords: "aca subsidy calculator, premium tax credit, marketplace insurance, health insurance subsidy calculator, obamacare calculator, marketplace subsidy calculator, premium tax credit calculator, aca affordability calculator, health insurance marketplace calculator, obamacare subsidy calculator 2026, how much is aca subsidy, health insurance tax credit calculator, cobra vs aca calculator, early retirement health insurance calculator, how much is aca subsidy, who qualifies for aca subsidy, how to calculate aca subsidy, what income qualifies for obamacare subsidy, how does aca subsidy work, is aca subsidy based on gross income, aca vs cobra, marketplace vs employer insurance, silver plan vs gold plan, aca subsidy by state, health insurance marketplace by state, obamacare by state"
   },
   [ToolType.DTI_CALCULATOR]: {
@@ -162,7 +162,7 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "california vs texas salary, state tax comparison, take home pay by state, best states for taxes, tax migration, no income tax states"
   },
   [ToolType.BLOG_CTC_2025]: {
-    title: "Child Tax Credit 2025 Guide - Eligibility, Refunds, and Phaseouts",
+    title: "Child Tax Credit 2025: Eligibility, Refunds & Phaseouts",
     desc: "Learn how the 2025 Child Tax Credit works, who qualifies, and how to calculate refunds.",
     keywords: "child tax credit 2025, ctc guide, tax credits"
   },
@@ -177,7 +177,7 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "quarterly estimated taxes, tax deadlines 2026"
   },
   [ToolType.BLOG_SE_TAX]: {
-    title: "Self-Employment Tax Guide 2026 - Rates, Deductions, and Planning",
+    title: "Self-Employment Tax 2026: Rates, Deductions & Tips",
     desc: "Break down self-employment tax rates and strategies to reduce liability.",
     keywords: "self employment tax guide, se tax 2026"
   },
@@ -502,17 +502,17 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "capital gains tax guide"
   },
   [ToolType.BLOG_W4_MULTIPLE_JOBS]: {
-    title: "The W-4 Multiple Jobs Worksheet, Decoded: Checkbox vs. Worksheet vs. IRS Estimator",
+    title: "W-4 Multiple Jobs Worksheet Explained (2026)",
     desc: "Three IRS-sanctioned ways to fill out a W-4 for two incomes: checkbox, worksheet, or estimator. A decision tree with worked examples from the 2026 IRS tables.",
     keywords: "w4 multiple jobs worksheet, how to fill out w4 two income household, w4 checkbox two jobs, multiple jobs worksheet w4 2026"
   },
   [ToolType.BLOG_REMOTE_WORK_TAXES]: {
-    title: "Remote, But Taxed Where? Reciprocity, the Convenience Rule, and Double Withholding",
+    title: "Remote Work Taxes: Reciprocity & Convenience Rule",
     desc: "Working remotely for an out-of-state employer without moving can mean two states taxing the same paycheck. Reciprocity, the convenience-of-the-employer rule, and worked examples of each.",
     keywords: "remote work state taxes reciprocity, convenience of the employer rule, double state tax withholding remote work, working remotely different state than employer taxes"
   },
   [ToolType.BLOG_SECOND_JOB_BRACKET]: {
-    title: "Second Job, Same Bracket Fear: Why Crossing a Tax Bracket Doesn't Cost What You Think",
+    title: "Second Job Taxes: Marginal vs Effective Rate",
     desc: "Taking a second job can push your combined income into a higher tax bracket, but that doesn't mean your first job's pay gets retaxed at the new rate. A worked example and a decision framework.",
     keywords: "marginal tax rate vs effective tax rate second job, is a second job worth it after taxes, tax bracket second job calculator, does a second job push you into a higher tax bracket"
   },
@@ -532,48 +532,48 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "excess social security tax withheld, social security tax refund multiple employers, schedule 3 line 11 social security, changed jobs social security overpayment, 2026 social security wage base"
   },
   [ToolType.BLOG_PAYROLL_GAP]: {
-    title: "The Payroll Tax Your Calculator Doesn't Model: State Disability & Paid Family Leave",
+    title: "State Disability & Paid Leave Payroll Tax 2026",
     desc: "At least ten states withhold a separate payroll tax for disability and paid family leave insurance, on top of federal, state income tax and FICA. Real 2026 rates and wage caps for all ten, with worked examples for CA, NY, NJ, WA, CO and MA.",
     keywords: "state disability insurance payroll tax, CASDI 2026, NY PFL rate 2026, NJ TDI FLI rate, WA Cares Fund rate, colorado FAMLI rate, massachusetts PFML rate, connecticut paid leave rate, oregon paid leave rate, minnesota paid leave rate, paycheck calculator missing state disability tax"
   },
   [ToolType.BLOG_RSU_WITHHOLDING]: {
-    title: "The 22% RSU Withholding Trap: Why Your Vesting-Day Paycheck Feels Wrong",
+    title: "RSU 22% Withholding Trap: What You Really Owe",
     desc: "Employers withhold a flat 22% federal rate on RSU vests, but your real marginal rate can be 24%, 32% or 35%. Two worked examples show the gap, plus how to close it before it becomes a Q4 underpayment penalty.",
     keywords: "rsu tax withholding 22%, why is my rsu paycheck taxed so much, rsu withholding shortfall, supplemental wage withholding rate, rsu underpayment penalty"
   },
   [ToolType.BLOG_NET_WORTH_PERCENTILE]: {
-    title: "Net Worth Percentile by Age: The Homeownership Gap Behind the Table",
+    title: "Net Worth Percentile by Age: Where Do You Rank?",
     desc: "The Federal Reserve's own 2022 data shows homeowners had a median net worth 38x higher than renters. What the age-only percentile tables miss, and how to read your own number correctly.",
     keywords: "net worth percentile by age, net worth by age calculator, average net worth by age 2026, median net worth by age, homeowner vs renter net worth, am i rich for my age, net worth percentile calculator"
   },
   [ToolType.BLOG_HSA_VS_401K]: {
-    title: "401(k) vs. HSA: Why the Same $500 Doesn't Save You the Same Amount of Tax",
+    title: "HSA vs 401(k): Why the HSA Saves More Tax (FICA)",
     desc: "401(k) contributions only reduce your income-tax wages. HSA contributions made through payroll also reduce your FICA wages, because they run through a Section 125 cafeteria plan. Worked examples at two income levels show the exact gap.",
     keywords: "hsa vs 401k tax savings, does hsa reduce fica tax, hsa fica exemption, section 125 cafeteria plan fica, hsa contribution limits 2026, pretax deduction order 401k hsa"
   },
   [ToolType.BLOG_MIDYEAR_MOVE]: {
-    title: "Moved Mid-Year? The Part-Year-Resident Withholding Problem No Calculator Warns You About",
+    title: "Moved Mid-Year? Part-Year Resident Tax Guide 2026",
     desc: "Working in two states in the same year isn't just 'file two returns.' Many states tax your new-state income at a rate set by your full-year income, not just what you earned there. A worked example and a moving-week checklist.",
     keywords: "moved to new state mid year taxes, part year resident withholding two states, part year resident tax calculation, moving states mid year tax, part year resident California New York"
   },
   [ToolType.BLOG_INDEX]: {
     title: "QuantCurb Blog - Financial Planning Guides",
-    desc: "Browse the QuantCurb financial planning and investing guides.",
+    desc: "Free guides to paycheck taxes, mortgages, retirement, FIRE and debt payoff, with worked examples and links to the matching QuantCurb calculator.",
     keywords: "financial planning blog, investing guides"
   },
   [ToolType.FAQ]: {
     title: "Financial Knowledge Base - FAQs",
-    desc: "Get answers to common financial planning questions.",
+    desc: "Plain-English answers to common questions about paycheck taxes, mortgages, retirement accounts, FIRE, budgeting and paying off debt.",
     keywords: "financial faq, knowledge base"
   },
   [ToolType.METHODOLOGY]: {
     title: "Methodology & Assumptions",
-    desc: "Learn about the assumptions and data sources behind QuantCurb models.",
+    desc: "How QuantCurb calculators work: the formulas, IRS and state tax data sources, and assumptions behind every result, so you can check our math.",
     keywords: "methodology, assumptions"
   },
   [ToolType.PRIVACY]: {
     title: "Privacy Policy",
-    desc: "Read the QuantCurb privacy policy and data handling practices.",
+    desc: "How QuantCurb handles your data: calculator inputs stay in your browser, plus how we use cookies, Google Analytics and Google AdSense ads.",
     keywords: "privacy policy"
   },
   [ToolType.SITEMAP]: {

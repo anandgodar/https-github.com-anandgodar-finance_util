@@ -4,7 +4,7 @@
  * Generates multiple sitemaps for better SEO organization
  *
  * Output files:
- * - sitemap.xml (sitemap index)
+ * - sitemap.xml + sitemap-index.xml (identical sitemap index files)
  * - sitemap-calculators.xml (core calculators + hub pages)
  * - sitemap-blog.xml (blog posts + academy articles)
  * - sitemap-states.xml (all state-specific calculator pages)
@@ -105,7 +105,9 @@ const ALL_STATES = [
   'west-virginia', 'wisconsin', 'wyoming', 'district-of-columbia'
 ];
 
-// Top dividend stocks for DRIP calculator
+// Dividend ticker pages (/dividend-calculator/<ticker>/) are noindexed until
+// they carry substantial server-rendered content, so they are not listed.
+// Top dividend stocks for DRIP calculator (kept for reference)
 const DIVIDEND_TICKERS = [
   'vz', 't', 'xom', 'cvx', 'jnj', 'pg', 'ko', 'pep', 'abbv', 'mo',
   'ibm', 'mmm', 'cat', 'hd', 'wmt', 'cost', 'tgt', 'low', 'mcd', 'sbux',
@@ -117,7 +119,6 @@ const DIVIDEND_TICKERS = [
 // Core tool pages
 const CORE_TOOLS = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
-  { path: '/dashboard/', priority: '0.9', changefreq: 'weekly' },
   { path: '/net-worth-command-center/', priority: '0.9', changefreq: 'monthly' },
   { path: '/emergency-fund-guard/', priority: '0.9', changefreq: 'monthly' },
   { path: '/mortgage-payment-calculator/', priority: '0.95', changefreq: 'weekly' },
@@ -139,6 +140,7 @@ const CORE_TOOLS = [
   { path: '/freelance-profit-hub/', priority: '0.9', changefreq: 'monthly' },
   { path: '/debt-to-income-ratio-calculator/', priority: '0.85', changefreq: 'monthly' },
   { path: '/excel-power-modeler/', priority: '0.8', changefreq: 'monthly' },
+  { path: '/cost-of-living-calculator/', priority: '0.8', changefreq: 'monthly' },
 ];
 
 // Hub pages (high SEO value)
@@ -154,7 +156,7 @@ const HUB_PAGES = [
 const ACADEMY_PAGES = [
   { path: '/valuation-academy/', priority: '0.85', changefreq: 'monthly' },
   { path: '/investment-funds-academy/', priority: '0.85', changefreq: 'monthly' },
-  { path: '/market-intelligence-pulse/', priority: '0.8', changefreq: 'weekly' },
+  // /market-intelligence-pulse/ is noindexed (AI-generated, client-only).
   { path: '/financial-knowledge-base/', priority: '0.8', changefreq: 'monthly' },
 ];
 
@@ -235,12 +237,13 @@ const STATE_CALCULATOR_TYPES = [
   { prefix: '/quarterly-tax-calculator/', priority: '0.85' },
 ];
 
+// Only emit <lastmod> when we have a real per-page date (git history of the
+// page's own source file). A blanket build date on every URL teaches Google to
+// ignore the field. <changefreq>/<priority> are ignored by Google, so omitted.
 function generateUrlEntry(urlPath, priority, changefreq, lastmod) {
   return '  <url>\n' +
          '    <loc>' + SITE_URL + urlPath + '</loc>\n' +
-         '    <lastmod>' + (lastmod || TODAY) + '</lastmod>\n' +
-         '    <changefreq>' + changefreq + '</changefreq>\n' +
-         '    <priority>' + priority + '</priority>\n' +
+         (lastmod ? '    <lastmod>' + lastmod + '</lastmod>\n' : '') +
          '  </url>';
 }
 
@@ -255,7 +258,6 @@ function generateSitemapIndex(sitemaps) {
   var entries = sitemaps.map(function(sitemap) {
     return '  <sitemap>\n' +
            '    <loc>' + SITE_URL + '/' + sitemap + '</loc>\n' +
-           '    <lastmod>' + TODAY + '</lastmod>\n' +
            '  </sitemap>';
   });
 
@@ -288,10 +290,6 @@ function generateCalculatorsSitemap() {
     urls.push(generateUrlEntry(page.path, page.priority, page.changefreq));
   });
 
-  // Dividend calculator pages
-  DIVIDEND_TICKERS.forEach(function(ticker) {
-    urls.push(generateUrlEntry('/dividend-calculator/' + ticker + '/', '0.75', 'weekly'));
-  });
 
   return wrapSitemap(urls);
 }
@@ -328,55 +326,6 @@ function generateStatesSitemap() {
   return wrapSitemap(urls);
 }
 
-function generateComprehensiveSitemap() {
-  var urls = [];
-
-  // Core tools
-  CORE_TOOLS.forEach(function(tool) {
-    urls.push(generateUrlEntry(tool.path, tool.priority, tool.changefreq));
-  });
-
-  // Hub pages
-  HUB_PAGES.forEach(function(page) {
-    urls.push(generateUrlEntry(page.path, page.priority, page.changefreq));
-  });
-
-  // Academy pages
-  ACADEMY_PAGES.forEach(function(page) {
-    urls.push(generateUrlEntry(page.path, page.priority, page.changefreq));
-  });
-
-  // Academy articles
-  ACADEMY_ARTICLES.forEach(function(article) {
-    urls.push(generateUrlEntry('/academy/' + article + '/', '0.8', 'monthly', getFileLastmod(ACADEMY_FILE_MAP[article])));
-  });
-
-  // Company pages
-  COMPANY_PAGES.forEach(function(page) {
-    urls.push(generateUrlEntry(page.path, page.priority, page.changefreq));
-  });
-
-  // Blog index and posts
-  urls.push(generateUrlEntry('/blog/', '0.9', 'weekly'));
-  BLOG_POSTS.forEach(function(post) {
-    urls.push(generateUrlEntry('/blog/' + post + '/', '0.8', 'monthly', getFileLastmod(BLOG_FILE_MAP[post])));
-  });
-
-  // State calculator pages
-  STATE_CALCULATOR_TYPES.forEach(function(calcType) {
-    ALL_STATES.forEach(function(state) {
-      urls.push(generateUrlEntry(calcType.prefix + state + '/', calcType.priority, 'monthly'));
-    });
-  });
-
-  // Dividend calculator pages
-  DIVIDEND_TICKERS.forEach(function(ticker) {
-    urls.push(generateUrlEntry('/dividend-calculator/' + ticker + '/', '0.75', 'weekly'));
-  });
-
-  return wrapSitemap(urls);
-}
-
 function main() {
   console.log('============================================================');
   console.log('QuantCurb Sitemap Generator - Multi-Sitemap Edition');
@@ -404,13 +353,6 @@ function main() {
   var statesCount = (statesSitemap.match(/<url>/g) || []).length;
   console.log('  - ' + statesCount + ' URLs');
 
-  // Generate comprehensive sitemap (for backwards compatibility)
-  console.log('Generating sitemap.xml (comprehensive)...');
-  var mainSitemap = generateComprehensiveSitemap();
-  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), mainSitemap);
-  var mainCount = (mainSitemap.match(/<url>/g) || []).length;
-  console.log('  - ' + mainCount + ' URLs');
-
   // Generate sitemap index
   console.log('Generating sitemap-index.xml...');
   var sitemapIndex = generateSitemapIndex([
@@ -419,11 +361,32 @@ function main() {
     'sitemap-states.xml'
   ]);
   fs.writeFileSync(path.join(publicDir, 'sitemap-index.xml'), sitemapIndex);
+  // sitemap.xml is what robots.txt advertises; keep it identical to the index
+  // so no URL is listed twice across sitemap files.
+  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapIndex);
+
+  // If a build exists, make sure every listed URL was actually generated.
+  var outDir = path.join(__dirname, '../out');
+  if (fs.existsSync(outDir)) {
+    var missing = [];
+    [calcSitemap, blogSitemap, statesSitemap].forEach(function(xml) {
+      (xml.match(/<loc>[^<]+<\/loc>/g) || []).forEach(function(loc) {
+        var urlPath = loc.replace(/<\/?loc>/g, '').replace(SITE_URL, '');
+        if (!fs.existsSync(path.join(outDir, urlPath, 'index.html'))) missing.push(urlPath);
+      });
+    });
+    if (missing.length) {
+      console.log('WARNING: ' + missing.length + ' sitemap URLs have no built page:');
+      missing.forEach(function(u) { console.log('  ' + u); });
+    } else {
+      console.log('All sitemap URLs exist in out/');
+    }
+  }
 
   console.log('');
   console.log('============================================================');
   console.log('SUCCESS: Generated sitemaps');
-  console.log('  - sitemap.xml: ' + mainCount + ' URLs (comprehensive)');
+  console.log('  - sitemap.xml: sitemap index (same as sitemap-index.xml)');
   console.log('  - sitemap-calculators.xml: ' + calcCount + ' URLs');
   console.log('  - sitemap-blog.xml: ' + blogCount + ' URLs');
   console.log('  - sitemap-states.xml: ' + statesCount + ' URLs');

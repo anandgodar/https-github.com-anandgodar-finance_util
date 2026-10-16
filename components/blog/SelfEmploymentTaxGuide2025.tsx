@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ToolType } from '../../types';
 
 interface BlogProps {
@@ -9,49 +9,6 @@ interface BlogProps {
 
 const SelfEmploymentTaxGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-
-  useEffect(() => {
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Self-Employment Tax Guide 2026: Complete Guide to Schedule SE & Tax Calculations",
-      "description": "Master self-employment tax in 2026. Learn the 15.3% rate breakdown, Schedule SE calculations, deduction strategies, and how to minimize your tax burden as a freelancer, contractor, or small business owner.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "url": "https://quantcurb.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-01-06",
-      "dateModified": "2026-10-07",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/self-employment-tax-guide-2025"
-      },
-      "keywords": "self employment tax, schedule SE, self employment tax rate 2026, how to calculate self employment tax, self employment tax deduction, freelance taxes, independent contractor taxes, medicare tax, social security tax",
-      "articleBody": "Complete guide to self-employment tax for freelancers and independent contractors in 2026. Learn how to calculate the 15.3% SE tax, file Schedule SE, claim deductions, and minimize your tax burden."
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-self-employment-tax';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-self-employment-tax');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);

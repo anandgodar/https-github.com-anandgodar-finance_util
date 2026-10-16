@@ -1,7 +1,7 @@
 'use client';
 
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ToolType } from '../../types';
 
 interface BlogProps {
@@ -9,47 +9,6 @@ interface BlogProps {
 }
 
 const ACAHealthInsuranceFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
-  useEffect(() => {
-    // Add Article Schema for SEO
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "ACA Health Insurance for Freelancers 2025: Complete Subsidy Guide",
-      "description": "Complete guide to ACA Marketplace health insurance for freelancers and self-employed. Learn how to calculate subsidies, Premium Tax Credits, Medicaid eligibility, and save thousands on healthcare costs.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-01-04",
-      "dateModified": "2026-01-04",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/aca-health-insurance-freelancers-2025"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-aca';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-aca');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {

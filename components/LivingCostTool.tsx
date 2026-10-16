@@ -3,6 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
 
+import ToolTitle from './ToolTitle';
 const LivingCostTool: React.FC = () => {
   const [monthlyIncome, setMonthlyIncome] = useState<number>(6500);
   const [housing, setHousing] = useState<number>(1800);
@@ -33,7 +34,7 @@ const LivingCostTool: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header>
-        <h2 className="text-3xl font-black text-slate-900">Budget <span className="text-indigo-600">Vitals</span></h2>
+        <ToolTitle className="text-3xl font-black text-slate-900">Cost of Living <span className="text-indigo-600">Calculator</span></ToolTitle>
         <p className="text-slate-500 mt-1 uppercase text-[10px] font-black tracking-widest">Regional Cost & Efficiency Audit</p>
       </header>
 

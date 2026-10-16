@@ -7,6 +7,8 @@ import AuthorCredentials from '../../../components/AuthorCredentials';
 import { ToolType } from '../../../types';
 import { StateConfig } from '../../../lib/state-configs';
 
+import { EmbeddedToolContext } from '../../../components/ToolTitle';
+
 type StateToolClientProps = {
   stateConfig: StateConfig;
 };
@@ -117,7 +119,9 @@ export default function StateToolClient({ stateConfig }: StateToolClientProps) {
 
         {/* The Calculator Tool */}
         <div className="mb-12">
-          <QuarterlyTaxCalculator onNavigate={handleNavigate} initialState={stateConfig.code} />
+          <EmbeddedToolContext.Provider value={true}>
+            <QuarterlyTaxCalculator onNavigate={handleNavigate} initialState={stateConfig.code} />
+          </EmbeddedToolContext.Provider>
         </div>
 
         {/* SEO Content */}

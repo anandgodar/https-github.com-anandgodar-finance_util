@@ -5,6 +5,11 @@ import { Metadata } from 'next';
 import { blogSlugs } from '../../../lib/blog-metadata';
 import { blogMetadata } from '../../../lib/blog-metadata';
 import BlogPostClient from './BlogPostClient';
+import contentDates from '../../../lib/content-dates.json';
+import { fitTitle, clampDescription } from '../../../lib/seo';
+
+// Real dates from git history (scripts/generate-content-dates.cjs), not the build date.
+const postDates = contentDates as Record<string, { published: string; modified: string }>;
 
 type PageProps = {
   params: {
@@ -29,8 +34,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   }
 
   return {
-    title: entry.title,
-    description: entry.description,
+    title: fitTitle(entry.title),
+    description: clampDescription(entry.description),
     alternates: {
       canonical: `https://quantcurb.com/blog/${params.slug}/`
     },
@@ -40,6 +45,10 @@ export function generateMetadata({ params }: PageProps): Metadata {
       url: `https://quantcurb.com/blog/${params.slug}/`,
       siteName: 'QuantCurb',
       type: 'article',
+      ...(postDates[params.slug] && {
+        publishedTime: postDates[params.slug].published,
+        modifiedTime: postDates[params.slug].modified
+      }),
       images: [{
         url: 'https://quantcurb.com/og-image.png',
         width: 1200,
@@ -72,8 +81,10 @@ export default function BlogPostPage({ params }: PageProps) {
     "headline": entry.title,
     "description": entry.description,
     "url": canonicalUrl,
-    "datePublished": new Date().toISOString().split('T')[0],
-    "dateModified": new Date().toISOString().split('T')[0],
+    ...(postDates[params.slug] && {
+      "datePublished": postDates[params.slug].published,
+      "dateModified": postDates[params.slug].modified
+    }),
     "author": {
       "@type": "Organization",
       "name": "QuantCurb",

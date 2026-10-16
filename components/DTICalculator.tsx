@@ -95,67 +95,6 @@ const DTICalculator: React.FC<DTICalculatorProps> = ({ onNavigate }) => {
     return () => clearTimeout(timer);
   }, [grossMonthlyIncome, additionalIncome, mortgageOrRent, carPayments, studentLoans, creditCards, personalLoans, otherDebts]);
 
-  useEffect(() => {
-    // Add HowTo schema for "How to calculate debt-to-income ratio"
-    const howToSchema = {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Calculate Your Debt-to-Income (DTI) Ratio for Mortgage Approval",
-      "description": "Step-by-step guide to calculating your debt-to-income ratio to determine if you qualify for a mortgage or loan. Learn the 28/36 rule used by lenders.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "Calculate Total Monthly Income",
-          "text": "Add up your gross monthly income (before taxes) from all sources including salary, bonuses, rental income, and side income."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "List All Monthly Debt Payments",
-          "text": "List all minimum monthly debt payments: mortgage/rent, car loans, student loans, credit cards, personal loans, and other recurring debts."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Calculate Front-End Ratio",
-          "text": "Divide your monthly housing costs (mortgage, property tax, insurance, HOA) by your gross monthly income. Multiply by 100 to get percentage. Lenders prefer 28% or less."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 4,
-          "name": "Calculate Back-End Ratio",
-          "text": "Divide your total monthly debt payments by your gross monthly income. Multiply by 100. This is your DTI ratio. Lenders prefer 36% or less, with 43% as the maximum for most loans."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 5,
-          "name": "Compare to Lender Requirements",
-          "text": "Excellent DTI: <28%. Good DTI: 28-36%. Fair DTI: 36-43%. Poor DTI: >43%. FHA loans allow up to 43%, conventional loans prefer 36% or less."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 6,
-          "name": "Improve Your DTI if Needed",
-          "text": "To improve DTI: increase income, pay down high-interest debt, avoid new debt, consider debt consolidation, or make extra payments on existing debt."
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(howToSchema);
-    script.id = 'howto-schema-dti';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('howto-schema-dti');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const pieData = [
     { name: 'Available Income', value: Math.max(0, calculations.totalMonthlyIncome - calculations.totalMonthlyDebts), color: '#10b981' },
     { name: 'Debt Payments', value: calculations.totalMonthlyDebts, color: '#ef4444' }

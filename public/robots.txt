@@ -1,72 +1,11 @@
-# QuantCurb.com - Financial Intelligence Platform
-# Last updated: 2026-02-01
-# Contact: support@quantcurb.com
+# QuantCurb.com robots.txt
+# Note: /_next/ must stay crawlable - Google needs the CSS/JS there to render pages.
 
-# =============================================================
-# Default rules for all crawlers
-# =============================================================
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /_next/
-Disallow: /private/
-Disallow: /404/
-Disallow: /*.json$
-Disallow: /*?*
-
-# Crawl delay to be polite
-Crawl-delay: 1
-
-# =============================================================
-# Google-specific directives
-# =============================================================
-User-agent: Googlebot
-Allow: /
-Disallow: /api/
-Disallow: /_next/
 Disallow: /404/
 
-User-agent: Googlebot-Image
-Allow: /og-image.png
-Allow: /images/
-Disallow: /_next/
-
-User-agent: Googlebot-News
-Allow: /blog/
-
-# =============================================================
-# Bing-specific directives
-# =============================================================
-User-agent: Bingbot
-Allow: /
-Disallow: /api/
-Disallow: /_next/
-Disallow: /404/
-
-# =============================================================
-# AI Crawlers - Allow for discovery and training
-# =============================================================
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Anthropic-ai
-Allow: /
-
-# =============================================================
-# Block bad bots and scrapers
-# =============================================================
+# SEO tool crawlers (not search engines)
 User-agent: AhrefsBot
 Disallow: /
 
@@ -79,15 +18,4 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-# =============================================================
-# Sitemaps
-# =============================================================
 Sitemap: https://quantcurb.com/sitemap.xml
-Sitemap: https://quantcurb.com/sitemap-blog.xml
-Sitemap: https://quantcurb.com/sitemap-calculators.xml
-Sitemap: https://quantcurb.com/sitemap-states.xml
-
-# =============================================================
-# Host declaration (canonical domain)
-# =============================================================
-Host: https://quantcurb.com
