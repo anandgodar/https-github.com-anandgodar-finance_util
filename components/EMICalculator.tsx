@@ -131,11 +131,11 @@ const EMICalculator: React.FC<EMICalculatorProps> = ({ onNavigate }) => {
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="interestRate" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">APR (%)</label>
-                  <input id="interestRate" type="number" step="0.1" value={interestRate} onChange={e => setInterestRate(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
+                  <input id="interestRate" type="number" inputMode="decimal" step="0.1" value={interestRate} onChange={e => setInterestRate(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="tenure" className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Term (Yrs)</label>
-                  <input id="tenure" type="number" value={tenure} onChange={e => setTenure(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
+                  <input id="tenure" type="number" inputMode="decimal" value={tenure} onChange={e => setTenure(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
                 </div>
               </div>
 

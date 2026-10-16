@@ -96,7 +96,7 @@ export default function BlogPostPage({ params }: PageProps) {
       "url": "https://quantcurb.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://quantcurb.com/og-image.png"
+        "url": "https://quantcurb.com/logo.png"
       }
     },
     "image": "https://quantcurb.com/og-image.png",

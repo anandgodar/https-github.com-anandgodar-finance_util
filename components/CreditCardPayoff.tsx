@@ -149,7 +149,7 @@ const CreditCardPayoff: React.FC<CreditCardPayoffProps> = ({ onNavigate }) => {
             </div>
             <div>
               <label className="block text-[10px] font-black text-slate-400 uppercase mb-3">Total Monthly Payment ($)</label>
-              <input type="number" value={targetMonthly} onChange={e => setTargetMonthly(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-2xl text-rose-600 focus:ring-2 focus:ring-rose-500" />
+              <input type="number" inputMode="decimal" value={targetMonthly} onChange={e => setTargetMonthly(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-2xl text-rose-600 focus:ring-2 focus:ring-rose-500" />
               {stats?.isBudgetTooLow && <p className="mt-2 text-[10px] font-bold text-rose-500 uppercase">Warning: Budget is below minimum payments!</p>}
             </div>
           </section>
@@ -171,9 +171,9 @@ const CreditCardPayoff: React.FC<CreditCardPayoffProps> = ({ onNavigate }) => {
             <div className="pt-6 border-t border-slate-50 space-y-4">
               <input placeholder="Card Name" className="w-full p-3 bg-slate-50 rounded-xl text-sm font-bold border-none" value={newCard.name} onChange={e => setNewCard({...newCard, name: e.target.value})} />
               <div className="grid grid-cols-3 gap-3">
-                <input placeholder="Balance" type="number" className="w-full p-3 bg-slate-50 rounded-xl text-sm font-bold border-none" value={newCard.balance} onChange={e => setNewCard({...newCard, balance: e.target.value})} />
-                <input placeholder="APR %" type="number" className="w-full p-3 bg-slate-50 rounded-xl text-sm font-bold border-none" value={newCard.rate} onChange={e => setNewCard({...newCard, rate: e.target.value})} />
-                <input placeholder="Min $" type="number" className="w-full p-3 bg-slate-50 rounded-xl text-sm font-bold border-none" value={newCard.min} onChange={e => setNewCard({...newCard, min: e.target.value})} />
+                <input placeholder="Balance" type="number" inputMode="decimal" className="w-full p-3 bg-slate-50 rounded-xl text-sm font-bold border-none" value={newCard.balance} onChange={e => setNewCard({...newCard, balance: e.target.value})} />
+                <input placeholder="APR %" type="number" inputMode="decimal" className="w-full p-3 bg-slate-50 rounded-xl text-sm font-bold border-none" value={newCard.rate} onChange={e => setNewCard({...newCard, rate: e.target.value})} />
+                <input placeholder="Min $" type="number" inputMode="decimal" className="w-full p-3 bg-slate-50 rounded-xl text-sm font-bold border-none" value={newCard.min} onChange={e => setNewCard({...newCard, min: e.target.value})} />
               </div>
               <button onClick={addCard} className="w-full py-4 bg-slate-900 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-rose-600 transition-colors">Add Debt Source</button>
             </div>
@@ -310,7 +310,7 @@ const CreditCardPayoff: React.FC<CreditCardPayoffProps> = ({ onNavigate }) => {
             <div>
               <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Transfer Rate (APR %)</label>
               <input 
-                type="number" 
+                type="number" inputMode="decimal" 
                 step="0.1"
                 value={balanceTransferRate} 
                 onChange={(e) => setBalanceTransferRate(Number(e.target.value))} 
@@ -322,7 +322,7 @@ const CreditCardPayoff: React.FC<CreditCardPayoffProps> = ({ onNavigate }) => {
             <div>
               <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Transfer Fee (%)</label>
               <input 
-                type="number" 
+                type="number" inputMode="decimal" 
                 step="0.1"
                 value={balanceTransferFee} 
                 onChange={(e) => setBalanceTransferFee(Number(e.target.value))} 

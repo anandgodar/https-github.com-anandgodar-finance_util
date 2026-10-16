@@ -112,24 +112,24 @@ const InvestmentCalculator: React.FC<InvestmentCalculatorProps> = ({ onNavigate 
         <div className="lg:col-span-1 bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
           <div>
             <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Initial Investment ($)</label>
-            <input type="number" value={initialInvestment} onChange={(e) => setInitialInvestment(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
+            <input type="number" inputMode="decimal" value={initialInvestment} onChange={(e) => setInitialInvestment(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
           </div>
           <div>
             <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Monthly Contribution ($)</label>
-            <input type="number" value={monthlyContribution} onChange={(e) => setMonthlyContribution(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
+            <input type="number" inputMode="decimal" value={monthlyContribution} onChange={(e) => setMonthlyContribution(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
           </div>
           <div>
             <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Expected Return (%)</label>
-            <input type="number" step="0.1" value={expectedReturn} onChange={(e) => setExpectedReturn(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
+            <input type="number" inputMode="decimal" step="0.1" value={expectedReturn} onChange={(e) => setExpectedReturn(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
           </div>
           <div>
             <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Time Horizon (Years)</label>
-            <input type="number" value={years} onChange={(e) => setYears(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
+            <input type="number" inputMode="decimal" value={years} onChange={(e) => setYears(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-bold" />
           </div>
           <div>
             <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Dividend Yield (%)</label>
             <input 
-              type="number" 
+              type="number" inputMode="decimal" 
               step="0.1" 
               value={dividendYield} 
               onChange={(e) => setDividendYield(Number(e.target.value))} 
@@ -154,7 +154,7 @@ const InvestmentCalculator: React.FC<InvestmentCalculatorProps> = ({ onNavigate 
               <div>
                 <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Target Amount ($)</label>
                 <input 
-                  type="number" 
+                  type="number" inputMode="decimal" 
                   value={targetGoal} 
                   onChange={(e) => setTargetGoal(Number(e.target.value))} 
                   className="w-full p-3 bg-white border border-slate-200 rounded-xl font-bold" 
@@ -164,7 +164,7 @@ const InvestmentCalculator: React.FC<InvestmentCalculatorProps> = ({ onNavigate 
               <div>
                 <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Years to Goal</label>
                 <input 
-                  type="number" 
+                  type="number" inputMode="decimal" 
                   value={targetDate} 
                   onChange={(e) => setTargetDate(Number(e.target.value))} 
                   className="w-full p-3 bg-white border border-slate-200 rounded-xl font-bold" 

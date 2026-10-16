@@ -142,7 +142,7 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
                 Qualifying Children (Under 17)
               </label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 min="0"
                 max="10"
                 value={childrenUnder17}
@@ -157,7 +157,7 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
                 Other Dependents (17+)
               </label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 min="0"
                 max="10"
                 value={otherDependents}
@@ -189,7 +189,7 @@ const ChildTaxCreditCalculator: React.FC<ChildTaxCreditCalculatorProps> = ({ onN
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-xl">$</span>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   min="0"
                   step="1000"
                   value={magi}

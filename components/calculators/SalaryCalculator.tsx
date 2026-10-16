@@ -23,7 +23,7 @@ const SalaryCalculator: React.FC = () => {
         <label className="flex flex-col gap-2 text-sm font-medium text-slate-700">
           Annual Salary
           <input
-            type="number"
+            type="number" inputMode="decimal"
             min={0}
             value={annualSalary}
             onChange={(event) => setAnnualSalary(Number(event.target.value))}
@@ -33,7 +33,7 @@ const SalaryCalculator: React.FC = () => {
         <label className="flex flex-col gap-2 text-sm font-medium text-slate-700">
           Pay Periods / Year
           <input
-            type="number"
+            type="number" inputMode="decimal"
             min={1}
             value={payPeriods}
             onChange={(event) => setPayPeriods(Number(event.target.value))}

@@ -73,7 +73,7 @@ const GSTCalculator: React.FC = () => {
           <section className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm space-y-10">
              <div>
                 <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Input Amount ($)</label>
-                <input type="number" value={amount} onChange={e => setAmount(Number(e.target.value))} className="w-full p-6 bg-slate-50 border-none rounded-[2rem] font-black text-4xl text-emerald-600" />
+                <input type="number" inputMode="decimal" value={amount} onChange={e => setAmount(Number(e.target.value))} className="w-full p-6 bg-slate-50 border-none rounded-[2rem] font-black text-4xl text-emerald-600" />
              </div>
              
              <div className="grid grid-cols-2 gap-6">

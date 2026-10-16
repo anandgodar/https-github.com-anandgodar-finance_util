@@ -299,7 +299,7 @@ const OptionsStrategyVisualizer: React.FC = () => {
                     <label className="space-y-1">
                       <span className="text-[9px] text-slate-500 font-bold uppercase">Strike</span>
                       <input
-                        type="number"
+                        type="number" inputMode="decimal"
                         value={leg.strike}
                         onChange={(e) => updateLeg(leg.id, 'strike', Number(e.target.value))}
                         className="w-full px-2 py-1.5 text-sm font-bold bg-white border border-slate-300 rounded-lg"
@@ -308,7 +308,7 @@ const OptionsStrategyVisualizer: React.FC = () => {
                     <label className="space-y-1">
                       <span className="text-[9px] text-slate-500 font-bold uppercase">Premium</span>
                       <input
-                        type="number"
+                        type="number" inputMode="decimal"
                         step="0.1"
                         value={leg.premium}
                         onChange={(e) => updateLeg(leg.id, 'premium', Number(e.target.value))}
@@ -320,7 +320,7 @@ const OptionsStrategyVisualizer: React.FC = () => {
                   <label className="space-y-1">
                     <span className="text-[9px] text-slate-500 font-bold uppercase">Quantity (Contracts)</span>
                     <input
-                      type="number"
+                      type="number" inputMode="decimal"
                       value={leg.quantity}
                       onChange={(e) => updateLeg(leg.id, 'quantity', Number(e.target.value))}
                       className="w-full px-2 py-1.5 text-sm font-bold bg-white border border-slate-300 rounded-lg"
@@ -398,7 +398,7 @@ const OptionsStrategyVisualizer: React.FC = () => {
                   <label className="flex items-center gap-2">
                     <span className="text-[10px] font-bold text-slate-500">Current Price:</span>
                     <input
-                      type="number"
+                      type="number" inputMode="decimal"
                       value={stockPrice}
                       onChange={(e) => setStockPrice(Number(e.target.value))}
                       className="w-20 px-2 py-1 text-sm font-bold bg-slate-50 border border-slate-300 rounded-lg"

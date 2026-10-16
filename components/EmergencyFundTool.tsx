@@ -102,7 +102,7 @@ const EmergencyFundTool: React.FC<EmergencyFundToolProps> = ({ onNavigate }) => 
                   <span className="text-xl font-black text-slate-900">${Math.round(stats.stressedMonthly).toLocaleString()}</span>
                 </div>
                 <input 
-                  type="number" 
+                  type="number" inputMode="decimal" 
                   value={monthlyExpenses} 
                   onChange={e => setMonthlyExpenses(Number(e.target.value))} 
                   className="w-full p-6 bg-slate-50 border-none rounded-[1.5rem] font-black text-3xl text-slate-700 focus:ring-2 focus:ring-emerald-500 transition-all shadow-inner" 
@@ -115,7 +115,7 @@ const EmergencyFundTool: React.FC<EmergencyFundToolProps> = ({ onNavigate }) => 
                   <span className="text-xl font-black text-emerald-600">${currentCash.toLocaleString()}</span>
                 </div>
                 <input 
-                  type="number" 
+                  type="number" inputMode="decimal" 
                   value={currentCash} 
                   onChange={e => setCurrentCash(Number(e.target.value))} 
                   className="w-full p-6 bg-emerald-50 border-none rounded-[1.5rem] font-black text-3xl text-emerald-600 focus:ring-2 focus:ring-emerald-500 transition-all shadow-inner" 

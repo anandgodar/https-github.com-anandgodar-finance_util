@@ -148,7 +148,7 @@ const DTICalculator: React.FC<DTICalculatorProps> = ({ onNavigate }) => {
               <div>
                 <label className="block text-sm font-bold text-slate-700 mb-2">Gross Monthly Income</label>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={grossMonthlyIncome}
                   onChange={(e) => setGrossMonthlyIncome(Number(e.target.value))}
                   className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-lg font-semibold"
@@ -159,7 +159,7 @@ const DTICalculator: React.FC<DTICalculatorProps> = ({ onNavigate }) => {
               <div>
                 <label className="block text-sm font-bold text-slate-700 mb-2">Additional Income (Optional)</label>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={additionalIncome}
                   onChange={(e) => setAdditionalIncome(Number(e.target.value))}
                   className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-lg font-semibold"
@@ -176,7 +176,7 @@ const DTICalculator: React.FC<DTICalculatorProps> = ({ onNavigate }) => {
               <div>
                 <label className="block text-sm font-bold text-slate-700 mb-2">Mortgage/Rent Payment</label>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={mortgageOrRent}
                   onChange={(e) => setMortgageOrRent(Number(e.target.value))}
                   className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-lg font-semibold"
@@ -186,7 +186,7 @@ const DTICalculator: React.FC<DTICalculatorProps> = ({ onNavigate }) => {
               <div>
                 <label className="block text-sm font-bold text-slate-700 mb-2">Car Payments</label>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={carPayments}
                   onChange={(e) => setCarPayments(Number(e.target.value))}
                   className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-lg font-semibold"
@@ -196,7 +196,7 @@ const DTICalculator: React.FC<DTICalculatorProps> = ({ onNavigate }) => {
               <div>
                 <label className="block text-sm font-bold text-slate-700 mb-2">Student Loans</label>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={studentLoans}
                   onChange={(e) => setStudentLoans(Number(e.target.value))}
                   className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-lg font-semibold"
@@ -206,7 +206,7 @@ const DTICalculator: React.FC<DTICalculatorProps> = ({ onNavigate }) => {
               <div>
                 <label className="block text-sm font-bold text-slate-700 mb-2">Credit Card Minimums</label>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={creditCards}
                   onChange={(e) => setCreditCards(Number(e.target.value))}
                   className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-lg font-semibold"
@@ -216,7 +216,7 @@ const DTICalculator: React.FC<DTICalculatorProps> = ({ onNavigate }) => {
               <div>
                 <label className="block text-sm font-bold text-slate-700 mb-2">Personal Loans</label>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={personalLoans}
                   onChange={(e) => setPersonalLoans(Number(e.target.value))}
                   className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-lg font-semibold"
@@ -226,7 +226,7 @@ const DTICalculator: React.FC<DTICalculatorProps> = ({ onNavigate }) => {
               <div>
                 <label className="block text-sm font-bold text-slate-700 mb-2">Other Debts</label>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={otherDebts}
                   onChange={(e) => setOtherDebts(Number(e.target.value))}
                   className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-lg font-semibold"

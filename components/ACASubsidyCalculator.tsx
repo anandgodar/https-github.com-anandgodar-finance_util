@@ -208,7 +208,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-xl">$</span>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   min="0"
                   step="1000"
                   value={householdIncome}
@@ -224,7 +224,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
                 Household Size
               </label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 min="1"
                 max="15"
                 value={householdSize}
@@ -240,7 +240,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
                   Your Age
                 </label>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   min="18"
                   max="64"
                   value={age}

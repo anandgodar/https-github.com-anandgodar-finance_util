@@ -358,7 +358,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
                   className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-indigo-600" 
                 />
                 <input 
-                  type="number" 
+                  type="number" inputMode="decimal" 
                   value={annualGross} 
                   onChange={e => setAnnualGross(Number(e.target.value))} 
                   className="w-full p-5 bg-slate-50 border-none rounded-[1.5rem] font-black text-2xl text-slate-700 shadow-inner focus:ring-2 focus:ring-indigo-500 transition-all" 
@@ -369,7 +369,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
                 <div className="space-y-3">
                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Annual Bonus ($)</label>
                    <input 
-                     type="number" 
+                     type="number" inputMode="decimal" 
                      value={bonus} 
                      onChange={e => setBonus(Number(e.target.value))} 
                      className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-lg text-slate-700 shadow-inner" 
@@ -419,7 +419,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
               <div className="space-y-4">
                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">Medical / Insurance Premiums ($/yr)</label>
                 <input 
-                  type="number" 
+                  type="number" inputMode="decimal" 
                   value={healthInsurance} 
                   onChange={e => setHealthInsurance(Number(e.target.value))} 
                   className="w-full p-5 bg-slate-50 border-none rounded-[1.5rem] font-black text-2xl text-slate-700 shadow-inner focus:ring-2 focus:ring-indigo-500 transition-all" 

@@ -1,4 +1,3 @@
-import { GoogleGenAI, Type } from "@google/genai";
 
 const parseJSONSafely = (text: string | undefined) => {
   if (!text) return {};
@@ -19,10 +18,19 @@ const parseJSONSafely = (text: string | undefined) => {
   }
 };
 
-const getAIClient = () => {
+// Shown in the calculators' AI panels when no Gemini key is configured. Be
+// honest about it instead of implying a temporary outage.
+export const AI_UNAVAILABLE_MESSAGE =
+  "AI insights aren't available right now. Your results above are calculated directly from the inputs you entered.";
+
+// The SDK is loaded on demand so it isn't bundled into every calculator page.
+// In the static export process.env.API_KEY is undefined in the browser, so the
+// import never runs unless a key is deliberately provided.
+const getAIClient = async () => {
   const apiKey = process.env.API_KEY;
   if (!apiKey) return null;
-  return new GoogleGenAI({ apiKey });
+  const { GoogleGenAI, Type } = await import('@google/genai');
+  return { ai: new GoogleGenAI({ apiKey }), Type };
 };
 
 async function withRetry<T>(fn: () => Promise<T>, retries = 3, delay = 2000): Promise<T | null> {
@@ -42,8 +50,9 @@ async function withRetry<T>(fn: () => Promise<T>, retries = 3, delay = 2000): Pr
 
 export const getMarketAnalysis = async () => {
   return withRetry(async () => {
-    const ai = getAIClient();
-    if (!ai) return { marketSummary: "AI intelligence unavailable.", keyInsights: [], ecosystemApps: [], comparisonMetrics: [] };
+    const client = await getAIClient();
+    if (!client) return { marketSummary: "AI market analysis is not available right now.", keyInsights: [], ecosystemApps: [], comparisonMetrics: [] };
+    const { ai, Type } = client;
     
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
@@ -117,8 +126,9 @@ export const getMarketAnalysis = async () => {
 
 export const getFinancialAdvice = async (data: any, context: string) => {
   const result = await withRetry(async () => {
-    const ai = getAIClient();
-    if (!ai) return null;
+    const client = await getAIClient();
+    if (!client) return AI_UNAVAILABLE_MESSAGE;
+    const { ai } = client;
     
     const response = await ai.models.generateContent({
       model: 'gemini-3-pro-preview',
@@ -127,5 +137,5 @@ export const getFinancialAdvice = async (data: any, context: string) => {
     return response.text;
   });
 
-  return result || "AI processing high volume. Please refresh.";
+  return result || AI_UNAVAILABLE_MESSAGE;
 };

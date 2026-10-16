@@ -146,7 +146,7 @@ const CurrencyConverter: React.FC = () => {
                 <div className="flex items-center gap-6">
                    <div className="flex-1 relative group">
                       <input 
-                        type="number" 
+                        type="number" inputMode="decimal" 
                         value={amount} 
                         onChange={e => setAmount(Number(e.target.value))} 
                         className="w-full p-0 bg-transparent border-none font-black text-6xl text-slate-900 focus:ring-0 placeholder-slate-200 transition-all"

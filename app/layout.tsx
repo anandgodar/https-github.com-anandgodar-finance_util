@@ -18,6 +18,28 @@ export const viewport: Viewport = {
   themeColor: '#4f46e5',
 };
 
+// Optional HTML-tag verification for Search Console / Bing Webmaster Tools.
+// Set these in the Vercel project's environment variables (build time); DNS
+// verification needs no code at all.
+const siteVerification: Metadata['verification'] | undefined =
+  process.env.GOOGLE_SITE_VERIFICATION || process.env.BING_SITE_VERIFICATION
+    ? {
+        ...(process.env.GOOGLE_SITE_VERIFICATION && { google: process.env.GOOGLE_SITE_VERIFICATION }),
+        ...(process.env.BING_SITE_VERIFICATION && {
+          other: { 'msvalidate.01': process.env.BING_SITE_VERIFICATION }
+        })
+      }
+    : undefined;
+
+// Google Consent Mode v2: deny ad/analytics storage by default for visitors in
+// the EEA, UK and Switzerland until they answer the consent message (the
+// AdSense "European regulations" message updates these signals).
+const CONSENT_REGIONS = [
+  'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IS', 'IE',
+  'IT', 'LV', 'LI', 'LT', 'LU', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE',
+  'GB', 'CH'
+];
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://quantcurb.com'),
   title: {
@@ -78,6 +100,7 @@ export const metadata: Metadata = {
       'max-snippet': -1
     }
   },
+  ...(siteVerification && { verification: siteVerification }),
   category: 'finance',
   creator: 'QuantCurb',
   publisher: 'QuantCurb',
@@ -95,7 +118,7 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'QuantCurb',
   url: 'https://quantcurb.com',
-  logo: 'https://quantcurb.com/og-image.png',
+  logo: 'https://quantcurb.com/logo.png',
   description: 'Free financial calculators for take-home pay, mortgages, taxes, and investments.',
   foundingDate: '2024',
   sameAs: [
@@ -147,6 +170,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <Script id="consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              region: ${JSON.stringify(CONSENT_REGIONS)},
+              wait_for_update: 500
+            });
+          `}
+        </Script>
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-WSKZ5JNETS" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">
           {`

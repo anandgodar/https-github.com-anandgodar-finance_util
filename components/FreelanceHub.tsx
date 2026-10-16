@@ -108,13 +108,13 @@ const FreelanceHub: React.FC<FreelanceHubProps> = ({ onNavigate, initialState })
                 <label className="block text-[10px] font-black text-slate-400 uppercase mb-3">Gross Monthly Revenue</label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
-                  <input type="number" value={grossIncome} onChange={e => setGrossIncome(Number(e.target.value))} className="w-full pl-10 p-4 bg-slate-50 border-none rounded-2xl font-black text-xl text-slate-700 focus:ring-2 focus:ring-indigo-500" />
+                  <input type="number" inputMode="decimal" value={grossIncome} onChange={e => setGrossIncome(Number(e.target.value))} className="w-full pl-10 p-4 bg-slate-50 border-none rounded-2xl font-black text-xl text-slate-700 focus:ring-2 focus:ring-indigo-500" />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">Hours / Mo</label>
-                  <input type="number" value={hoursWorked} onChange={e => setHoursWorked(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
+                  <input type="number" inputMode="decimal" value={hoursWorked} onChange={e => setHoursWorked(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">State Nexus</label>
@@ -131,29 +131,29 @@ const FreelanceHub: React.FC<FreelanceHubProps> = ({ onNavigate, initialState })
             <div className="grid grid-cols-2 gap-4">
                <div>
                  <label className="block text-[9px] font-black text-slate-400 uppercase mb-1">Software</label>
-                 <input type="number" value={expSoftware} onChange={e => setExpSoftware(Number(e.target.value))} className="w-full p-3 bg-slate-50 border-none rounded-xl font-bold" />
+                 <input type="number" inputMode="decimal" value={expSoftware} onChange={e => setExpSoftware(Number(e.target.value))} className="w-full p-3 bg-slate-50 border-none rounded-xl font-bold" />
                </div>
                <div>
                  <label className="block text-[9px] font-black text-slate-400 uppercase mb-1">Marketing</label>
-                 <input type="number" value={expMarketing} onChange={e => setExpMarketing(Number(e.target.value))} className="w-full p-3 bg-slate-50 border-none rounded-xl font-bold" />
+                 <input type="number" inputMode="decimal" value={expMarketing} onChange={e => setExpMarketing(Number(e.target.value))} className="w-full p-3 bg-slate-50 border-none rounded-xl font-bold" />
                </div>
                <div>
                  <label className="block text-[9px] font-black text-slate-400 uppercase mb-1">Coworking</label>
-                 <input type="number" value={expOffice} onChange={e => setExpOffice(Number(e.target.value))} className="w-full p-3 bg-slate-50 border-none rounded-xl font-bold" />
+                 <input type="number" inputMode="decimal" value={expOffice} onChange={e => setExpOffice(Number(e.target.value))} className="w-full p-3 bg-slate-50 border-none rounded-xl font-bold" />
                </div>
                <div>
                  <label className="block text-[9px] font-black text-slate-400 uppercase mb-1">Hardware</label>
-                 <input type="number" value={expHardware} onChange={e => setExpHardware(Number(e.target.value))} className="w-full p-3 bg-slate-50 border-none rounded-xl font-bold" />
+                 <input type="number" inputMode="decimal" value={expHardware} onChange={e => setExpHardware(Number(e.target.value))} className="w-full p-3 bg-slate-50 border-none rounded-xl font-bold" />
                </div>
             </div>
             <div className="pt-6 border-t border-slate-50 space-y-4">
                <div>
                  <label className="block text-[9px] font-black text-indigo-500 uppercase mb-1">Health Insurance</label>
-                 <input type="number" value={expHealthcare} onChange={e => setExpHealthcare(Number(e.target.value))} className="w-full p-3 bg-indigo-50 border-none rounded-xl font-bold" />
+                 <input type="number" inputMode="decimal" value={expHealthcare} onChange={e => setExpHealthcare(Number(e.target.value))} className="w-full p-3 bg-indigo-50 border-none rounded-xl font-bold" />
                </div>
                <div>
                  <label className="block text-[9px] font-black text-indigo-500 uppercase mb-1">Solo 401k / SEP IRA</label>
-                 <input type="number" value={expRetirement} onChange={e => setExpRetirement(Number(e.target.value))} className="w-full p-3 bg-indigo-50 border-none rounded-xl font-bold" />
+                 <input type="number" inputMode="decimal" value={expRetirement} onChange={e => setExpRetirement(Number(e.target.value))} className="w-full p-3 bg-indigo-50 border-none rounded-xl font-bold" />
                </div>
             </div>
           </section>
