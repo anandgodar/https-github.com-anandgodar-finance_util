@@ -21,3 +21,8 @@ const ToolTitle: React.FC<ToolTitleProps> = ({ className, children }) => {
 };
 
 export default ToolTitle;
+
+/** Wraps a calculator rendered inside a page that has its own <h1>. */
+export const EmbeddedTool: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <EmbeddedToolContext.Provider value={true}>{children}</EmbeddedToolContext.Provider>
+);
