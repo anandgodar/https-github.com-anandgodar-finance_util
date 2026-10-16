@@ -53,7 +53,7 @@ const SiteShell: React.FC<SiteShellProps> = ({ activeTool = ToolType.BLOG_INDEX,
         </header>
 
         <div className="flex-1">
-          <div className="max-w-7xl mx-auto px-0 md:px-2 lg:px-3 py-0 md:py-2 lg:py-3">
+          <div className="max-w-7xl mx-auto px-4 md:px-2 lg:px-3 py-0 md:py-2 lg:py-3">
             {children}
           </div>
         </div>

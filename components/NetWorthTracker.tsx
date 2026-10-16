@@ -127,7 +127,7 @@ const NetWorthTracker: React.FC<NetWorthTrackerProps> = ({ onNavigate }) => {
                     <div className="relative">
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 font-bold">$</span>
                       <input 
-                        type="number" 
+                        type="number" inputMode="decimal" 
                         value={item.val} 
                         onChange={e => item.set(Number(e.target.value))} 
                         className={`w-full pl-10 p-5 bg-slate-50 border-none rounded-[1.5rem] font-black text-slate-700 focus:ring-2 focus:ring-${item.color}-500 transition-all`} 
@@ -162,7 +162,7 @@ const NetWorthTracker: React.FC<NetWorthTrackerProps> = ({ onNavigate }) => {
                     <div className="relative">
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 font-bold">$</span>
                       <input 
-                        type="number" 
+                        type="number" inputMode="decimal" 
                         value={item.val} 
                         onChange={e => item.set(Number(e.target.value))} 
                         className={`w-full pl-10 p-5 bg-slate-50 border-none rounded-[1.5rem] font-black text-slate-700 focus:ring-2 focus:ring-${item.color}-500 transition-all`} 

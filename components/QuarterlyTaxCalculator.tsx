@@ -277,7 +277,7 @@ END:VCALENDAR`;
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-xl">$</span>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   min="0"
                   step="1000"
                   value={selfEmploymentIncome}
@@ -295,7 +295,7 @@ END:VCALENDAR`;
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-xl">$</span>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   min="0"
                   step="1000"
                   value={w2Income}
@@ -313,7 +313,7 @@ END:VCALENDAR`;
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-xl">$</span>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   min="0"
                   step="1000"
                   value={businessExpenses}
@@ -369,7 +369,7 @@ END:VCALENDAR`;
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-indigo-400 font-bold text-xl">$</span>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   min="0"
                   step="1000"
                   value={priorYearTax}
@@ -387,7 +387,7 @@ END:VCALENDAR`;
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-indigo-400 font-bold text-xl">$</span>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   min="0"
                   step="1000"
                   value={priorYearAGI}

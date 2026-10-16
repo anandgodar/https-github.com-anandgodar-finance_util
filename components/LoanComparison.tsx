@@ -177,16 +177,16 @@ const LoanComparison: React.FC<LoanComparisonProps> = ({ onNavigate }) => {
                 <div className="space-y-4">
                   <div className="space-y-1">
                     <label className="text-[9px] font-black text-slate-400 uppercase ml-2 tracking-widest">Loan Amount ($)</label>
-                    <input type="number" value={loan1.amount} onChange={e => setLoan1({...loan1, amount: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
+                    <input type="number" inputMode="decimal" value={loan1.amount} onChange={e => setLoan1({...loan1, amount: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <label className="text-[9px] font-black text-slate-400 uppercase ml-2 tracking-widest">APR (%)</label>
-                      <input type="number" step="0.1" value={loan1.rate} onChange={e => setLoan1({...loan1, rate: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
+                      <input type="number" inputMode="decimal" step="0.1" value={loan1.rate} onChange={e => setLoan1({...loan1, rate: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
                     </div>
                     <div className="space-y-1">
                       <label className="text-[9px] font-black text-slate-400 uppercase ml-2 tracking-widest">Years</label>
-                      <input type="number" value={loan1.tenure} onChange={e => setLoan1({...loan1, tenure: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
+                      <input type="number" inputMode="decimal" value={loan1.tenure} onChange={e => setLoan1({...loan1, tenure: Number(e.target.value)})} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
                     </div>
                   </div>
                 </div>
@@ -201,22 +201,22 @@ const LoanComparison: React.FC<LoanComparisonProps> = ({ onNavigate }) => {
                 <div className="space-y-4">
                   <div className="space-y-1">
                     <label className="text-[9px] font-black text-slate-400 uppercase ml-2 tracking-widest">Loan Amount ($)</label>
-                    <input type="number" value={loan2.amount} onChange={e => setLoan2({...loan2, amount: Number(e.target.value)})} className="w-full p-4 bg-indigo-50/30 border-none rounded-2xl font-black text-indigo-700" />
+                    <input type="number" inputMode="decimal" value={loan2.amount} onChange={e => setLoan2({...loan2, amount: Number(e.target.value)})} className="w-full p-4 bg-indigo-50/30 border-none rounded-2xl font-black text-indigo-700" />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <label className="text-[9px] font-black text-slate-400 uppercase ml-2 tracking-widest">APR (%)</label>
-                      <input type="number" step="0.1" value={loan2.rate} onChange={e => setLoan2({...loan2, rate: Number(e.target.value)})} className="w-full p-4 bg-indigo-50/30 border-none rounded-2xl font-black text-indigo-700" />
+                      <input type="number" inputMode="decimal" step="0.1" value={loan2.rate} onChange={e => setLoan2({...loan2, rate: Number(e.target.value)})} className="w-full p-4 bg-indigo-50/30 border-none rounded-2xl font-black text-indigo-700" />
                     </div>
                     <div className="space-y-1">
                       <label className="text-[9px] font-black text-slate-400 uppercase ml-2 tracking-widest">Years</label>
-                      <input type="number" value={loan2.tenure} onChange={e => setLoan2({...loan2, tenure: Number(e.target.value)})} className="w-full p-4 bg-indigo-50/30 border-none rounded-2xl font-black text-indigo-700" />
+                      <input type="number" inputMode="decimal" value={loan2.tenure} onChange={e => setLoan2({...loan2, tenure: Number(e.target.value)})} className="w-full p-4 bg-indigo-50/30 border-none rounded-2xl font-black text-indigo-700" />
                     </div>
                   </div>
                   {mode === 'refinance' && (
                     <div className="pt-2">
                        <label className="block text-[9px] font-black text-slate-400 uppercase mb-2 tracking-widest">Refi Closing Costs ($)</label>
-                       <input type="number" value={loan2.costs} onChange={e => setLoan2({...loan2, costs: Number(e.target.value)})} className="w-full p-4 bg-slate-900 text-white border-none rounded-2xl font-black" />
+                       <input type="number" inputMode="decimal" value={loan2.costs} onChange={e => setLoan2({...loan2, costs: Number(e.target.value)})} className="w-full p-4 bg-slate-900 text-white border-none rounded-2xl font-black" />
                     </div>
                   )}
                 </div>
@@ -228,11 +228,11 @@ const LoanComparison: React.FC<LoanComparisonProps> = ({ onNavigate }) => {
               <div className="space-y-6">
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest">Gross Monthly Income ($)</label>
-                  <input type="number" value={monthlyIncome} onChange={e => setMonthlyIncome(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-xl text-slate-700" />
+                  <input type="number" inputMode="decimal" value={monthlyIncome} onChange={e => setMonthlyIncome(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-xl text-slate-700" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest">Monthly Debt Payments ($)</label>
-                  <input type="number" value={existingDebt} onChange={e => setExistingDebt(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-xl text-slate-700" />
+                  <input type="number" inputMode="decimal" value={existingDebt} onChange={e => setExistingDebt(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-xl text-slate-700" />
                   <p className="text-[8px] text-slate-400 mt-1 uppercase font-bold">Incl. Car, Student Loans, Cards</p>
                 </div>
                 <div>

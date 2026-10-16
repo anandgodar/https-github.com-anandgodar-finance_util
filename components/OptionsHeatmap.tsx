@@ -68,7 +68,7 @@ const OptionsHeatmap: React.FC = () => {
         <label className="space-y-2 text-xs font-bold text-slate-500">
           Current Price
           <input
-            type="number"
+            type="number" inputMode="decimal"
             value={currentPrice}
             onChange={(event) => setCurrentPrice(Number(event.target.value))}
             className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-lg font-black text-slate-700"
@@ -77,7 +77,7 @@ const OptionsHeatmap: React.FC = () => {
         <label className="space-y-2 text-xs font-bold text-slate-500">
           Strike Price
           <input
-            type="number"
+            type="number" inputMode="decimal"
             value={strikePrice}
             onChange={(event) => setStrikePrice(Number(event.target.value))}
             className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-lg font-black text-slate-700"
@@ -86,7 +86,7 @@ const OptionsHeatmap: React.FC = () => {
         <label className="space-y-2 text-xs font-bold text-slate-500">
           Days to Expiry
           <input
-            type="number"
+            type="number" inputMode="decimal"
             value={daysToExpiry}
             onChange={(event) => setDaysToExpiry(Number(event.target.value))}
             className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-lg font-black text-slate-700"
@@ -95,7 +95,7 @@ const OptionsHeatmap: React.FC = () => {
         <label className="space-y-2 text-xs font-bold text-slate-500">
           Premium Paid
           <input
-            type="number"
+            type="number" inputMode="decimal"
             step="0.01"
             value={premiumPaid}
             onChange={(event) => setPremiumPaid(Number(event.target.value))}

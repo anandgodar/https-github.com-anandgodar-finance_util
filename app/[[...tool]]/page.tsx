@@ -117,7 +117,7 @@ export default function ToolPage({ params }: PageProps) {
     "@type": "Organization",
     "name": "QuantCurb",
     "url": "https://quantcurb.com",
-    "logo": { "@type": "ImageObject", "url": "https://quantcurb.com/og-image.png" }
+    "logo": { "@type": "ImageObject", "url": "https://quantcurb.com/logo.png" }
   };
 
   // The homepage is described by the WebSite/Organization schema in app/layout.tsx.

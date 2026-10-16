@@ -20,20 +20,20 @@ const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) =>
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header className="space-y-6">
         <div className="flex items-center gap-3 text-sm text-slate-500">
-          <span>📅 Updated January 2026</span>
+          <span>📅 Updated October 2026</span>
           <span>•</span>
-          <span>⏱️ 12 min read</span>
+          <span>⏱️ 5 min read</span>
           <span>•</span>
           <span>💰 Financial Planning</span>
         </div>
 
         <h1 className="text-5xl font-black text-slate-900 leading-tight">
-          How Much Emergency Fund Do I Need? Complete 2025 Guide with Calculator
+          How Much Emergency Fund Do I Need? Complete 2026 Guide with Calculator
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
           An emergency fund is your financial safety net. This comprehensive guide explains the <strong>3-6 month rule</strong>,
-          how to calculate your exact emergency fund needs, where to keep it, and strategies to build it quickly in 2025.
+          how to calculate your exact emergency fund needs, where to keep it, and strategies to build it quickly in 2026.
         </p>
 
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
@@ -67,6 +67,7 @@ const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) =>
           <li><button onClick={() => scrollToSection('when-use')} className="text-indigo-600 hover:underline">6. When to Use Your Emergency Fund</button></li>
           <li><button onClick={() => scrollToSection('examples')} className="text-indigo-600 hover:underline">7. Real-World Examples</button></li>
           <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">8. Frequently Asked Questions</button></li>
+          <li><button onClick={() => scrollToSection('sources')} className="text-indigo-600 hover:underline">9. Sources</button></li>
         </ol>
       </nav>
 
@@ -80,7 +81,7 @@ const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) =>
           </p>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl">
-            <p className="text-indigo-900 font-semibold text-lg">
+            <div className="text-indigo-900 font-semibold text-lg">
               💡 <strong>Purpose:</strong> An emergency fund protects you from:
               <ul className="mt-2 space-y-1 text-base">
                 <li>• Job loss or reduced income</li>
@@ -90,7 +91,7 @@ const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) =>
                 <li>• Unexpected travel (family emergency)</li>
                 <li>• Major appliance replacement</li>
               </ul>
-            </p>
+            </div>
           </div>
         </section>
 
@@ -212,17 +213,17 @@ const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) =>
             <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl p-6">
               <h3 className="font-bold text-emerald-900 text-xl mb-2">✅ High-Yield Savings Account (Best Option)</h3>
               <ul className="space-y-2 text-emerald-800">
-                <li>• <strong>Interest Rate:</strong> 4-5% APY (2025)</li>
-                <li>• <strong>Accessibility:</strong> Easy transfers, FDIC insured</li>
-                <li>• <strong>Safety:</strong> Very safe, no risk of loss</li>
-                <li>• <strong>Examples:</strong> Ally, Marcus, Discover, Capital One</li>
+                <li>• <strong>Interest Rate:</strong> Variable; moves with market rates and is usually well above a standard checking account</li>
+                <li>• <strong>Accessibility:</strong> Easy transfers, usually within one to two business days</li>
+                <li>• <strong>Safety:</strong> FDIC insured (NCUA at credit unions) up to $250,000 per depositor, per bank, per ownership category</li>
+                <li>• <strong>Where to look:</strong> Online banks and credit unions; compare current yields, fees and transfer limits</li>
               </ul>
             </div>
 
             <div className="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-xl p-6">
               <h3 className="font-bold text-indigo-900 text-xl mb-2">✅ Money Market Account</h3>
               <ul className="space-y-2 text-indigo-800">
-                <li>• <strong>Interest Rate:</strong> 4-5% APY</li>
+                <li>• <strong>Interest Rate:</strong> Variable; often similar to high-yield savings</li>
                 <li>• <strong>Accessibility:</strong> Check-writing, debit card</li>
                 <li>• <strong>Safety:</strong> FDIC insured</li>
                 <li>• <strong>Best For:</strong> Those who want check-writing access</li>
@@ -247,6 +248,12 @@ const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) =>
               </ul>
             </div>
           </div>
+
+          <p className="text-lg text-slate-700 leading-relaxed">
+            Interest earned is taxable as ordinary income in the year it&apos;s paid. As an illustration only (not a quote of
+            any current rate), an $18,600 fund earning 4% a year would generate about $744 of interest before tax. Rates
+            change frequently, so compare offers when you open an account and check again periodically.
+          </p>
         </section>
 
         <section id="how-build" className="space-y-6">
@@ -273,7 +280,7 @@ const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) =>
                   <h3 className="font-bold text-slate-900 text-lg mb-2">Automate Your Savings</h3>
                   <p className="text-slate-700 mb-3">
                     Set up automatic transfers from checking to savings. Start with $100-200/month and increase
-                    as you can afford more.
+                    as you can afford more. At $200/month, a $1,000 starter fund takes five months.
                   </p>
                 </div>
               </div>
@@ -360,6 +367,12 @@ const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) =>
               </div>
             </div>
           </div>
+
+          <p className="text-lg text-slate-700 leading-relaxed">
+            Freelancers should keep money for <a href="/quarterly-estimated-tax-calculator/" className="text-indigo-600 font-semibold hover:underline">quarterly estimated taxes</a> in
+            a separate account so the emergency fund isn&apos;t quietly used to pay the IRS. For a closer look at why six
+            months is the common benchmark and when to go higher or lower, see our guide to the <a href="/blog/6-month-emergency-fund-rule/" className="text-indigo-600 font-semibold hover:underline">6-month emergency fund rule</a>.
+          </p>
         </section>
 
         <section id="faq" className="space-y-6">
@@ -389,7 +402,26 @@ const HowMuchEmergencyFundDoINeed2025: React.FC<BlogProps> = ({ onNavigate }) =>
                 (like retirement contributions beyond employer match) until your emergency fund is restored.
               </p>
             </div>
+
+            <div className="bg-white border border-slate-200 rounded-xl p-6">
+              <h3 className="font-bold text-slate-900 text-lg mb-2">Should I build an emergency fund before paying off credit cards?</h3>
+              <p className="text-slate-700">
+                A common approach is a small starter fund first, then aggressive payoff of high-interest debt, then the full
+                3-6 months. The <a href="/blog/financial-order-of-operations/" className="text-indigo-600 font-semibold hover:underline">financial order of operations</a> guide
+                explains the sequence.
+              </p>
+            </div>
           </div>
+          <p className="text-sm text-slate-500">This guide is educational and is not individualized financial advice.</p>
+        </section>
+
+        <section id="sources" className="space-y-6">
+          <h2 className="text-3xl font-black text-slate-900">Sources</h2>
+          <ul className="space-y-2 text-slate-700">
+            <li>• Consumer Financial Protection Bureau, emergency savings resources: <a href="https://www.consumerfinance.gov/" className="text-indigo-600 font-semibold hover:underline">consumerfinance.gov</a></li>
+            <li>• IRS Publication 17, interest income is taxable: <a href="https://www.irs.gov/publications/p17" className="text-indigo-600 font-semibold hover:underline">irs.gov/publications/p17</a></li>
+            <li>• Investor.gov, saving vs. investing: <a href="https://www.investor.gov/" className="text-indigo-600 font-semibold hover:underline">investor.gov</a></li>
+          </ul>
         </section>
 
         <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">

@@ -20,21 +20,21 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500 pb-24">
       <header className="space-y-6">
         <div className="flex items-center gap-3 text-sm text-slate-500">
-          <span>📅 Updated January 2026</span>
+          <span>📅 Updated October 2026</span>
           <span>•</span>
-          <span>⏱️ 15 min read</span>
+          <span>⏱️ 7 min read</span>
           <span>•</span>
           <span>💰 Retirement Planning</span>
         </div>
 
         <h1 className="text-5xl font-black text-slate-900 leading-tight">
-          Roth IRA vs Traditional IRA 2025: Which is Better? Complete Comparison
+          Roth IRA vs Traditional IRA 2026: Which is Better? Complete Comparison
         </h1>
 
         <p className="text-xl text-slate-600 leading-relaxed">
           Choosing between a <strong>Roth IRA and Traditional IRA</strong> is one of the most important retirement
           planning decisions. This comprehensive guide compares tax benefits, contribution limits, withdrawal rules,
-          and helps you choose the right account for 2025.
+          and helps you choose the right account for 2026.
         </p>
 
         <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
@@ -63,11 +63,12 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <li><button onClick={() => scrollToSection('key-differences')} className="text-indigo-600 hover:underline">1. Key Differences at a Glance</button></li>
           <li><button onClick={() => scrollToSection('traditional-ira')} className="text-indigo-600 hover:underline">2. Traditional IRA: Tax Deduction Now</button></li>
           <li><button onClick={() => scrollToSection('roth-ira')} className="text-indigo-600 hover:underline">3. Roth IRA: Tax-Free Withdrawals</button></li>
-          <li><button onClick={() => scrollToSection('contribution-limits')} className="text-indigo-600 hover:underline">4. Contribution Limits 2025</button></li>
+          <li><button onClick={() => scrollToSection('contribution-limits')} className="text-indigo-600 hover:underline">4. Contribution Limits 2026</button></li>
           <li><button onClick={() => scrollToSection('which-is-better')} className="text-indigo-600 hover:underline">5. Which is Better for You?</button></li>
           <li><button onClick={() => scrollToSection('withdrawal-rules')} className="text-indigo-600 hover:underline">6. Withdrawal Rules & Penalties</button></li>
           <li><button onClick={() => scrollToSection('examples')} className="text-indigo-600 hover:underline">7. Real-World Examples</button></li>
           <li><button onClick={() => scrollToSection('faq')} className="text-indigo-600 hover:underline">8. Frequently Asked Questions</button></li>
+          <li><button onClick={() => scrollToSection('sources')} className="text-indigo-600 hover:underline">9. Sources</button></li>
         </ol>
       </nav>
 
@@ -93,7 +94,7 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="font-bold">✗</span>
-                  <span><strong>RMDs:</strong> Required Minimum Distributions at age 73</span>
+                  <span><strong>RMDs:</strong> Required Minimum Distributions generally starting at age 73</span>
                 </li>
               </ul>
             </div>
@@ -149,8 +150,8 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
               </thead>
               <tbody>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 text-slate-700">Contribute $7,000 in 22% tax bracket</td>
-                  <td className="p-4 font-bold text-emerald-600">Save $1,540 in taxes now</td>
+                  <td className="p-4 text-slate-700">Deduct a $7,500 contribution in the 22% tax bracket</td>
+                  <td className="p-4 font-bold text-emerald-600">Save $1,650 in federal taxes now</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700">Earnings grow tax-deferred</td>
@@ -165,45 +166,50 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl mt-6">
-            <p className="text-indigo-900 font-semibold">
-              📊 <strong>Example:</strong> Contribute $7,000 to Traditional IRA in 2025:
+            <div className="text-indigo-900 font-semibold">
+              📊 <strong>Hypothetical example:</strong> Contribute $7,500 to a deductible Traditional IRA for 2026:
               <ul className="mt-2 space-y-1 text-sm">
-                <li>• Reduce taxable income by $7,000</li>
-                <li>• Save $1,540 in taxes (22% bracket)</li>
-                <li>• Net cost: $5,460</li>
+                <li>• Reduce taxable income by $7,500</li>
+                <li>• Save $1,650 in federal taxes (22% bracket)</li>
+                <li>• Net cost: $5,850</li>
                 <li>• Earnings grow tax-deferred until withdrawal</li>
               </ul>
-            </p>
+            </div>
           </div>
 
-          <h3 className="text-2xl font-black text-slate-900 mt-8">Income Limits for Deductibility (2025)</h3>
+          <h3 className="text-2xl font-black text-slate-900 mt-8">Who Can Deduct a Traditional IRA Contribution?</h3>
 
           <p className="text-lg text-slate-700 leading-relaxed">
-            If you have a 401(k) at work, your Traditional IRA deduction may be limited:
+            Anyone with earned income can contribute to a Traditional IRA, but whether you can <strong>deduct</strong> it
+            depends on whether you (or your spouse) are covered by a workplace retirement plan and on your modified AGI.
+            The exact phase-out ranges are adjusted for inflation each year — check IRS Publication 590-A for the
+            current figures.
           </p>
 
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden mt-4">
             <table className="w-full">
               <thead className="bg-slate-50">
                 <tr>
-                  <th className="text-left p-4 font-black text-slate-900">Filing Status</th>
-                  <th className="text-left p-4 font-black text-slate-900">Full Deduction</th>
-                  <th className="text-left p-4 font-black text-slate-900">Partial Deduction</th>
-                  <th className="text-left p-4 font-black text-slate-900">No Deduction</th>
+                  <th className="text-left p-4 font-black text-slate-900">Your Situation</th>
+                  <th className="text-left p-4 font-black text-slate-900">Deduction</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 text-slate-700">Single/Head of Household</td>
-                  <td className="p-4 font-bold text-emerald-600">Up to $77,000</td>
-                  <td className="p-4 font-bold text-yellow-600">$77,000 - $87,000</td>
-                  <td className="p-4 font-bold text-red-600">$87,000+</td>
+                  <td className="p-4 text-slate-700">Neither you nor your spouse has a workplace plan</td>
+                  <td className="p-4 font-bold text-emerald-600">Full deduction at any income</td>
                 </tr>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 text-slate-700">Married Filing Jointly</td>
-                  <td className="p-4 font-bold text-emerald-600">Up to $123,000</td>
-                  <td className="p-4 font-bold text-yellow-600">$123,000 - $143,000</td>
-                  <td className="p-4 font-bold text-red-600">$143,000+</td>
+                  <td className="p-4 text-slate-700">You are covered by a workplace plan</td>
+                  <td className="p-4 font-bold text-yellow-600">Phases out at moderate incomes (see Pub 590-A)</td>
+                </tr>
+                <tr className="border-t border-slate-100">
+                  <td className="p-4 text-slate-700">Only your spouse is covered (married filing jointly)</td>
+                  <td className="p-4 font-bold text-yellow-600">Phases out at a higher income range</td>
+                </tr>
+                <tr className="border-t border-slate-100">
+                  <td className="p-4 text-slate-700">Income above the phase-out</td>
+                  <td className="p-4 font-bold text-red-600">No deduction; non-deductible contribution still allowed</td>
                 </tr>
               </tbody>
             </table>
@@ -230,7 +236,7 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
               </thead>
               <tbody>
                 <tr className="border-t border-slate-100">
-                  <td className="p-4 text-slate-700">Contribute $7,000 with after-tax money</td>
+                  <td className="p-4 text-slate-700">Contribute $7,500 with after-tax money</td>
                   <td className="p-4 font-bold text-slate-700">No tax deduction now</td>
                 </tr>
                 <tr className="border-t border-slate-100">
@@ -239,25 +245,25 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700">Withdraw in retirement (qualified)</td>
-                  <td className="p-4 font-bold text-emerald-600">100% tax-free</td>
+                  <td className="p-4 font-bold text-emerald-600">Federal income tax-free</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-r-xl mt-6">
-            <p className="text-purple-900 font-semibold">
-              📊 <strong>Example:</strong> Contribute $7,000 to Roth IRA in 2025:
+            <div className="text-purple-900 font-semibold">
+              📊 <strong>Hypothetical example:</strong> Contribute $7,500 to a Roth IRA for 2026:
               <ul className="mt-2 space-y-1 text-sm">
-                <li>• Pay taxes on $7,000 now ($1,540 in 22% bracket)</li>
-                <li>• Net cost: $7,000 (no tax savings)</li>
-                <li>• Earnings grow completely tax-free</li>
-                <li>• Withdraw tax-free in retirement</li>
+                <li>• No deduction: the $7,500 comes from income you&apos;ve already paid tax on ($1,650 of tax in the 22% bracket)</li>
+                <li>• Net cost: $7,500 (no tax savings now)</li>
+                <li>• Earnings grow tax-free</li>
+                <li>• Qualified withdrawals are tax-free in retirement</li>
               </ul>
-            </p>
+            </div>
           </div>
 
-          <h3 className="text-2xl font-black text-slate-900 mt-8">Income Limits for Contributions (2025)</h3>
+          <h3 className="text-2xl font-black text-slate-900 mt-8">Income Limits for Contributions (2026, based on MAGI)</h3>
 
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden mt-4">
             <table className="w-full">
@@ -272,15 +278,15 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <tbody>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700">Single/Head of Household</td>
-                  <td className="p-4 font-bold text-emerald-600">Up to $146,000</td>
-                  <td className="p-4 font-bold text-yellow-600">$146,000 - $161,000</td>
-                  <td className="p-4 font-bold text-red-600">$161,000+</td>
+                  <td className="p-4 font-bold text-emerald-600">Under $153,000</td>
+                  <td className="p-4 font-bold text-yellow-600">$153,000 - $168,000</td>
+                  <td className="p-4 font-bold text-red-600">$168,000+</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 text-slate-700">Married Filing Jointly</td>
-                  <td className="p-4 font-bold text-emerald-600">Up to $230,000</td>
-                  <td className="p-4 font-bold text-yellow-600">$230,000 - $240,000</td>
-                  <td className="p-4 font-bold text-red-600">$240,000+</td>
+                  <td className="p-4 font-bold text-emerald-600">Under $242,000</td>
+                  <td className="p-4 font-bold text-yellow-600">$242,000 - $252,000</td>
+                  <td className="p-4 font-bold text-red-600">$252,000+</td>
                 </tr>
               </tbody>
             </table>
@@ -288,7 +294,7 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </section>
 
         <section id="contribution-limits" className="space-y-6">
-          <h2 className="text-3xl font-black text-slate-900">Contribution Limits 2025</h2>
+          <h2 className="text-3xl font-black text-slate-900">Contribution Limits 2026</h2>
 
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden mt-6">
             <table className="w-full">
@@ -302,18 +308,18 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <tbody>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-indigo-600">Traditional IRA</td>
-                  <td className="p-4 font-bold text-slate-900">$7,000</td>
-                  <td className="p-4 font-bold text-slate-900">$8,000</td>
+                  <td className="p-4 font-bold text-slate-900">$7,500</td>
+                  <td className="p-4 font-bold text-slate-900">$8,600</td>
                 </tr>
                 <tr className="border-t border-slate-100">
                   <td className="p-4 font-bold text-purple-600">Roth IRA</td>
-                  <td className="p-4 font-bold text-slate-900">$7,000</td>
-                  <td className="p-4 font-bold text-slate-900">$8,000</td>
+                  <td className="p-4 font-bold text-slate-900">$7,500</td>
+                  <td className="p-4 font-bold text-slate-900">$8,600</td>
                 </tr>
                 <tr className="border-t border-slate-100 bg-slate-50">
                   <td className="p-4 font-bold text-slate-900">Combined Total</td>
-                  <td className="p-4 font-bold text-slate-900">$7,000</td>
-                  <td className="p-4 font-bold text-slate-900">$8,000</td>
+                  <td className="p-4 font-bold text-slate-900">$7,500</td>
+                  <td className="p-4 font-bold text-slate-900">$8,600</td>
                 </tr>
               </tbody>
             </table>
@@ -321,8 +327,10 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-xl mt-6">
             <p className="text-yellow-900 font-semibold">
-              ⚠️ <strong>Important:</strong> The $7,000 limit applies to your <strong>combined</strong> Traditional and Roth IRA
-              contributions. You can't contribute $7,000 to each—it's $7,000 total across both accounts.
+              ⚠️ <strong>Important:</strong> The $7,500 limit applies to your <strong>combined</strong> Traditional and Roth IRA
+              contributions. You can't contribute $7,500 to each—it's $7,500 total across both accounts ($8,600 if you&apos;re
+              50 or older). Contributions also can&apos;t exceed your taxable compensation, and 2026 contributions can be made
+              until the tax filing deadline, April 15, 2027.
             </p>
           </div>
         </section>
@@ -357,16 +365,23 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl p-6">
               <h3 className="font-bold text-emerald-900 text-xl mb-3">Consider Both (Split Strategy):</h3>
               <p className="text-emerald-800 mb-3">
-                Many experts recommend a <strong>split strategy</strong>: contribute to both Traditional and Roth IRAs
+                A common approach is a <strong>split strategy</strong>: contribute to both Traditional and Roth IRAs
                 to create tax diversification. This gives you flexibility in retirement to choose which account to
                 withdraw from based on your tax situation.
               </p>
               <p className="text-emerald-800">
-                <strong>Example:</strong> Contribute $3,500 to Traditional IRA (for tax deduction) and $3,500 to Roth IRA
-                (for tax-free growth). Total: $7,000 across both accounts.
+                <strong>Example:</strong> Contribute $3,750 to Traditional IRA (for tax deduction) and $3,750 to Roth IRA
+                (for tax-free growth). Total: $7,500 across both accounts.
               </p>
             </div>
           </div>
+          <p className="text-lg text-slate-700 leading-relaxed">
+            Not sure which bracket you&apos;re in? Our{' '}
+            <a href="/blog/tax-brackets-explained-2025/" className="text-indigo-600 font-semibold hover:underline">tax brackets explained</a>{' '}
+            guide walks through marginal vs. effective rates, and the{' '}
+            <a href="/blog/401k-vs-ira-comparison-2025/" className="text-indigo-600 font-semibold hover:underline">401(k) vs IRA comparison</a>{' '}
+            covers which account to fund first.
+          </p>
         </section>
 
         <section id="withdrawal-rules" className="space-y-6">
@@ -377,9 +392,9 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <h3 className="font-bold text-slate-900 text-xl mb-4">Traditional IRA</h3>
               <ul className="space-y-3 text-slate-700">
                 <li>• <strong>Age 59½:</strong> Can withdraw without penalty</li>
-                <li>• <strong>Age 73:</strong> Required Minimum Distributions (RMDs) begin</li>
+                <li>• <strong>Age 73:</strong> Required Minimum Distributions (RMDs) generally begin (75 if born in 1960 or later)</li>
                 <li>• <strong>Early Withdrawal:</strong> 10% penalty + income tax</li>
-                <li>• <strong>Exceptions:</strong> First-time home purchase, education, medical expenses</li>
+                <li>• <strong>Exceptions:</strong> First-time home purchase (up to $10,000 lifetime), higher education, certain medical expenses, disability</li>
               </ul>
             </div>
 
@@ -400,22 +415,33 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <div className="space-y-6 mt-6">
             <div className="bg-indigo-50 border-2 border-indigo-200 rounded-xl p-6">
-              <h3 className="font-bold text-indigo-900 text-xl mb-4">Example 1: Young Professional (25 years old, $60,000 salary)</h3>
+              <h3 className="font-bold text-indigo-900 text-xl mb-4">Example 1: Young Professional (25 years old, $60,000 salary, single)</h3>
               <div className="space-y-2 text-indigo-800">
-                <p><strong>Current Tax Bracket:</strong> 12%</p>
-                <p><strong>Expected Retirement Bracket:</strong> 22% (higher)</p>
+                <p><strong>Current Tax Bracket:</strong> 12% ($43,900 taxable after the $16,100 standard deduction)</p>
+                <p><strong>Expected Retirement Bracket:</strong> 22% (assumed, as income grows over a career)</p>
                 <p className="font-bold text-lg mt-2">✅ Recommendation: Roth IRA</p>
                 <p className="text-sm">Pay taxes now at 12%, withdraw tax-free in retirement when you'd be in 22% bracket.</p>
               </div>
             </div>
 
             <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-6">
-              <h3 className="font-bold text-purple-900 text-xl mb-4">Example 2: High Earner (45 years old, $200,000 salary)</h3>
+              <h3 className="font-bold text-purple-900 text-xl mb-4">Example 2: Peak Earner Without a Workplace Plan (50 years old, $140,000, single)</h3>
               <div className="space-y-2 text-purple-800">
-                <p><strong>Current Tax Bracket:</strong> 32%</p>
-                <p><strong>Expected Retirement Bracket:</strong> 12-22% (lower)</p>
-                <p className="font-bold text-lg mt-2">✅ Recommendation: Traditional IRA</p>
-                <p className="text-sm">Save 32% in taxes now, pay 12-22% in retirement. Net tax savings.</p>
+                <p><strong>Current Tax Bracket:</strong> 24% ($123,900 taxable after the standard deduction)</p>
+                <p><strong>Expected Retirement Bracket:</strong> 12-22% (assumed lower)</p>
+                <p className="font-bold text-lg mt-2">✅ Leans Traditional IRA</p>
+                <p className="text-sm">With no workplace plan, the deduction is available at any income. Deducting the full $8,600 (with catch-up) saves about $2,064 of federal tax now; if withdrawals are later taxed at 12–22%, Traditional comes out ahead.</p>
+              </div>
+            </div>
+
+            <div className="bg-indigo-50 border-2 border-indigo-200 rounded-xl p-6">
+              <h3 className="font-bold text-indigo-900 text-xl mb-4">Example 3: High Earner With a 401(k) (45 years old, $200,000, single)</h3>
+              <div className="space-y-2 text-indigo-800">
+                <p><strong>Current Tax Bracket:</strong> 24% ($183,900 taxable)</p>
+                <p><strong>Roth IRA:</strong> Not allowed directly — MAGI is above the $168,000 cutoff</p>
+                <p><strong>Traditional IRA deduction:</strong> Not available — covered by a workplace plan at this income</p>
+                <p className="font-bold text-lg mt-2">✅ Options: 401(k) first, then a backdoor Roth</p>
+                <p className="text-sm">Max the 401(k) ($24,500 in 2026, Roth or pre-tax), then consider a non-deductible Traditional IRA contribution converted to Roth — keeping the pro-rata rule in mind (see FAQ below).</p>
               </div>
             </div>
           </div>
@@ -428,8 +454,8 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h3 className="font-bold text-slate-900 text-lg mb-2">Can I contribute to both Traditional and Roth IRA?</h3>
               <p className="text-slate-700">
-                Yes, but the combined contribution limit is $7,000 ($8,000 if 50+). You can split this between both
-                accounts (e.g., $3,500 to each).
+                Yes, but the combined contribution limit for 2026 is $7,500 ($8,600 if 50+). You can split this between both
+                accounts (e.g., $3,750 to each).
               </p>
             </div>
 
@@ -444,11 +470,44 @@ const RothIRAvsTraditionalIRA2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-white border border-slate-200 rounded-xl p-6">
               <h3 className="font-bold text-slate-900 text-lg mb-2">What if my income is too high for Roth IRA?</h3>
               <p className="text-slate-700">
-                Consider a <strong>Backdoor Roth IRA</strong>: contribute to Traditional IRA (no income limit for
-                non-deductible contributions), then convert to Roth IRA. This is legal and commonly used by high earners.
+                Consider a <strong>Backdoor Roth IRA</strong>: contribute to a Traditional IRA (no income limit for
+                non-deductible contributions), then convert to a Roth IRA. Conversions have no income limit. Watch the
+                <strong> pro-rata rule</strong>: if you hold other pre-tax money in any Traditional, SEP, or SIMPLE IRA,
+                part of the conversion is taxable. Report non-deductible contributions on Form 8606.
+              </p>
+            </div>
+
+            <div className="bg-white border border-slate-200 rounded-xl p-6">
+              <h3 className="font-bold text-slate-900 text-lg mb-2">What is the Roth IRA 5-year rule?</h3>
+              <p className="text-slate-700">
+                Earnings come out tax-free only if you&apos;re 59½ or older (or meet another exception) and it has been at
+                least five tax years since your first Roth IRA contribution. Your original contributions can always be
+                withdrawn tax- and penalty-free. Converted amounts have their own five-year clock for the penalty.
+              </p>
+            </div>
+
+            <div className="bg-white border border-slate-200 rounded-xl p-6">
+              <h3 className="font-bold text-slate-900 text-lg mb-2">Should I use a Roth IRA or a Roth 401(k)?</h3>
+              <p className="text-slate-700">
+                Both are funded with after-tax dollars. The Roth 401(k) has no income limit and a much higher limit
+                ($24,500 in 2026), while the IRA usually offers more investment choice. Many people use both. See{' '}
+                <a href="/blog/roth-vs-traditional-401k-tax-bracket-bet/" className="text-indigo-600 font-semibold hover:underline">Roth vs. Traditional 401(k): the tax bracket bet</a>.
               </p>
             </div>
           </div>
+        </section>
+
+        <section id="sources" className="space-y-6">
+          <h2 className="text-3xl font-black text-slate-900">Sources</h2>
+          <ul className="space-y-2 text-slate-700">
+            <li>• IRS Notice 2025-67 (2026 IRA limits and Roth income ranges) — <a href="https://www.irs.gov/retirement-plans" className="text-indigo-600 font-semibold hover:underline">IRS Retirement Plans</a></li>
+            <li>• IRS Rev. Proc. 2025-32 (2026 tax brackets and standard deduction) — <a href="https://www.irs.gov/" className="text-indigo-600 font-semibold hover:underline">irs.gov</a></li>
+            <li>• <a href="https://www.irs.gov/publications/p590a" className="text-indigo-600 font-semibold hover:underline">IRS Publication 590-A, Contributions to IRAs</a></li>
+            <li>• <a href="https://www.irs.gov/publications/p590b" className="text-indigo-600 font-semibold hover:underline">IRS Publication 590-B, Distributions from IRAs</a></li>
+          </ul>
+          <p className="text-sm text-slate-600 italic">
+            This article is educational and is not individualized tax or investment advice. Examples are hypothetical.
+          </p>
         </section>
 
         <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">

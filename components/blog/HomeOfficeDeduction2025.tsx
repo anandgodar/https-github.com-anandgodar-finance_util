@@ -23,16 +23,16 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
       answer: "Yes! Renters can absolutely claim the home office deduction. You don't need to own your home—you just need to use part of it regularly and exclusively for business. If you rent, your allowable expenses include your portion of rent, renters insurance, and utilities. The simplified method ($5/sq ft) works the same for renters and homeowners."
     },
     {
-      question: "What is the simplified home office deduction for 2025?",
-      answer: "The simplified method allows you to deduct $5 per square foot of home office space, up to 300 square feet maximum. This caps your deduction at $1,500/year ($5 × 300 sq ft). No need to track actual expenses—just measure your office square footage. Best for those with small home offices (under 300 sq ft) or who don't want to track detailed expenses."
+      question: "What is the simplified home office deduction for 2026?",
+      answer: "For 2026 the rate is still $5 per square foot—the same rate the IRS has used since it introduced the method for 2013. The simplified method allows you to deduct $5 per square foot of home office space, up to 300 square feet maximum. This caps your deduction at $1,500/year ($5 × 300 sq ft). No need to track actual expenses—just measure your office square footage. Best for those with small home offices (under 300 sq ft) or who don't want to track detailed expenses."
     },
     {
       question: "Does home office deduction trigger an audit?",
-      answer: "No, this is a myth. The IRS does NOT automatically audit home office deductions. However, you MUST meet the requirements: (1) regular and exclusive use, (2) principal place of business. To be audit-proof: measure your space accurately, take photos, keep a floor plan, document business activities, and never use the space for personal activities. Legitimate home offices are 100% legal deductions."
+      answer: "Claiming it does not by itself mean you will be audited, and the IRS does not publish a rule that home office claims are automatically examined. What matters is that you can prove you meet the requirements: (1) regular and exclusive use, (2) principal place of business. To be well documented: measure your space accurately, take photos, keep a floor plan, document business activities, and never use the space for personal activities. A home office that meets the rules is a fully legitimate deduction."
     },
     {
       question: "Can W-2 employees claim home office deduction?",
-      answer: "No, not since 2018. The Tax Cuts and Jobs Act eliminated the home office deduction for W-2 employees (even if you work from home full-time). This deduction is ONLY available for self-employed individuals, freelancers, and independent contractors who file Schedule C. If you're a W-2 remote worker, you cannot claim this deduction—even if your employer requires you to work from home."
+      answer: "No, not since 2018. The Tax Cuts and Jobs Act suspended the home office deduction for W-2 employees (even if you work from home full-time), and the 2025 tax law (OBBBA) made that change permanent, so it does not return for 2026. This deduction is ONLY available for self-employed individuals, freelancers, and independent contractors who file Schedule C. If you're a W-2 remote worker, you cannot claim this deduction—even if your employer requires you to work from home."
     },
     {
       question: "What's the difference between direct and indirect home office expenses?",
@@ -58,7 +58,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
       <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-2xl p-8 mb-8">
         <div className="flex items-center gap-3 mb-4">
           <div className="text-4xl">🏠</div>
-          <h1 className="text-4xl font-bold">Home Office Deduction 2025</h1>
+          <h1 className="text-4xl font-bold">Home Office Deduction 2026</h1>
         </div>
         <p className="text-xl text-yellow-50 mb-4">
           Complete Guide: Simplified vs Regular Method, Qualification & Audit-Proof Documentation
@@ -99,10 +99,16 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
             → Simplified vs Regular Comparison
           </button>
           <button onClick={() => scrollToSection('calculation')} className="text-left text-yellow-600 hover:text-yellow-800 hover:underline">
-            → Real Calculation Examples
+            → Example Calculations
           </button>
           <button onClick={() => scrollToSection('documentation')} className="text-left text-yellow-600 hover:text-yellow-800 hover:underline">
             → Audit-Proof Documentation
+          </button>
+          <button onClick={() => scrollToSection('income-limit')} className="text-left text-yellow-600 hover:text-yellow-800 hover:underline">
+            → Income Limit, Carryovers & Itemizing
+          </button>
+          <button onClick={() => scrollToSection('sources')} className="text-left text-yellow-600 hover:text-yellow-800 hover:underline">
+            → Sources
           </button>
           <button onClick={() => scrollToSection('faqs')} className="text-left text-yellow-600 hover:text-yellow-800 hover:underline">
             → Frequently Asked Questions
@@ -118,7 +124,11 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <h2 className="text-3xl font-bold mb-6 text-gray-900">Home Office Deduction: Overview & Requirements</h2>
 
           <p className="text-lg text-gray-700 mb-6">
-            The home office deduction is one of the most valuable tax breaks for self-employed individuals, freelancers, and independent contractors. If you work from home, you can deduct a portion of your rent/mortgage, utilities, insurance, and repairs—potentially saving <strong>$1,500-6,000+ per year</strong> in taxes.
+            The home office deduction is one of the most valuable tax breaks for self-employed individuals, freelancers, and independent contractors. If you work from home, you can deduct a portion of your rent or mortgage interest, utilities, insurance, and repairs—often a deduction of <strong>$1,500 to several thousand dollars per year</strong>. Because it reduces your Schedule C profit, it lowers both income tax and self-employment tax.
+          </p>
+
+          <p className="text-lg text-gray-700 mb-6">
+            The rules below apply to tax year 2026. The simplified rate is unchanged at $5 per square foot (maximum 300 sq ft), and the deduction is still limited to self-employed people—not W-2 employees. For the full list of other write-offs, see our <a href="/blog/tax-deductions-freelancers-2025/" className="text-indigo-600 font-semibold hover:underline">tax deductions for freelancers guide</a>.
           </p>
 
           <div className="bg-yellow-50 border-l-4 border-yellow-600 p-6 mb-6">
@@ -246,7 +256,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </ul>
 
           <div className="bg-gray-100 rounded-lg p-6 mb-6">
-            <h4 className="font-semibold text-lg mb-3">Real Qualification Examples</h4>
+            <h4 className="font-semibold text-lg mb-3">Qualification Examples (Illustrative)</h4>
 
             <div className="space-y-4">
               <div>
@@ -344,7 +354,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
           <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
             <li><strong>$1,500 cap:</strong> Even with a 500 sq ft office, you're capped at $1,500</li>
-            <li><strong>No depreciation:</strong> Homeowners miss out on depreciation deduction (often $2,000-4,000/year)</li>
+            <li><strong>No depreciation:</strong> Homeowners give up the depreciation deduction on the office portion of the home (about $961/year in the homeowner example below)</li>
             <li><strong>May be smaller deduction:</strong> If your actual expenses are high, regular method often saves more</li>
             <li><strong>No carryforward:</strong> If your business has a loss, you can't carry the simplified deduction forward</li>
           </ul>
@@ -366,7 +376,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <h2 className="text-3xl font-bold mb-6 text-gray-900">Regular Method: Actual Expenses</h2>
 
           <p className="text-lg text-gray-700 mb-6">
-            The regular method allows you to deduct your actual home expenses based on the percentage of your home used for business. This method almost always yields a larger deduction than the simplified method—especially for homeowners with large offices.
+            The regular method allows you to deduct your actual home expenses based on the percentage of your home used for business. This method often yields a larger deduction than the simplified method—especially for homeowners and people with larger offices or high housing costs—but it requires more records.
           </p>
 
           <h3 className="text-2xl font-semibold mb-4 text-gray-800">How the Regular Method Works</h3>
@@ -483,7 +493,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="bg-yellow-50 border-l-4 border-yellow-600 p-6 mb-6">
             <p className="text-gray-800 font-semibold mb-2">⚠️ Depreciation Recapture Warning (Homeowners)</p>
             <p className="text-gray-700">
-              When you use the regular method and claim depreciation, you must "recapture" (pay tax on) that depreciation when you sell your home. Example: You claimed $10,000 in depreciation over 10 years. When you sell, you'll pay capital gains tax on that $10,000 (25% rate). This doesn't apply to the simplified method. Despite recapture, the regular method usually still saves more money overall.
+              When you use the regular method and claim depreciation, you must "recapture" (pay tax on) that depreciation when you sell your home. Example: You claimed $10,000 in depreciation over 10 years. When you sell, that $10,000 is generally taxed as "unrecaptured Section 1250 gain" at a maximum rate of 25%, and it can't be sheltered by the home-sale exclusion. Depreciation you were entitled to claim counts even if you skipped it. This doesn't apply to the simplified method. Whether the regular method still comes out ahead depends on your numbers and how long you'll own the home.
             </p>
           </div>
 
@@ -502,6 +512,10 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
         {/* Comparison */}
         <section id="comparison" className="mb-12">
           <h2 className="text-3xl font-bold mb-6 text-gray-900">Simplified vs Regular: Side-by-Side Comparison</h2>
+
+          <p className="text-lg text-gray-700 mb-4">
+            The regular-method ranges below are rough illustrations based on a mid-size home with typical rent or mortgage, utility and insurance costs. Your result depends entirely on your own housing costs, so calculate both methods with your real numbers.
+          </p>
 
           <div className="overflow-x-auto mb-8">
             <table className="min-w-full border border-gray-300">
@@ -555,11 +569,11 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <p className="text-lg text-gray-700 mb-4">
-            <strong>Verdict:</strong> The regular method almost always yields a larger deduction, especially for:
+            <strong>Verdict:</strong> The regular method usually yields a larger deduction, especially for:
           </p>
 
           <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
-            <li>Homeowners (depreciation adds $1,000-4,000/year)</li>
+            <li>Homeowners (depreciation adds to the deduction, subject to recapture when you sell)</li>
             <li>High-cost areas (expensive rent, high property taxes)</li>
             <li>Offices over 200 sq ft (simplified method caps too low)</li>
           </ul>
@@ -571,7 +585,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
         {/* Calculation Examples */}
         <section id="calculation" className="mb-12">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900">Real-World Calculation Examples</h2>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Hypothetical Calculation Examples</h2>
 
           <div className="space-y-6">
             <div className="bg-gray-50 rounded-lg p-6">
@@ -695,7 +709,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <span className="text-green-600 text-xl flex-shrink-0 mt-1">✅</span>
               <div>
                 <h4 className="font-semibold mb-1">6. File Correctly on Schedule C</h4>
-                <p className="text-sm text-gray-700">Simplified method: Report on Line 30 ("Expenses for business use of home"). Regular method: Complete Form 8829 ("Expenses for Business Use of Your Home") and attach to Schedule C. Software like TurboTax Self-Employed handles this automatically.</p>
+                <p className="text-sm text-gray-700">Simplified method: Report on Line 30 ("Expenses for business use of home"). Regular method: Complete Form 8829 ("Expenses for Business Use of Your Home") and attach to Schedule C. Most tax software that supports Schedule C handles this automatically.</p>
               </div>
             </div>
           </div>
@@ -714,13 +728,38 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="bg-green-50 border-l-4 border-green-600 p-6">
             <p className="text-gray-800 font-semibold mb-2">✅ Audit-Proof Best Practices</p>
             <ul className="list-disc pl-6 text-gray-700 space-y-1">
-              <li>Keep all documentation for at least 3 years (IRS statute of limitations)</li>
+              <li>Keep documentation for at least 3 years after filing (the general IRS limitation period), and keep home-cost and depreciation records until at least 3 years after you sell the home</li>
               <li>Take dated photos of your office space annually</li>
-              <li>Use accounting software to track expenses automatically (QuickBooks Self-Employed)</li>
+              <li>Use accounting or bookkeeping software to track expenses automatically</li>
               <li>Never exaggerate square footage—measure accurately</li>
               <li>If unsure, consult a CPA before claiming the deduction</li>
             </ul>
           </div>
+        </section>
+
+        {/* Income Limit & Carryover */}
+        <section id="income-limit" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Income Limit, Carryovers & Itemizing</h2>
+
+          <p className="text-lg text-gray-700 mb-4">
+            Two rules trip up freelancers in slow years. First, the home office deduction <strong>can't create or increase a business loss</strong>. It is limited to the gross income from the business use of your home, minus your other business expenses. Under the regular method, any disallowed amount carries forward to future years on Form 8829. Under the simplified method, the excess is simply lost—there is no carryover.
+          </p>
+
+          <div className="bg-gray-100 rounded-lg p-6 mb-6">
+            <h4 className="font-semibold text-lg mb-3">Example (hypothetical): a part-time first year</h4>
+            <p className="text-sm text-gray-700 mb-2">A designer earns $4,000 of gross income and has $3,200 of other business expenses, leaving $800 of room for a home office deduction.</p>
+            <p className="text-sm text-gray-700">• <strong>Simplified method (250 sq ft):</strong> $1,250 calculated, but only $800 allowed; $450 is lost.</p>
+            <p className="text-sm text-gray-700">• <strong>Regular method ($2,600 office share of rent and utilities):</strong> $800 allowed this year; $1,800 carries forward to next year.</p>
+            <p className="text-sm text-gray-600 mt-2">Homeowners: the business share of mortgage interest and property taxes is handled first on Form 8829 and isn't limited the same way, so run the form (or your software) to see the exact split.</p>
+          </div>
+
+          <p className="text-lg text-gray-700 mb-4">
+            Second, think about where housing costs end up. With the <strong>simplified method</strong>, you can still deduct your full mortgage interest and property taxes on Schedule A if you itemize. With the <strong>regular method</strong>, the business share moves to Form 8829 and Schedule C, and only the personal share stays on Schedule A. Moving those costs to Schedule C reduces self-employment tax as well as income tax.
+          </p>
+
+          <p className="text-lg text-gray-700 mb-4">
+            A lower Schedule C profit also lowers your quarterly estimated payments. Once you have picked a method, update your numbers in the <a href="/freelance-profit-hub/" className="text-indigo-600 font-semibold hover:underline">Freelance Profit Hub</a> and the <a href="/quarterly-estimated-tax-calculator/" className="text-indigo-600 font-semibold hover:underline">quarterly estimated tax calculator</a>, and see the <a href="/blog/self-employment-tax-guide-2025/" className="text-indigo-600 font-semibold hover:underline">self-employment tax guide</a> for how the 15.3% SE tax is calculated.
+          </p>
         </section>
 
         {/* Related Tools */}
@@ -773,7 +812,7 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg mb-2 text-gray-900 group-hover:text-green-600 transition-colors">
-                    Tax Deductions for Freelancers 2025 →
+                    Tax Deductions for Freelancers 2026 →
                   </h3>
                   <p className="text-sm text-gray-600">Complete guide to ALL freelancer deductions (home office is just one of many!)</p>
                 </div>
@@ -820,6 +859,19 @@ const HomeOfficeDeduction2025: React.FC<BlogProps> = ({ onNavigate }) => {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Sources */}
+        <section id="sources" className="mb-12">
+          <h2 className="text-2xl font-bold mb-4 text-gray-900">Sources</h2>
+          <ul className="list-disc pl-6 text-gray-700 space-y-1">
+            <li>IRS Publication 587, Business Use of Your Home: <a href="https://www.irs.gov/publications/p587" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">irs.gov/publications/p587</a></li>
+            <li>IRS Publication 334, Tax Guide for Small Business: <a href="https://www.irs.gov/publications/p334" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">irs.gov/publications/p334</a></li>
+            <li>IRS Publication 946, How to Depreciate Property: <a href="https://www.irs.gov/publications/p946" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">irs.gov/publications/p946</a></li>
+          </ul>
+          <p className="text-sm text-gray-600 mt-4">
+            This guide is educational and not individualized tax advice. Examples are hypothetical; confirm your own situation with IRS guidance or a tax professional.
+          </p>
         </section>
 
         {/* Final CTA */}

@@ -8,7 +8,13 @@
  * shallow clone, so the dates are generated here (full history) and committed.
  *
  * Usage (after editing or adding a post, before committing):
- *   node scripts/generate-content-dates.cjs
+ *   node scripts/generate-content-dates.cjs <slug> [<slug> ...]   update these posts
+ *   node scripts/generate-content-dates.cjs                       add missing posts only
+ *   node scripts/generate-content-dates.cjs --all                 recompute everything
+ *
+ * Existing entries are kept unless named (or --all), so a commit that only
+ * touches markup (not the content) doesn't make every post look "updated".
+ * Academy guides use the key "academy/<slug>".
  */
 
 const fs = require('fs');
@@ -40,6 +46,15 @@ let m;
 while ((m = importRe.exec(src))) {
   compToFile[m[1]] = 'components/blog/' + m[2] + '.tsx';
 }
+const args = process.argv.slice(2);
+const recomputeAll = args.includes('--all');
+const only = new Set(args.filter((a) => a !== '--all'));
+let existing = {};
+try {
+  existing = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+} catch (e) {
+  existing = {};
+}
 const dates = {};
 const entryRe = /'([\w-]+)':\s*\{[^}]*?component:\s*(\w+)/gs;
 while ((m = entryRe.exec(src))) {
@@ -62,6 +77,11 @@ const ACADEMY_FILE_MAP = {
 Object.keys(ACADEMY_FILE_MAP).forEach((slug) => {
   const history = git('log --follow --format=%cs -- ' + JSON.stringify(ACADEMY_FILE_MAP[slug])).split('\n').filter(Boolean);
   if (history.length) dates['academy/' + slug] = { published: history[history.length - 1], modified: history[0] };
+});
+
+// Keep curated dates for posts that weren't named on the command line.
+Object.keys(dates).forEach((key) => {
+  if (!recomputeAll && !only.has(key) && existing[key]) dates[key] = existing[key];
 });
 
 const sorted = {};

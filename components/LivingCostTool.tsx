@@ -41,7 +41,7 @@ const LivingCostTool: React.FC = () => {
       <div className="grid lg:grid-cols-2 gap-8">
         <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-6">
            <label className="block text-xs font-black text-slate-400 uppercase tracking-widest">Monthly Income ($)</label>
-           <input type="number" value={monthlyIncome} onChange={e => setMonthlyIncome(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-2xl" />
+           <input type="number" inputMode="decimal" value={monthlyIncome} onChange={e => setMonthlyIncome(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-2xl" />
         </div>
         <div className="bg-emerald-600 p-10 rounded-[3rem] text-white text-center shadow-xl flex flex-col justify-center">
            <p className="text-xs font-black uppercase opacity-60 mb-2">Monthly Surplus</p>

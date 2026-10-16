@@ -297,7 +297,7 @@ const CryptoTaxLossHarvester: React.FC<CryptoTaxLossHarvesterProps> = ({ onNavig
                     </td>
                     <td className="px-6 py-4 text-right">
                       <input
-                        type="number"
+                        type="number" inputMode="decimal"
                         value={row.purchasePrice}
                         onChange={(event) => updateRow(row.id, 'purchasePrice', event.target.value)}
                         className="w-32 text-right bg-transparent border border-slate-200 rounded-xl px-3 py-2 font-semibold focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
@@ -305,7 +305,7 @@ const CryptoTaxLossHarvester: React.FC<CryptoTaxLossHarvesterProps> = ({ onNavig
                     </td>
                     <td className="px-6 py-4 text-right">
                       <input
-                        type="number"
+                        type="number" inputMode="decimal"
                         value={row.currentPrice}
                         onChange={(event) => updateRow(row.id, 'currentPrice', event.target.value)}
                         className="w-32 text-right bg-transparent border border-slate-200 rounded-xl px-3 py-2 font-semibold focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
@@ -313,7 +313,7 @@ const CryptoTaxLossHarvester: React.FC<CryptoTaxLossHarvesterProps> = ({ onNavig
                     </td>
                     <td className="px-6 py-4 text-right">
                       <input
-                        type="number"
+                        type="number" inputMode="decimal"
                         step="0.0001"
                         value={row.quantity}
                         onChange={(event) => updateRow(row.id, 'quantity', event.target.value)}

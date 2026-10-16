@@ -265,16 +265,16 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">Age</label>
-                  <input type="number" value={currentAge} onChange={e => setCurrentAge(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
+                  <input type="number" inputMode="decimal" value={currentAge} onChange={e => setCurrentAge(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">Savings ($)</label>
-                  <input type="number" value={currentSavings} onChange={e => setCurrentSavings(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
+                  <input type="number" inputMode="decimal" value={currentSavings} onChange={e => setCurrentSavings(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
                 </div>
               </div>
               <div>
                 <label className="block text-[10px] font-black text-orange-500 uppercase mb-2">Monthly Contribution ($)</label>
-                <input type="number" value={monthlyContribution} onChange={e => setMonthlyContribution(Number(e.target.value))} className="w-full p-4 bg-orange-50 border-none rounded-2xl font-black text-orange-600 text-xl" />
+                <input type="number" inputMode="decimal" value={monthlyContribution} onChange={e => setMonthlyContribution(Number(e.target.value))} className="w-full p-4 bg-orange-50 border-none rounded-2xl font-black text-orange-600 text-xl" />
               </div>
             </div>
           </section>
@@ -284,16 +284,16 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
             <div className="space-y-6">
               <div>
                 <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">Annual Lifestyle Cost ($)</label>
-                <input type="number" value={annualExpenses} onChange={e => setAnnualExpenses(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700 text-xl" />
+                <input type="number" inputMode="decimal" value={annualExpenses} onChange={e => setAnnualExpenses(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700 text-xl" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">Market Return (%)</label>
-                  <input type="number" value={expectedReturn} onChange={e => setExpectedReturn(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
+                  <input type="number" inputMode="decimal" value={expectedReturn} onChange={e => setExpectedReturn(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">SWR (%)</label>
-                  <input type="number" step="0.5" value={safeWithdrawalRate} onChange={e => setSafeWithdrawalRate(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
+                  <input type="number" inputMode="decimal" step="0.5" value={safeWithdrawalRate} onChange={e => setSafeWithdrawalRate(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" />
                 </div>
               </div>
 
@@ -344,7 +344,7 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
               <div>
                 <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">Current COL Index</label>
                 <input 
-                  type="number" 
+                  type="number" inputMode="decimal" 
                   value={currentCOL} 
                   onChange={e => setCurrentCOL(Number(e.target.value))} 
                   className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" 
@@ -355,7 +355,7 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
               <div>
                 <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">Target COL Index</label>
                 <input 
-                  type="number" 
+                  type="number" inputMode="decimal" 
                   value={targetCOL} 
                   onChange={e => setTargetCOL(Number(e.target.value))} 
                   className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" 
@@ -383,7 +383,7 @@ const FIREPlanner: React.FC<FIREPlannerProps> = ({ onNavigate }) => {
               <div>
                 <label className="block text-[10px] font-black text-slate-400 uppercase mb-2">Part-Time Income ($/yr)</label>
                 <input 
-                  type="number" 
+                  type="number" inputMode="decimal" 
                   value={partTimeIncome} 
                   onChange={e => setPartTimeIncome(Number(e.target.value))} 
                   className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700" 

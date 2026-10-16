@@ -240,7 +240,7 @@ const ExcelModeler: React.FC = () => {
                       <span className="cursor-help" title="US 10-Year Treasury Yield">ⓘ</span>
                     </label>
                     <input
-                      type="number"
+                      type="number" inputMode="decimal"
                       step="0.1"
                       value={riskFreeRate}
                       onChange={e => setRiskFreeRate(Number(e.target.value))}
@@ -255,7 +255,7 @@ const ExcelModeler: React.FC = () => {
                       <span className="cursor-help" title="Stock volatility vs market">ⓘ</span>
                     </label>
                     <input
-                      type="number"
+                      type="number" inputMode="decimal"
                       step="0.1"
                       value={beta}
                       onChange={e => setBeta(Number(e.target.value))}
@@ -273,7 +273,7 @@ const ExcelModeler: React.FC = () => {
                       <span className="cursor-help" title="Expected market return - Rf">ⓘ</span>
                     </label>
                     <input
-                      type="number"
+                      type="number" inputMode="decimal"
                       step="0.1"
                       value={marketRiskPremium}
                       onChange={e => setMarketRiskPremium(Number(e.target.value))}
@@ -298,7 +298,7 @@ const ExcelModeler: React.FC = () => {
                     <div className="space-y-2">
                       <label className="text-[9px] font-bold text-slate-400 uppercase">Cost of Debt (Kd)</label>
                       <input
-                        type="number"
+                        type="number" inputMode="decimal"
                         step="0.1"
                         value={costOfDebt}
                         onChange={e => setCostOfDebt(Number(e.target.value))}
@@ -310,7 +310,7 @@ const ExcelModeler: React.FC = () => {
                     <div className="space-y-2">
                       <label className="text-[9px] font-bold text-slate-400 uppercase">D/E Ratio</label>
                       <input
-                        type="number"
+                        type="number" inputMode="decimal"
                         step="0.1"
                         value={debtToEquity}
                         onChange={e => setDebtToEquity(Number(e.target.value))}

@@ -11,17 +11,17 @@ export type BlogMetadata = {
 export const blogMetadata: Record<string, BlogMetadata> = {
   'mortgage-calculator-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_MORTGAGE_GUIDE].title,
-    description: TOOL_METADATA[ToolType.BLOG_MORTGAGE_GUIDE].desc,
+    description: "How a mortgage calculator works in 2026: PITI, PMI costs and removal, property taxes, the 28/36 rule, and worked payment examples you can check.",
     slug: 'mortgage-calculator-guide-2025'
   },
   'child-tax-credit-2025-guide': {
     title: TOOL_METADATA[ToolType.BLOG_CTC_2025].title,
-    description: TOOL_METADATA[ToolType.BLOG_CTC_2025].desc,
+    description: "The 2026 Child Tax Credit is $2,200 per child with up to $1,700 refundable. Learn the SSN rules, $200k/$400k phase-outs and worked ACTC refund examples.",
     slug: 'child-tax-credit-2025-guide'
   },
   'aca-health-insurance-freelancers-2025': {
     title: TOOL_METADATA[ToolType.BLOG_ACA_FREELANCERS].title,
-    description: TOOL_METADATA[ToolType.BLOG_ACA_FREELANCERS].desc,
+    description: "2026 ACA guide for freelancers: enhanced subsidies expired, the 400% FPL cliff is back. Premium tax credit math, Medicaid, CSR and MAGI strategies.",
     slug: 'aca-health-insurance-freelancers-2025'
   },
   'quarterly-estimated-taxes-complete-guide': {
@@ -36,27 +36,27 @@ export const blogMetadata: Record<string, BlogMetadata> = {
   },
   'tax-deductions-freelancers-2025': {
     title: TOOL_METADATA[ToolType.BLOG_TAX_DEDUCTIONS].title,
-    description: "Discover every tax deduction available to freelancers in 2025. Learn about home office deduction ($5/sq ft simplified method), mileage ($0.67/mile), Section 179 equipment expensing, health insurance, retirement contributions, and business expense strategies to save thousands.",
+    description: "2026 freelancer write-offs: 72.5¢ mileage, home office, 100% bonus depreciation, health insurance, SEP/Solo 401(k) and QBI, with worked tax examples.",
     slug: 'tax-deductions-freelancers-2025'
   },
   '1099-vs-w2-comparison-2025': {
     title: TOOL_METADATA[ToolType.BLOG_1099_W2].title,
-    description: "Comprehensive guide comparing 1099 independent contractor vs W-2 employee status. Learn tax differences, benefits comparison, take-home pay calculations, legal classification rules, and when to negotiate for each employment type.",
+    description: "Compare 1099 contractor and W-2 employee pay in 2026: 15.3% self-employment tax, benefits value, the rate you need to break even, and worked scenarios.",
     slug: '1099-vs-w2-comparison-2025'
   },
   'llc-vs-sole-proprietor-2025': {
     title: TOOL_METADATA[ToolType.BLOG_LLC_SOLE_PROP].title,
-    description: "Comprehensive comparison of LLC vs Sole Proprietorship for freelancers and small business owners. Understand tax differences, liability protection, formation costs, S-Corp election benefits, and which structure saves you the most money in 2025.",
+    description: "LLC vs sole proprietor for 2026: liability protection, state fees, and S-corp math with QBI included. See what an S-corp election really saves.",
     slug: 'llc-vs-sole-proprietor-2025'
   },
   'sep-ira-vs-solo-401k-2025': {
     title: TOOL_METADATA[ToolType.BLOG_SEP_SOLO401K].title,
-    description: "Comprehensive comparison of SEP-IRA vs Solo 401(k) for self-employed individuals and freelancers. Understand 2025 contribution limits ($69k max), tax benefits, setup costs, deadlines, and which retirement plan saves you the most money.",
+    description: "SEP-IRA vs Solo 401(k) for 2026: $72,000 limit, $24,500 deferral, catch-ups, Roth options and deadlines, with contribution math at every income.",
     slug: 'sep-ira-vs-solo-401k-2025'
   },
   'home-office-deduction-2025': {
     title: TOOL_METADATA[ToolType.BLOG_HOME_OFFICE].title,
-    description: "Comprehensive guide to claiming the home office deduction for self-employed individuals and freelancers in 2025. Learn the simplified method ($5/sq ft, max $1,500), regular method (actual expenses), qualification requirements, depreciation, and audit-proof documentation.",
+    description: "Home office deduction for 2026: $5/sq ft simplified method vs actual expenses, who qualifies, income limits, depreciation recapture and worked examples.",
     slug: 'home-office-deduction-2025'
   },
   'how-much-house-can-i-afford-2025': {
@@ -66,7 +66,7 @@ export const blogMetadata: Record<string, BlogMetadata> = {
   },
   'should-i-pay-off-debt-or-invest-2025': {
     title: TOOL_METADATA[ToolType.BLOG_DEBT_OR_INVEST].title,
-    description: "Decide whether to pay off debt or invest your money in 2025. Learn the debt vs investment math, interest rate comparisons, and strategies to maximize your wealth.",
+    description: "Pay off debt or invest in 2026? Compare interest rates to expected returns, use 2026 401(k), IRA and HSA limits, and follow a clear priority order.",
     slug: 'should-i-pay-off-debt-or-invest-2025'
   },
   'how-to-calculate-take-home-pay-2025': {
@@ -76,12 +76,12 @@ export const blogMetadata: Record<string, BlogMetadata> = {
   },
   '100k-california-vs-texas-take-home-pay': {
     title: TOOL_METADATA[ToolType.BLOG_CA_TX_TAKE_HOME].title,
-    description: "Compare take-home pay, taxes, and living costs for a $100k salary in California vs Texas. See which state stretches your paycheck further in 2025.",
+    description: "Compare take-home pay on a $100k salary in California vs. Texas using 2026 federal and FICA figures, plus housing costs that often matter even more.",
     slug: '100k-california-vs-texas-take-home-pay'
   },
   'bonus-tax-myth-withholding-vs-liability': {
     title: TOOL_METADATA[ToolType.BLOG_BONUS_TAX].title,
-    description: "Learn the difference between bonus withholding and actual tax liability. Understand the 22% flat withholding rule and calculate your real bonus take-home pay.",
+    description: "Bonuses aren't taxed at a higher rate. Learn how 22% supplemental withholding and the aggregate method work, with 2026 examples of refunds and bills.",
     slug: 'bonus-tax-myth-withholding-vs-liability'
   },
   'overtime-tax-myth-withholding-vs-tax-rate': {
@@ -91,132 +91,132 @@ export const blogMetadata: Record<string, BlogMetadata> = {
   },
   'raise-vs-relocation-cost-of-living': {
     title: TOOL_METADATA[ToolType.BLOG_RAISE_MOVE].title,
-    description: "Break down whether a $10,000 raise is worth relocating. Compare taxes, cost of living, and hidden moving costs before you accept the offer.",
+    description: "See what a $10k raise really nets after 2026 federal, FICA and state taxes, how much higher rent and moving costs eat into it, and your payback period.",
     slug: 'raise-vs-relocation-cost-of-living'
   },
   'max-out-401k-take-home-pay': {
     title: TOOL_METADATA[ToolType.BLOG_MAX_401K].title,
-    description: "Learn how pre-tax 401(k) contributions reduce taxable income and why maxing out can feel like a smaller hit to take-home pay than expected.",
+    description: "A $24,500 401(k) contribution costs less than $24,500 of take-home pay. See 2026 limits and the real paycheck cost at $60k, $100k, $150k and $250k.",
     slug: 'max-out-401k-take-home-pay'
   },
   'gross-vs-net-pay-paycheck-breakdown': {
     title: TOOL_METADATA[ToolType.BLOG_GROSS_NET].title,
-    description: "A beginner-friendly guide to gross vs net pay, FICA, Medicare, and state taxes. Learn why your paycheck is smaller and how to calculate take-home pay.",
+    description: "Why your paycheck is smaller than your salary: a line-by-line 2026 example of FICA, federal withholding, pre-tax benefits and state tax on $60,000.",
     slug: 'gross-vs-net-pay-paycheck-breakdown'
   },
   'freelancer-estimated-taxes-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_FREELANCE_ESTIMATED].title,
-    description: "A 1099-friendly guide to estimated taxes. Learn safe harbor rules, how much to save, and how to calculate quarterly payments for tax year 2026.",
+    description: "How much should freelancers set aside for taxes in 2026? A step-by-step estimate, an $85,000 worked example, safe harbor rules and 2026 due dates.",
     slug: 'freelancer-estimated-taxes-guide-2025'
   },
   'moving-to-florida-sunshine-tax-savings': {
     title: TOOL_METADATA[ToolType.BLOG_FLORIDA_MOVE].title,
-    description: "Considering a move from New York or New Jersey to Florida? See how state tax savings change your take-home pay and budget in 2025.",
+    description: "Estimate what leaving New York or New Jersey for Florida really saves: state tax, SALT offset, insurance costs, and the residency rules that make it stick.",
     slug: 'moving-to-florida-sunshine-tax-savings'
   },
   'piti-explained-mortgage-payment-breakdown': {
     title: TOOL_METADATA[ToolType.BLOG_PITI_EXPLAINED].title,
-    description: "Understand PITI (principal, interest, taxes, and insurance) and why your monthly payment is higher than the list price implies.",
+    description: "PITI is principal, interest, taxes and insurance. See how escrow works, why fixed-rate payments still rise, and a $450,000 home payment line by line.",
     slug: 'piti-explained-mortgage-payment-breakdown'
   },
   'mortgage-points-break-even-2026': {
     title: TOOL_METADATA[ToolType.BLOG_POINTS_BREAK_EVEN].title,
-    description: "Learn when mortgage points make sense, how to calculate break-even, and when to skip buying down the rate in 2026.",
+    description: "Should you buy mortgage points in 2026? Break-even math on a $400,000 loan, when points pay off, when to skip them, and how they're taxed.",
     slug: 'mortgage-points-break-even-2026'
   },
   'pmi-math-how-to-remove-faster': {
     title: TOOL_METADATA[ToolType.BLOG_PMI_MATH].title,
-    description: "Understand PMI math, the 20% equity rule, and strategies to remove private mortgage insurance sooner.",
+    description: "PMI often costs 0.3%–1.5% of the loan per year. See the 80% and 78% LTV rules, how extra payments speed removal, and how FHA MIP differs.",
     slug: 'pmi-math-how-to-remove-faster'
   },
   'rent-vs-buy-5-percent-rule-2026': {
     title: TOOL_METADATA[ToolType.BLOG_RENT_BUY_2026].title,
-    description: "Learn the 5% rule for rent vs buy decisions, and when homeownership makes sense in 2026.",
+    description: "Use the 5% rule to compare renting vs buying: price × 5% ÷ 12 vs rent. What the 5% covers, worked examples, and how to adjust it for 2026 rates.",
     slug: 'rent-vs-buy-5-percent-rule-2026'
   },
   '500k-house-monthly-cost-rate-sensitivity': {
     title: TOOL_METADATA[ToolType.BLOG_500K_COST].title,
-    description: "See how interest rate changes affect the monthly cost of a $500,000 home and why rate sensitivity matters for buyers in 2026.",
+    description: "What a $500,000 house costs per month at 5.5%–8% rates: principal, interest, full PITI, lifetime interest, and how higher rates shrink buying power.",
     slug: '500k-house-monthly-cost-rate-sensitivity'
   },
   'biweekly-mortgage-payments-interest-savings': {
     title: TOOL_METADATA[ToolType.BLOG_BIWEEKLY].title,
-    description: "Learn how bi-weekly mortgage payments create an extra full payment each year and reduce interest over the life of the loan.",
+    description: "Bi-weekly mortgage payments add one extra payment a year. See the interest saved by loan size and rate, the servicer catch, and a fee-free DIY version.",
     slug: 'biweekly-mortgage-payments-interest-savings'
   },
   'fi-number-math-financial-independence': {
     title: TOOL_METADATA[ToolType.BLOG_FI_NUMBER].title,
-    description: "Learn the 25x annual expenses rule and how to calculate your FI number for financial independence.",
+    description: "Learn how to calculate your FI number with the 25x rule, when to use 28x–33x instead, and how taxes, inflation and Social Security change your target.",
     slug: 'fi-number-math-financial-independence'
   },
   'leanfire-vs-fatfire-lifestyle-budget': {
     title: TOOL_METADATA[ToolType.BLOG_LEAN_FAT_FIRE].title,
-    description: "Compare LeanFIRE and FatFIRE spending targets and see how lifestyle costs change your retirement number.",
+    description: "Compare LeanFIRE and FatFIRE budgets, the portfolio each needs at 25x or 30x, how long each takes, and how 2026 ACA subsidy rules affect each path.",
     slug: 'leanfire-vs-fatfire-lifestyle-budget'
   },
   '4-percent-rule-dead-safe-withdrawal-rates': {
     title: TOOL_METADATA[ToolType.BLOG_FOUR_PERCENT].title,
-    description: "Explore why the 4% rule is under pressure from inflation and longevity risk, and how to test safer withdrawal rates.",
+    description: "What the 4% rule really says, why longer retirements and sequence risk challenge it, and how 3%–3.5% rates and flexible spending change your plan.",
     slug: '4-percent-rule-dead-safe-withdrawal-rates'
   },
   'coast-fire-how-to-retire-early': {
     title: TOOL_METADATA[ToolType.BLOG_COAST_FIRE].title,
-    description: "Learn how Coast FIRE works, why front-loading investments matters, and how to calculate your coast age.",
+    description: "See how Coast FIRE works, the formula for your coast number, a table of targets by age and return, and the risks of coasting before you hit full FI.",
     slug: 'coast-fire-how-to-retire-early'
   },
   'cost-of-waiting-compound-interest': {
     title: TOOL_METADATA[ToolType.BLOG_COST_WAITING].title,
-    description: "See how delaying investing reduces compounding and learn the real cost of starting 10 years later.",
+    description: "Starting to invest at 25 vs 35 can cost $600K to $2M+ depending on returns. See the compound interest math, catch-up amounts, and what to do now.",
     slug: 'cost-of-waiting-compound-interest'
   },
   'roth-vs-traditional-401k-tax-bracket-bet': {
     title: TOOL_METADATA[ToolType.BLOG_ROTH_TRAD_401K].title,
-    description: "Compare Roth vs Traditional 401(k) choices based on tax brackets now vs later and learn when each option wins.",
+    description: "Roth or Traditional 401(k)? See the 2026 math behind the tax bracket bet, worked examples at 12%, 22% and 24%, bracket edges, and when to split.",
     slug: 'roth-vs-traditional-401k-tax-bracket-bet'
   },
   'snowball-vs-avalanche-debt-payoff': {
     title: TOOL_METADATA[ToolType.BLOG_SNOWBALL_AVALANCHE].title,
-    description: "Compare the snowball and avalanche debt payoff methods and see which strategy saves the most interest.",
+    description: "Snowball vs avalanche debt payoff compared with a worked example: total interest, payoff dates, when each method wins, and mistakes that slow you down.",
     slug: 'snowball-vs-avalanche-debt-payoff'
   },
   '72-month-car-loan-true-cost': {
     title: TOOL_METADATA[ToolType.BLOG_CAR_LOAN_72].title,
-    description: "Learn how long-term auto loans inflate total interest and keep you underwater longer.",
+    description: "What a 72-month car loan really costs: total interest vs 60 months, negative equity risk, the new car loan interest deduction and smarter ways to buy.",
     slug: '72-month-car-loan-true-cost'
   },
   'student-loan-refinance-math': {
     title: TOOL_METADATA[ToolType.BLOG_STUDENT_LOAN_REFI].title,
-    description: "Learn when refinancing student loans makes sense and how to weigh lower rates against lost federal protections.",
+    description: "Run the student loan refinance math: compare total interest by term, see which federal protections you give up, and learn when refinancing makes sense.",
     slug: 'student-loan-refinance-math'
   },
   'credit-card-minimum-payments-20-years': {
     title: TOOL_METADATA[ToolType.BLOG_CC_MIN_PAY].title,
-    description: "See how 2% minimum payments stretch credit card debt for decades and how a small extra payment changes the timeline.",
+    description: "See why paying only the credit card minimum can take nearly 20 years, how minimum formulas work, and how a fixed payment can save thousands in interest.",
     slug: 'credit-card-minimum-payments-20-years'
   },
   'assets-vs-liabilities-true-net-worth': {
     title: TOOL_METADATA[ToolType.BLOG_ASSETS_LIABILITIES].title,
-    description: "Learn the difference between assets and liabilities and how to calculate your true net worth step by step.",
+    description: "Learn what counts as an asset or liability, how to value your home, car and 401(k), and see a worked example that calculates true, after-tax net worth.",
     slug: 'assets-vs-liabilities-true-net-worth'
   },
   'financial-order-of-operations': {
     title: TOOL_METADATA[ToolType.BLOG_ORDER_OPS].title,
-    description: "Follow the financial order of operations: emergency fund, employer match, high-interest debt, and beyond.",
+    description: "A step-by-step order for your money: emergency fund, 401(k) match, high-interest debt, HSA, IRA and more, with 2026 contribution limits and an example.",
     slug: 'financial-order-of-operations'
   },
   'inflation-calculator-million-worth-retirement': {
     title: TOOL_METADATA[ToolType.BLOG_INFLATION_MILLION].title,
-    description: "See how inflation erodes purchasing power and what $1 million could feel like in retirement dollars.",
+    description: "See what $1 million buys after 10-30 years of inflation, the formula behind inflation calculators, and how to set an inflation-adjusted retirement goal.",
     slug: 'inflation-calculator-million-worth-retirement'
   },
   '6-month-emergency-fund-rule': {
     title: TOOL_METADATA[ToolType.BLOG_EMERGENCY_RULE].title,
-    description: "Learn the 6-month emergency fund rule, how to size your cash buffer, and why layoffs make it essential.",
+    description: "Size your emergency fund with the 6-month rule: what expenses count, a worked example, when to hold 3 or 12 months, and where to keep the cash.",
     slug: '6-month-emergency-fund-rule'
   },
   'latte-factor-vs-big-wins-wealth': {
     title: TOOL_METADATA[ToolType.BLOG_LATTE_FACTOR].title,
-    description: "Small expenses add up, but housing, cars, and taxes move the needle far more. Learn where to focus.",
+    description: "Does skipping coffee make you rich? Compare the latte factor with big wins in housing, cars and taxes, with 30-year math and a quick budget audit.",
     slug: 'latte-factor-vs-big-wins-wealth'
   },
   'dcf-modeling-retail-investors': {
@@ -226,117 +226,117 @@ export const blogMetadata: Record<string, BlogMetadata> = {
   },
   'lump-sum-vs-dollar-cost-averaging': {
     title: TOOL_METADATA[ToolType.BLOG_LUMP_SUM_DCA].title,
-    description: "Compare lump sum investing vs dollar cost averaging and learn when each strategy makes sense.",
+    description: "Lump sum beat dollar-cost averaging about two-thirds of the time historically. See worked examples, when DCA still makes sense, and a hybrid plan.",
     slug: 'lump-sum-vs-dollar-cost-averaging'
   },
   'roth-ira-vs-traditional-ira-2025': {
     title: TOOL_METADATA[ToolType.BLOG_ROTH_TRADITIONAL].title,
-    description: "Compare Roth IRA vs Traditional IRA in 2025. Learn contribution limits, tax benefits, withdrawal rules, and which retirement account is better for your situation.",
+    description: "Roth IRA vs Traditional IRA for 2026: $7,500 limit, Roth income phase-outs, deduction rules, withdrawal rules, and worked examples by tax bracket.",
     slug: 'roth-ira-vs-traditional-ira-2025'
   },
   'how-much-emergency-fund-do-i-need-2025': {
     title: TOOL_METADATA[ToolType.BLOG_EMERGENCY_FUND].title,
-    description: "Calculate how much emergency fund you need in 2025. Learn the 3-6 month rule, how to build your emergency fund, where to keep it, and use our calculator to find your perfect safety net.",
+    description: "Find your emergency fund target with the 3-6 month rule, a step-by-step expense method, worked examples, and where to keep the cash safely in 2026.",
     slug: 'how-much-emergency-fund-do-i-need-2025'
   },
   'fire-calculator-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_FIRE_GUIDE].title,
-    description: "Calculate your FIRE (Financial Independence Retire Early) number with our comprehensive guide. Learn the 4% rule, Lean FIRE vs Fat FIRE, and how to achieve financial independence.",
+    description: "Calculate your FIRE number with the 4% rule, savings-rate timelines, 2026 401(k)/IRA/HSA limits, and the ACA subsidy cliff early retirees must plan around.",
     slug: 'fire-calculator-guide-2025'
   },
   'best-retirement-calculator-2025': {
     title: TOOL_METADATA[ToolType.BLOG_BEST_RETIREMENT].title,
-    description: "Compare the best retirement calculators in 2025. Review top tools including QuantCurb, Bankrate, NerdWallet, and find the perfect calculator for your retirement planning needs.",
+    description: "How to choose a retirement calculator in 2026: compare tool types, features to look for, red flags, and why your return assumptions matter most.",
     slug: 'best-retirement-calculator-2025'
   },
   'investment-calculator-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_INVESTMENT_GUIDE].title,
-    description: "Master investment calculations with our comprehensive 2025 guide. Learn SIP investing, compound interest, inflation-adjusted returns, and how to use an investment calculator to project your wealth growth.",
+    description: "How an investment calculator works: compound interest, monthly SIP investing, the Rule of 72, and adjusting projections for inflation, fees and taxes.",
     slug: 'investment-calculator-guide-2025'
   },
   'best-mortgage-calculator-2025': {
     title: TOOL_METADATA[ToolType.BLOG_BEST_MORTGAGE].title,
-    description: "Compare the best mortgage calculators in 2025. Review top tools including QuantCurb, Bankrate, Zillow, and find the perfect calculator with PITI, PMI, and property tax calculations.",
+    description: "What to look for in a mortgage calculator in 2026: full PITI, PMI, property tax and amortization, plus a 60-second test to check any calculator's math.",
     slug: 'best-mortgage-calculator-2025'
   },
   'student-loan-repayment-strategies-2025': {
     title: TOOL_METADATA[ToolType.BLOG_STUDENT_LOANS].title,
-    description: "Master student loan repayment in 2025. Learn about income-driven repayment plans, loan forgiveness programs, refinancing strategies, and how to pay off student debt faster.",
+    description: "Federal student loan repayment changed in 2026: the new RAP plan, the end of SAVE, IBR, PSLF, refinancing and faster payoff strategies, with examples.",
     slug: 'student-loan-repayment-strategies-2025'
   },
   'tax-brackets-explained-2025': {
     title: TOOL_METADATA[ToolType.BLOG_TAX_BRACKETS].title,
-    description: "Understand 2025 federal tax brackets and how progressive taxation works. Learn effective vs marginal tax rate, tax bracket calculations, and how to reduce your tax bill legally.",
+    description: "See the 2026 federal tax brackets for single and joint filers, marginal vs effective rates, and worked examples using the $16,100 standard deduction.",
     slug: 'tax-brackets-explained-2025'
   },
   '401k-vs-ira-comparison-2025': {
     title: TOOL_METADATA[ToolType.BLOG_401K_VS_IRA].title,
-    description: "Compare 401(k) vs IRA in 2025. Learn contribution limits, employer match, tax benefits, withdrawal rules, and which retirement account is better for your situation.",
+    description: "Compare 401(k) and IRA rules for 2026: $24,500 vs $7,500 limits, catch-ups, employer match, Roth income limits, withdrawals, and the order to fund them.",
     slug: '401k-vs-ira-comparison-2025'
   },
   'budgeting-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_BUDGETING].title,
-    description: "Master budgeting in 2025 with our complete guide. Learn the 50/30/20 rule, zero-based budgeting, envelope method, and proven strategies to take control of your finances.",
+    description: "Build a budget that works in 2026: the 50/30/20 rule, zero-based budgeting, the envelope method, worked $5,000 examples, and 2026 savings limits.",
     slug: 'budgeting-guide-2025'
   },
   'net-worth-tracker-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_NET_WORTH].title,
-    description: "A human-friendly guide to calculating net worth, tracking assets and liabilities, and using a net worth tracker to grow wealth with clarity.",
+    description: "Set up a simple net worth tracker: what to list, how often to update, a worked monthly example, and the metrics that show whether you're progressing.",
     slug: 'net-worth-tracker-guide-2025'
   },
   'loan-emi-calculator-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_EMI_GUIDE].title,
-    description: "A human-friendly guide to EMI calculation, amortization, and how to lower loan interest using an EMI calculator.",
+    description: "How to calculate loan EMI: the formula, worked examples, a tenure vs interest table, flat vs reducing rates, prepayment savings and an affordability test.",
     slug: 'loan-emi-calculator-guide-2025'
   },
   'loan-comparison-refinance-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_LOAN_COMPARE].title,
-    description: "Learn how to compare loan offers using APR, fees, and break-even analysis with a loan comparison calculator.",
+    description: "Compare loan offers in 2026 by APR, fees and break-even. Worked examples show when paying points wins and why a 30-year refinance can cost more overall.",
     slug: 'loan-comparison-refinance-guide-2025'
   },
   'cost-of-living-calculator-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_LIVING_COST].title,
-    description: "Learn how to use a cost of living calculator to compare cities, plan your budget, and avoid relocation surprises.",
+    description: "Compare cities the right way: how cost of living indexes work, a worked example converting higher costs into the salary you need, and taxes to include.",
     slug: 'cost-of-living-calculator-guide-2025'
   },
   'currency-converter-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_CURRENCY_CONVERTER].title,
-    description: "Learn how to use a currency converter, understand exchange rate spreads, and avoid hidden fees when sending or spending money abroad.",
+    description: "Understand the mid-market rate, spot exchange-rate markups and card fees, avoid dynamic currency conversion, and compare money transfer quotes by example.",
     slug: 'currency-converter-guide-2025'
   },
   'gst-tax-calculator-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_GST_GUIDE].title,
-    description: "Learn how to calculate GST, split inclusive prices, and avoid invoicing errors using a GST calculator.",
+    description: "Add or remove GST correctly: formulas, 2026 rates for Australia, NZ, Singapore, Canada and India, worked examples, input tax credits and invoice mistakes.",
     slug: 'gst-tax-calculator-guide-2025'
   },
   'credit-card-payoff-strategy-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_CREDIT_CARD_PAYOFF].title,
-    description: "Learn how to pay off credit card debt faster using avalanche or snowball strategies and a payoff calculator.",
+    description: "A step-by-step credit card payoff plan for 2026: avalanche vs snowball, balance transfers, consolidation loans and extra payment tips, with real math.",
     slug: 'credit-card-payoff-strategy-guide-2025'
   },
   'ai-market-insights-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_MARKET_INSIGHTS].title,
-    description: "A practical guide to interpreting market insights, sentiment signals, and macro trends using AI-driven tools.",
+    description: "Use AI market summaries responsibly: why AI output can be wrong, how to verify claims with BLS, Fed, BEA and SEC sources, and a simple weekly workflow.",
     slug: 'ai-market-insights-guide-2025'
   },
   'index-funds-etf-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_INVESTMENT_ACADEMY].title,
-    description: "A beginner-friendly guide to index funds, ETFs, and building a diversified portfolio with clear, actionable steps.",
+    description: "Learn how index funds and ETFs work, how fees compound, a simple three-fund portfolio, rebalancing with examples, and common investing mistakes.",
     slug: 'index-funds-etf-guide-2025'
   },
   'dcf-valuation-modeling-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_EXCEL_MODELER].title,
-    description: "Learn the core steps of DCF valuation, WACC, and terminal value using a guided DCF modeler.",
+    description: "Build a simple DCF without Excel: project free cash flow, pick WACC, set terminal value and get a per-share value, plus sensitivity and a reverse DCF.",
     slug: 'dcf-valuation-modeling-guide-2025'
   },
   'dividend-reinvestment-calculator-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_DRIP_GUIDE].title,
-    description: "Learn how dividend reinvestment works, why compounding accelerates wealth, and how to use a DRIP calculator.",
+    description: "See how dividend reinvestment (DRIP) compounds, with a worked 30-year example, 2026 qualified dividend tax rates, cost basis tips and mistakes to avoid.",
     slug: 'dividend-reinvestment-calculator-guide-2025'
   },
   'dti-calculator-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_DTI_GUIDE].title,
-    description: "Learn how debt-to-income ratio is calculated, what lenders look for, and how to improve your DTI before applying.",
+    description: "How to calculate your debt-to-income ratio, what counts, the 28/36 rule, typical lender limits for conventional and FHA loans, and how to lower DTI.",
     slug: 'dti-calculator-guide-2025'
   },
   'no-wash-sale-rule-crypto-tax-loss-harvesting': {
@@ -366,7 +366,7 @@ export const blogMetadata: Record<string, BlogMetadata> = {
   },
   'no-tax-on-tips-explained-2025': {
     title: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].title,
-    description: TOOL_METADATA[ToolType.BLOG_NO_TAX_ON_TIPS].desc,
+    description: "The no-tax-on-tips deduction lets eligible workers deduct up to $25,000 of tips for 2025-2028. See what it saves, who qualifies, and why FICA applies.",
     slug: 'no-tax-on-tips-explained-2025'
   },
   'excess-social-security-tax-refund-multiple-employers': {

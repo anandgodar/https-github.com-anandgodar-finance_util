@@ -241,7 +241,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
             <div>
               <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Current Age</label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 value={age}
                 onChange={e => setAge(Number(e.target.value))}
                 className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-2xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
@@ -251,7 +251,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
             <div>
               <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Annual Gross Income ($)</label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 value={income}
                 onChange={e => setIncome(Number(e.target.value))}
                 className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-2xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
@@ -261,7 +261,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
             <div>
               <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Current Retirement Savings ($)</label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 value={currentSavings}
                 onChange={e => setCurrentSavings(Number(e.target.value))}
                 className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-2xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
@@ -271,7 +271,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
             <div>
               <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Monthly Contribution ($)</label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 value={monthlyContribution}
                 onChange={e => setMonthlyContribution(Number(e.target.value))}
                 className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-2xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
@@ -281,7 +281,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
             <div>
               <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Employer Match (%)</label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 value={employerMatch}
                 onChange={e => setEmployerMatch(Number(e.target.value))}
                 step="0.5"
@@ -292,7 +292,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
             <div>
               <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Expected Annual Expenses in Retirement ($)</label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 value={annualExpenses}
                 onChange={e => setAnnualExpenses(Number(e.target.value))}
                 className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-2xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
@@ -321,7 +321,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
             <div>
               <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Target Retirement Age</label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 value={retirementAge}
                 onChange={e => setRetirementAge(Number(e.target.value))}
                 className="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-2xl text-slate-900 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
@@ -331,7 +331,7 @@ const RetirementOptimizer: React.FC<RetirementOptimizerProps> = ({ onNavigate })
             <div>
               <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Expected Annual Return (%)</label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 value={expectedReturn}
                 onChange={e => setExpectedReturn(Number(e.target.value))}
                 step="0.5"

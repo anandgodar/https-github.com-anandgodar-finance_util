@@ -220,7 +220,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
               <label className="space-y-2 text-xs font-bold text-slate-500">
                 Home Price
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={homePrice}
                   onChange={(event) => setHomePrice(Number(event.target.value))}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-lg font-black text-slate-700"
@@ -229,7 +229,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
               <label className="space-y-2 text-xs font-bold text-slate-500">
                 Down Payment (%)
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={downPaymentPercent}
                   onChange={(event) => setDownPaymentPercent(Number(event.target.value))}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-lg font-black text-slate-700"
@@ -238,7 +238,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
               <label className="space-y-2 text-xs font-bold text-slate-500">
                 Interest Rate (%)
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   step="0.01"
                   value={interestRate}
                   onChange={(event) => setInterestRate(Number(event.target.value))}
@@ -248,7 +248,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
               <label className="space-y-2 text-xs font-bold text-slate-500">
                 Property Tax Rate (% annually)
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   step="0.01"
                   value={propertyTaxRate}
                   onChange={(event) => setPropertyTaxRate(Number(event.target.value))}
@@ -258,7 +258,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
               <label className="space-y-2 text-xs font-bold text-slate-500">
                 Insurance ($/mo)
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={insuranceMonthly}
                   onChange={(event) => setInsuranceMonthly(Number(event.target.value))}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-lg font-black text-slate-700"
@@ -267,7 +267,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
               <label className="space-y-2 text-xs font-bold text-slate-500">
                 HOA Fees ($/mo)
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   value={hoaMonthly}
                   onChange={(event) => setHoaMonthly(Number(event.target.value))}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-lg font-black text-slate-700"
@@ -277,7 +277,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
               <label className="space-y-2 text-xs font-bold text-slate-500">
                 PMI Rate (% annually)
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   step="0.01"
                   value={pmiRate}
                   onChange={(event) => setPmiRate(Number(event.target.value))}

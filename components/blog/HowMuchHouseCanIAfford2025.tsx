@@ -104,14 +104,14 @@ const HowMuchHouseCanIAfford2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-xl mt-6">
-            <p className="text-emerald-900 font-semibold text-lg">
+            <div className="text-emerald-900 font-semibold text-lg">
               📊 <strong>Example:</strong> If you earn $100,000/year ($8,333/month):
               <ul className="mt-3 space-y-2 text-base">
                 <li>• <strong>28% Rule:</strong> Max housing payment = $8,333 × 0.28 = <strong>$2,333/month</strong></li>
                 <li>• <strong>36% Rule:</strong> Max total debt = $8,333 × 0.36 = <strong>$3,000/month</strong></li>
                 <li>• If you have $500/month in other debts (car loan, credit cards), your max housing payment = $3,000 - $500 = <strong>$2,500/month</strong></li>
               </ul>
-            </p>
+            </div>
           </div>
         </section>
 

@@ -8,9 +8,34 @@ import { ToolType } from '../types';
 import ToolTitle from './ToolTitle';
 type FilingStatus = 'single' | 'married' | 'hoh';
 
-// 2026 Federal Poverty Level (FPL) - Contiguous 48 states + DC (HHS/ASPE, effective Jan 2026)
-const FPL_2026_BASE = 15960; // Individual
-const FPL_2026_PER_ADDITIONAL = 5680; // Per additional person
+// Premium tax credits for 2026 coverage use the prior year's (2025) HHS poverty
+// guidelines; Medicaid uses the current (2026) guidelines. Contiguous 48 + DC.
+const FPL_PTC_BASE = 15650; // 2025 guideline, individual
+const FPL_PTC_PER_ADDITIONAL = 5500;
+const FPL_MEDICAID_BASE = 15960; // 2026 guideline, individual
+const FPL_MEDICAID_PER_ADDITIONAL = 5680;
+
+// 2026 applicable percentage table (Rev. Proc. 2025-25). The enhanced ARPA/IRA
+// subsidies expired after 2025: no credit above 400% FPL, and the expected
+// contribution rises linearly within each band.
+const APPLICABLE_PERCENTAGE_BANDS: Array<[number, number, number, number]> = [
+  // [fromFPL, toFPL, initial %, final %]
+  [0, 133, 2.1, 2.1],
+  [133, 150, 3.14, 4.19],
+  [150, 200, 4.19, 6.6],
+  [200, 250, 6.6, 8.44],
+  [250, 300, 8.44, 9.96],
+  [300, 400, 9.96, 9.96]
+];
+
+const applicablePercentage = (fplPercentage: number): number | null => {
+  if (fplPercentage > 400) return null; // subsidy cliff
+  const band = APPLICABLE_PERCENTAGE_BANDS.find(([, to]) => fplPercentage <= to) ?? APPLICABLE_PERCENTAGE_BANDS[0];
+  const [from, to, start, end] = band;
+  if (to === from || start === end) return start;
+  const position = Math.max(0, Math.min(1, (fplPercentage - from) / (to - from)));
+  return start + (end - start) * position;
+};
 
 // State Medicaid Expansion Status (as of 2025)
 const MEDICAID_EXPANSION_STATES: Record<string, { expanded: boolean; name: string }> = {
@@ -61,16 +86,17 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
 
   const calculations = useMemo(() => {
     // Calculate Federal Poverty Level for household
-    const fpl = FPL_2026_BASE + (householdSize - 1) * FPL_2026_PER_ADDITIONAL;
+    const fpl = FPL_PTC_BASE + (householdSize - 1) * FPL_PTC_PER_ADDITIONAL;
     const fplPercentage = (householdIncome / fpl) * 100;
+    const medicaidFpl = FPL_MEDICAID_BASE + (householdSize - 1) * FPL_MEDICAID_PER_ADDITIONAL;
 
     // Get state info
     const medicaidExpanded = MEDICAID_EXPANSION_STATES[stateCode]?.expanded || false;
     const stateName = MEDICAID_EXPANSION_STATES[stateCode]?.name || 'Unknown';
 
     // Medicaid Eligibility Check
-    const medicaidIncomeLimitExpanded = fpl * 1.38; // 138% FPL for expanded states
-    const medicaidIncomeLimitNonExpanded = fpl * 0.41; // ~41% FPL for parents/caretakers in non-expanded
+    const medicaidIncomeLimitExpanded = medicaidFpl * 1.38; // 138% FPL for expanded states
+    const medicaidIncomeLimitNonExpanded = medicaidFpl * 0.41; // ~41% FPL for parents/caretakers in non-expanded
     const medicaidEligible = medicaidExpanded
       ? householdIncome <= medicaidIncomeLimitExpanded
       : householdIncome <= medicaidIncomeLimitNonExpanded;
@@ -86,31 +112,18 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
     let maxPremiumPercentage = 0;
     let csrEligible = false;
 
-    if (fplPercentage < 100) {
-      // Below 100% FPL - Generally Medicaid eligible or coverage gap
-      maxPremiumPercentage = 0;
-    } else if (fplPercentage <= 150) {
-      maxPremiumPercentage = 0; // 0% of income
-      csrEligible = true;
-    } else if (fplPercentage <= 200) {
-      maxPremiumPercentage = 2.0; // 0-2% of income
-      csrEligible = true;
-    } else if (fplPercentage <= 250) {
-      maxPremiumPercentage = 4.0; // 2-4% of income
-      csrEligible = true;
-    } else if (fplPercentage <= 300) {
-      maxPremiumPercentage = 6.0; // 4-6% of income
-    } else if (fplPercentage <= 400) {
-      maxPremiumPercentage = 8.5; // 6-8.5% of income
-    } else {
-      maxPremiumPercentage = 8.5; // IRA eliminated cliff, capped at 8.5%
-    }
+    // Below 100% FPL: generally Medicaid or the coverage gap, no marketplace credit.
+    // Above 400% FPL: no credit for 2026 (the cliff is back).
+    const expected = fplPercentage < 100 ? null : applicablePercentage(fplPercentage);
+    const eligibleForCredit = expected !== null;
+    maxPremiumPercentage = expected ?? 0;
+    csrEligible = fplPercentage >= 100 && fplPercentage <= 250;
 
     // Calculate subsidy
     const maxMonthlyPayment = (householdIncome / 12) * (maxPremiumPercentage / 100);
     const annualBenchmark = benchmarkPremium * 12;
     const annualMaxPayment = householdIncome * (maxPremiumPercentage / 100);
-    const annualSubsidy = Math.max(0, annualBenchmark - annualMaxPayment);
+    const annualSubsidy = eligibleForCredit ? Math.max(0, annualBenchmark - annualMaxPayment) : 0;
     const monthlySubsidy = annualSubsidy / 12;
 
     // After-subsidy premium
@@ -142,6 +155,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
       annualSubsidy,
       monthlyPremiumAfterSubsidy,
       maxPremiumPercentage,
+      eligibleForCredit,
       csrEligible,
       csrLevel,
       stateName
@@ -208,7 +222,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-xl">$</span>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   min="0"
                   step="1000"
                   value={householdIncome}
@@ -224,7 +238,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
                 Household Size
               </label>
               <input
-                type="number"
+                type="number" inputMode="decimal"
                 min="1"
                 max="15"
                 value={householdSize}
@@ -240,7 +254,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
                   Your Age
                 </label>
                 <input
-                  type="number"
+                  type="number" inputMode="decimal"
                   min="18"
                   max="64"
                   value={age}
@@ -399,7 +413,11 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
                     <p className="text-xs font-bold text-emerald-600 uppercase mb-1">Your Monthly Cost</p>
                     <p className="text-3xl font-black text-emerald-700">${calculations.monthlyPremiumAfterSubsidy.toFixed(0)}</p>
                     <p className="text-xs text-emerald-600 mt-1">
-                      {calculations.maxPremiumPercentage.toFixed(1)}% of income
+                      {calculations.eligibleForCredit
+                        ? `${calculations.maxPremiumPercentage.toFixed(1)}% of income`
+                        : calculations.fplPercentage > 400
+                          ? 'No 2026 credit above 400% FPL'
+                          : 'No marketplace credit below 100% FPL'}
                     </p>
                   </div>
                 </div>
@@ -477,7 +495,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
           </h2>
           <p className="text-slate-500 mt-4 text-lg font-medium leading-relaxed">
             The Affordable Care Act (ACA) provides Premium Tax Credits to make health insurance affordable for
-            individuals and families earning between 100% and 400%+ of the Federal Poverty Level.
+            individuals and families earning between 100% and 400% of the Federal Poverty Level.
           </p>
         </header>
 
@@ -488,8 +506,8 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
             </h4>
             <div className="text-slate-600 text-sm leading-relaxed font-medium space-y-3">
               <p><strong>Advance or Year-End:</strong> Take subsidy monthly (advance) or claim when filing taxes.</p>
-              <p><strong>Income-Based:</strong> Credit amount based on percentage of income (0%-8.5% max).</p>
-              <p><strong>No Cliff:</strong> IRA 2022 eliminated 400% FPL cliff - subsidies now available at all income levels capped at 8.5%.</p>
+              <p><strong>Income-Based:</strong> For 2026 you are expected to pay about 2.10% to 9.96% of income toward the benchmark Silver plan; the credit covers the rest.</p>
+              <p><strong>Cliff Is Back:</strong> The enhanced subsidies expired after 2025, so for 2026 coverage households above 400% FPL get no premium tax credit. Check HealthCare.gov in case Congress changes the law.</p>
             </div>
           </div>
 
@@ -525,25 +543,25 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
             <div className="bg-white p-6 rounded-2xl border border-slate-100">
               <p className="text-xs font-black text-emerald-600 uppercase mb-2">Low Income</p>
               <p className="text-sm font-bold text-slate-800">$20k/yr, Single</p>
-              <p className="text-xs text-slate-500 mt-2"><strong>133% FPL:</strong> Medicaid eligible (if expanded state)</p>
+              <p className="text-xs text-slate-500 mt-2"><strong>~128% FPL:</strong> Medicaid eligible (if expanded state)</p>
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-100">
               <p className="text-xs font-black text-indigo-600 uppercase mb-2">Moderate Income</p>
-              <p className="text-sm font-bold text-slate-800">$35k/yr, Household of 3</p>
-              <p className="text-xs text-slate-500 mt-2"><strong>~200% FPL:</strong> ~$450/mo subsidy + CSR eligible</p>
+              <p className="text-sm font-bold text-slate-800">$45k/yr, Household of 3</p>
+              <p className="text-xs text-slate-500 mt-2"><strong>~169% FPL:</strong> pays about 5.1% of income (~$192/mo) for the benchmark plan + CSR eligible</p>
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-100">
               <p className="text-xs font-black text-purple-600 uppercase mb-2">Freelancer</p>
               <p className="text-sm font-bold text-slate-800">$65k/yr, Single</p>
-              <p className="text-xs text-slate-500 mt-2"><strong>~430% FPL:</strong> ~$200/mo subsidy (8.5% cap)</p>
+              <p className="text-xs text-slate-500 mt-2"><strong>~415% FPL:</strong> no premium tax credit in 2026 (above the 400% cliff)</p>
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-100">
               <p className="text-xs font-black text-rose-600 uppercase mb-2">Coverage Gap</p>
               <p className="text-sm font-bold text-slate-800">$12k/yr in TX (non-expanded)</p>
-              <p className="text-xs text-slate-500 mt-2"><strong>80% FPL:</strong> No Medicaid, no subsidy</p>
+              <p className="text-xs text-slate-500 mt-2"><strong>~77% FPL:</strong> No Medicaid, no subsidy</p>
             </div>
           </div>
         </div>
@@ -585,7 +603,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
             onClick={() => onNavigate?.(ToolType.BLOG_ACA_FREELANCERS)}
             className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
           >
-            <h3 className="font-bold text-slate-900 mb-2">📖 ACA Health Insurance for Freelancers 2025</h3>
+            <h3 className="font-bold text-slate-900 mb-2">📖 ACA Health Insurance for Freelancers 2026</h3>
             <p className="text-sm text-slate-600">Complete guide to ACA marketplace, subsidies, and health insurance for self-employed and freelancers.</p>
           </button>
           <button
@@ -623,7 +641,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
           },
           {
             question: "What income qualifies for ACA subsidy?",
-            answer: "You qualify for ACA subsidies if your income is between 100% and 400% of the Federal Poverty Level (FPL). For 2026, that's roughly $15,960-$63,840 for a single person, $33,000-$132,000 for a family of 4. Below 100% FPL, you may qualify for Medicaid (in expanded states). Above 400% FPL, subsidies are capped at 8.5% of income."
+            answer: "For 2026 coverage, premium tax credits are available if your income is between 100% and 400% of the Federal Poverty Level (FPL), using the 2025 guidelines: roughly $15,650-$62,600 for a single person and $32,150-$128,600 for a family of 4. Below 100% FPL you may qualify for Medicaid in expansion states. Because the enhanced subsidies expired after 2025, income above 400% FPL gets no credit for 2026 unless Congress changes the law."
           },
           {
             question: "What is Modified Adjusted Gross Income (MAGI)?",
@@ -635,7 +653,7 @@ const ACASubsidyCalculator: React.FC<ACASubsidyCalculatorProps> = ({ onNavigate 
           },
           {
             question: "How much will I pay for health insurance with ACA subsidy?",
-            answer: "Your monthly premium depends on your income. At 100-150% FPL, you pay 0% of income (free coverage). At 150-200% FPL, you pay 0-2% of income. At 200-250% FPL, you pay 2-4% of income. At 250-400% FPL, you pay 4-8.5% of income. Above 400% FPL, subsidies are capped at 8.5% of income. Our calculator shows your exact monthly cost."
+            answer: "For 2026, the expected contribution toward the benchmark Silver plan is 2.10% of income below 133% FPL, 3.14-4.19% at 133-150%, 4.19-6.60% at 150-200%, 6.60-8.44% at 200-250%, 8.44-9.96% at 250-300%, and 9.96% at 300-400%. Above 400% FPL there is no credit, so you pay the full premium. The calculator estimates your monthly cost from these percentages."
           },
           {
             question: "What is the coverage gap?",
