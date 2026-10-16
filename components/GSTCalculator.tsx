@@ -4,6 +4,19 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recha
 import { getFinancialAdvice } from '../services/geminiService';
 
 import ToolTitle from './ToolTitle';
+
+// India restructured GST in September 2025 into mainly 5% and 18% slabs plus
+// 40% for sin/luxury goods; 12% and 28% remain only for legacy invoices.
+const GST_RATES = [
+  { rate: 5, label: 'India reduced / Canada GST' },
+  { rate: 9, label: 'Singapore' },
+  { rate: 10, label: 'Australia' },
+  { rate: 12, label: 'India (pre-Sept 2025)' },
+  { rate: 15, label: 'New Zealand' },
+  { rate: 18, label: 'India standard' },
+  { rate: 28, label: 'India (pre-Sept 2025)' },
+  { rate: 40, label: 'India sin / luxury' }
+];
 const GSTCalculator: React.FC = () => {
   const [amount, setAmount] = useState<number>(5000);
   const [taxRate, setTaxRate] = useState<number>(18);
@@ -80,22 +93,22 @@ const GSTCalculator: React.FC = () => {
                 <div>
                    <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Tax Rate (%)</label>
                    <select value={taxRate} onChange={e => setTaxRate(Number(e.target.value))} className="w-full p-4 bg-slate-50 border-none rounded-2xl font-black text-slate-700">
-                      {[5, 12, 18, 28].map(r => <option key={r} value={r}>{r}% Slab</option>)}
+                      {GST_RATES.map(({ rate, label }) => <option key={rate} value={rate}>{rate}% · {label}</option>)}
                    </select>
                 </div>
                 <div className="flex flex-col justify-end">
                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 text-right">Tax Slab</p>
-                   <p className="text-xl font-black text-slate-900 text-right">{taxRate === 28 ? 'Luxury' : taxRate >= 18 ? 'Standard' : 'Essentials'}</p>
+                   <p className="text-xl font-black text-slate-900 text-right">{taxRate >= 28 ? 'Luxury / Sin' : taxRate >= 18 ? 'Standard' : 'Reduced'}</p>
                 </div>
              </div>
 
              <div className="pt-8 border-t border-slate-50 grid grid-cols-2 gap-6">
                 <div className="bg-slate-900 p-6 rounded-3xl text-white">
-                   <p className="text-[9px] font-black text-indigo-400 uppercase mb-1">CGST (9%)</p>
+                   <p className="text-[9px] font-black text-indigo-400 uppercase mb-1">CGST ({taxRate / 2}%)</p>
                    <p className="text-xl font-black">${stats.cgst.toLocaleString()}</p>
                 </div>
                 <div className="bg-slate-900 p-6 rounded-3xl text-white">
-                   <p className="text-[9px] font-black text-amber-400 uppercase mb-1">SGST (9%)</p>
+                   <p className="text-[9px] font-black text-amber-400 uppercase mb-1">SGST ({taxRate / 2}%)</p>
                    <p className="text-xl font-black">${stats.sgst.toLocaleString()}</p>
                 </div>
              </div>

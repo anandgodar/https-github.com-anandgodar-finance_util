@@ -111,15 +111,14 @@ const CurrencyConverter: React.FC = () => {
               Universal <span className="text-sky-600">Forex</span> Converter
             </h1>
             <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed">
-              Professional mid-market exchange for {base} to {target}. Real-time interbank pricing with AI-driven volatility scoring.
+              Estimate a {base} to {target} conversion using reference mid-market rates. Rates are periodically updated reference values, not live quotes; always compare against the rate your bank or transfer provider quotes.
             </p>
           </div>
           <div className="bg-slate-900 px-10 py-10 rounded-[3.5rem] text-white shadow-2xl relative z-10 border border-slate-800 flex flex-col justify-center min-w-[340px]">
              <div className="flex justify-between items-center mb-4 border-b border-white/10 pb-4">
-               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-sky-400">Interbank Rate</p>
+               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-sky-400">Reference Rate</p>
                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                  <span className="text-[9px] font-black text-emerald-400 uppercase">Live Market Feed</span>
+                  <span className="text-[9px] font-black text-slate-400 uppercase">Not a live quote</span>
                </div>
              </div>
              <div className="space-y-1">
@@ -289,8 +288,8 @@ const CurrencyConverter: React.FC = () => {
            <section className="bg-white p-12 rounded-[4rem] border border-slate-100 shadow-sm space-y-12">
               <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-slate-50 pb-10">
                 <div className="space-y-2 text-left">
-                  <h3 className="text-3xl font-black text-slate-900 tracking-tighter">12-Month Volatility Matrix</h3>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Interbank Mid-Market Performance Benchmarks</p>
+                  <h3 className="text-3xl font-black text-slate-900 tracking-tighter">Illustrative 12-Month Trend</h3>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Sample data for illustration, not historical rates</p>
                 </div>
                 <div className="flex bg-slate-50 px-4 py-2 rounded-2xl gap-3">
                    <div className="flex items-center gap-2"><div className="w-2.5 h-2.5 rounded-full bg-sky-500"></div><span className="text-[9px] font-black text-slate-500 uppercase">Rate Trend</span></div>
@@ -414,21 +413,21 @@ const CurrencyConverter: React.FC = () => {
             <div className="w-24 h-24 bg-sky-50 rounded-[3rem] flex items-center justify-center text-5xl group-hover:rotate-12 transition-transform shadow-xl shadow-sky-100/50 group-hover:scale-110">🌍</div>
             <h4 className="text-3xl font-black text-slate-900 leading-tight tracking-tight uppercase">Mid-Market <br/>Equilibrium</h4>
             <p className="text-slate-500 text-xl leading-relaxed font-medium">
-              The "Interbank Rate" represents the price at which global banks trade currencies with each other. By benchmarked this directly, you bypass the consumer retail markups that fund physical bank branches.
+              The "Interbank Rate" represents the price at which global banks trade currencies with each other. Comparing your quote with the mid-market rate shows how much markup your provider is adding.
             </p>
           </section>
           <section className="space-y-8 group text-left">
             <div className="w-24 h-24 bg-indigo-50 rounded-[3rem] flex items-center justify-center text-5xl group-hover:rotate-12 transition-transform shadow-xl shadow-indigo-100/50 group-hover:scale-110">🏛️</div>
             <h4 className="text-3xl font-black text-slate-900 leading-tight tracking-tight uppercase">Interest Rate <br/>Arbitrage</h4>
             <p className="text-slate-500 text-xl leading-relaxed font-medium">
-              Forex trends are fundamentally driven by central bank policies. When the Fed raises rates relative to the ECB, capital flows into the USD, driving demand and price. Our AI sentiment engine audits these macro vectors in real-time.
+              Forex trends are fundamentally driven by central bank policies. When the Fed raises rates relative to the ECB, capital flows into the USD, driving demand and price. 
             </p>
           </section>
           <section className="space-y-8 group text-left">
             <div className="w-24 h-24 bg-emerald-50 rounded-[3rem] flex items-center justify-center text-5xl group-hover:rotate-12 transition-transform shadow-xl shadow-emerald-100/50 group-hover:scale-110">📈</div>
             <h4 className="text-3xl font-black text-slate-900 leading-tight tracking-tight uppercase">Volatility & <br/>Mean Reversion</h4>
             <p className="text-slate-500 text-xl leading-relaxed font-medium">
-              Currency pairs rarely move in straight lines. They oscillate around historical mean values. By observing the 12-month volatility heat, you can time large business conversions to avoid local price spikes.
+              Currency pairs rarely move in straight lines. They oscillate around historical mean values. For large conversions, check a provider's historical chart and consider splitting the transfer rather than trying to time the market.
             </p>
           </section>
         </div>
@@ -439,10 +438,10 @@ const CurrencyConverter: React.FC = () => {
               <span className="inline-block px-6 py-2 bg-sky-600 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-2xl">Financial Sovereignty</span>
               <h4 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight">Master the <span className="text-sky-400">Spread</span></h4>
               <p className="text-slate-400 text-2xl font-medium leading-relaxed max-w-3xl">
-                Average consumer banks levy a 300 to 500 basis point (3-5%) markup on simple conversions. For a $50k transfer, that's **$2,500 lost to friction**. Use QuantCurb to audit your provider's integrity.
+                Average consumer banks levy a 300 to 500 basis point (3-5%) markup on simple conversions. For a $50k transfer, that's $2,500 lost to the markup. Compare every quote against the mid-market rate before you convert.
               </p>
               <div className="flex flex-wrap gap-5 pt-6">
-                 {['Zero Markups', 'Direct Interbank Feed', 'AI Sentiment Engine', 'Volatility Modeling', 'Global Liquidity Hub'].map(tag => (
+                 {['Mid-Market Reference', 'Markup Check', 'Fee Comparison', 'Transfer Planning'].map(tag => (
                    <span key={tag} className="text-[11px] font-black text-sky-400 bg-white/5 px-8 py-3 rounded-3xl border border-white/10 uppercase tracking-[0.2em] hover:bg-white/10 transition-colors cursor-default">{tag}</span>
                  ))}
               </div>
@@ -450,9 +449,9 @@ const CurrencyConverter: React.FC = () => {
            <div className="bg-white/5 p-16 rounded-[4.5rem] border border-white/10 backdrop-blur-3xl shrink-0 text-center space-y-10 shadow-2xl relative group">
               <div className="absolute -top-6 -left-6 w-16 h-16 bg-sky-600 rounded-3xl flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">✓</div>
               <div>
-                <p className="text-[12px] font-black uppercase text-sky-300 tracking-[0.5em] mb-4">Oracle Precision</p>
-                <p className="text-8xl font-black tracking-tighter text-white">99.9%</p>
-                <p className="text-[11px] font-bold text-slate-500 uppercase tracking-[0.3em] mt-2">Market Data Parity</p>
+                <p className="text-[12px] font-black uppercase text-sky-300 tracking-[0.5em] mb-4">Rule of Thumb</p>
+                <p className="text-8xl font-black tracking-tighter text-white">1%</p>
+                <p className="text-[11px] font-bold text-slate-500 uppercase tracking-[0.3em] mt-2">Markup = $10 per $1,000</p>
               </div>
            </div>
         </div>
@@ -465,7 +464,7 @@ const CurrencyConverter: React.FC = () => {
         </div>
         <div className="flex flex-wrap justify-center gap-4 max-w-6xl">
            {[
-             'Forex Volatility', 'Mid-Market Rates', 'Real-time Conversion', 'Currency Sentiment Analysis',
+             'Forex Volatility', 'Mid-Market Rates', 'Currency Sentiment Analysis',
              'Institutional Liquidity', 'Spread Triage', 'Global Payment Modeling', 'FX Risk Mitigation',
              'USD/INR Benchmark', 'EUR/USD Exchange Rate', 'GBP/USD Forecasting', 'AUD/USD Market Pulse',
              'CAD/INR Liquidity', 'SGD/USD Arbitrage', 'AED/USD Stability', 'CHF/EUR Safe Haven'

@@ -52,8 +52,8 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "cost of living calculator, cost of living comparison, cost of living by city, cost of living by state, 50 30 20 budget, how much to live in, cheapest states to live, most expensive cities"
   },
   [ToolType.CURRENCY_CONV]: {
-    title: "Currency Converter 2026 - Live Exchange Rates",
-    desc: "Convert currencies instantly with live exchange rates across 150+ currencies. See historical rate trends and forex sentiment.",
+    title: "Currency Converter 2026 - Mid-Market Rate & Fees",
+    desc: "Estimate currency conversions with reference mid-market rates and see how bank markups and card fees change what you actually receive.",
     keywords: "currency converter, exchange rate calculator, usd to inr, eur to usd, live forex rates, currency exchange calculator, money converter, foreign exchange calculator"
   },
   [ToolType.GST_CALC]: {
