@@ -33,7 +33,16 @@ export function generateMetadata({ params }: PageProps) {
   const ticker = params.ticker?.toUpperCase();
   return {
     title: `Dividend Calculator for ${ticker}`,
-    description: `Estimate dividend reinvestment growth for ${ticker} using historical yield assumptions.`
+    description: `Estimate dividend reinvestment growth for ${ticker} using historical yield assumptions.`,
+    alternates: {
+      canonical: `https://quantcurb.com/dividend-calculator/${params.ticker?.toLowerCase()}/`
+    },
+    // Ticker pages are client-rendered with little unique server HTML; keep them
+    // out of the index (and the sitemap) until each has substantial content.
+    robots: {
+      index: false,
+      follow: true
+    }
   };
 }
 

@@ -65,7 +65,8 @@ const AdPlacement: React.FC<AdPlacementProps> = ({
       case 'rectangle':
         return 'min-h-[250px] min-w-[300px]';
       case 'banner':
-        return 'min-h-[90px] min-w-[728px]';
+        // Full width on mobile; capped at the 728px leaderboard size on desktop.
+        return 'min-h-[90px] w-full max-w-[728px] mx-auto';
       case 'square':
         return 'min-h-[250px] min-w-[250px]';
       default:
@@ -73,20 +74,11 @@ const AdPlacement: React.FC<AdPlacementProps> = ({
     }
   };
 
-  // Placeholder ad (will be replaced with AdSense when approved)
+  // No ad unit configured: render nothing. Empty "ad space reserved" boxes make
+  // the site look unfinished to visitors and AdSense reviewers; Auto ads (the
+  // adsbygoogle.js script in app/layout.tsx) can still place ads on the page.
   if (!adUnitId) {
-    return (
-      <div
-        ref={adRef}
-        className={`bg-slate-100 border-2 border-dashed border-slate-300 rounded-xl flex items-center justify-center ${getSizeClasses()} ${className}`}
-      >
-        <div className="text-center p-4">
-          <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-2">Advertisement</p>
-          <p className="text-xs text-slate-400">Ad space reserved</p>
-          <p className="text-[10px] text-slate-400 mt-1">(AdSense integration pending)</p>
-        </div>
-      </div>
-    );
+    return null;
   }
 
   return (

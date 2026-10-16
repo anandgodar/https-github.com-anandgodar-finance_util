@@ -76,67 +76,6 @@ const NetWorthTracker: React.FC<NetWorthTrackerProps> = ({ onNavigate }) => {
     return () => clearTimeout(timer);
   }, [totals.netWorth]);
 
-  useEffect(() => {
-    // Add HowTo schema for "How to calculate net worth"
-    const howToSchema = {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Calculate Your Net Worth: Assets vs Liabilities",
-      "description": "Step-by-step guide to calculating your net worth by listing all assets and liabilities. Learn how to track your financial progress and build wealth over time.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "List All Assets",
-          "text": "Add up all your assets: cash (checking, savings), investments (stocks, bonds, retirement accounts), property (home value, vehicles), and other assets (jewelry, collectibles)."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "List All Liabilities",
-          "text": "Add up all your debts: mortgage balance, student loans, credit card debt, car loans, personal loans, and any other debts you owe."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Calculate Net Worth",
-          "text": "Net Worth = Total Assets - Total Liabilities. If positive, you're solvent. If negative, you owe more than you own."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 4,
-          "name": "Analyze Debt-to-Asset Ratio",
-          "text": "Calculate debt-to-asset ratio: (Total Liabilities ÷ Total Assets) × 100. Under 25% is excellent, 25-50% is stable, over 50% indicates high leverage risk."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 5,
-          "name": "Review Liquidity",
-          "text": "Liquid assets (cash + investments) should be 20-30% of total assets for financial flexibility. Too much illiquid assets (property) can limit your options."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 6,
-          "name": "Track Over Time",
-          "text": "Calculate net worth monthly or quarterly to track progress. Increasing net worth means you're building wealth. Decreasing net worth may indicate overspending or investment losses."
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(howToSchema);
-    script.id = 'howto-schema-net-worth';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('howto-schema-net-worth');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   return (
     <article className="max-w-7xl mx-auto space-y-12 animate-in fade-in duration-500 pb-24">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 bg-white p-10 rounded-[4rem] border border-slate-100 shadow-sm relative overflow-hidden">

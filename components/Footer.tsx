@@ -15,7 +15,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
 
   return (
     <footer className="bg-white border-t mt-auto pt-16 pb-24 md:pb-16 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-left">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-5 gap-12 text-left">
         <div className="col-span-2">
           <h4 className="text-xl font-black text-slate-900 mb-6 flex items-center gap-3">
             <span className="p-2 bg-indigo-600 text-white rounded-lg shadow-lg">📈</span> QuantCurb Intelligence
@@ -31,7 +31,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
         </div>
 
         <div>
-          <h5 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Quant Suite</h5>
+          <h5 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Calculators</h5>
           <nav aria-label="Financial calculators">
             <ul className="space-y-4">
               <li>
@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
                   onClick={(e) => handleClick(e, ToolType.MORTGAGE_CALC)}
                   className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors"
                 >
-                  Mortgage Pro
+                  Mortgage Calculator
                 </Link>
               </li>
               <li>
@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
                   onClick={(e) => handleClick(e, ToolType.EMI_CALC)}
                   className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors"
                 >
-                  EMI Accelerator
+                  Loan EMI Calculator
                 </Link>
               </li>
               <li>
@@ -58,7 +58,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
                   onClick={(e) => handleClick(e, ToolType.SALARY_CALC)}
                   className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors"
                 >
-                  Salary Estimator
+                  Paycheck Calculator
                 </Link>
               </li>
               <li>
@@ -67,7 +67,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
                   onClick={(e) => handleClick(e, ToolType.LOAN_COMPARE)}
                   className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors"
                 >
-                  Loan Intel
+                  Loan Comparison Calculator
                 </Link>
               </li>
               <li>
@@ -76,7 +76,7 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
                   onClick={(e) => handleClick(e, ToolType.FIRE_PLANNER)}
                   className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors"
                 >
-                  FIRE Planner
+                  FIRE Calculator
                 </Link>
               </li>
               <li>
@@ -88,6 +88,28 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
                   Financial Blog
                 </Link>
               </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div>
+          <h5 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Browse by Topic</h5>
+          <nav aria-label="Calculator categories">
+            <ul className="space-y-4">
+              {[
+                { href: '/tax-calculators/', label: 'Tax Calculators' },
+                { href: '/mortgage-calculators/', label: 'Mortgage Calculators' },
+                { href: '/retirement-calculators/', label: 'Retirement Calculators' },
+                { href: '/investment-calculators/', label: 'Investment Calculators' },
+                { href: '/valuation-academy/', label: 'Valuation Academy' },
+                { href: '/financial-knowledge-base/', label: 'Knowledge Base' }
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>

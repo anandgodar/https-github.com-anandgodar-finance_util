@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 interface FAQItem {
   question: string;
@@ -12,35 +12,6 @@ interface CalculatorFAQProps {
 }
 
 const CalculatorFAQ: React.FC<CalculatorFAQProps> = ({ faqs, calculatorName, calculatorUrl }) => {
-  useEffect(() => {
-    // Add FAQPage schema markup
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(faq => ({
-        "@type": "Question",
-        "name": faq.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": faq.answer
-        }
-      }))
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(faqSchema);
-    script.id = `faq-schema-${calculatorName.toLowerCase().replace(/\s+/g, '-')}`;
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById(script.id);
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, [faqs, calculatorName]);
-
   return (
     <section className="mt-16 bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-200">
       <h2 className="text-3xl font-black text-slate-900 mb-8">Frequently Asked Questions</h2>

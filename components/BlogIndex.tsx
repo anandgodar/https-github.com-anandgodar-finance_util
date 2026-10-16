@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 import { ToolType } from '../types';
 
@@ -38,41 +38,6 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onNavigate }) => {
     const path = tool === ToolType.DASHBOARD ? '/' : `/${tool}`;
     router.push(path);
   };
-  useEffect(() => {
-    const blogSchema = {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "QuantCurb Financial Blog",
-      "description": "Comprehensive financial guides, calculators, and expert insights for mortgages, taxes, retirement, and wealth management.",
-      "url": "https://quantcurb.com/blog",
-      "mainEntity": {
-        "@type": "ItemList",
-        "numberOfItems": 65,
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Complete Guide to Mortgage Calculator 2025",
-            "url": "https://quantcurb.com/blog/mortgage-calculator-guide-2025"
-          }
-        ]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(blogSchema);
-    script.id = 'blog-index-schema';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('blog-index-schema');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const blogPosts: BlogPost[] = [
     // New SEO Posts
     {

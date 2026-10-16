@@ -39,6 +39,20 @@ const Disclaimer: React.FC = () => {
             </p>
          </div>
 
+         <div className="space-y-4 pt-8 border-t">
+            <h2 className="text-xl font-black text-slate-900 uppercase tracking-widest text-sm">5. Advertising &amp; Affiliate Disclosure</h2>
+            <p>
+              QuantCurb is free to use and is supported by advertising (including Google AdSense) and, on some pages, affiliate links. If you click an affiliate link and buy or sign up, we may earn a commission at no extra cost to you. Advertisers and affiliate partners have no influence over our calculators, formulas or editorial content. See our <a href="/privacy-policy/" className="text-indigo-600 font-bold underline">Privacy Policy</a> for how advertising cookies are used and how to opt out.
+            </p>
+         </div>
+
+         <div className="space-y-4 pt-8 border-t">
+            <h2 className="text-xl font-black text-slate-900 uppercase tracking-widest text-sm">6. Terms of Use</h2>
+            <p>
+              You may use QuantCurb for personal, non-commercial purposes. You agree not to scrape, copy or republish our content or tools in bulk, interfere with the site&apos;s operation, or use it for any unlawful purpose. All text, tools and graphics are the property of QuantCurb unless otherwise noted. We may change or discontinue any part of the site and update these terms at any time; continued use means you accept the current version.
+            </p>
+         </div>
+
          <div className="p-8 bg-slate-900 rounded-[2.5rem] text-white">
             <p className="text-sm font-bold opacity-80 italic">
               "By using QuantCurb, you acknowledge that you are the sole party responsible for your financial decisions. QuantCurb Intelligence and its parent entity hold zero liability for economic losses resulting from the use of our algorithmic suite."
@@ -47,7 +61,7 @@ const Disclaimer: React.FC = () => {
       </section>
       
       <footer className="text-center">
-         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Last Updated: January 2025 • QuantCurb Legal Protocol</p>
+         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Last Updated: October 2026</p>
       </footer>
     </article>
   );

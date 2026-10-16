@@ -3,6 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
 
+import ToolTitle from './ToolTitle';
 const GSTCalculator: React.FC = () => {
   const [amount, setAmount] = useState<number>(5000);
   const [taxRate, setTaxRate] = useState<number>(18);
@@ -58,7 +59,7 @@ const GSTCalculator: React.FC = () => {
     <div className="max-w-7xl mx-auto space-y-10 animate-in fade-in duration-500 pb-24">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
-          <h2 className="text-3xl font-black text-slate-900 leading-tight">Tax <span className="text-emerald-600">Intelligence</span></h2>
+          <ToolTitle className="text-3xl font-black text-slate-900 leading-tight">GST <span className="text-emerald-600">Calculator</span></ToolTitle>
           <p className="text-slate-500 mt-2 max-w-lg font-medium">Professional GST/VAT logic for business invoicing and shopping audits.</p>
         </div>
         <div className="flex bg-slate-100 p-1 rounded-2xl border border-slate-200 shadow-inner">

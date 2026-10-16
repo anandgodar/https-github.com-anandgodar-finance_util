@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ToolType } from '../../types';
 
 interface BlogProps {
@@ -9,49 +9,6 @@ interface BlogProps {
 
 const Comparison1099VsW2_2025: React.FC<BlogProps> = ({ onNavigate }) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-
-  useEffect(() => {
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "1099 vs W-2: Complete Tax & Benefits Comparison for 2025",
-      "description": "Comprehensive guide comparing 1099 independent contractor vs W-2 employee status. Learn tax differences, benefits comparison, take-home pay calculations, legal classification rules, and when to negotiate for each employment type.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "url": "https://quantcurb.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-01-06",
-      "dateModified": "2026-01-06",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/1099-vs-w2-comparison-2025"
-      },
-      "keywords": "1099 vs w2, independent contractor vs employee, w2 to 1099 conversion, self employment tax vs payroll tax, contractor benefits, 1099 tax calculator",
-      "articleBody": "Complete comparison of 1099 independent contractor vs W-2 employee status in 2025. Understand tax differences, benefits, take-home pay, legal classification, and strategic considerations."
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-1099-vs-w2';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-1099-vs-w2');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import ToolTitle from './ToolTitle';
 import {
   LineChart,
   Line,
@@ -118,9 +119,9 @@ const DividendReinvestmentCalculator: React.FC<DividendReinvestmentCalculatorPro
     <div className="max-w-6xl mx-auto space-y-10 pb-24">
       <header className="space-y-3">
         <p className="text-emerald-400 text-xs font-bold uppercase tracking-[0.3em]">Dividend Reinvestment Lab</p>
-        <h2 className="text-4xl font-black text-white">
-          DRIP <span className="text-emerald-500">Snowball</span> Calculator
-        </h2>
+        <ToolTitle className="text-4xl font-black text-white">
+          Dividend Reinvestment <span className="text-emerald-500">(DRIP)</span> Calculator
+        </ToolTitle>
         <p className="text-slate-300 max-w-3xl">
           Model dividend reinvestment vs cash payouts in a Bloomberg-terminal dark mode interface.
           See the compounding curve, the cost of waiting, and your projected passive income.

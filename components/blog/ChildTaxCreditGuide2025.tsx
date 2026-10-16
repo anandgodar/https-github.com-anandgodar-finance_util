@@ -1,7 +1,7 @@
 'use client';
 
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ToolType } from '../../types';
 
 interface BlogProps {
@@ -9,47 +9,6 @@ interface BlogProps {
 }
 
 const ChildTaxCreditGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
-  useEffect(() => {
-    // Add Article Schema for SEO
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Child Tax Credit 2025: Complete Guide to CTC, ACTC, and Tax Savings",
-      "description": "Comprehensive guide to the 2025 Child Tax Credit: How to calculate your credit, income phase-outs, refundable portions, and strategies to maximize tax savings for families.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-01-04",
-      "dateModified": "2026-01-04",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/child-tax-credit-2025-guide"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-ctc';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-ctc');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {

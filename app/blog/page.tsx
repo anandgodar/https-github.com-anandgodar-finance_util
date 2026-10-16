@@ -9,7 +9,10 @@ export const dynamic = 'force-static';
 
 export const metadata = {
   title: TOOL_METADATA[ToolType.BLOG_INDEX].title,
-  description: TOOL_METADATA[ToolType.BLOG_INDEX].desc
+  description: TOOL_METADATA[ToolType.BLOG_INDEX].desc,
+  alternates: {
+    canonical: 'https://quantcurb.com/blog/'
+  }
 };
 
 export default function BlogIndexPage() {
@@ -18,7 +21,7 @@ export default function BlogIndexPage() {
     "@type": "CollectionPage",
     "name": "QuantCurb Financial Blog",
     "description": "Comprehensive financial guides, calculators, and expert insights for mortgages, taxes, retirement, and wealth management.",
-    "url": "https://quantcurb.com/blog",
+    "url": "https://quantcurb.com/blog/",
     "mainEntity": {
       "@type": "ItemList",
       "numberOfItems": 65,

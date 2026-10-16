@@ -6,6 +6,7 @@ import SiteShell from '../../../components/SiteShell';
 import AuthorCredentials from '../../../components/AuthorCredentials';
 import { ToolType } from '../../../types';
 
+import { EmbeddedToolContext } from '../../../components/ToolTitle';
 type StateSalaryCalculatorClientProps = {
   stateCode: string;
   stateName: string;
@@ -80,12 +81,14 @@ export default function StateSalaryCalculatorClient({
 
         {/* The Tool (Pre-selected state) */}
         <div className="mb-12">
-          <SalaryCalculator 
-            onNavigate={handleNavigate}
-            initialState={stateCode}
-            customTitle={`${stateName} Salary Paycheck Calculator 2026`}
-            introText={getStateIntroText()}
-          />
+          <EmbeddedToolContext.Provider value={true}>
+            <SalaryCalculator 
+              onNavigate={handleNavigate}
+              initialState={stateCode}
+              customTitle={`${stateName} Salary Paycheck Calculator 2026`}
+              introText={getStateIntroText()}
+            />
+          </EmbeddedToolContext.Provider>
         </div>
 
         {/* Programmatic SEO Content Block */}

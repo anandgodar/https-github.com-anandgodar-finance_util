@@ -17,6 +17,7 @@ import LenderComparisonTable from './LenderComparisonTable';
 import RateTable from './RateTable';
 import { ToolType } from '../types';
 
+import ToolTitle from './ToolTitle';
 interface AmortizationEntry {
   month: number;
   principal: number;
@@ -53,154 +54,6 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
   const [hoaMonthly, setHoaMonthly] = useState<number>(0);
   const [pmiRate, setPmiRate] = useState<number>(0.85);
   const [pmiDropMonth, setPmiDropMonth] = useState<number | null>(null);
-
-  useEffect(() => {
-    // Add HowTo schema for "How to calculate mortgage payment"
-    const howToSchema = {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Calculate Your Mortgage Payment (PITI)",
-      "description": "Step-by-step guide to calculating your total monthly mortgage payment including principal, interest, taxes, insurance, and HOA fees.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "Enter Home Price",
-          "text": "Enter the total purchase price of the home you're considering."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "Set Down Payment",
-          "text": "Enter your down payment percentage (typically 3-20%). A 20% down payment avoids PMI."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Enter Interest Rate",
-          "text": "Enter the interest rate from your lender quote. Rates change weekly, so use a current quote rather than a rule of thumb."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 4,
-          "name": "Add Property Tax Rate",
-          "text": "Enter your state's property tax rate (varies by state, typically 0.5-2.5% annually)."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 5,
-          "name": "Add Insurance and HOA",
-          "text": "Enter monthly homeowners insurance and HOA fees (if applicable)."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 6,
-          "name": "Review Results",
-          "text": "The calculator shows your total monthly PITI payment, PMI if applicable, and when PMI will drop."
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(howToSchema);
-    script.id = 'howto-schema-mortgage';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('howto-schema-mortgage');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    // Add FAQ schema for rich snippets
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is PITI in a mortgage payment?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "PITI stands for Principal, Interest, Taxes, and Insurance. It represents your total monthly mortgage payment. Principal is the loan amount you're paying down, Interest is the cost of borrowing, Taxes are property taxes (varies by state), and Insurance includes homeowners insurance and PMI (Private Mortgage Insurance) if your down payment is less than 20%."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I calculate my mortgage payment?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Use our mortgage calculator above! Enter your home price, down payment percentage, interest rate, property tax rate (varies by state), homeowners insurance, and HOA fees if applicable. The calculator automatically computes your monthly PITI payment, PMI if needed, and shows when PMI will drop (when your loan-to-value ratio falls below 78%)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is PMI and when does it drop?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "PMI (Private Mortgage Insurance) is required when your down payment is less than 20% of the home price. It protects the lender if you default. PMI automatically drops when your loan-to-value (LTV) ratio falls below 78% based on the original amortization schedule, or you can request removal when LTV reaches 80% with a new appraisal."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much house can I afford?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Use the 28/36 rule: Your monthly housing costs (PITI) should not exceed 28% of your gross monthly income, and total debt payments should not exceed 36%. For example, if you earn $100,000/year ($8,333/month), your maximum monthly housing payment should be around $2,333."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are property tax rates by state?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Property tax rates vary significantly by state. New Jersey has the highest average rate at 2.49%, while Hawaii has the lowest at 0.28%. Our calculator includes state-specific property tax rates for all 50 US states. Property taxes are typically 1-2% of your home's assessed value annually, paid monthly through escrow."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Should I pay extra on my mortgage?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Paying extra on your mortgage can save thousands in interest and shorten your loan term. For example, paying an extra $200/month on a $400,000 mortgage at 6.5% can save over $100,000 in interest and pay off the loan 7 years early. However, consider if you could earn more by investing that money instead, especially if your mortgage rate is low."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What's the difference between a 15-year and 30-year mortgage?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A 15-year mortgage has higher monthly payments but much lower total interest paid and builds equity faster. A 30-year mortgage has lower monthly payments, making it more affordable, but you'll pay significantly more interest over the life of the loan."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are closing costs?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Closing costs typically range from 2-5% of the home price and include loan origination fees, appraisal, title insurance, home inspection, prepaid property taxes and insurance, and other fees. On a $500,000 home, expect closing costs of $10,000-$25,000. These are separate from your down payment."
-          }
-        }
-      ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(faqSchema);
-    script.id = 'faq-schema-mortgage';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('faq-schema-mortgage');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     const downPaymentAmount = (homePrice * downPaymentPercent) / 100;
@@ -330,7 +183,7 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
     <article className="max-w-6xl mx-auto space-y-10 pb-24">
       <header className="space-y-2">
         <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">PITI Mortgage Calculator</p>
-        <h1 className="text-4xl font-black text-slate-900">Mortgage PITI Analyzer</h1>
+        <ToolTitle className="text-4xl font-black text-slate-900">Mortgage PITI Calculator</ToolTitle>
         <p className="text-slate-500 text-sm max-w-2xl">
           Exact reducing-balance amortization with explicit PITI breakdowns, PMI auto-removal at 78% LTV, and a
           break-even equity timeline.

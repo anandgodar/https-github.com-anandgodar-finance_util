@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ToolType } from '../../types';
 
 interface BlogProps {
@@ -9,49 +9,6 @@ interface BlogProps {
 
 const QuarterlyEstimatedTaxesGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-
-  useEffect(() => {
-    const articleSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Quarterly Estimated Taxes 2026: Complete Guide for Freelancers & Self-Employed",
-      "description": "Master quarterly estimated taxes with our comprehensive 2026 guide. Learn safe harbor rules, payment deadlines, penalty avoidance, and exact calculations for freelancers, contractors, and gig workers.",
-      "author": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "url": "https://quantcurb.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "QuantCurb",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://quantcurb.com/logo.png"
-        }
-      },
-      "datePublished": "2026-01-05",
-      "dateModified": "2026-10-04",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://quantcurb.com/blog/quarterly-estimated-taxes-complete-guide"
-      },
-      "keywords": "quarterly estimated taxes, self-employed taxes, freelance taxes, IRS Form 1040-ES, safe harbor rules, quarterly tax deadlines, estimated tax penalties, tax calculator",
-      "articleBody": "Complete guide to quarterly estimated taxes for freelancers and self-employed individuals in 2026. Learn who must pay, safe harbor rules, deadlines, and strategies to avoid penalties."
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(articleSchema);
-    script.id = 'article-schema-quarterly-tax';
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.getElementById('article-schema-quarterly-tax');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);

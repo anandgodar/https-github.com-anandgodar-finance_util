@@ -1,7 +1,14 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
-import CrawlerNav from '../components/CrawlerNav';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -35,9 +42,6 @@ export const metadata: Metadata = {
     'compound interest calculator',
     'debt payoff calculator'
   ],
-  alternates: {
-    canonical: '/'
-  },
   manifest: '/manifest.json',
   openGraph: {
     type: 'website',
@@ -74,17 +78,6 @@ export const metadata: Metadata = {
       'max-snippet': -1
     }
   },
-  // IMPORTANT: Replace these placeholder values with actual verification codes from:
-  // - Google Search Console: https://search.google.com/search-console
-  // - Bing Webmaster Tools: https://www.bing.com/webmasters
-  // See SEO-DEPLOYMENT-CHECKLIST.md for detailed instructions
-  verification: {
-    google: 'REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
-    other: {
-      'msvalidate.01': 'REPLACE_WITH_BING_WEBMASTER_VERIFICATION_CODE',
-      'yandex-verification': 'yandex-verification-placeholder'
-    }
-  },
   category: 'finance',
   creator: 'QuantCurb',
   publisher: 'QuantCurb',
@@ -117,39 +110,22 @@ const organizationSchema = {
   }
 };
 
-// WebSite Schema for sitelinks searchbox
+// WebSite Schema
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'QuantCurb',
   url: 'https://quantcurb.com',
-  description: 'Free financial calculators, mortgage audits, investment projectors, and AI-driven market sentiment.',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: 'https://quantcurb.com/blog/?q={search_term_string}'
-    },
-    'query-input': 'required name=search_term_string'
-  }
+  description: 'Free financial calculators, mortgage audits, investment projectors, and AI-driven market sentiment.'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
-        <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-
         {/* DNS prefetch for performance */}
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
-
-        {/* Canonical and language hints */}
-        <link rel="alternate" hrefLang="en" href="https://quantcurb.com/" />
-        <link rel="alternate" hrefLang="x-default" href="https://quantcurb.com/" />
 
         {/* Google AdSense - plain <script> in <head> so it is present in the static HTML for site verification */}
         <script
@@ -164,14 +140,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
 
-        {/* WebSite Schema for sitelinks */}
+        {/* WebSite Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body>
-        <Script src="https://cdn.tailwindcss.com" strategy="beforeInteractive" />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-WSKZ5JNETS" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">
           {`
@@ -181,7 +156,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'G-WSKZ5JNETS');
           `}
         </Script>
-        <CrawlerNav />
         {children}
       </body>
     </html>
