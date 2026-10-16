@@ -100,7 +100,7 @@ const AdPlacement: React.FC<AdPlacementProps> = ({
         <ins
           className="adsbygoogle"
           style={{ display: 'block' }}
-          data-ad-client="ca-pub-XXXXXXXXXX" // Replace with actual AdSense publisher ID
+          data-ad-client="ca-pub-3959097578570952"
           data-ad-slot={adUnitId}
           data-ad-format={size === 'responsive' ? 'auto' : 'rectangle'}
           data-full-width-responsive={size === 'responsive' ? 'true' : 'false'}
