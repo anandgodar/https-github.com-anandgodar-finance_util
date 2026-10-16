@@ -26,7 +26,7 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-lg p-8 shadow-xl">
         <h1 className="text-4xl font-bold mb-4">
-          Tax Deductions for Freelancers 2025: Complete Guide to Maximize Your Write-Offs
+          Tax Deductions for Freelancers 2026: Complete Guide to Maximize Your Write-Offs
         </h1>
         <p className="text-xl mb-6 text-green-50">
           Discover every deduction available to freelancers and self-employed professionals. Learn how to save thousands with home office, mileage, equipment, health insurance, and retirement deductions.
@@ -50,16 +50,16 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
       {/* Quick Stats */}
       <div className="grid md:grid-cols-3 gap-6">
         <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-lg">
-          <div className="text-3xl font-bold text-green-600 mb-2">$0.67</div>
-          <div className="text-gray-700 font-medium">Standard Mileage Rate per Mile (2025)</div>
+          <div className="text-3xl font-bold text-green-600 mb-2">$0.725</div>
+          <div className="text-gray-700 font-medium">Standard Mileage Rate per Mile (2026)</div>
         </div>
         <div className="bg-teal-50 border-l-4 border-teal-500 p-6 rounded-lg">
           <div className="text-3xl font-bold text-teal-600 mb-2">$5/sq ft</div>
           <div className="text-gray-700 font-medium">Simplified Home Office Deduction (Max $1,500)</div>
         </div>
         <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-lg">
-          <div className="text-3xl font-bold text-emerald-600 mb-2">$1.22M</div>
-          <div className="text-gray-700 font-medium">Section 179 Equipment Deduction Limit 2025</div>
+          <div className="text-3xl font-bold text-emerald-600 mb-2">100%</div>
+          <div className="text-gray-700 font-medium">Bonus Depreciation on Equipment (Permanent Under 2025 Law)</div>
         </div>
       </div>
 
@@ -71,10 +71,10 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
             1. Home Office Deduction ($5/sq ft)
           </button>
           <button onClick={() => scrollToSection('mileage')} className="text-left text-green-600 hover:text-green-800 hover:underline font-medium">
-            2. Mileage & Vehicle Expenses ($0.67/mile)
+            2. Mileage & Vehicle Expenses ($0.725/mile)
           </button>
           <button onClick={() => scrollToSection('section-179')} className="text-left text-green-600 hover:text-green-800 hover:underline font-medium">
-            3. Section 179 Equipment Deduction
+            3. Equipment: Section 179 & Bonus Depreciation
           </button>
           <button onClick={() => scrollToSection('software-subscriptions')} className="text-left text-green-600 hover:text-green-800 hover:underline font-medium">
             4. Software & Subscription Deductions
@@ -92,10 +92,13 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
             8. Tax-Saving Strategies
           </button>
           <button onClick={() => scrollToSection('scenarios')} className="text-left text-green-600 hover:text-green-800 hover:underline font-medium">
-            9. Real Freelancer Scenarios
+            9. Hypothetical Freelancer Scenarios
           </button>
           <button onClick={() => scrollToSection('faq')} className="text-left text-green-600 hover:text-green-800 hover:underline font-medium">
             10. Frequently Asked Questions
+          </button>
+          <button onClick={() => scrollToSection('sources')} className="text-left text-green-600 hover:text-green-800 hover:underline font-medium">
+            11. Sources
           </button>
         </div>
       </nav>
@@ -135,8 +138,8 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <span className="font-bold text-teal-700">$1,000</span>
               </div>
               <div className="flex justify-between items-center bg-green-100 p-3 rounded">
-                <span className="text-gray-700">Tax savings (37% bracket):</span>
-                <span className="font-bold text-green-700">~$370</span>
+                <span className="text-gray-700">Tax savings (22% bracket + SE tax ≈ 36%):</span>
+                <span className="font-bold text-green-700">~$361</span>
               </div>
             </div>
           </div>
@@ -212,23 +215,26 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <p className="text-gray-700">
               Your home office must be used <strong>exclusively and regularly</strong> for business. A kitchen table used for both meals and work doesn't qualify. However, a spare bedroom converted to an office does. The IRS is strict on this rule.
             </p>
+            <p className="text-gray-700 mt-3">
+              For the full rules, the income limit and worked examples, see our <a href="/blog/home-office-deduction-2025/" className="text-indigo-600 font-semibold hover:underline">home office deduction guide</a>.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Section 2: Mileage & Vehicle Expenses */}
       <section id="mileage" className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-900">2. Mileage & Vehicle Expenses ($0.67/mile in 2025)</h2>
+        <h2 className="text-3xl font-bold mb-6 text-gray-900">2. Mileage & Vehicle Expenses ($0.725/mile in 2026)</h2>
 
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-700 mb-4">
-            If you drive for business, you can deduct vehicle expenses using either the <strong>standard mileage rate ($0.67/mile in 2025)</strong> or the <strong>actual expense method</strong>.
+            If you drive for business, you can deduct vehicle expenses using either the <strong>standard mileage rate ($0.725/mile in 2026)</strong> or the <strong>actual expense method</strong>.
           </p>
 
           <div className="bg-blue-50 border-2 border-blue-500 p-6 rounded-lg mb-6">
-            <h3 className="text-xl font-bold text-blue-900 mb-4">2025 Standard Mileage Rate: $0.67/mile</h3>
+            <h3 className="text-xl font-bold text-blue-900 mb-4">2026 Standard Mileage Rate: $0.725/mile</h3>
             <p className="text-gray-700 mb-4">
-              The IRS increased the standard mileage rate to <strong>$0.67 per mile</strong> for 2025 (up from $0.655 in 2024) to account for rising fuel and vehicle costs.
+              The IRS set the business standard mileage rate at <strong>72.5 cents per mile</strong> for 2026, up from 70 cents in 2025. The rate covers gas, maintenance, insurance and depreciation; business parking fees and tolls can be deducted on top of it. To use the standard rate for a car you own, you generally must choose it in the first year you use the car for business.
             </p>
 
             <div className="bg-white p-5 rounded-lg shadow-sm">
@@ -252,7 +258,7 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300 p-6 rounded-lg mb-6">
-            <h4 className="font-semibold text-blue-900 mb-4 text-lg">Real Scenario: Freelance Photographer</h4>
+            <h4 className="font-semibold text-blue-900 mb-4 text-lg">Example (Hypothetical): Freelance Photographer</h4>
             <div className="space-y-3">
               <div className="bg-white p-4 rounded">
                 <p className="text-gray-700 mb-2"><strong>Annual business mileage:</strong></p>
@@ -266,12 +272,12 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
               <div className="flex justify-between items-center bg-blue-100 p-4 rounded border-2 border-blue-400">
                 <span className="font-bold text-blue-900">Mileage deduction:</span>
-                <span className="font-bold text-blue-700">10,000 × $0.67 = $6,700</span>
+                <span className="font-bold text-blue-700">10,000 × $0.725 = $7,250</span>
               </div>
 
               <div className="flex justify-between items-center bg-green-100 p-4 rounded">
-                <span className="text-gray-700">Tax savings (22% + 15.3% SE tax):</span>
-                <span className="font-bold text-green-700">~$2,497</span>
+                <span className="text-gray-700">Tax savings (22% + SE tax ≈ 36%):</span>
+                <span className="font-bold text-green-700">~$2,620</span>
               </div>
             </div>
           </div>
@@ -310,7 +316,7 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="bg-green-50 border-l-4 border-green-500 p-6 my-6 rounded-r-lg">
             <h3 className="text-xl font-bold text-green-900 mb-2">Pro Tip: Use Mileage Tracking Apps</h3>
             <p className="text-gray-700 mb-3">
-              Apps like <strong>MileIQ, Everlance, or QuickBooks Self-Employed</strong> automatically track your drives using GPS and categorize them as business or personal. This creates an IRS-compliant mileage log with zero manual effort.
+              Apps like <strong>MileIQ, Everlance, or QuickBooks</strong> automatically track your drives using GPS and categorize them as business or personal. This creates an IRS-compliant mileage log with zero manual effort.
             </p>
             <p className="text-sm text-gray-600">
               The IRS requires contemporaneous records. Retroactively creating a mileage log is a red flag for audits.
@@ -323,7 +329,7 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
       <div id="deduction-calculator" className="bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-lg p-8 shadow-xl text-center">
         <h3 className="text-2xl font-bold mb-3">Calculate Your Total Tax Deductions</h3>
         <p className="text-lg mb-6 text-green-50">
-          Track all your deductions and see exactly how much you'll save on taxes in 2025.
+          Track all your deductions and see exactly how much you'll save on taxes in 2026.
         </p>
         <button
           onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}
@@ -335,24 +341,24 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
       {/* Section 3: Section 179 Equipment Deduction */}
       <section id="section-179" className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-900">3. Section 179 Equipment Deduction (Up to $1.22M in 2025)</h2>
+        <h2 className="text-3xl font-bold mb-6 text-gray-900">3. Equipment: Section 179, Bonus Depreciation & the $2,500 De Minimis Rule</h2>
 
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-700 mb-4">
-            <strong>Section 179</strong> allows you to deduct the <strong>full purchase price of qualifying equipment</strong> in the year you buy it, rather than depreciating it over several years. For 2025, you can deduct up to <strong>$1,220,000</strong> in equipment purchases.
+            Equipment that lasts more than a year—laptops, cameras, desks—normally has to be <strong>depreciated</strong> over several years (computers generally over 5 years, office furniture over 7). For 2026, freelancers have three ways to deduct much or all of the cost in the year the item is placed in service:
           </p>
 
           <div className="bg-green-50 border-l-4 border-green-500 p-6 my-6 rounded-r-lg">
-            <h3 className="text-xl font-bold text-green-900 mb-2">2025 Section 179 Limits</h3>
+            <h3 className="text-xl font-bold text-green-900 mb-2">Three Ways to Write Off Equipment Faster (2026)</h3>
             <ul className="text-gray-700 space-y-2">
-              <li>• <strong>Maximum deduction:</strong> $1,220,000</li>
-              <li>• <strong>Phase-out threshold:</strong> Begins at $3,050,000 in equipment purchases</li>
-              <li>• <strong>Bonus depreciation:</strong> 60% in 2025 (down from 80% in 2024)</li>
-              <li>• <strong>Key requirement:</strong> Equipment must be purchased AND placed in service by Dec 31, 2025</li>
+              <li>• <strong>De minimis safe harbor:</strong> If you make the annual election, you can expense items costing <strong>$2,500 or less per item or invoice</strong> (for businesses without audited financial statements) as ordinary supplies.</li>
+              <li>• <strong>Section 179:</strong> Elect to expense qualifying equipment in the year you place it in service. There is an annual dollar cap far above what most solo freelancers spend (check the current Form 4562 instructions), and the deduction can't exceed your business income for the year.</li>
+              <li>• <strong>Bonus depreciation:</strong> The 2025 tax law (OBBBA) made <strong>100% bonus depreciation permanent</strong> for qualifying property acquired after January 19, 2025. Unlike Section 179, it isn't limited by business income.</li>
+              <li>• <strong>Key requirement:</strong> Equipment must be purchased AND placed in service by Dec 31, 2026 to count for 2026, and you can deduct only the business-use share.</li>
             </ul>
           </div>
 
-          <h3 className="text-2xl font-semibold mb-4 mt-8 text-gray-900">What Qualifies for Section 179?</h3>
+          <h3 className="text-2xl font-semibold mb-4 mt-8 text-gray-900">What Qualifies?</h3>
 
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             <div className="bg-blue-50 border-2 border-blue-300 p-6 rounded-lg">
@@ -360,11 +366,10 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <ul className="text-gray-700 space-y-2 text-sm">
                 <li>✅ Computers & laptops</li>
                 <li>✅ Office furniture & desks</li>
-                <li>✅ Business vehicles (with limits)</li>
+                <li>✅ Business vehicles (special limits apply)</li>
                 <li>✅ Machinery & equipment</li>
                 <li>✅ Camera equipment</li>
                 <li>✅ Software (off-the-shelf)</li>
-                <li>✅ HVAC & security systems</li>
               </ul>
             </div>
 
@@ -374,28 +379,28 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
                 <li>❌ Real estate / buildings</li>
                 <li>❌ Land & land improvements</li>
                 <li>❌ Inventory for resale</li>
-                <li>❌ Property used outside US</li>
-                <li>❌ Property received as gift/inheritance</li>
+                <li>❌ Personal-use items (or the personal share of mixed-use items)</li>
+                <li>❌ Property received as gift/inheritance (Section 179)</li>
               </ul>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300 p-6 rounded-lg">
-            <h4 className="font-semibold text-green-900 mb-4 text-lg">Example: Freelance Video Editor</h4>
+            <h4 className="font-semibold text-green-900 mb-4 text-lg">Example (Hypothetical): Freelance Video Editor</h4>
             <div className="space-y-3">
               <div className="bg-white p-4 rounded">
-                <p className="text-gray-700 mb-2"><strong>Equipment purchased in December 2025:</strong></p>
+                <p className="text-gray-700 mb-2"><strong>Equipment bought and set up in 2026 (100% business use):</strong></p>
                 <div className="space-y-1 text-sm text-gray-600">
                   <div className="flex justify-between">
-                    <span>MacBook Pro M4 Max:</span>
+                    <span>Laptop:</span>
                     <span>$4,500</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Sony A7S III camera:</span>
+                    <span>Camera body:</span>
                     <span>$3,500</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>DJI Ronin gimbal:</span>
+                    <span>Gimbal:</span>
                     <span>$850</span>
                   </div>
                   <div className="flex justify-between">
@@ -410,18 +415,18 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
               </div>
 
               <div className="flex justify-between items-center bg-green-100 p-4 rounded border-2 border-green-400">
-                <span className="font-bold text-green-900">Section 179 deduction (2025):</span>
+                <span className="font-bold text-green-900">First-year deduction (bonus depreciation or Section 179):</span>
                 <span className="font-bold text-green-700">$10,050</span>
               </div>
 
               <div className="flex justify-between items-center bg-blue-100 p-4 rounded">
-                <span className="text-gray-700">Tax savings (22% + 15.3% SE tax):</span>
-                <span className="font-bold text-blue-700">~$3,749</span>
+                <span className="text-gray-700">Tax savings (22% bracket + SE tax ≈ 36%):</span>
+                <span className="font-bold text-blue-700">~$3,630</span>
               </div>
 
               <div className="bg-yellow-50 p-4 rounded border-2 border-yellow-300">
-                <p className="text-yellow-900 font-semibold mb-2">Without Section 179:</p>
-                <p className="text-sm text-gray-700">You'd depreciate this equipment over 5-7 years, deducting only ~$1,400-$2,000 per year instead of the full $10,050 immediately.</p>
+                <p className="text-yellow-900 font-semibold mb-2">Without these elections:</p>
+                <p className="text-sm text-gray-700">You'd depreciate the equipment over 5–7 years, deducting a smaller amount each year instead of the full $10,050 immediately. Spreading the deduction can make sense if you expect to be in a higher bracket in later years.</p>
               </div>
             </div>
           </div>
@@ -429,7 +434,7 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="bg-teal-50 border-l-4 border-teal-500 p-6 my-6 rounded-r-lg">
             <h3 className="text-xl font-bold text-teal-900 mb-2">Strategic Timing: Buy Before Dec 31</h3>
             <p className="text-gray-700">
-              Section 179 requires equipment to be <strong>placed in service</strong> (not just purchased) by December 31. If you order a laptop on Dec 30 but it arrives Jan 3, you can't claim the deduction until the following tax year. Plan major purchases accordingly.
+              Section 179 and bonus depreciation require equipment to be <strong>placed in service</strong> (not just purchased) by December 31. If you order a laptop on Dec 30 but it arrives Jan 3, you can't claim the deduction until the following tax year. Plan major purchases accordingly—and only buy what the business actually needs; a deduction saves a fraction of the price, not all of it.
             </p>
           </div>
         </div>
@@ -448,14 +453,13 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-green-50 border-2 border-green-300 p-6 rounded-lg">
               <h3 className="font-bold text-green-900 mb-3">Common Deductible Software:</h3>
               <ul className="text-gray-700 space-y-2 text-sm">
-                <li>• Adobe Creative Cloud ($54.99/mo = $660/yr)</li>
-                <li>• Microsoft 365 Business ($12.50/mo = $150/yr)</li>
-                <li>• QuickBooks Self-Employed ($15/mo = $180/yr)</li>
-                <li>• Canva Pro ($12.99/mo = $156/yr)</li>
-                <li>• Grammarly Premium ($12/mo = $144/yr)</li>
-                <li>• Zoom Pro ($14.99/mo = $180/yr)</li>
-                <li>• Dropbox Business ($15/mo = $180/yr)</li>
-                <li>• Slack Pro ($7.25/mo = $87/yr)</li>
+                <li>• Design suites (e.g., Adobe Creative Cloud)</li>
+                <li>• Office and email tools (e.g., Microsoft 365, Google Workspace)</li>
+                <li>• Accounting and invoicing software</li>
+                <li>• Graphic and writing tools (e.g., Canva, Grammarly)</li>
+                <li>• Video conferencing (e.g., Zoom)</li>
+                <li>• Cloud storage (e.g., Dropbox)</li>
+                <li>• Team chat (e.g., Slack)</li>
               </ul>
             </div>
 
@@ -473,7 +477,7 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-300 p-6 rounded-lg mb-6">
-            <h4 className="font-semibold text-green-900 mb-4 text-lg">Real Scenario: Freelance Web Designer</h4>
+            <h4 className="font-semibold text-green-900 mb-4 text-lg">Example (Hypothetical): Freelance Web Designer</h4>
             <div className="space-y-3">
               <div className="bg-white p-4 rounded">
                 <p className="text-gray-700 mb-2"><strong>Annual software subscriptions:</strong></p>
@@ -515,8 +519,8 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
               </div>
 
               <div className="flex justify-between items-center bg-green-100 p-4 rounded">
-                <span className="text-gray-700">Tax savings (37.3% effective rate):</span>
-                <span className="font-bold text-green-700">~$573</span>
+                <span className="text-gray-700">Tax savings (22% bracket + SE tax ≈ 36%):</span>
+                <span className="font-bold text-green-700">~$555</span>
               </div>
             </div>
           </div>
@@ -524,10 +528,10 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="bg-teal-50 border-l-4 border-teal-500 p-6 my-6 rounded-r-lg">
             <h3 className="text-xl font-bold text-teal-900 mb-2">Pro Tip: Separate Business from Personal</h3>
             <p className="text-gray-700 mb-3">
-              If you use software for both business and personal purposes (like Spotify or Netflix), you can only deduct the <strong>business percentage</strong>. Keep separate accounts or track usage carefully.
+              If you use a service for both business and personal purposes (like a cell phone plan or a cloud storage account), you can only deduct the <strong>business percentage</strong>. Keep separate accounts or track usage carefully. Purely personal entertainment subscriptions generally aren't deductible.
             </p>
             <p className="text-sm text-gray-600">
-              Example: If you use Spotify 80% for background music while working and 20% personally, you can deduct 80% of the subscription cost.
+              Example: If 60% of your cell phone use is for client calls and business apps, you can deduct 60% of the monthly bill—keep a sample log or billing records to support the percentage.
             </p>
           </div>
         </div>
@@ -558,15 +562,15 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <ul className="text-gray-700 space-y-2">
               <li>• <strong>Cannot exceed net self-employment income:</strong> If your business profit is $20,000, you can deduct up to $20,000 in premiums (not more)</li>
               <li>• <strong>Cannot double-dip:</strong> Can't deduct if you're eligible for employer-sponsored coverage through a spouse's job or your own W-2 job</li>
-              <li>• <strong>Deduct on Form 1040 Schedule 1 Line 17</strong> (not Schedule C)</li>
+              <li>• <strong>Deduct on Form 1040 Schedule 1</strong> (not Schedule C), and only for premiums you actually paid after any premium tax credit</li>
             </ul>
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-300 p-6 rounded-lg">
-            <h4 className="font-semibold text-green-900 mb-4 text-lg">Real Scenario: Solo Freelance Consultant</h4>
+            <h4 className="font-semibold text-green-900 mb-4 text-lg">Example (Hypothetical): Solo Freelance Consultant</h4>
             <div className="space-y-3">
               <div className="bg-white p-4 rounded">
-                <p className="text-gray-700 mb-2"><strong>Annual health insurance costs (2025):</strong></p>
+                <p className="text-gray-700 mb-2"><strong>Annual health insurance costs (2026):</strong></p>
                 <div className="space-y-1 text-sm text-gray-600">
                   <div className="flex justify-between">
                     <span>ACA Marketplace Silver Plan (individual):</span>
@@ -607,7 +611,7 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-6 rounded-r-lg">
             <h3 className="text-xl font-bold text-blue-900 mb-2">Bonus: Premium Tax Credits (ACA Subsidies)</h3>
             <p className="text-gray-700 mb-3">
-              If you buy health insurance through the ACA Marketplace, you may qualify for <strong>Premium Tax Credits</strong> that reduce your monthly premiums. These subsidies are based on your modified adjusted gross income (MAGI).
+              If you buy health insurance through the ACA Marketplace, you may qualify for <strong>Premium Tax Credits</strong> that reduce your monthly premiums. These subsidies are based on your modified adjusted gross income (MAGI). For 2026 coverage, the enhanced subsidies of 2021–2025 have expired, so household income above 400% of the poverty line ($62,600 for a single person) generally means no credit at all unless Congress changes the law. Check HealthCare.gov and read our <a href="/blog/aca-health-insurance-freelancers-2025/" className="text-indigo-600 font-semibold hover:underline">ACA guide for freelancers</a>.
             </p>
             <button
               onClick={() => onNavigate?.(ToolType.ACA_SUBSIDY)}
@@ -632,7 +636,7 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-emerald-50 border-2 border-emerald-500 p-6 rounded-lg">
               <h3 className="font-bold text-emerald-900 mb-3 text-lg">SEP-IRA</h3>
               <ul className="text-gray-700 space-y-2 text-sm">
-                <li>• <strong>2025 limit:</strong> Up to $69,000 or 25% of compensation</li>
+                <li>• <strong>2026 limit:</strong> Up to $72,000 or 25% of compensation (about 20% of net SE earnings for sole proprietors)</li>
                 <li>• <strong>Employer contributions only</strong> (you're the employer)</li>
                 <li>• <strong>Easy setup:</strong> Open account, make contributions</li>
                 <li>• <strong>Flexible contributions:</strong> Contribute 0-25% each year</li>
@@ -643,10 +647,10 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-teal-50 border-2 border-teal-500 p-6 rounded-lg">
               <h3 className="font-bold text-teal-900 mb-3 text-lg">Solo 401(k)</h3>
               <ul className="text-gray-700 space-y-2 text-sm">
-                <li>• <strong>2025 limit:</strong> Up to $69,000 ($76,500 if 50+)</li>
+                <li>• <strong>2026 limit:</strong> Up to $72,000 ($80,000 if 50+; $83,250 if age 60–63)</li>
                 <li>• <strong>Employee + employer contributions</strong></li>
-                <li>• <strong>Employee portion:</strong> $23,000 ($30,500 if 50+)</li>
-                <li>• <strong>Employer portion:</strong> Up to 25% of compensation</li>
+                <li>• <strong>Employee portion:</strong> $24,500 ($32,500 if 50+)</li>
+                <li>• <strong>Employer portion:</strong> Up to 25% of compensation (about 20% of net SE earnings)</li>
                 <li>• <strong>Roth option available</strong></li>
                 <li>• <strong>Best for:</strong> High earners wanting to max out contributions</li>
               </ul>
@@ -664,25 +668,29 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
                     <span>$120,000</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>SEP-IRA contribution (20% of net):</span>
-                    <span>$24,000</span>
+                    <span>Half of SE tax:</span>
+                    <span>$8,478</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>SEP-IRA max (20% × ($120,000 − $8,478)):</span>
+                    <span>$22,304</span>
                   </div>
                 </div>
               </div>
 
               <div className="flex justify-between items-center bg-emerald-100 p-4 rounded border-2 border-emerald-400">
                 <span className="font-bold text-emerald-900">Tax deduction:</span>
-                <span className="font-bold text-emerald-700">$24,000</span>
+                <span className="font-bold text-emerald-700">$22,304</span>
               </div>
 
               <div className="flex justify-between items-center bg-green-100 p-4 rounded">
-                <span className="text-gray-700">Tax savings (24% income tax):</span>
-                <span className="font-bold text-green-700">~$5,760</span>
+                <span className="text-gray-700">Tax savings (22% income tax; no SE tax effect):</span>
+                <span className="font-bold text-green-700">~$4,907</span>
               </div>
 
               <div className="bg-blue-50 p-4 rounded border-2 border-blue-300">
                 <p className="text-blue-900 font-semibold mb-2">Bonus: Tax-Deferred Growth</p>
-                <p className="text-sm text-gray-700">Your $24,000 grows tax-free until retirement. Assuming 7% annual returns, that's $185,000+ in 30 years (vs. $95,000 after-tax in a taxable account).</p>
+                <p className="text-sm text-gray-700">Your $22,304 grows tax-deferred until retirement. At a hypothetical 7% annual return, it would grow to roughly $170,000 in 30 years; withdrawals are then taxed as ordinary income. Returns are not guaranteed.</p>
               </div>
             </div>
           </div>
@@ -690,10 +698,10 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <div className="bg-green-50 border-l-4 border-green-500 p-6 my-6 rounded-r-lg">
             <h3 className="text-xl font-bold text-green-900 mb-2">SEP-IRA vs Solo 401(k): Which is Better?</h3>
             <p className="text-gray-700 mb-3">
-              It depends on your income and savings goals. Solo 401(k) allows higher contributions at lower income levels due to the $23,000 employee deferral. SEP-IRA is simpler and requires less paperwork.
+              It depends on your income and savings goals. Solo 401(k) allows higher contributions at lower income levels due to the $24,500 employee deferral. SEP-IRA is simpler and requires less paperwork.
             </p>
             <p className="text-sm text-gray-600">
-              For detailed comparison of contribution limits, catch-up contributions, and administrative complexity, see our comprehensive guide.
+              For detailed comparison of contribution limits, catch-up contributions, and administrative complexity, see our <a href="/blog/sep-ira-vs-solo-401k-2025/" className="text-indigo-600 font-semibold hover:underline">SEP-IRA vs Solo 401(k) guide</a>.
             </p>
           </div>
         </div>
@@ -822,9 +830,9 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
             <div className="bg-teal-50 border-l-4 border-teal-500 p-6 rounded-r-lg">
               <h3 className="text-xl font-bold text-teal-900 mb-3">2. Maximize Retirement Contributions</h3>
-              <p className="text-gray-700 mb-3">Every $1,000 contributed to a SEP-IRA or Solo 401(k) saves you ~$373 in taxes (22% + 15.3% SE tax).</p>
+              <p className="text-gray-700 mb-3">Every $1,000 of pre-tax contributions to a SEP-IRA or Solo 401(k) saves about $220 in federal income tax in the 22% bracket. Retirement contributions do not reduce self-employment tax.</p>
               <p className="text-sm text-gray-600">
-                Example: Contributing $20,000 to a Solo 401(k) saves $7,460 in taxes while building retirement wealth.
+                Example: Contributing $20,000 pre-tax to a Solo 401(k) saves roughly $4,400 in federal income tax at a 22% marginal rate while building retirement wealth.
               </p>
             </div>
 
@@ -843,7 +851,7 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
               <h3 className="text-xl font-bold text-green-900 mb-3">4. Track Everything with Apps</h3>
               <p className="text-gray-700 mb-3">Use expense tracking apps to capture deductions automatically:</p>
               <ul className="text-gray-700 space-y-2">
-                <li>• <strong>QuickBooks Self-Employed:</strong> Links to bank account, categorizes expenses</li>
+                <li>• <strong>QuickBooks:</strong> Links to bank account, categorizes expenses</li>
                 <li>• <strong>Expensify:</strong> Scan receipts with phone camera</li>
                 <li>• <strong>MileIQ:</strong> Auto-tracks business mileage</li>
                 <li>• <strong>Wave:</strong> Free accounting software for small businesses</li>
@@ -853,17 +861,24 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-teal-50 border-l-4 border-teal-500 p-6 rounded-r-lg">
               <h3 className="text-xl font-bold text-teal-900 mb-3">5. Consider an S-Corp Election</h3>
               <p className="text-gray-700 mb-3">
-                If you earn $60,000+, an <strong>S-Corporation election</strong> can save thousands in self-employment tax by splitting income into salary (subject to SE tax) and distributions (not subject to SE tax).
+                Once your profit is well above a reasonable salary for your work, an <strong>S-Corporation election</strong> can reduce payroll taxes by splitting income into a W-2 salary (subject to Social Security and Medicare tax) and distributions (not subject to those taxes). It also shrinks your QBI deduction, so the net savings are smaller than the payroll-tax savings alone. See our <a href="/blog/llc-vs-sole-proprietor-2025/" className="text-indigo-600 font-semibold hover:underline">LLC vs sole proprietor guide</a> for 2026 examples.
               </p>
               <p className="text-sm text-gray-600">
                 Trade-off: S-Corps require payroll processing, quarterly payroll taxes, and additional tax filings (Form 1120-S).
               </p>
             </div>
 
-            <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-lg">
-              <h3 className="text-xl font-bold text-emerald-900 mb-3">6. Work with a Tax Professional</h3>
+            <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
+              <h3 className="text-xl font-bold text-green-900 mb-3">6. Don't Forget the QBI Deduction</h3>
               <p className="text-gray-700">
-                If your freelance income exceeds $75,000/year, hiring a CPA or Enrolled Agent (~$500-2,000) often pays for itself through tax savings, deduction optimization, and peace of mind.
+                The 20% qualified business income (QBI) deduction under Section 199A was made permanent by the 2025 tax law. Many freelancers below the income thresholds can deduct up to 20% of their qualified business income (limited to 20% of taxable income) on top of the standard deduction. It reduces income tax only, not SE tax.
+              </p>
+            </div>
+
+            <div className="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-lg">
+              <h3 className="text-xl font-bold text-emerald-900 mb-3">7. Work with a Tax Professional</h3>
+              <p className="text-gray-700">
+                As your income and complexity grow (S-corp elections, multiple states, large equipment purchases, retirement plan choices), a CPA or Enrolled Agent can help you apply these rules correctly. Ask for a fee quote up front and compare it with the decisions you need help making.
               </p>
             </div>
           </div>
@@ -872,28 +887,31 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
       {/* Section 9: Real Freelancer Scenarios */}
       <section id="scenarios" className="bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold mb-6 text-gray-900">9. Real Freelancer Tax Scenarios</h2>
+        <h2 className="text-3xl font-bold mb-6 text-gray-900">9. Hypothetical Freelancer Tax Scenarios (2026)</h2>
 
         <div className="prose prose-lg max-w-none">
+          <p className="text-gray-700 mb-6">
+            These examples are hypothetical. Each assumes a single filer, the 2026 standard deduction ($16,100), 2026 federal brackets, the 20% QBI deduction, and no state tax. "Tax savings" compares total federal income tax plus SE tax with and without the listed deductions. Note that Schedule C deductions reduce net profit, while health insurance, half of SE tax and retirement contributions are deducted on Schedule 1 and do not reduce SE tax.
+          </p>
           <div className="space-y-6">
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-300 p-6 rounded-lg">
               <h3 className="font-bold text-blue-900 mb-4 text-lg">Scenario 1: Part-Time Freelance Writer</h3>
               <div className="bg-white p-4 rounded mb-4">
-                <p className="text-sm text-gray-600 mb-3">Sarah earns $25,000/year from freelance writing while working a W-2 job.</p>
+                <p className="text-sm text-gray-600 mb-3">Earns $25,000/year from freelance writing on top of a $60,000 W-2 job.</p>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-700">Gross freelance income:</span>
                     <span className="font-semibold">$25,000</span>
                   </div>
                   <div className="border-t pt-2">
-                    <p className="font-semibold text-gray-900 mb-2">Deductions:</p>
+                    <p className="font-semibold text-gray-900 mb-2">Schedule C deductions:</p>
                     <div className="space-y-1 ml-4">
                       <div className="flex justify-between">
                         <span className="text-gray-600">Home office (150 sq ft × $5):</span>
                         <span>$750</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Software (Grammarly, Scrivener, Dropbox):</span>
+                        <span className="text-gray-600">Software subscriptions:</span>
                         <span>$400</span>
                       </div>
                       <div className="flex justify-between">
@@ -915,8 +933,8 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
                     <span className="font-bold text-blue-700">$22,750</span>
                   </div>
                   <div className="flex justify-between bg-green-100 p-2 rounded">
-                    <span className="text-gray-700">Tax savings from deductions:</span>
-                    <span className="font-bold text-green-700">~$839</span>
+                    <span className="text-gray-700">Federal tax savings from deductions:</span>
+                    <span className="font-bold text-green-700">~$686</span>
                   </div>
                 </div>
               </div>
@@ -925,91 +943,92 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <div className="bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-300 p-6 rounded-lg">
               <h3 className="font-bold text-green-900 mb-4 text-lg">Scenario 2: Full-Time Graphic Designer</h3>
               <div className="bg-white p-4 rounded mb-4">
-                <p className="text-sm text-gray-600 mb-3">Marcus earns $85,000/year as a solo graphic designer with home office.</p>
+                <p className="text-sm text-gray-600 mb-3">Earns $85,000/year in gross revenue as a solo designer working from a home office.</p>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-700">Gross freelance income:</span>
                     <span className="font-semibold">$85,000</span>
                   </div>
                   <div className="border-t pt-2">
-                    <p className="font-semibold text-gray-900 mb-2">Deductions:</p>
+                    <p className="font-semibold text-gray-900 mb-2">Schedule C deductions:</p>
                     <div className="space-y-1 ml-4">
                       <div className="flex justify-between">
                         <span className="text-gray-600">Home office (regular method):</span>
                         <span>$4,200</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Software (Adobe, Figma, Webflow):</span>
+                        <span className="text-gray-600">Software subscriptions:</span>
                         <span>$1,800</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Equipment (MacBook, monitor, iPad):</span>
+                        <span className="text-gray-600">Equipment (laptop, monitor, tablet):</span>
                         <span>$6,500</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Health insurance:</span>
-                        <span>$7,200</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">SEP-IRA contribution (20%):</span>
-                        <span>$13,000</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Marketing & advertising:</span>
                         <span>$2,400</span>
                       </div>
                       <div className="flex justify-between border-t pt-1 mt-1 font-semibold">
-                        <span>Total deductions:</span>
-                        <span>$35,100</span>
+                        <span>Total Schedule C deductions:</span>
+                        <span>$14,900</span>
                       </div>
                     </div>
                   </div>
                   <div className="flex justify-between border-t-2 border-green-300 pt-2 mt-2">
                     <span className="font-bold text-green-900">Net profit (Schedule C):</span>
-                    <span className="font-bold text-green-700">$49,900</span>
+                    <span className="font-bold text-green-700">$70,100</span>
+                  </div>
+                  <div className="border-t pt-2">
+                    <p className="font-semibold text-gray-900 mb-2">Schedule 1 (above-the-line) deductions:</p>
+                    <div className="space-y-1 ml-4">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Half of SE tax:</span>
+                        <span>$4,952</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Health insurance premiums:</span>
+                        <span>$7,200</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">SEP-IRA (20% of net profit minus half SE tax):</span>
+                        <span>$13,030</span>
+                      </div>
+                    </div>
                   </div>
                   <div className="flex justify-between bg-green-100 p-2 rounded">
-                    <span className="text-gray-700">Tax savings from deductions:</span>
-                    <span className="font-bold text-green-700">~$13,092</span>
+                    <span className="text-gray-700">Federal tax: ~$12,423 vs ~$17,800 without these deductions</span>
+                    <span className="font-bold text-green-700">~$5,377 saved</span>
                   </div>
                 </div>
               </div>
               <p className="text-sm text-gray-600 italic">
-                Note: Health insurance is an above-the-line deduction (Form 1040), reducing income tax but not SE tax.
+                Note: Health insurance is an above-the-line deduction (Schedule 1), reducing income tax but not SE tax. The SEP-IRA contribution is tax-deferred, not tax-free: withdrawals in retirement are taxed as ordinary income.
               </p>
             </div>
 
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300 p-6 rounded-lg">
               <h3 className="font-bold text-green-900 mb-4 text-lg">Scenario 3: High-Earning Consultant</h3>
               <div className="bg-white p-4 rounded mb-4">
-                <p className="text-sm text-gray-600 mb-3">Lisa earns $180,000/year as a management consultant with significant travel.</p>
+                <p className="text-sm text-gray-600 mb-3">Earns $180,000/year in gross revenue as a management consultant with significant travel.</p>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-700">Gross freelance income:</span>
                     <span className="font-semibold">$180,000</span>
                   </div>
                   <div className="border-t pt-2">
-                    <p className="font-semibold text-gray-900 mb-2">Major Deductions:</p>
+                    <p className="font-semibold text-gray-900 mb-2">Schedule C deductions:</p>
                     <div className="space-y-1 ml-4">
                       <div className="flex justify-between">
                         <span className="text-gray-600">Home office (regular method):</span>
                         <span>$5,800</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Solo 401(k) (max contribution):</span>
-                        <span>$69,000</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Health insurance (family plan):</span>
-                        <span>$18,000</span>
-                      </div>
-                      <div className="flex justify-between">
                         <span className="text-gray-600">Business travel (flights, hotels):</span>
                         <span>$12,000</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Mileage (8,000 miles × $0.67):</span>
-                        <span>$5,360</span>
+                        <span className="text-gray-600">Mileage (8,000 miles × $0.725):</span>
+                        <span>$5,800</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Professional services (CPA, lawyer):</span>
@@ -1020,27 +1039,58 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
                         <span>$6,800</span>
                       </div>
                       <div className="flex justify-between border-t pt-1 mt-1 font-semibold">
-                        <span>Total deductions:</span>
-                        <span>$121,460</span>
+                        <span>Total Schedule C deductions:</span>
+                        <span>$34,900</span>
                       </div>
                     </div>
                   </div>
                   <div className="flex justify-between border-t-2 border-green-300 pt-2 mt-2">
                     <span className="font-bold text-green-900">Net profit:</span>
-                    <span className="font-bold text-green-700">$58,540</span>
+                    <span className="font-bold text-green-700">$145,100</span>
+                  </div>
+                  <div className="border-t pt-2">
+                    <p className="font-semibold text-gray-900 mb-2">Schedule 1 (above-the-line) deductions:</p>
+                    <div className="space-y-1 ml-4">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Half of SE tax:</span>
+                        <span>$10,251</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Solo 401(k) ($24,500 employee + $26,970 employer):</span>
+                        <span>$51,470</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Health insurance (family plan):</span>
+                        <span>$18,000</span>
+                      </div>
+                    </div>
                   </div>
                   <div className="flex justify-between bg-blue-100 p-2 rounded">
-                    <span className="text-gray-700">Tax savings from deductions:</span>
-                    <span className="font-bold text-blue-700">~$45,285</span>
+                    <span className="text-gray-700">Federal tax: ~$24,985 vs ~$47,058 without these deductions</span>
+                    <span className="font-bold text-blue-700">~$22,073 saved</span>
                   </div>
                 </div>
               </div>
               <p className="text-sm text-gray-600 italic">
-                Lisa's strategic use of Solo 401(k) max contribution ($69k) reduced her taxable income dramatically while building retirement wealth.
+                The Solo 401(k) is the biggest lever here. At this profit level the maximum is $51,470, well below the $72,000 overall cap, because the employer portion is limited to about 20% of net self-employment earnings. Compare plans in our <a href="/blog/sep-ira-vs-solo-401k-2025/" className="text-indigo-600 font-semibold hover:underline">SEP-IRA vs Solo 401(k) guide</a>.
               </p>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Sources */}
+      <section id="sources" className="bg-white rounded-lg shadow-md p-8">
+        <h2 className="text-2xl font-bold mb-4 text-gray-900">Sources</h2>
+        <ul className="text-gray-700 space-y-2 text-sm">
+          <li>• IRS Publication 334, Tax Guide for Small Business: <a href="https://www.irs.gov/publications/p334" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">irs.gov/publications/p334</a></li>
+          <li>• IRS Publication 587, Business Use of Your Home: <a href="https://www.irs.gov/publications/p587" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">irs.gov/publications/p587</a></li>
+          <li>• IRS Publication 463, Travel, Gift, and Car Expenses: <a href="https://www.irs.gov/publications/p463" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">irs.gov/publications/p463</a></li>
+          <li>• IRS Publication 560, Retirement Plans for Small Business: <a href="https://www.irs.gov/publications/p560" className="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">irs.gov/publications/p560</a></li>
+        </ul>
+        <p className="text-sm text-gray-600 mt-4">
+          2026 figures: standard mileage rate 72.5 cents (IRS), brackets and standard deduction (Rev. Proc. 2025-32), retirement limits (IRS Notice 2025-67), and OBBBA (P.L. 119-21) for bonus depreciation and the QBI deduction. This guide is educational and not individualized tax advice.
+        </p>
       </section>
 
       {/* Related Tools Section */}
@@ -1118,11 +1168,11 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   <strong>Exceptions:</strong>
                 </p>
                 <ul className="text-gray-700 space-y-2">
-                  <li>• Expenses under $75 don't require receipts (but you still need to track them)</li>
+                  <li>• For travel, meal and gift expenses under $75 (other than lodging), you don't need a receipt, but you still need a record of the amount, date, place and business purpose</li>
                   <li>• Simplified home office method doesn't require tracking actual expenses</li>
                 </ul>
                 <p className="text-gray-700 mt-3">
-                  <strong>Best practice:</strong> Use expense tracking apps (Expensify, QuickBooks) to photograph and store receipts digitally.
+                  <strong>Best practice:</strong> Use expense tracking apps (such as Expensify or QuickBooks) to photograph and store receipts digitally.
                 </p>
               </div>
             )}
@@ -1188,7 +1238,7 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
                   <strong>Yes.</strong> If your business expenses exceed your income, you'll report a <strong>net loss</strong> on Schedule C. This loss reduces your other taxable income (like W-2 wages), potentially resulting in a tax refund.
                 </p>
                 <p className="text-gray-700 mb-3">
-                  <strong>IRS hobby loss rule:</strong> If you report losses for 3 out of 5 consecutive years, the IRS may classify your business as a "hobby" and disallow losses. To avoid this:
+                  <strong>IRS hobby loss rule:</strong> An activity is presumed to be a business if it shows a profit in at least 3 of the last 5 years. If it doesn't, the IRS may look harder at whether you have a genuine profit motive and could treat it as a hobby, which means the losses aren't deductible. To show a profit motive:
                 </p>
                 <ul className="text-gray-700 space-y-2">
                   <li>• Maintain business-like records (separate bank account, professional marketing)</li>
@@ -1289,7 +1339,7 @@ const TaxDeductionsFreelancers2025: React.FC<BlogProps> = ({ onNavigate }) => {
       <div className="bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-lg p-8 shadow-xl text-center">
         <h2 className="text-3xl font-bold mb-4">Ready to Maximize Your Tax Deductions?</h2>
         <p className="text-xl mb-6 text-green-50">
-          Track your income and expenses to calculate your exact tax savings in 2025.
+          Track your income and expenses to calculate your exact tax savings in 2026.
         </p>
         <button
           onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}

@@ -21,7 +21,7 @@ export const blogMetadata: Record<string, BlogMetadata> = {
   },
   'aca-health-insurance-freelancers-2025': {
     title: TOOL_METADATA[ToolType.BLOG_ACA_FREELANCERS].title,
-    description: TOOL_METADATA[ToolType.BLOG_ACA_FREELANCERS].desc,
+    description: "2026 ACA guide for freelancers: enhanced subsidies expired, the 400% FPL cliff is back. Premium tax credit math, Medicaid, CSR and MAGI strategies.",
     slug: 'aca-health-insurance-freelancers-2025'
   },
   'quarterly-estimated-taxes-complete-guide': {
@@ -36,7 +36,7 @@ export const blogMetadata: Record<string, BlogMetadata> = {
   },
   'tax-deductions-freelancers-2025': {
     title: TOOL_METADATA[ToolType.BLOG_TAX_DEDUCTIONS].title,
-    description: "Discover every tax deduction available to freelancers in 2025. Learn about home office deduction ($5/sq ft simplified method), mileage ($0.67/mile), Section 179 equipment expensing, health insurance, retirement contributions, and business expense strategies to save thousands.",
+    description: "2026 freelancer write-offs: 72.5¢ mileage, home office, 100% bonus depreciation, health insurance, SEP/Solo 401(k) and QBI, with worked tax examples.",
     slug: 'tax-deductions-freelancers-2025'
   },
   '1099-vs-w2-comparison-2025': {
@@ -46,17 +46,17 @@ export const blogMetadata: Record<string, BlogMetadata> = {
   },
   'llc-vs-sole-proprietor-2025': {
     title: TOOL_METADATA[ToolType.BLOG_LLC_SOLE_PROP].title,
-    description: "Comprehensive comparison of LLC vs Sole Proprietorship for freelancers and small business owners. Understand tax differences, liability protection, formation costs, S-Corp election benefits, and which structure saves you the most money in 2025.",
+    description: "LLC vs sole proprietor for 2026: liability protection, state fees, and S-corp math with QBI included. See what an S-corp election really saves.",
     slug: 'llc-vs-sole-proprietor-2025'
   },
   'sep-ira-vs-solo-401k-2025': {
     title: TOOL_METADATA[ToolType.BLOG_SEP_SOLO401K].title,
-    description: "Comprehensive comparison of SEP-IRA vs Solo 401(k) for self-employed individuals and freelancers. Understand 2025 contribution limits ($69k max), tax benefits, setup costs, deadlines, and which retirement plan saves you the most money.",
+    description: "SEP-IRA vs Solo 401(k) for 2026: $72,000 limit, $24,500 deferral, catch-ups, Roth options and deadlines, with contribution math at every income.",
     slug: 'sep-ira-vs-solo-401k-2025'
   },
   'home-office-deduction-2025': {
     title: TOOL_METADATA[ToolType.BLOG_HOME_OFFICE].title,
-    description: "Comprehensive guide to claiming the home office deduction for self-employed individuals and freelancers in 2025. Learn the simplified method ($5/sq ft, max $1,500), regular method (actual expenses), qualification requirements, depreciation, and audit-proof documentation.",
+    description: "Home office deduction for 2026: $5/sq ft simplified method vs actual expenses, who qualifies, income limits, depreciation recapture and worked examples.",
     slug: 'home-office-deduction-2025'
   },
   'how-much-house-can-i-afford-2025': {
@@ -106,7 +106,7 @@ export const blogMetadata: Record<string, BlogMetadata> = {
   },
   'freelancer-estimated-taxes-guide-2025': {
     title: TOOL_METADATA[ToolType.BLOG_FREELANCE_ESTIMATED].title,
-    description: "A 1099-friendly guide to estimated taxes. Learn safe harbor rules, how much to save, and how to calculate quarterly payments for tax year 2026.",
+    description: "How much should freelancers set aside for taxes in 2026? A step-by-step estimate, an $85,000 worked example, safe harbor rules and 2026 due dates.",
     slug: 'freelancer-estimated-taxes-guide-2025'
   },
   'moving-to-florida-sunshine-tax-savings': {

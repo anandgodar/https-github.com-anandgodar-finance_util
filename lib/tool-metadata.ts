@@ -147,8 +147,8 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "options greeks explained, delta theta vega gamma, options greeks tutorial, what is delta, theta decay, vega volatility, gamma risk"
   },
   [ToolType.ACADEMY_SAFE_HARBOR]: {
-    title: "IRS Safe Harbor Rules - Avoid Estimated Tax Penalties",
-    desc: "A guide to IRS safe harbor rules for estimated taxes: the 100%/110% prior-year rule, the 90% current-year method, and quarterly deadlines.",
+    title: "Safe Harbor Rules for Estimated Taxes (2026)",
+    desc: "Avoid IRS underpayment penalties in 2026: the 100%/110% prior-year and 90% current-year safe harbor tests, $1,000 rule, worked examples and exceptions.",
     keywords: "irs safe harbor rules, estimated tax penalty avoidance, quarterly tax guide, safe harbor tax strategy, freelance tax planning"
   },
   [ToolType.ACADEMY_IRON_CONDOR]: {
@@ -167,8 +167,8 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "child tax credit 2025, ctc guide, tax credits"
   },
   [ToolType.BLOG_ACA_FREELANCERS]: {
-    title: "ACA Health Insurance for Freelancers 2025 - Subsidy Strategy",
-    desc: "Understand ACA marketplace plans, subsidies, and income planning for freelancers.",
+    title: "ACA Health Insurance for Freelancers 2026",
+    desc: "2026 ACA guide for freelancers: enhanced subsidies expired, the 400% FPL cliff is back. Premium tax credit math, Medicaid, CSR and MAGI strategies.",
     keywords: "aca freelancers, health insurance subsidy, marketplace plan"
   },
   [ToolType.BLOG_QUARTERLY_TAX]: {
@@ -182,8 +182,8 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "self employment tax guide, se tax 2026"
   },
   [ToolType.BLOG_TAX_DEDUCTIONS]: {
-    title: "Tax Deductions for Freelancers 2025 - Maximize Write-Offs",
-    desc: "List of freelance tax deductions and documentation tips.",
+    title: "Tax Deductions for Freelancers 2026: Full Guide",
+    desc: "2026 freelancer write-offs: 72.5¢ mileage, home office, 100% bonus depreciation, health insurance, SEP/Solo 401(k) and QBI, with worked tax examples.",
     keywords: "freelancer tax deductions, 1099 write offs"
   },
   [ToolType.BLOG_1099_W2]: {
@@ -192,18 +192,18 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "1099 vs w2, contractor vs employee"
   },
   [ToolType.BLOG_LLC_SOLE_PROP]: {
-    title: "LLC vs Sole Proprietor 2025 - Which Structure Wins?",
-    desc: "Compare LLC and sole proprietor structures for liability and taxes.",
+    title: "LLC vs Sole Proprietor 2026: Taxes, Costs, S-Corp",
+    desc: "LLC vs sole proprietor for 2026: liability protection, state fees, and S-corp math with QBI included. See what an S-corp election really saves.",
     keywords: "llc vs sole proprietor, business structure"
   },
   [ToolType.BLOG_SEP_SOLO401K]: {
-    title: "SEP IRA vs Solo 401(k) 2025 - Contribution Limits",
-    desc: "Review SEP IRA and solo 401(k) contribution strategies.",
+    title: "SEP-IRA vs Solo 401(k) 2026: Limits Compared",
+    desc: "SEP-IRA vs Solo 401(k) for 2026: $72,000 limit, $24,500 deferral, catch-ups, Roth options and deadlines, with contribution math at every income.",
     keywords: "sep ira vs solo 401k, retirement contributions"
   },
   [ToolType.BLOG_HOME_OFFICE]: {
-    title: "Home Office Deduction 2025 - Calculator & Requirements",
-    desc: "How to claim the home office deduction and maximize write-offs.",
+    title: "Home Office Deduction 2026: Simplified vs Regular",
+    desc: "Home office deduction for 2026: $5/sq ft simplified method vs actual expenses, who qualifies, income limits, depreciation recapture and worked examples.",
     keywords: "home office deduction, tax write off"
   },
   [ToolType.BLOG_MORTGAGE_GUIDE]: {
@@ -257,8 +257,8 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     keywords: "gross vs net pay, paycheck breakdown"
   },
   [ToolType.BLOG_FREELANCE_ESTIMATED]: {
-    title: "Freelancer Estimated Taxes Guide 2026",
-    desc: "Plan quarterly estimated taxes as a freelancer.",
+    title: "Freelancer Estimated Taxes 2026: How Much to Save",
+    desc: "How much should freelancers set aside for taxes in 2026? A step-by-step estimate, an $85,000 worked example, safe harbor rules and 2026 due dates.",
     keywords: "freelancer estimated taxes, quarterly taxes"
   },
   [ToolType.BLOG_FLORIDA_MOVE]: {
