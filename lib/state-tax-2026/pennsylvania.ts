@@ -9,7 +9,7 @@ const PA_DOR = {
 };
 
 const PA_UC = {
-  source: 'Pennsylvania Department of Labor & Industry, UC Tax — Employee Withholding (0.07% for 2023 and after; confirmed for 2026 and 2027)',
+  source: 'Pennsylvania Department of Labor & Industry, UC Tax — Employee Withholding (rate table: 0.07% for "2023 and thereafter")',
   sourceUrl: 'https://www.pa.gov/agencies/dli/resources/for-employers-and-educators/how-to-file/uc-tax/employee-withholding.html',
   retrievedAt: RETRIEVED,
 };
@@ -69,9 +69,9 @@ export const PENNSYLVANIA: StateTaxSpec = {
     },
     {
       label: 'PA UC employee withholding',
-      rateText: '0.07% of gross wages, no cap (2026)',
+      rateText: '0.07% of gross wages, no cap',
       computed: true,
-      detail: '70 cents per $1,000 of wages, withheld from all employees including those of reimbursable employers.',
+      detail: 'L&I\'s rate table lists 0.07% (0.0007) for 2023 and thereafter with no separate 2026 entry; that is 70 cents per $1,000 of wages, withheld from all employees including those of reimbursable employers.',
       ...PA_UC,
     },
     {
@@ -127,6 +127,6 @@ export const PENNSYLVANIA: StateTaxSpec = {
     taxYear: 2026,
     retrievedAt: RETRIEVED,
     description:
-      '3.07% flat rate and the no-deduction rule from the PA Department of Revenue; 0.07% UC employee withholding confirmed for 2026 by L&I; Philadelphia Wage Tax rates (3.74%/3.43% through 30 Jun 2026, 3.735%/3.425% from 1 Jul 2026) from the City\'s rate table. Act 32 local EIT is address-specific and not computed.',
+      '3.07% flat rate and the no-deduction rule from the PA Department of Revenue; 0.07% UC employee withholding per L&I\'s rate table ("2023 and thereafter"; no year-specific 2026 entry); Philadelphia Wage Tax rates (3.74%/3.43% through 30 Jun 2026, 3.735%/3.425% from 1 Jul 2026) from the City\'s rate table. Act 32 local EIT is address-specific and not computed.',
   },
 };

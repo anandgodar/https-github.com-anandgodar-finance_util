@@ -45,7 +45,6 @@ export function buildStateFAQs(spec: StateTaxSpec) {
   const name = spec.name;
   const wt = spec.wageTax;
   const hasPayroll = spec.payrollDeductions.length > 0;
-  const statePlusPayroll = (r: (typeof rows)[number]) => r.state + r.payroll;
 
   const faqs: Array<{ question: string; answer: string }> = [];
 
@@ -72,7 +71,9 @@ export function buildStateFAQs(spec: StateTaxSpec) {
 
   faqs.push({
     question: `How much is $100,000 after taxes in ${name}?`,
-    answer: `On $100,000, a single ${name} filer keeps about ${usd(r100.net)} a year (${usd(r100.biweekly)} biweekly) in ${spec.taxYear}. Federal income tax is ${usd(r100.federal)}, FICA ${usd(r100.fica)}, and ${name} state tax ${usd(statePlusPayroll(r100))}${hasPayroll ? ` including ${spec.payrollDeductions.map((p) => p.label.replace(/ \(.*\)$/, '')).join(', ')}` : ''}. The effective rate on all taxes is ${pct(r100.effectiveRate, 1)}.`,
+    answer: `On $100,000, a single ${name} filer keeps about ${usd(r100.net)} a year (${usd(r100.biweekly)} biweekly) in ${spec.taxYear}. Federal income tax is ${usd(r100.federal)}, FICA ${usd(r100.fica)}, and ${name} state income tax ${usd(r100.state)}${
+      hasPayroll ? `, plus ${usd(r100.payroll)} in employee payroll contributions (${spec.payrollDeductions.map((p) => p.label.replace(/ \(.*\)$/, '')).join(', ')})` : ''
+    }. The effective rate on all taxes is ${pct(r100.effectiveRate, 1)}.`,
   });
 
   const localLine = spec.lines.find((l) => !l.computed);
@@ -91,7 +92,7 @@ export function buildStateFAQs(spec: StateTaxSpec) {
   } else {
     faqs.push({
       question: `Are there local income taxes in ${name}?`,
-      answer: `No. ${spec.lines.find((l) => /local/i.test(l.label))?.detail ?? `No ${name} city or county levies a wage tax.`} Your paycheck carries federal income tax, FICA${wt.kind === 'none' ? '' : ` and ${name} state income tax`} only.`,
+      answer: `No. ${spec.lines.find((l) => /local/i.test(l.label))?.detail ?? `No ${name} city or county levies a wage tax.`} Your paycheck carries ${wt.kind === 'none' ? 'federal income tax and FICA' : `federal income tax, FICA and ${name} state income tax`} only.`,
     });
   }
 
@@ -189,8 +190,8 @@ export default function StatePaycheckDepth({ spec }: { spec: StateTaxSpec }) {
           </table>
         </div>
         <p className="text-xs text-slate-500 mt-4">
-          Federal: 2026 brackets (10%–37%) after the $16,100 single standard deduction, no credits. FICA: 6.2% Social Security to $184,500 plus 1.45%
-          Medicare. Figures are annual estimates of liability, not withholding; your employer&apos;s W-4 withholding will differ slightly.
+          Federal: {FEDERAL_2026.taxYear} brackets (10%–37%) after the ${FEDERAL_2026.standardDeduction.single.toLocaleString('en-US')} single standard
+          deduction, no credits. FICA: 6.2% Social Security to ${FICA_2026.socialSecurity.wageBase.toLocaleString('en-US')} plus 1.45% Medicare. Figures are annual estimates of liability, not withholding; your employer&apos;s W-4 withholding will differ slightly.
         </p>
       </section>
 

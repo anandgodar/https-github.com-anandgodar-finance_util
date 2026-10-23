@@ -146,6 +146,28 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
   const [loadingAdvice, setLoadingAdvice] = useState<boolean>(false);
 
   const stateInfo = useMemo(() => STATE_TAX_DATA[stateCode] || STATE_TAX_DATA['TX'], [stateCode]);
+  /** Sourced 2026 spec (lib/state-tax-2026) when one exists; otherwise the legacy table above is used. */
+  const sourcedSpec = useMemo(() => getSourcedStateTax(stateCode), [stateCode]);
+
+  /**
+   * Brackets shown in the chart. For a sourced state they are the schedule the
+   * engine actually applies for the chosen filing status (NJ joint filers use
+   * Table B, not Table A); otherwise the legacy single-filer table.
+   */
+  const displayBrackets = useMemo<TaxBracket[] | undefined>(() => {
+    if (sourcedSpec) {
+      return sourcedSpec.wageTax.kind === 'brackets'
+        ? sourcedSpec.wageTax[filingStatus].map((b) => ({ limit: b.upTo, rate: b.rate }))
+        : undefined;
+    }
+    return stateInfo.brackets;
+  }, [sourcedSpec, filingStatus, stateInfo.brackets]);
+
+  const displayFlatRate = sourcedSpec
+    ? sourcedSpec.wageTax.kind === 'flat'
+      ? sourcedSpec.wageTax.rate
+      : 0
+    : stateInfo.rate;
 
   const stats = useMemo(() => {
     const totalGross = annualGross + bonus;
@@ -154,12 +176,11 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
     // Shared engine: 2026 federal brackets + standard deduction (IRS Rev. Proc.
     // 2025-32), 2026 FICA (SSA), and either the sourced state spec
     // (lib/state-tax-2026) or this file's legacy table for other states.
-    const sourced = getSourcedStateTax(stateCode);
     const result = computePaycheck({
       grossWages: totalGross,
       preTaxDeductions: contrib401kAmount + healthInsurance,
       filingStatus,
-      state: sourced ?? stateInfo,
+      state: sourcedSpec ?? stateInfo,
     });
 
     const net = result.net;
@@ -190,13 +211,13 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
       contrib401kAmount,
       stateTaxable: result.state.taxable
     };
-  }, [annualGross, bonus, stateCode, stateInfo, contrib401kPercent, healthInsurance, payFrequency, filingStatus]);
+  }, [annualGross, bonus, sourcedSpec, stateInfo, contrib401kPercent, healthInsurance, payFrequency, filingStatus]);
 
   // Marginal Rate Visualization Data
   const bracketVisualData = useMemo(() => {
-    if (!stateInfo.brackets) return [];
+    if (!displayBrackets) return [];
     let prev = 0;
-    return stateInfo.brackets.map((b, i) => {
+    return displayBrackets.map((b, i) => {
       const isCurrent = stats.stateTaxable > prev && stats.stateTaxable <= (b.limit ?? Infinity);
       const label = b.limit ? `$${(b.limit / 1000).toFixed(0)}k` : 'Max';
       const range = b.limit ? `${(prev / 1000).toFixed(0)}k - ${(b.limit / 1000).toFixed(0)}k` : `>${(prev / 1000).toFixed(0)}k`;
@@ -210,7 +231,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
       prev = b.limit ?? Infinity;
       return res;
     });
-  }, [stateInfo.brackets, stats.stateTaxable]);
+  }, [displayBrackets, stats.stateTaxable]);
 
   const chartData = [
     { name: 'Take Home', value: stats.net, color: '#4f46e5' },
@@ -510,7 +531,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
              </div>
           </div>
 
-          {stateInfo.brackets ? (
+          {displayBrackets ? (
             <section className="bg-white p-10 rounded-[4rem] border border-slate-100 shadow-sm space-y-8 animate-in slide-in-from-bottom-5 duration-700">
                <header className="flex justify-between items-end border-b border-slate-50 pb-6">
                   <div>
@@ -558,7 +579,7 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
                
                <div className="bg-slate-50 p-6 rounded-[2.5rem] flex flex-col md:flex-row justify-between items-center gap-6">
                   <div className="space-y-1 text-center md:text-left">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Calculated Nexus Tax</p>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stats.statePayroll.length > 0 ? 'State Tax + Payroll Contributions' : 'Calculated State Tax'}</p>
                     <p className="text-3xl font-black text-slate-900">${Math.round(stats.stateTax).toLocaleString()}</p>
                   </div>
                   <div className="flex-1 max-w-sm">
@@ -576,11 +597,25 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
                </div>
                <div className="bg-slate-900 p-8 rounded-[3rem] text-center space-y-4">
                   <p className="text-indigo-400 text-[10px] font-black uppercase tracking-widest">Universal Rate</p>
-                  <p className="text-6xl font-black text-white">{(stateInfo.rate * 100).toFixed(2)}%</p>
+                  <p className="text-6xl font-black text-white">{(displayFlatRate * 100).toFixed(2)}%</p>
                   <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Simplified State Nexus Implementation</p>
                </div>
             </section>
           )}
+
+          <p className="text-xs text-slate-500 leading-relaxed px-4">
+            {sourcedSpec ? (
+              <>
+                State figures for tax year {sourcedSpec.taxYear}: {sourcedSpec.wageTax.source} (read {sourcedSpec.wageTax.retrievedAt}).
+                {sourcedSpec.lines.some((l) => !l.computed) ? ' Local income taxes are not included.' : ''}
+              </>
+            ) : (
+              <>
+                State tax here is a simplified single-filer estimate from our 2026 rate table and has not yet been verified against the{' '}
+                {stateInfo.name} revenue department; filing status changes the federal figure only. Federal brackets and standard deduction are from IRS Rev. Proc. 2025-32; FICA from the SSA.
+              </>
+            )}
+          </p>
 
           <aside className="bg-slate-900 p-12 rounded-[4rem] text-white flex items-start gap-10 shadow-2xl relative overflow-hidden group min-h-[300px] flex flex-col justify-center">
              <div className="absolute top-0 right-0 p-10 text-8xl opacity-10 group-hover:scale-125 transition-transform pointer-events-none select-none">🏦</div>
