@@ -13,6 +13,8 @@ type StateSalaryCalculatorClientProps = {
   stateTaxRate: number;
   stateDescription: string;
   taxStatus: 'none' | 'flat' | 'progressive';
+  /** Server-rendered depth content (sourced states). Replaces the generic article + FAQ. */
+  depthContent?: React.ReactNode;
 };
 
 export default function StateSalaryCalculatorClient({ 
@@ -20,7 +22,8 @@ export default function StateSalaryCalculatorClient({
   stateName,
   stateTaxRate,
   stateDescription,
-  taxStatus
+  taxStatus,
+  depthContent
 }: StateSalaryCalculatorClientProps) {
   const handleNavigate = (tool: ToolType) => {
     // Handle navigation if needed
@@ -91,6 +94,10 @@ export default function StateSalaryCalculatorClient({
           </EmbeddedToolContext.Provider>
         </div>
 
+        {depthContent ? (
+          <div className="depth-content">{depthContent}</div>
+        ) : (
+          <>
         {/* Programmatic SEO Content Block */}
         <article className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12 prose prose-slate max-w-none">
           <h2 className="text-3xl font-black text-slate-900 mb-6">How Taxes Work in {stateName}</h2>
@@ -159,6 +166,9 @@ export default function StateSalaryCalculatorClient({
             ))}
           </div>
         </section>
+
+          </>
+        )}
 
         {/* Related State Tools */}
         <div className="mt-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-white rounded-3xl p-8 md:p-12">

@@ -6,6 +6,8 @@ import CalculatorFAQ from './CalculatorFAQ';
 import { ToolType } from '../types';
 
 import ToolTitle from './ToolTitle';
+import { computePaycheck } from '../lib/paycheck-engine';
+import { getSourcedStateTax } from '../lib/state-tax-2026';
 interface TaxBracket {
   limit: number | null;
   rate: number;
@@ -122,22 +124,6 @@ const STATE_TAX_DATA: Record<string, StateData> = {
   DC: { name: 'Dist. of Columbia', rate: 0.085, stdDeduction: 16100, brackets: [{ limit: 10000, rate: 0.04 }, { limit: 40000, rate: 0.06 }, { limit: 60000, rate: 0.065 }, { limit: 250000, rate: 0.085 }, { limit: 500000, rate: 0.0925 }, { limit: 1000000, rate: 0.095 }, { limit: null, rate: 0.1075 }] },
 };
 
-const calculateProgressiveTax = (taxableIncome: number, brackets: TaxBracket[]): number => {
-  let tax = 0;
-  let prevLimit = 0;
-  for (const bracket of brackets) {
-    const limit = bracket.limit ?? Infinity;
-    if (taxableIncome > prevLimit) {
-      const taxableInBracket = Math.min(taxableIncome, limit) - prevLimit;
-      tax += taxableInBracket * bracket.rate;
-      prevLimit = limit;
-    } else {
-      break;
-    }
-  }
-  return tax;
-};
-
 interface SalaryCalculatorProps {
   onNavigate?: (tool: ToolType) => void;
   initialState?: string; // State code (e.g., 'CA', 'TX')
@@ -164,63 +150,47 @@ const SalaryCalculator: React.FC<SalaryCalculatorProps> = ({ onNavigate, initial
   const stats = useMemo(() => {
     const totalGross = annualGross + bonus;
     const contrib401kAmount = (annualGross * contrib401kPercent) / 100;
-    const taxableGross = Math.max(0, totalGross - contrib401kAmount - healthInsurance);
-    
-    // 2026 Federal Tax Approximation (Single Filer, Tax Foundation projected brackets)
-    const fedBrackets = [
-      { limit: 12400, rate: 0.10 },
-      { limit: 50400, rate: 0.12 },
-      { limit: 105700, rate: 0.22 },
-      { limit: 201775, rate: 0.24 },
-      { limit: 256225, rate: 0.32 },
-      { limit: 640600, rate: 0.35 },
-      { limit: null, rate: 0.37 }
-    ];
-    const fedTax = calculateProgressiveTax(taxableGross, fedBrackets);
 
-    // FICA: SS (6.2% up to $184,500) + Medicare (1.45%)
-    const fica = Math.min(totalGross, 184500) * 0.062 + totalGross * 0.0145;
-    
-    // State Calculation
-    const stateTaxable = Math.max(0, taxableGross - stateInfo.stdDeduction);
-    let stateTax = 0;
-    if (stateInfo.brackets) {
-      stateTax = calculateProgressiveTax(stateTaxable, stateInfo.brackets);
-    } else {
-      stateTax = stateTaxable * stateInfo.rate;
-    }
-    
-    const totalTax = fedTax + fica + stateTax;
-    const net = totalGross - totalTax - contrib401kAmount - healthInsurance;
-    
-    // Calculate pay frequency amounts
+    // Shared engine: 2026 federal brackets + standard deduction (IRS Rev. Proc.
+    // 2025-32), 2026 FICA (SSA), and either the sourced state spec
+    // (lib/state-tax-2026) or this file's legacy table for other states.
+    const sourced = getSourcedStateTax(stateCode);
+    const result = computePaycheck({
+      grossWages: totalGross,
+      preTaxDeductions: contrib401kAmount + healthInsurance,
+      filingStatus,
+      state: sourced ?? stateInfo,
+    });
+
+    const net = result.net;
     const payFrequencyAmounts = {
-      weekly: net / 52,
-      'bi-weekly': net / 26,
-      'semi-monthly': net / 24,
-      monthly: net / 12,
+      weekly: result.perPaycheck.weekly,
+      'bi-weekly': result.perPaycheck.biweekly,
+      'semi-monthly': result.perPaycheck.semimonthly,
+      monthly: result.perPaycheck.monthly,
       annual: net
     };
 
     return {
       totalGross,
-      taxableGross,
+      taxableGross: result.adjustedWages,
       net,
-      monthlyNet: net / 12,
-      biWeeklyNet: net / 26,
-      weeklyNet: net / 52,
-      semiMonthlyNet: net / 24,
+      monthlyNet: result.perPaycheck.monthly,
+      biWeeklyNet: result.perPaycheck.biweekly,
+      weeklyNet: result.perPaycheck.weekly,
+      semiMonthlyNet: result.perPaycheck.semimonthly,
       payFrequencyAmount: payFrequencyAmounts[payFrequency],
-      fedTax,
-      fica,
-      stateTax,
-      totalTax,
-      effectiveRate: totalGross > 0 ? (totalTax / totalGross) * 100 : 0,
+      fedTax: result.federal.tax,
+      fica: result.fica.total,
+      stateTax: result.state.tax + result.state.payrollTotal,
+      statePayroll: result.state.payroll,
+      totalTax: result.totalTax,
+      effectiveRate: result.effectiveRate * 100,
       deductions: contrib401kAmount + healthInsurance,
       contrib401kAmount,
-      stateTaxable
+      stateTaxable: result.state.taxable
     };
-  }, [annualGross, bonus, stateInfo, contrib401kPercent, healthInsurance, payFrequency]);
+  }, [annualGross, bonus, stateCode, stateInfo, contrib401kPercent, healthInsurance, payFrequency, filingStatus]);
 
   // Marginal Rate Visualization Data
   const bracketVisualData = useMemo(() => {
