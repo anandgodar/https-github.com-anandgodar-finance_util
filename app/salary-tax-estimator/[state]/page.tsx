@@ -4,6 +4,8 @@ import { Metadata } from 'next';
 
 import { usStates, getStateBySlug } from '../../../lib/state-data';
 import StateSalaryCalculatorClient from './StateSalaryCalculatorClient';
+import StatePaycheckDepth, { buildTakeHomeRows } from './StatePaycheckDepth';
+import { getSourcedStateTax } from '../../../lib/state-tax-2026';
 
 import { fitTitle, clampDescription } from '../../../lib/seo';
 // Generate breadcrumb schema
@@ -63,10 +65,20 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
   const stateNameLower = stateData.name.toLowerCase();
   const noTax = stateData.taxStatus === 'none';
+  const sourced = getSourcedStateTax(stateData.abbreviation);
+
+  // Sourced states lead the description with the state's rate and a computed $60k figure.
+  let description = `Free 2026 ${stateData.name} paycheck calculator. See your take-home pay after federal${noTax ? '' : ` and ${stateData.name} state`} income tax, Social Security and Medicare.${noTax ? ` ${stateData.name} has no state income tax.` : ''}`;
+  if (sourced) {
+    const r60 = buildTakeHomeRows(sourced).find((r) => r.salary === 60000);
+    const net60 = r60 ? `$${Math.round(r60.net).toLocaleString('en-US')}` : '';
+    const after = sourced.wageTax.kind === 'none' ? 'federal tax & FICA' : 'federal & state tax, FICA';
+    description = `${stateData.name}: ${sourced.rateLead}. 2026 paycheck calculator: $60k takes home ${net60}/yr after ${after}. Biweekly table, sourced rates.`;
+  }
 
   return {
     title: fitTitle(`${stateData.name} Paycheck Calculator 2026: Take-Home Pay`, `${stateData.name} Paycheck Calculator 2026`),
-    description: clampDescription(`Free 2026 ${stateData.name} paycheck calculator. See your take-home pay after federal${noTax ? '' : ` and ${stateData.name} state`} income tax, Social Security and Medicare.${noTax ? ` ${stateData.name} has no state income tax.` : ''}`),
+    description: clampDescription(description),
     keywords: `${stateData.name} paycheck calculator, what is my take home pay ${stateNameLower}, ${stateNameLower} salary calculator, ${stateNameLower} income tax calculator, net pay ${stateNameLower}, how much tax in ${stateNameLower}, ${stateNameLower} tax rate`,
     alternates: {
       canonical: `https://quantcurb.com/salary-tax-estimator/${stateData.slug}/`
@@ -105,6 +117,7 @@ export default function StateSalaryPage({ params }: PageProps) {
   const stateTaxRate = STATE_TAX_RATES[stateData.abbreviation] ?? 0;
 
   const breadcrumbSchema = generateBreadcrumbSchema(stateData.name, stateData.slug);
+  const sourced = getSourcedStateTax(stateData.abbreviation);
 
   return (
     <>
@@ -116,8 +129,9 @@ export default function StateSalaryPage({ params }: PageProps) {
         stateCode={stateData.abbreviation}
         stateName={stateData.name}
         stateTaxRate={stateTaxRate}
-        stateDescription={stateData.description}
+        stateDescription={sourced ? sourced.summary : stateData.description}
         taxStatus={stateData.taxStatus}
+        depthContent={sourced ? <StatePaycheckDepth spec={sourced} /> : undefined}
       />
     </>
   );

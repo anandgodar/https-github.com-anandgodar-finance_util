@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "check:tax": "node scripts/check-state-tax.mjs",
+    "build": "node scripts/check-state-tax.mjs && next build",
     "start": "next start",
     "export": "next export"
   },
