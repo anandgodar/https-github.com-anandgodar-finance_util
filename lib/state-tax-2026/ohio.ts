@@ -24,8 +24,11 @@ const OH_ANNUAL_RATES = {
   note: 'At retrieval the page listed schedules through tax year 2025 ($342.00 + 2.75% over $26,050 to $100,000; $2,394.32 + 3.125% above). No 2026 table yet; the 2026 schedule is read from the statute.',
 };
 
-/** Secondary: EY's summary of the Department's 2026 withholding release. */
-const OH_EY = {
+/**
+ * See also only (secondary): EY's summary of the Department's 2026 withholding
+ * release. Not spread into any figure, line or note — ORC 5747.02 is the source.
+ */
+const OH_EY_SEE_ALSO = {
   source: 'EY Tax News Update 2026-1619 — Ohio releases modified 2026 withholding formulas reflecting the HB 96 flat 2.75% rate',
   sourceUrl:
     'https://taxnews.ey.com/news/2026-1619-ohio-releases-modified-2026-income-tax-withholding-formulas-and-tables-reflecting-scheduled-tax-cut',
@@ -184,6 +187,6 @@ export const OHIO: StateTaxSpec = {
       'tax.ohio.gov Annual Tax Rates listed 2025 as its latest schedule; the 2026 schedule ($332 + 2.75% over $26,050) is read from ORC 5747.02(A)(3)(c)',
     ],
     description:
-      '2026 Ohio schedule per ORC 5747.02(A)(3)(c): $0 to $26,050, then $332.00 plus 2.75% of the excess. Personal exemption (2025 amounts, one for single, two for joint/HoH) is subtracted first. Municipal and school-district taxes are not computed. EY Tax News 2026-1619 is a secondary source for the rate; it omits the $332 base.',
+      '2026 Ohio schedule per ORC 5747.02(A)(3)(c): $0 to $26,050, then $332.00 plus 2.75% of the excess. Personal exemption (2025 amounts, one for single, two for joint/HoH) is subtracted first. Municipal and school-district taxes are not computed. Primary source: ORC 5747.02 (authenticated text). See also (secondary, not relied on): EY Tax News 2026-1619, which omits the $332 base.',
   },
 };

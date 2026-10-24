@@ -182,6 +182,19 @@ export interface StateTaxSpec {
   code: string;
   slug: string;
   name: string;
+  /**
+   * The name as a noun inside a sentence, when it differs from `name`
+   * (e.g. "the District of Columbia"). Adjectival uses ("a District of
+   * Columbia paycheck") keep `name`.
+   */
+  displayName?: string;
+  /**
+   * A surcharge layered on top of the regular brackets (e.g. Maine's 2% above
+   * $1M from 2026). The bracket table already includes it as a combined top
+   * rate for the computation; this field lets copy describe the regular
+   * bracket rates and the surcharge separately.
+   */
+  surcharge?: { rate: number; thresholdSingle: number; thresholdJoint: number };
   /** Tax year the figures describe. */
   taxYear: number;
   /** Very short rate phrase for meta descriptions, e.g. "flat 3.07% state tax". */

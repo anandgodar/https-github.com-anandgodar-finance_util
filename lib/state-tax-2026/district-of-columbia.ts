@@ -40,6 +40,7 @@ export const DISTRICT_OF_COLUMBIA: StateTaxSpec = {
   code: 'DC',
   slug: 'district-of-columbia',
   name: 'District of Columbia',
+  displayName: 'the District of Columbia',
   taxYear: 2026,
   rateLead: '4%–10.75% income tax',
   summary:

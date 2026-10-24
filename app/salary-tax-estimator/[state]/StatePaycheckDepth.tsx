@@ -35,14 +35,17 @@ function stateRateText(spec: StateTaxSpec): string {
   const wt = spec.wageTax;
   if (wt.kind === 'none') return 'no state income tax';
   if (wt.kind === 'flat') return `a flat ${pct(wt.rate)} state income tax`;
-  const rates = [...new Set(wt.single.map((b) => b.rate).filter((r) => r > 0))];
+  // A layered surcharge is described in its own sentence, so its combined top rate is left out of the range.
+  const sc = spec.surcharge;
+  const brackets = sc ? wt.single.filter((b, i) => i === 0 || (wt.single[i - 1].upTo ?? Infinity) < sc.thresholdSingle) : wt.single;
+  const rates = [...new Set(brackets.map((b) => b.rate).filter((r) => r > 0))];
   const lo = Math.min(...rates);
   const hi = Math.max(...rates);
   if (lo === hi) return `a ${pct(hi)} state income tax`;
   // Two positive rates (Massachusetts surtax, Kansas, Montana) read better as rate-plus-upper-rate than as a range.
   // The threshold is the ceiling of the bracket just below the first bracket at the upper rate.
-  const hiIdx = wt.single.findIndex((b) => b.rate === hi);
-  const threshold = hiIdx > 0 ? wt.single[hiIdx - 1].upTo : null;
+  const hiIdx = brackets.findIndex((b) => b.rate === hi);
+  const threshold = hiIdx > 0 ? brackets[hiIdx - 1].upTo : null;
   if (rates.length === 2 && threshold !== null) return `a ${pct(lo)} state income tax (${pct(hi)} on taxable income above ${usd(threshold)})`;
   return `state income tax from ${pct(lo)} to ${pct(hi)}`;
 }
@@ -51,8 +54,14 @@ export function buildStateFAQs(spec: StateTaxSpec) {
   const rows = buildTakeHomeRows(spec);
   const r60 = rows.find((r) => r.salary === 60000)!;
   const r100 = rows.find((r) => r.salary === 100000)!;
-  const name = spec.name;
+  const name = spec.name; // adjectival: "a District of Columbia paycheck"
+  const noun = spec.displayName ?? spec.name; // inside a sentence: "in the District of Columbia"
+  const Noun = noun.charAt(0).toUpperCase() + noun.slice(1);
   const wt = spec.wageTax;
+  const sc = spec.surcharge;
+  const surchargeSentence = sc
+    ? ` A separate ${pct(sc.rate)} surcharge applies to taxable income above ${usd(sc.thresholdSingle)} for a single filer (${usd(sc.thresholdJoint)} married filing jointly).`
+    : '';
   const hasPayroll = spec.payrollDeductions.length > 0;
 
   const faqs: Array<{ question: string; answer: string }> = [];
@@ -61,29 +70,29 @@ export function buildStateFAQs(spec: StateTaxSpec) {
     question: `What is the ${name} state income tax rate in ${spec.taxYear}?`,
     answer:
       wt.kind === 'none'
-        ? `${name} has no state income tax on wages. ${
+        ? `${Noun} has no state income tax on wages. ${
             hasPayroll
               ? `${an(name) === 'an' ? 'An' : 'A'} ${name} paycheck still carries federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}), Medicare (1.45%) and the state payroll contributions below (${spec.payrollDeductions.map((p) => p.label.replace(/ \(.*\)$/, '')).join(' and ')}).`
               : `The only taxes withheld from ${an(name)} ${name} paycheck are federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}) and Medicare (1.45%).`
           }`
         : wt.kind === 'flat'
-          ? `${name} taxes wages at a flat ${pct(wt.rate)} in ${spec.taxYear}. ${
+          ? `${Noun} taxes wages at a flat ${pct(wt.rate)} in ${spec.taxYear}. ${
               spec.deduction.kind === 'none'
                 ? 'There is no standard deduction or personal exemption, so the rate applies to every dollar of wages.'
                 : `The rate applies after a ${usd(spec.deduction.single)} ${spec.deduction.kind === 'standard' ? 'standard deduction' : 'personal exemption'} for a single filer (${usd(spec.deduction.married)} married filing jointly).`
             }${spec.adjustments?.credit ? ` ${spec.summary}` : ''}`
-          : `${name} uses ${stateRateText(spec)} in ${spec.taxYear}. ${spec.summary}`,
+          : `${Noun} uses ${stateRateText(spec)} in ${spec.taxYear}.${surchargeSentence} ${spec.summary}`,
   });
 
   faqs.push({
-    question: `How much is a $60,000 salary after taxes in ${name}?`,
-    answer: `A single filer earning $60,000 in ${name} takes home about ${usd(r60.net)} a year, or ${usd(r60.biweekly)} per biweekly paycheck, in ${spec.taxYear}: ${usd(r60.federal)} federal income tax (after the $${FEDERAL_2026.standardDeduction.single.toLocaleString()} standard deduction), ${usd(r60.fica)} FICA${
+    question: `How much is a $60,000 salary after taxes in ${noun}?`,
+    answer: `A single filer earning $60,000 in ${noun} takes home about ${usd(r60.net)} a year, or ${usd(r60.biweekly)} per biweekly paycheck, in ${spec.taxYear}: ${usd(r60.federal)} federal income tax (after the $${FEDERAL_2026.standardDeduction.single.toLocaleString()} standard deduction), ${usd(r60.fica)} FICA${
       wt.kind === 'none' ? ' and $0 state income tax' : `, ${usd(r60.state)} ${name} state income tax`
     }${hasPayroll ? ` and ${usd(r60.payroll)} in state payroll contributions` : ''}. Pre-tax 401(k) or health deductions would change the figure.`,
   });
 
   faqs.push({
-    question: `How much is $100,000 after taxes in ${name}?`,
+    question: `How much is $100,000 after taxes in ${noun}?`,
     answer: `On $100,000, a single ${name} filer keeps about ${usd(r100.net)} a year (${usd(r100.biweekly)} biweekly) in ${spec.taxYear}. Federal income tax is ${usd(r100.federal)}, FICA ${usd(r100.fica)}, and ${name} state income tax ${usd(r100.state)}${
       hasPayroll ? `, plus ${usd(r100.payroll)} in employee payroll contributions (${spec.payrollDeductions.map((p) => p.label.replace(/ \(.*\)$/, '')).join(', ')})` : ''
     }. The effective rate on all taxes is ${pct(r100.effectiveRate, 1)}.`,
@@ -116,7 +125,7 @@ export function buildStateFAQs(spec: StateTaxSpec) {
     });
   } else {
     faqs.push({
-      question: `Are there local income taxes in ${name}?`,
+      question: `Are there local income taxes in ${noun}?`,
       answer: `No. ${spec.lines.find((l) => /local/i.test(l.label))?.detail ?? `No ${name} city or county levies a wage tax.`} Your paycheck carries ${wt.kind === 'none' ? 'federal income tax and FICA' : `federal income tax, FICA and ${name} state income tax`} only.`,
     });
   }
@@ -124,7 +133,7 @@ export function buildStateFAQs(spec: StateTaxSpec) {
   const recip = spec.notes.find((n) => /recipro/i.test(n.title));
   if (recip) {
     faqs.push({
-      question: `Does ${name} have reciprocal tax agreements with neighboring states?`,
+      question: `Does ${noun} have reciprocal tax agreements with neighboring states?`,
       answer: recip.body,
     });
   } else {

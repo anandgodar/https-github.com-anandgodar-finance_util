@@ -22,7 +22,7 @@ const PrivacyPolicy: React.FC = () => {
       <header className="mb-16 space-y-4">
         <span className="px-4 py-1.5 bg-indigo-50 text-indigo-600 rounded-xl text-[10px] font-black uppercase tracking-widest">Your Data</span>
         <h1 className="text-5xl font-black text-slate-900 tracking-tighter">Privacy <span className="text-indigo-600">Policy</span></h1>
-        <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Last updated: October 16, 2026</p>
+        <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Last updated: October 24, 2026</p>
       </header>
 
       <div className="font-medium text-slate-600 space-y-12 leading-relaxed">
@@ -80,9 +80,11 @@ const PrivacyPolicy: React.FC = () => {
             you opt out, you will still see ads, but they will not be personalized.
           </p>
           <p>
-            Visitors in the European Economic Area, the United Kingdom and Switzerland are asked for consent before
-            personalized ads or non-essential cookies are used, through a consent message shown on the site. You can
-            change your choice at any time using the privacy/cookie settings link in that message.
+            For visitors in the European Economic Area, the United Kingdom and Switzerland, the site sets Google
+            Consent Mode to &quot;denied&quot; by default for advertising storage, ad user data, ad personalization and
+            analytics storage. Personalized ads are not served to visitors in the EEA, UK and Switzerland unless
+            consent is given. If a consent message is shown to you, you can change your choice later through the
+            privacy or cookie settings link it provides, or at any time through the opt-outs above.
           </p>
         </Section>
 

@@ -335,7 +335,7 @@ export function generateFinancialProductSchema(
     },
     // Generic terms - actual calculator provides specific calculations
     feesAndCommissionsSpecification: 'Calculator provides estimates only. Actual terms vary by lender.',
-    termsOfService: 'https://quantcurb.com/legal-disclaimer/'
+    termsOfService: 'https://quantcurb.com/terms/'
   };
 }
 

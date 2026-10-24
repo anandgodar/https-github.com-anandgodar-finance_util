@@ -8,10 +8,10 @@ const GA_WITHHOLDING_GUIDE = {
   retrievedAt: RETRIEVED,
 };
 
-const GA_EY_HB463 = {
-  source: 'EY Tax News Update 2026-1294 (17 Jun 2026): Georgia DOR releases revised withholding formula reflecting HB 463\'s 4.99% rate and higher standard deductions',
-  sourceUrl: 'https://taxnews.ey.com/news/2026-1294-georgia-department-of-revenue-releases-revised-withholding-formula-reflecting-lower-income-tax-rate-for-2026',
-  retrievedAt: RETRIEVED,
+const GA_HB463 = {
+  source: 'Georgia General Assembly, HB 463 (as passed House and Senate): O.C.G.A. 48-7-20(a.1) rate "5.19 percent 4.99 percent" for taxable years beginning on or after 1 Jan 2026; 48-7-27 standard deduction "$12,000.00 $15,000.00" single / "$24,000.00 $30,000.00" joint; 48-7-26(b) dependent exemption "$4,000.00 $5,000.00"',
+  sourceUrl: 'https://www.legis.ga.gov/api/legislation/document/20252026/249080',
+  retrievedAt: '2026-10-24',
 };
 
 export const GEORGIA: StateTaxSpec = {
@@ -65,7 +65,7 @@ export const GEORGIA: StateTaxSpec = {
       title: 'What the 2026 cut is worth',
       body:
         'Two changes stack for 2026: the rate fell 0.2 points and the single standard deduction rose $3,000. On a $60,000 salary a single filer owes 4.99% of $45,000, or $2,245.50, against $2,491.20 under the 2025 rules (5.19% of $48,000) — about $246 a year less. Because the law passed in May, paychecks early in 2026 were withheld at the old rate.',
-      ...GA_EY_HB463,
+      ...GA_HB463,
     },
     {
       title: 'Nonresidents and Georgia residents working elsewhere',
@@ -91,6 +91,6 @@ export const GEORGIA: StateTaxSpec = {
     taxYear: 2026,
     retrievedAt: RETRIEVED,
     description:
-      '4.99% flat rate and $15,000 / $30,000 standard deductions read from the Georgia DOR 2026 Employer\'s Withholding Tax Guide (revised September 2026) reflecting HB 463, retroactive to 1 Jan 2026. The dependent deduction is not modelled.',
+      '4.99% flat rate and $15,000 / $30,000 standard deductions read from the Georgia DOR 2026 Employer\'s Withholding Tax Guide (revised September 2026) and confirmed against the HB 463 text as passed (struck 2025 amounts and inserted 2026 amounts), retroactive to 1 Jan 2026. The dependent deduction is not modelled.',
   },
 };

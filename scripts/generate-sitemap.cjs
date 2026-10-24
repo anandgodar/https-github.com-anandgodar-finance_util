@@ -195,6 +195,7 @@ const COMPANY_PAGES = [
   { path: '/methodology-assumptions/', priority: '0.5', changefreq: 'monthly' },
   { path: '/contact-us/', priority: '0.5', changefreq: 'yearly' },
   { path: '/privacy-policy/', priority: '0.3', changefreq: 'yearly' },
+  { path: '/terms/', priority: '0.3', changefreq: 'yearly' },
   { path: '/legal-disclaimer/', priority: '0.3', changefreq: 'yearly' },
   { path: '/sitemap/', priority: '0.4', changefreq: 'monthly' },
 ];

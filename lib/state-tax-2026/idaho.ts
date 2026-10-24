@@ -16,10 +16,10 @@ const ID_STATUTE = {
 };
 
 const ID_WH = {
-  source: 'EY Tax News 2026-1829 (26 Aug 2026) — Idaho withholding: 5.3% applies to annual wages over $16,100 (single, head of household) / $32,200 (married), tables dated 07-23-2026',
-  sourceUrl: 'https://taxnews.ey.com/news/2026-1829',
+  source: 'Idaho State Tax Commission, EPB00744 Table for Percentage Computation Method of Withholding (07-23-2026), annual payroll period: 5.3% of the amount over $16,100 (single, including head of household) / $32,200 (married)',
+  sourceUrl: 'https://tax.idaho.gov/wp-content/uploads/pubs/EPB00744/EPB00744_07-23-2026.pdf',
   retrievedAt: RETRIEVED,
-  note: 'Secondary source, not yet verified against the Idaho State Tax Commission\'s own 2026 withholding tables.',
+  note: 'The withholding table puts heads of household on the single table; the $24,150 head-of-household deduction used for the annual tax is the 2026 federal standard deduction (IRS Rev. Proc. 2025-32).',
 };
 
 export const IDAHO: StateTaxSpec = {
@@ -95,7 +95,6 @@ export const IDAHO: StateTaxSpec = {
   _meta: {
     taxYear: 2026,
     retrievedAt: RETRIEVED,
-    unverifiedFigures: ['2026 standard deduction carry-over ($16,100 / $32,200) is from an EY Tax News summary of the Tax Commission\'s 2026 withholding tables (secondary source, not yet verified on tax.idaho.gov)'],
     priorYearFigures: ['zero-rate thresholds ($4,811 single / $9,622 joint and head of household) are the 2025 amounts from the Tax Commission rate schedule'],
     description:
       'Idaho 5.3% rate (§63-3024) above the 2025 zero-rate threshold, after the 2026 federal standard deduction (the amounts Idaho\'s 2026 withholding tables use).',
