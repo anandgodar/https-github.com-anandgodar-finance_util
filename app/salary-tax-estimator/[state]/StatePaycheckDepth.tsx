@@ -35,7 +35,10 @@ function stateRateText(spec: StateTaxSpec): string {
   const rates = wt.single.map((b) => b.rate).filter((r) => r > 0);
   const lo = Math.min(...rates);
   const hi = Math.max(...rates);
-  return lo === hi ? `a ${pct(hi)} state income tax` : `state income tax from ${pct(lo)} to ${pct(hi)}`;
+  if (lo === hi) return `a ${pct(hi)} state income tax`;
+  // A flat rate with a single surtax bracket (e.g. Massachusetts) reads better as flat-plus-surtax than as a range.
+  if (rates.length === 2 && wt.single[0].upTo !== null) return `a ${pct(lo)} state income tax (${pct(hi)} on income above ${usd(wt.single[0].upTo)})`;
+  return `state income tax from ${pct(lo)} to ${pct(hi)}`;
 }
 
 export function buildStateFAQs(spec: StateTaxSpec) {
@@ -52,7 +55,11 @@ export function buildStateFAQs(spec: StateTaxSpec) {
     question: `What is the ${name} state income tax rate in ${spec.taxYear}?`,
     answer:
       wt.kind === 'none'
-        ? `${name} has no state income tax on wages. The only taxes withheld from a ${name} paycheck are federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}) and Medicare (1.45%).`
+        ? `${name} has no state income tax on wages. ${
+            hasPayroll
+              ? `A ${name} paycheck still carries federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}), Medicare (1.45%) and the state payroll contributions below (${spec.payrollDeductions.map((p) => p.label.replace(/ \(.*\)$/, '')).join(' and ')}).`
+              : `The only taxes withheld from a ${name} paycheck are federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}) and Medicare (1.45%).`
+          }`
         : wt.kind === 'flat'
           ? `${name} taxes wages at a flat ${pct(wt.rate)} in ${spec.taxYear}. ${
               spec.deduction.kind === 'none'
@@ -76,7 +83,10 @@ export function buildStateFAQs(spec: StateTaxSpec) {
     }. The effective rate on all taxes is ${pct(r100.effectiveRate, 1)}.`,
   });
 
-  const localLine = spec.lines.find((l) => !l.computed);
+  // Prefer a genuinely local line (city/county/municipal) over other non-computed lines such as an unapplied exemption.
+  const localLine =
+    spec.lines.find((l) => !l.computed && /local|city|cities|county|municipal|school district|occupational|yonkers/i.test(`${l.label} ${l.rateText}`)) ??
+    spec.lines.find((l) => !l.computed);
   if (localLine) {
     faqs.push({
       question: `Does the ${name} paycheck calculator include local or city taxes?`,
