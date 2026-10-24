@@ -80,12 +80,11 @@ const PrivacyPolicy: React.FC = () => {
             you opt out, you will still see ads, but they will not be personalized.
           </p>
           <p>
-            Visitors in the European Economic Area, the United Kingdom and Switzerland are asked for consent before
-            personalized ads or non-essential cookies are used, through Google&apos;s consent message, a
-            Google-certified consent management platform (CMP) that uses the IAB Transparency and Consent Framework.
-            Until you answer it, Google Consent Mode keeps advertising and analytics storage turned off for visitors in
-            those regions, and Google and other third-party ad vendors do not use cookies for personalized ads unless
-            you consent. You can change your choice at any time using the privacy/cookie settings link in that message.
+            For visitors in the European Economic Area, the United Kingdom and Switzerland, the site sets Google
+            Consent Mode to &quot;denied&quot; by default for advertising storage, ad user data, ad personalization and
+            analytics storage. Personalized ads are not served to visitors in the EEA, UK and Switzerland unless
+            consent is given. If a consent message is shown to you, you can change your choice later through the
+            privacy or cookie settings link it provides, or at any time through the opt-outs above.
           </p>
         </Section>
 

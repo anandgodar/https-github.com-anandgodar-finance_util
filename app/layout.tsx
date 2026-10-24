@@ -120,7 +120,6 @@ const organizationSchema = {
   url: 'https://quantcurb.com',
   logo: 'https://quantcurb.com/logo.png',
   description: 'Free financial calculators for take-home pay, mortgages, taxes, and investments.',
-  foundingDate: '2024',
   sameAs: [
     'https://twitter.com/quantcurb',
     'https://linkedin.com/company/quantcurb',

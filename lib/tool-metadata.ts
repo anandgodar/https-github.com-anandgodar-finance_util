@@ -588,12 +588,12 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
   },
   [ToolType.ABOUT]: {
     title: "About QuantCurb - Our Mission & Institutional Philosophy",
-    desc: "Learn about the core team and engineering principles behind QuantCurb. Bridging the gap between banking software and retail finance.",
+    desc: "Who builds QuantCurb, where its tax and loan figures come from, and the principles behind its free, source-cited financial calculators.",
     keywords: "about us, quantcurb mission, financial transparency, wealth engineering"
   },
   [ToolType.CONTACT]: {
-    title: "Contact QuantCurb - Professional Inquiries & Support",
-    desc: "Get in touch with the QuantCurb intelligence team for support, feature requests, or professional partnerships.",
+    title: "Contact QuantCurb",
+    desc: "Email QuantCurb to report a calculator error, a figure that looks out of date, or a feature request.",
     keywords: "contact us, financial support, quantcurb help"
   },
   [ToolType.DISCLAIMER]: {

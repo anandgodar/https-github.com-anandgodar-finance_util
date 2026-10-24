@@ -34,9 +34,9 @@ const AboutUs: React.FC = () => {
           </div>
         </div>
         <div className="bg-white p-12 rounded-[3.5rem] border border-slate-100 shadow-sm space-y-8">
-           <h2 className="text-3xl font-black text-slate-900 tracking-tight">Built by <br/>Engineers</h2>
+           <h2 className="text-3xl font-black text-slate-900 tracking-tight">Independently <br/>Built</h2>
            <p className="text-slate-500 text-lg leading-relaxed font-medium">
-             Our team consists of data scientists and fintech engineers who believe in mathematical sovereignty. We don't sell your data, and we don't push high-interest credit cards. We build tools that calculate the truth.
+             QuantCurb is built and maintained by its founder, Anand Godar. We don't sell your data, and we don't push high-interest credit cards. Every tax figure names its source and the date it was checked.
            </p>
            <div className="flex gap-4">
               <span className="p-4 bg-slate-50 rounded-2xl text-3xl">🛡️</span>
@@ -101,9 +101,9 @@ const AboutUs: React.FC = () => {
 
       <footer className="bg-indigo-600 p-12 md:p-16 rounded-[4rem] text-white text-center shadow-2xl relative overflow-hidden">
          <div className="relative z-10 space-y-6">
-            <h4 className="text-3xl font-black">Join the Community</h4>
+            <h4 className="text-3xl font-black">Free to Use</h4>
             <p className="text-indigo-100 text-lg font-medium opacity-90 max-w-xl mx-auto">
-              Over 250,000 simulations are run monthly on QuantCurb. Start engineering your financial freedom today.
+              Every calculator is free to use, with no sign-up. Start with the one that fits your next decision.
             </p>
          </div>
          <div className="absolute -right-10 -bottom-10 text-[200px] font-black text-white/5 pointer-events-none select-none tracking-tighter">QUANT</div>

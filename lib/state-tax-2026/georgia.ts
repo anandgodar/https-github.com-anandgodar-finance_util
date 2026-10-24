@@ -9,7 +9,7 @@ const GA_WITHHOLDING_GUIDE = {
 };
 
 const GA_HB463 = {
-  source: 'Georgia General Assembly, HB 463 (as passed House and Senate): O.C.G.A. 48-7-20(a.1) rate "5.19 percent 4.99 percent" for taxable years beginning on or after 1 Jan 2026; 48-7-27 standard deduction "$12,000.00 $15,000.00" single / "$24,000.00 $30,000.00" joint; dependent exemption "$4,000.00 $5,000.00"',
+  source: 'Georgia General Assembly, HB 463 (as passed House and Senate): O.C.G.A. 48-7-20(a.1) rate "5.19 percent 4.99 percent" for taxable years beginning on or after 1 Jan 2026; 48-7-27 standard deduction "$12,000.00 $15,000.00" single / "$24,000.00 $30,000.00" joint; 48-7-26(b) dependent exemption "$4,000.00 $5,000.00"',
   sourceUrl: 'https://www.legis.ga.gov/api/legislation/document/20252026/249080',
   retrievedAt: '2026-10-24',
 };
