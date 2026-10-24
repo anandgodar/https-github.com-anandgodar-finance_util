@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const CONTACT_EMAIL = 'intelligence@quantcurb.com';
+const CONTACT_EMAIL = 'hello@quantcurb.com';
 
 const ContactUs: React.FC = () => {
   return (

@@ -28,7 +28,7 @@ Re-audit of the build after the fix pass: 429 pages, each with a self-referencin
 1. **Search Console / Bing:** verify the domain with a DNS TXT record (or set the env vars above in Vercel), submit `https://quantcurb.com/sitemap.xml`, and request indexing for your top pages.
 2. **AdSense → Privacy & messaging:** turn on the European regulations (GDPR) consent message. The code already sends Consent Mode defaults.
 3. **Social profiles:** keep the X, LinkedIn and GitHub links in the footer and Organization schema only if those accounts exist and are yours.
-4. **Mailboxes:** make sure `privacy@quantcurb.com` and the contact-page address receive mail.
+4. **Mailboxes:** `hello@quantcurb.com` (contact, terms and privacy pages) forwards via Namecheap Redirect Email; set up 2026-10-24.
 5. **Named author / E-E-A-T:** add a real author or reviewer page if you have one.
 6. **State taxes:** standard deductions for the federal-conforming states and the 2026 flat-rate changes (ID, IN, IA, KY, LA, MS, NC, NE, OH, UT) are updated. Rates for other states, for example Georgia, Montana, South Carolina and West Virginia, change often; recheck them each January.
 7. **Measure:** run PageSpeed Insights on production after deploy, then apply for AdSense review once Search Console shows the pages indexed.

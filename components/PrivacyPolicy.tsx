@@ -147,7 +147,7 @@ const PrivacyPolicy: React.FC = () => {
         <div className="p-10 bg-indigo-50 rounded-[3rem] border border-indigo-100 mt-16 space-y-4">
           <p className="text-indigo-900 text-sm font-black uppercase tracking-widest">Questions about privacy?</p>
           <p className="text-indigo-700 text-base font-medium">
-            Email us at <a href="mailto:privacy@quantcurb.com" className="underline font-bold">privacy@quantcurb.com</a>.
+            Email us at <a href="mailto:hello@quantcurb.com" className="underline font-bold">hello@quantcurb.com</a>.
           </p>
         </div>
       </div>
