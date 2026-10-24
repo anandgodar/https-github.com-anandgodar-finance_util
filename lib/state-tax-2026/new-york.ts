@@ -33,10 +33,10 @@ const NY_DBL = {
   retrievedAt: RETRIEVED,
 };
 
-const NJ_PA_RECIPROCAL = {
-  source: 'New Jersey Division of Taxation, PA/NJ Reciprocal Income Tax Agreement (New York has no such agreement)',
-  sourceUrl: 'https://nj.gov/treasury/taxation/njit25.shtml',
-  retrievedAt: RETRIEVED,
+const NY_WITHHOLDING_REQUIREMENTS = {
+  source: 'New York State Department of Taxation and Finance, Withholding tax requirements (employers must withhold from nonresidents paid for services performed in New York and from New York residents even on wages earned outside the state)',
+  sourceUrl: 'https://www.tax.ny.gov/bus/wt/whtax_require.htm',
+  retrievedAt: '2026-10-24',
 };
 
 export const NEW_YORK: StateTaxSpec = {
@@ -165,8 +165,8 @@ export const NEW_YORK: StateTaxSpec = {
     {
       title: 'No reciprocity with New Jersey or Connecticut',
       body:
-        'New York has no reciprocal wage agreement with any state. A New Jersey or Connecticut resident who works in New York pays New York nonresident tax through withholding and claims a credit on the home-state return; a New York resident who commutes out of state does the reverse. New Jersey\'s only reciprocal agreement is with Pennsylvania.',
-      ...NJ_PA_RECIPROCAL,
+        'New York has no reciprocal wage agreement with any state: its withholding rules require employers to withhold New York State tax from nonresidents for services performed in New York and from New York residents even on wages earned outside the state, with no exception for a neighbouring state\'s residents. A New Jersey or Connecticut resident who works in New York therefore pays New York nonresident tax through withholding and claims a credit on the home-state return; a New York resident who commutes out of state does the reverse.',
+      ...NY_WITHHOLDING_REQUIREMENTS,
     },
     {
       title: 'City tax is a separate line',

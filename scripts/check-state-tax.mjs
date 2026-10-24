@@ -91,9 +91,28 @@ check(Math.abs(nj60.state.payrollTotal - 442.4) < 0.01, `NJ payroll on $60k shou
 const njMarried = engine.computePaycheck({ grossWages: 152000, filingStatus: 'married', state: states.getSourcedStateTax('NJ') });
 check(Math.abs(njMarried.state.tax - 5512.5) < 0.01, `NJ married on $152k should be $5,512.50, got ${njMarried.state.tax}`);
 
-// Ohio: first $26,050 at 0%, then 2.75%. $60k → 2.75% of 33,950 = 933.63
-const oh60 = engine.computePaycheck({ grossWages: 60000, state: states.getSourcedStateTax('OH') });
-check(Math.abs(oh60.state.tax - 0.0275 * (60000 - 26050)) < 0.01, `OH tax on $60k should be 2.75% of $33,950, got ${oh60.state.tax}`);
+// Ohio, ORC 5747.02(A)(3)(c) for 2026: $0 to $26,050, then "$332.00 plus 2.75% of the amount in excess of $26,050".
+// Without the exemption, $60k → 332 + 2.75% × 33,950 = 1,265.63. (The old model omitted the $332 base.)
+const OH = states.getSourcedStateTax('OH');
+check(Math.abs(engine.taxFromBrackets(60000, OH.wageTax.single) - 1265.625) < 0.01, `OH schedule on $60k taxable should be $1,265.63, got ${engine.taxFromBrackets(60000, OH.wageTax.single)}`);
+check(engine.taxFromBrackets(26050, OH.wageTax.single) === 0, 'OH schedule at exactly $26,050 must be $0');
+check(Math.abs(engine.taxFromBrackets(26050.01, OH.wageTax.single) - 332) < 0.01, 'OH schedule must jump to $332 just above $26,050');
+// With the personal exemption (2025 booklet, $2,150 tier for $40,001–$80,000 MAGI): taxable 57,850 → 332 + 2.75% × 31,800 = 1,206.50
+const oh60 = engine.computePaycheck({ grossWages: 60000, state: OH });
+check(oh60.state.deduction === 2150, `OH single $60k exemption should be $2,150, got ${oh60.state.deduction}`);
+check(Math.abs(oh60.state.tax - 1206.5) < 0.01, `OH tax on $60k single should be $1,206.50, got ${oh60.state.tax}`);
+// $100k single: $1,900 tier → taxable 98,100 → 332 + 2.75% × 72,050 = 2,313.375
+const oh100 = engine.computePaycheck({ grossWages: 100000, state: OH });
+check(Math.abs(oh100.state.tax - 2313.375) < 0.01, `OH tax on $100k single should be $2,313.38, got ${oh100.state.tax}`);
+// Joint $60k: two exemptions in the $2,150 tier → taxable 55,700 → 332 + 2.75% × 29,650 = 1,147.375
+const ohMarried = engine.computePaycheck({ grossWages: 60000, filingStatus: 'married', state: OH });
+check(Math.abs(ohMarried.state.tax - 1147.375) < 0.01, `OH joint tax on $60k should be $1,147.38, got ${ohMarried.state.tax}`);
+// Tier boundaries: $40,000 is still the $2,400 tier; $40,000.01 drops to $2,150; $500,000 MAGI gets no exemption (2026 limit)
+check(engine.computePaycheck({ grossWages: 40000, state: OH }).state.deduction === 2400, 'OH $40,000 should keep the $2,400 exemption');
+check(engine.computePaycheck({ grossWages: 40000.01, state: OH }).state.deduction === 2150, 'OH $40,000.01 should drop to the $2,150 exemption');
+check(engine.computePaycheck({ grossWages: 500000, state: OH }).state.deduction === 0, 'OH $500,000 should get no exemption');
+// $25,000 single: below the threshold even before the exemption → $0
+check(engine.computePaycheck({ grossWages: 25000, state: OH }).state.tax === 0, 'OH $25k must owe no state tax');
 
 // NC: 3.99% of (60,000 - 12,750) = 1,885.28
 const nc60 = engine.computePaycheck({ grossWages: 60000, state: states.getSourcedStateTax('NC') });
@@ -189,7 +208,14 @@ for (const spec of states.SOURCED_STATES) {
         check(br[i - 1].upTo !== null && (br[i].upTo === null || br[i].upTo > br[i - 1].upTo), `${spec.code} ${fs}: bracket ceilings must ascend`);
         check(br[i].rate >= br[i - 1].rate, `${spec.code} ${fs}: rates must be non-decreasing`);
       }
+      for (const b of br) check(b.base === undefined || (Number.isFinite(b.base) && b.base >= 0), `${spec.code} ${fs}: bracket base must be a non-negative number`);
     }
+  }
+  if (spec.deduction.tiers) {
+    const t = spec.deduction.tiers;
+    check(t.length >= 2 && t[t.length - 1].upTo === null, `${spec.code}: deduction tiers must end open-ended`);
+    for (let i = 1; i < t.length; i++) check(t[i - 1].upTo !== null && (t[i].upTo === null || t[i].upTo > t[i - 1].upTo), `${spec.code}: deduction tier ceilings must ascend`);
+    for (const fs of ['single', 'married', 'hoh']) check(spec.deduction[fs] === t[0][fs], `${spec.code}: deduction.${fs} must equal the first tier`);
   }
   check(spec.neighbors.length >= 3, `${spec.code}: fewer than 3 neighbor links`);
 }

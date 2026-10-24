@@ -33,7 +33,7 @@ export const MARYLAND: StateTaxSpec = {
   slug: 'maryland',
   name: 'Maryland',
   taxYear: 2026,
-  rateLead: '2%–6.5% state tax + county tax',
+  rateLead: '2%–6.5% state tax (county tax extra)',
   summary:
     'Maryland taxes wages on ten brackets from 2% to 6.5%, with 4.75% covering most of a typical salary (taxable income from $3,000 to $100,000 single, $150,000 joint), after a $3,350 standard deduction for a single filer ($6,700 joint); every Maryland county and Baltimore City adds a local income tax of 2.25% to 3.3% that this calculator does not include.',
   wageTax: {
@@ -124,7 +124,7 @@ export const MARYLAND: StateTaxSpec = {
     {
       title: 'Reciprocity with DC, PA, VA and WV',
       body:
-        'Residents of the District of Columbia, Virginia and West Virginia who work in Maryland, and do not maintain a place of abode in Maryland for 183 days or more, are exempt from Maryland withholding and pay only their home jurisdiction (Form MW507, line 4). Pennsylvania residents have the same exemption on line 5. Maryland residents working in those states get the mirror treatment and pay Maryland state and county tax on their wages. Residents of other states working in Maryland are taxed by Maryland.',
+        'Residents of the District of Columbia, Virginia and West Virginia who work in Maryland, and do not maintain a place of abode in Maryland for 183 days or more, are exempt from Maryland withholding and pay only their home jurisdiction (Form MW507, line 4). Pennsylvania residents claim the exemption from the state portion on line 5, but the MW507 instructions note they may still owe Maryland local withholding at their county of employment\'s rate unless a further exemption on line 6 or 7 applies. Maryland residents working in those states get the mirror treatment and pay Maryland state and county tax on their wages. Residents of other states working in Maryland are taxed by Maryland.',
       ...MD_MW507_2026,
     },
     {

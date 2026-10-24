@@ -11,6 +11,8 @@ import type { StateTaxSpec } from '../../../lib/state-tax-2026/types';
 
 const usd = (n: number) => `$${Math.round(n).toLocaleString('en-US')}`;
 const pct = (r: number, digits = 2) => `${(r * 100).toFixed(digits).replace(/\.?0+$/, '')}%`;
+/** Indefinite article for a state name ("an Ohio paycheck", "a Texas paycheck"). */
+const an = (name: string) => (/^[AEIOU]/i.test(name) ? 'an' : 'a');
 
 export function buildTakeHomeRows(spec: StateTaxSpec) {
   return TABLE_SALARIES.map((salary) => {
@@ -57,8 +59,8 @@ export function buildStateFAQs(spec: StateTaxSpec) {
       wt.kind === 'none'
         ? `${name} has no state income tax on wages. ${
             hasPayroll
-              ? `A ${name} paycheck still carries federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}), Medicare (1.45%) and the state payroll contributions below (${spec.payrollDeductions.map((p) => p.label.replace(/ \(.*\)$/, '')).join(' and ')}).`
-              : `The only taxes withheld from a ${name} paycheck are federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}) and Medicare (1.45%).`
+              ? `${an(name) === 'an' ? 'An' : 'A'} ${name} paycheck still carries federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}), Medicare (1.45%) and the state payroll contributions below (${spec.payrollDeductions.map((p) => p.label.replace(/ \(.*\)$/, '')).join(' and ')}).`
+              : `The only taxes withheld from ${an(name)} ${name} paycheck are federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}) and Medicare (1.45%).`
           }`
         : wt.kind === 'flat'
           ? `${name} taxes wages at a flat ${pct(wt.rate)} in ${spec.taxYear}. ${
@@ -114,8 +116,8 @@ export function buildStateFAQs(spec: StateTaxSpec) {
     });
   } else {
     faqs.push({
-      question: `What federal taxes come out of a ${name} paycheck in ${spec.taxYear}?`,
-      answer: `Federal income tax at 10% to 37% after the $${FEDERAL_2026.standardDeduction.single.toLocaleString()} standard deduction (single), Social Security at 6.2% on wages up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}, and Medicare at 1.45% with an extra 0.9% above $200,000. These are the same in every state; the state line is what makes a ${name} paycheck different.`,
+      question: `What federal taxes come out of ${an(name)} ${name} paycheck in ${spec.taxYear}?`,
+      answer: `Federal income tax at 10% to 37% after the $${FEDERAL_2026.standardDeduction.single.toLocaleString()} standard deduction (single), Social Security at 6.2% on wages up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}, and Medicare at 1.45% with an extra 0.9% above $200,000. These are the same in every state; the state line is what makes ${an(name)} ${name} paycheck different.`,
     });
   }
 
@@ -156,7 +158,7 @@ export default function StatePaycheckDepth({ spec }: { spec: StateTaxSpec }) {
 
       {/* (a) Answer-first intro */}
       <section className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12">
-        <h2 className="text-3xl font-black text-slate-900 mb-4">How much tax comes out of a {spec.name} paycheck?</h2>
+        <h2 className="text-3xl font-black text-slate-900 mb-4">How much tax comes out of {an(spec.name)} {spec.name} paycheck?</h2>
         <p className="text-lg text-slate-700 leading-relaxed">{spec.summary}</p>
         <p className="text-slate-600 mt-4 leading-relaxed">
           Every figure below is computed for tax year {spec.taxYear} from the federal brackets and standard deduction in IRS Rev. Proc. 2025-32, the
@@ -207,7 +209,7 @@ export default function StatePaycheckDepth({ spec }: { spec: StateTaxSpec }) {
 
       {/* (c) What's taken out */}
       <section className="mt-8 bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12">
-        <h2 className="text-3xl font-black text-slate-900 mb-6">What&apos;s taken out of a {spec.name} paycheck</h2>
+        <h2 className="text-3xl font-black text-slate-900 mb-6">What&apos;s taken out of {an(spec.name)} {spec.name} paycheck</h2>
         <ul className="divide-y divide-slate-100">
           <li className="py-4">
             <div className="flex flex-wrap justify-between gap-2">

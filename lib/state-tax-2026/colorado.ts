@@ -17,17 +17,17 @@ const CO_FEDERAL_BASE = {
 };
 
 const CO_TABOR_FY26 = {
-  source: 'Kiowa County Press (20 Oct 2026), reporting the State Controller\'s reissued FY2026 TABOR report: revenue $275 million under the TABOR cap, so no refund and no surplus-triggered rate reduction for tax year 2026',
+  source: 'Kiowa County Press (20 Oct 2026), reporting the State Controller\'s reissued FY2026 TABOR report: state revenue came in under the TABOR cap, so no surplus-triggered rate reduction applies for tax year 2026',
   sourceUrl: 'https://kiowacountypress.net/content/state-auditor-cannot-verify-accuracy-colorados-fiscal-year-2026-tabor-report',
   retrievedAt: RETRIEVED,
-  note: 'Secondary report of the Controller\'s certification; the 4.4% figure itself comes from the DOR\'s 2026 DR 1098.',
+  note: 'Secondary (press) report of the Controller\'s certification, used only for the direction of the result; no figure from it is reproduced. The 4.4% rate itself comes from the DOR\'s 2026 DR 1098.',
 };
 
 const CO_TABOR_MECH = {
-  source: 'NerdWallet, Colorado State Income Tax (describes SB 24-228: rate 4.25% for tax year 2024; a reduction applies when excess state revenue exceeds $300 million; 2025 excess of $293.3 million fell short)',
-  sourceUrl: 'https://www.nerdwallet.com/taxes/learn/colorado-state-income-tax-rates',
-  retrievedAt: RETRIEVED,
-  note: 'Secondary source for the mechanism and the 2024/2025 history; leg.colorado.gov could not be read at retrieval.',
+  source: 'EY Tax News Update 2024-1127 (3 Jun 2024), describing SB 24-228: a temporary income tax rate reduction below the 4.4% statutory rate for tax years 2025–2035 in any year the TABOR surplus exceeds a statutory threshold',
+  sourceUrl: 'https://taxnews.ey.com/news/2024-1127-colorado-reduces-2024-income-tax-rate-and-provides-mechanism-for-temporary-reductions-for-2025-35',
+  retrievedAt: '2026-10-24',
+  note: 'Secondary source for the mechanism only; no threshold or reduced-rate figure from it is reproduced. The bill text on leg.colorado.gov could not be read at retrieval.',
 };
 
 const CO_FAMLI = {
@@ -78,9 +78,9 @@ export const COLORADO: StateTaxSpec = {
       rateText: '4.4% flat (2026)',
       computed: true,
       detail:
-        'The 2026 employer withholding worksheet applies 4.40%. Colorado law allows a temporary rate cut in a year when the state\'s TABOR surplus exceeds $300 million (the rate was 4.25% for 2024 on that basis); the Controller\'s FY2026 report put revenue under the cap, so no cut applies for 2026.',
+        'The 2026 employer withholding worksheet applies 4.40%. Colorado law (SB 24-228) allows a temporary cut below 4.4% in a tax year when the state\'s TABOR surplus exceeds a statutory threshold; the Controller\'s FY2026 report put revenue under the TABOR cap, so no cut applies for 2026.',
       ...CO_DR1098_2026,
-      note: 'TABOR mechanism and 2024 history per NerdWallet (secondary); FY2026 result per the Kiowa County Press report of the Controller\'s certification.',
+      note: 'The TABOR mechanism is described from a secondary source (EY) and the FY2026 result from a press report of the Controller\'s certification; neither is used for any figure on this page.',
     },
     {
       label: 'Federal standard deduction (Colorado starts from federal taxable income)',
@@ -109,7 +109,13 @@ export const COLORADO: StateTaxSpec = {
     {
       title: 'Why the rate can change year to year',
       body:
-        'Colorado\'s statutory rate is 4.4%, but SB 24-228 lets the rate drop temporarily in a tax year when the state collects more than $300 million above its TABOR revenue cap; the rate was 4.25% for 2024 on that basis, and 2025 stayed at 4.4% because the excess ($293.3 million) fell short. For 2026 the State Controller reported FY2026 revenue $275 million under the cap, so there is no surplus and the rate stays at 4.4%. Check again each autumn.',
+        'Colorado\'s statutory rate is 4.4%, but SB 24-228 lets the rate drop temporarily in a tax year when the state collects more than a statutory threshold above its TABOR revenue cap, with the size of the cut scaled to the size of the surplus. The mechanism is described here from a secondary source (EY\'s summary of the bill); no threshold or reduced rate from it is reproduced, and the 4.4% on this page comes from the Department of Revenue\'s own 2026 withholding worksheet.',
+      ...CO_TABOR_MECH,
+    },
+    {
+      title: 'No TABOR cut for tax year 2026',
+      body:
+        'Whether a cut applies for 2026 depends on the State Controller\'s certification of FY2026 revenue against the TABOR cap. Press reporting of the Controller\'s reissued FY2026 report (20 Oct 2026) says revenue came in under the cap, so there is no surplus and the 4.4% rate stands for 2026. This is a secondary report of the result; no figure from it is used. Check again each autumn.',
       ...CO_TABOR_FY26,
     },
     {
@@ -136,6 +142,6 @@ export const COLORADO: StateTaxSpec = {
     taxYear: 2026,
     retrievedAt: RETRIEVED,
     description:
-      '4.4% from the DOR 2026 DR 1098 withholding worksheet; no TABOR surplus reduction for 2026 per the Controller\'s FY2026 report (as reported 20 Oct 2026). Deduction = IRS 2026 standard deduction because Colorado taxable income starts from federal taxable income. FAMLI employee share 0.44% to $184,500 from the FAMLI Division. Occupational privilege taxes are not computed.',
+      '4.4% from the DOR 2026 DR 1098 withholding worksheet; no TABOR surplus reduction for 2026 per the Controller\'s FY2026 report (as reported in the press, 20 Oct 2026; the SB 24-228 mechanism is described from EY, both secondary and labelled). Deduction = IRS 2026 standard deduction because Colorado taxable income starts from federal taxable income. FAMLI employee share 0.44% to $184,500 from the FAMLI Division. Occupational privilege taxes are not computed.',
   },
 };

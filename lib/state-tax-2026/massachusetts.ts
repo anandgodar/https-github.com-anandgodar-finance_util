@@ -94,7 +94,7 @@ export const MASSACHUSETTS: StateTaxSpec = {
       rateText: 'Up to 0.46% of wages (0.18% family + 0.28% medical) to $184,500 (2026)',
       computed: true,
       detail:
-        'The 2026 total contribution is 0.88% of wages for employers with 25 or more covered individuals; employers may deduct the whole family-leave share (0.18%) and up to 40% of the medical share (0.28%) from employees. Smaller employers (under 25) pay no employer share, and the employee share is the same 0.46%. Contributions stop at the Social Security taxable maximum. The calculator assumes the employer deducts the maximum allowed.',
+        'The 2026 total contribution is 0.88% of wages for employers with 25 or more covered individuals: 0.18% family leave, of which employers may deduct all from employees, and 0.70% medical leave, of which they may deduct up to 40% (0.28%). Smaller employers (under 25) pay no employer share, and the employee share is the same 0.46%. Contributions stop at the Social Security taxable maximum. The calculator assumes the employer deducts the maximum allowed.',
       ...MA_PFML,
     },
     {

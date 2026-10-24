@@ -105,7 +105,7 @@ const STATE_TAX_DATA: Record<string, StateData> = {
   },
   NC: { name: 'North Carolina', rate: 0.0399, stdDeduction: 12750 }, // Flat 3.99% for 2026; $12,750 std deduction
   ND: { name: 'North Dakota', rate: 0.025, stdDeduction: 0, brackets: [{ limit: 44725, rate: 0.00 }, { limit: 225975, rate: 0.0195 }, { limit: null, rate: 0.025 }] },
-  OH: { name: 'Ohio', rate: 0.0275, stdDeduction: 0, brackets: [{ limit: 26050, rate: 0.00 }, { limit: null, rate: 0.0275 }] }, // Flat 2.75% above $26,050 for 2026 (HB 96)
+  OH: { name: 'Ohio', rate: 0.0275, stdDeduction: 0, brackets: [{ limit: 26050, rate: 0.00 }, { limit: null, rate: 0.0275 }] }, // Superseded by lib/state-tax-2026/ohio.ts (ORC 5747.02: $332 base + 2.75% above $26,050; this row has no base field and is not used for OH)
   OK: { name: 'Oklahoma', rate: 0.0475, stdDeduction: 6350, brackets: [{ limit: 1000, rate: 0.0025 }, { limit: 2500, rate: 0.0075 }, { limit: 3750, rate: 0.0175 }, { limit: 4900, rate: 0.0275 }, { limit: 7200, rate: 0.0375 }, { limit: null, rate: 0.0475 }] },
   OR: { name: 'Oregon', rate: 0.0875, stdDeduction: 2745, brackets: [{ limit: 4050, rate: 0.0475 }, { limit: 10200, rate: 0.0675 }, { limit: 125000, rate: 0.0875 }, { limit: null, rate: 0.099 }] },
   PA: { name: 'Pennsylvania', rate: 0.0307, stdDeduction: 0 }, // Flat
