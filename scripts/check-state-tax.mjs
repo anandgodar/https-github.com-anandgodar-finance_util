@@ -192,9 +192,132 @@ check(Math.abs(mi60.state.tax - 2299.25) < 0.01, `MI tax on $60k should be $2,29
 const az60 = engine.computePaycheck({ grossWages: 60000, state: states.getSourcedStateTax('AZ') });
 check(Math.abs(az60.state.tax - 1106.25) < 0.01, `AZ tax on $60k should be $1,106.25, got ${az60.state.tax}`);
 
+// --- Wave 3 known-answer checks (2026-10-24) ---
+const near = (a, b, tol = 0.01) => Math.abs(a - b) < tol;
+const st = (code) => states.getSourcedStateTax(code);
+const pay = (code, grossWages, filingStatus = 'single') => engine.computePaycheck({ grossWages, filingStatus, state: st(code) });
+
+// No-tax state with an employee payroll line: Alaska UI 0.5% of the first $54,200.
+const ak60 = pay('AK', 60000);
+check(ak60.state.tax === 0, 'Alaska state income tax must be zero');
+check(near(ak60.state.payrollTotal, 271), `AK UI on $60k should cap at $271, got ${ak60.state.payrollTotal}`);
+check(near(pay('AK', 40000).state.payrollTotal, 200), 'AK UI on $40k should be $200');
+for (const code of ['NV', 'NH', 'SD', 'TN', 'WY']) {
+  const r = pay(code, 100000);
+  check(r.state.tax === 0 && r.state.payrollTotal === 0, `${code} must have no state tax or payroll`);
+}
+
+// Printed statutory base amounts must equal the tax the brackets accumulate (no hidden Ohio-style base).
+const baseAt = (code, fs, income) => engine.taxFromBrackets(income, st(code).wageTax[fs]);
+check(near(baseAt('KS', 'single', 23000), 1196), 'KS base at $23,000 single should be $1,196 (K.S.A. 79-32,110)');
+check(near(baseAt('KS', 'married', 46000), 2392), 'KS base at $46,000 joint should be $2,392');
+check(near(baseAt('NM', 'single', 33500), 1165.5), 'NM base at $33,500 single should be $1,165.50 (§7-2-7)');
+check(near(baseAt('NM', 'married', 315000), 14624), 'NM base at $315,000 joint should be $14,624');
+check(near(baseAt('WV', 'single', 60000), 1950.5), 'WV base at $60,000 should be $1,950.50 (§11-21-4j)');
+check(near(baseAt('DC', 'single', 1000000), 91525), 'DC base at $1M should be $91,525 (OTR)');
+check(near(baseAt('NE', 'married', 49530), 1651.88, 0.01), 'NE base at $49,530 joint should be $1,651.88 (1040N-ES)');
+check(near(baseAt('ME', 'single', 64850), 4117, 1), 'ME base at $64,850 single should be about $4,117 (rate schedule rounds)');
+check(near(baseAt('DE', 'single', 60000), 2943.5), 'DE base at $60,000 should be $2,943.50');
+check(near(baseAt('SC', 'single', 18230), 437.7), 'SC tax at $18,230 should be $437.70 (WH-1603F)');
+check(near(baseAt('VT', 'married', 199450), 10482, 1), 'VT base at $199,450 joint should be about $10,482');
+
+// Minnesota: 2026 brackets after $15,300; Paid Leave employee share 0.44% capped at $184,500.
+const mn60 = pay('MN', 60000);
+check(near(mn60.state.tax, 0.0535 * 33310 + 0.068 * (44700 - 33310)), `MN tax on $60k mis-computed: ${mn60.state.tax}`);
+check(near(mn60.state.payrollTotal, 264), `MN Paid Leave on $60k should be $264, got ${mn60.state.payrollTotal}`);
+check(near(pay('MN', 300000).state.payrollTotal, 0.0044 * 184500), 'MN Paid Leave must cap at the SS wage base');
+
+// Wisconsin sliding-scale deduction reproduces the 2025 Standard Deduction Table at band midpoints.
+const WI = st('WI');
+check(near(engine.stateDeductionFor(WI, 60750, 'single') - 700, 8616, 0.5), 'WI single deduction at $60,750 should match the table ($8,616)');
+check(near(engine.stateDeductionFor(WI, 60750, 'married') - 1400, 18674, 0.5), 'WI joint deduction at $60,750 should match the table ($18,674)');
+check(near(engine.stateDeductionFor(WI, 60750, 'hoh') - 700, 8616, 0.5), 'WI HoH deduction at $60,750 should fall back to the single amount ($8,616)');
+check(near(engine.stateDeductionFor(WI, 20750, 'hoh') - 700, 17250, 0.5), 'WI HoH deduction at $20,750 should match the table ($17,250)');
+check(engine.stateDeductionFor(WI, 140000, 'single') === 700, 'WI single standard deduction should be gone at $140k');
+check(near(pay('WI', 60000).state.tax, 513.8 + 0.044 * (50480 - 14680) + 0.053 * (60000 - 9406 - 50480)), 'WI tax on $60k mis-computed');
+
+// Alabama: federal income tax is deducted; stepped standard deduction.
+const AL = st('AL');
+check(engine.stateDeductionFor(AL, 25999, 'single') === 4500, 'AL deduction at $25,999 single should be $3,000 + $1,500');
+check(engine.stateDeductionFor(AL, 26000, 'single') === 4475, 'AL deduction just above $25,999 should drop $25');
+check(engine.stateDeductionFor(AL, 35500, 'single') === 4000, 'AL deduction at $35,500 single should be $2,500 + $1,500');
+check(engine.stateDeductionFor(AL, 35500, 'married') === 8000, 'AL joint deduction at $35,500 should be $5,000 + $3,000');
+// $60k single: taxable 60,000 − 4,000 − 5,020 federal = 50,980 → 10 + 100 + 5% × 47,980 = 2,509
+check(near(pay('AL', 60000).state.tax, 2509), `AL tax on $60k should be $2,509, got ${pay('AL', 60000).state.tax}`);
+
+// Connecticut: (Table B + C + D) × (1 − E) after the Table A exemption.
+// $60k single: exemption 0; B = 2,550; C = 25; D = 0; E = 0.10 → 2,317.50
+check(near(pay('CT', 60000).state.tax, 2317.5), `CT tax on $60k should be $2,317.50, got ${pay('CT', 60000).state.tax}`);
+// $40k single: exemption 15,000 − 10,000 = 5,000 → taxable 35,000 → B = 200 + 4.5% × 25,000 = 1,325; E = 0.10 → 1,192.50
+check(near(pay('CT', 40000).state.tax, 1192.5), `CT tax on $40k should be $1,192.50, got ${pay('CT', 40000).state.tax}`);
+// $150k single: B = 4,750 + 6% × 50,000 = 7,750; C = 250; D (145,000–150,000] = 225; E = 0 → 8,225
+check(near(pay('CT', 150000).state.tax, 8225), `CT tax on $150k should be $8,225, got ${pay('CT', 150000).state.tax}`);
+check(near(pay('CT', 60000).state.payrollTotal, 300), 'CT Paid Leave on $60k should be $300');
+
+// Oregon: federal subtraction capped at $8,750 and phased out; $263 credit lost above $100k single; PFML 0.6% + transit 0.1%.
+const or60 = pay('OR', 60000);
+check(near(or60.state.tax, 216.125 + 462.375 + 0.0875 * (60000 - 2910 - 5020 - 11400) - 263), `OR tax on $60k mis-computed: ${or60.state.tax}`);
+check(near(or60.state.payrollTotal, 420), `OR payroll on $60k should be $420, got ${or60.state.payrollTotal}`);
+const or150 = pay('OR', 150000); // federal subtraction 0 at $145k+, no credit
+check(near(or150.state.tax, 216.125 + 462.375 + 0.0875 * (125000 - 11400) + 0.099 * (150000 - 2910 - 125000)), `OR tax on $150k mis-computed: ${or150.state.tax}`);
+const or127 = pay('OR', 127000); // cap 7,000 < federal tax
+check(near(or127.state.deduction, 2910 + 7000), `OR deduction at $127k should include a $7,000 federal cap, got ${or127.state.deduction}`);
+
+// Arkansas: high-income adjustment adds back up to $330.66 above $97,800 of net taxable income.
+const AR = st('AR');
+const arTax = (taxable) => engine.computeSourcedStateTax(AR, taxable + 2470, taxable + 2470, 'single').tax;
+check(near(arTax(57530), 0.039 * 57530 - 419.96 - 29, 0.02), 'AR tax at $57,530 taxable should match the formula (3.9% − $419.96 − $29)');
+check(near(arTax(120000), 0.039 * 120000 - 89.3 - 29, 0.02), 'AR tax above $97,800 should be 3.9% − $89.30 − $29');
+check(near(arTax(95000), 0.039 * 95000 - 379.3 - 29, 0.02), 'AR tax at $95,000 should use the $379.30 subtraction');
+
+// Utah: 4.45% less the phased taxpayer credit.
+check(near(pay('UT', 60000).state.tax, 0.0445 * 60000 - (966 - 0.013 * (60000 - 18213))), 'UT tax on $60k mis-computed');
+check(near(pay('UT', 100000).state.tax, 4450), 'UT credit must be fully phased out at $100k');
+
+// Vermont: 3% minimum above $150,000 AGI does not bind at $160k but the schedule result is used.
+const vt160 = pay('VT', 160000);
+check(vt160.state.tax >= 0.03 * 160000, 'VT tax above $150k must be at least 3% of AGI');
+
+// Rhode Island: deduction + exemption phase-out tiers; TDI 1.1% to $100k.
+check(engine.stateDeductionFor(st('RI'), 254250, 'single') === 16000, 'RI full deduction at $254,250');
+check(engine.stateDeductionFor(st('RI'), 254251, 'single') === 12800, 'RI 80% deduction just above $254,250');
+check(engine.stateDeductionFor(st('RI'), 290000, 'married') === 0, 'RI deduction gone above $283,250');
+check(near(pay('RI', 150000).state.payrollTotal, 1100), 'RI TDI must cap at $100,000 of wages');
+
+// Hawaii TDI: 0.5% capped at the $1,500.21 weekly base → about $390.05 a year.
+check(near(pay('HI', 120000).state.payrollTotal, 1500.21 * 52 * 0.005), 'HI TDI must cap at the weekly wage base');
+
+// Maine 2026 surcharge: 2% above $1M single.
+const me2m = pay('ME', 2000000);
+check(near(me2m.state.tax, engine.taxFromBrackets(2000000 - 21000, st('ME').wageTax.single)), 'ME tax at $2M mis-computed');
+check(near(engine.taxFromBrackets(1100000, st('ME').wageTax.single) - engine.taxFromBrackets(1000000, st('ME').wageTax.single), 9150), 'ME surcharge: $100k above $1M should add 9.15%');
+
+// Single-filer $60k state figures quoted in the specs' notes.
+const expect60 = { IN: 1740.5, MO: 1882.67, SC: 1977.9, KY: 1982.4, LA: 1413.75, OK: 2154.5, IA: 1668.2, MS: 1668, KS: 2548.31, NM: 1654.3, NE: 1850.46, WV: 1866.1, ID: 2071.72, ME: 2372.2, MT: 2063.3, RI: 1650, DE: 2653.13, VT: 1576.18, DC: 2453.5, HI: 2756.26, AR: 1794.71 };
+for (const [code, want] of Object.entries(expect60)) {
+  const got = pay(code, 60000).state.tax;
+  check(near(got, want, 0.02), `${code} tax on $60k single should be $${want}, got ${got}`);
+}
+check(pay('ND', 60000).state.tax === 0, 'ND tax on $60k single should be $0 (zero bracket)');
+check(near(pay('ND', 80000).state.tax, 0.0195 * (80000 - 16100 - 48475)), 'ND tax on $80k mis-computed');
+
 // Every sourced spec must carry provenance on every figure-bearing object.
 for (const spec of states.SOURCED_STATES) {
-  const objs = [spec.wageTax, spec.deduction, ...spec.payrollDeductions, ...spec.lines, ...spec.notes];
+  const adj = spec.adjustments ?? {};
+  const adjObjs = [adj.federalTaxDeduction, adj.credit, ...(adj.addOns ?? []), adj.taxReductionRate, adj.minimumTax].filter(Boolean);
+  const objs = [spec.wageTax, spec.deduction, ...spec.payrollDeductions, ...spec.lines, ...spec.notes, ...adjObjs];
+  if (spec.deduction.phaseout) {
+    for (const fs of ['single', 'married', 'hoh']) {
+      check(engine.stateDeductionFor(spec, 0, fs) === spec.deduction[fs], `${spec.code}: deduction.${fs} must equal the full (low-income) phased amount`);
+    }
+  }
+  for (const t of [...(adj.addOns ?? []).map((a) => a.tiers), adj.taxReductionRate?.tiers, adj.credit?.tiers, adj.federalTaxDeduction?.capTiers].filter(Boolean)) {
+    for (const fs of ['single', 'married', 'hoh']) {
+      const list = t[fs];
+      check(list.length >= 1 && list[list.length - 1].upTo === null, `${spec.code} ${fs}: step tiers must end open-ended`);
+      for (let i = 1; i < list.length; i++) check(list[i - 1].upTo !== null && (list[i].upTo === null || list[i].upTo > list[i - 1].upTo), `${spec.code} ${fs}: step tier ceilings must ascend`);
+    }
+  }
   for (const o of objs) {
     check(typeof o.source === 'string' && o.source.length > 10, `${spec.code}: missing source on ${o.label ?? o.title ?? o.kind}`);
     check(/^https?:\/\//.test(o.sourceUrl ?? ''), `${spec.code}: missing sourceUrl on ${o.label ?? o.title ?? o.kind}`);

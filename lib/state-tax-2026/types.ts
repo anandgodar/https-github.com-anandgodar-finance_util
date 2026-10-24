@@ -63,6 +63,85 @@ export interface StateDeduction extends Provenance {
    * display of "the" deduction shows the lowest-income figure.
    */
   tiers?: Array<{ upTo: number | null; single: number; married: number; hoh: number }>;
+  /**
+   * Income phase-out of the standard deduction (e.g. Wisconsin's sliding
+   * scale, Alabama's $25-per-$500 reduction, Connecticut's personal exemption).
+   * When present it replaces `single`/`married`/`hoh` for the computation:
+   * the phased amount is the largest result among the status's phases (a
+   * status may have two, as Wisconsin's head-of-household schedule does), and
+   * `additional` is then added on top. `single`/`married`/`hoh` must still hold
+   * the full low-income total (phased amount + additional) for display.
+   */
+  phaseout?: { single: DeductionPhase[]; married: DeductionPhase[]; hoh: DeductionPhase[] };
+  /** Fixed amounts added after the phase-out, e.g. personal exemptions that do not phase out. */
+  additional?: { single: number; married: number; hoh: number };
+}
+
+/**
+ * One phase-out rule: `amount` reduced once income exceeds `start`.
+ * Continuous: reduction = rate × (income − start).
+ * Stepped: reduction = perStep × ceil((income − start) / step) — the "for each
+ * $500 or fraction thereof" wording many statutes use.
+ * The result never falls below `floor` (default 0).
+ */
+export interface DeductionPhase {
+  amount: number;
+  start: number;
+  rate?: number;
+  step?: number;
+  perStep?: number;
+  floor?: number;
+}
+
+/** Amount keyed to income by filing status: the first tier whose `upTo` (inclusive; null = no ceiling) covers the income applies. */
+export type IncomeTiers = Array<{ upTo: number | null; single: number; married: number; hoh: number }>;
+
+/**
+ * Step table with its own income breakpoints for each filing status (the
+ * statuses rarely share thresholds). The first tier whose `upTo` (inclusive;
+ * null = no ceiling) covers the income applies; each list must end open-ended.
+ */
+export interface StatusTiers {
+  single: Array<{ upTo: number | null; value: number }>;
+  married: Array<{ upTo: number | null; value: number }>;
+  hoh: Array<{ upTo: number | null; value: number }>;
+}
+
+/**
+ * Optional state-specific mechanics beyond brackets and a deduction. Each one
+ * carries its own provenance so the page can link the rule it implements.
+ */
+export interface StateAdjustments {
+  /**
+   * Federal income tax subtracted from state taxable income (Alabama: all of
+   * it; Oregon: up to a cap that phases out by income). A cap of Infinity
+   * means unlimited.
+   */
+  federalTaxDeduction?: { capTiers: StatusTiers } & Provenance;
+  /**
+   * Nonrefundable credit subtracted from tax (e.g. Delaware's $110 personal
+   * credit, Oregon's exemption credit, Utah's taxpayer credit). Either flat
+   * per status, income-tiered (`tiers`, which then overrides the flat amounts),
+   * or reduced by `phaseoutRate` × income above `phaseoutStart`.
+   */
+  credit?: {
+    single: number;
+    married: number;
+    hoh: number;
+    tiers?: StatusTiers;
+    phaseoutStart?: { single: number; married: number; hoh: number };
+    phaseoutRate?: number;
+  } & Provenance;
+  /**
+   * Amounts added to tax from step tables, e.g. Connecticut's 2% phase-out
+   * add-back and recapture (keyed to income) or Arkansas's high-income bracket
+   * adjustment (keyed to taxable income).
+   */
+  addOns?: Array<{ id: string; basis: 'income' | 'taxable'; tiers: StatusTiers } & Provenance>;
+  /** Tax multiplied by (1 − rate), e.g. Connecticut's personal tax credit decimal (Table E), keyed to income. */
+  taxReductionRate?: { tiers: StatusTiers } & Provenance;
+  /** Tax is the greater of the schedule and `rate` × income once income exceeds `incomeOver` (Vermont). */
+  minimumTax?: { incomeOver: number; rate: number } & Provenance;
 }
 
 /**
@@ -112,6 +191,8 @@ export interface StateTaxSpec {
   wageTax: WageTax;
   deduction: StateDeduction;
   payrollDeductions: PayrollDeduction[];
+  /** State-specific mechanics (federal tax deduction, credits, add-backs). Omitted for most states. */
+  adjustments?: StateAdjustments;
   /** Lines rendered in the "what's taken out" section (state/local only; federal lines are shared). */
   lines: PaycheckLine[];
   notes: StateNote[];
@@ -121,6 +202,8 @@ export interface StateTaxSpec {
     retrievedAt: string;
     /** Which figures are from a prior year because 2026 was not yet published. */
     priorYearFigures?: string[];
+    /** Figures read only from a secondary source (not yet confirmed on the revenue department, statute or agency page). */
+    unverifiedFigures?: string[];
     description: string;
   };
 }

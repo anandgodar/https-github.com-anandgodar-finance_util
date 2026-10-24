@@ -12,7 +12,8 @@ import type { StateTaxSpec } from '../../../lib/state-tax-2026/types';
 const usd = (n: number) => `$${Math.round(n).toLocaleString('en-US')}`;
 const pct = (r: number, digits = 2) => `${(r * 100).toFixed(digits).replace(/\.?0+$/, '')}%`;
 /** Indefinite article for a state name ("an Ohio paycheck", "a Texas paycheck"). */
-const an = (name: string) => (/^[AEIOU]/i.test(name) ? 'an' : 'a');
+// "Utah" starts with a "you" sound, so it takes "a".
+const an = (name: string) => (/^[AEIOU]/i.test(name) && !/^U(tah)/i.test(name) ? 'an' : 'a');
 
 export function buildTakeHomeRows(spec: StateTaxSpec) {
   return TABLE_SALARIES.map((salary) => {
@@ -34,12 +35,15 @@ function stateRateText(spec: StateTaxSpec): string {
   const wt = spec.wageTax;
   if (wt.kind === 'none') return 'no state income tax';
   if (wt.kind === 'flat') return `a flat ${pct(wt.rate)} state income tax`;
-  const rates = wt.single.map((b) => b.rate).filter((r) => r > 0);
+  const rates = [...new Set(wt.single.map((b) => b.rate).filter((r) => r > 0))];
   const lo = Math.min(...rates);
   const hi = Math.max(...rates);
   if (lo === hi) return `a ${pct(hi)} state income tax`;
-  // A flat rate with a single surtax bracket (e.g. Massachusetts) reads better as flat-plus-surtax than as a range.
-  if (rates.length === 2 && wt.single[0].upTo !== null) return `a ${pct(lo)} state income tax (${pct(hi)} on income above ${usd(wt.single[0].upTo)})`;
+  // Two positive rates (Massachusetts surtax, Kansas, Montana) read better as rate-plus-upper-rate than as a range.
+  // The threshold is the ceiling of the bracket just below the first bracket at the upper rate.
+  const hiIdx = wt.single.findIndex((b) => b.rate === hi);
+  const threshold = hiIdx > 0 ? wt.single[hiIdx - 1].upTo : null;
+  if (rates.length === 2 && threshold !== null) return `a ${pct(lo)} state income tax (${pct(hi)} on taxable income above ${usd(threshold)})`;
   return `state income tax from ${pct(lo)} to ${pct(hi)}`;
 }
 
@@ -67,7 +71,7 @@ export function buildStateFAQs(spec: StateTaxSpec) {
               spec.deduction.kind === 'none'
                 ? 'There is no standard deduction or personal exemption, so the rate applies to every dollar of wages.'
                 : `The rate applies after a ${usd(spec.deduction.single)} ${spec.deduction.kind === 'standard' ? 'standard deduction' : 'personal exemption'} for a single filer (${usd(spec.deduction.married)} married filing jointly).`
-            }`
+            }${spec.adjustments?.credit ? ` ${spec.summary}` : ''}`
           : `${name} uses ${stateRateText(spec)} in ${spec.taxYear}. ${spec.summary}`,
   });
 
@@ -100,6 +104,15 @@ export function buildStateFAQs(spec: StateTaxSpec) {
       answer: spec.payrollDeductions
         .map((p) => `${p.label}: ${pct(p.rate, 4)}${p.wageBase ? ` on the first $${p.wageBase.toLocaleString()}` : ' of all wages'}`)
         .join('; ') + `. These are withheld from employees in ${spec.taxYear} in addition to state income tax and are included in the table above.`,
+    });
+  } else if (!spec.lines.some((l) => /local/i.test(l.label))) {
+    // No sourced statement about local taxes for this state: describe what the calculator applies instead of asserting there are none.
+    faqs.push({
+      question: `Which ${name} rules does this paycheck calculator apply?`,
+      answer: `${spec.lines
+        .filter((l) => l.computed)
+        .map((l) => `${l.label}: ${l.rateText}`)
+        .join('; ')}. Each rule links to the ${name} source it was read from in the list above.`,
     });
   } else {
     faqs.push({

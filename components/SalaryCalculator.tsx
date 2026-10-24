@@ -26,6 +26,13 @@ interface StateData {
  * bracket schedule per state. States marked "federal std deduction" start
  * from the federal standard deduction ($16,100 for 2026); state conformity
  * can lag, so treat results as estimates and check the state revenue site.
+ *
+ * LEGACY (2026-10-24): every state and DC now has a sourced spec in
+ * lib/state-tax-2026 (SOURCED_STATES), and `sourcedSpec` below takes
+ * precedence, so this table no longer supplies any state's tax. It is kept
+ * for the state picker's names and as the fallback for a state that might be
+ * removed from SOURCED_STATES; in that case the "not yet verified" provenance
+ * line under the results renders again automatically.
  */
 const STATE_TAX_DATA: Record<string, StateData> = {
   AL: { name: 'Alabama', rate: 0.05, stdDeduction: 2500, brackets: [{ limit: 500, rate: 0.02 }, { limit: 3000, rate: 0.04 }, { limit: null, rate: 0.05 }] },
