@@ -10,7 +10,7 @@ const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title
   </section>
 );
 
-const CONTACT_EMAIL = 'intelligence@quantcurb.com';
+const CONTACT_EMAIL = 'hello@quantcurb.com';
 
 const TermsOfUse: React.FC = () => {
   return (
