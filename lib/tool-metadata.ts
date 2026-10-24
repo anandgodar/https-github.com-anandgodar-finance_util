@@ -576,6 +576,11 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
     desc: "How QuantCurb handles your data: calculator inputs stay in your browser, plus how we use cookies, Google Analytics and Google AdSense ads.",
     keywords: "privacy policy"
   },
+  [ToolType.TERMS]: {
+    title: "Terms of Use",
+    desc: "Terms for using QuantCurb: calculators give educational estimates from IRS and state sources, not tax, legal or financial advice. Verify before relying.",
+    keywords: "terms of use, terms of service"
+  },
   [ToolType.SITEMAP]: {
     title: "QuantCurb Sitemap - Explore Professional Financial Utilities",
     desc: "A complete directory of high-fidelity financial modeling tools and educational resources in the QuantCurb intelligence ecosystem.",

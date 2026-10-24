@@ -120,6 +120,7 @@ export enum ToolType {
   FAQ = 'financial-knowledge-base',
   METHODOLOGY = 'methodology-assumptions',
   PRIVACY = 'privacy-policy',
+  TERMS = 'terms',
   SITEMAP = 'sitemap',
   ABOUT = 'about-quantcurb',
   CONTACT = 'contact-us',

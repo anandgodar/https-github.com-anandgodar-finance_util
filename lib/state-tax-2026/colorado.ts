@@ -24,10 +24,10 @@ const CO_TABOR_FY26 = {
 };
 
 const CO_TABOR_MECH = {
-  source: 'EY Tax News Update 2024-1127 (3 Jun 2024), describing SB 24-228: a temporary income tax rate reduction below the 4.4% statutory rate for tax years 2025–2035 in any year the TABOR surplus exceeds a statutory threshold',
-  sourceUrl: 'https://taxnews.ey.com/news/2024-1127-colorado-reduces-2024-income-tax-rate-and-provides-mechanism-for-temporary-reductions-for-2025-35',
+  source: 'Colorado General Assembly, SB24-228 TABOR Refund Mechanisms (signed 14 May 2024), bill summary as enacted: the temporary income tax rate reduction is active for income tax years 2024 through 2034 and, after 2024, cuts the 4.40% rate by 0.04 to 0.15 points depending on how far excess state revenue exceeds $300 million',
+  sourceUrl: 'https://leg.colorado.gov/bills/sb24-228',
   retrievedAt: '2026-10-24',
-  note: 'Secondary source for the mechanism only; no threshold or reduced-rate figure from it is reproduced. The bill text on leg.colorado.gov could not be read at retrieval.',
+  note: 'Used for the mechanism only; the rate on this page comes from the DOR\'s 2026 DR 1098.',
 };
 
 const CO_FAMLI = {
@@ -80,7 +80,7 @@ export const COLORADO: StateTaxSpec = {
       detail:
         'The 2026 employer withholding worksheet applies 4.40%. Colorado law (SB 24-228) allows a temporary cut below 4.4% in a tax year when the state\'s TABOR surplus exceeds a statutory threshold; the Controller\'s FY2026 report put revenue under the TABOR cap, so no cut applies for 2026.',
       ...CO_DR1098_2026,
-      note: 'The TABOR mechanism is described from a secondary source (EY) and the FY2026 result from a press report of the Controller\'s certification; neither is used for any figure on this page.',
+      note: 'The TABOR mechanism is described from the enacted SB24-228 summary on leg.colorado.gov and the FY2026 result from a press report of the Controller\'s certification; neither is used for any figure on this page.',
     },
     {
       label: 'Federal standard deduction (Colorado starts from federal taxable income)',
@@ -109,7 +109,7 @@ export const COLORADO: StateTaxSpec = {
     {
       title: 'Why the rate can change year to year',
       body:
-        'Colorado\'s statutory rate is 4.4%, but SB 24-228 lets the rate drop temporarily in a tax year when the state collects more than a statutory threshold above its TABOR revenue cap, with the size of the cut scaled to the size of the surplus. The mechanism is described here from a secondary source (EY\'s summary of the bill); no threshold or reduced rate from it is reproduced, and the 4.4% on this page comes from the Department of Revenue\'s own 2026 withholding worksheet.',
+        'Colorado\'s statutory rate is 4.4%, but SB 24-228 lets the rate drop temporarily in a tax year when the state collects more than a statutory threshold above its TABOR revenue cap, with the size of the cut scaled to the size of the surplus. Under the enacted bill the mechanism runs for income tax years 2024 through 2034, and the cut ranges from 0.04 to 0.15 points depending on how far the remaining surplus exceeds $300 million. The 4.4% on this page comes from the Department of Revenue\'s own 2026 withholding worksheet.',
       ...CO_TABOR_MECH,
     },
     {
@@ -142,6 +142,6 @@ export const COLORADO: StateTaxSpec = {
     taxYear: 2026,
     retrievedAt: RETRIEVED,
     description:
-      '4.4% from the DOR 2026 DR 1098 withholding worksheet; no TABOR surplus reduction for 2026 per the Controller\'s FY2026 report (as reported in the press, 20 Oct 2026; the SB 24-228 mechanism is described from EY, both secondary and labelled). Deduction = IRS 2026 standard deduction because Colorado taxable income starts from federal taxable income. FAMLI employee share 0.44% to $184,500 from the FAMLI Division. Occupational privilege taxes are not computed.',
+      '4.4% from the DOR 2026 DR 1098 withholding worksheet; no TABOR surplus reduction for 2026 per the Controller\'s FY2026 report (as reported in the press, 20 Oct 2026, secondary and labelled; the SB 24-228 mechanism is from the enacted bill summary on leg.colorado.gov). Deduction = IRS 2026 standard deduction because Colorado taxable income starts from federal taxable income. FAMLI employee share 0.44% to $184,500 from the FAMLI Division. Occupational privilege taxes are not computed.',
   },
 };

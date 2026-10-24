@@ -116,6 +116,7 @@ const BlogIndex = lazy(() => import('./BlogIndex'));
 const FAQ = lazy(() => import('./FAQ'));
 const Methodology = lazy(() => import('./Methodology'));
 const PrivacyPolicy = lazy(() => import('./PrivacyPolicy'));
+const TermsOfUse = lazy(() => import('./TermsOfUse'));
 const Sitemap = lazy(() => import('./Sitemap'));
 const AboutUs = lazy(() => import('./AboutUs'));
 const ContactUs = lazy(() => import('./ContactUs'));
@@ -292,6 +293,7 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
         case ToolType.FAQ: return <FAQ onSelectTool={setActiveTool} />;
         case ToolType.METHODOLOGY: return <Methodology />;
         case ToolType.PRIVACY: return <PrivacyPolicy />;
+        case ToolType.TERMS: return <TermsOfUse />;
         case ToolType.SITEMAP: return <Sitemap onSelectTool={setActiveTool} />;
         case ToolType.ABOUT: return <AboutUs />;
         case ToolType.CONTACT: return <ContactUs />;

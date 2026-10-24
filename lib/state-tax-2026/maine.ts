@@ -22,6 +22,7 @@ export const MAINE: StateTaxSpec = {
   rateLead: '5.8%–7.15% tax + 0.5% PFML',
   summary:
     'Maine taxes 2026 income at 5.8% up to $27,400, 6.75% up to $64,850 and 7.15% above for a single filer, after a $15,700 standard deduction and $5,300 personal exemption; a new 2% surcharge applies above $1 million, and employers may withhold up to 0.5% of wages for Maine Paid Family and Medical Leave.',
+  surcharge: { rate: 0.02, thresholdSingle: 1000000, thresholdJoint: 1500000 },
   wageTax: {
     kind: 'brackets',
     single: [

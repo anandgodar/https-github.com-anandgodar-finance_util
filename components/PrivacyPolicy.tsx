@@ -22,7 +22,7 @@ const PrivacyPolicy: React.FC = () => {
       <header className="mb-16 space-y-4">
         <span className="px-4 py-1.5 bg-indigo-50 text-indigo-600 rounded-xl text-[10px] font-black uppercase tracking-widest">Your Data</span>
         <h1 className="text-5xl font-black text-slate-900 tracking-tighter">Privacy <span className="text-indigo-600">Policy</span></h1>
-        <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Last updated: October 16, 2026</p>
+        <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Last updated: October 24, 2026</p>
       </header>
 
       <div className="font-medium text-slate-600 space-y-12 leading-relaxed">
@@ -81,8 +81,11 @@ const PrivacyPolicy: React.FC = () => {
           </p>
           <p>
             Visitors in the European Economic Area, the United Kingdom and Switzerland are asked for consent before
-            personalized ads or non-essential cookies are used, through a consent message shown on the site. You can
-            change your choice at any time using the privacy/cookie settings link in that message.
+            personalized ads or non-essential cookies are used, through Google&apos;s consent message, a
+            Google-certified consent management platform (CMP) that uses the IAB Transparency and Consent Framework.
+            Until you answer it, Google Consent Mode keeps advertising and analytics storage turned off for visitors in
+            those regions, and Google and other third-party ad vendors do not use cookies for personalized ads unless
+            you consent. You can change your choice at any time using the privacy/cookie settings link in that message.
           </p>
         </Section>
 

@@ -30,6 +30,7 @@ const pageSchemaType: Partial<Record<ToolType, string>> = {
   [ToolType.ABOUT]: 'AboutPage',
   [ToolType.CONTACT]: 'ContactPage',
   [ToolType.PRIVACY]: 'WebPage',
+  [ToolType.TERMS]: 'WebPage',
   [ToolType.DISCLAIMER]: 'WebPage',
   [ToolType.METHODOLOGY]: 'WebPage',
   [ToolType.SITEMAP]: 'WebPage',

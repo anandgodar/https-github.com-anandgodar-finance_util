@@ -166,6 +166,15 @@ const Footer: React.FC<FooterProps> = ({ setActiveTool }) => {
               </li>
               <li>
                 <Link
+                  href="/terms/"
+                  onClick={(e) => handleClick(e, ToolType.TERMS)}
+                  className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors"
+                >
+                  Terms of Use
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/sitemap/"
                   onClick={(e) => handleClick(e, ToolType.SITEMAP)}
                   className="text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors"
