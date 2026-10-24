@@ -24,10 +24,20 @@ export interface Sourced<T> extends Provenance {
   value: T;
 }
 
-/** Marginal bracket: `upTo` is the top of the bracket (null = no ceiling). */
+/**
+ * Marginal bracket: `upTo` is the top of the bracket (null = no ceiling).
+ *
+ * `base` is a fixed dollar amount the statute adds the moment taxable income
+ * enters this bracket, on top of the marginal rate on the slice. Most schedules
+ * print a base that merely equals the tax accumulated in the lower brackets
+ * (leave it out — the engine already sums the lower slices). It is needed only
+ * where the printed base is NOT the sum of the lower brackets, e.g. Ohio's
+ * "$332.00 plus 2.75% of the amount in excess of $26,050" after a 0% bracket.
+ */
 export interface Bracket {
   upTo: number | null;
   rate: number;
+  base?: number;
 }
 
 export type WageTax =
@@ -44,6 +54,15 @@ export interface StateDeduction extends Provenance {
   single: number;
   married: number;
   hoh: number;
+  /**
+   * Income-tiered amounts (e.g. Ohio's personal exemption, which shrinks as
+   * modified AGI rises). When present the engine picks the first tier whose
+   * `upTo` (inclusive; null = no ceiling) is at or above the taxpayer's
+   * income-tax wages and uses that tier's per-status totals; `single`/
+   * `married`/`hoh` above must equal the first tier's values so that any
+   * display of "the" deduction shows the lowest-income figure.
+   */
+  tiers?: Array<{ upTo: number | null; single: number; married: number; hoh: number }>;
 }
 
 /**

@@ -15,7 +15,11 @@ import type { Bracket, FilingStatus, StateTaxSpec } from './state-tax-2026/types
 
 export type { FilingStatus };
 
-/** Marginal tax on `taxable` across ascending brackets (upTo = bracket ceiling). */
+/**
+ * Marginal tax on `taxable` across ascending brackets (upTo = bracket ceiling).
+ * A bracket's optional `base` is added once, when taxable income exceeds that
+ * bracket's floor (see `Bracket` in state-tax-2026/types.ts).
+ */
 export function taxFromBrackets(taxable: number, brackets: Bracket[]): number {
   let tax = 0;
   let floor = 0;
@@ -23,10 +27,20 @@ export function taxFromBrackets(taxable: number, brackets: Bracket[]): number {
     if (taxable <= floor) break;
     const ceiling = b.upTo ?? Infinity;
     const slice = Math.min(taxable, ceiling) - floor;
-    tax += slice * b.rate;
+    tax += (b.base ?? 0) + slice * b.rate;
     floor = ceiling;
   }
   return tax;
+}
+
+/** Deduction for a filing status, honouring income tiers when the spec has them. */
+export function stateDeductionFor(spec: StateTaxSpec, adjustedWages: number, filingStatus: FilingStatus): number {
+  const d = spec.deduction;
+  if (d.tiers && d.tiers.length > 0) {
+    const tier = d.tiers.find((t) => t.upTo === null || adjustedWages <= t.upTo) ?? d.tiers[d.tiers.length - 1];
+    return tier[filingStatus];
+  }
+  return d[filingStatus];
 }
 
 export interface FederalResult {
@@ -91,7 +105,7 @@ export function computeSourcedStateTax(
   grossWages: number,
   filingStatus: FilingStatus
 ): StateResult {
-  const deduction = spec.deduction[filingStatus];
+  const deduction = stateDeductionFor(spec, adjustedWages, filingStatus);
   const taxable = Math.max(0, adjustedWages - deduction);
   let tax = 0;
   if (spec.wageTax.kind === 'flat') tax = taxable * spec.wageTax.rate;

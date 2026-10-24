@@ -11,6 +11,8 @@ import type { StateTaxSpec } from '../../../lib/state-tax-2026/types';
 
 const usd = (n: number) => `$${Math.round(n).toLocaleString('en-US')}`;
 const pct = (r: number, digits = 2) => `${(r * 100).toFixed(digits).replace(/\.?0+$/, '')}%`;
+/** Indefinite article for a state name ("an Ohio paycheck", "a Texas paycheck"). */
+const an = (name: string) => (/^[AEIOU]/i.test(name) ? 'an' : 'a');
 
 export function buildTakeHomeRows(spec: StateTaxSpec) {
   return TABLE_SALARIES.map((salary) => {
@@ -35,7 +37,10 @@ function stateRateText(spec: StateTaxSpec): string {
   const rates = wt.single.map((b) => b.rate).filter((r) => r > 0);
   const lo = Math.min(...rates);
   const hi = Math.max(...rates);
-  return lo === hi ? `a ${pct(hi)} state income tax` : `state income tax from ${pct(lo)} to ${pct(hi)}`;
+  if (lo === hi) return `a ${pct(hi)} state income tax`;
+  // A flat rate with a single surtax bracket (e.g. Massachusetts) reads better as flat-plus-surtax than as a range.
+  if (rates.length === 2 && wt.single[0].upTo !== null) return `a ${pct(lo)} state income tax (${pct(hi)} on income above ${usd(wt.single[0].upTo)})`;
+  return `state income tax from ${pct(lo)} to ${pct(hi)}`;
 }
 
 export function buildStateFAQs(spec: StateTaxSpec) {
@@ -52,7 +57,11 @@ export function buildStateFAQs(spec: StateTaxSpec) {
     question: `What is the ${name} state income tax rate in ${spec.taxYear}?`,
     answer:
       wt.kind === 'none'
-        ? `${name} has no state income tax on wages. The only taxes withheld from a ${name} paycheck are federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}) and Medicare (1.45%).`
+        ? `${name} has no state income tax on wages. ${
+            hasPayroll
+              ? `${an(name) === 'an' ? 'An' : 'A'} ${name} paycheck still carries federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}), Medicare (1.45%) and the state payroll contributions below (${spec.payrollDeductions.map((p) => p.label.replace(/ \(.*\)$/, '')).join(' and ')}).`
+              : `The only taxes withheld from ${an(name)} ${name} paycheck are federal income tax, Social Security (6.2% up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}) and Medicare (1.45%).`
+          }`
         : wt.kind === 'flat'
           ? `${name} taxes wages at a flat ${pct(wt.rate)} in ${spec.taxYear}. ${
               spec.deduction.kind === 'none'
@@ -76,7 +85,10 @@ export function buildStateFAQs(spec: StateTaxSpec) {
     }. The effective rate on all taxes is ${pct(r100.effectiveRate, 1)}.`,
   });
 
-  const localLine = spec.lines.find((l) => !l.computed);
+  // Prefer a genuinely local line (city/county/municipal) over other non-computed lines such as an unapplied exemption.
+  const localLine =
+    spec.lines.find((l) => !l.computed && /local|city|cities|county|municipal|school district|occupational|yonkers/i.test(`${l.label} ${l.rateText}`)) ??
+    spec.lines.find((l) => !l.computed);
   if (localLine) {
     faqs.push({
       question: `Does the ${name} paycheck calculator include local or city taxes?`,
@@ -104,8 +116,8 @@ export function buildStateFAQs(spec: StateTaxSpec) {
     });
   } else {
     faqs.push({
-      question: `What federal taxes come out of a ${name} paycheck in ${spec.taxYear}?`,
-      answer: `Federal income tax at 10% to 37% after the $${FEDERAL_2026.standardDeduction.single.toLocaleString()} standard deduction (single), Social Security at 6.2% on wages up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}, and Medicare at 1.45% with an extra 0.9% above $200,000. These are the same in every state; the state line is what makes a ${name} paycheck different.`,
+      question: `What federal taxes come out of ${an(name)} ${name} paycheck in ${spec.taxYear}?`,
+      answer: `Federal income tax at 10% to 37% after the $${FEDERAL_2026.standardDeduction.single.toLocaleString()} standard deduction (single), Social Security at 6.2% on wages up to $${FICA_2026.socialSecurity.wageBase.toLocaleString()}, and Medicare at 1.45% with an extra 0.9% above $200,000. These are the same in every state; the state line is what makes ${an(name)} ${name} paycheck different.`,
     });
   }
 
@@ -146,7 +158,7 @@ export default function StatePaycheckDepth({ spec }: { spec: StateTaxSpec }) {
 
       {/* (a) Answer-first intro */}
       <section className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12">
-        <h2 className="text-3xl font-black text-slate-900 mb-4">How much tax comes out of a {spec.name} paycheck?</h2>
+        <h2 className="text-3xl font-black text-slate-900 mb-4">How much tax comes out of {an(spec.name)} {spec.name} paycheck?</h2>
         <p className="text-lg text-slate-700 leading-relaxed">{spec.summary}</p>
         <p className="text-slate-600 mt-4 leading-relaxed">
           Every figure below is computed for tax year {spec.taxYear} from the federal brackets and standard deduction in IRS Rev. Proc. 2025-32, the
@@ -197,7 +209,7 @@ export default function StatePaycheckDepth({ spec }: { spec: StateTaxSpec }) {
 
       {/* (c) What's taken out */}
       <section className="mt-8 bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-12">
-        <h2 className="text-3xl font-black text-slate-900 mb-6">What&apos;s taken out of a {spec.name} paycheck</h2>
+        <h2 className="text-3xl font-black text-slate-900 mb-6">What&apos;s taken out of {an(spec.name)} {spec.name} paycheck</h2>
         <ul className="divide-y divide-slate-100">
           <li className="py-4">
             <div className="flex flex-wrap justify-between gap-2">

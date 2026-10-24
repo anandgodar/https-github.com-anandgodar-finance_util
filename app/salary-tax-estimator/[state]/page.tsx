@@ -72,8 +72,20 @@ export function generateMetadata({ params }: PageProps): Metadata {
   if (sourced) {
     const r60 = buildTakeHomeRows(sourced).find((r) => r.salary === 60000);
     const net60 = r60 ? `$${Math.round(r60.net).toLocaleString('en-US')}` : '';
-    const after = sourced.wageTax.kind === 'none' ? 'federal tax & FICA' : 'federal & state tax, FICA';
-    description = `${stateData.name}: ${sourced.rateLead}. 2026 paycheck calculator: $60k takes home ${net60}/yr after ${after}. Biweekly table, sourced rates.`;
+    // The $60k net already subtracts any employee payroll contributions (SDI, PFML, UC…), so say so.
+    const hasPayroll = sourced.payrollDeductions.length > 0;
+    const after =
+      sourced.wageTax.kind === 'none'
+        ? hasPayroll
+          ? 'federal tax, FICA & payroll'
+          : 'federal tax & FICA'
+        : hasPayroll
+          ? 'federal & state tax, FICA & payroll'
+          : 'federal & state tax, FICA';
+    const lead = `${stateData.name}: ${sourced.rateLead}. 2026 paycheck calculator: $60k takes home ${net60}/yr after ${after}.`;
+    // Keep the whole sentence intact: drop the tail rather than let clampDescription cut it mid-phrase.
+    const withTail = `${lead} Biweekly table, sourced rates.`;
+    description = withTail.length <= 155 ? withTail : lead;
   }
 
   return {
