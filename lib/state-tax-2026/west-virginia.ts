@@ -10,13 +10,13 @@ const WV_SB392 = {
 
 const WV_TAX = {
   source: 'West Virginia Tax Division, Personal Income Tax Reduction Bill — §11-21-4j effective 12 June 2026, "retroactive to January 1, 2026"',
-  sourceUrl: 'https://tax.wv.gov/Individuals/Pages/PersonalIncomeTaxReductionBill.aspx/',
+  sourceUrl: 'https://tax.wv.gov/Individuals/Pages/PersonalIncomeTaxReductionBill.aspx',
   retrievedAt: RETRIEVED,
 };
 
 const WV_IT140 = {
-  source: 'West Virginia Tax Division, Form IT-140 (2024; archived copy at NBER TAXSIM) — line 6 exemptions × $2,000; Schedule A special nonresidents from KY, MD, OH, PA and VA',
-  sourceUrl: 'https://taxsim.nber.org/historical_state_tax_forms/WV/2024/it140.2024.pdf',
+  source: 'West Virginia Tax Division, Form IT-140 (2024, latest year on the Tax Division\'s prior-year forms page) — line 6 "Total Exemptions … x $2,000"; Schedule A special nonresident income for residents of Kentucky, Maryland, Ohio, Pennsylvania or Virginia',
+  sourceUrl: 'https://tax.wv.gov/Documents/PIT/2024/it140.2024.pdf',
   retrievedAt: RETRIEVED,
 };
 

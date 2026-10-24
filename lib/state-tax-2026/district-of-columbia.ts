@@ -15,8 +15,8 @@ const DC_CODE = {
 };
 
 const DC_D4A = {
-  source: 'DC Office of Tax and Revenue, Form D-4A Certificate of Nonresidence (rev. 08/2011; copy hosted by the FCC) — nonresidents file it "to establish that you are not subject to DC income tax withholding"',
-  sourceUrl: 'https://www.fcc.gov/sites/default/files/D-4A.pdf',
+  source: 'DC Office of Tax and Revenue, Form D-4A Certificate of Non-residence in DC (OTR withholding form listing: "File with employer when requested") — nonresidents file it "to establish that you are not subject to DC income tax withholding"',
+  sourceUrl: 'https://otr.cfo.dc.gov/node/399402',
   retrievedAt: RETRIEVED,
 };
 

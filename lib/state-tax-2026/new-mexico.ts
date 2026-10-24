@@ -9,14 +9,14 @@ const NM_HB252 = {
 };
 
 const NM_PIT1 = {
-  source: 'New Mexico Taxation and Revenue Department, Form PIT-1 (2024; archived copy at NBER TAXSIM) — line 12 "Federal standard or itemized deduction amount"',
-  sourceUrl: 'https://taxsim.nber.org/historical_state_tax_forms/NM/2024/2024pit-1.pdf',
+  source: 'New Mexico Taxation and Revenue Department, 2025 Form PIT-1 (Personal Income Tax Forms page) — line 12 "Federal standard or itemized deduction amount (from federal Form 1040, line 12)"',
+  sourceUrl: 'https://www.tax.newmexico.gov/individuals/online-services-overview/personal-income-tax-forms/',
   retrievedAt: RETRIEVED,
 };
 
 const NM_WH = {
-  source: 'Bloomberg Tax, "New Mexico Releases 2026 Withholding Formula" (21 Nov 2025) — rates unchanged at 1.5% to 5.9%; zero bracket $8,050 single / $12,075 head of household / $16,100 married',
-  sourceUrl: 'https://news.bloombergtax.com/payroll/new-mexico-releases-2026-withholding-formula',
+  source: 'New Mexico Taxation and Revenue Department, FYI-104 New Mexico Withholding Tax, effective 1 January 2026 (rev. 11/2025) — percentage-method tables at 1.5% to 5.9% with the HB 252 brackets above a zero band of $8,050 single / $12,075 head of household / $16,100 married (annualized)',
+  sourceUrl: 'https://www.tax.newmexico.gov/all-nm-taxes/current-historic-tax-rates-overview/withholding-tax-rates/',
   retrievedAt: RETRIEVED,
 };
 
@@ -96,6 +96,6 @@ export const NEW_MEXICO: StateTaxSpec = {
     taxYear: 2026,
     retrievedAt: RETRIEVED,
     description:
-      'NMSA §7-2-7 brackets for tax years from 2025 (HB 252, 2024, final version) applied after the 2026 federal standard deduction, which PIT-1 carries over. 2026 withholding formula (rates unchanged) noted from Bloomberg Tax.',
+      'NMSA §7-2-7 brackets for tax years from 2025 (HB 252, 2024, final version) applied after the 2026 federal standard deduction, which PIT-1 carries over. 2026 withholding tables (FYI-104, TRD) confirm the same brackets.',
   },
 };

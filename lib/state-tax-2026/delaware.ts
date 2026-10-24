@@ -15,8 +15,8 @@ const DE_SC2 = {
 };
 
 const DE_PFML = {
-  source: 'EY Tax News 2022-0950 — Delaware PFML: 0.4% medical + 0.08% family caregiving + 0.32% parental = 0.8% for 2025 and 2026; employers may deduct up to 50%; wages up to the Social Security limit',
-  sourceUrl: 'https://taxnews.ey.com/news/2022-0950-delaware-enacts-law-to-implement-a-paid-family-and-medical-leave-insurance-program-with-contributions-starting-in-2025',
+  source: 'Delaware Code Title 19 §3705 (contributions: "For 2025 and 2026" 0.4% medical, 0.08% family caregiving, 0.32% parental; (d) employer "shall deduct not greater than 50%" from the employee) and §3701 ("wages" as determined for Social Security, so capped at the Social Security wage base)',
+  sourceUrl: 'https://delcode.delaware.gov/title19/c037/index.html',
   retrievedAt: RETRIEVED,
 };
 
@@ -83,7 +83,7 @@ export const DELAWARE: StateTaxSpec = {
       label: 'Delaware Paid Leave (employee share)',
       rateText: 'Up to 0.4% of wages to $184,500',
       computed: true,
-      detail: 'Contributions began on 1 January 2025 at 0.8% of wages for 2025 and 2026. Employers may have employees contribute up to half; the calculator assumes the maximum. $240 a year on $60,000.',
+      detail: 'Contributions began on 1 January 2025 at 0.8% of wages for 2025 and 2026. Employers may have employees contribute up to half; the calculator assumes the maximum. $240 a year on $60,000. Employers with 10 to 24 employees cover parental leave only (0.32%, so at most 0.16% from employees), and those with fewer than 10 are exempt.',
       ...DE_DOL,
     },
     {

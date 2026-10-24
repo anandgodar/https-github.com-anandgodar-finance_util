@@ -27,10 +27,9 @@ const OR_TRANSIT = {
 };
 
 const PDX_LOCAL = {
-  source: 'Schwabe, "Portland, OR Metro Supportive Housing Services Tax / Preschool for All Tax" (10 Feb 2021) — 1% (Metro) and 1.5%–3% (Multnomah County) on income above $125,000 single / $200,000 joint',
-  sourceUrl: 'https://www.schwabe.com/publication/portland-or-metro-supportive-housing-services-tax-preschool-for-all-tax',
+  source: 'City of Portland Revenue Division (administers both taxes), "Metro Supportive Housing Services and Multnomah County Preschool for All personal income taxes" — SHS 1% above $128,000 single / $205,000 joint for 2026 (indexed from 2026; $125,000 / $200,000 for 2025); PFA 1.5% above $125,000 / $200,000 plus 1.5% above $250,000 / $400,000; withholding mandatory above $200,000 of wages',
+  sourceUrl: 'https://www.portland.gov/revenue/personal-tax',
   retrievedAt: RETRIEVED,
-  note: 'Law-firm summary from 2021; confirm current thresholds with Metro and Multnomah County.',
 };
 
 const OR_SINGLE = [
@@ -138,10 +137,10 @@ export const OREGON: StateTaxSpec = {
     },
     {
       label: 'Portland-area personal income taxes',
-      rateText: 'Metro 1% + Multnomah County 1.5%–3% above $125,000 — not included',
+      rateText: 'Metro 1% above $128,000 + Multnomah County 1.5% above $125,000 (3% above $250,000), single — not included',
       computed: false,
       detail:
-        'Metro\'s Supportive Housing Services tax and Multnomah County\'s Preschool for All tax apply to income above $125,000 single or $200,000 joint for residents of those areas (and to income earned there). Withholding is required for employees earning $200,000 or more and optional below that.',
+        'Metro\'s Supportive Housing Services tax is 1% of Metro taxable income above $128,000 single or $205,000 joint in 2026 (thresholds indexed to inflation from 2026). Multnomah County\'s Preschool for All tax is 1.5% above $125,000 single or $200,000 joint, plus another 1.5% above $250,000 or $400,000. Both apply to residents and to nonresidents on income from work done inside the district or county. Employers must withhold for employees earning more than $200,000; below that, withholding is by employee opt-in.',
       ...PDX_LOCAL,
     },
   ],

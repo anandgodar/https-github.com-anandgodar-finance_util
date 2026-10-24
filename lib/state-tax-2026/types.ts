@@ -202,6 +202,8 @@ export interface StateTaxSpec {
     retrievedAt: string;
     /** Which figures are from a prior year because 2026 was not yet published. */
     priorYearFigures?: string[];
+    /** Figures read only from a secondary source (not yet confirmed on the revenue department, statute or agency page). */
+    unverifiedFigures?: string[];
     description: string;
   };
 }

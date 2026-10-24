@@ -3,8 +3,8 @@ import type { StateTaxSpec } from './types';
 const RETRIEVED = '2026-10-24';
 
 const UT_SB60 = {
-  source: 'EY Tax News 2026-1045 (11 May 2026) — Utah S.B. 60 lowers the individual income tax rate from 4.5% to 4.45%, retroactive to 1 January 2026',
-  sourceUrl: 'https://taxnews.ey.com/news/2026-1045-utah-tax-commission-releases-revised-withholding-formula-reflecting-lower-income-tax-rate-for-2026',
+  source: 'Utah Legislature, S.B. 60 Income Tax Rate Amendments (2026 General Session), enrolled copy — §59-10-104(2)(b) rate "4.45%"; takes effect 6 May 2026 with "retrospective operation for a taxable year beginning on or after January 1, 2026"',
+  sourceUrl: 'https://le.utah.gov/Session/2026/bills/enrolled/SB0060.pdf',
   retrievedAt: RETRIEVED,
 };
 
