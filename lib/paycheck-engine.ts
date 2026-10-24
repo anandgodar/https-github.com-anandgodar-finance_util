@@ -11,7 +11,7 @@
  */
 
 import { FEDERAL_2026, FICA_2026 } from './state-tax-2026/federal';
-import type { Bracket, FilingStatus, StateTaxSpec } from './state-tax-2026/types';
+import type { Bracket, DeductionPhase, FilingStatus, StateTaxSpec, StatusTiers } from './state-tax-2026/types';
 
 export type { FilingStatus };
 
@@ -33,9 +33,32 @@ export function taxFromBrackets(taxable: number, brackets: Bracket[]): number {
   return tax;
 }
 
-/** Deduction for a filing status, honouring income tiers when the spec has them. */
+/** One phase-out rule applied to `income` (see DeductionPhase). */
+export function phasedAmount(p: DeductionPhase, income: number): number {
+  const excess = Math.max(0, income - p.start);
+  let reduction = 0;
+  if (excess > 0) {
+    if (p.step && p.perStep !== undefined) reduction = p.perStep * Math.ceil(excess / p.step);
+    else reduction = (p.rate ?? 0) * excess;
+  }
+  return Math.max(p.floor ?? 0, p.amount - reduction);
+}
+
+/** Value from a per-status step table (see StatusTiers). */
+export function tierValue(tiers: StatusTiers, income: number, filingStatus: FilingStatus): number {
+  const list = tiers[filingStatus];
+  const tier = list.find((t) => t.upTo === null || income <= t.upTo) ?? list[list.length - 1];
+  return tier.value;
+}
+
+/** Deduction for a filing status, honouring income tiers or phase-outs when the spec has them. */
 export function stateDeductionFor(spec: StateTaxSpec, adjustedWages: number, filingStatus: FilingStatus): number {
   const d = spec.deduction;
+  if (d.phaseout) {
+    const phases = d.phaseout[filingStatus];
+    const phased = phases.length ? Math.max(...phases.map((p) => phasedAmount(p, adjustedWages))) : 0;
+    return phased + (d.additional?.[filingStatus] ?? 0);
+  }
   if (d.tiers && d.tiers.length > 0) {
     const tier = d.tiers.find((t) => t.upTo === null || adjustedWages <= t.upTo) ?? d.tiers[d.tiers.length - 1];
     return tier[filingStatus];
@@ -103,13 +126,32 @@ export function computeSourcedStateTax(
   spec: StateTaxSpec,
   adjustedWages: number,
   grossWages: number,
-  filingStatus: FilingStatus
+  filingStatus: FilingStatus,
+  /** Federal income tax for the year; used only by states that let it be deducted (Alabama, Oregon). */
+  federalTax = 0
 ): StateResult {
-  const deduction = stateDeductionFor(spec, adjustedWages, filingStatus);
+  const adj = spec.adjustments;
+  let deduction = stateDeductionFor(spec, adjustedWages, filingStatus);
+  if (adj?.federalTaxDeduction) {
+    const cap = tierValue(adj.federalTaxDeduction.capTiers, adjustedWages, filingStatus);
+    deduction += Math.min(Math.max(0, federalTax), cap);
+  }
   const taxable = Math.max(0, adjustedWages - deduction);
   let tax = 0;
   if (spec.wageTax.kind === 'flat') tax = taxable * spec.wageTax.rate;
   else if (spec.wageTax.kind === 'brackets') tax = taxFromBrackets(taxable, spec.wageTax[filingStatus]);
+
+  if (adj && spec.wageTax.kind !== 'none') {
+    for (const a of adj.addOns ?? []) tax += tierValue(a.tiers, a.basis === 'taxable' ? taxable : adjustedWages, filingStatus);
+    if (adj.taxReductionRate) tax *= 1 - tierValue(adj.taxReductionRate.tiers, adjustedWages, filingStatus);
+    if (adj.minimumTax && adjustedWages > adj.minimumTax.incomeOver) tax = Math.max(tax, adj.minimumTax.rate * adjustedWages);
+    if (adj.credit) {
+      const c = adj.credit;
+      let credit = c.tiers ? tierValue(c.tiers, adjustedWages, filingStatus) : c[filingStatus];
+      if (c.phaseoutStart && c.phaseoutRate) credit = Math.max(0, credit - c.phaseoutRate * Math.max(0, adjustedWages - c.phaseoutStart[filingStatus]));
+      tax = Math.max(0, tax - credit);
+    }
+  }
 
   const payroll = spec.payrollDeductions.map((p) => ({
     id: p.id,
@@ -169,7 +211,7 @@ export function computePaycheck(input: PaycheckInput): PaycheckResult {
   const fica = computeFica(grossWages, filingStatus);
   const state: StateResult = input.state
     ? isSourcedSpec(input.state)
-      ? computeSourcedStateTax(input.state, adjustedWages, grossWages, filingStatus)
+      ? computeSourcedStateTax(input.state, adjustedWages, grossWages, filingStatus, federal.tax)
       : computeLegacyStateTax(input.state, adjustedWages)
     : { deduction: 0, taxable: 0, tax: 0, payroll: [], payrollTotal: 0, sourced: true };
 

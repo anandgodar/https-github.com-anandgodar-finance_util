@@ -111,7 +111,9 @@ export default function StateSalaryPage({ params }: PageProps) {
     notFound();
   }
 
-  // Get tax rate for the state (from SalaryCalculator component data)
+  // Legacy flat-rate table: used only by the fallback copy for a state without a
+  // sourced spec. Since 2026-10-24 every state and DC is in SOURCED_STATES, so
+  // the depth content (lib/state-tax-2026) renders instead of that copy.
   const STATE_TAX_RATES: Record<string, number> = {
     'AL': 0.05, 'AK': 0.00, 'AZ': 0.025, 'AR': 0.044, 'CA': 0.093,
     'CO': 0.044, 'CT': 0.05, 'DE': 0.066, 'FL': 0.00, 'GA': 0.0549,
