@@ -22,14 +22,14 @@ function generateBreadcrumbSchema(stateName: string, stateSlug: string) {
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Quarterly Tax Calculator',
-        item: 'https://quantcurb.com/quarterly-estimated-tax-calculator/'
+        name: 'Mortgage Calculator',
+        item: 'https://quantcurb.com/mortgage-payment-calculator/'
       },
       {
         '@type': 'ListItem',
         position: 3,
-        name: `${stateName} Quarterly Tax Calculator`,
-        item: `https://quantcurb.com/quarterly-tax-calculator/${stateSlug}/`
+        name: `${stateName} Mortgage Calculator`,
+        item: `https://quantcurb.com/mortgage-calculator/${stateSlug}/`
       }
     ]
   };
@@ -44,22 +44,28 @@ type PageProps = {
 export const dynamic = 'force-static';
 export const dynamicParams = false;
 
-// Generate static params for ALL 51 states
+// Generate static params for ALL 51 states (not just configured ones)
 export function generateStaticParams() {
-  return usStates.map((state) => ({
-    state: state.slug
-  }));
+  // AdSense "Low value content" (rejected 4 Nov 2026): the 51 state pages of
+  // this tier were 98% identical boilerplate with the state name swapped and
+  // earned ~0 clicks (GSC 28d to 16 Nov). They are no longer built; vercel.json
+  // 301s each /{tier}/{state}/ to the national tool. Template kept on purpose —
+  // restoring the tier is returning paths again (with differentiated content).
+  return [];
 }
 
 // Get state config - returns full config if available, or creates a basic one
 function getStateConfig(stateSlug: string): StateConfig | null {
+  // Check if we have a full config
   if (STATE_CONFIGS[stateSlug]) {
     return STATE_CONFIGS[stateSlug];
   }
 
+  // Find basic state data
   const stateData = usStates.find(s => s.slug === stateSlug);
   if (!stateData) return null;
 
+  // Create a minimal config for states without full data
   return {
     name: stateData.name,
     code: stateData.abbreviation,
@@ -88,40 +94,37 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
   if (!stateData) {
     return {
-      title: 'Quarterly Tax Calculator',
-      description: 'Estimate quarterly estimated tax payments for self-employed'
+      title: 'Mortgage Calculator',
+      description: 'Calculate monthly mortgage payments with PITI breakdown'
     };
   }
 
   const stateName = stateData.name;
   const stateNameLower = stateName.toLowerCase();
-  const noTax = stateData.taxStatus === 'none';
 
   return {
-    title: fitTitle(`${stateName} Quarterly Estimated Tax Calculator 2026`, `${stateName} Quarterly Tax Calculator 2026`),
-    description: clampDescription(`Calculate 2026 quarterly estimated tax payments in ${stateName}: federal${noTax ? '' : ' and state'} amounts, safe harbor rules and IRS due dates.`),
-    keywords: `${stateName} quarterly tax calculator, how much are my estimated taxes ${stateNameLower}, ${stateNameLower} quarterly estimated taxes, quarterly tax payments ${stateNameLower}, self employed taxes ${stateNameLower}, safe harbor rule ${stateNameLower}, 1099 quarterly payments ${stateNameLower}`,
+    title: fitTitle(`${stateName} Mortgage Calculator 2026: PITI & Affordability`, `${stateName} Mortgage Calculator 2026`),
+    description: clampDescription(`Free 2026 ${stateName} mortgage calculator: monthly PITI payment with ${stateName} property tax, insurance and PMI, plus how much house you can afford.`),
+    keywords: `${stateName} mortgage calculator, how much house can i afford ${stateNameLower}, ${stateNameLower} home loan calculator, ${stateNameLower} piti calculator, ${stateNameLower} property tax rate, mortgage payment ${stateNameLower}, ${stateNameLower} first time home buyer, buying a house in ${stateNameLower}`,
     alternates: {
-      canonical: `https://quantcurb.com/quarterly-tax-calculator/${params.state}/`
+      canonical: `https://quantcurb.com/mortgage-calculator/${params.state}/`
     },
     openGraph: {
-      title: `${stateName} Quarterly Tax Calculator 2026 | Estimated Tax Payments`,
-      description: `Calculate your quarterly estimated tax payments in ${stateName}. Free calculator with safe harbor rules.`,
-      url: `https://quantcurb.com/quarterly-tax-calculator/${params.state}/`,
+      title: `${stateName} Mortgage Calculator 2026 | How Much House Can I Afford?`,
+      description: `Free ${stateName} mortgage calculator with PITI breakdown. Calculate monthly payments with ${stateName} property taxes and insurance.`,
+      url: `https://quantcurb.com/mortgage-calculator/${params.state}/`,
       type: 'website',
     }
   };
 }
 
-export default function StateQuarterlyTaxCalculatorPage({ params }: PageProps) {
+export default function StateMortgageCalculatorPage({ params }: PageProps) {
   const stateConfig = getStateConfig(params.state);
-  const stateData = usStates.find(s => s.slug === params.state);
 
-  if (!stateConfig || !stateData) {
+  if (!stateConfig) {
     notFound();
   }
 
-  const noTax = stateData.taxStatus === 'none';
   const breadcrumbSchema = generateBreadcrumbSchema(stateConfig.name, stateConfig.slug);
 
   return (

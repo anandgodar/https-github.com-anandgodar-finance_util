@@ -183,7 +183,7 @@ const CurrencyConverterGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             Use it before travel, when sending international money, or when pricing overseas products. It keeps you from
             overpaying and helps you plan ahead. It&apos;s also useful when comparing job offers or budgets in another
             country; pair it with a{' '}
-            <a href="/cost-of-living-calculator/" className="text-indigo-600 font-semibold hover:underline">cost of living calculator</a>,
+            <a href="/salary-tax-estimator/" className="text-indigo-600 font-semibold hover:underline">salary &amp; take-home estimator</a>,
             since a higher salary after conversion can still buy less locally. Our{' '}
             <a href="/blog/raise-vs-relocation-cost-of-living/" className="text-indigo-600 font-semibold hover:underline">raise vs relocation guide</a>{' '}
             walks through that comparison.

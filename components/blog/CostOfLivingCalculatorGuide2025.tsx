@@ -223,7 +223,7 @@ const CostOfLivingCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) =>
           <p className="text-lg text-slate-700 leading-relaxed">
             Her personal break-even is about $83,900 ($70,000 + $13,900), lower than the $87,500 the index suggested. For
             someone who would keep a car and add childcare, the result could go the other way. Run your own numbers in
-            the <a href="/cost-of-living-calculator/" className="text-indigo-600 font-semibold hover:underline">cost of living calculator</a>,
+            the <a href="/salary-tax-estimator/" className="text-indigo-600 font-semibold hover:underline">salary &amp; take-home estimator</a>,
             and if the move comes with a raise, our guide on whether <a href="/blog/raise-vs-relocation-cost-of-living/" className="text-indigo-600 font-semibold hover:underline">a raise is worth relocating for</a> adds
             moving costs to the picture.
           </p>

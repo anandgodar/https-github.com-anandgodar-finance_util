@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
 import AppShell from '../../components/AppShell';
+import ToolProse from '../../components/ToolProse';
 import { TOOL_METADATA, toolSlugs } from '../../lib/tool-metadata';
 import { ToolType } from '../../types';
 import contentDates from '../../lib/content-dates.json';
@@ -52,7 +53,13 @@ export function generateStaticParams() {
   return [
     { tool: [] },
     ...toolSlugs
-      .filter((slug) => slug !== ToolType.DASHBOARD)
+      // MARKET_INSIGHTS: 38 words of AI-generated client-only shell — noindex
+      // never exempted it from the AdSense live-site review; not built at all
+      // since Nov 2026 (vercel.json 301s it home).
+      // GST_CALC (India GST on a US-tax site) and LIVING_COST (thin widget on
+      // unsourced COL indexes) retired Nov 2026 with MARKET_INSIGHTS; each 301s
+      // to its blog guide (vercel.json).
+      .filter((slug) => ![ToolType.DASHBOARD, ToolType.MARKET_INSIGHTS, ToolType.GST_CALC, ToolType.LIVING_COST].includes(slug))
       .map((slug) => ({ tool: slug.split('/') }))
   ];
 }
@@ -205,6 +212,7 @@ export default function ToolPage({ params }: PageProps) {
         />
       )}
       <AppShell initialTool={slug as ToolType} />
+      <ToolProse slug={slug} />
     </>
   );
 }

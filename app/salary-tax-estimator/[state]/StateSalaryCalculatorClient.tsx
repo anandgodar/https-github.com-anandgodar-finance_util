@@ -176,17 +176,17 @@ export default function StateSalaryCalculatorClient({
             More {stateName} Financial Tools
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <a href={`/mortgage-calculator/${stateCode.toLowerCase()}`} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
+            <a href={'/mortgage-payment-calculator/'} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
               <div className="text-3xl mb-2">🏡</div>
               <div className="font-black text-lg">{stateName} Mortgage Calculator</div>
               <div className="text-sm text-indigo-200">Calculate home loan payments</div>
             </a>
-            <a href={`/early-retirement-fire-planner/${stateCode.toLowerCase()}`} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
+            <a href={'/early-retirement-fire-planner/'} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
               <div className="text-3xl mb-2">🔥</div>
               <div className="font-black text-lg">{stateName} FIRE Calculator</div>
               <div className="text-sm text-indigo-200">Plan early retirement</div>
             </a>
-            <a href={`/freelance-profit-hub/${stateCode.toLowerCase()}`} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
+            <a href={'/freelance-profit-hub/'} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
               <div className="text-3xl mb-2">💼</div>
               <div className="font-black text-lg">{stateName} Freelance Calculator</div>
               <div className="text-sm text-indigo-200">Self-employment taxes</div>

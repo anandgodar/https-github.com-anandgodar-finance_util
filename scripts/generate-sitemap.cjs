@@ -151,7 +151,6 @@ const CORE_TOOLS = [
   { path: '/credit-card-debt-strategist/', priority: '0.9', changefreq: 'monthly' },
   { path: '/loan-comparison-tool/', priority: '0.85', changefreq: 'monthly' },
   { path: '/currency-exchange-intel/', priority: '0.8', changefreq: 'daily' },
-  { path: '/gst-tax-calculator/', priority: '0.8', changefreq: 'monthly' },
   { path: '/crypto-tax-loss-harvester/', priority: '0.85', changefreq: 'monthly' },
   { path: '/child-tax-credit-calculator/', priority: '0.9', changefreq: 'monthly' },
   { path: '/quarterly-estimated-tax-calculator/', priority: '0.9', changefreq: 'monthly' },
@@ -159,7 +158,6 @@ const CORE_TOOLS = [
   { path: '/freelance-profit-hub/', priority: '0.9', changefreq: 'monthly' },
   { path: '/debt-to-income-ratio-calculator/', priority: '0.85', changefreq: 'monthly' },
   { path: '/excel-power-modeler/', priority: '0.8', changefreq: 'monthly' },
-  { path: '/cost-of-living-calculator/', priority: '0.8', changefreq: 'monthly' },
 ];
 
 // Hub pages (high SEO value)
@@ -250,11 +248,10 @@ const BLOG_POSTS = [
 
 // State calculator types for state pages
 const STATE_CALCULATOR_TYPES = [
+  // Nov 2026: only salary-tax-estimator keeps state pages (sourced per-state
+  // tax tables, ~71% unique content). The other four tiers were 98% identical
+  // boilerplate, are no longer built, and 301 to their national tools.
   { prefix: '/salary-tax-estimator/', priority: '0.85' },
-  { prefix: '/mortgage-calculator/', priority: '0.85' },
-  { prefix: '/early-retirement-fire-planner/', priority: '0.85' },
-  { prefix: '/freelance-profit-hub/', priority: '0.85' },
-  { prefix: '/quarterly-tax-calculator/', priority: '0.85' },
 ];
 
 // Only emit <lastmod> when we have a real per-page date (git history of the

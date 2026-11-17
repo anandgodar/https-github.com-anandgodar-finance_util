@@ -32,12 +32,10 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTool, setActiveTool }) => {
 
   const dailyTools = [
     { id: ToolType.CURRENCY_CONV, label: 'Currency Intel', icon: '🌍', href: '/currency-exchange-intel/' },
-    { id: ToolType.GST_CALC, label: 'GST Calculator', icon: '🧾', href: '/gst-tax-calculator/' },
     { id: ToolType.CREDIT_CARD_PAYOFF, label: 'Card Payoff', icon: '✂️', href: '/credit-card-debt-strategist/' },
   ];
 
   const insightTools = [
-    { id: ToolType.MARKET_INSIGHTS, label: 'Market Pulse', icon: '🤖', href: '/market-intelligence-pulse/' },
     { id: ToolType.VALUATION_ACADEMY, label: 'Valuation Academy', icon: '🎓', href: '/valuation-academy/' },
     { id: ToolType.INVESTMENT_ACADEMY, label: 'Fund Academy', icon: '📚', href: '/investment-funds-academy/' },
     { id: ToolType.BLOG_INDEX, label: 'Blog', icon: '📝', href: '/blog/' },

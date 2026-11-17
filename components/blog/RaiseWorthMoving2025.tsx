@@ -118,7 +118,7 @@ const RaiseWorthMoving2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </p>
           <p className="text-lg text-slate-700 leading-relaxed">
             Remember that higher spending comes out of after-tax dollars. If 30% of each extra dollar of salary goes to tax,
-            covering $6,000 a year of extra rent takes about $8,600 of extra gross pay ($6,000 ÷ 0.70). Our <a href="/cost-of-living-calculator/" className="text-indigo-600 font-semibold hover:underline">cost of living calculator</a> compares
+            covering $6,000 a year of extra rent takes about $8,600 of extra gross pay ($6,000 ÷ 0.70). Our <a href="/salary-tax-estimator/" className="text-indigo-600 font-semibold hover:underline">salary &amp; take-home estimator</a> compares
             typical costs between cities, and the <a href="/blog/cost-of-living-calculator-guide-2025/" className="text-indigo-600 font-semibold hover:underline">cost of living guide</a> shows
             how to adjust a city index for your own budget.
           </p>

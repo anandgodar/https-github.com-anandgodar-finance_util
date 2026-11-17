@@ -59,11 +59,12 @@ export const blogToCalculatorMap: Record<string, ToolType> = {
   'net-worth-tracker-guide-2025': ToolType.NET_WORTH,
   'loan-emi-calculator-guide-2025': ToolType.EMI_CALC,
   'loan-comparison-refinance-guide-2025': ToolType.LOAN_COMPARE,
-  'cost-of-living-calculator-guide-2025': ToolType.LIVING_COST,
+  'cost-of-living-calculator-guide-2025': ToolType.SALARY_CALC, // LIVING_COST retired Nov 2026
   'currency-converter-guide-2025': ToolType.CURRENCY_CONV,
-  'gst-tax-calculator-guide-2025': ToolType.GST_CALC,
+  'gst-tax-calculator-guide-2025': ToolType.DASHBOARD, // GST_CALC retired Nov 2026
   'credit-card-payoff-strategy-guide-2025': ToolType.CREDIT_CARD_PAYOFF,
-  'ai-market-insights-guide-2025': ToolType.MARKET_INSIGHTS,
+  // MARKET_INSIGHTS retired Nov 2026 (thin AI-generated page; AdSense fix)
+  'ai-market-insights-guide-2025': ToolType.DASHBOARD,
   'index-funds-etf-guide-2025': ToolType.INVESTMENT_ACADEMY,
   'dcf-valuation-modeling-guide-2025': ToolType.EXCEL_MODELER,
   'dividend-reinvestment-calculator-guide-2025': ToolType.DRIP_CALCULATOR,

@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "next dev",
     "check:tax": "node scripts/check-state-tax.mjs",
-    "build": "node scripts/check-state-tax.mjs && next build",
+    "build": "node scripts/check-state-tax.mjs && next build && node scripts/check-content.mjs",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "check:content": "node scripts/check-content.mjs"
   },
   "dependencies": {
     "@google/genai": "^1.34.0",
