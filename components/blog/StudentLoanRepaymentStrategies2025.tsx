@@ -3,7 +3,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -429,11 +428,6 @@ const StudentLoanRepaymentStrategies2025: React.FC<BlogProps> = ({ onNavigate })
       </article>
 
       <section className="mt-12">
-        <EmailCapture
-          title="Get Weekly Student Loan Tips"
-          description="Subscribe for weekly tips on student loan repayment, forgiveness programs, and strategies to pay off debt faster."
-          buttonText="Subscribe"
-        />
       </section>
 
       <AdPlacement size="responsive" position="bottom" />

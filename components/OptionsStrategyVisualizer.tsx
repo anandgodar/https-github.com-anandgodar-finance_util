@@ -160,33 +160,8 @@ const OptionsStrategyVisualizer: React.FC = () => {
     return data;
   }, [legs, ivAdjustment]);
 
-  const greeks = useMemo(() => {
-    // Simplified Greeks calculation
-    const totalDelta = legs.reduce((sum, leg) => {
-      const delta = leg.type === 'call' ? 0.5 : -0.5; // Simplified ATM delta
-      return sum + (leg.position === 'long' ? delta : -delta) * leg.quantity;
-    }, 0);
-
-    const totalGamma = legs.reduce((sum, leg) => {
-      return sum + 0.05 * leg.quantity; // Simplified
-    }, 0);
-
-    const totalTheta = legs.reduce((sum, leg) => {
-      const theta = -leg.premium * 0.02; // Approx daily decay
-      return sum + (leg.position === 'long' ? theta : -theta) * leg.quantity;
-    }, 0);
-
-    const totalVega = legs.reduce((sum, leg) => {
-      return sum + (leg.position === 'long' ? 0.1 : -0.1) * leg.quantity;
-    }, 0);
-
-    return {
-      delta: totalDelta.toFixed(2),
-      gamma: totalGamma.toFixed(3),
-      theta: totalTheta.toFixed(2),
-      vega: totalVega.toFixed(2)
-    };
-  }, [legs]);
+  // Greeks panel removed Nov 2026: it displayed hardcoded constants (delta ±0.5,
+  // gamma 0.05/leg, theta 2% of premium) as live figures — invented numbers.
 
   const maxProfit = Math.max(...chartData.map(d => d.plAtExpiry));
   const maxLoss = Math.min(...chartData.map(d => d.plAtExpiry));
@@ -207,7 +182,7 @@ const OptionsStrategyVisualizer: React.FC = () => {
             </h1>
           </div>
           <p className="text-slate-500 max-w-3xl font-medium text-sm md:text-base leading-relaxed">
-            Build multi-leg options strategies and visualize P&L across price and volatility scenarios. Analyze Greeks and understand risk exposure in real-time.
+            Build multi-leg options strategies and see profit, loss and breakevens at expiration across the price range you choose.
           </p>
         </div>
       </header>
@@ -331,34 +306,6 @@ const OptionsStrategyVisualizer: React.FC = () => {
             </div>
           </div>
 
-          {/* Greeks Dashboard */}
-          <div className="bg-slate-900 p-6 rounded-3xl text-white space-y-4">
-            <h3 className="text-xs font-black text-indigo-400 uppercase tracking-wider">Greeks</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-1">
-                <p className="text-[9px] text-slate-400 font-bold uppercase">Delta (Directional)</p>
-                <p className="text-2xl font-black text-white">{greeks.delta}</p>
-                <p className="text-[8px] text-slate-500">~{Math.abs(Number(greeks.delta) * 100).toFixed(0)} shares equivalent</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-[9px] text-slate-400 font-bold uppercase">Theta (Time Decay)</p>
-                <p className={`text-2xl font-black ${Number(greeks.theta) < 0 ? 'text-red-400' : 'text-green-400'}`}>
-                  ${greeks.theta}
-                </p>
-                <p className="text-[8px] text-slate-500">Per day</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-[9px] text-slate-400 font-bold uppercase">Gamma (Acceleration)</p>
-                <p className="text-2xl font-black text-white">{greeks.gamma}</p>
-                <p className="text-[8px] text-slate-500">Delta change per $1</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-[9px] text-slate-400 font-bold uppercase">Vega (IV Risk)</p>
-                <p className="text-2xl font-black text-white">{greeks.vega}</p>
-                <p className="text-[8px] text-slate-500">Per 1% IV change</p>
-              </div>
-            </div>
-          </div>
 
           {/* Risk Metrics */}
           <div className="bg-white p-6 rounded-3xl border border-slate-100 space-y-3">

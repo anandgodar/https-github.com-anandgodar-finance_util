@@ -36,7 +36,7 @@ const AboutUs: React.FC = () => {
         <div className="bg-white p-12 rounded-[3.5rem] border border-slate-100 shadow-sm space-y-8">
            <h2 className="text-3xl font-black text-slate-900 tracking-tight">Independently <br/>Built</h2>
            <p className="text-slate-500 text-lg leading-relaxed font-medium">
-             QuantCurb is built and maintained by its founder, Anand Godar. We don't sell your data, and we don't push high-interest credit cards. Every tax figure names its source and the date it was checked.
+             QuantCurb is independently built and maintained — no outside publisher, no content farm. We don't sell your data, and we don't push high-interest credit cards. Every tax figure names its source and the date it was checked.
            </p>
            <div className="flex gap-4">
               <span className="p-4 bg-slate-50 rounded-2xl text-3xl">🛡️</span>
@@ -51,15 +51,15 @@ const AboutUs: React.FC = () => {
         <div className="flex flex-col md:flex-row gap-8 items-start">
           <div className="flex-shrink-0">
             <div className="w-24 h-24 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-4xl font-black shadow-lg">
-              AG
+              QC
             </div>
           </div>
           <div className="flex-1">
-            <h2 className="text-3xl font-black text-slate-900 mb-4">About the Founder</h2>
+            <h2 className="text-3xl font-black text-slate-900 mb-4">About QuantCurb</h2>
             <p className="text-slate-700 text-lg leading-relaxed mb-4">
-              <strong className="font-black text-slate-900">Anand Godar</strong> is a financial engineer and the founder of QuantCurb. 
-              With a background in fintech data science, Anand spent years building algorithmic trading systems and risk models 
-              for institutional investors before realizing that retail investors deserve the same sophisticated tools.
+              QuantCurb exists because retail investors deserve the same quality of financial
+              modeling that institutions use — exact formulas instead of rules of thumb,
+              and sources named next to every figure.
             </p>
             <p className="text-slate-700 text-lg leading-relaxed mb-4">
               QuantCurb was born from a simple premise: <em>why should sophisticated financial modeling be locked behind a Wall Street login?</em>
@@ -67,9 +67,7 @@ const AboutUs: React.FC = () => {
               directly from the IRS, Federal Reserve, and state tax tables, designed for your daily
               financial decisions—mortgages, taxes, retirement planning, and wealth optimization.
             </p>
-            <p className="text-slate-600 text-base leading-relaxed">
-              <strong className="font-semibold text-slate-900">Financial engineer and founder of QuantCurb.</strong> Former fintech data scientist building source-cited financial calculators for everyday wealth decisions.
-            </p>
+
           </div>
         </div>
       </section>

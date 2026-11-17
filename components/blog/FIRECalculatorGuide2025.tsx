@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -561,16 +560,6 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
 
         {/* Email Capture Section */}
         <section className="mt-12">
-          <EmailCapture
-            title="Get Your Free FIRE Planning Workbook"
-            description="Download our comprehensive FIRE planning workbook with savings rate calculator, investment strategies, and early retirement checklist."
-            leadMagnet={{
-              title: "FIRE Planning Workbook 2026",
-              description: "Complete guide to calculating your FIRE number, optimizing savings rate, and achieving early retirement.",
-              type: "fire"
-            }}
-            buttonText="Get Free Workbook"
-          />
         </section>
       </article>
     </div>

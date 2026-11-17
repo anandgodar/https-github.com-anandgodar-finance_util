@@ -3,7 +3,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -505,11 +504,6 @@ const FourZeroOneKVsIRAComparison2025: React.FC<BlogProps> = ({ onNavigate }) =>
       </article>
 
       <section className="mt-12">
-        <EmailCapture
-          title="Get Weekly Retirement Planning Tips"
-          description="Subscribe for weekly tips on 401(k)s, IRAs, and strategies to maximize your retirement savings."
-          buttonText="Subscribe"
-        />
       </section>
 
       <AdPlacement size="responsive" position="bottom" />

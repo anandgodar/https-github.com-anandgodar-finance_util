@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -302,11 +301,6 @@ const NetWorthTrackerGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
       </article>
 
       <section className="mt-12">
-        <EmailCapture
-          title="Get Wealth Tracking Tips"
-          description="Join the weekly newsletter for practical net worth, budgeting, and investing ideas that build real wealth."
-          buttonText="Subscribe"
-        />
       </section>
 
       <AdPlacement size="responsive" position="bottom" />

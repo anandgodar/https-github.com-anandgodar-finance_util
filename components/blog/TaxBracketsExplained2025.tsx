@@ -3,7 +3,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -531,11 +530,6 @@ const TaxBracketsExplained2025: React.FC<BlogProps> = ({ onNavigate }) => {
       </article>
 
       <section className="mt-12">
-        <EmailCapture
-          title="Get Weekly Tax Planning Tips"
-          description="Subscribe for weekly tips on tax brackets, deductions, and strategies to reduce your tax bill legally."
-          buttonText="Subscribe"
-        />
       </section>
 
       <AdPlacement size="responsive" position="bottom" />

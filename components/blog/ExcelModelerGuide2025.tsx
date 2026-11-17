@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -267,11 +266,6 @@ const ExcelModelerGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
       </article>
 
       <section className="mt-12">
-        <EmailCapture
-          title="Valuation Insights"
-          description="Get weekly valuation and finance insights that make complex models practical."
-          buttonText="Subscribe"
-        />
       </section>
 
       <AdPlacement size="responsive" position="bottom" />

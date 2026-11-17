@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -363,11 +362,6 @@ const CryptoTaxLossHarvestingNoWashSale2025: React.FC<BlogProps> = ({ onNavigate
       </article>
 
       <section className="mt-12">
-        <EmailCapture
-          title="Get Crypto Tax Tips That Actually Save Money"
-          description="Weekly insights on tax loss harvesting, crypto reporting, and strategy updates so you never miss a legal edge."
-          buttonText="Subscribe"
-        />
       </section>
 
       <AdPlacement size="responsive" position="bottom" />

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -250,11 +249,6 @@ const DividendReinvestmentGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
       </article>
 
       <section className="mt-12">
-        <EmailCapture
-          title="Dividend Strategy Tips"
-          description="Get weekly insights on dividends, compounding, and portfolio income."
-          buttonText="Subscribe"
-        />
       </section>
 
       <AdPlacement size="responsive" position="bottom" />

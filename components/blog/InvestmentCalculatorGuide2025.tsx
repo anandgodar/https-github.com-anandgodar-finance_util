@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -329,15 +328,6 @@ const InvestmentCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </section>
 
         <section className="mt-12">
-          <EmailCapture
-            title="Get Investment Planning Resources"
-            description="Subscribe for investment strategies, SIP tips, and wealth-building guides."
-            leadMagnet={{
-              title: "Investment Planning Guide 2026",
-              description: "Complete guide to SIP investing, compound interest, and wealth building strategies."
-            }}
-            buttonText="Subscribe Free"
-          />
         </section>
       </article>
     </div>

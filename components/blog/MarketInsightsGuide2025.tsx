@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -231,11 +230,6 @@ const MarketInsightsGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
       </article>
 
       <section className="mt-12">
-        <EmailCapture
-          title="Weekly Market Pulse"
-          description="Get concise market insights without the hype."
-          buttonText="Subscribe"
-        />
       </section>
 
       <AdPlacement size="responsive" position="bottom" />
