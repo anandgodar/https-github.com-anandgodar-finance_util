@@ -143,11 +143,13 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
                   QuantCurb's calculators are built on the same primary-source data — IRS tax tables, Federal Reserve rates, and exact amortization formulas — that professional financial tools rely on, wrapped in the simplicity retail apps like Robinhood and Wise are known for.
                 </p>
                 <div className="flex gap-4 md:gap-6 pt-2 md:pt-4">
+                  {/* MARKET_INSIGHTS retired Nov 2026 (AdSense fix): the old "View
+                      Market Pulse" CTA pushed a 301'd URL that bounced back here. */}
                   <button
-                    onClick={() => onSelectTool(ToolType.MARKET_INSIGHTS)}
+                    onClick={() => onSelectTool(ToolType.SALARY_CALC)}
                     className="px-6 py-4 md:px-10 md:py-5 bg-white text-slate-900 rounded-2xl md:rounded-3xl font-black text-xs uppercase tracking-widest hover:bg-indigo-50 transition-all shadow-xl hover:scale-105 active:scale-95"
                   >
-                      View Market Pulse
+                      Try the Salary Estimator
                   </button>
                 </div>
             </div>

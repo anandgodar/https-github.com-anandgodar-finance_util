@@ -26,16 +26,19 @@ const PROSE: Partial<Record<ToolType, React.ReactNode>> = {
     <>
       <Section title="How this DRIP calculator works">
         <p>
-          The calculator grows your balance month by month from five inputs you control: starting principal,
-          annual contribution, dividend yield, expected share-price appreciation, and your dividend tax rate.
-          Each period it computes the dividend thrown off by the current balance, subtracts tax at the rate you
-          set, and then either reinvests the after-tax dividend back into the balance (DRIP on) or accumulates
-          it as cash on the side (DRIP off). Running both paths side by side is the point: the gap between them
-          is the compounding you get from reinvesting, not from picking better stocks.
+          The calculator grows your balance year by year from the inputs you control: starting principal,
+          annual contribution, dividend yield, expected share-price appreciation, your dividend tax rate, and
+          the time horizon. Each year it adds your contribution, computes the dividend on the new balance, and
+          subtracts tax at the rate you set. With reinvestment on, the after-tax dividend goes back into the
+          balance before that year&apos;s price appreciation is applied; with it off, the dividend simply leaves
+          the projection — the chart tracks portfolio value only and does not keep the skipped dividends as a
+          cash pile on the side. Running both paths side by side is the point: the gap between the two lines is
+          the after-tax dividends themselves plus everything they go on to earn once reinvested — not a verdict
+          on picking better stocks.
         </p>
         <p>
           Reinvested dividends buy more shares, and those shares produce their own dividends — that is the whole
-          mechanism. Over short horizons the two paths look nearly identical; the divergence shows up in the back
+          mechanism. The two paths start close together; the divergence shows up in the back
           half of a multi-decade horizon, which is why the chart matters more than the final number.
         </p>
       </Section>
@@ -56,29 +59,32 @@ const PROSE: Partial<Record<ToolType, React.ReactNode>> = {
     <>
       <Section title="What the payoff chart shows">
         <p>
-          The visualizer draws profit and loss <em>at expiration</em> for a strategy built from up to four legs
-          (calls and puts, long or short, each with its own strike, premium, and quantity). For every underlying
+          The visualizer draws profit and loss <em>at expiration</em> for a strategy built from any number of
+          call and put legs, long or short, each with its own strike, premium, and quantity. For every underlying
           price on the horizontal axis it computes each leg&apos;s intrinsic value at expiry — for a call,
           price minus strike when the option finishes in the money, otherwise zero; the mirror image for a put —
-          then nets the premiums you paid or collected. The preset strategies (covered call, bull call spread,
-          bear put spread, iron condor, straddle, and the rest) are just prefilled leg combinations; edit any
-          strike or premium and the chart recomputes.
+          then nets the premiums you paid or collected. The preset strategies (long call, bull call spread,
+          bear put spread, iron condor, iron butterfly, straddle, and strangle) are just prefilled combinations of
+          one to four legs; edit any strike or premium, or add legs of your own, and the chart recomputes. The
+          chart is already in dollar terms: it counts each contract as 100 shares of the per-share premium you enter.
         </p>
         <p>
-          The three numbers to read off the chart are maximum profit, maximum loss, and the breakeven price(s)
-          where the line crosses zero. A defined-risk spread shows both extremes as flat plateaus; an undefined-risk
-          position (like a naked short call) keeps falling off the edge of the chart, which is the picture worth
-          internalizing before placing one.
+          The three numbers to read off the solid expiration line are maximum profit, maximum loss, and the
+          breakeven price(s) where it crosses zero. A defined-risk spread shows both extremes as flat plateaus;
+          an undefined-risk position (like a naked short call) keeps falling off the edge of the chart, which is
+          the picture worth internalizing before placing one.
         </p>
       </Section>
       <Section title="Limits of an expiration-only view">
         <p>
-          Everything here is terminal value: the chart says nothing about how the position behaves <em>before</em>
-          expiration. Time decay, implied-volatility changes, and early assignment on short American-style legs all
-          move real positions off this line while the trade is open. Premiums are inputs you supply from your
-          broker&apos;s chain, not live quotes, and the math ignores commissions and per-contract fees. Multiply
-          everything by 100 per contract for dollar terms. Use the chart to understand a structure&apos;s shape and
-          worst case — not as a pricing model.
+          The headline numbers all come from the expiration line, which says nothing about how the position
+          behaves <em>before</em> expiry. The dashed what-if line the volatility slider adds is a deliberately
+          crude sketch — it just scales each leg&apos;s premium by the percentage you pick — and the Greeks panel
+          shows simplified illustrative values rather than Greeks computed from your actual strikes and expiry,
+          so neither is a pricing model. Time decay and early assignment on short American-style legs are not
+          modeled at all. Premiums are inputs you supply from your broker&apos;s chain, not live quotes, and the
+          math ignores commissions and per-contract fees. Use the chart to understand a structure&apos;s shape
+          and worst case — not to price a trade.
         </p>
       </Section>
     </>
@@ -86,15 +92,21 @@ const PROSE: Partial<Record<ToolType, React.ReactNode>> = {
   [ToolType.INVESTMENT_ACADEMY]: (
     <Section title="How to use this academy">
       <p>
-        These guides are sequenced: start with the index-funds-versus-ETF comparison if you are choosing your
-        first fund — the two wrappers often hold identical portfolios, and the differences that matter are trading
-        mechanics, minimums, and tax treatment rather than returns. Then read the diversification guide before the
-        portfolio blueprint, because the blueprint only makes sense once you know what each asset class is doing
-        in the mix. Every article states its assumptions inline, and where a figure comes from a fund prospectus
-        or index methodology we say which one. One number worth carrying into all of them: a fund&apos;s expense
-        ratio is deducted from returns every single year, so a difference that looks trivial annually compounds
-        into a meaningful slice of the final balance over multi-decade horizons — which is why costs come up in
-        every guide here.
+        This page is an interactive explorer of four broad fund categories — index funds, ETFs, actively managed
+        mutual funds, and REITs. Pick a category to read how it works, what it is typically used for, and widely
+        known examples; the selection matrix puts the four side by side on cost, volatility, risk/return profile,
+        and tax treatment; and the selector view narrows them down from a risk tolerance and a goal (safety, growth, or
+        income) that you choose. If index funds versus ETFs is your actual question, the two wrappers often hold
+        identical portfolios — the differences that matter are trading mechanics, minimums, and tax treatment,
+        not returns.
+      </p>
+      <p>
+        Read the figures on the cards for what they are: broad characterizations we wrote for each category — an
+        expense-ratio range, a 1–10 volatility score, a tax-efficiency label — not measured data about any
+        specific fund. Before buying anything, check that fund&apos;s own prospectus for its real expense ratio
+        and holdings. The one mechanical point worth carrying out of this page: a fund&apos;s expense ratio is
+        deducted from returns every single year, so a difference that looks trivial annually compounds into a
+        meaningful slice of the final balance over multi-decade horizons.
       </p>
     </Section>
   ),

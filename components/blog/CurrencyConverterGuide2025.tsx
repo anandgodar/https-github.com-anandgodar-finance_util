@@ -248,11 +248,11 @@ const CurrencyConverterGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <p className="text-sm text-slate-600">See live rates across major currencies.</p>
           </button>
           <button
-            onClick={() => onNavigate?.(ToolType.LIVING_COST)}
+            onClick={() => onNavigate?.(ToolType.SALARY_CALC)}
             className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
           >
-            <h4 className="font-bold text-slate-900 mb-2">🌆 Cost of Living Calculator</h4>
-            <p className="text-sm text-slate-600">Compare budgets across global cities.</p>
+            <h4 className="font-bold text-slate-900 mb-2">💰 Salary & Take-Home Estimator</h4>
+            <p className="text-sm text-slate-600">US federal, state, and FICA taxes on your paycheck.</p>
           </button>
         </div>
       </div>

@@ -100,6 +100,24 @@ for (const p of pages) {
   }
 }
 
+// Rule 3b: JSON-LD url/item/@id fields are absolute URLs, not href= attributes, so
+// the href scan above never sees them (found as a false pass in the 17 Nov review).
+const LD_RE = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
+const LD_URL_RE = /https?:\/\/(?:www\.)?quantcurb\.com(\/[^"'\s\\<]*)/g;
+for (const p of pages) {
+  const seen = new Set();
+  for (const ld of p.html.matchAll(LD_RE)) {
+    for (const m of ld[1].matchAll(LD_URL_RE)) {
+      const path = (m[1] || '/').replace(/\/$/, '') || '/';
+      if (seen.has(path)) continue;
+      seen.add(path);
+      const retired = RETIRED_PREFIXES.some((x) => path.startsWith(x)) || RETIRED_EXACT.has(path);
+      if (retired || redirectedExact.has(path))
+        failures.push(`jsonld: ${p.url} JSON-LD references redirected URL ${path}`);
+    }
+  }
+}
+
 // Rule 5: sitemaps list only built, indexable pages
 for (const f of readdirSync(join(ROOT, 'public'))) {
   if (!/^sitemap.*\.xml$/.test(f) || f === 'sitemap-index.xml') continue;
