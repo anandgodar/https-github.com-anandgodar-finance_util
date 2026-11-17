@@ -2,7 +2,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, Legend } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
-import EmailCapture from './EmailCapture';
 import CalculatorFAQ from './CalculatorFAQ';
 import { ToolType } from '../types';
 
@@ -757,19 +756,6 @@ END:VCALENDAR`;
         </div>
       </section>
 
-      {/* Email Capture Section */}
-      <section className="mt-12">
-        <EmailCapture
-          title="Get Your Free Freelancer Tax Checklist 2026"
-          description="Download our comprehensive quarterly tax checklist with safe harbor rules, payment deadlines, and penalty avoidance strategies."
-          leadMagnet={{
-            title: "Quarterly Tax Checklist 2026",
-            description: "Complete guide to quarterly estimated taxes including safe harbor rules, payment deadlines, and penalty avoidance.",
-            type: "quarterly_tax"
-          }}
-          buttonText="Get Free Checklist"
-        />
-      </section>
 
       {/* Related Resources Section */}
       <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">

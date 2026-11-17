@@ -2,7 +2,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { getFinancialAdvice } from '../services/geminiService';
-import EmailCapture from './EmailCapture';
 import CalculatorFAQ from './CalculatorFAQ';
 import { ToolType } from '../types';
 
@@ -284,19 +283,6 @@ const FreelanceHub: React.FC<FreelanceHubProps> = ({ onNavigate, initialState })
         </div>
       </section>
 
-      {/* Email Capture Section */}
-      <section className="mt-12">
-        <EmailCapture
-          title="Get Your Free Freelancer Tax Deduction Guide"
-          description="Download our comprehensive tax deduction guide for freelancers including home office, mileage, equipment, and health insurance deductions."
-          leadMagnet={{
-            title: "Freelancer Tax Deduction Guide 2025",
-            description: "Complete guide to maximizing tax deductions for freelancers and self-employed professionals.",
-            type: "freelancer_tax"
-          }}
-          buttonText="Get Free Guide"
-        />
-      </section>
 
       {/* Related Resources Section */}
       <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">

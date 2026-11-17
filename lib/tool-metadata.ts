@@ -123,7 +123,7 @@ export const TOOL_METADATA: Record<ToolType, { title: string; desc: string; keyw
   },
   [ToolType.OPTIONS_STRATEGY_VISUALIZER]: {
     title: "Options Strategy Visualizer - Multi-Leg P&L Calculator",
-    desc: "Build and visualize multi-leg options strategies with interactive P&L diagrams, a full Greeks dashboard, an IV slider, and risk metrics.",
+    desc: "Build and visualize multi-leg options strategies with interactive P&L diagrams, breakevens, an IV what-if slider, and risk metrics.",
     keywords: "options strategy calculator, options visualizer, iron condor calculator, bull call spread, options greeks calculator, delta theta vega, options profit calculator, multi-leg options, options trading simulator, implied volatility"
   },
   [ToolType.VALUATION_ACADEMY]: {

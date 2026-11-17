@@ -59,7 +59,11 @@ export function generateStaticParams() {
       // GST_CALC (India GST on a US-tax site) and LIVING_COST (thin widget on
       // unsourced COL indexes) retired Nov 2026 with MARKET_INSIGHTS; each 301s
       // to its blog guide (vercel.json).
-      .filter((slug) => ![ToolType.DASHBOARD, ToolType.MARKET_INSIGHTS, ToolType.GST_CALC, ToolType.LIVING_COST].includes(slug))
+      // BLOG_INDEX: app/blog/page.tsx owns /blog/ (SiteShell + CollectionPage
+      // schema). Exporting it from this catch-all too made the build write
+      // /blog/index.html twice, and which render won was a race — two builds of
+      // the same commit produced different /blog/ pages (seen 17 Nov 2026).
+      .filter((slug) => ![ToolType.DASHBOARD, ToolType.MARKET_INSIGHTS, ToolType.GST_CALC, ToolType.LIVING_COST, ToolType.BLOG_INDEX].includes(slug))
       .map((slug) => ({ tool: slug.split('/') }))
   ];
 }

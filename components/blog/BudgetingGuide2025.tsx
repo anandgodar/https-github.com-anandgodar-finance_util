@@ -3,7 +3,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -481,13 +480,6 @@ const BudgetingGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </section>
       </article>
 
-      <section className="mt-12">
-        <EmailCapture
-          title="Get Weekly Budgeting Tips"
-          description="Subscribe for weekly tips on budgeting, saving money, and achieving your financial goals."
-          buttonText="Subscribe"
-        />
-      </section>
 
       <AdPlacement size="responsive" position="bottom" />
 

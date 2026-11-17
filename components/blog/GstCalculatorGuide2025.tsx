@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -240,13 +239,6 @@ const GstCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </section>
       </article>
 
-      <section className="mt-12">
-        <EmailCapture
-          title="Business Finance Tips"
-          description="Stay ahead with weekly invoicing, tax, and cash-flow tips."
-          buttonText="Subscribe"
-        />
-      </section>
 
       <AdPlacement size="responsive" position="bottom" />
 

@@ -30,9 +30,9 @@ const GreeksGuide: React.FC<GreeksGuideProps> = ({ setActiveTool }) => {
       <article className="max-w-4xl mx-auto px-6 py-16">
         <div className="bg-emerald-600 text-white rounded-2xl p-6 mb-12 shadow-xl flex items-center justify-between">
           <div>
-            <p className="font-black text-xl mb-2">Visualize the Greeks in Real-Time</p>
+            <p className="font-black text-xl mb-2">See Any Strategy&apos;s Payoff</p>
             <p className="text-emerald-200">
-              Our Options Strategy Visualizer shows Delta, Theta, Vega, Gamma for any strategy
+              Build the strategies from this guide and see P/L, breakevens and max loss at expiration
             </p>
           </div>
           <button
@@ -171,7 +171,7 @@ const GreeksGuide: React.FC<GreeksGuideProps> = ({ setActiveTool }) => {
               <a href="/academy/iron-condor-strategy-guide/" className="text-indigo-600 font-semibold hover:underline">iron condor strategy guide</a> shows this in detail.</li>
           </ul>
           <p className="text-slate-700 leading-relaxed mb-4">
-            You can build any of these and watch the Greeks update in the{' '}
+            You can build any of these and see the payoff shape, breakevens and worst case in the{' '}
             <a href="/options-strategy-visualizer/" className="text-indigo-600 font-semibold hover:underline">options strategy visualizer</a>.
           </p>
         </section>
@@ -228,9 +228,9 @@ const GreeksGuide: React.FC<GreeksGuideProps> = ({ setActiveTool }) => {
 
         <section className="mb-12">
           <div className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white rounded-2xl p-12 text-center">
-            <h2 className="text-4xl font-black mb-4">Visualize the Greeks in Action</h2>
+            <h2 className="text-4xl font-black mb-4">Put the Greeks Into Practice</h2>
             <p className="text-xl text-emerald-100 mb-8">
-              Our Options Strategy Visualizer calculates Delta, Theta, Vega, Gamma in real-time for any strategy
+              Build any multi-leg strategy and see its P/L, breakevens and max loss at expiration
             </p>
             <button
               onClick={() => setActiveTool(ToolType.OPTIONS_STRATEGY_VISUALIZER)}

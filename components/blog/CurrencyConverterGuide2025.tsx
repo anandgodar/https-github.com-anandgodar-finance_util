@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -227,13 +226,6 @@ const CurrencyConverterGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </section>
       </article>
 
-      <section className="mt-12">
-        <EmailCapture
-          title="Get Smart Travel Money Tips"
-          description="Weekly insights on FX rates, travel savings, and cross-border spending."
-          buttonText="Subscribe"
-        />
-      </section>
 
       <AdPlacement size="responsive" position="bottom" />
 

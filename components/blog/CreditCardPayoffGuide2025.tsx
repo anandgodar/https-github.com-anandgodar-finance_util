@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -241,13 +240,6 @@ const CreditCardPayoffGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </section>
       </article>
 
-      <section className="mt-12">
-        <EmailCapture
-          title="Debt-Free Strategies"
-          description="Get weekly tips on paying off debt and building a stronger credit profile."
-          buttonText="Subscribe"
-        />
-      </section>
 
       <AdPlacement size="responsive" position="bottom" />
 

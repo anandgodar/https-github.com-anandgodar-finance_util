@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -246,13 +245,6 @@ const LoanEmiCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         </section>
       </article>
 
-      <section className="mt-12">
-        <EmailCapture
-          title="Get Debt-Smart Tips"
-          description="Weekly insights on loans, EMI savings, and smarter repayment strategies."
-          buttonText="Subscribe"
-        />
-      </section>
 
       <AdPlacement size="responsive" position="bottom" />
 

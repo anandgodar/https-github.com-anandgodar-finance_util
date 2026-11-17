@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 import AdPlacement from '../AdPlacement';
 
 interface BlogProps {
@@ -273,13 +272,6 @@ const CostOfLivingCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) =>
         </section>
       </article>
 
-      <section className="mt-12">
-        <EmailCapture
-          title="Smarter Budgeting Tips"
-          description="Weekly money tips for budgeting, housing costs, and smart lifestyle upgrades."
-          buttonText="Subscribe"
-        />
-      </section>
 
       <AdPlacement size="responsive" position="bottom" />
 

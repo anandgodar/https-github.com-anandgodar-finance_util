@@ -9,7 +9,6 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import EmailCapture from './EmailCapture';
 import RecommendedTools from './RecommendedTools';
 import AdPlacement from './AdPlacement';
 import CalculatorFAQ from './CalculatorFAQ';
@@ -518,19 +517,6 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
       {/* Lender Comparison Table */}
       <LenderComparisonTable type="mortgage" />
 
-      {/* Email Capture Section */}
-      <section className="mt-12">
-        <EmailCapture
-          title="Get Your Free Mortgage Planning Checklist"
-          description="Download our comprehensive mortgage planning checklist with PITI breakdown, PMI removal strategies, and home buying tips."
-          leadMagnet={{
-            title: "Mortgage Planning Checklist 2025",
-            description: "Complete guide to mortgage planning including PITI calculations, PMI strategies, and home buying tips.",
-            type: "mortgage"
-          }}
-          buttonText="Get Free Checklist"
-        />
-      </section>
     </article>
   );
 };

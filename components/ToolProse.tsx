@@ -79,9 +79,8 @@ const PROSE: Partial<Record<ToolType, React.ReactNode>> = {
         <p>
           The headline numbers all come from the expiration line, which says nothing about how the position
           behaves <em>before</em> expiry. The dashed what-if line the volatility slider adds is a deliberately
-          crude sketch — it just scales each leg&apos;s premium by the percentage you pick — and the Greeks panel
-          shows simplified illustrative values rather than Greeks computed from your actual strikes and expiry,
-          so neither is a pricing model. Time decay and early assignment on short American-style legs are not
+          crude sketch — it just scales each leg&apos;s premium by the percentage you pick — so it is not a
+          pricing model. Time decay and early assignment on short American-style legs are not
           modeled at all. Premiums are inputs you supply from your broker&apos;s chain, not live quotes, and the
           math ignores commissions and per-contract fees. Use the chart to understand a structure&apos;s shape
           and worst case — not to price a trade.

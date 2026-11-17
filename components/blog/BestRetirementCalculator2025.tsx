@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ToolType } from '../../types';
-import EmailCapture from '../EmailCapture';
 
 interface BlogProps {
   onNavigate?: (tool: ToolType) => void;
@@ -385,17 +384,6 @@ const BestRetirementCalculator2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </button>
         </section>
 
-        <section className="mt-12">
-          <EmailCapture
-            title="Get Retirement Planning Resources"
-            description="Subscribe for retirement planning tips, contribution limit updates, and tax optimization strategies."
-            leadMagnet={{
-              title: "Retirement Planning Guide 2026",
-              description: "Complete guide to maximizing your retirement savings and tax benefits."
-            }}
-            buttonText="Subscribe Free"
-          />
-        </section>
       </article>
     </div>
   );
