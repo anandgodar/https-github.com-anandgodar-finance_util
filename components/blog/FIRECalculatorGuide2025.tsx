@@ -558,9 +558,6 @@ const FIRECalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <AdPlacement size="responsive" position="middle" lazy={true} />
         </div>
 
-        {/* Email Capture Section */}
-        <section className="mt-12">
-        </section>
       </article>
     </div>
   );

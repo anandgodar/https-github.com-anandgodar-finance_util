@@ -23,7 +23,7 @@ const AuthorBio: React.FC<AuthorBioProps> = ({ variant = 'full' }) => {
               Independently built financial calculators that run on exact formulas — amortization, marginal tax brackets, compound interest — with sources named next to the figures they support.
             </p>
             <a
-              href="/about-quantcurb"
+              href="/about-quantcurb/"
               className="text-sm text-indigo-600 font-bold hover:underline"
             >
               Learn more →
@@ -56,13 +56,13 @@ const AuthorBio: React.FC<AuthorBioProps> = ({ variant = 'full' }) => {
           </p>
           <div className="flex flex-wrap gap-4 mt-6">
             <a
-              href="/about-quantcurb"
+              href="/about-quantcurb/"
               className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition"
             >
               Learn More About QuantCurb →
             </a>
             <a
-              href="/contact-us"
+              href="/contact-us/"
               className="inline-block bg-white hover:bg-indigo-50 text-indigo-600 font-bold py-3 px-6 rounded-xl border-2 border-indigo-600 transition"
             >
               Get in Touch

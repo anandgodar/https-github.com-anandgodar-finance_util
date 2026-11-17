@@ -756,9 +756,6 @@ END:VCALENDAR`;
         </div>
       </section>
 
-      {/* Email Capture Section */}
-      <section className="mt-12">
-      </section>
 
       {/* Related Resources Section */}
       <section className="mt-16 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 border border-indigo-200">

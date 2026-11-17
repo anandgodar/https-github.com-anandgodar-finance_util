@@ -517,9 +517,6 @@ const MortgageCalculator: React.FC<MortgageCalculatorProps> = ({ onNavigate }) =
       {/* Lender Comparison Table */}
       <LenderComparisonTable type="mortgage" />
 
-      {/* Email Capture Section */}
-      <section className="mt-12">
-      </section>
     </article>
   );
 };

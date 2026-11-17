@@ -384,8 +384,6 @@ const BestRetirementCalculator2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </button>
         </section>
 
-        <section className="mt-12">
-        </section>
       </article>
     </div>
   );

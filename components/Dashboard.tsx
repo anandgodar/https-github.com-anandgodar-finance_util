@@ -11,10 +11,10 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
     {
       id: ToolType.OPTIONS_STRATEGY_VISUALIZER,
       title: 'Options Visualizer',
-      desc: 'Build multi-leg options strategies with interactive P&L diagrams, Greeks dashboard, and IV modeling.',
+      desc: 'Build multi-leg options strategies with interactive P&L diagrams, breakevens, and an IV what-if slider.',
       icon: '📊',
       color: 'bg-indigo-50 text-indigo-600',
-      keywords: 'Iron Condor, Greeks, Delta'
+      keywords: 'Iron Condor, Spreads, Breakevens'
     },
     {
       id: ToolType.EXCEL_MODELER,
@@ -301,7 +301,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onSelectTool }) => {
             See how your investments grow over time with our <strong>compound interest calculator</strong>. Model monthly SIP
             contributions, lump sum investments, and dividend reinvestment (DRIP) scenarios. For advanced investors, the
             <strong> DCF calculator</strong> lets you value stocks using discounted cash flow analysis with WACC, and the
-            <strong> options strategy visualizer</strong> helps you build multi-leg strategies with real-time Greeks.
+            <strong> options strategy visualizer</strong> helps you build multi-leg strategies and see P&L and breakevens at expiration.
           </p>
 
           <h3 className="text-xl font-bold text-slate-800 pt-4">Debt Payoff Strategies</h3>

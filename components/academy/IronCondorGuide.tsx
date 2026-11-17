@@ -31,7 +31,7 @@ const IronCondorGuide: React.FC<IronCondorGuideProps> = ({ setActiveTool }) => {
         <div className="bg-purple-600 text-white rounded-2xl p-6 mb-12 shadow-xl flex items-center justify-between">
           <div>
             <p className="font-black text-xl mb-2">Build Your First Iron Condor</p>
-            <p className="text-purple-200">Visualize profit/loss, breakevens, and Greeks in real-time</p>
+            <p className="text-purple-200">Visualize profit/loss, breakevens, and max risk at expiration</p>
           </div>
           <button
             onClick={() => setActiveTool(ToolType.OPTIONS_STRATEGY_VISUALIZER)}
@@ -225,7 +225,7 @@ const IronCondorGuide: React.FC<IronCondorGuideProps> = ({ setActiveTool }) => {
           <div className="bg-gradient-to-br from-purple-600 to-indigo-600 text-white rounded-2xl p-12 text-center">
             <h2 className="text-4xl font-black mb-4">Try Building Your First Iron Condor</h2>
             <p className="text-xl text-purple-100 mb-8">
-              Our visualizer shows real-time P/L, breakevens, Greeks, and risk metrics
+              Our visualizer shows P/L at expiration, breakevens, and risk metrics
             </p>
             <button
               onClick={() => setActiveTool(ToolType.OPTIONS_STRATEGY_VISUALIZER)}

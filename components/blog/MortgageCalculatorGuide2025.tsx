@@ -568,9 +568,6 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           </button>
         </section>
 
-        {/* Email Capture Section */}
-        <section className="mt-12">
-        </section>
       </article>
     </div>
   );
