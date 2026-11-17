@@ -37,20 +37,8 @@ const CostOfLivingCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) =>
           <strong> cost of living calculator</strong> helps you compare locations and avoid expensive surprises.
         </p>
 
-        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <h3 className="font-bold text-slate-900 text-lg mb-2">Compare Cities in Seconds</h3>
-              <p className="text-sm text-slate-600">Use our cost of living calculator to benchmark your budget.</p>
-            </div>
-            <button
-              onClick={() => onNavigate?.(ToolType.LIVING_COST)}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition whitespace-nowrap"
-            >
-              Open Cost of Living Tool →
-            </button>
-          </div>
-        </div>
+        {/* LIVING_COST retired Nov 2026 (AdSense fix) — the old "Open Cost of Living
+            Tool" CTA looped through a 301 back to this guide, so it was removed. */}
       </header>
 
       <nav className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
@@ -223,7 +211,7 @@ const CostOfLivingCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) =>
           <p className="text-lg text-slate-700 leading-relaxed">
             Her personal break-even is about $83,900 ($70,000 + $13,900), lower than the $87,500 the index suggested. For
             someone who would keep a car and add childcare, the result could go the other way. Run your own numbers in
-            the <a href="/cost-of-living-calculator/" className="text-indigo-600 font-semibold hover:underline">cost of living calculator</a>,
+            the <a href="/salary-tax-estimator/" className="text-indigo-600 font-semibold hover:underline">salary &amp; take-home estimator</a>,
             and if the move comes with a raise, our guide on whether <a href="/blog/raise-vs-relocation-cost-of-living/" className="text-indigo-600 font-semibold hover:underline">a raise is worth relocating for</a> adds
             moving costs to the picture.
           </p>
@@ -299,11 +287,11 @@ const CostOfLivingCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) =>
         <h3 className="text-2xl font-black text-slate-900">Related Calculators & Guides</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <button
-            onClick={() => onNavigate?.(ToolType.LIVING_COST)}
+            onClick={() => onNavigate?.(ToolType.SALARY_CALC)}
             className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
           >
-            <h4 className="font-bold text-slate-900 mb-2">🌆 Cost of Living Calculator</h4>
-            <p className="text-sm text-slate-600">Compare monthly budgets between cities.</p>
+            <h4 className="font-bold text-slate-900 mb-2">💰 Salary & Take-Home Estimator</h4>
+            <p className="text-sm text-slate-600">Compare take-home pay across states before a move.</p>
           </button>
           <button
             onClick={() => onNavigate?.(ToolType.BLOG_BUDGETING)}

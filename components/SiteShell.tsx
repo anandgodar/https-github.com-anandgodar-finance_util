@@ -82,12 +82,13 @@ const SiteShell: React.FC<SiteShellProps> = ({ activeTool = ToolType.BLOG_INDEX,
           >
             💎
           </button>
+          {/* MARKET_INSIGHTS retired Nov 2026 (AdSense fix) — nav icon removed. */}
           <button
-            onClick={() => handleNavigate(ToolType.MARKET_INSIGHTS)}
-            className={`${activeTool === ToolType.MARKET_INSIGHTS ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`}
-            aria-label="Market Insights"
+            onClick={() => handleNavigate(ToolType.INVESTMENT_ACADEMY)}
+            className={`${activeTool === ToolType.INVESTMENT_ACADEMY ? 'text-indigo-600 scale-125' : 'text-slate-400'} transition-all text-xl`}
+            aria-label="Fund Academy"
           >
-            🤖
+            🎓
           </button>
         </div>
       </main>

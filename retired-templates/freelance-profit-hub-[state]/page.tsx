@@ -46,9 +46,12 @@ export const dynamicParams = false;
 
 // Generate static params for ALL 51 states
 export function generateStaticParams() {
-  return usStates.map((state) => ({
-    state: state.slug
-  }));
+  // AdSense "Low value content" (rejected 4 Nov 2026): the 51 state pages of
+  // this tier were 98% identical boilerplate with the state name swapped and
+  // earned ~0 clicks (GSC 28d to 16 Nov). They are no longer built; vercel.json
+  // 301s each /{tier}/{state}/ to the national tool. Template kept on purpose —
+  // restoring the tier is returning paths again (with differentiated content).
+  return [];
 }
 
 // Get state config - returns full config if available, or creates a basic one

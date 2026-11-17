@@ -124,7 +124,7 @@ const LeanVsFatFire2026: React.FC<BlogProps> = ({ onNavigate }) => {
           </div>
           <p className="text-sm text-slate-500 italic">
             Illustrative only. Your costs depend on location, household size and whether your home is paid off — the{' '}
-            <a href="/cost-of-living-calculator/" className="text-indigo-600 font-semibold hover:underline">cost of living calculator</a>{' '}
+            <a href="/salary-tax-estimator/" className="text-indigo-600 font-semibold hover:underline">salary &amp; take-home estimator</a>{' '}
             can help compare cities.
           </p>
         </section>

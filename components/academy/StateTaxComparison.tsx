@@ -148,7 +148,7 @@ const StateTaxComparison: React.FC<StateTaxComparisonProps> = ({ setActiveTool }
             <li>• <strong>Property tax:</strong> Texas property tax rates are among the higher ones in the country. On a home with the same price, a Texas owner often pays noticeably more property tax each year than a California owner, whose assessed value is limited by Proposition 13.</li>
             <li>• <strong>Sales tax:</strong> the Texas state rate is 6.25%, and local add-ons can bring the combined rate to 8.25%. California&apos;s statewide base rate is 7.25%, with local add-ons on top — so sales tax is roughly a wash for many households.</li>
             <li>• <strong>Housing cost:</strong> this usually dominates the comparison. Use the{' '}
-              <a href="/cost-of-living-calculator/" className="text-indigo-600 font-semibold hover:underline">cost of living calculator</a>{' '}
+              <a href="/salary-tax-estimator/" className="text-indigo-600 font-semibold hover:underline">salary &amp; take-home estimator</a>{' '}
               to compare rent and prices between the two cities, not just taxes.</li>
           </ul>
         </section>

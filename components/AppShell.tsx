@@ -333,12 +333,12 @@ const AppShell: React.FC<AppShellProps> = ({ initialTool }) => {
 
   const dailyTools = [
     { id: ToolType.CURRENCY_CONV, label: 'Currency Intel', icon: '🌍' },
-    { id: ToolType.GST_CALC, label: 'GST Calculator', icon: '🧾' },
+    // GST_CALC retired Nov 2026 (AdSense fix) — its URL 301s away; no nav entry.
     { id: ToolType.CREDIT_CARD_PAYOFF, label: 'Card Payoff', icon: '✂️' },
   ];
 
   const insightTools = [
-    { id: ToolType.MARKET_INSIGHTS, label: 'Market Pulse', icon: '🤖' },
+    // MARKET_INSIGHTS retired Nov 2026 (AdSense fix) — its URL 301s away; no nav entry.
     { id: ToolType.INVESTMENT_ACADEMY, label: 'Fund Academy', icon: '🎓' },
     { id: ToolType.BLOG_INDEX, label: 'Blog', icon: '📝' },
     { id: ToolType.FAQ, label: 'Knowledge Base', icon: '❓' },

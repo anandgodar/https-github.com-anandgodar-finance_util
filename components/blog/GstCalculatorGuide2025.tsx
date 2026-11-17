@@ -37,20 +37,9 @@ const GstCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           exclusive GST, how to split pricing in seconds, and how rates differ between countries.
         </p>
 
-        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <h3 className="font-bold text-slate-900 text-lg mb-2">Calculate GST Instantly</h3>
-              <p className="text-sm text-slate-600">Use our GST calculator to split inclusive and exclusive amounts for cleaner invoices.</p>
-            </div>
-            <button
-              onClick={() => onNavigate?.(ToolType.GST_CALC)}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition whitespace-nowrap"
-            >
-              Open GST Calculator →
-            </button>
-          </div>
-        </div>
+        {/* GST_CALC retired Nov 2026 (AdSense fix) — the old "Open GST Calculator" CTA
+            looped through a 301 back to this guide, so it was removed. The worked
+            formulas below cover the same inclusive/exclusive splits. */}
       </header>
 
       <nav className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
@@ -265,11 +254,11 @@ const GstCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         <h3 className="text-2xl font-black text-slate-900">Related Calculators & Guides</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <button
-            onClick={() => onNavigate?.(ToolType.GST_CALC)}
+            onClick={() => onNavigate?.(ToolType.SALARY_CALC)}
             className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
           >
-            <h4 className="font-bold text-slate-900 mb-2">🧾 GST Calculator</h4>
-            <p className="text-sm text-slate-600">Split inclusive/exclusive GST in seconds.</p>
+            <h4 className="font-bold text-slate-900 mb-2">💰 Salary & Take-Home Estimator</h4>
+            <p className="text-sm text-slate-600">US federal, state, and FICA taxes on your paycheck.</p>
           </button>
           <button
             onClick={() => onNavigate?.(ToolType.FREELANCE_PROFIT)}

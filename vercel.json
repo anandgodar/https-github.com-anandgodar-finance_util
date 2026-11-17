@@ -2,120 +2,447 @@
   "version": 2,
   "outputDirectory": "out",
   "redirects": [
-    { "source": "/blog/best-mortgage-calculator-2025", "destination": "/best-mortgage-calculator-2025/", "permanent": true },
-    { "source": "/blog/best-mortgage-calculator-2025/", "destination": "/best-mortgage-calculator-2025/", "permanent": true },
-
+    {
+      "source": "/blog/best-mortgage-calculator-2025",
+      "destination": "/best-mortgage-calculator-2025/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/best-mortgage-calculator-2025/",
+      "destination": "/best-mortgage-calculator-2025/",
+      "permanent": true
+    },
     {
       "source": "/salary-tax-estimator-dc",
-      "destination": "/salary-tax-estimator/district-of-columbia",
+      "destination": "/salary-tax-estimator/district-of-columbia/",
       "permanent": true
     },
     {
       "source": "/salary-tax-estimator-:state",
-      "destination": "/salary-tax-estimator/:state",
+      "destination": "/salary-tax-estimator/:state/",
       "permanent": true
     },
-
-    { "source": "/emergency-fund-calculator", "destination": "/emergency-fund-guard/", "permanent": true },
-    { "source": "/emergency-fund-calculator/", "destination": "/emergency-fund-guard/", "permanent": true },
-
-    { "source": "/net-worth-calculator", "destination": "/net-worth-command-center/", "permanent": true },
-    { "source": "/net-worth-calculator/", "destination": "/net-worth-command-center/", "permanent": true },
-    { "source": "/net-worth-tracker", "destination": "/net-worth-command-center/", "permanent": true },
-    { "source": "/net-worth-tracker/", "destination": "/net-worth-command-center/", "permanent": true },
-
-    { "source": "/investment-calculator", "destination": "/wealth-investment-projector/", "permanent": true },
-    { "source": "/investment-calculator/", "destination": "/wealth-investment-projector/", "permanent": true },
-    { "source": "/compound-interest-calculator", "destination": "/wealth-investment-projector/", "permanent": true },
-    { "source": "/compound-interest-calculator/", "destination": "/wealth-investment-projector/", "permanent": true },
-    { "source": "/sip-calculator", "destination": "/wealth-investment-projector/", "permanent": true },
-    { "source": "/sip-calculator/", "destination": "/wealth-investment-projector/", "permanent": true },
-
-    { "source": "/currency-converter", "destination": "/currency-exchange-intel/", "permanent": true },
-    { "source": "/currency-converter/", "destination": "/currency-exchange-intel/", "permanent": true },
-
-    { "source": "/credit-card-payoff-calculator", "destination": "/credit-card-debt-strategist/", "permanent": true },
-    { "source": "/credit-card-payoff-calculator/", "destination": "/credit-card-debt-strategist/", "permanent": true },
-    { "source": "/debt-payoff-calculator", "destination": "/credit-card-debt-strategist/", "permanent": true },
-    { "source": "/debt-payoff-calculator/", "destination": "/credit-card-debt-strategist/", "permanent": true },
-
-    { "source": "/fire-calculator", "destination": "/early-retirement-fire-planner/", "permanent": true },
-    { "source": "/fire-calculator/", "destination": "/early-retirement-fire-planner/", "permanent": true },
-    { "source": "/early-retirement-calculator", "destination": "/early-retirement-fire-planner/", "permanent": true },
-    { "source": "/early-retirement-calculator/", "destination": "/early-retirement-fire-planner/", "permanent": true },
-
-    { "source": "/emi-calculator", "destination": "/loan-emi-calculator/", "permanent": true },
-    { "source": "/emi-calculator/", "destination": "/loan-emi-calculator/", "permanent": true },
-
-    { "source": "/salary-calculator", "destination": "/salary-tax-estimator/", "permanent": true },
-    { "source": "/salary-calculator/", "destination": "/salary-tax-estimator/", "permanent": true },
-    { "source": "/take-home-pay-calculator", "destination": "/salary-tax-estimator/", "permanent": true },
-    { "source": "/take-home-pay-calculator/", "destination": "/salary-tax-estimator/", "permanent": true },
-    { "source": "/paycheck-calculator", "destination": "/salary-tax-estimator/", "permanent": true },
-    { "source": "/paycheck-calculator/", "destination": "/salary-tax-estimator/", "permanent": true },
-
-    { "source": "/mortgage-calculator", "destination": "/mortgage-payment-calculator/", "permanent": true },
-    { "source": "/mortgage-calculator/", "destination": "/mortgage-payment-calculator/", "permanent": true },
-
-    { "source": "/freelance-calculator", "destination": "/freelance-profit-hub/", "permanent": true },
-    { "source": "/freelance-calculator/", "destination": "/freelance-profit-hub/", "permanent": true },
-    { "source": "/1099-tax-calculator", "destination": "/freelance-profit-hub/", "permanent": true },
-    { "source": "/1099-tax-calculator/", "destination": "/freelance-profit-hub/", "permanent": true },
-
-    { "source": "/ai-market-insights", "destination": "/market-intelligence-pulse/", "permanent": true },
-    { "source": "/ai-market-insights/", "destination": "/market-intelligence-pulse/", "permanent": true },
-
-    { "source": "/loan-comparison-calculator", "destination": "/loan-comparison-tool/", "permanent": true },
-    { "source": "/loan-comparison-calculator/", "destination": "/loan-comparison-tool/", "permanent": true },
-    { "source": "/refinance-calculator", "destination": "/loan-comparison-tool/", "permanent": true },
-    { "source": "/refinance-calculator/", "destination": "/loan-comparison-tool/", "permanent": true },
-
-    { "source": "/dcf-calculator", "destination": "/excel-power-modeler/", "permanent": true },
-    { "source": "/dcf-calculator/", "destination": "/excel-power-modeler/", "permanent": true },
-    { "source": "/stock-valuation-calculator", "destination": "/excel-power-modeler/", "permanent": true },
-    { "source": "/stock-valuation-calculator/", "destination": "/excel-power-modeler/", "permanent": true },
-
-    { "source": "/options-calculator", "destination": "/options-strategy-visualizer/", "permanent": true },
-    { "source": "/options-calculator/", "destination": "/options-strategy-visualizer/", "permanent": true },
-    { "source": "/options-profit-calculator", "destination": "/options-strategy-visualizer/", "permanent": true },
-    { "source": "/options-profit-calculator/", "destination": "/options-strategy-visualizer/", "permanent": true },
-
-    { "source": "/dashboard", "destination": "/", "permanent": true },
-    { "source": "/dashboard/", "destination": "/", "permanent": true },
-    { "source": "/retirement-calculator", "destination": "/retirement-account-optimizer/", "permanent": true },
-    { "source": "/retirement-calculator/", "destination": "/retirement-account-optimizer/", "permanent": true },
-    { "source": "/401k-calculator", "destination": "/retirement-account-optimizer/", "permanent": true },
-    { "source": "/401k-calculator/", "destination": "/retirement-account-optimizer/", "permanent": true },
-
-    { "source": "/dti-calculator", "destination": "/debt-to-income-ratio-calculator/", "permanent": true },
-    { "source": "/dti-calculator/", "destination": "/debt-to-income-ratio-calculator/", "permanent": true },
-
-    { "source": "/crypto-tax-calculator", "destination": "/crypto-tax-loss-harvester/", "permanent": true },
-    { "source": "/crypto-tax-calculator/", "destination": "/crypto-tax-loss-harvester/", "permanent": true }
+    {
+      "source": "/emergency-fund-calculator",
+      "destination": "/emergency-fund-guard/",
+      "permanent": true
+    },
+    {
+      "source": "/emergency-fund-calculator/",
+      "destination": "/emergency-fund-guard/",
+      "permanent": true
+    },
+    {
+      "source": "/net-worth-calculator",
+      "destination": "/net-worth-command-center/",
+      "permanent": true
+    },
+    {
+      "source": "/net-worth-calculator/",
+      "destination": "/net-worth-command-center/",
+      "permanent": true
+    },
+    {
+      "source": "/net-worth-tracker",
+      "destination": "/net-worth-command-center/",
+      "permanent": true
+    },
+    {
+      "source": "/net-worth-tracker/",
+      "destination": "/net-worth-command-center/",
+      "permanent": true
+    },
+    {
+      "source": "/investment-calculator",
+      "destination": "/wealth-investment-projector/",
+      "permanent": true
+    },
+    {
+      "source": "/investment-calculator/",
+      "destination": "/wealth-investment-projector/",
+      "permanent": true
+    },
+    {
+      "source": "/compound-interest-calculator",
+      "destination": "/wealth-investment-projector/",
+      "permanent": true
+    },
+    {
+      "source": "/compound-interest-calculator/",
+      "destination": "/wealth-investment-projector/",
+      "permanent": true
+    },
+    {
+      "source": "/sip-calculator",
+      "destination": "/wealth-investment-projector/",
+      "permanent": true
+    },
+    {
+      "source": "/sip-calculator/",
+      "destination": "/wealth-investment-projector/",
+      "permanent": true
+    },
+    {
+      "source": "/currency-converter",
+      "destination": "/currency-exchange-intel/",
+      "permanent": true
+    },
+    {
+      "source": "/currency-converter/",
+      "destination": "/currency-exchange-intel/",
+      "permanent": true
+    },
+    {
+      "source": "/credit-card-payoff-calculator",
+      "destination": "/credit-card-debt-strategist/",
+      "permanent": true
+    },
+    {
+      "source": "/credit-card-payoff-calculator/",
+      "destination": "/credit-card-debt-strategist/",
+      "permanent": true
+    },
+    {
+      "source": "/debt-payoff-calculator",
+      "destination": "/credit-card-debt-strategist/",
+      "permanent": true
+    },
+    {
+      "source": "/debt-payoff-calculator/",
+      "destination": "/credit-card-debt-strategist/",
+      "permanent": true
+    },
+    {
+      "source": "/fire-calculator",
+      "destination": "/early-retirement-fire-planner/",
+      "permanent": true
+    },
+    {
+      "source": "/fire-calculator/",
+      "destination": "/early-retirement-fire-planner/",
+      "permanent": true
+    },
+    {
+      "source": "/early-retirement-calculator",
+      "destination": "/early-retirement-fire-planner/",
+      "permanent": true
+    },
+    {
+      "source": "/early-retirement-calculator/",
+      "destination": "/early-retirement-fire-planner/",
+      "permanent": true
+    },
+    {
+      "source": "/emi-calculator",
+      "destination": "/loan-emi-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/emi-calculator/",
+      "destination": "/loan-emi-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/salary-calculator",
+      "destination": "/salary-tax-estimator/",
+      "permanent": true
+    },
+    {
+      "source": "/salary-calculator/",
+      "destination": "/salary-tax-estimator/",
+      "permanent": true
+    },
+    {
+      "source": "/take-home-pay-calculator",
+      "destination": "/salary-tax-estimator/",
+      "permanent": true
+    },
+    {
+      "source": "/take-home-pay-calculator/",
+      "destination": "/salary-tax-estimator/",
+      "permanent": true
+    },
+    {
+      "source": "/paycheck-calculator",
+      "destination": "/salary-tax-estimator/",
+      "permanent": true
+    },
+    {
+      "source": "/paycheck-calculator/",
+      "destination": "/salary-tax-estimator/",
+      "permanent": true
+    },
+    {
+      "source": "/mortgage-calculator",
+      "destination": "/mortgage-payment-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/mortgage-calculator/",
+      "destination": "/mortgage-payment-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/freelance-calculator",
+      "destination": "/freelance-profit-hub/",
+      "permanent": true
+    },
+    {
+      "source": "/freelance-calculator/",
+      "destination": "/freelance-profit-hub/",
+      "permanent": true
+    },
+    {
+      "source": "/1099-tax-calculator",
+      "destination": "/freelance-profit-hub/",
+      "permanent": true
+    },
+    {
+      "source": "/1099-tax-calculator/",
+      "destination": "/freelance-profit-hub/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-market-insights",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-market-insights/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/loan-comparison-calculator",
+      "destination": "/loan-comparison-tool/",
+      "permanent": true
+    },
+    {
+      "source": "/loan-comparison-calculator/",
+      "destination": "/loan-comparison-tool/",
+      "permanent": true
+    },
+    {
+      "source": "/refinance-calculator",
+      "destination": "/loan-comparison-tool/",
+      "permanent": true
+    },
+    {
+      "source": "/refinance-calculator/",
+      "destination": "/loan-comparison-tool/",
+      "permanent": true
+    },
+    {
+      "source": "/dcf-calculator",
+      "destination": "/excel-power-modeler/",
+      "permanent": true
+    },
+    {
+      "source": "/dcf-calculator/",
+      "destination": "/excel-power-modeler/",
+      "permanent": true
+    },
+    {
+      "source": "/stock-valuation-calculator",
+      "destination": "/excel-power-modeler/",
+      "permanent": true
+    },
+    {
+      "source": "/stock-valuation-calculator/",
+      "destination": "/excel-power-modeler/",
+      "permanent": true
+    },
+    {
+      "source": "/options-calculator",
+      "destination": "/options-strategy-visualizer/",
+      "permanent": true
+    },
+    {
+      "source": "/options-calculator/",
+      "destination": "/options-strategy-visualizer/",
+      "permanent": true
+    },
+    {
+      "source": "/options-profit-calculator",
+      "destination": "/options-strategy-visualizer/",
+      "permanent": true
+    },
+    {
+      "source": "/options-profit-calculator/",
+      "destination": "/options-strategy-visualizer/",
+      "permanent": true
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/dashboard/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/retirement-calculator",
+      "destination": "/retirement-account-optimizer/",
+      "permanent": true
+    },
+    {
+      "source": "/retirement-calculator/",
+      "destination": "/retirement-account-optimizer/",
+      "permanent": true
+    },
+    {
+      "source": "/401k-calculator",
+      "destination": "/retirement-account-optimizer/",
+      "permanent": true
+    },
+    {
+      "source": "/401k-calculator/",
+      "destination": "/retirement-account-optimizer/",
+      "permanent": true
+    },
+    {
+      "source": "/dti-calculator",
+      "destination": "/debt-to-income-ratio-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/dti-calculator/",
+      "destination": "/debt-to-income-ratio-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/crypto-tax-calculator",
+      "destination": "/crypto-tax-loss-harvester/",
+      "permanent": true
+    },
+    {
+      "source": "/crypto-tax-calculator/",
+      "destination": "/crypto-tax-loss-harvester/",
+      "permanent": true
+    },
+    {
+      "source": "/freelance-profit-hub/:state",
+      "destination": "/freelance-profit-hub/",
+      "permanent": true
+    },
+    {
+      "source": "/freelance-profit-hub/:state/",
+      "destination": "/freelance-profit-hub/",
+      "permanent": true
+    },
+    {
+      "source": "/early-retirement-fire-planner/:state",
+      "destination": "/early-retirement-fire-planner/",
+      "permanent": true
+    },
+    {
+      "source": "/early-retirement-fire-planner/:state/",
+      "destination": "/early-retirement-fire-planner/",
+      "permanent": true
+    },
+    {
+      "source": "/mortgage-calculator/:state",
+      "destination": "/mortgage-payment-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/mortgage-calculator/:state/",
+      "destination": "/mortgage-payment-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/quarterly-tax-calculator/:state",
+      "destination": "/quarterly-estimated-tax-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/quarterly-tax-calculator/:state/",
+      "destination": "/quarterly-estimated-tax-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/market-intelligence-pulse",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/market-intelligence-pulse/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/gst-tax-calculator",
+      "destination": "/blog/gst-tax-calculator-guide-2025/",
+      "permanent": true
+    },
+    {
+      "source": "/gst-tax-calculator/",
+      "destination": "/blog/gst-tax-calculator-guide-2025/",
+      "permanent": true
+    },
+    {
+      "source": "/cost-of-living-calculator",
+      "destination": "/blog/cost-of-living-calculator-guide-2025/",
+      "permanent": true
+    },
+    {
+      "source": "/cost-of-living-calculator/",
+      "destination": "/blog/cost-of-living-calculator-guide-2025/",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/sitemap.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=3600" }
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=3600"
+        }
       ]
     },
     {
       "source": "/robots.txt",
       "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=3600" }
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=3600"
+        }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(self)" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(self)"
+        }
       ]
     }
   ]

@@ -31,9 +31,8 @@ const Sitemap: React.FC<SitemapProps> = ({ onSelectTool }) => {
       title: "Utilities & Intelligence",
       items: [
         { id: ToolType.CRYPTO_TAX_LOSS, label: "Crypto Tax Loss Harvester", desc: "Estimate harvestable crypto losses and potential tax bill reduction." },
-        { id: ToolType.MARKET_INSIGHTS, label: "AI Market Pulse", desc: "Macro-economic analysis and app ecosystem reviews powered by Gemini AI." },
+        // MARKET_INSIGHTS retired Nov 2026 (AdSense fix) — its URL 301s away; no card.
         { id: ToolType.CURRENCY_CONV, label: "Currency Exchange Intel", desc: "Global forex converter with AI market sentiment for travelers and investors." },
-        { id: ToolType.GST_CALC, label: "GST & VAT Calculator", desc: "Professional tax tool for inclusive and exclusive invoicing calculations." },
         { id: ToolType.FAQ, label: "Financial Knowledge Base", desc: "Expert guidance on complex financial metrics and strategies." },
       ]
     }

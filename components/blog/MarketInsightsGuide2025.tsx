@@ -38,20 +38,8 @@ const MarketInsightsGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           against primary sources before you rely on it.
         </p>
 
-        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl p-6">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <h3 className="font-bold text-slate-900 text-lg mb-2">Explore AI Market Insights</h3>
-              <p className="text-sm text-slate-600">Use our AI market pulse for a quick, AI-generated overview of trends and sentiment, then verify what matters.</p>
-            </div>
-            <button
-              onClick={() => onNavigate?.(ToolType.MARKET_INSIGHTS)}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition whitespace-nowrap"
-            >
-              Open Market Pulse →
-            </button>
-          </div>
-        </div>
+        {/* MARKET_INSIGHTS retired Nov 2026 (AdSense fix) — the old "Open Market
+            Pulse" CTA pointed at a 301'd URL, so it was removed. */}
       </header>
 
       <nav className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
@@ -75,7 +63,7 @@ const MarketInsightsGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             instead of a crystal ball.
           </p>
           <p className="text-lg text-slate-700 leading-relaxed">
-            An <strong>AI market summary</strong>, like the one our Market Pulse tool produces, is text written by a large
+            An <strong>AI market summary</strong> — the kind many finance apps and brokerages now generate — is text written by a large
             language model. It can condense a lot of themes into a few paragraphs, which is useful for orientation. But it
             is generated text, not a data feed or a research report: it can be incomplete, out of date, or simply wrong,
             and it knows nothing about your goals, taxes, or time horizon. Treat it as a list of questions to look into,
@@ -256,11 +244,11 @@ const MarketInsightsGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
         <h3 className="text-2xl font-black text-slate-900">Related Calculators & Guides</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <button
-            onClick={() => onNavigate?.(ToolType.MARKET_INSIGHTS)}
+            onClick={() => onNavigate?.(ToolType.VALUATION_ACADEMY)}
             className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
           >
-            <h4 className="font-bold text-slate-900 mb-2">🤖 Market Insights</h4>
-            <p className="text-sm text-slate-600">Explore AI-generated market context.</p>
+            <h4 className="font-bold text-slate-900 mb-2">🎓 Valuation Academy</h4>
+            <p className="text-sm text-slate-600">DCF, WACC, and company valuation guides.</p>
           </button>
           <button
             onClick={() => onNavigate?.(ToolType.INVESTMENT_ACADEMY)}

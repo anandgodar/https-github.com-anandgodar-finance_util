@@ -216,8 +216,6 @@ const MortgageCalculatorGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
           <p className="text-lg text-slate-700 leading-relaxed">
             That is a difference of more than $600 a month on the same house. Find the actual rate on the county assessor&apos;s
             or treasurer&apos;s website, and remember that many counties reassess a home at or near its sale price after you buy.
-            QuantCurb also has state versions of the calculator, such as the{' '}
-            <a href="/mortgage-calculator/texas/" className="text-indigo-600 font-semibold hover:underline">Texas mortgage calculator</a>.
           </p>
 
           <div className="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-xl mt-4">

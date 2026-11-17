@@ -173,22 +173,24 @@ export default function StateSalaryCalculatorClient({
         {/* Related State Tools */}
         <div className="mt-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-white rounded-3xl p-8 md:p-12">
           <h2 className="text-3xl font-black mb-6">
-            More {stateName} Financial Tools
+            More Financial Tools
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <a href={`/mortgage-calculator/${stateCode.toLowerCase()}`} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
+            <a href={'/mortgage-payment-calculator/'} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
               <div className="text-3xl mb-2">🏡</div>
-              <div className="font-black text-lg">{stateName} Mortgage Calculator</div>
+              {/* The per-state tier is retired (Nov 2026); these link national tools,
+                  so the labels no longer promise a state-specific version. */}
+              <div className="font-black text-lg">Mortgage Payment Calculator</div>
               <div className="text-sm text-indigo-200">Calculate home loan payments</div>
             </a>
-            <a href={`/early-retirement-fire-planner/${stateCode.toLowerCase()}`} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
+            <a href={'/early-retirement-fire-planner/'} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
               <div className="text-3xl mb-2">🔥</div>
-              <div className="font-black text-lg">{stateName} FIRE Calculator</div>
+              <div className="font-black text-lg">FIRE Planner</div>
               <div className="text-sm text-indigo-200">Plan early retirement</div>
             </a>
-            <a href={`/freelance-profit-hub/${stateCode.toLowerCase()}`} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
+            <a href={'/freelance-profit-hub/'} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all border border-white/20">
               <div className="text-3xl mb-2">💼</div>
-              <div className="font-black text-lg">{stateName} Freelance Calculator</div>
+              <div className="font-black text-lg">Freelance Profit Hub</div>
               <div className="text-sm text-indigo-200">Self-employment taxes</div>
             </a>
           </div>

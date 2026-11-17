@@ -241,7 +241,7 @@ const CaliforniaVsTexasTakeHome2025: React.FC<BlogProps> = ({ onNavigate }) => {
             California&apos;s Proposition 13 limits how fast a home&apos;s assessed value can rise while you own it.
           </p>
           <p className="text-lg text-slate-700 leading-relaxed">
-            For a broader view, the <a href="/cost-of-living-calculator/" className="text-indigo-600 font-semibold hover:underline">cost of living calculator</a> compares
+            For a broader view, the <a href="/salary-tax-estimator/" className="text-indigo-600 font-semibold hover:underline">salary &amp; take-home estimator</a> compares
             typical costs between cities, and our academy lesson on the <a href="/academy/california-texas-take-home-comparison/" className="text-indigo-600 font-semibold hover:underline">California vs. Texas take-home comparison</a> walks
             through additional scenarios.
           </p>

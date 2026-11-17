@@ -150,7 +150,7 @@ const MovingToFloridaSunshineTax2025: React.FC<BlogProps> = ({ onNavigate }) => 
             Homeowners do get a break: Florida offers a homestead exemption for a primary residence and limits how fast the
             assessed value of a homesteaded home can rise each year. Buyers of a home that was previously homesteaded should
             expect the assessment to reset, so ask the county property appraiser how the tax bill will change after the sale.
-            Our <a href="/cost-of-living-calculator/" className="text-indigo-600 font-semibold hover:underline">cost of living calculator</a> helps
+            Our <a href="/salary-tax-estimator/" className="text-indigo-600 font-semibold hover:underline">salary &amp; take-home estimator</a> helps
             compare everyday costs between your current city and a Florida metro.
           </p>
         </section>

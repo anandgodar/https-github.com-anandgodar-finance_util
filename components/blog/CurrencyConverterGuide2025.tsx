@@ -183,7 +183,7 @@ const CurrencyConverterGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             Use it before travel, when sending international money, or when pricing overseas products. It keeps you from
             overpaying and helps you plan ahead. It&apos;s also useful when comparing job offers or budgets in another
             country; pair it with a{' '}
-            <a href="/cost-of-living-calculator/" className="text-indigo-600 font-semibold hover:underline">cost of living calculator</a>,
+            <a href="/salary-tax-estimator/" className="text-indigo-600 font-semibold hover:underline">salary &amp; take-home estimator</a>,
             since a higher salary after conversion can still buy less locally. Our{' '}
             <a href="/blog/raise-vs-relocation-cost-of-living/" className="text-indigo-600 font-semibold hover:underline">raise vs relocation guide</a>{' '}
             walks through that comparison.
@@ -248,11 +248,11 @@ const CurrencyConverterGuide2025: React.FC<BlogProps> = ({ onNavigate }) => {
             <p className="text-sm text-slate-600">See live rates across major currencies.</p>
           </button>
           <button
-            onClick={() => onNavigate?.(ToolType.LIVING_COST)}
+            onClick={() => onNavigate?.(ToolType.SALARY_CALC)}
             className="text-left bg-white rounded-2xl p-6 border border-indigo-200 hover:shadow-lg transition-all"
           >
-            <h4 className="font-bold text-slate-900 mb-2">🌆 Cost of Living Calculator</h4>
-            <p className="text-sm text-slate-600">Compare budgets across global cities.</p>
+            <h4 className="font-bold text-slate-900 mb-2">💰 Salary & Take-Home Estimator</h4>
+            <p className="text-sm text-slate-600">US federal, state, and FICA taxes on your paycheck.</p>
           </button>
         </div>
       </div>

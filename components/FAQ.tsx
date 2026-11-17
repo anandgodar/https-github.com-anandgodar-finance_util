@@ -91,31 +91,25 @@ const FAQ: React.FC<FAQProps> = ({ onSelectTool }) => {
           linkText: "Launch Currency Intel"
         },
         {
+          // GST_CALC retired Nov 2026 (AdSense fix) — the Q&A stays, the link now
+          // goes to the guide that replaced the tool.
           q: "What is the difference between GST Inclusive and Exclusive pricing?",
           a: "Exclusive pricing adds tax on top of the base cost, while Inclusive pricing hides the tax within the total amount. Professional invoicing requires accurate splitting of the base and tax components for compliance and audits.",
-          link: ToolType.GST_CALC,
-          linkText: "Use Tax Calculator"
+          link: ToolType.BLOG_GST_GUIDE,
+          linkText: "Read the GST Guide"
         },
         {
+          // LIVING_COST retired Nov 2026 (AdSense fix) — no live tool benchmarks
+          // spending against regional averages, so the answer no longer claims one.
           q: "Is my budget sustainable for my current city's cost of living?",
-          a: "Spending efficiency is relative to location. A 'Good' budget follows the 50/30/20 rule (Needs/Wants/Savings), but high-cost cities often require adjusting these ratios. Our Vitals tool benchmarks your spending against regional averages.",
-          link: ToolType.LIVING_COST,
-          linkText: "Audit Budget Vitals"
-        }
-      ]
-    },
-    {
-      title: "Intelligence & Market Trends",
-      icon: "🤖",
-      questions: [
-        {
-          q: "How does the AI Market Pulse categorize institutional vs retail apps?",
-          a: "Financial ecosystems are split between 'Pro' stacks (Bloomberg, Refinitiv) and 'Retail' platforms (Robinhood, Wise). Professionals prioritize data depth and low latency, while retail users prioritize UI/UX. Our AI analyzes how these two worlds influence market volatility.",
-          link: ToolType.MARKET_INSIGHTS,
-          linkText: "View AI Market Pulse"
+          a: "Spending efficiency is relative to location. A 'Good' budget follows the 50/30/20 rule (Needs/Wants/Savings), but high-cost cities often require adjusting these ratios toward a larger Needs share.",
+          link: ToolType.BLOG_LIVING_COST,
+          linkText: "Read the Cost of Living Guide"
         }
       ]
     }
+    // "Intelligence & Market Trends" section removed Nov 2026: its only question
+    // promoted the retired MARKET_INSIGHTS page (AdSense fix).
   ];
 
   // Add FAQPage structured data schema
